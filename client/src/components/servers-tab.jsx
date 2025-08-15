@@ -1,0 +1,225 @@
+import { Button } from '@/components/ui/button';
+import { Progress } from '@/components/ui/progress';
+import { useGame } from '@/contexts/game-context';
+import { useLanguage } from '@/contexts/language-context';
+import { useToast } from '@/hooks/use-toast';
+import { formatCurrency } from '@/lib/constants';
+
+export function ServersTab() {
+  const { gameState, toggleServer, deleteServer } = useGame();
+  const { t } = useLanguage();
+  const { toast } = useToast();
+
+  const handleToggleServer = async (serverId) => {
+    try {
+      await toggleServer(serverId);
+      toast({
+        title: "Server Status Updated",
+        description: "Server status has been changed successfully.",
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: error.message,
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleDeleteServer = async (serverId) => {
+    if (window.confirm('Are you sure you want to delete this server? This action cannot be undone.')) {
+      try {
+        await deleteServer(serverId);
+        toast({
+          title: "Server Deleted",
+          description: "Server has been deleted successfully.",
+        });
+      } catch (error) {
+        toast({
+          title: "Error",
+          description: error.message,
+          variant: "destructive",
+        });
+      }
+    }
+  };
+
+  if (!gameState.user) return null;
+
+  const serverLimit = gameState.user.serverLimit || 3;
+  const currentServers = gameState.servers?.length || 0;
+  const availableSlots = serverLimit - currentServers;
+
+  return (
+    <div className="p-6 max-w-6xl mx-auto">
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-2xl font-bold text-slate-100">{t('servers')}</h2>
+        <div className="flex items-center space-x-3">
+          <span className="text-sm text-slate-400">Server Limit:</span>
+          <span className="bg-slate-700 px-3 py-1 rounded-lg text-sm font-medium">
+            {currentServers}/{serverLimit} servers
+          </span>
+        </div>
+      </div>
+
+      {/* Server Limit Warning */}
+      {availableSlots <= 1 && (
+        <div className="bg-accent/10 border border-accent/30 rounded-lg p-4 mb-6">
+          <div className="flex items-center space-x-2">
+            <i className="fas fa-exclamation-triangle text-accent"></i>
+            <span className="text-accent font-medium">Server Limit Notice</span>
+          </div>
+          <p className="text-sm text-slate-300 mt-1">
+            You're using {currentServers} of {serverLimit} available server slots. 
+            Complete learning courses to increase your limit!
+          </p>
+        </div>
+      )}
+
+      {/* Active Servers Grid */}
+      {gameState.servers && gameState.servers.length > 0 ? (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+          {gameState.servers.map((server) => (
+            <div key={server.id} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:border-primary/30 transition-all">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
+                    <i className={server.icon || "fas fa-server"} style={{color: server.isOnline ? '#10B981' : '#6B7280'}}></i>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-slate-100">{server.name}</h3>
+                    <p className="text-sm text-slate-400">{server.type}</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-2">
+                  {/* Server Status Toggle */}
+                  <Button
+                    size="sm"
+                    variant={server.isOnline ? "default" : "secondary"}
+                    className={server.isOnline 
+                      ? "bg-secondary/20 text-secondary hover:bg-secondary/30" 
+                      : "bg-slate-600/50 text-slate-400"
+                    }
+                    onClick={() => handleToggleServer(server.id)}
+                  >
+                    <i className="fas fa-power-off mr-1"></i>
+                    {server.isOnline ? t('online') : t('offline')}
+                  </Button>
+                  {/* Delete Server Button */}
+                  <Button
+                    size="sm"
+                    variant="destructive"
+                    className="bg-red-500/20 text-red-400 hover:bg-red-500/30"
+                    onClick={() => handleDeleteServer(server.id)}
+                  >
+                    <i className="fas fa-trash"></i>
+                  </Button>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-4 mb-4">
+                <div className="bg-slate-700/30 rounded-lg p-3">
+                  <p className="text-xs text-slate-400 mb-1">Income/min</p>
+                  <p className={`font-semibold ${server.isOnline ? 'text-secondary' : 'text-slate-500'}`}>
+                    {server.isOnline ? `+${formatCurrency(server.incomePerMinute)}` : '$0 (Offline)'}
+                  </p>
+                </div>
+                <div className="bg-slate-700/30 rounded-lg p-3">
+                  <p className="text-xs text-slate-400 mb-1">Monthly Cost</p>
+                  <p className="font-semibold text-red-400">-{formatCurrency(server.monthlyCost)}</p>
+                </div>
+              </div>
+
+              {/* Server Usage */}
+              <div className="space-y-2">
+                <div className="flex justify-between text-sm">
+                  <span className="text-slate-400">Usage</span>
+                  <span className="text-slate-300">{server.usage || 45}%</span>
+                </div>
+                <div className="w-full bg-slate-700 rounded-full h-2">
+                  <div 
+                    className="bg-gradient-to-r from-secondary to-primary h-2 rounded-full transition-all duration-300" 
+                    style={{ width: `${server.usage || 45}%` }}
+                  ></div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="text-center py-12">
+          <div className="w-16 h-16 bg-slate-700/50 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i className="fas fa-server text-slate-400 text-xl"></i>
+          </div>
+          <h3 className="text-lg font-semibold text-slate-300 mb-2">No Servers Yet</h3>
+          <p className="text-sm text-slate-400 mb-4">
+            Purchase your first server from the Server Store to start earning income.
+          </p>
+        </div>
+      )}
+
+      {/* Add New Server Section */}
+      {availableSlots > 0 && (
+        <div className="bg-slate-800/30 border border-dashed border-slate-600 rounded-xl p-8 text-center">
+          <div className="max-w-md mx-auto">
+            <div className="w-16 h-16 bg-slate-700/50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i className="fas fa-plus text-slate-400 text-xl"></i>
+            </div>
+            <h3 className="text-lg font-semibold text-slate-300 mb-2">Add New Server</h3>
+            <p className="text-sm text-slate-400 mb-4">
+              You have {availableSlots} server slot{availableSlots !== 1 ? 's' : ''} available. 
+              Visit the Server Store to purchase new servers.
+            </p>
+            <Button className="bg-primary hover:bg-primary/80 text-white">
+              Browse Server Store
+            </Button>
+          </div>
+        </div>
+      )}
+
+      {/* Learning in Progress */}
+      {gameState.currentLearning && (
+        <div className="mt-8 bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/30 rounded-xl p-6">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-semibold text-purple-400">Learning in Progress</h3>
+            <span className="bg-purple-500/20 text-purple-300 px-3 py-1 rounded-lg text-sm font-medium">
+              {gameState.currentLearning.difficulty}
+            </span>
+          </div>
+          
+          <div className="flex items-center space-x-4 mb-4">
+            <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
+              <i className="fas fa-brain text-purple-400 text-lg"></i>
+            </div>
+            <div className="flex-1">
+              <h4 className="font-medium text-slate-200">{gameState.currentLearning.title}</h4>
+              <p className="text-sm text-slate-400">{gameState.currentLearning.description}</p>
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <div className="flex justify-between text-sm">
+              <span className="text-slate-400">Progress</span>
+              <span className="text-purple-400">
+                {gameState.currentLearning.progress}% ({gameState.currentLearning.timeRemaining} remaining)
+              </span>
+            </div>
+            <div className="w-full bg-slate-700 rounded-full h-3">
+              <div 
+                className="bg-gradient-to-r from-purple-500 to-pink-500 h-3 rounded-full transition-all duration-300" 
+                style={{ width: `${gameState.currentLearning.progress}%` }}
+              ></div>
+            </div>
+          </div>
+
+          <div className="mt-4 p-3 bg-purple-500/10 rounded-lg">
+            <p className="text-sm text-purple-300">
+              <i className="fas fa-gift mr-1"></i>
+              <strong>Reward:</strong> {gameState.currentLearning.reward}
+            </p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
