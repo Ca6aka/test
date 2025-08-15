@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useGame } from '@/contexts/game-context';
 import { useLanguage } from '@/contexts/language-context';
 import { useToast } from '@/hooks/use-toast';
@@ -16,7 +17,7 @@ export default function LoginPage() {
     confirmPassword: '' 
   });
   const { login, register, isLoading } = useGame();
-  const { t } = useLanguage();
+  const { language, setLanguage, t } = useLanguage();
   const { toast } = useToast();
 
   const handleLogin = async (e) => {
@@ -57,8 +58,25 @@ export default function LoginPage() {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-4">
       <Card className="w-full max-w-md bg-slate-800/80 backdrop-blur-sm border-slate-700">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-bold text-primary">GameStats</CardTitle>
-          <p className="text-slate-400">Server Hosting Simulator</p>
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex-1"></div>
+            <div className="flex-1 text-center">
+              <CardTitle className="text-2xl font-bold text-primary">GameStats</CardTitle>
+              <p className="text-slate-400">Server Hosting Simulator</p>
+            </div>
+            <div className="flex-1 flex justify-end">
+              <Select value={language} onValueChange={setLanguage}>
+                <SelectTrigger className="w-[100px] bg-slate-700 border-slate-600">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="en">🇺🇸 EN</SelectItem>
+                  <SelectItem value="ru">🇷🇺 RU</SelectItem>
+                  <SelectItem value="de">🇩🇪 DE</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="login" className="w-full">

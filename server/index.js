@@ -72,6 +72,23 @@ app.use((req, res, next) => {
     host: "0.0.0.0",
     reusePort: true,
   }, () => {
-    log(`serving on port ${port}`);
+    const os = require('os');
+    const interfaces = os.networkInterfaces();
+    let localIP = 'localhost';
+    
+    // Find local IP address
+    Object.keys(interfaces).forEach(interfaceName => {
+      const nets = interfaces[interfaceName];
+      nets.forEach(net => {
+        if (net.family === 'IPv4' && !net.internal) {
+          localIP = net.address;
+        }
+      });
+    });
+    
+    log(`Server started successfully!`);
+    log(`Local access: http://localhost:${port}`);
+    log(`Network access: http://${localIP}:${port}`);
+    log(`External access: Configure your router/firewall to forward port ${port}`);
   });
 })();

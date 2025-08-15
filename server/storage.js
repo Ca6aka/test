@@ -5,6 +5,7 @@ import { randomUUID } from 'crypto';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const dataDir = path.join(__dirname, '..', 'data');
+const usersDir = path.join(__dirname, '..', 'users');
 
 // Server products configuration
 const SERVER_PRODUCTS = [
@@ -111,6 +112,11 @@ export class FileStorage {
     } catch {
       await fs.mkdir(dataDir, { recursive: true });
     }
+    try {
+      await fs.access(usersDir);
+    } catch {
+      await fs.mkdir(usersDir, { recursive: true });
+    }
   }
 
   async readJsonFile(filename) {
@@ -131,13 +137,39 @@ export class FileStorage {
     await fs.writeFile(filePath, JSON.stringify(data, null, 2));
   }
 
-  async getUsers() {
-    const users = await this.readJsonFile('users.json');
-    return users || [];
+  async getUserFile(nickname) {
+    const filePath = path.join(usersDir, `${nickname}.json`);
+    try {
+      const data = await fs.readFile(filePath, 'utf8');
+      return JSON.parse(data);
+    } catch (error) {
+      if (error.code === 'ENOENT') {
+        return null;
+      }
+      throw error;
+    }
   }
 
-  async saveUsers(users) {
-    await this.writeJsonFile('users.json', users);
+  async saveUserFile(user) {
+    const filePath = path.join(usersDir, `${user.nickname}.json`);
+    await fs.writeFile(filePath, JSON.stringify(user, null, 2));
+  }
+
+  async getAllUsers() {
+    try {
+      const files = await fs.readdir(usersDir);
+      const users = [];
+      for (const file of files) {
+        if (file.endsWith('.json')) {
+          const nickname = file.replace('.json', '');
+          const user = await this.getUserFile(nickname);
+          if (user) users.push(user);
+        }
+      }
+      return users;
+    } catch {
+      return [];
+    }
   }
 
   async getServers() {
@@ -160,17 +192,15 @@ export class FileStorage {
 
   // User management
   async getUser(id) {
-    const users = await this.getUsers();
+    const users = await this.getAllUsers();
     return users.find(user => user.id === id);
   }
 
   async getUserByNickname(nickname) {
-    const users = await this.getUsers();
-    return users.find(user => user.nickname === nickname);
+    return await this.getUserFile(nickname);
   }
 
   async createUser(userData) {
-    const users = await this.getUsers();
     const user = {
       id: randomUUID(),
       nickname: userData.nickname,
@@ -184,26 +214,25 @@ export class FileStorage {
       activities: []
     };
     
-    users.push(user);
-    await this.saveUsers(users);
+    await this.saveUserFile(user);
     await this.updateRankings();
     
     return user;
   }
 
   async updateUser(userId, updates) {
-    const users = await this.getUsers();
-    const userIndex = users.findIndex(user => user.id === userId);
+    const users = await this.getAllUsers();
+    const user = users.find(u => u.id === userId);
     
-    if (userIndex === -1) {
+    if (!user) {
       throw new Error('User not found');
     }
     
-    users[userIndex] = { ...users[userIndex], ...updates };
-    await this.saveUsers(users);
+    const updatedUser = { ...user, ...updates };
+    await this.saveUserFile(updatedUser);
     await this.updateRankings();
     
-    return users[userIndex];
+    return updatedUser;
   }
 
   // Server management
@@ -472,7 +501,7 @@ export class FileStorage {
 
   // Rankings
   async getRankings() {
-    const users = await this.getUsers();
+    const users = await this.getAllUsers();
     const rankings = users
       .map(user => ({
         id: user.id,
