@@ -16,6 +16,7 @@ echo 3. Make sure Windows Firewall allows port 5000
 echo.
 echo ========================================
 echo.
+set NODE_ENV=development
 npm run dev
 echo.
 echo Server stopped. Press any key to exit...
