@@ -17,7 +17,7 @@ echo.
 echo ========================================
 echo.
 set NODE_ENV=development
-npm run dev
+npx tsx server/index.ts
 echo.
 echo Server stopped. Press any key to exit...
 pause > nul
