@@ -3,6 +3,12 @@ echo ========================================
 echo       GameStats Server Launcher
 echo ========================================
 echo.
+echo Installing dependencies...
+echo.
+npm install
+echo.
+echo Dependencies installed successfully!
+echo.
 echo Starting server...
 echo.
 echo After startup, you can access the game at:
