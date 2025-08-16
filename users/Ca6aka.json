@@ -2,11 +2,11 @@
   "id": "a66a7d88-03dc-48c9-862a-f8229356999a",
   "nickname": "Ca6aka",
   "password": "$2b$10$2VSPHZhbA7AZDxzNRecq7uxZ.FHFrvK64rnZZKFEDUisoUKT31dMi",
-  "balance": 10900,
+  "balance": 12050,
   "level": 1,
-  "experience": 53,
-  "totalEarnings": 10900,
-  "totalSpent": 0,
+  "experience": 63,
+  "totalEarnings": 11050,
+  "totalSpent": 5000,
   "avatar": {
     "gradient": "from-indigo-400 via-blue-500 to-cyan-600",
     "pattern": "multi-color",
@@ -14,7 +14,7 @@
     "animation": "soft-pulse"
   },
   "serverLimit": 3,
-  "tutorialCompleted": false,
+  "tutorialCompleted": true,
   "admin": 1,
   "banned": false,
   "muted": false,
@@ -22,30 +22,42 @@
   "isOnline": true,
   "lastIncomeUpdate": 1755325513895,
   "jobCooldowns": {
-    "maintenance": 1755325821764,
+    "maintenance": 1755326165466,
     "optimization": 1755325972637,
     "security-audit": 1755326123891
   },
   "currentLearning": null,
   "activities": [
     {
-      "id": "76259e34-90a9-43c2-9ce2-fbb50cc97ab3",
-      "description": "Completed Security Audit (+$500, +25 XP)",
-      "timestamp": "8/16/2025, 6:25:23 AM"
-    },
-    {
-      "id": "7f726699-f0c6-439c-a8fa-1c0b8fa13e96",
-      "description": "Completed Performance Optimization (+$250, +18 XP)",
-      "timestamp": "8/16/2025, 6:25:22 AM"
-    },
-    {
-      "id": "19d8f0b8-ebdb-47ed-a231-2efe59c546d5",
+      "id": "cea66c7e-dbfd-4ed4-be1b-386707e1f356",
       "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "8/16/2025, 6:25:21 AM"
+      "timestamp": "8/16/2025, 6:31:05 AM"
+    },
+    {
+      "id": "99b3c7b0-92f6-41a0-8ea7-34022adfad44",
+      "description": "Turned Basic Web Server offline",
+      "timestamp": "8/16/2025, 6:29:24 AM"
+    },
+    {
+      "id": "d523fdd1-6873-47ba-a0dc-5bcb82efccf9",
+      "description": "Achievement unlocked: First Steps (+$1,000)",
+      "timestamp": "8/16/2025, 6:29:17 AM"
+    },
+    {
+      "id": "bca6a7dc-5eab-4c1d-a900-8be088561958",
+      "description": "Purchased Basic Web Server for $5,000",
+      "timestamp": "8/16/2025, 6:29:17 AM"
+    },
+    {
+      "id": "130dad22-0885-4299-af18-d31a52ce5b2f",
+      "description": "Tutorial completed! All features unlocked.",
+      "timestamp": "8/16/2025, 6:29:12 AM"
     }
   ],
-  "achievements": [],
-  "completedJobsCount": 3,
+  "achievements": [
+    "first-server"
+  ],
+  "completedJobsCount": 4,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -58,7 +70,7 @@
         "jobType": "maintenance",
         "count": 3
       },
-      "progress": 1,
+      "progress": 2,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -91,5 +103,5 @@
     }
   ],
   "lastQuestReset": 1755325513895,
-  "lastSeen": 1755325726145
+  "lastSeen": 1755325924079
 }

@@ -1259,8 +1259,8 @@ export class FileStorage {
       // Remove old entries for this user's servers
       allServers = allServers.filter(server => !userServers.find(us => us.id === server.id));
       
-      // Add current user's active servers
-      const activeServers = userServers.filter(server => server.isOnline).map(server => ({
+      // Add ALL current user's servers (both online and offline)
+      const updatedServers = userServers.map(server => ({
         id: server.id,
         name: server.name,
         ownerId: server.ownerId,
@@ -1270,7 +1270,7 @@ export class FileStorage {
         lastUpdated: Date.now()
       }));
       
-      allServers.push(...activeServers);
+      allServers.push(...updatedServers);
       
       // Save updated servers data
       await this.writeJsonFile('servers.json', allServers);
