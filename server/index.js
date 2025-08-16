@@ -1,5 +1,6 @@
 import express from "express";
 import session from "express-session";
+import os from "os";
 import { registerRoutes } from "./routes.js";
 import { setupVite, serveStatic, log } from "./vite.js";
 
@@ -72,7 +73,6 @@ app.use((req, res, next) => {
     host: "0.0.0.0",
     reusePort: true,
   }, () => {
-    const os = require('os');
     const interfaces = os.networkInterfaces();
     let localIP = 'localhost';
     
