@@ -249,8 +249,16 @@ const LEARNING_COURSES = [
 
 const ACHIEVEMENTS = [
   {
-    id: 'first-server',
+    id: 'first-steps',
     title: 'First Steps',
+    description: 'Complete your first job',
+    icon: 'fas fa-play',
+    reward: 500,
+    condition: { type: 'jobs', count: 1 }
+  },
+  {
+    id: 'first-server',
+    title: 'First Server',
     description: 'Purchase your first server',
     icon: 'fas fa-server',
     reward: 1000,

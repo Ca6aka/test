@@ -167,7 +167,7 @@ const translations = {
         title: "First Steps",
         description: "Complete your first job",
       },
-      'first_server': {
+      'first-server': {
         title: "First Server",
         description: "Purchase your first server",
       },
@@ -189,7 +189,7 @@ const translations = {
       },
       'early-earner': {
         title: "Early Earner",
-        description: "Complete all learning courses",
+        description: "Earn your first $10,000",
       },
       'efficient-worker': {
         title: "Efficient Worker",
@@ -218,6 +218,38 @@ const translations = {
       'server-mogul': {
         title: "Server Mogul",
         description: "Own 10 servers simultaneously",
+      },
+      'persistent-learner': {
+        title: "Persistent Learner",
+        description: "Complete 3 learning courses",
+      },
+      'speed-demon': {
+        title: "Speed Demon",
+        description: "Complete 200 jobs total",
+      },
+      'infrastructure-king': {
+        title: "Infrastructure King",
+        description: "Own 15 servers simultaneously",
+      },
+      'multi-millionaire': {
+        title: "Multi-Millionaire",
+        description: "Accumulate $5,000,000 in balance",
+      },
+      'course-completionist': {
+        title: "Course Completionist",
+        description: "Complete all available learning courses",
+      },
+      'workaholic': {
+        title: "Workaholic",
+        description: "Complete 500 jobs total",
+      },
+      'server-empire': {
+        title: "Server Empire",
+        description: "Own 20 servers simultaneously",
+      },
+      'financial-titan': {
+        title: "Financial Titan",
+        description: "Accumulate $10,000,000 in balance",
       },
       'persistent-learner': {
         title: "Persistent Learner",
@@ -685,7 +717,7 @@ const translations = {
         title: "Первые шаги",
         description: "Выполните свое первое задание",
       },
-      'first_server': {
+      'first-server': {
         title: "Первый сервер",
         description: "Купите свой первый сервер",
       },
