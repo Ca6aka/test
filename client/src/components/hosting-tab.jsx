@@ -83,14 +83,16 @@ export function HostingTab({ onTabChange }) {
           const userLevel = gameState.user.level || 1;
           const canAfford = gameState.user.balance >= product.price;
           const hasLevelRequirement = userLevel >= product.requiredLevel;
-          const isDisabled = !canPurchase || !canAfford || !hasLevelRequirement;
+          const completedLearning = gameState.user.completedLearning || [];
+          const hasLearningRequirement = !product.requiredLearning || completedLearning.includes(product.requiredLearning);
+          const isDisabled = !canPurchase || !canAfford || !hasLevelRequirement || !hasLearningRequirement;
 
           return (
-            <div key={product.id} className={`bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-4 sm:p-6 hover:border-primary/30 transition-all ${!hasLevelRequirement ? 'opacity-60' : ''}`}>
+            <div key={product.id} className={`bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-4 sm:p-6 hover:border-primary/30 transition-all ${!hasLevelRequirement || !hasLearningRequirement ? 'opacity-60' : ''}`}>
               <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 mb-4">
                 <div className="flex items-center space-x-3 flex-1">
                   <div className="w-10 sm:w-12 h-10 sm:h-12 bg-primary/20 rounded-lg flex items-center justify-center">
-                    {!hasLevelRequirement ? (
+                    {!hasLevelRequirement || !hasLearningRequirement ? (
                       <Lock className="text-slate-400 text-sm sm:text-lg" />
                     ) : (
                       <i className={product.icon + " text-primary text-sm sm:text-lg"}></i>
@@ -101,6 +103,9 @@ export function HostingTab({ onTabChange }) {
                     <p className="text-xs sm:text-sm text-slate-400">{product.type}</p>
                     {!hasLevelRequirement && (
                       <p className="text-xs text-red-400 mt-1">Requires Level {product.requiredLevel}</p>
+                    )}
+                    {!hasLearningRequirement && (
+                      <p className="text-xs text-red-400 mt-1">Need Learning Course</p>
                     )}
                   </div>
                 </div>
@@ -133,6 +138,7 @@ export function HostingTab({ onTabChange }) {
                 variant={isDisabled ? "secondary" : "default"}
               >
                 {!hasLevelRequirement ? `Requires Level ${product.requiredLevel}` :
+                 !hasLearningRequirement ? 'Need Learning Course' :
                  !canPurchase ? 'Server Limit Reached' : 
                  !canAfford ? 'Insufficient Funds' : 
                  'Purchase Server'}

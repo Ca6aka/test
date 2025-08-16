@@ -39,7 +39,29 @@ export const SERVER_PRODUCTS = [
     incomePerMinute: 100,
     monthlyCost: 180,
     icon: 'fas fa-cloud',
-    requiredLevel: 6
+    requiredLevel: 12
+  },
+  {
+    id: 'gpu-server',
+    name: 'GPU Server',
+    type: 'AI',
+    price: 25000,
+    incomePerMinute: 150,
+    monthlyCost: 250,
+    icon: 'fas fa-microchip',
+    requiredLevel: 25,
+    requiredLearning: 'ai-gpu-settings'
+  },
+  {
+    id: 'tpu-server',
+    name: 'TPU Server',
+    type: 'Вычисления',
+    price: 47500,
+    incomePerMinute: 200,
+    monthlyCost: 350,
+    icon: 'fas fa-brain',
+    requiredLevel: 45,
+    requiredLearning: 'tpu-settings-machine'
   }
 ];
 
@@ -73,6 +95,26 @@ export const LEARNING_COURSES = [
     reward: { type: 'efficiency', amount: 15 },
     price: 5000,
     requiredLevel: 12
+  },
+  {
+    id: 'ai-gpu-settings',
+    title: 'AI GPU Settings',
+    description: 'Master GPU configuration for AI workloads and machine learning tasks',
+    difficulty: 'Expert',
+    duration: 4 * 60 * 60 * 1000, // 4 hours in milliseconds
+    reward: { type: 'serverUnlock', serverType: 'gpu-server' },
+    price: 15000,
+    requiredLevel: 25
+  },
+  {
+    id: 'tpu-settings-machine',
+    title: 'TPU Settings Machine',
+    description: 'Advanced TPU configuration for high-performance computing and neural networks',
+    difficulty: 'Master',
+    duration: 6 * 60 * 60 * 1000, // 6 hours in milliseconds
+    reward: { type: 'serverUnlock', serverType: 'tpu-server' },
+    price: 25000,
+    requiredLevel: 45
   }
 ];
 

@@ -575,6 +575,14 @@ export class FileStorage {
       throw new Error(`Requires level ${product.requiredLevel}`);
     }
 
+    // Check learning requirement
+    if (product.requiredLearning) {
+      const completedLearning = user.completedLearning || [];
+      if (!completedLearning.includes(product.requiredLearning)) {
+        throw new Error(`Requires completed learning: ${product.requiredLearning}`);
+      }
+    }
+
     // Create new server
     const servers = await this.getServers();
     const newServer = {
@@ -856,7 +864,8 @@ export class FileStorage {
     const learning = user.currentLearning;
     const updates = { 
       currentLearning: null,
-      completedCoursesCount: (user.completedCoursesCount || 0) + 1
+      completedCoursesCount: (user.completedCoursesCount || 0) + 1,
+      completedLearning: [...(user.completedLearning || []), learning.id]
     };
 
     // Apply rewards
@@ -865,6 +874,8 @@ export class FileStorage {
     } else if (learning.reward.type === 'efficiency') {
       // Efficiency bonus could be applied to future servers or existing ones
       // For now, we'll just track it in activities
+    } else if (learning.reward.type === 'serverUnlock') {
+      // Server unlock reward - just track completion, server will be unlocked via completedLearning array
     }
 
     await this.updateUser(userId, updates);

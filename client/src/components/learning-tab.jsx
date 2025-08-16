@@ -99,9 +99,10 @@ export function LearningTab() {
       )}
 
       {/* Available Courses */}
-      <div className="space-y-4">
+      <div className="space-y-6">
         <h3 className="text-lg font-semibold text-slate-200 mb-4">Available Courses</h3>
         
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {LEARNING_COURSES.map((course) => {
           const userLevel = gameState.user.level || 1;
           const canAfford = gameState.user.balance >= course.price;
@@ -119,73 +120,55 @@ export function LearningTab() {
             } else if (reward.type === 'efficiency') {
               const amount = reward.amount ?? 0;
               return `+${amount}% Server Efficiency`;
+            } else if (reward.type === 'serverUnlock') {
+              const serverType = reward.serverType;
+              return `Unlocks ${serverType === 'gpu-server' ? 'GPU Server' : serverType === 'tpu-server' ? 'TPU Server' : 'Special Server'}`;
             }
             return 'Unknown Reward';
           };          
 
-          const getDifficultyColor = (difficulty) => {
-            switch (difficulty.toLowerCase()) {
-              case 'beginner': return 'text-secondary';
-              case 'intermediate': return 'text-accent';
-              case 'advanced': return 'text-red-400';
-              default: return 'text-slate-400';
-            }
-          };
-
           return (
-            <div key={course.id} className={`bg-slate-800/50 backdrop-blur-sm border rounded-xl p-4 sm:p-6 transition-all ${
+            <div key={course.id} className={`bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:border-primary/30 transition-all ${
               isLearning ? 'border-purple-500/50 bg-purple-500/5' :
-              isDisabled ? 'border-slate-700 opacity-60' :
-              'border-slate-700 hover:border-primary/30'
+              isDisabled ? 'opacity-60' : ''
             }`}>
               <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center space-x-4">
-                  <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
+                <div className="flex items-center space-x-3">
+                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
                     isLearning ? 'bg-purple-500/20' : 'bg-primary/20'
                   }`}>
                     {!hasLevelRequirement ? (
                       <Lock className="text-slate-400 text-lg" />
                     ) : (
-                      <i className={`fas fa-book ${isLearning ? 'text-purple-400' : 'text-primary'} text-lg`}></i>
+                      <i className={`fas fa-brain ${isLearning ? 'text-purple-400' : 'text-primary'} text-lg`}></i>
                     )}
                   </div>
                   <div>
-                    <h4 className="font-semibold text-slate-200">{course.title}</h4>
-                    <p className="text-sm text-slate-400">{course.description}</p>
+                    <h3 className="font-semibold text-slate-100">{course.title}</h3>
+                    <p className="text-sm text-slate-400">{course.difficulty}</p>
                     {!hasLevelRequirement && (
                       <p className="text-xs text-red-400 mt-1">Requires Level {course.requiredLevel}</p>
                     )}
                   </div>
                 </div>
                 <div className="text-right">
-                  <span className={`px-2 py-1 rounded text-xs font-medium ${
-                    course.difficulty === 'Beginner' ? 'bg-secondary/20 text-secondary' :
-                    course.difficulty === 'Intermediate' ? 'bg-accent/20 text-accent' :
-                    'bg-red-500/20 text-red-400'
-                  }`}>
-                    {course.difficulty}
-                  </span>
+                  <p className="text-base font-bold text-primary">{formatCurrency(course.price)}</p>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-4">
-                <div className="text-center sm:text-left">
+              <p className="text-sm text-slate-400 mb-4">{course.description}</p>
+              
+              <div className="grid grid-cols-2 gap-4 mb-4">
+                <div className="bg-slate-700/30 rounded-lg p-3">
                   <p className="text-xs text-slate-400 mb-1">Duration</p>
                   <p className="text-sm font-medium text-slate-300">
                     <i className="fas fa-clock mr-1"></i>
                     {formatTime(course.duration)}
                   </p>
                 </div>
-                <div className="text-center sm:text-left">
-                  <p className="text-xs text-slate-400 mb-1">Cost</p>
-                  <p className="text-sm font-medium text-slate-300">
-                    <i className="fas fa-coins mr-1"></i>
-                    {formatCurrency(course.price)}
-                  </p>
-                </div>
-                <div className="text-center sm:text-left">
+                <div className="bg-slate-700/30 rounded-lg p-3">
                   <p className="text-xs text-slate-400 mb-1">Reward</p>
-                  <p className="text-sm font-medium text-accent">
+                  <p className="text-sm font-medium text-secondary">
                     <i className="fas fa-gift mr-1"></i>
                     {getRewardText(course.reward)}
                   </p>
@@ -213,6 +196,7 @@ export function LearningTab() {
             </div>
           );
         })}
+        </div>
       </div>
 
       {/* Benefits Overview */}
