@@ -1,18 +1,10 @@
 [
   {
-    "id": "8fa068ba-ebc1-4380-92c9-c063ce19ea10",
-    "nickname": "Nikor",
-    "balance": 13900,
+    "id": "e9d7d40c-8d6e-423b-ac42-bf1b91868252",
+    "nickname": "Ca6aka",
+    "balance": 10000,
     "serverCount": 0,
     "isOnline": true,
     "rank": 1
-  },
-  {
-    "id": "af32cffd-9c64-4dcc-b3b7-3ef4ac710047",
-    "nickname": "Ca6aka",
-    "balance": 10005,
-    "serverCount": 1,
-    "isOnline": true,
-    "rank": 2
   }
 ]

@@ -1,0 +1,14 @@
+{
+  "id": "e9d7d40c-8d6e-423b-ac42-bf1b91868252",
+  "nickname": "Ca6aka",
+  "password": "$2b$10$.xgj5CH7ZN/rpvdhwjRUsuV72F44uECLWoNZYMVrvFD.Huv16qgdy",
+  "balance": 10000,
+  "serverLimit": 3,
+  "tutorialCompleted": false,
+  "admin": 1,
+  "isOnline": true,
+  "lastIncomeUpdate": 1755313941495,
+  "jobCooldowns": {},
+  "currentLearning": null,
+  "activities": []
+}

@@ -9,7 +9,7 @@ import { JOB_TYPES, formatCurrency, formatTime } from '@/lib/constants';
 export function TutorialTab({ onTabChange }) {
   const { gameState, completeJob, completeTutorial } = useGame();
   const { toast } = useToast();
-  const { localizeError } = useLanguage();
+  const { t, localizeError } = useLanguage();
   const [cooldownTimers, setCooldownTimers] = useState({});
 
   // Update cooldown timers
