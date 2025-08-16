@@ -8,7 +8,8 @@ export const SERVER_PRODUCTS = [
     price: 5000,
     incomePerMinute: 15,
     monthlyCost: 45,
-    icon: 'fas fa-globe'
+    icon: 'fas fa-globe',
+    requiredLevel: 1
   },
   {
     id: 'high-performance',
@@ -17,7 +18,8 @@ export const SERVER_PRODUCTS = [
     price: 12000,
     incomePerMinute: 50,
     monthlyCost: 120,
-    icon: 'fas fa-server'
+    icon: 'fas fa-server',
+    requiredLevel: 4
   },
   {
     id: 'database-server',
@@ -26,7 +28,8 @@ export const SERVER_PRODUCTS = [
     price: 8000,
     incomePerMinute: 25,
     monthlyCost: 85,
-    icon: 'fas fa-database'
+    icon: 'fas fa-database',
+    requiredLevel: 2
   },
   {
     id: 'cdn-server',
@@ -35,7 +38,8 @@ export const SERVER_PRODUCTS = [
     price: 15000,
     incomePerMinute: 100,
     monthlyCost: 180,
-    icon: 'fas fa-cloud'
+    icon: 'fas fa-cloud',
+    requiredLevel: 6
   }
 ];
 
@@ -47,7 +51,8 @@ export const LEARNING_COURSES = [
     difficulty: 'Beginner',
     duration: 30 * 60 * 1000, // 30 minutes in milliseconds
     reward: { type: 'serverSlots', amount: 1 },
-    price: 2000
+    price: 2000,
+    requiredLevel: 1
   },
   {
     id: 'advanced-management',
@@ -56,7 +61,8 @@ export const LEARNING_COURSES = [
     difficulty: 'Advanced',
     duration: 120 * 60 * 1000, // 2 hours in milliseconds
     reward: { type: 'serverSlots', amount: 2 },
-    price: 8000
+    price: 8000,
+    requiredLevel: 5
   },
   {
     id: 'security-protocols',
@@ -65,7 +71,8 @@ export const LEARNING_COURSES = [
     difficulty: 'Intermediate',
     duration: 90 * 60 * 1000, // 1.5 hours in milliseconds
     reward: { type: 'efficiency', amount: 15 },
-    price: 5000
+    price: 5000,
+    requiredLevel: 3
   }
 ];
 

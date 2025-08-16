@@ -14,5 +14,32 @@
     "message": "привет",
     "timestamp": 1755323066097,
     "deleted": false
+  },
+  {
+    "id": "5b1fc3ca-525a-435e-ac09-c291e8013f8d",
+    "userId": "117f25bb-6136-49ba-aef8-865c4d9fd601",
+    "nickname": "Ca6aka",
+    "message": "привет",
+    "timestamp": 1755323892307,
+    "deleted": false,
+    "adminLevel": 1
+  },
+  {
+    "id": "d5729493-1efe-48e3-81f5-c0a66b996bde",
+    "userId": "f7a8faee-a7fa-4b89-a7dc-8342d8424c1e",
+    "nickname": "Niko",
+    "message": "привет",
+    "timestamp": 1755323933541,
+    "deleted": false,
+    "adminLevel": 1
+  },
+  {
+    "id": "81c9067c-e1f1-4d47-903f-d2a85ceed93c",
+    "userId": "f7a8faee-a7fa-4b89-a7dc-8342d8424c1e",
+    "nickname": "Niko",
+    "message": "привет",
+    "timestamp": 1755323945468,
+    "deleted": false,
+    "adminLevel": 0
   }
 ]

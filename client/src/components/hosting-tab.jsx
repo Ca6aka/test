@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { useGame } from '@/contexts/game-context';
 import { useToast } from '@/hooks/use-toast';
 import { SERVER_PRODUCTS, formatCurrency } from '@/lib/constants';
+import { Lock } from 'lucide-react';
 
 export function HostingTab({ onTabChange }) {
   const { gameState, purchaseServer } = useGame();
@@ -79,19 +80,28 @@ export function HostingTab({ onTabChange }) {
       {/* Server Products Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         {SERVER_PRODUCTS.map((product) => {
+          const userLevel = gameState.user.level || 1;
           const canAfford = gameState.user.balance >= product.price;
-          const isDisabled = !canPurchase || !canAfford;
+          const hasLevelRequirement = userLevel >= product.requiredLevel;
+          const isDisabled = !canPurchase || !canAfford || !hasLevelRequirement;
 
           return (
-            <div key={product.id} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-4 sm:p-6 hover:border-primary/30 transition-all">
+            <div key={product.id} className={`bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-4 sm:p-6 hover:border-primary/30 transition-all ${!hasLevelRequirement ? 'opacity-60' : ''}`}>
               <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 mb-4">
                 <div className="flex items-center space-x-3 flex-1">
                   <div className="w-10 sm:w-12 h-10 sm:h-12 bg-primary/20 rounded-lg flex items-center justify-center">
-                    <i className={product.icon + " text-primary text-sm sm:text-lg"}></i>
+                    {!hasLevelRequirement ? (
+                      <Lock className="text-slate-400 text-sm sm:text-lg" />
+                    ) : (
+                      <i className={product.icon + " text-primary text-sm sm:text-lg"}></i>
+                    )}
                   </div>
                   <div className="flex-1">
                     <h3 className="font-semibold text-slate-100 text-sm sm:text-base">{product.name}</h3>
                     <p className="text-xs sm:text-sm text-slate-400">{product.type}</p>
+                    {!hasLevelRequirement && (
+                      <p className="text-xs text-red-400 mt-1">Requires Level {product.requiredLevel}</p>
+                    )}
                   </div>
                 </div>
                 <div className="text-right">
@@ -122,7 +132,8 @@ export function HostingTab({ onTabChange }) {
                 onClick={() => handlePurchaseServer(product.id)}
                 variant={isDisabled ? "secondary" : "default"}
               >
-                {!canPurchase ? 'Server Limit Reached' : 
+                {!hasLevelRequirement ? `Requires Level ${product.requiredLevel}` :
+                 !canPurchase ? 'Server Limit Reached' : 
                  !canAfford ? 'Insufficient Funds' : 
                  'Purchase Server'}
               </Button>

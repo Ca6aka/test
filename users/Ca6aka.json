@@ -2,10 +2,10 @@
   "id": "117f25bb-6136-49ba-aef8-865c4d9fd601",
   "nickname": "Ca6aka",
   "password": "$2b$10$MNgnDbNDq8XbGzZQB4nUl.hLgDWbgHjShiJ4Qu8bZ9fdpocrxcF/e",
-  "balance": 21750,
+  "balance": 22150,
   "level": 3,
-  "experience": 222,
-  "totalEarnings": 13750,
+  "experience": 250,
+  "totalEarnings": 14150,
   "totalSpent": 0,
   "avatar": {
     "gradient": "from-purple-500 via-pink-500 via-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500",
@@ -22,12 +22,22 @@
   "isOnline": true,
   "lastIncomeUpdate": 1755321664028,
   "jobCooldowns": {
-    "maintenance": 1755323935841,
-    "optimization": 1755324091282,
+    "maintenance": 1755324448966,
+    "optimization": 1755324599368,
     "security-audit": 1755324374376
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "e35db05c-aaf5-421a-9be0-9037ba449534",
+      "description": "Completed Performance Optimization (+$250, +18 XP)",
+      "timestamp": "8/16/2025, 6:02:29 AM"
+    },
+    {
+      "id": "ab8ebcd2-acec-46ef-b7f3-c309627c3638",
+      "description": "Completed Server Maintenance (+$150, +10 XP)",
+      "timestamp": "8/16/2025, 6:02:28 AM"
+    },
     {
       "id": "1967f01a-aa2e-48f9-a53f-17e1c3292988",
       "description": "Completed Security Audit (+$500, +25 XP) - Level Up! Now level 3",
@@ -42,25 +52,10 @@
       "id": "c22ec0ea-1a48-4ecb-8431-a1bca4ef8aad",
       "description": "Completed Performance Optimization (+$250, +18 XP)",
       "timestamp": "8/16/2025, 5:54:01 AM"
-    },
-    {
-      "id": "e225afb2-48f5-4998-9977-4f8647a4184a",
-      "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "8/16/2025, 5:53:55 AM"
-    },
-    {
-      "id": "7b9636e7-50f4-4133-8875-5d71165ec6d4",
-      "description": "Quest reward claimed: Server Optimization (+$3,000)",
-      "timestamp": "8/16/2025, 5:46:59 AM"
-    },
-    {
-      "id": "f895bf8f-ef52-41c7-8ced-09d7c9c3e757",
-      "description": "Quest reward claimed: Daily Maintenance (+$2,000)",
-      "timestamp": "8/16/2025, 5:46:58 AM"
     }
   ],
   "achievements": [],
-  "completedJobsCount": 13,
+  "completedJobsCount": 15,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -108,5 +103,5 @@
     }
   ],
   "lastQuestReset": 1755321664028,
-  "lastSeen": 1755323873187
+  "lastSeen": 1755324302306
 }

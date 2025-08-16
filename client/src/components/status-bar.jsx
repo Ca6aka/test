@@ -160,10 +160,12 @@ export function StatusBar() {
         </div>
       </div>
       
-      <PlayerProfileBar 
-        isOpen={profileOpen} 
-        onClose={() => setProfileOpen(false)} 
-      />
+      {profileOpen && (
+        <PlayerProfileBar 
+          isOpen={profileOpen} 
+          onClose={() => setProfileOpen(false)} 
+        />
+      )}
     </header>
   );
 }

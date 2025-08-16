@@ -3,6 +3,7 @@ import { Progress } from '@/components/ui/progress';
 import { useGame } from '@/contexts/game-context';
 import { useToast } from '@/hooks/use-toast';
 import { LEARNING_COURSES, formatCurrency, formatTime } from '@/lib/constants';
+import { Lock } from 'lucide-react';
 
 export function LearningTab() {
   const { gameState, startLearning } = useGame();
@@ -102,10 +103,12 @@ export function LearningTab() {
         <h3 className="text-lg font-semibold text-slate-200 mb-4">Available Courses</h3>
         
         {LEARNING_COURSES.map((course) => {
+          const userLevel = gameState.user.level || 1;
           const canAfford = gameState.user.balance >= course.price;
+          const hasLevelRequirement = userLevel >= course.requiredLevel;
           const isLearning = gameState.currentLearning?.id === course.id;
           const hasLearning = gameState.currentLearning && !isLearning;
-          const isDisabled = !canAfford || hasLearning;
+          const isDisabled = !canAfford || hasLearning || !hasLevelRequirement;
 
           const getRewardText = (reward) => {
             if (!reward || typeof reward !== 'object') return 'Unknown Reward';
@@ -140,11 +143,18 @@ export function LearningTab() {
                   <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
                     isLearning ? 'bg-purple-500/20' : 'bg-primary/20'
                   }`}>
-                    <i className={`fas fa-book ${isLearning ? 'text-purple-400' : 'text-primary'} text-lg`}></i>
+                    {!hasLevelRequirement ? (
+                      <Lock className="text-slate-400 text-lg" />
+                    ) : (
+                      <i className={`fas fa-book ${isLearning ? 'text-purple-400' : 'text-primary'} text-lg`}></i>
+                    )}
                   </div>
                   <div>
                     <h4 className="font-semibold text-slate-200">{course.title}</h4>
                     <p className="text-sm text-slate-400">{course.description}</p>
+                    {!hasLevelRequirement && (
+                      <p className="text-xs text-red-400 mt-1">Requires Level {course.requiredLevel}</p>
+                    )}
                   </div>
                 </div>
                 <div className="text-right">
@@ -188,7 +198,8 @@ export function LearningTab() {
                 onClick={() => handleStartCourse(course.id)}
                 variant={isLearning ? "secondary" : isDisabled ? "ghost" : "default"}
               >
-                {isLearning ? 'In Progress...' :
+                {!hasLevelRequirement ? `Requires Level ${course.requiredLevel}` :
+                 isLearning ? 'In Progress...' :
                  hasLearning ? 'Complete Current Course First' :
                  !canAfford ? 'Insufficient Funds' :
                  'Start Course'}
