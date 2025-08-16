@@ -2,7 +2,7 @@
   "id": "2a06ad97-f261-4edb-a6a7-2135295a81ae",
   "nickname": "Ca6aka",
   "password": "$2b$10$mmST6.N8gIjxWcm6v1mRaebd3aujzbkjmzZBkU.uLRNQKY.goxvcm",
-  "balance": 25942,
+  "balance": 26016,
   "serverLimit": 3,
   "tutorialCompleted": true,
   "admin": 1,
@@ -10,7 +10,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755321078688,
+  "lastIncomeUpdate": 1755321404799,
   "jobCooldowns": {
     "maintenance": 1755320823217,
     "optimization": 1755321094810,
@@ -18,6 +18,36 @@
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "8be8ed50-d216-421b-8cfb-24ee40a90d20",
+      "description": "Income: +$30, Rental: -$3 (Net: +$27)",
+      "timestamp": "8/16/2025, 5:16:44 AM"
+    },
+    {
+      "id": "39cbc135-035a-4a83-b305-5e44492bfde6",
+      "description": "Turned Basic Web Server online",
+      "timestamp": "8/16/2025, 5:15:48 AM"
+    },
+    {
+      "id": "1f5f32ab-dab1-4acb-b2f2-bd4c6b52e5d6",
+      "description": "Turned Basic Web Server offline",
+      "timestamp": "8/16/2025, 5:15:37 AM"
+    },
+    {
+      "id": "e3321e86-a35f-4600-b36f-5dc1de7829df",
+      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
+      "timestamp": "8/16/2025, 5:14:44 AM"
+    },
+    {
+      "id": "2fa75914-d216-41ee-b10c-3f56444b626f",
+      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
+      "timestamp": "8/16/2025, 5:13:44 AM"
+    },
+    {
+      "id": "37f431d0-0d63-4fee-9a06-8b9d6939df22",
+      "description": "Income: +$21, Rental: -$2 (Net: +$19)",
+      "timestamp": "8/16/2025, 5:12:44 AM"
+    },
     {
       "id": "5c50f454-2b43-45ef-8c11-99a74c38c12f",
       "description": "Income: +$15, Rental: -$1 (Net: +$14)",
@@ -237,36 +267,6 @@
       "id": "5783b153-ee0c-4ca8-b6d1-4e1182d75edd",
       "description": "Received $1,000 from super admin",
       "timestamp": "8/16/2025, 4:00:51 AM"
-    },
-    {
-      "id": "24507e5c-f243-40bc-885d-f102c9bee516",
-      "description": "Completed Security Audit (+$500)",
-      "timestamp": "8/16/2025, 4:00:40 AM"
-    },
-    {
-      "id": "ad86113c-b451-4cfe-ae92-2058d429ef84",
-      "description": "Completed Performance Optimization (+$250)",
-      "timestamp": "8/16/2025, 4:00:39 AM"
-    },
-    {
-      "id": "a068c40d-7d0b-486a-ab17-17d8b5944aca",
-      "description": "Daily quest completed: Daily Maintenance (+$2,000)",
-      "timestamp": "8/16/2025, 4:00:39 AM"
-    },
-    {
-      "id": "3812ff04-d442-4499-a491-7ab5658ab44a",
-      "description": "Completed Server Maintenance (+$150)",
-      "timestamp": "8/16/2025, 4:00:39 AM"
-    },
-    {
-      "id": "151d5a9b-d70b-4ac6-9786-41f73fee4ecd",
-      "description": "Received $1,000 from super admin",
-      "timestamp": "8/16/2025, 4:00:29 AM"
-    },
-    {
-      "id": "25c9341e-4ae7-43b9-bc2b-c7431e4c084b",
-      "description": "Completed Security Audit (+$500)",
-      "timestamp": "8/16/2025, 3:49:02 AM"
     }
   ],
   "achievements": [
@@ -299,7 +299,7 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 1384,
+      "progress": 1465,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -320,5 +320,5 @@
     }
   ],
   "lastQuestReset": 1755315516547,
-  "lastSeen": 1755321097509
+  "lastSeen": 1755321421568
 }

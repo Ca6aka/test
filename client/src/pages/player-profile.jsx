@@ -65,8 +65,20 @@ export default function PlayerProfilePage() {
   const playerRank = rankingsData?.rankings?.find(r => r.nickname === nickname)?.rank || '?';
   const isOnline = playerData.isOnline;
   
-  // Calculate level and experience
-  const calculateLevel = (experience) => Math.floor(Math.sqrt(experience / 100)) + 1;
+  // Calculate level and experience using 60-level system (10% increase per level)
+  const calculateLevel = (experience) => {
+    let level = 1;
+    let requiredExp = 100;
+    let totalExp = 0;
+    
+    while (totalExp + requiredExp <= experience && level < 60) {
+      totalExp += requiredExp;
+      level++;
+      requiredExp = Math.floor(requiredExp * 1.1);
+    }
+    
+    return level;
+  };
   const level = player.level || calculateLevel(player.experience || 0);
   const experience = player.experience || 0;
   

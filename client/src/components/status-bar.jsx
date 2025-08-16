@@ -25,7 +25,13 @@ export function StatusBar() {
       <div className="flex items-center justify-between max-w-7xl mx-auto">
         {/* Mobile Layout */}
         <div className="flex lg:hidden items-center justify-between w-full">
-          <h1 className="text-lg font-bold text-primary">Root Tycoon</h1>
+          <h1 
+            className="text-lg font-bold text-primary cursor-pointer hover:text-blue-400 transition-colors" 
+            onClick={() => setLocation('/start')}
+            data-testid="title-link"
+          >
+            Root Tycoon
+          </h1>
           
           {/* Mobile Stats - Compact */}
           <div className="flex items-center space-x-2">
@@ -77,7 +83,13 @@ export function StatusBar() {
 
         {/* Desktop Layout */}
         <div className="hidden lg:flex items-center space-x-6">
-          <h1 className="text-xl font-bold text-primary">Root Tycoon</h1>
+          <h1 
+            className="text-xl font-bold text-primary cursor-pointer hover:text-blue-400 transition-colors" 
+            onClick={() => setLocation('/start')}
+            data-testid="title-link-desktop"
+          >
+            Root Tycoon
+          </h1>
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2 bg-slate-700/50 px-3 py-1 rounded-lg">
               <i className="fas fa-coins text-accent"></i>

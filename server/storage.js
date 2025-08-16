@@ -8,19 +8,48 @@ const dataDir = path.join(__dirname, '..', 'data');
 const usersDir = path.join(__dirname, '..', 'users');
 const chatFile = path.join(dataDir, 'chat.json');
 
-// Level and Experience System
+// Level and Experience System (60 levels, 10% increase per level)
 function calculateLevel(experience) {
-  return Math.floor(Math.sqrt(experience / 100)) + 1;
+  let level = 1;
+  let requiredExp = 100;
+  let totalExp = 0;
+  
+  while (totalExp + requiredExp <= experience && level < 60) {
+    totalExp += requiredExp;
+    level++;
+    requiredExp = Math.floor(requiredExp * 1.1);
+  }
+  
+  return level;
 }
 
 function getExperienceForLevel(level) {
-  return Math.pow(level - 1, 2) * 100;
+  let totalExp = 0;
+  let currentExp = 100;
+  
+  for (let i = 1; i < level && i < 60; i++) {
+    totalExp += currentExp;
+    currentExp = Math.floor(currentExp * 1.1);
+  }
+  
+  return totalExp;
 }
 
 function getExperienceToNextLevel(experience) {
   const currentLevel = calculateLevel(experience);
+  if (currentLevel >= 60) return 0;
   const nextLevelExp = getExperienceForLevel(currentLevel + 1);
   return nextLevelExp - experience;
+}
+
+function getExperienceForCurrentLevel(experience) {
+  const currentLevel = calculateLevel(experience);
+  const currentLevelStart = getExperienceForLevel(currentLevel);
+  const nextLevelStart = getExperienceForLevel(currentLevel + 1);
+  return {
+    current: experience - currentLevelStart,
+    needed: nextLevelStart - currentLevelStart
+  };
 }
 
 // Avatar Generation System
@@ -59,7 +88,7 @@ function generateRandomAvatar() {
   };
 }
 
-// Server products configuration
+// Server products configuration with level requirements
 const SERVER_PRODUCTS = [
   {
     id: 'basic-web',
@@ -68,16 +97,8 @@ const SERVER_PRODUCTS = [
     price: 5000,
     incomePerMinute: 15,
     monthlyCost: 45,
-    icon: 'fas fa-globe'
-  },
-  {
-    id: 'high-performance',
-    name: 'High Performance Server',
-    type: 'Gaming/Apps',
-    price: 12000,
-    incomePerMinute: 50,
-    monthlyCost: 120,
-    icon: 'fas fa-server'
+    icon: 'fas fa-globe',
+    requiredLevel: 1
   },
   {
     id: 'database-server',
@@ -86,7 +107,18 @@ const SERVER_PRODUCTS = [
     price: 8000,
     incomePerMinute: 25,
     monthlyCost: 85,
-    icon: 'fas fa-database'
+    icon: 'fas fa-database',
+    requiredLevel: 8
+  },
+  {
+    id: 'high-performance',
+    name: 'High Performance Server',
+    type: 'Gaming/Apps',
+    price: 12000,
+    incomePerMinute: 50,
+    monthlyCost: 120,
+    icon: 'fas fa-server',
+    requiredLevel: 15
   },
   {
     id: 'cdn-server',
@@ -95,7 +127,8 @@ const SERVER_PRODUCTS = [
     price: 15000,
     incomePerMinute: 100,
     monthlyCost: 180,
-    icon: 'fas fa-cloud'
+    icon: 'fas fa-cloud',
+    requiredLevel: 25
   }
 ];
 
@@ -104,6 +137,7 @@ const JOB_TYPES = [
     id: 'maintenance',
     name: 'Server Maintenance',
     reward: 150,
+    experienceReward: 10,
     cooldown: 300000, // 5 minutes
     icon: 'fas fa-wrench'
   },
@@ -111,6 +145,7 @@ const JOB_TYPES = [
     id: 'optimization',
     name: 'Performance Optimization',
     reward: 250,
+    experienceReward: 18,
     cooldown: 450000, // 7.5 minutes
     icon: 'fas fa-tachometer-alt'
   },
@@ -118,6 +153,7 @@ const JOB_TYPES = [
     id: 'security-audit',
     name: 'Security Audit',
     reward: 500,
+    experienceReward: 25,
     cooldown: 600000, // 10 minutes
     icon: 'fas fa-shield-alt'
   }
@@ -131,16 +167,8 @@ const LEARNING_COURSES = [
     difficulty: 'Beginner',
     duration: 30 * 60 * 1000, // 30 minutes in milliseconds
     reward: { type: 'serverSlots', amount: 1 },
-    price: 2000
-  },
-  {
-    id: 'advanced-management',
-    title: 'Advanced Server Management',
-    description: 'Master advanced server optimization and scaling techniques',
-    difficulty: 'Advanced',
-    duration: 120 * 60 * 1000, // 2 hours in milliseconds
-    reward: { type: 'serverSlots', amount: 2 },
-    price: 8000
+    price: 2000,
+    requiredLevel: 5
   },
   {
     id: 'security-protocols',
@@ -149,7 +177,18 @@ const LEARNING_COURSES = [
     difficulty: 'Intermediate',
     duration: 90 * 60 * 1000, // 1.5 hours in milliseconds
     reward: { type: 'efficiency', amount: 15 },
-    price: 5000
+    price: 5000,
+    requiredLevel: 12
+  },
+  {
+    id: 'advanced-management',
+    title: 'Advanced Server Management',
+    description: 'Master advanced server optimization and scaling techniques',
+    difficulty: 'Advanced',
+    duration: 120 * 60 * 1000, // 2 hours in milliseconds
+    reward: { type: 'serverSlots', amount: 2 },
+    price: 8000,
+    requiredLevel: 20
   }
 ];
 
@@ -516,6 +555,12 @@ export class FileStorage {
     if (user.balance < product.price) {
       throw new Error('Insufficient funds');
     }
+    
+    // Check level requirement
+    const userLevel = user.level || calculateLevel(user.experience || 0);
+    if (product.requiredLevel && userLevel < product.requiredLevel) {
+      throw new Error(`Requires level ${product.requiredLevel}`);
+    }
 
     // Create new server
     const servers = await this.getServers();
@@ -535,9 +580,10 @@ export class FileStorage {
     servers.push(newServer);
     await this.saveServers(servers);
 
-    // Update user balance
+    // Update user balance and spending tracking
     const updatedUser = await this.updateUser(userId, {
-      balance: user.balance - product.price
+      balance: user.balance - product.price,
+      totalSpent: (user.totalSpent || 0) + product.price
     });
 
     // Add activity
@@ -653,8 +699,8 @@ export class FileStorage {
       [jobType]: Date.now() + job.cooldown
     };
 
-    // Calculate experience gain (10-25 XP per job)
-    const experienceGain = Math.floor(Math.random() * 16) + 10;
+    // Award experience for job completion based on job type
+    const experienceGain = job.experienceReward;
     const newExperience = (user.experience || 0) + experienceGain;
     const newLevel = calculateLevel(newExperience);
     const oldLevel = user.level || calculateLevel(user.experience || 0);
@@ -710,6 +756,12 @@ export class FileStorage {
     if (user.balance < course.price) {
       throw new Error('Insufficient funds');
     }
+    
+    // Check level requirement
+    const userLevel = user.level || calculateLevel(user.experience || 0);
+    if (course.requiredLevel && userLevel < course.requiredLevel) {
+      throw new Error(`Requires level ${course.requiredLevel}`);
+    }
 
     const learning = {
       id: courseId,
@@ -724,6 +776,7 @@ export class FileStorage {
 
     const updatedUser = await this.updateUser(userId, {
       balance: user.balance - course.price,
+      totalSpent: (user.totalSpent || 0) + course.price,
       currentLearning: learning
     });
 

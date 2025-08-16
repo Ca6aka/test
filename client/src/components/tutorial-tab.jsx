@@ -125,7 +125,7 @@ export function TutorialTab({ gameState, setActiveTab }) {
                        job.id === 'security-audit' ? t('securityAudit') : job.name}
                     </h4>
                     <p className="text-xs sm:text-sm text-slate-400">
-                      {t('earnMoney').replace('{amount}', formatCurrency(job.reward))} • {t('cooldownTime').replace('{time}', formatTime(job.cooldown))}
+                      {t('earnMoney').replace('{amount}', formatCurrency(job.reward))} • +{job.experienceReward} XP • {t('cooldownTime').replace('{time}', formatTime(job.cooldown))}
                     </p>
                   </div>
                 </div>

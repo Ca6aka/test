@@ -9,27 +9,48 @@ import { useLanguage } from '@/contexts/language-context';
 import { formatCurrency } from '@/lib/constants';
 import { X, TrendingUp, TrendingDown, Star, Award } from 'lucide-react';
 
+// Level and Experience System (60 levels, 10% increase per level)
 function calculateLevel(experience) {
-  return Math.floor(Math.sqrt(experience / 100)) + 1;
+  let level = 1;
+  let requiredExp = 100;
+  let totalExp = 0;
+  
+  while (totalExp + requiredExp <= experience && level < 60) {
+    totalExp += requiredExp;
+    level++;
+    requiredExp = Math.floor(requiredExp * 1.1);
+  }
+  
+  return level;
 }
 
 function getExperienceForLevel(level) {
-  return Math.pow(level - 1, 2) * 100;
+  let totalExp = 0;
+  let currentExp = 100;
+  
+  for (let i = 1; i < level && i < 60; i++) {
+    totalExp += currentExp;
+    currentExp = Math.floor(currentExp * 1.1);
+  }
+  
+  return totalExp;
 }
 
 function getExperienceToNextLevel(experience) {
   const currentLevel = calculateLevel(experience);
+  if (currentLevel >= 60) return 0;
   const nextLevelExp = getExperienceForLevel(currentLevel + 1);
   return nextLevelExp - experience;
 }
 
 function getExperienceProgress(experience) {
   const currentLevel = calculateLevel(experience);
-  const currentLevelExp = getExperienceForLevel(currentLevel);
-  const nextLevelExp = getExperienceForLevel(currentLevel + 1);
-  const progressExp = experience - currentLevelExp;
-  const totalNeeded = nextLevelExp - currentLevelExp;
-  return Math.floor((progressExp / totalNeeded) * 100);
+  if (currentLevel >= 60) return 100;
+  const currentLevelStart = getExperienceForLevel(currentLevel);
+  const nextLevelStart = getExperienceForLevel(currentLevel + 1);
+  const currentExp = experience - currentLevelStart;
+  const neededExp = nextLevelStart - currentLevelStart;
+  return Math.floor((currentExp / neededExp) * 100);
 }
 
 function PlayerAvatar({ user, size = 'md', showLevel = true, onClick }) {
