@@ -2,7 +2,7 @@
   "id": "e8162264-12da-4ee1-9dbc-a18a1f3f858b",
   "nickname": "Ca6aka",
   "password": "$2b$10$VyWHFzCGAu.7/osYGqrnxuPn.hOD46LZTHkP9KeljdyeY2j8FxfdO",
-  "balance": 41355,
+  "balance": 41846,
   "level": 8,
   "experience": 1021,
   "totalEarnings": 22200,
@@ -19,8 +19,8 @@
   "banned": false,
   "muted": false,
   "muteExpires": null,
-  "isOnline": false,
-  "lastIncomeUpdate": 1755382392360,
+  "isOnline": true,
+  "lastIncomeUpdate": 1755382638579,
   "jobCooldowns": {
     "maintenance": 1755382631897,
     "optimization": 1755382782191,
@@ -41,6 +41,11 @@
   },
   "activities": [
     {
+      "id": "91748ad6-a593-41fe-9b69-7fdd6dfb3670",
+      "description": "Income: +$545, Rental: -$54 (Net: +$491)",
+      "timestamp": "8/16/2025, 10:17:18 PM"
+    },
+    {
       "id": "4d59356a-fafe-40cd-a9a2-d347fe5cf357",
       "description": "Income: +$383, Rental: -$38 (Net: +$345)",
       "timestamp": "8/16/2025, 10:13:12 PM"
@@ -59,11 +64,6 @@
       "id": "5295664f-1518-4697-8754-2a7e5292d781",
       "description": "Completed Server Maintenance (+$150, +10 XP)",
       "timestamp": "8/16/2025, 10:12:11 PM"
-    },
-    {
-      "id": "7c817a38-04de-4377-8e6a-597feb1323ed",
-      "description": "Completed Security Audit (+$500, +25 XP)",
-      "timestamp": "8/16/2025, 10:10:40 PM"
     }
   ],
   "achievements": [
@@ -193,7 +193,7 @@
         "type": "income",
         "amount": 20000
       },
-      "progress": 18466,
+      "progress": 19011,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -220,11 +220,11 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 18466,
+      "progress": 19011,
       "completed": false,
       "date": "Sat Aug 16 2025"
     }
   ],
   "lastQuestReset": 1755363722114,
-  "lastSeen": 1755382418182
+  "lastSeen": 1755382658646
 }

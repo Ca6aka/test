@@ -19,7 +19,7 @@
   "banned": false,
   "muted": false,
   "muteExpires": null,
-  "isOnline": true,
+  "isOnline": false,
   "lastIncomeUpdate": 1755371655757,
   "jobCooldowns": {
     "maintenance": 1755378373690,
@@ -201,5 +201,5 @@
     }
   ],
   "lastQuestReset": 1755371655757,
-  "lastSeen": 1755382501956
+  "lastSeen": 1755382571742
 }

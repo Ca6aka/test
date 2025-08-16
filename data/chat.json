@@ -52,5 +52,23 @@
     "timestamp": 1755382174055,
     "deleted": false,
     "adminLevel": 1
+  },
+  {
+    "id": "c5ca425b-bff7-48ad-8281-fb40b8512d5a",
+    "userId": "44ef37e8-f121-47ee-b4bc-1b8c524795c0",
+    "nickname": "Niko",
+    "message": "привет",
+    "timestamp": 1755382550872,
+    "deleted": false,
+    "adminLevel": 1
+  },
+  {
+    "id": "b73cbdd2-56a7-4dc7-8478-ba93aeb4bb17",
+    "userId": "e8162264-12da-4ee1-9dbc-a18a1f3f858b",
+    "nickname": "Ca6aka",
+    "message": "hi",
+    "timestamp": 1755382587505,
+    "deleted": false,
+    "adminLevel": 2
   }
 ]
