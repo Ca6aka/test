@@ -1,20 +1,37 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, TrendingUp, Zap } from 'lucide-react';
 import { useLanguage } from '@/contexts/language-context';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 export function LevelUpNotification({ isOpen, onClose, level }) {
   const { t } = useLanguage();
+  const timerRef = useRef(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
-    if (isOpen && level) {
-      // Auto close after 5 seconds
-      const timer = setTimeout(() => {
-        onClose();
-      }, 5000);
-
-      return () => clearTimeout(timer);
+    // Clear any existing timer
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
     }
+
+    if (isOpen && level) {
+      // Auto close after 5 seconds - using ref to ensure proper cleanup
+      timerRef.current = setTimeout(() => {
+        if (typeof onClose === 'function') {
+          onClose();
+        }
+      }, 5000);
+    }
+
+    // Cleanup function
+    return () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+        timerRef.current = null;
+      }
+    };
   }, [isOpen, level, onClose]);
 
   if (!isOpen || !level) return null;
@@ -43,33 +60,36 @@ export function LevelUpNotification({ isOpen, onClose, level }) {
           {/* Background Glow Effect */}
           <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-orange-500/10 rounded-3xl blur-xl" />
           
-          {/* Floating particles effect */}
+          {/* Floating particles effect - reduced for mobile performance */}
           <div className="absolute inset-0 overflow-hidden rounded-3xl">
-            {[...Array(12)].map((_, i) => (
+            {/* Reduce particles on mobile to prevent crashes */}
+            {[...Array(isMobile ? 4 : 8)].map((_, i) => (
               <motion.div
                 key={i}
                 initial={{ 
                   opacity: 0, 
                   scale: 0,
-                  x: Math.random() * 300 - 150,
-                  y: Math.random() * 200 - 100
+                  x: Math.random() * 200 - 100,
+                  y: Math.random() * 150 - 75
                 }}
                 animate={{ 
                   opacity: [0, 1, 0], 
                   scale: [0, 1, 0],
-                  x: Math.random() * 300 - 150,
-                  y: Math.random() * 200 - 100
+                  x: Math.random() * 200 - 100,
+                  y: Math.random() * 150 - 75
                 }}
                 transition={{
                   duration: 2,
                   delay: i * 0.1,
                   repeat: Infinity,
-                  repeatType: "loop"
+                  repeatType: "loop",
+                  ease: "linear" // Simpler easing for better mobile performance
                 }}
                 className="absolute w-2 h-2 bg-yellow-400 rounded-full"
                 style={{
                   left: '50%',
                   top: '50%',
+                  willChange: 'transform', // Optimize for animations
                 }}
               />
             ))}

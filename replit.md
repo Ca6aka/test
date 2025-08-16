@@ -10,6 +10,22 @@ Preferred communication style: Simple, everyday language.
 
 ## Recent Changes (Latest: August 16, 2025)
 
+### Critical Bug Fixes and Mobile Optimization (August 16, 2025)
+- **Nickname Validation Enhancement**: Added strict 8-character limit and special character restrictions
+  - Only letters, numbers, hyphens, and underscores allowed in usernames
+  - Real-time input filtering prevents invalid characters from being typed
+  - Client-side validation with proper error messages in Russian and English
+  - Server-side validation ensures data integrity
+- **Level-Up Notification Auto-Close Fix**: Resolved Chrome compatibility issue
+  - Improved timer cleanup using useRef for reliable notification dismissal
+  - Fixed memory leaks that prevented proper auto-close functionality
+  - Enhanced mobile performance with reduced animation complexity
+- **Mobile Chrome Auto-Translator Compatibility**: Prevented React crashes
+  - Reduced particle animations on mobile devices (4 vs 8 particles)
+  - Simplified blur effects for better mobile browser performance
+  - Hidden resource-intensive background animations on small screens
+  - Optimized level-up notifications for mobile rendering
+
 ### Final Migration Completion (August 16, 2025)
 - **Project Migration Successfully Completed**: Full transition from Replit Agent to standard Replit environment
   - All Node.js dependencies properly installed and verified working

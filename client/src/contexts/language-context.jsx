@@ -27,6 +27,9 @@ const translations = {
     loginFailed: 'Login Failed',
     registrationFailed: 'Registration Failed',
     passwordsDoNotMatch: 'Passwords do not match',
+    nicknameTooLong: 'Nickname must be 8 characters or less',
+    nicknameInvalidChars: 'Nickname can only contain letters, numbers, hyphens, and underscores',
+    nicknameMax8Chars: 'Max 8 characters, letters/numbers only',
     
     // Hero section
     heroTitle: 'Build Your Server Empire',
@@ -589,6 +592,9 @@ const translations = {
     loginFailed: 'Ошибка входа',
     registrationFailed: 'Ошибка регистрации',
     passwordsDoNotMatch: 'Пароли не совпадают',
+    nicknameTooLong: 'Никнейм должен быть не более 8 символов',
+    nicknameInvalidChars: 'Никнейм может содержать только буквы, цифры, дефисы и подчеркивания',
+    nicknameMax8Chars: 'Макс 8 символов, только буквы/цифры',
     
     // Hero section
     heroTitle: 'Создайте Свою Серверную Империю',

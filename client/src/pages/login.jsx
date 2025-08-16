@@ -33,8 +33,33 @@ export default function LoginPage() {
     }
   };
 
+  // Validate nickname function
+  const validateNickname = (nickname) => {
+    if (nickname.length > 8) {
+      return t('nicknameTooLong') || 'Nickname must be 8 characters or less';
+    }
+    // Allow only letters, numbers, and limited safe characters
+    const validPattern = /^[a-zA-Z0-9_-]+$/;
+    if (!validPattern.test(nickname)) {
+      return t('nicknameInvalidChars') || 'Nickname can only contain letters, numbers, hyphens, and underscores';
+    }
+    return null;
+  };
+
   const handleRegister = async (e) => {
     e.preventDefault();
+    
+    // Validate nickname
+    const nicknameError = validateNickname(registerData.nickname);
+    if (nicknameError) {
+      toast({
+        title: t('registrationFailed'),
+        description: nicknameError,
+        variant: "destructive",
+      });
+      return;
+    }
+
     if (registerData.password !== registerData.confirmPassword) {
       toast({
         title: t('registrationFailed'),
@@ -58,9 +83,9 @@ export default function LoginPage() {
     <div className="min-h-screen relative overflow-hidden flex items-center justify-center p-4">
       {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        {/* Floating particles */}
-        <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
+        {/* Floating particles - reduced for mobile performance */}
+        <div className="absolute inset-0 hidden sm:block">
+          {[...Array(8)].map((_, i) => (
             <div
               key={i}
               className="absolute rounded-full bg-blue-400/10 animate-pulse"
@@ -79,10 +104,10 @@ export default function LoginPage() {
         {/* Grid pattern */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDk5LCAxMDIsIDI0MSwgMC4xKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-20" />
         
-        {/* Glowing orbs */}
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-3/4 left-1/2 w-48 h-48 bg-green-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        {/* Glowing orbs - simpler on mobile */}
+        <div className="absolute top-1/4 left-1/4 w-32 sm:w-64 h-32 sm:h-64 bg-blue-500/20 rounded-full blur-xl sm:blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-48 sm:w-96 h-48 sm:h-96 bg-purple-500/20 rounded-full blur-xl sm:blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-3/4 left-1/2 w-24 sm:w-48 h-24 sm:h-48 bg-green-500/20 rounded-full blur-xl sm:blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
       </div>
       
       <Card className="w-full max-w-md bg-slate-800/90 backdrop-blur-lg border-slate-700/50 shadow-2xl relative z-10">
@@ -153,8 +178,16 @@ export default function LoginPage() {
                     id="register-nickname"
                     type="text"
                     value={registerData.nickname}
-                    onChange={(e) => setRegisterData({ ...registerData, nickname: e.target.value })}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      // Limit input to 8 characters and filter special characters
+                      if (value.length <= 8 && /^[a-zA-Z0-9_-]*$/.test(value)) {
+                        setRegisterData({ ...registerData, nickname: value });
+                      }
+                    }}
                     required
+                    maxLength={8}
+                    placeholder={t('nicknameMax8Chars') || 'Max 8 characters, letters/numbers only'}
                     className="bg-slate-700 border-slate-600"
                   />
                 </div>

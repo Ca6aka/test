@@ -12,7 +12,7 @@
     "nickname": "Niko",
     "balance": 15200,
     "serverCount": 0,
-    "isOnline": true,
+    "isOnline": false,
     "rank": 2
   },
   {
@@ -20,7 +20,7 @@
     "nickname": "МАМУТ РАХАЛ",
     "balance": 13866,
     "serverCount": 6,
-    "isOnline": true,
+    "isOnline": false,
     "rank": 3
   },
   {
