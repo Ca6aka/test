@@ -54,8 +54,7 @@ export function StatusBar() {
               <SelectContent>
                 <SelectItem value="en">🇺🇸</SelectItem>
                 <SelectItem value="ru">🇷🇺</SelectItem>
-                <SelectItem value="uk">🇺🇦</SelectItem>
-                <SelectItem value="de">🇩🇪</SelectItem>
+                <SelectItem value="ua">🇺🇦</SelectItem>
               </SelectContent>
             </Select>
             <PlayerAvatar 

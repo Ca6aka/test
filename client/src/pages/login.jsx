@@ -17,7 +17,7 @@ export default function LoginPage() {
     confirmPassword: '' 
   });
   const { login, register, isLoading } = useGame();
-  const { language, setLanguage, t } = useLanguage();
+  const { language, changeLanguage, t } = useLanguage();
   const { toast } = useToast();
 
   const handleLogin = async (e) => {
@@ -94,7 +94,7 @@ export default function LoginPage() {
               <p className="text-slate-400">Server Hosting Simulator</p>
             </div>
             <div className="flex-1 flex justify-end">
-              <Select value={language} onValueChange={setLanguage}>
+              <Select value={language} onValueChange={changeLanguage}>
                 <SelectTrigger className="w-[100px] bg-slate-700 border-slate-600">
                   <SelectValue />
                 </SelectTrigger>

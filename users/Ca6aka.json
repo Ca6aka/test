@@ -2,7 +2,7 @@
   "id": "e73513b4-65ec-40e1-bd85-339d155b7af0",
   "nickname": "Ca6aka",
   "password": "$2b$10$JpfJ4vb59zjxCtXN0I4kbee0VAqeB3by8xsWuYuW6PZo3fAATENv.",
-  "balance": 102146,
+  "balance": 102277,
   "level": 1,
   "experience": 63,
   "totalEarnings": 11050,
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755327272262,
+  "lastIncomeUpdate": 1755327594487,
   "jobCooldowns": {
     "maintenance": 1755327690120,
     "optimization": 1755327516027,
@@ -28,6 +28,16 @@
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "75f12b12-a0e8-4c27-9fef-26ef7e9c22ae",
+      "description": "Income: +$27, Rental: -$2 (Net: +$25)",
+      "timestamp": "8/16/2025, 6:59:54 AM"
+    },
+    {
+      "id": "97b1cb77-49d8-4a65-89cc-e8b6f6a8cc87",
+      "description": "Income: +$117, Rental: -$11 (Net: +$106)",
+      "timestamp": "8/16/2025, 6:58:54 AM"
+    },
     {
       "id": "f6e5f575-327e-4446-a96a-a32da0d23987",
       "description": "Completed Server Maintenance (+$150, +10 XP)",
@@ -42,16 +52,6 @@
       "id": "7ccfcf7a-7c90-4d22-a1e2-e5038bad1eb6",
       "description": "Purchased Basic Web Server for $5,000",
       "timestamp": "8/16/2025, 6:52:46 AM"
-    },
-    {
-      "id": "7825a3ef-1bff-4efc-87f0-beae1b14973e",
-      "description": "Achievement unlocked: First Steps (+$1,000)",
-      "timestamp": "8/16/2025, 6:52:36 AM"
-    },
-    {
-      "id": "8738ee28-4d68-4798-89f2-70cb6f7564ba",
-      "description": "Purchased Basic Web Server for $5,000",
-      "timestamp": "8/16/2025, 6:52:36 AM"
     }
   ],
   "achievements": [
@@ -83,7 +83,7 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 106,
+      "progress": 250,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -103,5 +103,5 @@
     }
   ],
   "lastQuestReset": 1755327035906,
-  "lastSeen": 1755327450013
+  "lastSeen": 1755327640002
 }
