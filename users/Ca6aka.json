@@ -1,278 +1,50 @@
 {
-  "id": "2a06ad97-f261-4edb-a6a7-2135295a81ae",
+  "id": "117f25bb-6136-49ba-aef8-865c4d9fd601",
   "nickname": "Ca6aka",
-  "password": "$2b$10$mmST6.N8gIjxWcm6v1mRaebd3aujzbkjmzZBkU.uLRNQKY.goxvcm",
-  "balance": 26916,
+  "password": "$2b$10$MNgnDbNDq8XbGzZQB4nUl.hLgDWbgHjShiJ4Qu8bZ9fdpocrxcF/e",
+  "balance": 10900,
+  "level": 1,
+  "experience": 53,
+  "totalEarnings": 10900,
+  "totalSpent": 0,
+  "avatar": {
+    "gradient": "from-lime-400 to-green-600",
+    "pattern": "conic-gradient",
+    "seed": 84320
+  },
   "serverLimit": 3,
-  "tutorialCompleted": true,
+  "tutorialCompleted": false,
   "admin": 1,
   "banned": false,
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755321404799,
+  "lastIncomeUpdate": 1755321664028,
   "jobCooldowns": {
-    "maintenance": 1755321820691,
-    "optimization": 1755321972488,
-    "security-audit": 1755322124289
+    "maintenance": 1755322008371,
+    "optimization": 1755322159915,
+    "security-audit": 1755322310354
   },
   "currentLearning": null,
   "activities": [
     {
-      "id": "9329530e-6738-4261-b53d-56b6ebe5f2a6",
+      "id": "f2289be1-101c-4337-9eec-44a18c19aeac",
       "description": "Completed Security Audit (+$500, +25 XP)",
-      "timestamp": "8/16/2025, 5:18:44 AM"
+      "timestamp": "16.08.2025, 07:21:50"
     },
     {
-      "id": "dbf4f2c5-0899-4be9-a3c7-1083acfaa0bf",
+      "id": "6fa39011-d1b0-479d-a4f4-8d2a6de681c1",
       "description": "Completed Performance Optimization (+$250, +18 XP)",
-      "timestamp": "8/16/2025, 5:18:42 AM"
+      "timestamp": "16.08.2025, 07:21:49"
     },
     {
-      "id": "ba566911-68eb-4c31-83b2-e840cab00b68",
+      "id": "a486f28f-d10c-42df-876f-a1ddac47e542",
       "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "8/16/2025, 5:18:40 AM"
-    },
-    {
-      "id": "8be8ed50-d216-421b-8cfb-24ee40a90d20",
-      "description": "Income: +$30, Rental: -$3 (Net: +$27)",
-      "timestamp": "8/16/2025, 5:16:44 AM"
-    },
-    {
-      "id": "39cbc135-035a-4a83-b305-5e44492bfde6",
-      "description": "Turned Basic Web Server online",
-      "timestamp": "8/16/2025, 5:15:48 AM"
-    },
-    {
-      "id": "1f5f32ab-dab1-4acb-b2f2-bd4c6b52e5d6",
-      "description": "Turned Basic Web Server offline",
-      "timestamp": "8/16/2025, 5:15:37 AM"
-    },
-    {
-      "id": "e3321e86-a35f-4600-b36f-5dc1de7829df",
-      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
-      "timestamp": "8/16/2025, 5:14:44 AM"
-    },
-    {
-      "id": "2fa75914-d216-41ee-b10c-3f56444b626f",
-      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
-      "timestamp": "8/16/2025, 5:13:44 AM"
-    },
-    {
-      "id": "37f431d0-0d63-4fee-9a06-8b9d6939df22",
-      "description": "Income: +$21, Rental: -$2 (Net: +$19)",
-      "timestamp": "8/16/2025, 5:12:44 AM"
-    },
-    {
-      "id": "5c50f454-2b43-45ef-8c11-99a74c38c12f",
-      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
-      "timestamp": "8/16/2025, 5:11:18 AM"
-    },
-    {
-      "id": "5da93bbe-84db-4a68-8caf-d58f6ad08fa3",
-      "description": "Income: +$48, Rental: -$4 (Net: +$44)",
-      "timestamp": "8/16/2025, 5:10:18 AM"
-    },
-    {
-      "id": "d410b45d-6adf-4f7b-9690-58ecdb44d897",
-      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
-      "timestamp": "8/16/2025, 5:07:05 AM"
-    },
-    {
-      "id": "7d89dc7b-e2a9-4486-8178-3b75749158ba",
-      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
-      "timestamp": "8/16/2025, 5:06:05 AM"
-    },
-    {
-      "id": "ebddb90b-92e9-4308-b686-84f91b64b5f2",
-      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
-      "timestamp": "8/16/2025, 5:05:04 AM"
-    },
-    {
-      "id": "c9eb24f3-878b-4661-8a56-888e2e4282f8",
-      "description": "Completed Performance Optimization (+$250)",
-      "timestamp": "8/16/2025, 5:04:04 AM"
-    },
-    {
-      "id": "2d98eb22-0097-45eb-88b5-270222927c4a",
-      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
-      "timestamp": "8/16/2025, 5:04:03 AM"
-    },
-    {
-      "id": "51fd9038-588d-4e88-9787-71470f247cb7",
-      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
-      "timestamp": "8/16/2025, 5:03:03 AM"
-    },
-    {
-      "id": "7a5a6d47-cc63-45f9-9181-092ee4cac72a",
-      "description": "Completed Server Maintenance (+$150)",
-      "timestamp": "8/16/2025, 5:02:03 AM"
-    },
-    {
-      "id": "e2b09aad-4671-495c-86e8-7c25f6cbbc76",
-      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
-      "timestamp": "8/16/2025, 5:02:02 AM"
-    },
-    {
-      "id": "9227d0b0-3da3-408b-937e-1196ffa573c3",
-      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
-      "timestamp": "8/16/2025, 5:01:02 AM"
-    },
-    {
-      "id": "6bce8d28-b925-4bf8-87a4-3b9f9c878280",
-      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
-      "timestamp": "8/16/2025, 5:00:02 AM"
-    },
-    {
-      "id": "2f4eb87c-8013-4a75-84a2-e905fce65896",
-      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
-      "timestamp": "8/16/2025, 4:59:02 AM"
-    },
-    {
-      "id": "529a6bf1-b786-40a2-a599-336f367170cb",
-      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
-      "timestamp": "8/16/2025, 4:58:02 AM"
-    },
-    {
-      "id": "ac69bbd6-00af-4dda-a995-fcba9fd3525b",
-      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
-      "timestamp": "8/16/2025, 4:57:01 AM"
-    },
-    {
-      "id": "7682ea81-e4f3-462a-b7f1-1b1e907d80d1",
-      "description": "Income: +$22, Rental: -$2 (Net: +$20)",
-      "timestamp": "8/16/2025, 4:56:01 AM"
-    },
-    {
-      "id": "9e4e4d6b-e9bb-4160-984d-6345a415b4f8",
-      "description": "Completed Security Audit (+$500)",
-      "timestamp": "8/16/2025, 4:55:01 AM"
-    },
-    {
-      "id": "bfe7d0d1-28f4-4e46-b7d4-a790dac162e0",
-      "description": "Completed Performance Optimization (+$250)",
-      "timestamp": "8/16/2025, 4:55:00 AM"
-    },
-    {
-      "id": "8f2a67e6-a314-43e5-8ae2-c8524910e2dc",
-      "description": "Completed Server Maintenance (+$150)",
-      "timestamp": "8/16/2025, 4:54:59 AM"
-    },
-    {
-      "id": "1fc30976-585d-40f9-971b-a6b16c072e92",
-      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
-      "timestamp": "8/16/2025, 4:54:30 AM"
-    },
-    {
-      "id": "8a2852d1-c182-43e6-81dc-51f7031b2fb4",
-      "description": "Income: +$110, Rental: -$11 (Net: +$99)",
-      "timestamp": "8/16/2025, 4:53:30 AM"
-    },
-    {
-      "id": "fb3cfa2d-cf8b-490e-b326-fd65d0aafcb9",
-      "description": "Income: +$45, Rental: -$4 (Net: +$41)",
-      "timestamp": "8/16/2025, 4:46:08 AM"
-    },
-    {
-      "id": "9efc52e3-9081-46f7-bdc3-35198f15f805",
-      "description": "Completed Performance Optimization (+$250)",
-      "timestamp": "8/16/2025, 4:44:17 AM"
-    },
-    {
-      "id": "d624e3c7-dd0f-49c0-8daa-49c0948c00f6",
-      "description": "Completed Server Maintenance (+$150)",
-      "timestamp": "8/16/2025, 4:44:16 AM"
-    },
-    {
-      "id": "35837c03-0fe6-44de-a8a2-20159b94aa0a",
-      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
-      "timestamp": "8/16/2025, 4:43:04 AM"
-    },
-    {
-      "id": "7e843c5b-ba47-4ef2-8cfb-9dca7afcd3df",
-      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
-      "timestamp": "8/16/2025, 4:42:03 AM"
-    },
-    {
-      "id": "6690f4df-a8f2-4c91-9d58-206cf5429335",
-      "description": "Income: +$24, Rental: -$2 (Net: +$22)",
-      "timestamp": "8/16/2025, 4:41:03 AM"
-    },
-    {
-      "id": "6a2460e6-8384-468e-9f68-ac944420d211",
-      "description": "Income: +$40, Rental: -$4 (Net: +$36)",
-      "timestamp": "8/16/2025, 4:39:26 AM"
-    },
-    {
-      "id": "e5bb4233-7b26-42eb-b889-5acab3065c4a",
-      "description": "Completed Security Audit (+$500)",
-      "timestamp": "8/16/2025, 4:34:42 AM"
-    },
-    {
-      "id": "c5db97f0-5d4e-4f5c-80fb-7b849d798b16",
-      "description": "Completed Performance Optimization (+$250)",
-      "timestamp": "8/16/2025, 4:34:41 AM"
-    },
-    {
-      "id": "161248a1-9dcb-44aa-8ecd-fe870ad35664",
-      "description": "Completed Server Maintenance (+$150)",
-      "timestamp": "8/16/2025, 4:34:41 AM"
-    },
-    {
-      "id": "bd362510-1633-4886-9bb2-76e646cebec5",
-      "description": "Quest reward claimed: Server Optimization (+$3,000)",
-      "timestamp": "8/16/2025, 4:30:02 AM"
-    },
-    {
-      "id": "5bad6308-a1fe-4c38-9db8-ebd1e3de3965",
-      "description": "Quest reward claimed: Daily Maintenance (+$2,000)",
-      "timestamp": "8/16/2025, 4:29:59 AM"
-    },
-    {
-      "id": "151e8576-665c-41da-82f1-09f4eea6871e",
-      "description": "Turned Basic Web Server online",
-      "timestamp": "8/16/2025, 4:29:47 AM"
-    },
-    {
-      "id": "7a4fb634-9bcb-4fab-9859-88e56017711a",
-      "description": "Turned Basic Web Server offline",
-      "timestamp": "8/16/2025, 4:29:45 AM"
-    },
-    {
-      "id": "c97c9e8a-10ea-4c22-956c-f6074b341eed",
-      "description": "Achievement unlocked: First Steps (+$1,000)",
-      "timestamp": "8/16/2025, 4:17:11 AM"
-    },
-    {
-      "id": "e75eb9d8-e53e-4ded-a779-faf52a12c37b",
-      "description": "Purchased Basic Web Server for $5,000",
-      "timestamp": "8/16/2025, 4:17:11 AM"
-    },
-    {
-      "id": "cc87bd80-7abd-46ee-9462-45aa947054ca",
-      "description": "Completed Performance Optimization (+$250)",
-      "timestamp": "8/16/2025, 4:17:03 AM"
-    },
-    {
-      "id": "1c2b262c-1f75-46ae-a4b7-6bff9b9b2b22",
-      "description": "Completed Server Maintenance (+$150)",
-      "timestamp": "8/16/2025, 4:14:10 AM"
-    },
-    {
-      "id": "b2a8b567-7bcc-4c11-9540-13a11c8af718",
-      "description": "Completed Security Audit (+$500)",
-      "timestamp": "8/16/2025, 4:14:09 AM"
-    },
-    {
-      "id": "1ee2baae-a07f-48f5-9c13-416092749f94",
-      "description": "Completed Performance Optimization (+$250)",
-      "timestamp": "8/16/2025, 4:09:22 AM"
+      "timestamp": "16.08.2025, 07:21:48"
     }
   ],
-  "achievements": [
-    "first-server"
-  ],
-  "completedJobsCount": 27,
+  "achievements": [],
+  "completedJobsCount": 3,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -285,10 +57,9 @@
         "jobType": "maintenance",
         "count": 3
       },
-      "progress": 3,
-      "completed": true,
-      "date": "Sat Aug 16 2025",
-      "claimed": true
+      "progress": 1,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
     },
     {
       "id": "daily-income-Sat Aug 16 2025",
@@ -299,7 +70,7 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 1465,
+      "progress": 0,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -313,15 +84,11 @@
         "jobType": "optimization",
         "count": 2
       },
-      "progress": 2,
-      "completed": true,
-      "date": "Sat Aug 16 2025",
-      "claimed": true
+      "progress": 1,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
     }
   ],
-  "lastQuestReset": 1755315516547,
-  "lastSeen": 1755321557289,
-  "experience": 53,
-  "level": 1,
-  "totalEarnings": 10900
+  "lastQuestReset": 1755321664028,
+  "lastSeen": 1755321731358
 }
