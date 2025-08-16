@@ -75,8 +75,8 @@ export function TutorialTab({ onTabChange }) {
         <p className="text-slate-400">Learn the basics of server hosting and earn your first income!</p>
       </div>
 
-      {/* Tutorial Progress - Only show if not completed OR balance is under 15000 */}
-      {(!gameState.user.tutorialCompleted || gameState.user.balance < 15000) && (
+      {/* Tutorial Progress - Only show if not completed */}
+      {!gameState.user.tutorialCompleted && (
         <div className="bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/30 rounded-xl p-6 mb-8">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-semibold text-primary">Tutorial Progress</h3>

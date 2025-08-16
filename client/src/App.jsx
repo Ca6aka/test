@@ -23,7 +23,7 @@ function AppRouter() {
       </Route>
       
       <Route path="/start">
-        {gameState.user ? <Redirect to="/game" /> : <HomePage />}
+        <HomePage />
       </Route>
       
       <Route path="/reg">

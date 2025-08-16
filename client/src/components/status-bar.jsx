@@ -6,7 +6,7 @@ import { formatCurrency } from '@/lib/constants';
 
 export function StatusBar() {
   const { gameState, logout } = useGame();
-  const { language, setLanguage, t } = useLanguage();
+  const { language, changeLanguage, t } = useLanguage();
 
   if (!gameState.user) return null;
 
@@ -37,13 +37,14 @@ export function StatusBar() {
         
         <div className="flex items-center space-x-4">
           {/* Language Switcher */}
-          <Select value={language} onValueChange={setLanguage}>
+          <Select value={language} onValueChange={changeLanguage}>
             <SelectTrigger className="w-[100px] bg-slate-700 border-slate-600">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="en">🇺🇸 EN</SelectItem>
               <SelectItem value="ru">🇷🇺 RU</SelectItem>
+              <SelectItem value="uk">🇺🇦 UK</SelectItem>
               <SelectItem value="de">🇩🇪 DE</SelectItem>
             </SelectContent>
           </Select>

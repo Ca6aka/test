@@ -512,11 +512,14 @@ export class FileStorage {
           const userPath = path.join(usersDir, fileName);
           const userData = JSON.parse(await fs.readFile(userPath, 'utf8'));
           
+          // Get server count for this user from servers.json
+          const userServers = await this.getUserServers(userData.id);
+          
           rankings.push({
             id: userData.id,
             nickname: userData.nickname,
             balance: userData.balance || 0,
-            serverCount: userData.servers ? userData.servers.length : 0,
+            serverCount: userServers.length,
             isOnline: this.isUserOnline(userData)
           });
         } catch (err) {
@@ -579,8 +582,10 @@ export class FileStorage {
       const userFiles = await fs.readdir(usersDir);
       const jsonFiles = userFiles.filter(file => file.endsWith('.json'));
       
+      // Get all servers from servers.json
+      const allServers = await this.getServers();
+      
       let totalBalance = 0;
-      let totalServers = 0;
       let onlineCount = 0;
       
       for (const fileName of jsonFiles) {
@@ -597,11 +602,6 @@ export class FileStorage {
           if (lastActivity > twelveHoursAgo) {
             onlineCount++;
           }
-          
-          // Count servers from user data
-          if (userData.servers) {
-            totalServers += userData.servers.length;
-          }
         } catch (err) {
           // Skip invalid user files
           continue;
@@ -611,7 +611,7 @@ export class FileStorage {
       return {
         totalPlayers: jsonFiles.length,
         onlinePlayers: onlineCount,
-        totalServers: totalServers,
+        totalServers: allServers.length,
         totalBalance: Math.floor(totalBalance)
       };
     } catch (error) {

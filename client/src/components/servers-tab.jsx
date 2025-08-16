@@ -5,7 +5,7 @@ import { useLanguage } from '@/contexts/language-context';
 import { useToast } from '@/hooks/use-toast';
 import { formatCurrency } from '@/lib/constants';
 
-export function ServersTab() {
+export function ServersTab({ onTabChange }) {
   const { gameState, toggleServer, deleteServer } = useGame();
   const { t } = useLanguage();
   const { toast } = useToast();
@@ -170,7 +170,10 @@ export function ServersTab() {
               You have {availableSlots} server slot{availableSlots !== 1 ? 's' : ''} available. 
               Visit the Server Store to purchase new servers.
             </p>
-            <Button className="bg-primary hover:bg-primary/80 text-white">
+            <Button 
+              className="bg-primary hover:bg-primary/80 text-white"
+              onClick={() => onTabChange && onTabChange('hosting')}
+            >
               Browse Server Store
             </Button>
           </div>

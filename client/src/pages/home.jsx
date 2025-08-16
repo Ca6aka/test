@@ -9,7 +9,7 @@ import { useLanguage } from '@/contexts/language-context';
 import { useQuery } from '@tanstack/react-query';
 
 export default function HomePage() {
-  const { language, setLanguage, t } = useLanguage();
+  const { language, changeLanguage, t } = useLanguage();
   const [stats, setStats] = useState({
     totalPlayers: 0,
     onlinePlayers: 0,
@@ -71,13 +71,14 @@ export default function HomePage() {
             </div>
             
             <div className="flex items-center space-x-4">
-              <Select value={language} onValueChange={setLanguage}>
+              <Select value={language} onValueChange={changeLanguage}>
                 <SelectTrigger className="w-[100px] bg-slate-700 border-slate-600">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="en">🇺🇸 EN</SelectItem>
                   <SelectItem value="ru">🇷🇺 RU</SelectItem>
+                  <SelectItem value="uk">🇺🇦 UK</SelectItem>
                   <SelectItem value="de">🇩🇪 DE</SelectItem>
                 </SelectContent>
               </Select>

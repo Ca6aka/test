@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useGame } from '@/contexts/game-context';
 import { formatCurrency } from '@/lib/constants';
+import { Link } from 'wouter';
 
 export function PlayerRankings() {
   const { gameState } = useGame();
@@ -36,19 +37,28 @@ export function PlayerRankings() {
               }`}
             >
               <div className="flex items-center space-x-2">
-                <span className={`font-bold text-sm ${
-                  index === 0 ? 'text-accent' : 
-                  index === 1 ? 'text-slate-300' : 
-                  index === 2 ? 'text-amber-600' : 
-                  isCurrentUser ? 'text-primary' : 'text-slate-400'
-                }`}>
-                  #{player.rank}
-                </span>
-                <span className={`text-sm ${
-                  isCurrentUser ? 'text-primary' : 'text-slate-300'
-                }`}>
-                  {isCurrentUser ? 'You' : player.nickname}
-                </span>
+                <div className="flex items-center space-x-1">
+                  <div className={`w-2 h-2 rounded-full ${
+                    player.isOnline ? 'bg-green-500' : 'bg-red-500'
+                  }`} />
+                  <span className={`font-bold text-sm ${
+                    index === 0 ? 'text-accent' : 
+                    index === 1 ? 'text-slate-300' : 
+                    index === 2 ? 'text-amber-600' : 
+                    isCurrentUser ? 'text-primary' : 'text-slate-400'
+                  }`}>
+                    #{player.rank}
+                  </span>
+                </div>
+                {isCurrentUser ? (
+                  <span className="text-sm text-primary">You</span>
+                ) : (
+                  <Link href={`/player/${player.nickname}`}>
+                    <span className="text-sm text-slate-300 hover:text-primary cursor-pointer transition-colors">
+                      {player.nickname}
+                    </span>
+                  </Link>
+                )}
               </div>
               <span className={`text-xs ${
                 isCurrentUser ? 'text-primary' : 'text-slate-400'

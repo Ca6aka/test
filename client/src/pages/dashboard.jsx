@@ -26,7 +26,7 @@ export default function DashboardPage() {
   const getTabContent = () => {
     switch (activeTab) {
       case 'tutorial': return <TutorialTab onTabChange={setActiveTab} />;
-      case 'servers': return <ServersTab />;
+      case 'servers': return <ServersTab onTabChange={setActiveTab} />;
       case 'hosting': return <HostingTab onTabChange={setActiveTab} />;
       case 'learning': return <LearningTab />;
       default: return <TutorialTab onTabChange={setActiveTab} />;
