@@ -2,10 +2,10 @@
   "id": "e73513b4-65ec-40e1-bd85-339d155b7af0",
   "nickname": "Ca6aka",
   "password": "$2b$10$JpfJ4vb59zjxCtXN0I4kbee0VAqeB3by8xsWuYuW6PZo3fAATENv.",
-  "balance": 169909,
-  "level": 7,
-  "experience": 904,
-  "totalEarnings": 24950,
+  "balance": 190978,
+  "level": 8,
+  "experience": 992,
+  "totalEarnings": 26500,
   "totalSpent": 34000,
   "avatar": {
     "gradient": "from-rose-400 via-pink-500 to-red-600",
@@ -20,11 +20,11 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755343860636,
+  "lastIncomeUpdate": 1755344301832,
   "jobCooldowns": {
-    "maintenance": 1755344002641,
-    "optimization": 1755344152364,
-    "security-audit": 1755343752804
+    "maintenance": 1755344772115,
+    "optimization": 1755344782397,
+    "security-audit": 1755345198402
   },
   "currentLearning": {
     "id": "basic-setup",
@@ -41,29 +41,29 @@
   },
   "activities": [
     {
-      "id": "f3e30ce6-9286-41f4-81fc-c11c33bb75cb",
-      "description": "Income: +$647, Rental: -$64 (Net: +$583)",
-      "timestamp": "8/16/2025, 11:31:00 AM"
+      "id": "99240f37-7e85-41db-973c-3d3de40246e5",
+      "description": "Achievement unlocked: Optimization Master (+$13,500)",
+      "timestamp": "8/16/2025, 11:44:21 AM"
     },
     {
-      "id": "5cf508be-4f0e-42b5-9262-8aaa39a6828c",
+      "id": "43c61130-7f0e-40ff-8c4e-f7a0942b83cc",
+      "description": "Achievement unlocked: Optimization Master (+$13,500)",
+      "timestamp": "8/16/2025, 11:43:18 AM"
+    },
+    {
+      "id": "1fe17c40-ab3d-42c4-b11e-ad59da295b90",
+      "description": "Completed Security Audit (+$500, +25 XP)",
+      "timestamp": "8/16/2025, 11:43:18 AM"
+    },
+    {
+      "id": "101a4f19-c9aa-4030-a154-e9c983fe5002",
+      "description": "Turned Basic Web Server online",
+      "timestamp": "8/16/2025, 11:41:22 AM"
+    },
+    {
+      "id": "490ab85b-9a04-4a31-a89d-663ede67d2f8",
       "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "8/16/2025, 11:28:22 AM"
-    },
-    {
-      "id": "b88ef66d-4419-4d81-86db-82fd6e9323d7",
-      "description": "Completed Performance Optimization (+$250, +18 XP)",
-      "timestamp": "8/16/2025, 11:28:22 AM"
-    },
-    {
-      "id": "4ca6f3c1-ba73-4109-bf96-58ac0f8b36bc",
-      "description": "Income: +$409, Rental: -$40 (Net: +$369)",
-      "timestamp": "8/16/2025, 11:26:48 AM"
-    },
-    {
-      "id": "c9388d4f-31a4-4efa-b509-86d8f342a544",
-      "description": "Income: +$259, Rental: -$25 (Net: +$234)",
-      "timestamp": "8/16/2025, 11:24:09 AM"
+      "timestamp": "8/16/2025, 11:41:12 AM"
     }
   ],
   "achievements": [
@@ -72,9 +72,10 @@
     "server-builder",
     "efficient-worker",
     "early-earner",
-    "security-expert"
+    "security-expert",
+    "optimization-master"
   ],
-  "completedJobsCount": 55,
+  "completedJobsCount": 60,
   "completedCoursesCount": 1,
   "dailyQuests": [
     {
@@ -103,7 +104,8 @@
       },
       "progress": 5000,
       "completed": true,
-      "date": "Sat Aug 16 2025"
+      "date": "Sat Aug 16 2025",
+      "claimed": true
     },
     {
       "id": "daily-optimization-Sat Aug 16 2025",
@@ -144,9 +146,10 @@
         "type": "income",
         "amount": 10000
       },
-      "progress": 9388,
-      "completed": false,
-      "date": "Sat Aug 16 2025"
+      "progress": 10000,
+      "completed": true,
+      "date": "Sat Aug 16 2025",
+      "claimed": true
     },
     {
       "id": "daily-worker-Sat Aug 16 2025",
@@ -185,7 +188,7 @@
         "type": "income",
         "amount": 20000
       },
-      "progress": 9388,
+      "progress": 10519,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -212,12 +215,12 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 9388,
+      "progress": 10519,
       "completed": false,
       "date": "Sat Aug 16 2025"
     }
   ],
   "lastQuestReset": 1755339590435,
-  "lastSeen": 1755343898771,
+  "lastSeen": 1755344695938,
   "completedLearning": []
 }

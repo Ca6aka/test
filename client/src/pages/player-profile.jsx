@@ -39,7 +39,7 @@ export default function PlayerProfilePage() {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center">
-        <div className="text-white text-xl">Loading player profile...</div>
+        <div className="text-white text-xl">{t('loadingPlayerProfile')}</div>
       </div>
     );
   }
@@ -49,11 +49,11 @@ export default function PlayerProfilePage() {
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center">
         <Card className="bg-slate-800/50 border-slate-700 max-w-md mx-auto">
           <CardContent className="p-8 text-center">
-            <div className="text-red-400 text-lg mb-4">Player not found</div>
-            <p className="text-slate-300 mb-6">The player "{nickname}" doesn't exist or the profile is private.</p>
+            <div className="text-red-400 text-lg mb-4">{t('playerNotFound')}</div>
+            <p className="text-slate-300 mb-6">{t('playerNotFoundDesc').replace('{nickname}', nickname)}</p>
             <Button onClick={handleBackClick} className="bg-blue-600 hover:bg-blue-700">
               <ArrowLeft className="w-4 h-4 mr-2" />
-              Go Back
+              {t('goBack')}
             </Button>
           </CardContent>
         </Card>
@@ -95,12 +95,12 @@ export default function PlayerProfilePage() {
               data-testid="button-back"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
-              Back
+              {t('back')}
             </Button>
             
             <div className="flex items-center">
               <h1 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Player Profile
+                {t('playerProfile')}
               </h1>
             </div>
           </div>
@@ -127,13 +127,13 @@ export default function PlayerProfilePage() {
                   {isOnline && (
                     <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
                       <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
-                      Online
+                      {t('online')}
                     </Badge>
                   )}
                   {!isOnline && (
                     <Badge variant="outline" className="border-slate-600 text-slate-400">
                       <div className="w-2 h-2 bg-red-400 rounded-full mr-2"></div>
-                      Offline
+                      {t('offline')}
                     </Badge>
                   )}
                   {player.admin >= 1 && (
@@ -159,15 +159,15 @@ export default function PlayerProfilePage() {
                 <div className="flex items-center space-x-6 text-slate-300 flex-wrap">
                   <div className="flex items-center space-x-2">
                     <Star className="w-4 h-4 text-blue-400" />
-                    <span>Level: {level}</span>
+                    <span>{t('level')}: {level}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Trophy className="w-4 h-4 text-yellow-400" />
-                    <span>Rank #{playerRank}</span>
+                    <span>{t('rank')} #{playerRank}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Server className="w-4 h-4 text-purple-400" />
-                    <span>{player.serverCount || 0} servers</span>
+                    <span>{player.serverCount || 0} {t('servers')}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <TrendingUp className="w-4 h-4 text-green-400" />
@@ -187,7 +187,7 @@ export default function PlayerProfilePage() {
               <div className="text-2xl font-bold text-white" data-testid="text-balance">
                 ${player.balance?.toLocaleString() || '0'}
               </div>
-              <div className="text-slate-400">Total Balance</div>
+              <div className="text-slate-400">{t('totalBalance')}</div>
             </CardContent>
           </Card>
           
@@ -197,7 +197,7 @@ export default function PlayerProfilePage() {
               <div className="text-2xl font-bold text-white" data-testid="text-servers">
                 {player.serverCount || 0}
               </div>
-              <div className="text-slate-400">Active Servers</div>
+              <div className="text-slate-400">{t('activeServers')}</div>
             </CardContent>
           </Card>
           
@@ -207,7 +207,7 @@ export default function PlayerProfilePage() {
               <div className="text-2xl font-bold text-white" data-testid="text-rank">
                 #{playerRank}
               </div>
-              <div className="text-slate-400">Global Rank</div>
+              <div className="text-slate-400">{t('globalRank')}</div>
             </CardContent>
           </Card>
         </div>
@@ -218,7 +218,7 @@ export default function PlayerProfilePage() {
             <CardHeader>
               <CardTitle className="text-white flex items-center">
                 <Clock className="h-5 w-5 text-blue-400 mr-2" />
-                Recent Activity
+                {t('recentActivity')}
               </CardTitle>
             </CardHeader>
             <CardContent>

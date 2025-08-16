@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { useGame } from '@/contexts/game-context';
+import { useLanguage } from '@/contexts/language-context';
 import { useToast } from '@/hooks/use-toast';
 import { LEARNING_COURSES, formatCurrency, formatTime } from '@/lib/constants';
 import { Lock } from 'lucide-react';
@@ -19,24 +20,30 @@ const getLearningColors = (difficulty) => {
 };
 
 // Helper function to format reward text
-const getRewardText = (reward) => {
-  if (!reward || typeof reward !== 'object') return 'Unknown Reward';
+const getRewardText = (reward, t) => {
+  if (!reward || typeof reward !== 'object') return t('unknownReward');
   
   if (reward.type === 'serverSlots') {
     const amount = reward.amount ?? 0;
-    return `+${amount} Server Slot${amount > 1 ? 's' : ''}`;
+    return t('serverSlotReward')
+      .replace('{amount}', amount)
+      .replace('{plural}', amount > 1 ? 's' : '');
   } else if (reward.type === 'efficiency') {
     const amount = reward.amount ?? 0;
-    return `+${amount}% Server Efficiency`;
+    return t('serverEfficiencyReward').replace('{amount}', amount);
   } else if (reward.type === 'serverUnlock') {
     const serverType = reward.serverType;
-    return `Unlocks ${serverType === 'gpu-server' ? 'GPU Server' : serverType === 'tpu-server' ? 'TPU Server' : 'Special Server'}`;
+    const serverTypeName = serverType === 'gpu-server' ? t('gpuServer') : 
+                           serverType === 'tpu-server' ? t('tpuServer') : 
+                           t('specialServer');
+    return t('unlockServerReward').replace('{serverType}', serverTypeName);
   }
-  return 'Unknown Reward';
+  return t('unknownReward');
 };
 
 export function LearningTab() {
   const { gameState, startLearning } = useGame();
+  const { t } = useLanguage();
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
@@ -45,8 +52,8 @@ export function LearningTab() {
     
     if (gameState.currentLearning) {
       toast({
-        title: "Learning in Progress",
-        description: "You can only take one course at a time. Please wait for the current course to complete.",
+        title: t('learningInProgressError'),
+        description: t('oneCourseAtTime'),
         variant: "destructive",
       });
       return;
@@ -54,8 +61,8 @@ export function LearningTab() {
 
     if (gameState.user.balance < course.price) {
       toast({
-        title: "Insufficient Funds",
-        description: `You need ${formatCurrency(course.price)} to start this course.`,
+        title: t('insufficientFunds'),
+        description: t('needMoneyForCourse').replace('{amount}', formatCurrency(course.price)),
         variant: "destructive",
       });
       return;
@@ -67,12 +74,12 @@ export function LearningTab() {
       queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
       queryClient.invalidateQueries({ queryKey: ['/api/learning/current'] });
       toast({
-        title: "Course Started",
-        description: `You've started the ${course.title} course. Check your progress in the servers tab!`,
+        title: t('courseStarted'),
+        description: t('courseStartedDesc').replace('{courseTitle}', course.title),
       });
     } catch (error) {
       toast({
-        title: "Failed to Start Course",
+        title: t('failedToStartCourse'),
         description: error.message,
         variant: "destructive",
       });
@@ -84,9 +91,9 @@ export function LearningTab() {
   return (
     <div className="p-6 max-w-6xl mx-auto">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-slate-100">Learning Center</h2>
+        <h2 className="text-2xl font-bold text-slate-100">{t('learningCenter')}</h2>
         <div className="flex items-center space-x-3">
-          <span className="text-sm text-slate-400">Current Balance:</span>
+          <span className="text-sm text-slate-400">{t('currentBalance')}:</span>
           <span className="bg-slate-700 px-3 py-1 rounded-lg text-sm font-medium">
             {formatCurrency(gameState.user.balance)}
           </span>
@@ -97,7 +104,7 @@ export function LearningTab() {
       {gameState.currentLearning && (
         <div className="mb-8 bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/30 rounded-xl p-6">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-purple-400">Current Course</h3>
+            <h3 className="text-lg font-semibold text-purple-400">{t('currentCourse')}</h3>
             <span className="bg-purple-500/20 text-purple-300 px-3 py-1 rounded-lg text-sm font-medium">
               {gameState.currentLearning.difficulty}
             </span>
@@ -115,9 +122,9 @@ export function LearningTab() {
 
           <div className="space-y-2 mb-4">
             <div className="flex justify-between text-sm">
-              <span className="text-slate-400">Progress</span>
+              <span className="text-slate-400">{t('progress')}</span>
               <span className="text-purple-400">
-                {gameState.currentLearning.progress}% ({gameState.currentLearning.timeRemaining} remaining)
+                {gameState.currentLearning.progress}% ({gameState.currentLearning.timeRemaining} {t('remaining')})
               </span>
             </div>
             <Progress value={gameState.currentLearning.progress} className="h-3" />
@@ -126,7 +133,7 @@ export function LearningTab() {
           <div className="p-3 bg-purple-500/10 rounded-lg">
             <p className="text-sm text-purple-300">
               <i className="fas fa-gift mr-1"></i>
-              <strong>Reward:</strong> {getRewardText(gameState.currentLearning.reward)}
+              <strong>{t('reward')}:</strong> {getRewardText(gameState.currentLearning.reward, t)}
             </p>
           </div>
         </div>
@@ -134,7 +141,7 @@ export function LearningTab() {
 
       {/* Available Courses */}
       <div className="space-y-6">
-        <h3 className="text-lg font-semibold text-slate-200 mb-4">Available Courses</h3>
+        <h3 className="text-lg font-semibold text-slate-200 mb-4">{t('availableCourses')}</h3>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {LEARNING_COURSES.map((course) => {
@@ -187,7 +194,7 @@ export function LearningTab() {
                     <h3 className="font-semibold text-slate-100">{course.title}</h3>
                     <p className="text-sm text-slate-400">{course.difficulty}</p>
                     {!hasLevelRequirement && (
-                      <p className="text-xs text-red-400 mt-1">Requires Level {course.requiredLevel}</p>
+                      <p className="text-xs text-red-400 mt-1">{t('requiresLevelX').replace('{level}', course.requiredLevel)}</p>
                     )}
                   </div>
                 </div>
@@ -200,17 +207,17 @@ export function LearningTab() {
               
               <div className="relative z-10 grid grid-cols-2 gap-4 mb-4">
                 <div className="bg-slate-700/30 rounded-lg p-3">
-                  <p className="text-xs text-slate-400 mb-1">Duration</p>
+                  <p className="text-xs text-slate-400 mb-1">{t('duration')}</p>
                   <p className="text-sm font-medium text-slate-300">
                     <i className="fas fa-clock mr-1"></i>
                     {formatTime(course.duration)}
                   </p>
                 </div>
                 <div className="bg-slate-700/30 rounded-lg p-3">
-                  <p className="text-xs text-slate-400 mb-1">Reward</p>
+                  <p className="text-xs text-slate-400 mb-1">{t('reward')}</p>
                   <p className="text-sm font-medium text-secondary">
                     <i className="fas fa-gift mr-1"></i>
-                    {getRewardText(course.reward)}
+                    {getRewardText(course.reward, t)}
                   </p>
                 </div>
               </div>
@@ -221,18 +228,18 @@ export function LearningTab() {
                 onClick={() => !isCompleted && handleStartCourse(course.id)}
                 variant={isCompleted ? "secondary" : isLearning ? "secondary" : isDisabled ? "ghost" : "default"}
               >
-                {!hasLevelRequirement ? `Requires Level ${course.requiredLevel}` :
-                 isServerLimit25 ? 'Unavailable' :
-                 isCompleted && course.reward?.type !== 'serverSlots' ? 'Completed' :
-                 isLearning ? 'In Progress...' :
-                 hasLearning ? 'Complete Current Course First' :
-                 !canAfford ? 'Insufficient Funds' :
-                 'Start Course'}
+                {!hasLevelRequirement ? t('requiresLevelX').replace('{level}', course.requiredLevel) :
+                 isServerLimit25 ? t('unavailable') :
+                 isCompleted && course.reward?.type !== 'serverSlots' ? t('completed') :
+                 isLearning ? t('inProgress') :
+                 hasLearning ? t('completeCurrentFirst') :
+                 !canAfford ? t('insufficientFunds') :
+                 t('startCourse')}
               </Button>
 
               {!canAfford && !hasLearning && (
                 <p className="relative z-10 text-xs text-red-400 mt-2 text-center">
-                  Need {formatCurrency(course.price - gameState.user.balance)} more
+                  {t('needMoreForCourse').replace('{amount}', formatCurrency(course.price - gameState.user.balance))}
                 </p>
               )}
             </div>
@@ -243,7 +250,7 @@ export function LearningTab() {
 
       {/* Benefits Overview */}
       <div className="mt-8 bg-gradient-to-r from-blue-500/10 to-secondary/10 border border-blue-500/30 rounded-xl p-6">
-        <h3 className="text-lg font-semibold text-blue-400 mb-3">Learning Benefits</h3>
+        <h3 className="text-lg font-semibold text-blue-400 mb-3">{t('learningBenefits')}</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           <div className="relative overflow-hidden bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-4 hover:border-blue-500/50 transition-all duration-300 transform hover:scale-105 text-center">
             {/* Blue Gradient Background */}
@@ -251,8 +258,8 @@ export function LearningTab() {
             <div className="relative z-10 w-12 h-12 bg-gradient-to-br from-blue-500/20 to-blue-600/20 rounded-full flex items-center justify-center mx-auto mb-2 border border-blue-500/50">
               <i className="fas fa-server text-blue-400"></i>
             </div>
-            <h4 className="relative z-10 font-medium text-slate-200">More Servers</h4>
-            <p className="relative z-10 text-xs text-slate-400">Unlock additional server slots</p>
+            <h4 className="relative z-10 font-medium text-slate-200">{t('moreServers')}</h4>
+            <p className="relative z-10 text-xs text-slate-400">{t('unlockAdditionalServerSlots')}</p>
           </div>
           <div className="relative overflow-hidden bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-4 hover:border-orange-500/50 transition-all duration-300 transform hover:scale-105 text-center">
             {/* Orange Gradient Background */}
@@ -260,8 +267,8 @@ export function LearningTab() {
             <div className="relative z-10 w-12 h-12 bg-gradient-to-br from-orange-500/20 to-orange-600/20 rounded-full flex items-center justify-center mx-auto mb-2 border border-orange-500/50">
               <i className="fas fa-tachometer-alt text-orange-400"></i>
             </div>
-            <h4 className="relative z-10 font-medium text-slate-200">Higher Efficiency</h4>
-            <p className="relative z-10 text-xs text-slate-400">Increase server income rates</p>
+            <h4 className="relative z-10 font-medium text-slate-200">{t('higherEfficiency')}</h4>
+            <p className="relative z-10 text-xs text-slate-400">{t('increaseServerIncomeRates')}</p>
           </div>
           <div className="relative overflow-hidden bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-4 hover:border-red-500/50 transition-all duration-300 transform hover:scale-105 text-center">
             {/* Red Gradient Background */}
@@ -269,8 +276,8 @@ export function LearningTab() {
             <div className="relative z-10 w-12 h-12 bg-gradient-to-br from-red-500/20 to-red-600/20 rounded-full flex items-center justify-center mx-auto mb-2 border border-red-500/50">
               <i className="fas fa-trophy text-red-400"></i>
             </div>
-            <h4 className="relative z-10 font-medium text-slate-200">Better Rankings</h4>
-            <p className="relative z-10 text-xs text-slate-400">Climb the leaderboards</p>
+            <h4 className="relative z-10 font-medium text-slate-200">{t('betterRankings')}</h4>
+            <p className="relative z-10 text-xs text-slate-400">{t('climbTheLeaderboards')}</p>
           </div>
         </div>
       </div>
