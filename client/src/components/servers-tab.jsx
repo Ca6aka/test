@@ -224,20 +224,24 @@ export function ServersTab({ onTabChange }) {
                 </div>
                 <div className="bg-slate-700/30 rounded-lg p-3">
                   <p className="text-xs text-slate-400 mb-1">{t('rentalCost')}</p>
-                  <p className="font-semibold text-red-400">-{formatCurrency(Math.round(server.monthlyCost / (30 * 24 * 60)))}</p>
+                  <p className="font-semibold text-red-400">-{formatCurrency(Math.round(server.incomePerMinute * 0.1))}</p>
                 </div>
               </div>
 
               {/* Server Usage */}
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span className="text-slate-400">Usage</span>
-                  <span className="text-slate-300">{server.usage || 45}%</span>
+                  <span className="text-slate-400">{t('currentLoad')}</span>
+                  <span className="text-slate-300">{server.loadPercentage || 50}%</span>
                 </div>
                 <div className="w-full bg-slate-700 rounded-full h-2">
                   <div 
-                    className="bg-gradient-to-r from-secondary to-primary h-2 rounded-full transition-all duration-300" 
-                    style={{ width: `${server.usage || 45}%` }}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      (server.loadPercentage || 50) <= 49 ? 'bg-green-500' :
+                      (server.loadPercentage || 50) <= 74 ? 'bg-yellow-500' :
+                      (server.loadPercentage || 50) <= 89 ? 'bg-orange-500' : 'bg-red-500'
+                    }`} 
+                    style={{ width: `${server.loadPercentage || 50}%` }}
                   ></div>
                 </div>
               </div>

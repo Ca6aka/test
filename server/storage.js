@@ -520,7 +520,7 @@ export class FileStorage {
     await this.saveServers(servers);
 
     await this.addActivity(userId, `Deleted server: ${serverName}`);
-  },
+  }
 
   async updateServerLoad(userId, serverId, loadPercentage) {
     const servers = await this.getServers();
@@ -535,7 +535,7 @@ export class FileStorage {
     await this.saveServers(servers);
     
     return { success: true };
-  },
+  }
 
   async checkServerOverload(userId, serverId, loadPercentage) {
     // Calculate shutdown probability based on load
@@ -556,7 +556,7 @@ export class FileStorage {
     if (Math.random() < minutelyChance) {
       await this.shutdownServerFromOverload(userId, serverId);
     }
-  },
+  }
 
   async shutdownServerFromOverload(userId, serverId) {
     const servers = await this.getServers();
@@ -723,12 +723,8 @@ export class FileStorage {
       return sum + (server.isOnline ? server.incomePerMinute : 0);
     }, 0);
     
-    // Calculate rental costs per minute (convert monthly cost to per minute)
-    const totalRentalCost = servers.reduce((sum, server) => {
-      const monthlyRental = server.monthlyCost || 0;
-      const perMinuteRental = monthlyRental / (30 * 24 * 60); // Convert monthly to per minute
-      return sum + perMinuteRental;
-    }, 0);
+    // Calculate rental costs per minute (10% of income as standard)
+    const totalRentalCost = totalIncome * 0.1;
 
     const incomeEarned = Math.floor((totalIncome * timeDiff) / 60000);
     const rentalCost = Math.floor((totalRentalCost * timeDiff) / 60000);

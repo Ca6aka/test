@@ -2,7 +2,7 @@
   "id": "2a06ad97-f261-4edb-a6a7-2135295a81ae",
   "nickname": "Ca6aka",
   "password": "$2b$10$mmST6.N8gIjxWcm6v1mRaebd3aujzbkjmzZBkU.uLRNQKY.goxvcm",
-  "balance": 17000,
+  "balance": 23770,
   "serverLimit": 3,
   "tutorialCompleted": true,
   "admin": 1,
@@ -10,14 +10,49 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755315516547,
+  "lastIncomeUpdate": 1755319003256,
   "jobCooldowns": {
-    "maintenance": 1755317950844,
-    "optimization": 1755318273057,
-    "security-audit": 1755318249940
+    "maintenance": 1755319181216,
+    "optimization": 1755319331934,
+    "security-audit": 1755319482933
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "e5bb4233-7b26-42eb-b889-5acab3065c4a",
+      "description": "Completed Security Audit (+$500)",
+      "timestamp": "8/16/2025, 4:34:42 AM"
+    },
+    {
+      "id": "c5db97f0-5d4e-4f5c-80fb-7b849d798b16",
+      "description": "Completed Performance Optimization (+$250)",
+      "timestamp": "8/16/2025, 4:34:41 AM"
+    },
+    {
+      "id": "161248a1-9dcb-44aa-8ecd-fe870ad35664",
+      "description": "Completed Server Maintenance (+$150)",
+      "timestamp": "8/16/2025, 4:34:41 AM"
+    },
+    {
+      "id": "bd362510-1633-4886-9bb2-76e646cebec5",
+      "description": "Quest reward claimed: Server Optimization (+$3,000)",
+      "timestamp": "8/16/2025, 4:30:02 AM"
+    },
+    {
+      "id": "5bad6308-a1fe-4c38-9db8-ebd1e3de3965",
+      "description": "Quest reward claimed: Daily Maintenance (+$2,000)",
+      "timestamp": "8/16/2025, 4:29:59 AM"
+    },
+    {
+      "id": "151e8576-665c-41da-82f1-09f4eea6871e",
+      "description": "Turned Basic Web Server online",
+      "timestamp": "8/16/2025, 4:29:47 AM"
+    },
+    {
+      "id": "7a4fb634-9bcb-4fab-9859-88e56017711a",
+      "description": "Turned Basic Web Server offline",
+      "timestamp": "8/16/2025, 4:29:45 AM"
+    },
     {
       "id": "c97c9e8a-10ea-4c22-956c-f6074b341eed",
       "description": "Achievement unlocked: First Steps (+$1,000)",
@@ -127,7 +162,7 @@
   "achievements": [
     "first-server"
   ],
-  "completedJobsCount": 14,
+  "completedJobsCount": 17,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -142,7 +177,8 @@
       },
       "progress": 3,
       "completed": true,
-      "date": "Sat Aug 16 2025"
+      "date": "Sat Aug 16 2025",
+      "claimed": true
     },
     {
       "id": "daily-income-Sat Aug 16 2025",
@@ -153,7 +189,7 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 0,
+      "progress": 870,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -169,9 +205,10 @@
       },
       "progress": 2,
       "completed": true,
-      "date": "Sat Aug 16 2025"
+      "date": "Sat Aug 16 2025",
+      "claimed": true
     }
   ],
   "lastQuestReset": 1755315516547,
-  "lastSeen": 1755317847635
+  "lastSeen": 1755319115658
 }

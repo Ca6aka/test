@@ -139,7 +139,7 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('achievements')}
             >
               <i className="fas fa-trophy"></i>
-              <span>Достижения</span>
+              <span>{t('achievements')}</span>
               {!isTabUnlocked('achievements') && <Lock className="w-3 h-3 ml-1" />}
             </Button>
             
@@ -157,7 +157,7 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('quests')}
             >
               <i className="fas fa-calendar"></i>
-              <span>Задания</span>
+              <span>{t('dailyQuests')}</span>
               {!isTabUnlocked('quests') && <Lock className="w-3 h-3 ml-1" />}
             </Button>
           </div>
@@ -258,7 +258,7 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('achievements')}
             >
               <i className="fas fa-trophy text-lg"></i>
-              <span className="font-medium">Достижения</span>
+              <span className="font-medium">{t('achievements')}</span>
               {!isTabUnlocked('achievements') && <Lock className="w-4 h-4 ml-auto" />}
             </Button>
 
@@ -276,7 +276,7 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('quests')}
             >
               <i className="fas fa-calendar text-lg"></i>
-              <span className="font-medium">Ежедневные задания</span>
+              <span className="font-medium">{t('dailyQuests')}</span>
               {!isTabUnlocked('quests') && <Lock className="w-4 h-4 ml-auto" />}
             </Button>
           </nav>
