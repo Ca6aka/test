@@ -8,10 +8,10 @@
     "monthlyCost": 45,
     "icon": "fas fa-globe",
     "isOnline": true,
-    "loadPercentage": 95,
+    "loadPercentage": 100,
     "createdAt": 1755327156059,
-    "lastUpdated": 1755340645629,
-    "lastOverloadCheck": 1755340645623
+    "lastUpdated": 1755341014687,
+    "lastOverloadCheck": 1755340946754
   },
   {
     "id": "0cd794e8-8cc0-43c1-b250-7dd68abae758",
@@ -22,10 +22,10 @@
     "monthlyCost": 45,
     "icon": "fas fa-globe",
     "isOnline": true,
-    "loadPercentage": 95,
+    "loadPercentage": 100,
     "createdAt": 1755327166748,
-    "lastUpdated": 1755340645629,
-    "lastOverloadCheck": 1755340645625
+    "lastUpdated": 1755341014687,
+    "lastOverloadCheck": 1755340946755
   },
   {
     "id": "8f58cfcc-6e09-4a35-b077-b7e0b2ee4cbb",
@@ -36,9 +36,9 @@
     "monthlyCost": 120,
     "icon": "fas fa-server",
     "isOnline": true,
-    "loadPercentage": 95,
+    "loadPercentage": 100,
     "createdAt": 1755339276221,
-    "lastUpdated": 1755340645629,
-    "lastOverloadCheck": 1755340645626
+    "lastUpdated": 1755341014687,
+    "lastOverloadCheck": 1755340946755
   }
 ]

@@ -4,6 +4,7 @@ import { useGame } from '@/contexts/game-context';
 import { useToast } from '@/hooks/use-toast';
 import { LEARNING_COURSES, formatCurrency, formatTime } from '@/lib/constants';
 import { Lock } from 'lucide-react';
+import { useQueryClient } from '@tanstack/react-query';
 
 // Helper function to get learning course colors based on difficulty
 const getLearningColors = (difficulty) => {
@@ -37,6 +38,7 @@ const getRewardText = (reward) => {
 export function LearningTab() {
   const { gameState, startLearning } = useGame();
   const { toast } = useToast();
+  const queryClient = useQueryClient();
 
   const handleStartCourse = async (courseId) => {
     const course = LEARNING_COURSES.find(c => c.id === courseId);
@@ -61,6 +63,9 @@ export function LearningTab() {
 
     try {
       await startLearning(courseId);
+      // Immediately update balance and user data
+      queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/learning/current'] });
       toast({
         title: "Course Started",
         description: `You've started the ${course.title} course. Check your progress in the servers tab!`,
@@ -140,7 +145,8 @@ export function LearningTab() {
           const isCompleted = completedLearning.includes(course.id);
           const isLearning = gameState.currentLearning?.id === course.id;
           const hasLearning = gameState.currentLearning && !isLearning;
-          const isDisabled = !canAfford || hasLearning || !hasLevelRequirement || isCompleted;
+          const isServerLimit25 = course.reward?.type === 'serverSlots' && (gameState.user.serverLimit || 3) >= 25;
+          const isDisabled = !canAfford || hasLearning || !hasLevelRequirement || isCompleted || isServerLimit25;
 
           
 
@@ -207,10 +213,11 @@ export function LearningTab() {
               <Button 
                 className="relative z-10 w-full"
                 disabled={isDisabled}
-                onClick={() => !isCompleted && handleStartCourse(course.id)}
+                onClick={() => !isCompleted && !isServerLimit25 && handleStartCourse(course.id)}
                 variant={isCompleted ? "secondary" : isLearning ? "secondary" : isDisabled ? "ghost" : "default"}
               >
                 {!hasLevelRequirement ? `Requires Level ${course.requiredLevel}` :
+                 isServerLimit25 ? 'Unavailable' :
                  isCompleted ? 'Completed' :
                  isLearning ? 'In Progress...' :
                  hasLearning ? 'Complete Current Course First' :

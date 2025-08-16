@@ -1142,7 +1142,8 @@ export class FileStorage {
 
     // Apply rewards
     if (learning.reward.type === 'serverSlots') {
-      updates.serverLimit = user.serverLimit + learning.reward.amount;
+      const newServerLimit = user.serverLimit + learning.reward.amount;
+      updates.serverLimit = Math.min(newServerLimit, 25); // Max 25 servers
     } else if (learning.reward.type === 'efficiency') {
       // Apply efficiency bonus to all current and future servers
       const currentBonus = user.efficiencyBonus || 0;

@@ -198,6 +198,7 @@ export function GameProvider({ children }) {
       dispatch({ type: 'SET_USER', payload: data.user });
       queryClient.invalidateQueries({ queryKey: ['/api/servers'] });
       queryClient.invalidateQueries({ queryKey: ['/api/activities'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
     },
   });
 
@@ -209,6 +210,7 @@ export function GameProvider({ children }) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/servers'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
     },
   });
 
@@ -218,9 +220,13 @@ export function GameProvider({ children }) {
       const response = await apiRequest('DELETE', `/api/servers/${serverId}`);
       return await response.json();
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
+      if (data.user) {
+        dispatch({ type: 'SET_USER', payload: data.user });
+      }
       queryClient.invalidateQueries({ queryKey: ['/api/servers'] });
       queryClient.invalidateQueries({ queryKey: ['/api/activities'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
     },
   });
 
@@ -241,8 +247,12 @@ export function GameProvider({ children }) {
       const response = await apiRequest('POST', '/api/learning/start', { courseId });
       return await response.json();
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
+      if (data.user) {
+        dispatch({ type: 'SET_USER', payload: data.user });
+      }
       queryClient.invalidateQueries({ queryKey: ['/api/learning/current'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
     },
   });
 
