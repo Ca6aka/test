@@ -108,13 +108,15 @@ export function LearningTab() {
           const isDisabled = !canAfford || hasLearning;
 
           const getRewardText = (reward) => {
+            if (!reward || typeof reward !== 'object') return 'Unknown Reward';
+            
             if (reward.type === 'serverSlots') {
-              return `+${reward.amount} Server Slot${reward.amount > 1 ? 's' : ''}`;
+              return `+${reward.amount ?? 0} Server Slot${(reward.amount ?? 0) > 1 ? 's' : ''}`;
             } else if (reward.type === 'efficiency') {
-              return `+${reward.amount}% Server Efficiency`;
+              return `+${reward.amount ?? 0}% Server Efficiency`;
             }
             return 'Unknown Reward';
-          };
+          };          
 
           const getDifficultyColor = (difficulty) => {
             switch (difficulty.toLowerCase()) {

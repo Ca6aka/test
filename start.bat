@@ -5,8 +5,6 @@ echo ========================================
 echo.
 echo Installing dependencies...
 echo.
-npm install
-echo.
 echo Dependencies installed successfully!
 echo.
 echo Starting server...
@@ -23,7 +21,7 @@ echo.
 echo ========================================
 echo.
 set NODE_ENV=development
-npx tsx server/index.ts
+npx tsx server/index.js
 echo.
 echo Server stopped. Press any key to exit...
 pause > nul
