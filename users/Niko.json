@@ -2,10 +2,10 @@
   "id": "89d9b833-5345-47cc-b3d5-df00302f5ed9",
   "nickname": "Niko",
   "password": "$2b$10$G0HQ4jiWHobTKLBvgkfsF.HC/XLDC2wQjZJgjN8.t25RcxrLzoTAW",
-  "balance": 11950,
+  "balance": 12350,
   "level": 2,
-  "experience": 116,
-  "totalEarnings": 11950,
+  "experience": 144,
+  "totalEarnings": 12350,
   "totalSpent": 0,
   "avatar": {
     "gradient": "from-orange-400 via-amber-500 to-yellow-600",
@@ -15,19 +15,34 @@
   },
   "serverLimit": 3,
   "tutorialCompleted": false,
-  "admin": 0,
+  "admin": 1,
   "banned": false,
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
   "lastIncomeUpdate": 1755327443104,
   "jobCooldowns": {
-    "maintenance": 1755328484229,
-    "optimization": 1755328420900,
+    "maintenance": 1755329000205,
+    "optimization": 1755329151427,
     "security-audit": 1755328786481
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "bdba28f8-8a08-4e16-a18f-a3d4658f9fce",
+      "description": "Given admin privileges by Ca6aka",
+      "timestamp": "8/16/2025, 7:19:01 AM"
+    },
+    {
+      "id": "d5cf93b0-fda9-4d03-8edd-0fd8a4616cab",
+      "description": "Completed Performance Optimization (+$250, +18 XP)",
+      "timestamp": "8/16/2025, 7:18:21 AM"
+    },
+    {
+      "id": "3b98134f-f529-4fdf-9591-c04486418ade",
+      "description": "Completed Server Maintenance (+$150, +10 XP)",
+      "timestamp": "8/16/2025, 7:18:20 AM"
+    },
     {
       "id": "5e1cfaeb-1d81-4daa-bc72-c0af0f4802b4",
       "description": "Completed Security Audit (+$500, +25 XP) - Level Up! Now level 2",
@@ -37,25 +52,10 @@
       "id": "75c7d9ad-14e8-4a1b-93e8-dfd50da3a60b",
       "description": "Daily quest completed: Daily Maintenance - Reward ready to claim!",
       "timestamp": "8/16/2025, 7:09:44 AM"
-    },
-    {
-      "id": "40b8db73-fb18-4c96-822a-36206a8758f4",
-      "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "8/16/2025, 7:09:44 AM"
-    },
-    {
-      "id": "f06e3b61-69a2-40a4-8664-351561fbedb5",
-      "description": "Daily quest completed: Server Optimization - Reward ready to claim!",
-      "timestamp": "8/16/2025, 7:06:10 AM"
-    },
-    {
-      "id": "2ea13af0-9b2a-49ed-bc44-f0501451ae0a",
-      "description": "Completed Performance Optimization (+$250, +18 XP)",
-      "timestamp": "8/16/2025, 7:06:10 AM"
     }
   ],
   "achievements": [],
-  "completedJobsCount": 7,
+  "completedJobsCount": 9,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -101,5 +101,5 @@
     }
   ],
   "lastQuestReset": 1755327443105,
-  "lastSeen": 1755328698334
+  "lastSeen": 1755328766676
 }
