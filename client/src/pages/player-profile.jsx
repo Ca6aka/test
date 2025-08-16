@@ -114,7 +114,26 @@ export default function PlayerProfilePage() {
                   )}
                   {!isOnline && (
                     <Badge variant="outline" className="border-slate-600 text-slate-400">
+                      <div className="w-2 h-2 bg-red-400 rounded-full mr-2"></div>
                       Offline
+                    </Badge>
+                  )}
+                  {player.admin >= 1 && (
+                    <Badge 
+                      className={`${
+                        player.nickname === 'Ca6aka' 
+                          ? 'bg-red-500/20 text-red-400 border-red-500/30 animate-pulse' 
+                          : 'bg-purple-500/20 text-purple-400 border-purple-500/30'
+                      } relative overflow-hidden`}
+                    >
+                      <div className={`absolute inset-0 ${
+                        player.nickname === 'Ca6aka' 
+                          ? 'bg-gradient-to-r from-red-500/10 to-red-600/10' 
+                          : 'bg-gradient-to-r from-purple-500/10 to-purple-600/10'
+                      } animate-shimmer`}></div>
+                      <span className="relative z-10">
+                        {player.nickname === 'Ca6aka' ? 'СУПЕР-АДМИН' : 'АДМИН'}
+                      </span>
                     </Badge>
                   )}
                 </div>

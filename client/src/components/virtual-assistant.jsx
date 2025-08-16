@@ -27,7 +27,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 
 function VirtualAssistant() {
   const [input, setInput] = useState('')
-  const [isVisible, setIsVisible] = useState(true)
+  const [isVisible, setIsVisible] = useState(false) // По умолчанию закрыт
   const [muteUserId, setMuteUserId] = useState('')
   const [muteDuration, setMuteDuration] = useState('30')
   const isMobile = useIsMobile()
@@ -122,10 +122,10 @@ function VirtualAssistant() {
 
   const adminMutation = useMutation({
     mutationFn: async ({ action, targetUserId, amount }) => {
-      const response = await fetch('/api/admin/action', {
+      const response = await fetch('/api/admin/manage', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action, targetUserId, amount })
+        body: JSON.stringify({ action, userId: targetUserId, amount })
       })
       if (!response.ok) {
         const error = await response.json()
@@ -136,6 +136,9 @@ function VirtualAssistant() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/rankings'] })
       queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] })
+    },
+    onError: (error) => {
+      console.error('Admin action failed:', error)
     }
   })
 
@@ -352,7 +355,7 @@ function VirtualAssistant() {
                           </div>
                           <div className="flex items-center gap-1">
                             <span>{formatTime(message.timestamp)}</span>
-                            {user?.admin >= 1 && (
+                            {user?.admin >= 1 && (userStatus?.admin === 0 || user.nickname === 'Ca6aka') && (
                               <Button
                                 onClick={() => handleDeleteMessage(message.id)}
                                 size="sm"

@@ -1,7 +1,7 @@
 {
-  "id": "e9d7d40c-8d6e-423b-ac42-bf1b91868252",
+  "id": "2a06ad97-f261-4edb-a6a7-2135295a81ae",
   "nickname": "Ca6aka",
-  "password": "$2b$10$.xgj5CH7ZN/rpvdhwjRUsuV72F44uECLWoNZYMVrvFD.Huv16qgdy",
+  "password": "$2b$10$mmST6.N8gIjxWcm6v1mRaebd3aujzbkjmzZBkU.uLRNQKY.goxvcm",
   "balance": 10900,
   "serverLimit": 3,
   "tutorialCompleted": false,
@@ -10,34 +10,76 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": false,
-  "lastIncomeUpdate": 1755313941495,
-  "lastSeen": 1755313941495,
+  "lastIncomeUpdate": 1755315516547,
   "jobCooldowns": {
-    "maintenance": 1755314338918,
-    "optimization": 1755314489495,
-    "security-audit": 1755314640059
+    "maintenance": 1755315838969,
+    "optimization": 1755315989502,
+    "security-audit": 1755316140053
   },
   "currentLearning": null,
+  "activities": [
+    {
+      "id": "eefffabd-d3a0-4093-81e8-2b761453770e",
+      "description": "Completed Security Audit (+$500)",
+      "timestamp": "8/16/2025, 3:39:00 AM"
+    },
+    {
+      "id": "9fc05eb8-10d7-4081-bbe2-53420b9ba63b",
+      "description": "Completed Performance Optimization (+$250)",
+      "timestamp": "8/16/2025, 3:38:59 AM"
+    },
+    {
+      "id": "882d3e37-7466-4197-9cc9-00d605c1867c",
+      "description": "Completed Server Maintenance (+$150)",
+      "timestamp": "8/16/2025, 3:38:58 AM"
+    }
+  ],
   "achievements": [],
   "completedJobsCount": 3,
   "completedCoursesCount": 0,
-  "dailyQuests": [],
-  "lastQuestReset": 1755314723000,
-  "activities": [
+  "dailyQuests": [
     {
-      "id": "bf519a11-3d1b-42d0-88d5-3e6c837517d8",
-      "description": "Completed Security Audit (+$500)",
-      "timestamp": "8/16/2025, 3:14:00 AM"
+      "id": "daily-maintenance-Sat Aug 16 2025",
+      "title": "Daily Maintenance",
+      "description": "Complete 3 Server Maintenance jobs",
+      "reward": 2000,
+      "requirement": {
+        "type": "job",
+        "jobType": "maintenance",
+        "count": 3
+      },
+      "progress": 1,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
     },
     {
-      "id": "905fc710-e68c-4dfd-850b-44b2a02d6ae4",
-      "description": "Completed Performance Optimization (+$250)",
-      "timestamp": "8/16/2025, 3:13:59 AM"
+      "id": "daily-income-Sat Aug 16 2025",
+      "title": "Passive Income",
+      "description": "Earn $5,000 from server income",
+      "reward": 1500,
+      "requirement": {
+        "type": "income",
+        "amount": 5000
+      },
+      "progress": 0,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
     },
     {
-      "id": "a6b45c23-5771-4fb7-9ae5-f41ec931bb18",
-      "description": "Completed Server Maintenance (+$150)",
-      "timestamp": "8/16/2025, 3:13:58 AM"
+      "id": "daily-optimization-Sat Aug 16 2025",
+      "title": "Server Optimization",
+      "description": "Complete 2 Performance Optimization jobs",
+      "reward": 3000,
+      "requirement": {
+        "type": "job",
+        "jobType": "optimization",
+        "count": 2
+      },
+      "progress": 1,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
     }
-  ]
+  ],
+  "lastQuestReset": 1755315516547,
+  "lastSeen": 1755315740092
 }
