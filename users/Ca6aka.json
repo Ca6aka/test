@@ -2,10 +2,10 @@
   "id": "a66a7d88-03dc-48c9-862a-f8229356999a",
   "nickname": "Ca6aka",
   "password": "$2b$10$2VSPHZhbA7AZDxzNRecq7uxZ.FHFrvK64rnZZKFEDUisoUKT31dMi",
-  "balance": 12050,
+  "balance": 12300,
   "level": 1,
-  "experience": 63,
-  "totalEarnings": 11050,
+  "experience": 81,
+  "totalEarnings": 11300,
   "totalSpent": 5000,
   "avatar": {
     "gradient": "from-indigo-400 via-blue-500 to-cyan-600",
@@ -23,11 +23,21 @@
   "lastIncomeUpdate": 1755325513895,
   "jobCooldowns": {
     "maintenance": 1755326165466,
-    "optimization": 1755325972637,
+    "optimization": 1755326486388,
     "security-audit": 1755326123891
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "719024a9-27e1-44a6-bdc3-f6679d15117b",
+      "description": "Daily quest completed: Server Optimization - Reward ready to claim!",
+      "timestamp": "8/16/2025, 6:33:56 AM"
+    },
+    {
+      "id": "31beb5e2-f0cf-4d7a-832e-509a70c79dce",
+      "description": "Completed Performance Optimization (+$250, +18 XP)",
+      "timestamp": "8/16/2025, 6:33:56 AM"
+    },
     {
       "id": "cea66c7e-dbfd-4ed4-be1b-386707e1f356",
       "description": "Completed Server Maintenance (+$150, +10 XP)",
@@ -42,22 +52,12 @@
       "id": "d523fdd1-6873-47ba-a0dc-5bcb82efccf9",
       "description": "Achievement unlocked: First Steps (+$1,000)",
       "timestamp": "8/16/2025, 6:29:17 AM"
-    },
-    {
-      "id": "bca6a7dc-5eab-4c1d-a900-8be088561958",
-      "description": "Purchased Basic Web Server for $5,000",
-      "timestamp": "8/16/2025, 6:29:17 AM"
-    },
-    {
-      "id": "130dad22-0885-4299-af18-d31a52ce5b2f",
-      "description": "Tutorial completed! All features unlocked.",
-      "timestamp": "8/16/2025, 6:29:12 AM"
     }
   ],
   "achievements": [
     "first-server"
   ],
-  "completedJobsCount": 4,
+  "completedJobsCount": 5,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -97,11 +97,11 @@
         "jobType": "optimization",
         "count": 2
       },
-      "progress": 1,
-      "completed": false,
+      "progress": 2,
+      "completed": true,
       "date": "Sat Aug 16 2025"
     }
   ],
   "lastQuestReset": 1755325513895,
-  "lastSeen": 1755326000835
+  "lastSeen": 1755326113764
 }

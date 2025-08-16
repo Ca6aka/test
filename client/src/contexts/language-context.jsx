@@ -417,7 +417,7 @@ const translations = {
     serverShutdownWarning: 'Высокая нагрузка увеличивает риск отключения',
     rentalCost: 'Аренда/мин',
   },
-  uk: {
+  ua: {
     tutorial: 'Старт',
     servers: 'Мої сервери',
     hosting: 'Магазин серверiв',
