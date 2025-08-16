@@ -199,8 +199,8 @@ export function PlayerProfileBar({ isOpen, onClose }) {
                   </div>
                   <div className="space-y-1">
                     <div className="flex justify-between text-sm text-slate-400">
-                      <span>Progress to Level {level + 1}</span>
-                      <span>{expToNext} XP needed</span>
+                      <span>{t('progressToLevel')} {level + 1}</span>
+                      <span>{expToNext} {t('xpNeeded')}</span>
                     </div>
                     <Progress value={expProgress} className="h-2" />
                   </div>
@@ -218,7 +218,7 @@ export function PlayerProfileBar({ isOpen, onClose }) {
                   <div className="text-lg font-bold text-white">
                     {formatCurrency(totalEarnings)}
                   </div>
-                  <div className="text-sm text-slate-400">Total Earnings</div>
+                  <div className="text-sm text-slate-400">{t('totalEarnings')}</div>
                 </CardContent>
               </Card>
 
@@ -228,7 +228,7 @@ export function PlayerProfileBar({ isOpen, onClose }) {
                   <div className="text-lg font-bold text-white">
                     {formatCurrency(totalSpent)}
                   </div>
-                  <div className="text-sm text-slate-400">Total Spent</div>
+                  <div className="text-sm text-slate-400">{t('totalSpent')}</div>
                 </CardContent>
               </Card>
 
@@ -238,7 +238,7 @@ export function PlayerProfileBar({ isOpen, onClose }) {
                   <div className={`text-lg font-bold ${netProfit >= 0 ? 'text-green-400' : 'text-red-400'}`}>
                     {formatCurrency(netProfit)}
                   </div>
-                  <div className="text-sm text-slate-400">Net Profit</div>
+                  <div className="text-sm text-slate-400">{t('netProfit')}</div>
                 </CardContent>
               </Card>
             </div>
@@ -248,14 +248,14 @@ export function PlayerProfileBar({ isOpen, onClose }) {
               <div className="bg-slate-700/30 rounded-lg p-4">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-blue-400">{completedJobs}</div>
-                  <div className="text-sm text-slate-400">Jobs Completed</div>
+                  <div className="text-sm text-slate-400">{t('jobsCompleted')}</div>
                 </div>
               </div>
 
               <div className="bg-slate-700/30 rounded-lg p-4">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-purple-400">{completedCourses}</div>
-                  <div className="text-sm text-slate-400">Courses Completed</div>
+                  <div className="text-sm text-slate-400">{t('coursesCompleted')}</div>
                 </div>
               </div>
             </div>
@@ -264,7 +264,7 @@ export function PlayerProfileBar({ isOpen, onClose }) {
             <div>
               <h3 className="text-lg font-semibold text-white mb-3 flex items-center">
                 <Award className="w-5 h-5 text-yellow-500 mr-2" />
-                Achievements ({achievements.length})
+                {t('achievements')} ({achievements.length})
               </h3>
               {achievements.length > 0 ? (
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
@@ -274,15 +274,15 @@ export function PlayerProfileBar({ isOpen, onClose }) {
                       variant="outline" 
                       className="border-yellow-500 text-yellow-400 justify-center py-2"
                     >
-                      Achievement {index + 1}
+                      {t('achievement')} {index + 1}
                     </Badge>
                   ))}
                 </div>
               ) : (
                 <div className="text-center py-6 text-slate-400">
                   <Award className="w-8 h-8 mx-auto mb-2 opacity-50" />
-                  <p>No achievements yet</p>
-                  <p className="text-sm">Complete jobs and reach milestones to earn achievements!</p>
+                  <p>{t('noAchievementsYet')}</p>
+                  <p className="text-sm">{t('earnAchievementsDesc')}</p>
                 </div>
               )}
             </div>
@@ -290,7 +290,7 @@ export function PlayerProfileBar({ isOpen, onClose }) {
             {/* Current Balance */}
             <div className="bg-gradient-to-r from-green-500/10 to-blue-500/10 rounded-lg p-4 border border-green-500/30">
               <div className="text-center">
-                <div className="text-sm text-slate-400 mb-1">Current Balance</div>
+                <div className="text-sm text-slate-400 mb-1">{t('currentBalance')}</div>
                 <div className="text-3xl font-bold text-green-400">
                   {formatCurrency(user.balance)}
                 </div>
