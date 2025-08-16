@@ -2,7 +2,7 @@
   "id": "e8162264-12da-4ee1-9dbc-a18a1f3f858b",
   "nickname": "Ca6aka",
   "password": "$2b$10$VyWHFzCGAu.7/osYGqrnxuPn.hOD46LZTHkP9KeljdyeY2j8FxfdO",
-  "balance": 43477,
+  "balance": 44022,
   "level": 8,
   "experience": 1074,
   "totalEarnings": 23100,
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755383004855,
+  "lastIncomeUpdate": 1755383278375,
   "jobCooldowns": {
     "maintenance": 1755383413457,
     "optimization": 1755383563112,
@@ -28,6 +28,16 @@
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "4bd0f180-3cc0-470f-b89b-575b55e8aee8",
+      "description": "Income: +$133, Rental: -$13 (Net: +$120)",
+      "timestamp": "8/16/2025, 10:27:58 PM"
+    },
+    {
+      "id": "264e4680-8245-49b2-adc7-7bf930102152",
+      "description": "Income: +$472, Rental: -$47 (Net: +$425)",
+      "timestamp": "8/16/2025, 10:26:58 PM"
+    },
     {
       "id": "647e6620-e29b-4910-9814-be0f36890330",
       "description": "Completed Server Maintenance (+$150, +10 XP)",
@@ -42,16 +52,6 @@
       "id": "5d49b79b-fe08-4ebf-b2bf-735be2ad897f",
       "description": "Completed Performance Optimization (+$250, +18 XP)",
       "timestamp": "8/16/2025, 10:25:13 PM"
-    },
-    {
-      "id": "aed76b30-6106-4b94-9c39-c2cf81fffaf6",
-      "description": "Completed Security Audit (+$500, +25 XP)",
-      "timestamp": "8/16/2025, 10:25:12 PM"
-    },
-    {
-      "id": "001692d2-3538-4411-9025-6c932f3ceed3",
-      "description": "Income: +$133, Rental: -$13 (Net: +$120)",
-      "timestamp": "8/16/2025, 10:23:24 PM"
     }
   ],
   "achievements": [
@@ -181,8 +181,8 @@
         "type": "income",
         "amount": 20000
       },
-      "progress": 19822,
-      "completed": false,
+      "progress": 20000,
+      "completed": true,
       "date": "Sat Aug 16 2025"
     },
     {
@@ -208,11 +208,11 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 19822,
+      "progress": 20427,
       "completed": false,
       "date": "Sat Aug 16 2025"
     }
   ],
   "lastQuestReset": 1755363722114,
-  "lastSeen": 1755383161546
+  "lastSeen": 1755383323940
 }
