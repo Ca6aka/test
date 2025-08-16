@@ -2,7 +2,7 @@
   "id": "2a06ad97-f261-4edb-a6a7-2135295a81ae",
   "nickname": "Ca6aka",
   "password": "$2b$10$mmST6.N8gIjxWcm6v1mRaebd3aujzbkjmzZBkU.uLRNQKY.goxvcm",
-  "balance": 24256,
+  "balance": 24297,
   "serverLimit": 3,
   "tutorialCompleted": true,
   "admin": 1,
@@ -10,7 +10,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755319384451,
+  "lastIncomeUpdate": 1755319568100,
   "jobCooldowns": {
     "maintenance": 1755319756263,
     "optimization": 1755319907352,
@@ -18,6 +18,11 @@
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "fb3cfa2d-cf8b-490e-b326-fd65d0aafcb9",
+      "description": "Income: +$45, Rental: -$4 (Net: +$41)",
+      "timestamp": "8/16/2025, 4:46:08 AM"
+    },
     {
       "id": "9efc52e3-9081-46f7-bdc3-35198f15f805",
       "description": "Completed Performance Optimization (+$250)",
@@ -219,7 +224,7 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 964,
+      "progress": 1009,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -240,5 +245,5 @@
     }
   ],
   "lastQuestReset": 1755315516547,
-  "lastSeen": 1755319490775
+  "lastSeen": 1755319568728
 }
