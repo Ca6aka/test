@@ -2,7 +2,7 @@
   "id": "2a06ad97-f261-4edb-a6a7-2135295a81ae",
   "nickname": "Ca6aka",
   "password": "$2b$10$mmST6.N8gIjxWcm6v1mRaebd3aujzbkjmzZBkU.uLRNQKY.goxvcm",
-  "balance": 25884,
+  "balance": 25942,
   "serverLimit": 3,
   "tutorialCompleted": true,
   "admin": 1,
@@ -10,7 +10,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755320825271,
+  "lastIncomeUpdate": 1755321078688,
   "jobCooldowns": {
     "maintenance": 1755320823217,
     "optimization": 1755321094810,
@@ -18,6 +18,16 @@
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "5c50f454-2b43-45ef-8c11-99a74c38c12f",
+      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
+      "timestamp": "8/16/2025, 5:11:18 AM"
+    },
+    {
+      "id": "5da93bbe-84db-4a68-8caf-d58f6ad08fa3",
+      "description": "Income: +$48, Rental: -$4 (Net: +$44)",
+      "timestamp": "8/16/2025, 5:10:18 AM"
+    },
     {
       "id": "d410b45d-6adf-4f7b-9690-58ecdb44d897",
       "description": "Income: +$15, Rental: -$1 (Net: +$14)",
@@ -257,16 +267,6 @@
       "id": "25c9341e-4ae7-43b9-bc2b-c7431e4c084b",
       "description": "Completed Security Audit (+$500)",
       "timestamp": "8/16/2025, 3:49:02 AM"
-    },
-    {
-      "id": "d197db89-d441-4fab-b548-16f06a825f40",
-      "description": "Daily quest completed: Server Optimization (+$3,000)",
-      "timestamp": "8/16/2025, 3:48:33 AM"
-    },
-    {
-      "id": "95807eae-c82b-40dc-be09-c04e99f25f13",
-      "description": "Completed Performance Optimization (+$250)",
-      "timestamp": "8/16/2025, 3:48:33 AM"
     }
   ],
   "achievements": [
@@ -299,7 +299,7 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 1321,
+      "progress": 1384,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -320,5 +320,5 @@
     }
   ],
   "lastQuestReset": 1755315516547,
-  "lastSeen": 1755320913889
+  "lastSeen": 1755321097509
 }
