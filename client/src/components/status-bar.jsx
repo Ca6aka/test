@@ -25,8 +25,8 @@ export function StatusBar() {
       <div className="flex items-center justify-between max-w-7xl mx-auto">
         {/* Mobile Layout */}
         <div className="flex lg:hidden flex-col w-full space-y-2">
-          {/* First Row - Title and Income */}
-          <div className="flex items-center justify-between">
+          {/* First Row - Title, Income/Avatar/Username in center */}
+          <div className="flex items-center">
             <h1 
               className="text-lg font-bold text-primary cursor-pointer hover:text-blue-400 transition-colors" 
               onClick={() => setLocation('/start')}
@@ -34,14 +34,33 @@ export function StatusBar() {
             >
               Root Tycoon
             </h1>
-            <div className="flex items-center space-x-1 bg-blue-500/10 border border-blue-500/30 px-2 py-1 rounded text-xs">
-              <i className="fas fa-chart-line text-blue-400 text-xs"></i>
-              <span className="text-blue-400">+{formatCurrency(gameState.totalIncomePerMinute, true)}/min</span>
+            
+            {/* Center content - Income, Avatar, Username */}
+            <div className="flex-1 flex items-center justify-center space-x-3">
+              <div className="flex items-center space-x-1 bg-blue-500/10 border border-blue-500/30 px-2 py-1 rounded text-xs">
+                <i className="fas fa-chart-line text-blue-400 text-xs"></i>
+                <span className="text-blue-400">+{formatCurrency(gameState.totalIncomePerMinute, true)}/min</span>
+              </div>
+              
+              <div className="flex items-center space-x-1">
+                <PlayerAvatar 
+                  user={gameState.user} 
+                  size="sm" 
+                  onClick={() => setProfileOpen(true)}
+                />
+                <span 
+                  className="font-medium cursor-pointer hover:text-blue-400 transition-colors text-xs" 
+                  onClick={() => setLocation(`/player/${gameState.user.nickname}`)}
+                  data-testid="username-link-mobile"
+                >
+                  {gameState.user.nickname}
+                </span>
+              </div>
             </div>
           </div>
           
-          {/* Second Row - Balance and Server Count */}
-          <div className="flex items-center justify-center space-x-4">
+          {/* Second Row - Balance and Server Count under title */}
+          <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-1 bg-slate-700/50 px-3 py-1 rounded text-xs">
               <i className="fas fa-coins text-accent text-xs"></i>
               <span className="font-semibold">{formatCurrency(gameState.user.balance, true)}</span>
@@ -52,7 +71,7 @@ export function StatusBar() {
             </div>
           </div>
           
-          {/* Third Row - User Controls */}
+          {/* Third Row - Logout button left, Language selector right */}
           <div className="flex items-center justify-between">
             <Button 
               variant="ghost" 
@@ -75,21 +94,6 @@ export function StatusBar() {
                   <SelectItem value="de">🇩🇪</SelectItem>
                 </SelectContent>
               </Select>
-              
-              <div className="flex items-center space-x-1">
-                <PlayerAvatar 
-                  user={gameState.user} 
-                  size="sm" 
-                  onClick={() => setProfileOpen(true)}
-                />
-                <span 
-                  className="font-medium cursor-pointer hover:text-blue-400 transition-colors text-xs" 
-                  onClick={() => setLocation(`/player/${gameState.user.nickname}`)}
-                  data-testid="username-link-mobile"
-                >
-                  {gameState.user.nickname}
-                </span>
-              </div>
               
               {/* Mobile Admin Panel */}
               {gameState.user && gameState.user.admin > 0 && (

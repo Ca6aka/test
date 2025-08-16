@@ -12,6 +12,7 @@ import { LearningTab } from '@/components/learning-tab';
 import { AchievementsTab } from '@/components/achievements-tab';
 import { QuestsTab } from '@/components/quests-tab';
 import { PlayerRankings } from '@/components/player-rankings';
+import { RankingsPopup } from '@/components/rankings-popup';
 import { useGame } from '@/contexts/game-context';
 import { useLanguage } from '@/contexts/language-context';
 import { TUTORIAL_UNLOCK_THRESHOLD, formatCurrency } from '@/lib/constants';
@@ -35,7 +36,6 @@ export default function DashboardPage() {
       case 'learning': return <LearningTab />;
       case 'achievements': return <AchievementsTab />;
       case 'quests': return <QuestsTab />;
-      case 'rankings': return <PlayerRankings />;
       default: return <TutorialTab gameState={gameState} setActiveTab={setActiveTab} />;
     }
   };
@@ -162,23 +162,6 @@ export default function DashboardPage() {
               {!isTabUnlocked('quests') && <Lock className="w-3 h-3 ml-1" />}
             </Button>
             
-            <Button
-              variant={activeTab === 'rankings' ? 'default' : 'ghost'}
-              size="sm"
-              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs ${
-                activeTab === 'rankings'
-                  ? 'bg-primary/20 text-primary border border-primary/30'
-                  : isTabUnlocked('rankings')
-                  ? 'text-slate-300 hover:bg-slate-700/50'
-                  : 'text-slate-500 opacity-50 cursor-not-allowed'
-              }`}
-              onClick={() => isTabUnlocked('rankings') && setActiveTab('rankings')}
-              disabled={!isTabUnlocked('rankings')}
-            >
-              <i className="fas fa-trophy"></i>
-              <span>{t('rankings')}</span>
-              {!isTabUnlocked('rankings') && <Lock className="w-3 h-3 ml-1" />}
-            </Button>
           </div>
         </div>
         
@@ -338,6 +321,7 @@ export default function DashboardPage() {
       </div>
 
       <VirtualAssistant />
+      <RankingsPopup />
       </div>
     </div>
   );

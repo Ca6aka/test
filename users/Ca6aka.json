@@ -2,10 +2,10 @@
   "id": "e73513b4-65ec-40e1-bd85-339d155b7af0",
   "nickname": "Ca6aka",
   "password": "$2b$10$JpfJ4vb59zjxCtXN0I4kbee0VAqeB3by8xsWuYuW6PZo3fAATENv.",
-  "balance": 102388,
-  "level": 1,
-  "experience": 63,
-  "totalEarnings": 11050,
+  "balance": 103513,
+  "level": 2,
+  "experience": 116,
+  "totalEarnings": 11950,
   "totalSpent": 10000,
   "avatar": {
     "gradient": "from-rose-400 via-pink-500 to-red-600",
@@ -20,44 +20,44 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755327866522,
+  "lastIncomeUpdate": 1755328223815,
   "jobCooldowns": {
-    "maintenance": 1755327690120,
-    "optimization": 1755327516027,
-    "security-audit": 1755327666524
+    "maintenance": 1755328530702,
+    "optimization": 1755328680001,
+    "security-audit": 1755328830309
   },
   "currentLearning": null,
   "activities": [
     {
-      "id": "97ffac72-f373-40a0-addc-0d696c0f50f8",
-      "description": "Income: +$36, Rental: -$3 (Net: +$33)",
-      "timestamp": "8/16/2025, 7:04:26 AM"
+      "id": "f402bd1e-afff-4216-b22f-11fc347bb79e",
+      "description": "Completed Server Maintenance (+$150, +10 XP)",
+      "timestamp": "8/16/2025, 7:10:30 AM"
     },
     {
-      "id": "06be5df0-8ef5-408d-bbbb-2c6f9a6edf89",
-      "description": "Income: +$27, Rental: -$2 (Net: +$25)",
-      "timestamp": "8/16/2025, 7:03:04 AM"
+      "id": "d6146f69-7be9-48cd-944f-82f37a639552",
+      "description": "Completed Security Audit (+$500, +25 XP) - Level Up! Now level 2",
+      "timestamp": "8/16/2025, 7:10:30 AM"
     },
     {
-      "id": "cd5662cf-5b32-4e6d-ac4e-175c7f85aa05",
-      "description": "Income: +$31, Rental: -$3 (Net: +$28)",
-      "timestamp": "8/16/2025, 7:02:04 AM"
+      "id": "28769288-56c3-4c13-b8a8-5d358f8643a2",
+      "description": "Daily quest completed: Server Optimization - Reward ready to claim!",
+      "timestamp": "8/16/2025, 7:10:30 AM"
     },
     {
-      "id": "5cc011db-27e4-484b-a406-44add3237208",
-      "description": "Income: +$27, Rental: -$2 (Net: +$25)",
-      "timestamp": "8/16/2025, 7:00:54 AM"
+      "id": "9cca0f38-d5a5-42e7-bed7-147a86d4f706",
+      "description": "Completed Performance Optimization (+$250, +18 XP)",
+      "timestamp": "8/16/2025, 7:10:30 AM"
     },
     {
-      "id": "75f12b12-a0e8-4c27-9fef-26ef7e9c22ae",
-      "description": "Income: +$27, Rental: -$2 (Net: +$25)",
-      "timestamp": "8/16/2025, 6:59:54 AM"
+      "id": "83482e9e-5820-4c28-93f4-0fd8d71bb848",
+      "description": "Income: +$250, Rental: -$25 (Net: +$225)",
+      "timestamp": "8/16/2025, 7:10:23 AM"
     }
   ],
   "achievements": [
     "first-server"
   ],
-  "completedJobsCount": 4,
+  "completedJobsCount": 7,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -70,8 +70,8 @@
         "jobType": "maintenance",
         "count": 3
       },
-      "progress": 2,
-      "completed": false,
+      "progress": 3,
+      "completed": true,
       "date": "Sat Aug 16 2025"
     },
     {
@@ -83,7 +83,7 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 371,
+      "progress": 621,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -97,11 +97,11 @@
         "jobType": "optimization",
         "count": 2
       },
-      "progress": 1,
-      "completed": false,
+      "progress": 2,
+      "completed": true,
       "date": "Sat Aug 16 2025"
     }
   ],
   "lastQuestReset": 1755327035906,
-  "lastSeen": 1755327876126
+  "lastSeen": 1755328243786
 }
