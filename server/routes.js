@@ -502,7 +502,7 @@ export async function registerRoutes(app) {
         return res.status(401).json({ message: 'Not authenticated' });
       }
       
-      const { questId } = req.params;
+      const questId = decodeURIComponent(req.params.questId);
       const user = await storage.getUser(req.session.userId);
       if (!user) {
         return res.status(401).json({ message: 'User not found' });

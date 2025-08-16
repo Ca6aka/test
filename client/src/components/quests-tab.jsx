@@ -40,12 +40,12 @@ export function QuestsTab() {
     const nextReset = lastReset + 24 * 60 * 60 * 1000; // 24 hours from last reset
     const timeLeft = nextReset - Date.now();
     
-    if (timeLeft <= 0) return "Сброс доступен";
+    if (timeLeft <= 0) return t('resetAvailable');
     
     const hours = Math.floor(timeLeft / (60 * 60 * 1000));
     const minutes = Math.floor((timeLeft % (60 * 60 * 1000)) / (60 * 1000));
     
-    return `${hours}ч ${minutes}м до сброса`;
+    return `${hours}${t('hours')} ${minutes}${t('minutes')} ${t('until')} ${t('reset')}`;
   };
 
   return (
@@ -57,7 +57,7 @@ export function QuestsTab() {
 {t('dailyQuests')}
           </h2>
           <p className="text-slate-400">
-Выполнено: {completedCount}/{quests.length} заданий
+{t('completed')}: {completedCount}/{quests.length} {t('completedTasks')}
           </p>
         </div>
         <div className="text-right">

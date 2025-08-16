@@ -343,6 +343,16 @@ const translations = {
     beginner: 'Начинающий',
     intermediate: 'Средний',
     advanced: 'Продвинутый',
+    // Additional interface elements
+    until: 'до',
+    hours: 'ч',
+    minutes: 'м',
+    reset: 'сброс',
+    resetAvailable: 'Сброс доступен',
+    progressLabel: 'Прогресс',
+    earnedLabel: 'Получено',
+    completedTasks: 'заданий',
+    achievements: 'достижений получено',
     // Common UI elements
     close: 'Закрыть',
     cancel: 'Отмена',

@@ -6,8 +6,8 @@ import { useLanguage } from '@/contexts/language-context';
 import { useToast } from '@/hooks/use-toast';
 import { JOB_TYPES, formatCurrency, formatTime } from '@/lib/constants';
 
-export function TutorialTab({ onTabChange }) {
-  const { gameState, completeJob, completeTutorial } = useGame();
+export function TutorialTab({ gameState, setActiveTab }) {
+  const { completeJob, completeTutorial } = useGame();
   const { toast } = useToast();
   const { t, localizeError } = useLanguage();
   const [cooldownTimers, setCooldownTimers] = useState({});
@@ -179,17 +179,27 @@ export function TutorialTab({ onTabChange }) {
         <div className="mt-4 flex flex-col sm:flex-row gap-3">
           <Button 
             variant="outline" 
-            className="border-blue-500/30 text-blue-400 hover:bg-blue-500/10 opacity-50 cursor-not-allowed"
-            disabled={true}
+            className={`border-blue-500/30 text-blue-400 hover:bg-blue-500/10 ${
+              gameState.user.balance >= 15000 
+                ? 'opacity-100 cursor-pointer' 
+                : 'opacity-50 cursor-not-allowed'
+            }`}
+            disabled={gameState.user.balance < 15000}
+            onClick={() => gameState.user.balance >= 15000 && setActiveTab('hosting')}
           >
-            {t('browseServerStore')} 🔒
+            {t('browseServerStore')} {gameState.user.balance < 15000 ? '🔒' : ''}
           </Button>
           <Button 
             variant="outline" 
-            className="border-purple-500/30 text-purple-400 hover:bg-purple-500/10 opacity-50 cursor-not-allowed"
-            disabled={true}
+            className={`border-purple-500/30 text-purple-400 hover:bg-purple-500/10 ${
+              gameState.user.balance >= 15000 
+                ? 'opacity-100 cursor-pointer' 
+                : 'opacity-50 cursor-not-allowed'
+            }`}
+            disabled={gameState.user.balance < 15000}
+            onClick={() => gameState.user.balance >= 15000 && setActiveTab('learning')}
           >
-            {t('browseLearningCourses')} 🔒
+            {t('browseLearningCourses')} {gameState.user.balance < 15000 ? '🔒' : ''}
           </Button>
         </div>
       </div>

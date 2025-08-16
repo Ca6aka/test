@@ -29,13 +29,13 @@ export default function DashboardPage() {
 
   const getTabContent = () => {
     switch (activeTab) {
-      case 'tutorial': return <TutorialTab onTabChange={setActiveTab} />;
+      case 'tutorial': return <TutorialTab gameState={gameState} setActiveTab={setActiveTab} />;
       case 'servers': return <ServersTab onTabChange={setActiveTab} />;
       case 'hosting': return <HostingTab onTabChange={setActiveTab} />;
       case 'learning': return <LearningTab />;
       case 'achievements': return <AchievementsTab />;
       case 'quests': return <QuestsTab />;
-      default: return <TutorialTab onTabChange={setActiveTab} />;
+      default: return <TutorialTab gameState={gameState} setActiveTab={setActiveTab} />;
     }
   };
 

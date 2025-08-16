@@ -29,11 +29,11 @@ export function AchievementsTab() {
 {t('achievements')}
           </h2>
           <p className="text-slate-400">
-Прогресс: {earnedCount}/{achievements.length} достижений получено
+{t('progressLabel')}: {earnedCount}/{achievements.length} {t('achievements')}
           </p>
         </div>
         <div className="text-right">
-          <div className="text-sm text-slate-400">Завершено</div>
+          <div className="text-sm text-slate-400">{t('completed')}</div>
           <Progress value={(earnedCount / achievements.length) * 100} className="w-32" />
         </div>
       </div>
