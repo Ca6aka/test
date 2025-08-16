@@ -106,7 +106,7 @@ export async function registerRoutes(app) {
       const user = await storage.createUser({ 
         nickname, 
         password: hashedPassword,
-        admin: nickname === 'Ca6aka' ? 1 : 0,  // Make Ca6aka super admin automatically
+        admin: nickname === 'Ca6aka' ? 2 : 0,  // Make Ca6aka super admin automatically
         isOnline: true,
         avatar: randomAvatar
       });

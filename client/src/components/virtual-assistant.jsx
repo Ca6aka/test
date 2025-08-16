@@ -356,12 +356,12 @@ function VirtualAssistant() {
                             >
                               {message.nickname}
                             </button>
-                            {message.adminLevel >= 2 && (
+                            {message.nickname === 'Ca6aka' && (
                               <span className="text-xs px-2 py-0.5 rounded-full bg-gradient-to-r from-red-500 to-red-600 text-white border border-red-500/50 animate-pulse shadow-lg shadow-red-500/20">
-                                SUPER-ADMIN
+                                ADMIN
                               </span>
                             )}
-                            {message.adminLevel === 1 && (
+                            {message.adminLevel === 1 && message.nickname !== 'Ca6aka' && (
                               <span className="text-xs px-2 py-0.5 rounded-full bg-gradient-to-r from-yellow-500 to-amber-500 text-white border border-yellow-500/50 shadow-lg shadow-yellow-500/20">
                                 ADMIN
                               </span>
@@ -372,7 +372,7 @@ function VirtualAssistant() {
                           </div>
                           <div className="flex items-center gap-1">
                             <span>{formatTime(message.timestamp)}</span>
-                            {user?.admin >= 1 && (userStatus?.admin === 0 || user.nickname === 'Ca6aka') && (
+                            {user?.admin >= 1 && (
                               <Button
                                 onClick={() => handleDeleteMessage(message.id)}
                                 size="sm"
@@ -397,7 +397,7 @@ function VirtualAssistant() {
           </div>
           
           {/* Admin Panel for money management - Only for super admin */}
-          {user?.nickname === 'Ca6aka' && rankings?.rankings && (
+          {false && user?.nickname === 'Ca6aka' && rankings?.rankings && (
             <div className="border-t p-3 bg-gray-50 dark:bg-gray-900">
               <div className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-2">
                 {t('playerManagement')}

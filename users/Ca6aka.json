@@ -15,11 +15,11 @@
   },
   "serverLimit": 4,
   "tutorialCompleted": true,
-  "admin": 1,
+  "admin": 2,
   "banned": false,
   "muted": false,
   "muteExpires": null,
-  "isOnline": true,
+  "isOnline": false,
   "lastIncomeUpdate": 1755382392360,
   "jobCooldowns": {
     "maintenance": 1755382631897,
@@ -226,5 +226,5 @@
     }
   ],
   "lastQuestReset": 1755363722114,
-  "lastSeen": 1755382402182
+  "lastSeen": 1755382418182
 }
