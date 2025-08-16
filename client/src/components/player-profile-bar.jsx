@@ -53,7 +53,7 @@ function getExperienceProgress(experience) {
   return Math.floor((currentExp / neededExp) * 100);
 }
 
-function PlayerAvatar({ user, size = 'md', showLevel = true, onClick }) {
+function PlayerAvatar({ user, size = 'md', showLevel = true, showExperienceRing = true, onClick, className = "" }) {
   if (!user?.avatar) return null;
 
   const sizeClasses = {
@@ -71,23 +71,45 @@ function PlayerAvatar({ user, size = 'md', showLevel = true, onClick }) {
   };
 
   const level = user.level || calculateLevel(user.experience || 0);
+  const experience = user.experience || 0;
+  const expProgress = getExperienceProgress(experience);
 
   return (
-    <div className="relative" onClick={onClick}>
-      {/* Avatar with level ring */}
-      <div className={`${sizeClasses[size]} relative cursor-pointer group`}>
-        {/* Level ring */}
-        {showLevel && (
-          <div className="absolute inset-0 rounded-full border-2 border-blue-500 animate-pulse group-hover:border-blue-400 transition-colors">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500/20 to-purple-500/20"></div>
-          </div>
+    <div className={`relative ${className}`} onClick={onClick}>
+      {/* Avatar with experience ring */}
+      <div className={`${sizeClasses[size]} relative ${onClick ? 'cursor-pointer group' : ''}`}>
+        {/* Experience ring (only show in game context) */}
+        {showLevel && showExperienceRing && (
+          <svg className="absolute inset-0 w-full h-full -rotate-90 opacity-80">
+            <circle
+              cx="50%"
+              cy="50%"
+              r="45%"
+              fill="transparent"
+              stroke="rgba(59, 130, 246, 0.2)"
+              strokeWidth="3"
+            />
+            <circle
+              cx="50%"
+              cy="50%"
+              r="45%"
+              fill="transparent"
+              stroke="rgba(59, 130, 246, 0.8)"
+              strokeWidth="3"
+              strokeDasharray="100"
+              strokeDashoffset={100 - expProgress}
+              className="transition-all duration-500 ease-out"
+            />
+          </svg>
         )}
         
-        {/* Avatar */}
+        {/* Avatar with animated gradient */}
         <div 
-          className={`${sizeClasses[size]} rounded-full bg-gradient-to-br ${user.avatar.gradient} flex items-center justify-center text-white font-bold ${textSizes[size]} shadow-lg border-2 border-white/20 group-hover:scale-105 transition-transform`}
+          className={`${sizeClasses[size]} rounded-full bg-gradient-to-br ${user.avatar.gradient} flex items-center justify-center text-white font-bold ${textSizes[size]} shadow-lg border-2 border-white/20 relative overflow-hidden ${onClick ? 'group-hover:scale-105 transition-transform' : ''}`}
         >
-          {user.nickname[0].toUpperCase()}
+          {/* Animated background overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10 animate-shimmer opacity-60"></div>
+          <span className="relative z-10">{user.nickname[0].toUpperCase()}</span>
         </div>
 
         {/* Level badge */}
@@ -126,7 +148,7 @@ export function PlayerProfileBar({ isOpen, onClose }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-start justify-center p-4 pt-8 overflow-y-auto"
         onClick={onClose}
       >
         <motion.div
@@ -134,7 +156,7 @@ export function PlayerProfileBar({ isOpen, onClose }) {
           animate={{ scale: 1, opacity: 1, y: 0 }}
           exit={{ scale: 0.8, opacity: 0, y: 50 }}
           transition={{ type: "spring", damping: 20, stiffness: 300 }}
-          className="bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+          className="bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl max-w-2xl w-full min-h-fit mb-8"
           onClick={(e) => e.stopPropagation()}
         >
           <CardHeader className="relative pb-4">

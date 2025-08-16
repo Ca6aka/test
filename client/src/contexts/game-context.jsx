@@ -1,6 +1,7 @@
 import { createContext, useContext, useReducer, useEffect } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
+import { useToast } from '@/hooks/use-toast';
 
 const GameContext = createContext(undefined);
 
@@ -73,6 +74,17 @@ function gameReducer(state, action) {
 export function GameProvider({ children }) {
   const [gameState, dispatch] = useReducer(gameReducer, initialState);
   const queryClient = useQueryClient();
+  const { toast } = useToast();
+  
+  // Level-up notification function
+  const showLevelUpNotification = (newLevel) => {
+    toast({
+      title: `🎉 Level Up!`,
+      description: `Congratulations! You've reached level ${newLevel}!`,
+      duration: 5000,
+      className: "bg-gradient-to-r from-yellow-500 to-orange-500 text-white border-none",
+    });
+  };
 
   // Fetch current user
   const { data: userResponse, isLoading: isUserLoading } = useQuery({
@@ -166,6 +178,11 @@ export function GameProvider({ children }) {
       dispatch({ type: 'SET_USER', payload: data.user });
       queryClient.invalidateQueries({ queryKey: ['/api/activities'] });
       queryClient.invalidateQueries({ queryKey: ['/api/jobs/cooldowns'] });
+      
+      // Show level-up notification if user leveled up
+      if (data.leveledUp && data.newLevel) {
+        showLevelUpNotification(data.newLevel);
+      }
     },
   });
 

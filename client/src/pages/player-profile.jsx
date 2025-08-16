@@ -116,6 +116,7 @@ export default function PlayerProfilePage() {
                 user={player} 
                 size="xl" 
                 showLevel={true}
+                showExperienceRing={false}
               />
               
               <div className="flex-1">
@@ -158,7 +159,7 @@ export default function PlayerProfilePage() {
                 <div className="flex items-center space-x-6 text-slate-300 flex-wrap">
                   <div className="flex items-center space-x-2">
                     <Star className="w-4 h-4 text-blue-400" />
-                    <span>Level {level}</span>
+                    <span>Level: {level}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Trophy className="w-4 h-4 text-yellow-400" />

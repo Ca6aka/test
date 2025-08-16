@@ -731,7 +731,13 @@ export class FileStorage {
     // Check achievements
     await this.checkAchievements(userId);
 
-    return { user: updatedUser };
+    return { 
+      user: updatedUser, 
+      earnedAmount: job.reward,
+      experienceGained: experienceGain,
+      leveledUp: newLevel > oldLevel,
+      newLevel: newLevel > oldLevel ? newLevel : null
+    };
   }
 
   async getJobCooldowns(userId) {
@@ -1208,6 +1214,35 @@ export class FileStorage {
       return `${minutes}m ${seconds % 60}s`;
     } else {
       return `${seconds}s`;
+    }
+  }
+
+  // Server synchronization with data/servers.json
+  async syncServerData(userServers) {
+    try {
+      // Read existing servers data
+      let allServers = await this.readJsonFile('servers.json') || [];
+      
+      // Remove old entries for this user's servers
+      allServers = allServers.filter(server => !userServers.find(us => us.id === server.id));
+      
+      // Add current user's active servers
+      const activeServers = userServers.filter(server => server.isOnline).map(server => ({
+        id: server.id,
+        name: server.name,
+        ownerId: server.ownerId,
+        type: server.type,
+        isOnline: server.isOnline,
+        loadPercentage: server.loadPercentage || 50,
+        lastUpdated: Date.now()
+      }));
+      
+      allServers.push(...activeServers);
+      
+      // Save updated servers data
+      await this.writeJsonFile('servers.json', allServers);
+    } catch (error) {
+      console.error('Error syncing server data:', error);
     }
   }
 }

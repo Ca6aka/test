@@ -21,12 +21,37 @@ export async function registerRoutes(app) {
         return res.status(400).json({ message: 'Nickname already exists' });
       }
       
+      // Generate random avatar for new user
+      const avatarColors = [
+        'from-red-400 to-pink-600',
+        'from-blue-400 to-purple-600', 
+        'from-green-400 to-teal-600',
+        'from-yellow-400 to-orange-600',
+        'from-purple-400 to-indigo-600',
+        'from-pink-400 to-red-600',
+        'from-indigo-400 to-blue-600',
+        'from-teal-400 to-green-600',
+        'from-orange-400 to-yellow-600',
+        'from-cyan-400 to-blue-600',
+        'from-emerald-400 to-cyan-600',
+        'from-rose-400 to-pink-600',
+        'from-violet-400 to-purple-600',
+        'from-amber-400 to-orange-600',
+        'from-lime-400 to-green-600'
+      ];
+      
+      const randomAvatar = {
+        gradient: avatarColors[Math.floor(Math.random() * avatarColors.length)],
+        seed: Math.floor(Math.random() * 1000000)
+      };
+
       const hashedPassword = await bcrypt.hash(password, 10);
       const user = await storage.createUser({ 
         nickname, 
         password: hashedPassword,
         admin: nickname === 'Ca6aka' ? 1 : 0,  // Make Ca6aka super admin automatically
-        isOnline: true 
+        isOnline: true,
+        avatar: randomAvatar
       });
       
       req.session.userId = user.id;
@@ -119,6 +144,8 @@ export async function registerRoutes(app) {
       }
       
       const servers = await storage.getUserServers(req.session.userId);
+      // Sync with global servers JSON
+      await storage.syncServerData(servers);
       res.json({ servers });
     } catch (error) {
       res.status(500).json({ message: error.message });

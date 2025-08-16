@@ -364,7 +364,7 @@ const translations = {
     progressLabel: 'Прогресс',
     earnedLabel: 'Получено',
     completedTasks: 'заданий',
-    achievements: 'достижения',
+    achievements: 'Достижения',
     // Common UI elements
     close: 'Закрыть',
     cancel: 'Отмена',
