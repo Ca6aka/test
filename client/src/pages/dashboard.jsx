@@ -4,7 +4,7 @@ import { Progress } from '@/components/ui/progress';
 import { Lock } from 'lucide-react';
 import { StatusBar } from '@/components/status-bar';
 import { AdminPanel } from '@/components/admin-panel';
-import { VirtualAssistant } from '@/components/virtual-assistant';
+import VirtualAssistant from '@/components/virtual-assistant';
 import { TutorialTab } from '@/components/tutorial-tab';
 import { ServersTab } from '@/components/servers-tab';
 import { HostingTab } from '@/components/hosting-tab';

@@ -10,6 +10,25 @@ Preferred communication style: Simple, everyday language.
 
 ## Recent Changes (Latest: August 16, 2025)
 
+### Major Updates (August 16, 2025)
+- **Chat System**: Implemented general text chat to replace AI assistant
+  - Real-time messaging with 100-message history
+  - Admin controls for message deletion and user muting
+  - Automatic mute expiration and status tracking
+- **Enhanced Admin System**: 
+  - Super-admin only access for banning other admins
+  - Money management (add/remove) for super-admin
+  - Mute/unmute functionality with duration control
+  - Protected admin accounts from regular admin actions
+- **Game Features**: Added achievements and daily quests system
+  - 5 different achievements with progressive rewards
+  - 3 daily quests that reset every 24 hours
+  - Automatic progress tracking and reward distribution
+- **Improved Online Status**: 
+  - Real-time activity tracking (5-minute window)
+  - Automatic status updates on all API calls
+  - Fixed persistent online status bug
+
 ### Mobile Optimization (August 16, 2025)
 - **Status Bar**: Added responsive mobile layout with compact stats display and mobile navigation
 - **Dashboard Navigation**: Implemented horizontal scrollable tabs for mobile, hidden Player Rankings on mobile
@@ -64,6 +83,9 @@ Preferred communication style: Simple, everyday language.
 - **Income Generation**: Passive income system with per-minute calculations
 - **Activity Tracking**: User action logging for game progression and analytics
 - **Tutorial System**: Guided onboarding with completion tracking
+- **Chat System**: Real-time messaging with admin moderation capabilities
+- **Achievements System**: Progressive rewards for game milestones and activities
+- **Daily Quests**: Time-limited challenges that reset every 24 hours
 
 ## External Dependencies
 

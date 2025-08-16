@@ -8,3 +8,9 @@
 [x] 6. Add super-admin functionality - add money to users
 [x] 7. Add regular admin functionality - ban/unban players
 [x] 8. Design new game functionality - added achievements and daily quests system
+
+## Current Tasks (Latest):
+[x] 9. Add general text chat system instead of AI assistant
+[x] 10. Add admin functionality for deleting messages and muting players
+[x] 11. Fix admin protection - only super-admin can ban other admins
+[x] 12. Fix ban field missing in user files

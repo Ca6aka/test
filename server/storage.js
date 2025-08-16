@@ -6,6 +6,7 @@ import { randomUUID } from 'crypto';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const dataDir = path.join(__dirname, '..', 'data');
 const usersDir = path.join(__dirname, '..', 'users');
+const chatFile = path.join(dataDir, 'chat.json');
 
 // Server products configuration
 const SERVER_PRODUCTS = [
@@ -276,6 +277,9 @@ export class FileStorage {
       serverLimit: 3, // Starting server limit
       tutorialCompleted: false,
       admin: userData.admin || 0,
+      banned: false,
+      muted: false,
+      muteExpires: null,
       isOnline: userData.isOnline || false,
       lastIncomeUpdate: Date.now(),
       jobCooldowns: {},
@@ -862,6 +866,131 @@ export class FileStorage {
   // Get all daily quests templates
   getDailyQuests() {
     return DAILY_QUESTS;
+  }
+
+  // Chat system
+  async getChatMessages() {
+    try {
+      const data = await fs.readFile(chatFile, 'utf8');
+      return JSON.parse(data);
+    } catch {
+      return [];
+    }
+  }
+
+  async saveChatMessages(messages) {
+    await fs.writeFile(chatFile, JSON.stringify(messages, null, 2));
+  }
+
+  async sendChatMessage(userId, message) {
+    const user = await this.getUser(userId);
+    if (!user || user.banned) {
+      throw new Error('Cannot send message');
+    }
+
+    // Check if user is muted
+    if (user.muted && user.muteExpires && Date.now() < user.muteExpires) {
+      const timeLeft = Math.ceil((user.muteExpires - Date.now()) / 60000);
+      throw new Error(`You are muted for ${timeLeft} more minutes`);
+    }
+
+    // Remove mute if expired
+    if (user.muted && user.muteExpires && Date.now() >= user.muteExpires) {
+      await this.updateUser(userId, {
+        muted: false,
+        muteExpires: null
+      });
+    }
+
+    const messages = await this.getChatMessages();
+    const newMessage = {
+      id: randomUUID(),
+      userId,
+      nickname: user.nickname,
+      message: message.trim(),
+      timestamp: Date.now(),
+      deleted: false
+    };
+
+    messages.push(newMessage);
+    
+    // Keep only last 100 messages
+    if (messages.length > 100) {
+      messages.splice(0, messages.length - 100);
+    }
+
+    await this.saveChatMessages(messages);
+    return newMessage;
+  }
+
+  async deleteChatMessage(messageId, adminUserId) {
+    const admin = await this.getUser(adminUserId);
+    if (!admin || admin.admin < 1) {
+      throw new Error('Admin access required');
+    }
+
+    const messages = await this.getChatMessages();
+    const messageIndex = messages.findIndex(msg => msg.id === messageId);
+    
+    if (messageIndex === -1) {
+      throw new Error('Message not found');
+    }
+
+    messages[messageIndex].deleted = true;
+    messages[messageIndex].deletedBy = admin.nickname;
+    messages[messageIndex].deletedAt = Date.now();
+
+    await this.saveChatMessages(messages);
+    return messages[messageIndex];
+  }
+
+  async muteUser(targetUserId, adminUserId, duration) {
+    const admin = await this.getUser(adminUserId);
+    if (!admin || admin.admin < 1) {
+      throw new Error('Admin access required');
+    }
+
+    const targetUser = await this.getUser(targetUserId);
+    if (!targetUser) {
+      throw new Error('User not found');
+    }
+
+    // Can't mute other admins unless you're super admin
+    if (targetUser.admin >= 1 && admin.nickname !== 'Ca6aka') {
+      throw new Error('Only super admin can mute other admins');
+    }
+
+    const muteExpires = Date.now() + (duration * 60 * 1000); // duration in minutes
+
+    await this.updateUser(targetUserId, {
+      muted: true,
+      muteExpires
+    });
+
+    await this.addActivity(targetUserId, `Muted for ${duration} minutes by admin ${admin.nickname}`);
+
+    return { success: true, muteExpires };
+  }
+
+  async unmuteUser(targetUserId, adminUserId) {
+    const admin = await this.getUser(adminUserId);
+    if (!admin || admin.admin < 1) {
+      throw new Error('Admin access required');
+    }
+
+    const targetUser = await this.getUser(targetUserId);
+    if (!targetUser) {
+      throw new Error('User not found');
+    }
+
+    await this.updateUser(targetUserId, {
+      muted: false,
+      muteExpires: null
+    });
+
+    await this.addActivity(targetUserId, `Unmuted by admin ${admin.nickname}`);
+
+    return { success: true };
   }
 
   // Utility methods

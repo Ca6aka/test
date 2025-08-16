@@ -321,6 +321,10 @@ export async function registerRoutes(app) {
           actionDescription = `Admin privileges removed by ${currentUser.nickname}`;
           break;
         case 'banUser':
+          // Only super-admin can ban other admins
+          if (targetUser.admin >= 1 && currentUser.nickname !== 'Ca6aka') {
+            return res.status(403).json({ message: 'Only super admin can ban other admins' });
+          }
           updatedUser.banned = true;
           updatedUser.isOnline = false;
           actionDescription = `Account banned by admin ${currentUser.nickname}`;
@@ -348,6 +352,22 @@ export async function registerRoutes(app) {
           }
           updatedUser.balance = Math.max(0, (targetUser.balance || 0) - amount);
           actionDescription = `$${amount.toLocaleString()} removed by super admin`;
+          break;
+        case 'muteUser':
+          // Can't mute other admins unless you're super admin
+          if (targetUser.admin >= 1 && currentUser.nickname !== 'Ca6aka') {
+            return res.status(403).json({ message: 'Only super admin can mute other admins' });
+          }
+          const muteDuration = amount || 30; // Default 30 minutes
+          const muteExpires = Date.now() + (muteDuration * 60 * 1000);
+          updatedUser.muted = true;
+          updatedUser.muteExpires = muteExpires;
+          actionDescription = `Muted for ${muteDuration} minutes by admin ${currentUser.nickname}`;
+          break;
+        case 'unmuteUser':
+          updatedUser.muted = false;
+          updatedUser.muteExpires = null;
+          actionDescription = `Unmuted by admin ${currentUser.nickname}`;
           break;
         default:
           return res.status(400).json({ message: 'Invalid action' });
@@ -472,6 +492,103 @@ export async function registerRoutes(app) {
       res.json({ quests: updatedUser.dailyQuests || [] });
     } catch (error) {
       res.status(500).json({ message: error.message });
+    }
+  });
+
+  // Chat routes
+  app.get('/api/chat/messages', async (req, res) => {
+    try {
+      if (!req.session.userId) {
+        return res.status(401).json({ message: 'Not authenticated' });
+      }
+      
+      const messages = await storage.getChatMessages();
+      
+      // Show all messages to admins, filter deleted for regular users
+      const user = await storage.getUser(req.session.userId);
+      const filteredMessages = user.admin >= 1 
+        ? messages 
+        : messages.filter(msg => !msg.deleted);
+      
+      res.json({ messages: filteredMessages });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
+  app.post('/api/chat/send', async (req, res) => {
+    try {
+      if (!req.session.userId) {
+        return res.status(401).json({ message: 'Not authenticated' });
+      }
+      
+      const { message } = req.body;
+      
+      if (!message || message.trim().length === 0) {
+        return res.status(400).json({ message: 'Message cannot be empty' });
+      }
+      
+      if (message.length > 500) {
+        return res.status(400).json({ message: 'Message too long (max 500 characters)' });
+      }
+      
+      const newMessage = await storage.sendChatMessage(req.session.userId, message);
+      res.json({ message: newMessage });
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  });
+
+  app.delete('/api/chat/message/:messageId', async (req, res) => {
+    try {
+      if (!req.session.userId) {
+        return res.status(401).json({ message: 'Not authenticated' });
+      }
+      
+      const { messageId } = req.params;
+      const deletedMessage = await storage.deleteChatMessage(messageId, req.session.userId);
+      
+      res.json({ success: true, message: deletedMessage });
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  });
+
+  app.post('/api/chat/mute', async (req, res) => {
+    try {
+      if (!req.session.userId) {
+        return res.status(401).json({ message: 'Not authenticated' });
+      }
+      
+      const { userId, duration } = req.body;
+      
+      if (!userId || !duration) {
+        return res.status(400).json({ message: 'User ID and duration required' });
+      }
+      
+      const result = await storage.muteUser(userId, req.session.userId, duration);
+      res.json(result);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  });
+
+  app.post('/api/chat/unmute', async (req, res) => {
+    try {
+      if (!req.session.userId) {
+        return res.status(401).json({ message: 'Not authenticated' });
+      }
+      
+      const { userId } = req.body;
+      
+      if (!userId) {
+        return res.status(400).json({ message: 'User ID required' });
+      }
+      
+      const result = await storage.unmuteUser(userId, req.session.userId);
+      res.json(result);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
     }
   });
 
