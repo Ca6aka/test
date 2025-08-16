@@ -109,6 +109,7 @@ const translations = {
     // Quest system
     dailyQuests: 'Daily Quests',
     achievements: 'Achievements',
+    rankings: 'Rankings',
     claimReward: 'Claim Reward',
     rewardClaimed: 'Reward Claimed',
     questCompleted: 'Quest Completed',
@@ -310,6 +311,7 @@ const translations = {
     // Quest system
     dailyQuests: 'Ежедневные задания',
     achievements: 'Достижения',
+    rankings: 'Рейтинг',
     claimReward: 'Забрать награду',
     rewardClaimed: 'Награда получена',
     questCompleted: 'Задание выполнено',
@@ -584,6 +586,7 @@ const translations = {
     // Quest system
     dailyQuests: 'Щоденні завдання',
     achievements: 'Досягнення',
+    rankings: 'Рейтинг',
   },
   de: {
     tutorial: 'Tutorial',
@@ -738,6 +741,7 @@ const translations = {
     // Quest system
     dailyQuests: 'Tägliche Aufgaben',
     achievements: 'Erfolge',
+    rankings: 'Bestenliste',
   }
 };
 

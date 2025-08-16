@@ -24,7 +24,7 @@ export function PlayerRankings() {
         Player Rankings
       </h3>
       <div className="space-y-2">
-        {rankings.slice(0, 5).map((player, index) => {
+        {rankings.slice(0, 10).map((player, index) => {
           const isCurrentUser = player.id === gameState.user?.id;
           
           return (
@@ -69,8 +69,8 @@ export function PlayerRankings() {
           );
         })}
         
-        {/* Show current user's rank if not in top 5 */}
-        {userRank && userRank.rank > 5 && (
+        {/* Show current user's rank if not in top 10 */}
+        {userRank && userRank.rank > 10 && (
           <>
             <div className="text-center py-1">
               <span className="text-xs text-slate-500">...</span>

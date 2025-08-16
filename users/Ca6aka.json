@@ -2,7 +2,7 @@
   "id": "e73513b4-65ec-40e1-bd85-339d155b7af0",
   "nickname": "Ca6aka",
   "password": "$2b$10$JpfJ4vb59zjxCtXN0I4kbee0VAqeB3by8xsWuYuW6PZo3fAATENv.",
-  "balance": 102277,
+  "balance": 102388,
   "level": 1,
   "experience": 63,
   "totalEarnings": 11050,
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755327594487,
+  "lastIncomeUpdate": 1755327866522,
   "jobCooldowns": {
     "maintenance": 1755327690120,
     "optimization": 1755327516027,
@@ -29,29 +29,29 @@
   "currentLearning": null,
   "activities": [
     {
+      "id": "97ffac72-f373-40a0-addc-0d696c0f50f8",
+      "description": "Income: +$36, Rental: -$3 (Net: +$33)",
+      "timestamp": "8/16/2025, 7:04:26 AM"
+    },
+    {
+      "id": "06be5df0-8ef5-408d-bbbb-2c6f9a6edf89",
+      "description": "Income: +$27, Rental: -$2 (Net: +$25)",
+      "timestamp": "8/16/2025, 7:03:04 AM"
+    },
+    {
+      "id": "cd5662cf-5b32-4e6d-ac4e-175c7f85aa05",
+      "description": "Income: +$31, Rental: -$3 (Net: +$28)",
+      "timestamp": "8/16/2025, 7:02:04 AM"
+    },
+    {
+      "id": "5cc011db-27e4-484b-a406-44add3237208",
+      "description": "Income: +$27, Rental: -$2 (Net: +$25)",
+      "timestamp": "8/16/2025, 7:00:54 AM"
+    },
+    {
       "id": "75f12b12-a0e8-4c27-9fef-26ef7e9c22ae",
       "description": "Income: +$27, Rental: -$2 (Net: +$25)",
       "timestamp": "8/16/2025, 6:59:54 AM"
-    },
-    {
-      "id": "97b1cb77-49d8-4a65-89cc-e8b6f6a8cc87",
-      "description": "Income: +$117, Rental: -$11 (Net: +$106)",
-      "timestamp": "8/16/2025, 6:58:54 AM"
-    },
-    {
-      "id": "f6e5f575-327e-4446-a96a-a32da0d23987",
-      "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "8/16/2025, 6:56:30 AM"
-    },
-    {
-      "id": "6bacead0-c594-4f80-be2a-fc39de4094f2",
-      "description": "Income: +$106, Rental: -$10 (Net: +$96)",
-      "timestamp": "8/16/2025, 6:54:32 AM"
-    },
-    {
-      "id": "7ccfcf7a-7c90-4d22-a1e2-e5038bad1eb6",
-      "description": "Purchased Basic Web Server for $5,000",
-      "timestamp": "8/16/2025, 6:52:46 AM"
     }
   ],
   "achievements": [
@@ -83,7 +83,7 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 250,
+      "progress": 371,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -103,5 +103,5 @@
     }
   ],
   "lastQuestReset": 1755327035906,
-  "lastSeen": 1755327640002
+  "lastSeen": 1755327876126
 }

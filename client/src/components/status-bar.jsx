@@ -24,51 +24,36 @@ export function StatusBar() {
     <header className="bg-slate-800/80 backdrop-blur-sm border-b border-slate-700 p-3 sm:p-4 relative z-10">
       <div className="flex items-center justify-between max-w-7xl mx-auto">
         {/* Mobile Layout */}
-        <div className="flex lg:hidden items-center justify-between w-full">
-          <h1 
-            className="text-lg font-bold text-primary cursor-pointer hover:text-blue-400 transition-colors" 
-            onClick={() => setLocation('/start')}
-            data-testid="title-link"
-          >
-            Root Tycoon
-          </h1>
+        <div className="flex lg:hidden flex-col w-full space-y-2">
+          {/* First Row - Title and Income */}
+          <div className="flex items-center justify-between">
+            <h1 
+              className="text-lg font-bold text-primary cursor-pointer hover:text-blue-400 transition-colors" 
+              onClick={() => setLocation('/start')}
+              data-testid="title-link"
+            >
+              Root Tycoon
+            </h1>
+            <div className="flex items-center space-x-1 bg-blue-500/10 border border-blue-500/30 px-2 py-1 rounded text-xs">
+              <i className="fas fa-chart-line text-blue-400 text-xs"></i>
+              <span className="text-blue-400">+{formatCurrency(gameState.totalIncomePerMinute, true)}/min</span>
+            </div>
+          </div>
           
-          {/* Mobile Stats - Compact */}
-          <div className="flex items-center space-x-2">
-            <div className="flex items-center space-x-1 bg-slate-700/50 px-2 py-1 rounded text-xs">
+          {/* Second Row - Balance and Server Count */}
+          <div className="flex items-center justify-center space-x-4">
+            <div className="flex items-center space-x-1 bg-slate-700/50 px-3 py-1 rounded text-xs">
               <i className="fas fa-coins text-accent text-xs"></i>
               <span className="font-semibold">{formatCurrency(gameState.user.balance, true)}</span>
             </div>
-            <div className="flex items-center space-x-1 bg-slate-700/50 px-2 py-1 rounded text-xs">
+            <div className="flex items-center space-x-1 bg-slate-700/50 px-3 py-1 rounded text-xs">
               <i className="fas fa-server text-secondary text-xs"></i>
               <span>{gameState.servers?.length || 0}/{gameState.user.serverLimit || 3}</span>
             </div>
           </div>
           
-          {/* Mobile User Menu */}
-          <div className="flex items-center space-x-2">
-            <Select value={language} onValueChange={changeLanguage}>
-              <SelectTrigger className="w-[60px] h-8 bg-slate-700 border-slate-600 text-xs">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="en">🇺🇸</SelectItem>
-                <SelectItem value="ru">🇷🇺</SelectItem>
-                <SelectItem value="ua">🇺🇦</SelectItem>
-              </SelectContent>
-            </Select>
-            <PlayerAvatar 
-              user={gameState.user} 
-              size="sm" 
-              onClick={() => setProfileOpen(true)}
-            />
-            {/* Mobile Admin Panel */}
-            {gameState.user && gameState.user.admin > 0 && (
-              <div className="text-xs">
-                <AdminPanel user={gameState.user} />
-              </div>
-            )}
-            
+          {/* Third Row - User Controls */}
+          <div className="flex items-center justify-between">
             <Button 
               variant="ghost" 
               size="sm" 
@@ -77,6 +62,42 @@ export function StatusBar() {
             >
               {t('logout')}
             </Button>
+            
+            <div className="flex items-center space-x-2">
+              <Select value={language} onValueChange={changeLanguage}>
+                <SelectTrigger className="w-[60px] h-8 bg-slate-700 border-slate-600 text-xs">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="en">🇺🇸</SelectItem>
+                  <SelectItem value="ru">🇷🇺</SelectItem>
+                  <SelectItem value="ua">🇺🇦</SelectItem>
+                  <SelectItem value="de">🇩🇪</SelectItem>
+                </SelectContent>
+              </Select>
+              
+              <div className="flex items-center space-x-1">
+                <PlayerAvatar 
+                  user={gameState.user} 
+                  size="sm" 
+                  onClick={() => setProfileOpen(true)}
+                />
+                <span 
+                  className="font-medium cursor-pointer hover:text-blue-400 transition-colors text-xs" 
+                  onClick={() => setLocation(`/player/${gameState.user.nickname}`)}
+                  data-testid="username-link-mobile"
+                >
+                  {gameState.user.nickname}
+                </span>
+              </div>
+              
+              {/* Mobile Admin Panel */}
+              {gameState.user && gameState.user.admin > 0 && (
+                <div className="text-xs">
+                  <AdminPanel user={gameState.user} />
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
@@ -151,13 +172,6 @@ export function StatusBar() {
         </div>
       </div>
 
-      {/* Mobile Income Bar */}
-      <div className="flex lg:hidden items-center justify-center mt-2 px-3">
-        <div className="flex items-center space-x-1 bg-blue-500/10 border border-blue-500/30 px-3 py-1 rounded-lg text-xs">
-          <i className="fas fa-chart-line text-blue-400 text-xs"></i>
-          <span className="text-blue-400">+{formatCurrency(gameState.totalIncomePerMinute, true)}/min</span>
-        </div>
-      </div>
       
       {profileOpen && (
         <PlayerProfileBar 
