@@ -2,10 +2,10 @@
   "id": "89d9b833-5345-47cc-b3d5-df00302f5ed9",
   "nickname": "Niko",
   "password": "$2b$10$G0HQ4jiWHobTKLBvgkfsF.HC/XLDC2wQjZJgjN8.t25RcxrLzoTAW",
-  "balance": 13900,
+  "balance": 14050,
   "level": 3,
-  "experience": 232,
-  "totalEarnings": 13900,
+  "experience": 242,
+  "totalEarnings": 14050,
   "totalSpent": 0,
   "avatar": {
     "gradient": "from-orange-400 via-amber-500 to-yellow-600",
@@ -22,12 +22,17 @@
   "isOnline": true,
   "lastIncomeUpdate": 1755327443104,
   "jobCooldowns": {
-    "maintenance": 1755329637820,
+    "maintenance": 1755329948105,
     "optimization": 1755329788589,
     "security-audit": 1755330162572
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "0f313dcf-9b78-4020-832c-86a380cfe7a0",
+      "description": "Completed Server Maintenance (+$150, +10 XP)",
+      "timestamp": "8/16/2025, 7:34:08 AM"
+    },
     {
       "id": "437856de-9b4a-4336-9f19-9417f8966e69",
       "description": "Completed Security Audit (+$500, +25 XP) - Level Up! Now level 3",
@@ -47,15 +52,10 @@
       "id": "09c8d16e-985e-49f5-bb9a-509bb89c4853",
       "description": "Completed Server Maintenance (+$150, +10 XP)",
       "timestamp": "8/16/2025, 7:23:33 AM"
-    },
-    {
-      "id": "c3c6b612-f112-4b3c-ad23-56696529fd48",
-      "description": "Completed Security Audit (+$500, +25 XP)",
-      "timestamp": "8/16/2025, 7:22:10 AM"
     }
   ],
   "achievements": [],
-  "completedJobsCount": 14,
+  "completedJobsCount": 15,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -101,5 +101,5 @@
     }
   ],
   "lastQuestReset": 1755327443105,
-  "lastSeen": 1755329606387
+  "lastSeen": 1755329654951
 }

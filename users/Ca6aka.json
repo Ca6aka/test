@@ -2,10 +2,10 @@
   "id": "e73513b4-65ec-40e1-bd85-339d155b7af0",
   "nickname": "Ca6aka",
   "password": "$2b$10$JpfJ4vb59zjxCtXN0I4kbee0VAqeB3by8xsWuYuW6PZo3fAATENv.",
-  "balance": 110709,
-  "level": 2,
-  "experience": 207,
-  "totalEarnings": 13400,
+  "balance": 111094,
+  "level": 3,
+  "experience": 225,
+  "totalEarnings": 13650,
   "totalSpent": 10000,
   "avatar": {
     "gradient": "from-rose-400 via-pink-500 to-red-600",
@@ -20,14 +20,24 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755329406797,
+  "lastIncomeUpdate": 1755329620062,
   "jobCooldowns": {
     "maintenance": 1755329859867,
-    "optimization": 1755329643420,
+    "optimization": 1755330095888,
     "security-audit": 1755329745728
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "5ead8a93-8e77-4f81-a1a4-ffb567d4be93",
+      "description": "Completed Performance Optimization (+$250, +18 XP) - Level Up! Now level 3",
+      "timestamp": "8/16/2025, 7:34:05 AM"
+    },
+    {
+      "id": "db9ce01d-26de-48eb-9077-96387f010d2b",
+      "description": "Income: +$149, Rental: -$14 (Net: +$135)",
+      "timestamp": "8/16/2025, 7:33:40 AM"
+    },
     {
       "id": "9fbc1b30-9b29-4e50-ba15-fed50a33ff59",
       "description": "Completed Server Maintenance (+$150, +10 XP)",
@@ -42,22 +52,12 @@
       "id": "727af2a6-5dc3-4f02-90a5-9ef7a06bd54b",
       "description": "Income: +$259, Rental: -$25 (Net: +$234)",
       "timestamp": "8/16/2025, 7:29:06 AM"
-    },
-    {
-      "id": "0c0adee8-c652-41b0-8f86-144fad35f922",
-      "description": "Completed Performance Optimization (+$250, +18 XP)",
-      "timestamp": "8/16/2025, 7:26:33 AM"
-    },
-    {
-      "id": "0db8bcc7-9366-4c54-b859-c826fe5b8711",
-      "description": "Quest reward claimed: Server Optimization (+$3,000)",
-      "timestamp": "8/16/2025, 7:26:29 AM"
     }
   ],
   "achievements": [
     "first-server"
   ],
-  "completedJobsCount": 13,
+  "completedJobsCount": 14,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -84,7 +84,7 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 1447,
+      "progress": 1596,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -105,5 +105,5 @@
     }
   ],
   "lastQuestReset": 1755327035906,
-  "lastSeen": 1755329606371
+  "lastSeen": 1755329655002
 }
