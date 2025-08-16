@@ -71,23 +71,23 @@ export function TutorialTab({ onTabChange }) {
   return (
     <div className="p-3 sm:p-6 max-w-4xl mx-auto">
       <div className="mb-4 sm:mb-6">
-        <h2 className="text-xl sm:text-2xl font-bold text-slate-100 mb-2">Start</h2>
-        <p className="text-sm sm:text-base text-slate-400">Learn the basics of server hosting and earn your first income!</p>
+        <h2 className="text-xl sm:text-2xl font-bold text-slate-100 mb-2">{t('start')}</h2>
+        <p className="text-sm sm:text-base text-slate-400">{t('tipCompleteJobs')}</p>
       </div>
 
       {/* Tutorial Progress - Only show if not completed */}
       {!gameState.user.tutorialCompleted && (
         <div className="bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/30 rounded-xl p-4 sm:p-6 mb-6 sm:mb-8">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-primary">Tutorial Progress</h3>
+            <h3 className="text-lg font-semibold text-primary">{t('tutorialProgress')}</h3>
             <span className="bg-primary/20 text-primary px-3 py-1 rounded-lg text-sm font-medium">
-              {gameState.user.tutorialCompleted ? 'Completed' : 'In Progress'}
+              {gameState.user.tutorialCompleted ? t('completed') : t('inProgress')}
             </span>
           </div>
           
           <div className="space-y-2 mb-4">
             <div className="flex justify-between text-sm">
-              <span className="text-slate-400">Earn {formatCurrency(15000)} to unlock all features</span>
+              <span className="text-slate-400">{t('tipEarnToUnlock').replace('{amount}', formatCurrency(15000))}</span>
               <span className="text-primary">
                 {formatCurrency(gameState.user.balance)} / {formatCurrency(15000)}
               </span>
@@ -97,7 +97,7 @@ export function TutorialTab({ onTabChange }) {
 
           {gameState.user.balance >= 15000 && !gameState.user.tutorialCompleted && (
             <Button onClick={handleCompleteTutorial} className="w-full">
-              Complete Tutorial & Unlock All Features
+              {t('completeTutorialUnlock')}
             </Button>
           )}
         </div>
@@ -105,7 +105,7 @@ export function TutorialTab({ onTabChange }) {
 
       {/* Tutorial Jobs */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-slate-200 mb-4">Tutorial Jobs</h3>
+        <h3 className="text-lg font-semibold text-slate-200 mb-4">{t('tutorialJobs')}</h3>
         
         {JOB_TYPES.map((job) => {
           const cooldown = cooldownTimers[job.id] || 0;
@@ -119,9 +119,13 @@ export function TutorialTab({ onTabChange }) {
                     <i className={job.icon + " text-primary text-sm sm:text-lg"}></i>
                   </div>
                   <div className="flex-1">
-                    <h4 className="font-semibold text-slate-200 text-sm sm:text-base">{job.name}</h4>
+                    <h4 className="font-semibold text-slate-200 text-sm sm:text-base">
+                      {job.id === 'maintenance' ? t('serverMaintenance') : 
+                       job.id === 'optimization' ? t('performanceOptimization') : 
+                       job.id === 'security-audit' ? t('securityAudit') : job.name}
+                    </h4>
                     <p className="text-xs sm:text-sm text-slate-400">
-                      Earn {formatCurrency(job.reward)} • Cooldown: {formatTime(job.cooldown)}
+                      {t('earnMoney').replace('{amount}', formatCurrency(job.reward))} • {t('cooldownTime').replace('{time}', formatTime(job.cooldown))}
                     </p>
                   </div>
                 </div>
@@ -129,7 +133,7 @@ export function TutorialTab({ onTabChange }) {
                 <div className="w-full sm:w-auto">
                   {isOnCooldown ? (
                     <div className="text-center sm:text-right">
-                      <p className="text-xs text-slate-400 mb-1">Available in</p>
+                      <p className="text-xs text-slate-400 mb-1">{t('availableIn')}</p>
                       <p className="text-sm font-medium text-accent">
                         {formatTime(cooldown)}
                       </p>
@@ -139,7 +143,7 @@ export function TutorialTab({ onTabChange }) {
                       onClick={() => handleStartJob(job.id)}
                       className="bg-primary hover:bg-primary/80 w-full sm:w-auto text-sm"
                     >
-                      Start Job
+                      {t('startJob')}
                     </Button>
                   )}
                 </div>
@@ -162,30 +166,30 @@ export function TutorialTab({ onTabChange }) {
       <div className="mt-6 sm:mt-8 bg-gradient-to-r from-accent/10 to-secondary/10 border border-accent/30 rounded-xl p-4 sm:p-6">
         <h3 className="text-lg font-semibold text-accent mb-3">
           <i className="fas fa-lightbulb mr-2"></i>
-          Tutorial Tips
+          {t('tutorialTips')}
         </h3>
         <div className="space-y-2 text-sm text-slate-300">
-          <p>• Complete jobs to earn money and gain experience</p>
-          <p>• Each job has a cooldown period before you can do it again</p>
-          <p>• Earn {formatCurrency(15000)} to unlock servers, learning, and the store</p>
-          <p>• Purchase servers to generate passive income</p>
-          <p>• Take learning courses to unlock more server slots</p>
+          <p>• {t('tipCompleteJobs')}</p>
+          <p>• {t('tipJobCooldown')}</p>
+          <p>• {t('tipEarnToUnlock').replace('{amount}', formatCurrency(15000))}</p>
+          <p>• {t('tipPurchaseServers')}</p>
+          <p>• {t('tipTakeCourses')}</p>
         </div>
         
-        <div className="mt-4 flex gap-3">
+        <div className="mt-4 flex flex-col sm:flex-row gap-3">
           <Button 
             variant="outline" 
-            className="border-blue-500/30 text-blue-400 hover:bg-blue-500/10"
-            onClick={() => onTabChange && onTabChange('hosting')}
+            className="border-blue-500/30 text-blue-400 hover:bg-blue-500/10 opacity-50 cursor-not-allowed"
+            disabled={true}
           >
-            Browse Server Store
+            {t('browseServerStore')} 🔒
           </Button>
           <Button 
             variant="outline" 
-            className="border-purple-500/30 text-purple-400 hover:bg-purple-500/10"
-            onClick={() => onTabChange && onTabChange('learning')}
+            className="border-purple-500/30 text-purple-400 hover:bg-purple-500/10 opacity-50 cursor-not-allowed"
+            disabled={true}
           >
-            Browse Learning Courses
+            {t('browseLearningCourses')} 🔒
           </Button>
         </div>
       </div>
@@ -193,7 +197,7 @@ export function TutorialTab({ onTabChange }) {
       {/* Recent Activities */}
       {gameState.activities && gameState.activities.length > 0 && (
         <div className="mt-8">
-          <h3 className="text-lg font-semibold text-slate-200 mb-4">Recent Activities</h3>
+          <h3 className="text-lg font-semibold text-slate-200 mb-4">{t('recentActivities')}</h3>
           <div className="space-y-2">
             {gameState.activities.slice(0, 5).map((activity, index) => (
               <div key={index} className="flex items-center justify-between p-3 bg-slate-800/30 rounded-lg">

@@ -20,7 +20,8 @@ export default function DashboardPage() {
 
   const isTabUnlocked = (tab) => {
     if (tab === 'tutorial') return true;
-    return gameState.user && (gameState.user.balance >= TUTORIAL_UNLOCK_THRESHOLD || gameState.user.tutorialCompleted);
+    // STRICT: Only allow other tabs after tutorial is actually completed
+    return gameState.user && gameState.user.tutorialCompleted;
   };
 
   const getTabContent = () => {
@@ -62,7 +63,7 @@ export default function DashboardPage() {
               onClick={() => setActiveTab('tutorial')}
             >
               <i className="fas fa-graduation-cap"></i>
-              <span>Start</span>
+              <span>{t('start')}</span>
             </Button>
             
             <Button
@@ -97,7 +98,8 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('hosting')}
             >
               <i className="fas fa-store"></i>
-              <span>Store</span>
+              <span>{t('serverStore')}</span>
+              {!isTabUnlocked('hosting') && <Lock className="w-3 h-3 ml-1" />}
             </Button>
 
             <Button
@@ -114,7 +116,8 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('learning')}
             >
               <i className="fas fa-book"></i>
-              <span>Learning</span>
+              <span>{t('learningCenter')}</span>
+              {!isTabUnlocked('learning') && <Lock className="w-3 h-3 ml-1" />}
             </Button>
           </div>
         </div>
@@ -136,7 +139,7 @@ export default function DashboardPage() {
               <span className="font-medium">{t('tutorial')}</span>
               {!gameState.user.tutorialCompleted && (
                 <span className="ml-auto bg-accent/20 text-accent text-xs px-2 py-1 rounded-full">
-                  Active
+                  {t('active')}
                 </span>
               )}
             </Button>
@@ -218,10 +221,10 @@ export default function DashboardPage() {
           {gameState.user.tutorialCompleted && gameState.user.balance >= TUTORIAL_UNLOCK_THRESHOLD && (
             <div className="mt-8 p-4 bg-gradient-to-r from-green-500/10 to-blue-500/10 rounded-lg border border-green-500/20">
               <h3 className="text-sm font-semibold text-green-400 mb-2">
-                ✓ Tutorial Completed
+                ✓ {t('tutorialCompleted')}
               </h3>
               <p className="text-xs text-slate-400">
-                All features unlocked!
+                {t('allFeaturesUnlocked')}
               </p>
             </div>
           )}

@@ -53,9 +53,9 @@ export function ServersTab({ onTabChange }) {
   return (
     <div className="p-3 sm:p-6 max-w-6xl mx-auto">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6">
-        <h2 className="text-xl sm:text-2xl font-bold text-slate-100 mb-2 sm:mb-0">{t('servers')}</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-slate-100 mb-2 sm:mb-0">{t('myServers')}</h2>
         <div className="flex items-center space-x-2 sm:space-x-3">
-          <span className="text-xs sm:text-sm text-slate-400">Server Limit:</span>
+          <span className="text-xs sm:text-sm text-slate-400">{t('serverLimit')}:</span>
           <span className="bg-slate-700 px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm font-medium">
             {currentServers}/{serverLimit} servers
           </span>

@@ -95,20 +95,20 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <section className="py-20">
+      <section className="py-12 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl font-bold text-white mb-6">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
             {t('heroTitle')}
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
               {t('heroSubtitle')}
             </span>
           </h1>
-          <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-slate-300 mb-6 sm:mb-8 max-w-3xl mx-auto px-4">
             {t('heroDescription')}
           </p>
-          <div className="flex gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
             <Link href="/reg">
-              <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700">
+              <Button size="lg" className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700">
                 {t('startPlaying')}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
@@ -116,8 +116,8 @@ export default function HomePage() {
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-slate-600 text-slate-300 hover:bg-slate-800"
-              onClick={() => document.getElementById('features-section').scrollIntoView({ behavior: 'smooth' })}
+              className="w-full sm:w-auto border-slate-600 text-slate-300 hover:bg-slate-800"
+              onClick={() => document.getElementById('features-section')?.scrollIntoView({ behavior: 'smooth' })}
             >
               {t('learnMore')}
             </Button>
@@ -126,38 +126,38 @@ export default function HomePage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-slate-800/30">
+      <section className="py-12 sm:py-16 bg-slate-800/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             <Card className="bg-slate-800/50 border-slate-700">
-              <CardContent className="p-6 text-center">
-                <Users className="h-8 w-8 text-blue-400 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-white">{stats.totalPlayers?.toLocaleString() || '0'}</div>
-                <div className="text-slate-400">{t('totalPlayers')}</div>
+              <CardContent className="p-4 sm:p-6 text-center">
+                <Users className="h-6 w-6 sm:h-8 sm:w-8 text-blue-400 mx-auto mb-2" />
+                <div className="text-xl sm:text-2xl font-bold text-white">{stats.totalPlayers?.toLocaleString() || '0'}</div>
+                <div className="text-sm sm:text-base text-slate-400">{t('totalPlayers')}</div>
               </CardContent>
             </Card>
             
             <Card className="bg-slate-800/50 border-slate-700">
-              <CardContent className="p-6 text-center">
+              <CardContent className="p-4 sm:p-6 text-center">
                 <div className="h-2 w-2 bg-green-400 rounded-full mx-auto mb-2 animate-pulse"></div>
-                <div className="text-2xl font-bold text-white">{stats.onlinePlayers || '0'}</div>
-                <div className="text-slate-400">{t('onlineNow')}</div>
+                <div className="text-xl sm:text-2xl font-bold text-white">{stats.onlinePlayers || '0'}</div>
+                <div className="text-sm sm:text-base text-slate-400">{t('onlineNow')}</div>
               </CardContent>
             </Card>
             
             <Card className="bg-slate-800/50 border-slate-700">
-              <CardContent className="p-6 text-center">
-                <Server className="h-8 w-8 text-purple-400 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-white">{stats.totalServers?.toLocaleString() || '0'}</div>
-                <div className="text-slate-400">{t('serversHosted')}</div>
+              <CardContent className="p-4 sm:p-6 text-center">
+                <Server className="h-6 w-6 sm:h-8 sm:w-8 text-purple-400 mx-auto mb-2" />
+                <div className="text-xl sm:text-2xl font-bold text-white">{stats.totalServers?.toLocaleString() || '0'}</div>
+                <div className="text-sm sm:text-base text-slate-400">{t('serversHosted')}</div>
               </CardContent>
             </Card>
             
             <Card className="bg-slate-800/50 border-slate-700">
-              <CardContent className="p-6 text-center">
-                <TrendingUp className="h-8 w-8 text-green-400 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-white">${stats.totalBalance?.toLocaleString() || '0'}</div>
-                <div className="text-slate-400">{t('totalBalance')}</div>
+              <CardContent className="p-4 sm:p-6 text-center">
+                <TrendingUp className="h-6 w-6 sm:h-8 sm:w-8 text-green-400 mx-auto mb-2" />
+                <div className="text-xl sm:text-2xl font-bold text-white">${stats.totalBalance?.toLocaleString() || '0'}</div>
+                <div className="text-sm sm:text-base text-slate-400">{t('totalBalance')}</div>
               </CardContent>
             </Card>
           </div>
@@ -165,20 +165,20 @@ export default function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20" id="features-section">
+      <section className="py-12 sm:py-20" id="features-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-white mb-4">{t('gameFeatures')}</h2>
-            <p className="text-lg text-slate-300">{t('featuresDescription')}</p>
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">{t('gameFeatures')}</h2>
+            <p className="text-base sm:text-lg text-slate-300 px-4">{t('featuresDescription')}</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {features.map((feature, index) => (
               <Card key={index} className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-colors">
-                <CardContent className="p-6 text-center">
-                  <div className="mb-4">{feature.icon}</div>
-                  <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
-                  <p className="text-slate-400">{feature.description}</p>
+                <CardContent className="p-4 sm:p-6 text-center">
+                  <div className="mb-3 sm:mb-4">{feature.icon}</div>
+                  <h3 className="text-base sm:text-lg font-semibold text-white mb-2">{feature.title}</h3>
+                  <p className="text-sm sm:text-base text-slate-400">{feature.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -187,11 +187,11 @@ export default function HomePage() {
       </section>
 
       {/* Top Players Section */}
-      <section className="py-16 bg-slate-800/30">
+      <section className="py-12 sm:py-16 bg-slate-800/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">{t('topPlayers')}</h2>
-            <p className="text-lg text-slate-300">{t('topPlayersDescription')}</p>
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">{t('topPlayers')}</h2>
+            <p className="text-base sm:text-lg text-slate-300 px-4">{t('topPlayersDescription')}</p>
           </div>
           
           <Card className="bg-slate-800/50 border-slate-700 max-w-4xl mx-auto">
@@ -204,22 +204,22 @@ export default function HomePage() {
             <CardContent>
               <div className="space-y-4">
                 {rankingsResponse?.rankings?.slice(0, 10).map((player, index) => (
-                  <div key={player.id} className="flex items-center justify-between p-3 rounded-lg bg-slate-700/50 hover:bg-slate-700/70 transition-colors cursor-pointer group">
-                    <div className="flex items-center space-x-3">
-                      <Badge variant="outline" className="border-slate-600 text-slate-300">
+                  <div key={player.id} className="flex items-center justify-between p-3 sm:p-4 rounded-lg bg-slate-700/50 hover:bg-slate-700/70 transition-colors cursor-pointer group">
+                    <div className="flex items-center space-x-2 sm:space-x-3 flex-1 min-w-0">
+                      <Badge variant="outline" className="border-slate-600 text-slate-300 text-xs sm:text-sm">
                         #{index + 1}
                       </Badge>
                       <span 
-                        className="text-white font-medium group-hover:text-blue-400 transition-colors"
+                        className="text-white font-medium group-hover:text-blue-400 transition-colors truncate text-sm sm:text-base"
                         onClick={() => window.location.href = `/player/${player.nickname}`}
                       >
                         {player.nickname}
                         {player.isOnline && <span className="ml-2 w-2 h-2 bg-green-400 rounded-full inline-block animate-pulse"></span>}
                       </span>
                     </div>
-                    <div className="text-right">
-                      <div className="text-green-400 font-bold">${player.balance?.toLocaleString()}</div>
-                      <div className="text-slate-400 text-sm">{player.serverCount} {t('serversLowercase')}</div>
+                    <div className="text-right flex-shrink-0">
+                      <div className="text-green-400 font-bold text-sm sm:text-base">${player.balance?.toLocaleString()}</div>
+                      <div className="text-slate-400 text-xs sm:text-sm">{player.serverCount} {t('serversLowercase')}</div>
                     </div>
                   </div>
                 )) || []}
@@ -238,9 +238,9 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-700 bg-slate-900/50 py-8">
+      <footer className="border-t border-slate-700 bg-slate-900/50 py-6 sm:py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-slate-400">
+          <p className="text-slate-400 text-sm sm:text-base">
             © 2025 GameStats. {t('allRightsReserved')}
           </p>
         </div>

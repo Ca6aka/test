@@ -18,7 +18,8 @@ function gameReducer(state, action) {
   switch (action.type) {
     case 'SET_USER':
       const unlockedTabs = ['tutorial'];
-      if (action.payload?.balance >= 15000 || action.payload?.tutorialCompleted) {
+      // STRICT: Only unlock tabs when tutorial is actually completed
+      if (action.payload?.tutorialCompleted) {
         unlockedTabs.push('servers', 'hosting', 'learning');
       }
       return {
