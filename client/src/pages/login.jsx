@@ -101,6 +101,7 @@ export default function LoginPage() {
                 <SelectContent>
                   <SelectItem value="en">🇺🇸 EN</SelectItem>
                   <SelectItem value="ru">🇷🇺 RU</SelectItem>
+                  <SelectItem value="ua">🇺🇦 UA</SelectItem>
                   <SelectItem value="de">🇩🇪 DE</SelectItem>
                 </SelectContent>
               </Select>

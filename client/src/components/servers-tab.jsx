@@ -56,19 +56,36 @@ export function ServersTab({ onTabChange }) {
   };
 
   const handleDeleteServer = async (serverId) => {
-    if (window.confirm('Are you sure you want to delete this server? This action cannot be undone.')) {
-      try {
-        await deleteServer(serverId);
-        toast({
-          title: "Server Deleted",
-          description: "Server has been deleted successfully.",
-        });
-      } catch (error) {
-        toast({
-          title: "Error",
-          description: error.message,
-          variant: "destructive",
-        });
+    const serverName = gameState.servers?.find(s => s.id === serverId)?.name;
+    const firstConfirm = window.confirm(`⚠️ ВНИМАНИЕ! Вы действительно хотите УДАЛИТЬ сервер "${serverName}"?\n\nЭто действие НЕОБРАТИМО!\n\nЕсли вы хотите просто отключить сервер, используйте кнопку "Включить/Выключить" вместо удаления.`);
+    
+    if (firstConfirm) {
+      const secondConfirm = window.confirm(`🚨 ПОСЛЕДНЕЕ ПРЕДУПРЕЖДЕНИЕ!\n\nВы уверены, что хотите НАВСЕГДА удалить сервер "${serverName}"?\n\nНапишите "УДАЛИТЬ" чтобы подтвердить:`);
+      
+      if (secondConfirm) {
+        const finalConfirm = prompt(`Введите "УДАЛИТЬ" чтобы окончательно подтвердить удаление сервера "${serverName}":`);;
+        
+        if (finalConfirm === "УДАЛИТЬ") {
+          try {
+            await deleteServer(serverId);
+            toast({
+              title: "Сервер удален",
+              description: `Сервер "${serverName}" был успешно удален.`,
+            });
+          } catch (error) {
+            toast({
+              title: "Ошибка",
+              description: error.message,
+              variant: "destructive",
+            });
+          }
+        } else {
+          toast({
+            title: "Удаление отменено",
+            description: "Сервер НЕ был удален.",
+            variant: "default",
+          });
+        }
       }
     }
   };
@@ -210,14 +227,15 @@ export function ServersTab({ onTabChange }) {
                     <i className="fas fa-power-off mr-1"></i>
                     {server.isOnline ? t('online') : t('offline')}
                   </Button>
-                  {/* Delete Server Button */}
+                  {/* Delete Server Button - Made less prominent */}
                   <Button
                     size="sm"
-                    variant="destructive"
-                    className="bg-red-500/20 text-red-400 hover:bg-red-500/30"
+                    variant="ghost"
+                    className="bg-transparent text-slate-500 hover:bg-red-500/20 hover:text-red-400 transition-colors border border-slate-700 hover:border-red-500/50"
                     onClick={() => handleDeleteServer(server.id)}
+                    title="⚠️ УДАЛИТЬ СЕРВЕР НАВСЕГДА (НЕОБРАТИМО!)"
                   >
-                    <i className="fas fa-trash"></i>
+                    <i className="fas fa-trash text-xs"></i>
                   </Button>
                 </div>
               </div>

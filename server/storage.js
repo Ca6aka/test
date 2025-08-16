@@ -665,6 +665,11 @@ export class FileStorage {
     const now = Date.now();
     const lastOverloadCheck = server.lastOverloadCheck || 0;
     const fiveMinutes = 5 * 60 * 1000; // 5 minutes in milliseconds
+    const tenMinutes = 10 * 60 * 1000; // 10 minutes in milliseconds
+    
+    // Don't check servers that are less than 10 minutes old (newly purchased)
+    const serverAge = now - (server.createdAt || now);
+    if (serverAge < tenMinutes) return;
     
     // Only check every 5 minutes minimum
     if (now - lastOverloadCheck < fiveMinutes) return;
