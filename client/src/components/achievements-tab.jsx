@@ -57,7 +57,7 @@ export function AchievementsTab() {
                     <Lock className="w-5 h-5 text-slate-500" />
                   )}
                   <span className={achievement.earned ? 'text-yellow-400' : 'text-slate-300'}>
-                    {achievement.title}
+                    {t('achievementsList')?.[achievement.id]?.title || achievement.title}
                   </span>
                 </div>
                 {achievement.earned && (
@@ -69,7 +69,7 @@ export function AchievementsTab() {
             </CardHeader>
             <CardContent>
               <p className="text-slate-400 text-sm mb-4">
-                {achievement.description}
+                {t('achievementsList')?.[achievement.id]?.description || achievement.description}
               </p>
               
               <div className="flex items-center justify-between">

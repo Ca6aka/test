@@ -10,6 +10,17 @@ Preferred communication style: Simple, everyday language.
 
 ## Recent Changes (Latest: August 16, 2025)
 
+### UI/UX Enhancements - Colored Task Circles and Achievements Translation Fix (August 16, 2025)
+- **Colored Task Indicators**: Added difficulty-based colored circles next to tutorial job names
+  - Blue circle for maintenance tasks (easy difficulty)
+  - Orange circle for optimization tasks (medium difficulty) 
+  - Red circle for security audit tasks (hard difficulty)
+  - Improves visual hierarchy and task recognition on the Start screen
+- **Achievements Translation Fix**: Fixed Russian language display in Achievements tab
+  - Now properly uses translation system instead of raw server responses
+  - All achievement titles and descriptions display correctly in Russian
+  - Maintains fallback to English for missing translations
+
 ### UI/UX Enhancements - Tooltips and Theme System (August 16, 2025)
 - **Tooltips System**: Added helpful tooltips for avatar and nickname interactions
   - Avatar tooltip: "Click on your avatar to see progress and other interesting information"

@@ -111,6 +111,20 @@ export function TutorialTab({ gameState, setActiveTab }) {
           const cooldown = cooldownTimers[job.id] || 0;
           const isOnCooldown = cooldown > 0;
 
+          // Define difficulty colors based on job type
+          const getDifficultyCircle = (jobId) => {
+            switch(jobId) {
+              case 'maintenance':
+                return 'bg-blue-500'; // Easy - Blue
+              case 'optimization':
+                return 'bg-orange-500'; // Medium - Orange
+              case 'security-audit':
+                return 'bg-red-500'; // Hard - Red
+              default:
+                return 'bg-gray-500';
+            }
+          };
+
           return (
             <div key={job.id} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-4 sm:p-6 hover:border-primary/30 transition-all">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-3 sm:space-y-0">
@@ -119,11 +133,14 @@ export function TutorialTab({ gameState, setActiveTab }) {
                     <i className={job.icon + " text-primary text-sm sm:text-lg"}></i>
                   </div>
                   <div className="flex-1">
-                    <h4 className="font-semibold text-slate-200 text-sm sm:text-base">
-                      {job.id === 'maintenance' ? t('serverMaintenance') : 
-                       job.id === 'optimization' ? t('performanceOptimization') : 
-                       job.id === 'security-audit' ? t('securityAudit') : job.name}
-                    </h4>
+                    <div className="flex items-center space-x-2">
+                      <div className={`w-3 h-3 rounded-full ${getDifficultyCircle(job.id)}`}></div>
+                      <h4 className="font-semibold text-slate-200 text-sm sm:text-base">
+                        {job.id === 'maintenance' ? t('serverMaintenance') : 
+                         job.id === 'optimization' ? t('performanceOptimization') : 
+                         job.id === 'security-audit' ? t('securityAudit') : job.name}
+                      </h4>
+                    </div>
                     <p className="text-xs sm:text-sm text-slate-400">
                       {t('earnMoney').replace('{amount}', formatCurrency(job.reward))} • +{job.experienceReward} XP • {t('cooldownTime').replace('{time}', formatTime(job.cooldown))}
                     </p>
