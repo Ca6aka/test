@@ -182,26 +182,26 @@ export function TutorialTab({ gameState, setActiveTab }) {
           <Button 
             variant="outline" 
             className={`border-blue-500/30 text-blue-400 hover:bg-blue-500/10 ${
-              gameState.user.balance >= 15000 
+              gameState.user.tutorialCompleted || gameState.user.balance >= 15000 
                 ? 'opacity-100 cursor-pointer' 
                 : 'opacity-50 cursor-not-allowed'
             }`}
-            disabled={gameState.user.balance < 15000}
-            onClick={() => gameState.user.balance >= 15000 && setActiveTab('hosting')}
+            disabled={!gameState.user.tutorialCompleted && gameState.user.balance < 15000}
+            onClick={() => (gameState.user.tutorialCompleted || gameState.user.balance >= 15000) && setActiveTab('hosting')}
           >
-            {t('browseServerStore')} {gameState.user.balance < 15000 ? '🔒' : ''}
+            {t('browseServerStore')} {!gameState.user.tutorialCompleted && gameState.user.balance < 15000 ? '🔒' : ''}
           </Button>
           <Button 
             variant="outline" 
             className={`border-purple-500/30 text-purple-400 hover:bg-purple-500/10 ${
-              gameState.user.balance >= 15000 
+              gameState.user.tutorialCompleted || gameState.user.balance >= 15000 
                 ? 'opacity-100 cursor-pointer' 
                 : 'opacity-50 cursor-not-allowed'
             }`}
-            disabled={gameState.user.balance < 15000}
-            onClick={() => gameState.user.balance >= 15000 && setActiveTab('learning')}
+            disabled={!gameState.user.tutorialCompleted && gameState.user.balance < 15000}
+            onClick={() => (gameState.user.tutorialCompleted || gameState.user.balance >= 15000) && setActiveTab('learning')}
           >
-            {t('browseLearningCourses')} {gameState.user.balance < 15000 ? '🔒' : ''}
+            {t('browseLearningCourses')} {!gameState.user.tutorialCompleted && gameState.user.balance < 15000 ? '🔒' : ''}
           </Button>
         </div>
       </div>
