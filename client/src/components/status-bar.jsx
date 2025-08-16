@@ -25,7 +25,7 @@ export function StatusBar() {
       <div className="flex items-center justify-between max-w-7xl mx-auto">
         {/* Mobile Layout */}
         <div className="flex lg:hidden flex-col w-full space-y-2">
-          {/* First Row - Title, Income/Avatar/Username in center */}
+          {/* First Row - Title, Income/Avatar/Username in center, Logout button top right */}
           <div className="flex items-center">
             <h1 
               className="text-lg font-bold text-primary cursor-pointer hover:text-blue-400 transition-colors" 
@@ -57,6 +57,40 @@ export function StatusBar() {
                 </span>
               </div>
             </div>
+            
+            {/* Top right - Logout button */}
+            <div className="flex flex-col items-end space-y-1">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={handleLogout}
+                className="text-slate-400 hover:text-slate-200 text-xs px-2 py-1 h-6"
+              >
+                {t('logout')}
+              </Button>
+              
+              {/* Language selector under logout */}
+              <div className="flex items-center space-x-1">
+                <Select value={language} onValueChange={changeLanguage}>
+                  <SelectTrigger className="w-[60px] h-6 bg-slate-700 border-slate-600 text-xs">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="en">🇺🇸</SelectItem>
+                    <SelectItem value="ru">🇷🇺</SelectItem>
+                    <SelectItem value="ua">🇺🇦</SelectItem>
+                    <SelectItem value="de">🇩🇪</SelectItem>
+                  </SelectContent>
+                </Select>
+                
+                {/* Mobile Admin Panel */}
+                {gameState.user && gameState.user.admin > 0 && (
+                  <div className="text-xs">
+                    <AdminPanel user={gameState.user} />
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
           
           {/* Second Row - Balance and Server Count under title */}
@@ -71,38 +105,6 @@ export function StatusBar() {
             </div>
           </div>
           
-          {/* Third Row - Logout button left, Language selector right */}
-          <div className="flex items-center justify-between">
-            <Button 
-              variant="ghost" 
-              size="sm" 
-              onClick={handleLogout}
-              className="text-slate-400 hover:text-slate-200 text-xs px-2 py-1 h-6"
-            >
-              {t('logout')}
-            </Button>
-            
-            <div className="flex items-center space-x-2">
-              <Select value={language} onValueChange={changeLanguage}>
-                <SelectTrigger className="w-[60px] h-8 bg-slate-700 border-slate-600 text-xs">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="en">🇺🇸</SelectItem>
-                  <SelectItem value="ru">🇷🇺</SelectItem>
-                  <SelectItem value="ua">🇺🇦</SelectItem>
-                  <SelectItem value="de">🇩🇪</SelectItem>
-                </SelectContent>
-              </Select>
-              
-              {/* Mobile Admin Panel */}
-              {gameState.user && gameState.user.admin > 0 && (
-                <div className="text-xs">
-                  <AdminPanel user={gameState.user} />
-                </div>
-              )}
-            </div>
-          </div>
         </div>
 
         {/* Desktop Layout */}
