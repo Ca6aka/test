@@ -2,10 +2,10 @@
   "id": "af32cffd-9c64-4dcc-b3b7-3ef4ac710047",
   "nickname": "Ca6aka",
   "password": "$2b$10$RhmN.noZR4TbEl854YHmLuZBWfjlblpCb7a1wb3wxKIWvN4YlfNlK",
-  "balance": 9917,
+  "balance": 10005,
   "serverLimit": 3,
   "tutorialCompleted": false,
-  "lastIncomeUpdate": 1755312585600,
+  "lastIncomeUpdate": 1755312943471,
   "jobCooldowns": {
     "maintenance": 1755312907048,
     "optimization": 1755312836795,
