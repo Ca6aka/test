@@ -167,6 +167,7 @@ const translations = {
     minutes: 'minutes',
     hours: 'hours',
     seconds: 'seconds',
+    secondsShort: 'sec',
     // Server-specific translations
     serverLimit: 'Server Limit',
     noServersYet: 'No Servers Yet',
@@ -399,6 +400,7 @@ const translations = {
     minutes: 'минут',
     hours: 'часов',
     seconds: 'секунд',
+    secondsShort: 'сек',
     // Server-specific translations
     serverLimit: 'Лимит серверов',
     noServersYet: 'Серверов пока нет',

@@ -1,7 +1,34 @@
 import { useQuery } from '@tanstack/react-query';
 import { useGame } from '@/contexts/game-context';
+import { useLanguage } from '@/contexts/language-context';
 import { formatCurrency } from '@/lib/constants';
 import { Link } from 'wouter';
+import { useState, useEffect } from 'react';
+
+// Component for countdown timer
+export function RankingsCountdown() {
+  const { t } = useLanguage();
+  const [timeLeft, setTimeLeft] = useState(30);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev <= 1) {
+          return 30; // Reset to 30 seconds
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <span className="text-xs text-slate-500 ml-1">
+      ({timeLeft} {t('secondsShort')})
+    </span>
+  );
+}
 
 export function PlayerRankings() {
   const { gameState } = useGame();

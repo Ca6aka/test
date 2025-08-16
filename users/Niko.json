@@ -2,11 +2,11 @@
   "id": "89d9b833-5345-47cc-b3d5-df00302f5ed9",
   "nickname": "Niko",
   "password": "$2b$10$G0HQ4jiWHobTKLBvgkfsF.HC/XLDC2wQjZJgjN8.t25RcxrLzoTAW",
-  "balance": 18750,
+  "balance": 17650,
   "level": 4,
-  "experience": 401,
-  "totalEarnings": 16750,
-  "totalSpent": 0,
+  "experience": 454,
+  "totalEarnings": 17650,
+  "totalSpent": 2000,
   "avatar": {
     "gradient": "from-orange-400 via-amber-500 to-yellow-600",
     "pattern": "multi-color",
@@ -22,40 +22,52 @@
   "isOnline": true,
   "lastIncomeUpdate": 1755327443104,
   "jobCooldowns": {
-    "maintenance": 1755332603256,
-    "optimization": 1755332753839,
-    "security-audit": 1755332904212
+    "maintenance": 1755333485497,
+    "optimization": 1755333636892,
+    "security-audit": 1755333787553
   },
-  "currentLearning": null,
+  "currentLearning": {
+    "id": "basic-setup",
+    "title": "Basic Server Setup",
+    "description": "Learn the fundamentals of server configuration and deployment",
+    "difficulty": "Beginner",
+    "startTime": 1755333205769,
+    "endTime": 1755335005769,
+    "progress": 0,
+    "reward": {
+      "type": "serverSlots",
+      "amount": 1
+    }
+  },
   "activities": [
+    {
+      "id": "ddf9290a-0857-478d-ba9d-b96d2b530a41",
+      "description": "Started learning course: Basic Server Setup",
+      "timestamp": "8/16/2025, 8:33:25 AM"
+    },
+    {
+      "id": "1adc1e31-4171-41ae-8494-b5d33d76bdf2",
+      "description": "Completed Security Audit (+$500, +25 XP)",
+      "timestamp": "8/16/2025, 8:33:07 AM"
+    },
+    {
+      "id": "20b98987-8974-4094-9be7-0692d082a8b5",
+      "description": "Completed Performance Optimization (+$250, +18 XP)",
+      "timestamp": "8/16/2025, 8:33:06 AM"
+    },
+    {
+      "id": "ede4b077-93f9-4365-bd1c-9fe9fb6cb522",
+      "description": "Completed Server Maintenance (+$150, +10 XP)",
+      "timestamp": "8/16/2025, 8:33:05 AM"
+    },
     {
       "id": "0cfe3a71-26b4-445b-ba32-cbd6042fdbb5",
       "description": "Quest reward claimed: Daily Maintenance (+$2,000)",
       "timestamp": "8/16/2025, 8:18:48 AM"
-    },
-    {
-      "id": "68980fc1-076c-44e8-babf-d5c8c06cba64",
-      "description": "Tutorial completed! All features unlocked.",
-      "timestamp": "8/16/2025, 8:18:28 AM"
-    },
-    {
-      "id": "e7cd1e58-b138-4e14-b2dc-1b5febf8d342",
-      "description": "Completed Security Audit (+$500, +25 XP)",
-      "timestamp": "8/16/2025, 8:18:24 AM"
-    },
-    {
-      "id": "16b2847f-83d8-4194-941e-c11c312ece13",
-      "description": "Completed Performance Optimization (+$250, +18 XP)",
-      "timestamp": "8/16/2025, 8:18:23 AM"
-    },
-    {
-      "id": "c2416489-7e2a-4f54-9824-ea16a4970ce6",
-      "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "8/16/2025, 8:18:23 AM"
     }
   ],
   "achievements": [],
-  "completedJobsCount": 24,
+  "completedJobsCount": 27,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -102,5 +114,5 @@
     }
   ],
   "lastQuestReset": 1755327443105,
-  "lastSeen": 1755332545685
+  "lastSeen": 1755333298772
 }

@@ -6,6 +6,7 @@ import { useLanguage } from '@/contexts/language-context';
 import { formatCurrency } from '@/lib/constants';
 import { Link } from 'wouter';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { RankingsCountdown } from '@/components/player-rankings';
 
 export function RankingsPopup() {
   const [isOpen, setIsOpen] = useState(false);
@@ -43,7 +44,12 @@ export function RankingsPopup() {
           <div className="bg-gradient-to-r from-yellow-500 to-amber-600 p-3 flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <i className="fas fa-trophy text-white text-lg"></i>
-              <h3 className="text-white font-bold">{t('rankings')}</h3>
+              <h3 className="text-white font-bold flex items-center">
+                {t('rankings')}
+                <span className="text-xs text-yellow-200 ml-2 opacity-80">
+                  <RankingsCountdown />
+                </span>
+              </h3>
             </div>
             <Button
               variant="ghost"

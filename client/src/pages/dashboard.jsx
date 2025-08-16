@@ -13,7 +13,7 @@ import { AchievementsTab } from '@/components/achievements-tab';
 import { QuestsTab } from '@/components/quests-tab';
 import { useGame } from '@/contexts/game-context';
 import { useLanguage } from '@/contexts/language-context';
-import { PlayerRankings } from '@/components/player-rankings';
+import { PlayerRankings, RankingsCountdown } from '@/components/player-rankings';
 import { RankingsPopup } from '@/components/rankings-popup';
 import { PlayerProfileBar } from '@/components/player-profile-bar';
 import { LevelUpNotification } from '@/components/level-up-notification';
@@ -305,7 +305,10 @@ export default function DashboardPage() {
           
           {/* Player Rankings */}
           <div className="mt-6">
-            <h3 className="text-sm font-semibold text-slate-400 mb-3 px-3">{t('rankings')}</h3>
+            <h3 className="text-sm font-semibold text-slate-400 mb-3 px-3 flex items-center">
+              {t('rankings')}
+              <RankingsCountdown />
+            </h3>
             <PlayerRankings />
           </div>
 
