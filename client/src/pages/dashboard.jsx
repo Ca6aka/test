@@ -9,6 +9,8 @@ import { TutorialTab } from '@/components/tutorial-tab';
 import { ServersTab } from '@/components/servers-tab';
 import { HostingTab } from '@/components/hosting-tab';
 import { LearningTab } from '@/components/learning-tab';
+import { AchievementsTab } from '@/components/achievements-tab';
+import { QuestsTab } from '@/components/quests-tab';
 import { PlayerRankings } from '@/components/player-rankings';
 import { useGame } from '@/contexts/game-context';
 import { useLanguage } from '@/contexts/language-context';
@@ -31,6 +33,8 @@ export default function DashboardPage() {
       case 'servers': return <ServersTab onTabChange={setActiveTab} />;
       case 'hosting': return <HostingTab onTabChange={setActiveTab} />;
       case 'learning': return <LearningTab />;
+      case 'achievements': return <AchievementsTab />;
+      case 'quests': return <QuestsTab />;
       default: return <TutorialTab onTabChange={setActiveTab} />;
     }
   };
@@ -120,6 +124,42 @@ export default function DashboardPage() {
               <span>{t('learningCenter')}</span>
               {!isTabUnlocked('learning') && <Lock className="w-3 h-3 ml-1" />}
             </Button>
+            
+            <Button
+              variant={activeTab === 'achievements' ? 'default' : 'ghost'}
+              size="sm"
+              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs ${
+                activeTab === 'achievements'
+                  ? 'bg-primary/20 text-primary border border-primary/30'
+                  : isTabUnlocked('achievements')
+                  ? 'text-slate-300 hover:bg-slate-700/50'
+                  : 'text-slate-500 opacity-50 cursor-not-allowed'
+              }`}
+              onClick={() => isTabUnlocked('achievements') && setActiveTab('achievements')}
+              disabled={!isTabUnlocked('achievements')}
+            >
+              <i className="fas fa-trophy"></i>
+              <span>Достижения</span>
+              {!isTabUnlocked('achievements') && <Lock className="w-3 h-3 ml-1" />}
+            </Button>
+            
+            <Button
+              variant={activeTab === 'quests' ? 'default' : 'ghost'}
+              size="sm"
+              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs ${
+                activeTab === 'quests'
+                  ? 'bg-primary/20 text-primary border border-primary/30'
+                  : isTabUnlocked('quests')
+                  ? 'text-slate-300 hover:bg-slate-700/50'
+                  : 'text-slate-500 opacity-50 cursor-not-allowed'
+              }`}
+              onClick={() => isTabUnlocked('quests') && setActiveTab('quests')}
+              disabled={!isTabUnlocked('quests')}
+            >
+              <i className="fas fa-calendar"></i>
+              <span>Задания</span>
+              {!isTabUnlocked('quests') && <Lock className="w-3 h-3 ml-1" />}
+            </Button>
           </div>
         </div>
         
@@ -202,6 +242,42 @@ export default function DashboardPage() {
               <i className="fas fa-book text-lg"></i>
               <span className="font-medium">{t('learning')}</span>
               {!isTabUnlocked('learning') && <Lock className="w-4 h-4 ml-auto" />}
+            </Button>
+
+            {/* Achievements Tab */}
+            <Button
+              variant={activeTab === 'achievements' ? 'default' : 'ghost'}
+              className={`w-full justify-start space-x-3 ${
+                activeTab === 'achievements'
+                  ? 'bg-primary/20 text-primary border border-primary/30'
+                  : isTabUnlocked('achievements')
+                  ? 'text-slate-300 hover:bg-slate-700/50'
+                  : 'text-slate-500 opacity-50 cursor-not-allowed'
+              }`}
+              onClick={() => isTabUnlocked('achievements') && setActiveTab('achievements')}
+              disabled={!isTabUnlocked('achievements')}
+            >
+              <i className="fas fa-trophy text-lg"></i>
+              <span className="font-medium">Достижения</span>
+              {!isTabUnlocked('achievements') && <Lock className="w-4 h-4 ml-auto" />}
+            </Button>
+
+            {/* Daily Quests Tab */}
+            <Button
+              variant={activeTab === 'quests' ? 'default' : 'ghost'}
+              className={`w-full justify-start space-x-3 ${
+                activeTab === 'quests'
+                  ? 'bg-primary/20 text-primary border border-primary/30'
+                  : isTabUnlocked('quests')
+                  ? 'text-slate-300 hover:bg-slate-700/50'
+                  : 'text-slate-500 opacity-50 cursor-not-allowed'
+              }`}
+              onClick={() => isTabUnlocked('quests') && setActiveTab('quests')}
+              disabled={!isTabUnlocked('quests')}
+            >
+              <i className="fas fa-calendar text-lg"></i>
+              <span className="font-medium">Ежедневные задания</span>
+              {!isTabUnlocked('quests') && <Lock className="w-4 h-4 ml-auto" />}
             </Button>
           </nav>
 

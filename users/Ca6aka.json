@@ -2,22 +2,57 @@
   "id": "2a06ad97-f261-4edb-a6a7-2135295a81ae",
   "nickname": "Ca6aka",
   "password": "$2b$10$mmST6.N8gIjxWcm6v1mRaebd3aujzbkjmzZBkU.uLRNQKY.goxvcm",
-  "balance": 14800,
+  "balance": 19700,
   "serverLimit": 3,
-  "tutorialCompleted": false,
+  "tutorialCompleted": true,
   "admin": 1,
   "banned": false,
   "muted": false,
   "muteExpires": null,
-  "isOnline": false,
+  "isOnline": true,
   "lastIncomeUpdate": 1755315516547,
   "jobCooldowns": {
-    "maintenance": 1755316413592,
-    "optimization": 1755316563872,
-    "security-audit": 1755316742194
+    "maintenance": 1755317139678,
+    "optimization": 1755317289965,
+    "security-audit": 1755317440509
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "4a4ef492-7366-4650-bb4a-99893c37d5e8",
+      "description": "Tutorial completed! All features unlocked.",
+      "timestamp": "8/16/2025, 4:03:42 AM"
+    },
+    {
+      "id": "5783b153-ee0c-4ca8-b6d1-4e1182d75edd",
+      "description": "Received $1,000 from super admin",
+      "timestamp": "8/16/2025, 4:00:51 AM"
+    },
+    {
+      "id": "24507e5c-f243-40bc-885d-f102c9bee516",
+      "description": "Completed Security Audit (+$500)",
+      "timestamp": "8/16/2025, 4:00:40 AM"
+    },
+    {
+      "id": "ad86113c-b451-4cfe-ae92-2058d429ef84",
+      "description": "Completed Performance Optimization (+$250)",
+      "timestamp": "8/16/2025, 4:00:39 AM"
+    },
+    {
+      "id": "a068c40d-7d0b-486a-ab17-17d8b5944aca",
+      "description": "Daily quest completed: Daily Maintenance (+$2,000)",
+      "timestamp": "8/16/2025, 4:00:39 AM"
+    },
+    {
+      "id": "3812ff04-d442-4499-a491-7ab5658ab44a",
+      "description": "Completed Server Maintenance (+$150)",
+      "timestamp": "8/16/2025, 4:00:39 AM"
+    },
+    {
+      "id": "151d5a9b-d70b-4ac6-9786-41f73fee4ecd",
+      "description": "Received $1,000 from super admin",
+      "timestamp": "8/16/2025, 4:00:29 AM"
+    },
     {
       "id": "25c9341e-4ae7-43b9-bc2b-c7431e4c084b",
       "description": "Completed Security Audit (+$500)",
@@ -55,7 +90,7 @@
     }
   ],
   "achievements": [],
-  "completedJobsCount": 6,
+  "completedJobsCount": 9,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -68,8 +103,8 @@
         "jobType": "maintenance",
         "count": 3
       },
-      "progress": 2,
-      "completed": false,
+      "progress": 3,
+      "completed": true,
       "date": "Sat Aug 16 2025"
     },
     {
@@ -101,5 +136,5 @@
     }
   ],
   "lastQuestReset": 1755315516547,
-  "lastSeen": 1755316167502
+  "lastSeen": 1755317125809
 }

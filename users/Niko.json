@@ -2,7 +2,7 @@
   "id": "5e9ded5d-43be-46d4-ab20-a973786d3500",
   "nickname": "Niko",
   "password": "$2b$10$uWfGSxaVYqWlujo1/kNzQ.m/Fb3Edce8S.3yWUgro4kipEEVOpLoa",
-  "balance": 10900,
+  "balance": 14800,
   "serverLimit": 3,
   "tutorialCompleted": false,
   "admin": 1,
@@ -12,12 +12,32 @@
   "isOnline": false,
   "lastIncomeUpdate": 1755315559182,
   "jobCooldowns": {
-    "maintenance": 1755315867140,
-    "optimization": 1755316017585,
-    "security-audit": 1755316168009
+    "maintenance": 1755317188833,
+    "optimization": 1755317339153,
+    "security-audit": 1755317489456
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "e99acb8d-865b-4353-8795-35220ed40593",
+      "description": "Completed Security Audit (+$500)",
+      "timestamp": "8/16/2025, 4:01:29 AM"
+    },
+    {
+      "id": "05ad707f-d428-41c9-8aa6-26cebcb8ec76",
+      "description": "Daily quest completed: Server Optimization (+$3,000)",
+      "timestamp": "8/16/2025, 4:01:29 AM"
+    },
+    {
+      "id": "afe66c82-36fc-4bd4-bf25-b5938a89105e",
+      "description": "Completed Performance Optimization (+$250)",
+      "timestamp": "8/16/2025, 4:01:29 AM"
+    },
+    {
+      "id": "095f7b2a-88c4-4978-b67f-0a3e792c3021",
+      "description": "Completed Server Maintenance (+$150)",
+      "timestamp": "8/16/2025, 4:01:28 AM"
+    },
     {
       "id": "6af8073c-cafd-4f96-9cc9-4aa5b33b3f32",
       "description": "Muted for 5 minutes by admin Ca6aka",
@@ -75,7 +95,7 @@
     }
   ],
   "achievements": [],
-  "completedJobsCount": 3,
+  "completedJobsCount": 6,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -88,7 +108,7 @@
         "jobType": "maintenance",
         "count": 3
       },
-      "progress": 1,
+      "progress": 2,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -115,11 +135,11 @@
         "jobType": "optimization",
         "count": 2
       },
-      "progress": 1,
-      "completed": false,
+      "progress": 2,
+      "completed": true,
       "date": "Sat Aug 16 2025"
     }
   ],
   "lastQuestReset": 1755315559182,
-  "lastSeen": 1755315919682
+  "lastSeen": 1755316940364
 }
