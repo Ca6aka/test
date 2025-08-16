@@ -1,0 +1,34 @@
+{
+  "id": "8c5b38e8-0f92-4b57-9c79-91b09856a2c8",
+  "nickname": "Niko",
+  "password": "$2b$10$RXMOh3Nd9q/rXUS6tfqZRegBSuotit8WUKDuZ7yP27Ph1ytLYDrTO",
+  "balance": 10900,
+  "serverLimit": 3,
+  "tutorialCompleted": false,
+  "admin": 1,
+  "isOnline": true,
+  "lastIncomeUpdate": 1755314077984,
+  "jobCooldowns": {
+    "maintenance": 1755314380338,
+    "optimization": 1755314530671,
+    "security-audit": 1755314681074
+  },
+  "currentLearning": null,
+  "activities": [
+    {
+      "id": "0cd265e7-02a9-4de9-9da4-40b8329ad555",
+      "description": "Completed Security Audit (+$500)",
+      "timestamp": "8/16/2025, 3:14:41 AM"
+    },
+    {
+      "id": "812f60b5-44a6-47e8-8be5-e409edf2ddf2",
+      "description": "Completed Performance Optimization (+$250)",
+      "timestamp": "8/16/2025, 3:14:40 AM"
+    },
+    {
+      "id": "76b06415-f826-4235-8a21-c1cf659e1510",
+      "description": "Completed Server Maintenance (+$150)",
+      "timestamp": "8/16/2025, 3:14:40 AM"
+    }
+  ]
+}

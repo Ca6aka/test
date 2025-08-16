@@ -1,14 +1,1 @@
-[
-  {
-    "id": "176e718b-a973-4b1d-b01a-2d722db6ee67",
-    "ownerId": "af32cffd-9c64-4dcc-b3b7-3ef4ac710047",
-    "name": "Basic Web Server",
-    "type": "Web Hosting",
-    "incomePerMinute": 15,
-    "monthlyCost": 45,
-    "icon": "fas fa-globe",
-    "isOnline": true,
-    "usage": 28,
-    "createdAt": 1755312510005
-  }
-]
+[]

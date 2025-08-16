@@ -2,13 +2,33 @@
   "id": "e9d7d40c-8d6e-423b-ac42-bf1b91868252",
   "nickname": "Ca6aka",
   "password": "$2b$10$.xgj5CH7ZN/rpvdhwjRUsuV72F44uECLWoNZYMVrvFD.Huv16qgdy",
-  "balance": 10000,
+  "balance": 10900,
   "serverLimit": 3,
   "tutorialCompleted": false,
   "admin": 1,
-  "isOnline": true,
+  "isOnline": false,
   "lastIncomeUpdate": 1755313941495,
-  "jobCooldowns": {},
+  "jobCooldowns": {
+    "maintenance": 1755314338918,
+    "optimization": 1755314489495,
+    "security-audit": 1755314640059
+  },
   "currentLearning": null,
-  "activities": []
+  "activities": [
+    {
+      "id": "bf519a11-3d1b-42d0-88d5-3e6c837517d8",
+      "description": "Completed Security Audit (+$500)",
+      "timestamp": "8/16/2025, 3:14:00 AM"
+    },
+    {
+      "id": "905fc710-e68c-4dfd-850b-44b2a02d6ae4",
+      "description": "Completed Performance Optimization (+$250)",
+      "timestamp": "8/16/2025, 3:13:59 AM"
+    },
+    {
+      "id": "a6b45c23-5771-4fb7-9ae5-f41ec931bb18",
+      "description": "Completed Server Maintenance (+$150)",
+      "timestamp": "8/16/2025, 3:13:58 AM"
+    }
+  ]
 }
