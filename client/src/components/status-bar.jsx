@@ -115,7 +115,7 @@ export function StatusBar() {
             <SelectContent>
               <SelectItem value="en">🇺🇸 EN</SelectItem>
               <SelectItem value="ru">🇷🇺 RU</SelectItem>
-              <SelectItem value="uk">🇺🇦 UK</SelectItem>
+              <SelectItem value="ua">🇺🇦 UA</SelectItem>
               <SelectItem value="de">🇩🇪 DE</SelectItem>
             </SelectContent>
           </Select>
