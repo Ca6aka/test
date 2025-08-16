@@ -2,7 +2,7 @@
   "id": "e73513b4-65ec-40e1-bd85-339d155b7af0",
   "nickname": "Ca6aka",
   "password": "$2b$10$JpfJ4vb59zjxCtXN0I4kbee0VAqeB3by8xsWuYuW6PZo3fAATENv.",
-  "balance": 103955,
+  "balance": 104387,
   "level": 2,
   "experience": 144,
   "totalEarnings": 12350,
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755328290895,
+  "lastIncomeUpdate": 1755328976093,
   "jobCooldowns": {
     "maintenance": 1755329034810,
     "optimization": 1755329185284,
@@ -29,29 +29,29 @@
   "currentLearning": null,
   "activities": [
     {
+      "id": "1fd08430-91ed-411c-a89b-fff5e8a27b29",
+      "description": "Income: +$42, Rental: -$4 (Net: +$38)",
+      "timestamp": "8/16/2025, 7:22:56 AM"
+    },
+    {
+      "id": "a46ac298-0ade-4b27-a6ae-9af21b315db6",
+      "description": "Income: +$42, Rental: -$4 (Net: +$38)",
+      "timestamp": "8/16/2025, 7:21:55 AM"
+    },
+    {
+      "id": "520fc471-bb43-4f4e-838a-32044c7d8a2f",
+      "description": "Income: +$42, Rental: -$4 (Net: +$38)",
+      "timestamp": "8/16/2025, 7:20:55 AM"
+    },
+    {
+      "id": "214258f0-59dc-4f08-8bc9-2386f7407583",
+      "description": "Income: +$353, Rental: -$35 (Net: +$318)",
+      "timestamp": "8/16/2025, 7:19:55 AM"
+    },
+    {
       "id": "0e466b32-9903-43d3-82de-69412c119466",
       "description": "Completed Performance Optimization (+$250, +18 XP)",
       "timestamp": "8/16/2025, 7:18:55 AM"
-    },
-    {
-      "id": "ea643cbf-24b9-4330-84ac-6d5880ab5c65",
-      "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "8/16/2025, 7:18:54 AM"
-    },
-    {
-      "id": "83afe3db-09bc-4989-a5e4-72a6c1cc3cf5",
-      "description": "Income: +$46, Rental: -$4 (Net: +$42)",
-      "timestamp": "8/16/2025, 7:11:30 AM"
-    },
-    {
-      "id": "f402bd1e-afff-4216-b22f-11fc347bb79e",
-      "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "8/16/2025, 7:10:30 AM"
-    },
-    {
-      "id": "d6146f69-7be9-48cd-944f-82f37a639552",
-      "description": "Completed Security Audit (+$500, +25 XP) - Level Up! Now level 2",
-      "timestamp": "8/16/2025, 7:10:30 AM"
     }
   ],
   "achievements": [
@@ -83,7 +83,7 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 667,
+      "progress": 1146,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -103,5 +103,5 @@
     }
   ],
   "lastQuestReset": 1755327035906,
-  "lastSeen": 1755328766307
+  "lastSeen": 1755328976274
 }

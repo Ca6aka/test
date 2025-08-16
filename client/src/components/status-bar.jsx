@@ -13,6 +13,7 @@ export function StatusBar() {
   const { language, changeLanguage, t } = useLanguage();
   const [, setLocation] = useLocation();
   const [profileOpen, setProfileOpen] = useState(false);
+  const [mobileAdminOpen, setMobileAdminOpen] = useState(false);
 
   if (!gameState.user) return null;
 
@@ -82,13 +83,6 @@ export function StatusBar() {
                     <SelectItem value="de">🇩🇪</SelectItem>
                   </SelectContent>
                 </Select>
-                
-                {/* Mobile Admin Panel */}
-                {gameState.user && gameState.user.admin > 0 && (
-                  <div className="text-xs">
-                    <AdminPanel user={gameState.user} />
-                  </div>
-                )}
               </div>
             </div>
           </div>
@@ -103,6 +97,23 @@ export function StatusBar() {
               <i className="fas fa-server text-secondary text-xs"></i>
               <span>{gameState.servers?.length || 0}/{gameState.user.serverLimit || 3}</span>
             </div>
+            
+            {/* Mobile Admin Panel - compact icons only */}
+            {gameState.user && gameState.user.admin > 0 && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setMobileAdminOpen(true)}
+                className="h-6 w-6 p-0 bg-purple-600/20 hover:bg-purple-600/30 border border-purple-500/50"
+                data-testid="mobile-admin-toggle"
+              >
+                {gameState.user.nickname === 'Ca6aka' ? (
+                  <i className="fas fa-crown text-yellow-400 text-xs"></i>
+                ) : (
+                  <i className="fas fa-shield-alt text-purple-400 text-xs"></i>
+                )}
+              </Button>
+            )}
           </div>
           
         </div>
@@ -184,6 +195,17 @@ export function StatusBar() {
           isOpen={profileOpen} 
           onClose={() => setProfileOpen(false)} 
         />
+      )}
+      
+      {/* Mobile Admin Panel Dialog */}
+      {mobileAdminOpen && gameState.user && gameState.user.admin > 0 && (
+        <div className="lg:hidden">
+          <AdminPanel 
+            user={gameState.user} 
+            isOpen={mobileAdminOpen}
+            onOpenChange={setMobileAdminOpen}
+          />
+        </div>
       )}
     </header>
   );

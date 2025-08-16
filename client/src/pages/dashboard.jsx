@@ -11,7 +11,6 @@ import { HostingTab } from '@/components/hosting-tab';
 import { LearningTab } from '@/components/learning-tab';
 import { AchievementsTab } from '@/components/achievements-tab';
 import { QuestsTab } from '@/components/quests-tab';
-import { PlayerRankings } from '@/components/player-rankings';
 import { RankingsPopup } from '@/components/rankings-popup';
 import { useGame } from '@/contexts/game-context';
 import { useLanguage } from '@/contexts/language-context';
@@ -308,8 +307,6 @@ export default function DashboardPage() {
             </div>
           )}
 
-          {/* Player Rankings */}
-          <PlayerRankings />
         </aside>
 
         {/* Content Area */}

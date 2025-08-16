@@ -2,10 +2,10 @@
   "id": "89d9b833-5345-47cc-b3d5-df00302f5ed9",
   "nickname": "Niko",
   "password": "$2b$10$G0HQ4jiWHobTKLBvgkfsF.HC/XLDC2wQjZJgjN8.t25RcxrLzoTAW",
-  "balance": 12350,
+  "balance": 12850,
   "level": 2,
-  "experience": 144,
-  "totalEarnings": 12350,
+  "experience": 169,
+  "totalEarnings": 12850,
   "totalSpent": 0,
   "avatar": {
     "gradient": "from-orange-400 via-amber-500 to-yellow-600",
@@ -24,10 +24,15 @@
   "jobCooldowns": {
     "maintenance": 1755329000205,
     "optimization": 1755329151427,
-    "security-audit": 1755328786481
+    "security-audit": 1755329530504
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "c3c6b612-f112-4b3c-ad23-56696529fd48",
+      "description": "Completed Security Audit (+$500, +25 XP)",
+      "timestamp": "8/16/2025, 7:22:10 AM"
+    },
     {
       "id": "bdba28f8-8a08-4e16-a18f-a3d4658f9fce",
       "description": "Given admin privileges by Ca6aka",
@@ -47,15 +52,10 @@
       "id": "5e1cfaeb-1d81-4daa-bc72-c0af0f4802b4",
       "description": "Completed Security Audit (+$500, +25 XP) - Level Up! Now level 2",
       "timestamp": "8/16/2025, 7:09:46 AM"
-    },
-    {
-      "id": "75c7d9ad-14e8-4a1b-93e8-dfd50da3a60b",
-      "description": "Daily quest completed: Daily Maintenance - Reward ready to claim!",
-      "timestamp": "8/16/2025, 7:09:44 AM"
     }
   ],
   "achievements": [],
-  "completedJobsCount": 9,
+  "completedJobsCount": 10,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -101,5 +101,5 @@
     }
   ],
   "lastQuestReset": 1755327443105,
-  "lastSeen": 1755328766676
+  "lastSeen": 1755329010167
 }

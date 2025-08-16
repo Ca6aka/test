@@ -28,10 +28,14 @@ const apiRequest = async (url, options = {}) => {
   return response.json();
 };
 
-export const AdminPanel = ({ user }) => {
+export const AdminPanel = ({ user, isOpen: externalIsOpen, onOpenChange }) => {
   const { t } = useLanguage();
   const { toast } = useToast();
-  const [isOpen, setIsOpen] = useState(false);
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
+  
+  // Use external control if provided, otherwise use internal state
+  const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
+  const setIsOpen = onOpenChange || setInternalIsOpen;
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedUser, setSelectedUser] = useState('');
@@ -118,24 +122,28 @@ export const AdminPanel = ({ user }) => {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button
-          variant="outline"
-          size="sm"
-          className="bg-purple-600/20 hover:bg-purple-600/30 border-purple-500/50 text-purple-200"
-          data-testid="button-admin-panel"
-        >
-          {isSuperAdmin ? (
-            <>
-              <Crown className="w-4 h-4 mr-1" />
-              {t('superAdminPanel')}
-            </>
-          ) : (
-            <>
-              <Shield className="w-4 h-4 mr-1" />
-              {t('adminPanel')}
-            </>
-          )}
-        </Button>
+        {externalIsOpen === undefined ? (
+          <Button
+            variant="outline"
+            size="sm"
+            className="bg-purple-600/20 hover:bg-purple-600/30 border-purple-500/50 text-purple-200"
+            data-testid="button-admin-panel"
+          >
+            {isSuperAdmin ? (
+              <>
+                <Crown className="w-4 h-4 mr-1" />
+                {t('superAdminPanel')}
+              </>
+            ) : (
+              <>
+                <Shield className="w-4 h-4 mr-1" />
+                {t('adminPanel')}
+              </>
+            )}
+          </Button>
+        ) : (
+          <div />
+        )}
       </DialogTrigger>
       <DialogContent className="max-w-4xl bg-slate-900 text-slate-100">
         <DialogHeader>
