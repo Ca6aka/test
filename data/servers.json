@@ -22,5 +22,17 @@
     "isOnline": true,
     "usage": 33,
     "createdAt": 1755307310788
+  },
+  {
+    "id": "b69fb66b-8bf1-4e46-9372-231338ca89a7",
+    "ownerId": "3fbe5878-38b7-43af-aa42-b069a5775d5b",
+    "name": "Database Server",
+    "type": "Storage",
+    "incomePerMinute": 200,
+    "monthlyCost": 85,
+    "icon": "fas fa-database",
+    "isOnline": true,
+    "usage": 66,
+    "createdAt": 1755308058218
   }
 ]

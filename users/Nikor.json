@@ -2,17 +2,42 @@
   "id": "3fbe5878-38b7-43af-aa42-b069a5775d5b",
   "nickname": "Nikor",
   "password": "$2b$10$A6xLQDbELht7vsrFC/1souHCAex3BRs0aXsyU3tuAT55dS4Dxwk6q",
-  "balance": 8013,
+  "balance": 1313,
   "serverLimit": 3,
   "tutorialCompleted": true,
   "lastIncomeUpdate": 1755307568643,
   "jobCooldowns": {
-    "maintenance": 1755307985796,
+    "maintenance": 1755308318609,
     "optimization": 1755308286439,
-    "security-audit": 1755307958468
+    "security-audit": 1755308469192
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "e798b328-76ea-4e0e-b8d7-c13ba48e4cd9",
+      "description": "Turned Database Server online",
+      "timestamp": "8/16/2025, 1:34:35 AM"
+    },
+    {
+      "id": "762c60d2-e4e8-45f0-a73a-ca3b398c2b87",
+      "description": "Turned Database Server offline",
+      "timestamp": "8/16/2025, 1:34:31 AM"
+    },
+    {
+      "id": "9b2589a1-c5ea-429d-8acb-893a549928d8",
+      "description": "Purchased Database Server for $8,000",
+      "timestamp": "8/16/2025, 1:34:18 AM"
+    },
+    {
+      "id": "bb937793-ba5e-401d-bdf3-987307308450",
+      "description": "Completed Security Audit (+$800)",
+      "timestamp": "8/16/2025, 1:33:39 AM"
+    },
+    {
+      "id": "d35ff136-ecd9-43ed-914d-7ad7d2c56598",
+      "description": "Completed Server Maintenance (+$500)",
+      "timestamp": "8/16/2025, 1:33:38 AM"
+    },
     {
       "id": "8e92e182-abe5-46e2-8766-90731a7d86cc",
       "description": "Completed Performance Optimization (+$1,200)",
