@@ -9,6 +9,7 @@
     "icon": "fas fa-globe",
     "isOnline": true,
     "usage": 44,
-    "createdAt": 1755317831566
+    "createdAt": 1755317831566,
+    "loadPercentage": 95
   }
 ]

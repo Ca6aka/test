@@ -146,7 +146,7 @@ export function ServersTab({ onTabChange }) {
                           </Label>
                           <Slider
                             value={[server.loadPercentage || 50]}
-                            onValueChange={(value) => {
+                            onValueCommit={(value) => {
                               updateServerLoad.mutate({ serverId: server.id, loadPercentage: value[0] });
                             }}
                             max={100}
@@ -219,12 +219,12 @@ export function ServersTab({ onTabChange }) {
                 <div className="bg-slate-700/30 rounded-lg p-3">
                   <p className="text-xs text-slate-400 mb-1">Income/min</p>
                   <p className={`font-semibold ${server.isOnline ? 'text-secondary' : 'text-slate-500'}`}>
-                    {server.isOnline ? `+${formatCurrency(server.incomePerMinute)}` : '$0 (Offline)'}
+                    {server.isOnline ? `+${formatCurrency(Math.round(server.incomePerMinute * (server.loadPercentage || 50) / 100))}` : '$0 (Offline)'}
                   </p>
                 </div>
                 <div className="bg-slate-700/30 rounded-lg p-3">
                   <p className="text-xs text-slate-400 mb-1">{t('rentalCost')}</p>
-                  <p className="font-semibold text-red-400">-{formatCurrency(Math.round(server.incomePerMinute * 0.1))}</p>
+                  <p className="font-semibold text-red-400">-{formatCurrency(Math.round(server.incomePerMinute * 0.1))}/min</p>
                 </div>
               </div>
 

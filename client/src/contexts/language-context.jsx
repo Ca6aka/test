@@ -581,6 +581,9 @@ const translations = {
     userList: 'Список користувачів',
     success: 'Успішно',
     error: 'Помилка',
+    // Quest system
+    dailyQuests: 'Щоденні завдання',
+    achievements: 'Досягнення',
   },
   de: {
     tutorial: 'Tutorial',
@@ -732,6 +735,9 @@ const translations = {
     userList: 'Benutzerliste',
     success: 'Erfolgreich',
     error: 'Fehler',
+    // Quest system
+    dailyQuests: 'Tägliche Aufgaben',
+    achievements: 'Erfolge',
   }
 };
 

@@ -471,7 +471,7 @@ export class FileStorage {
       monthlyCost: product.monthlyCost,
       icon: product.icon,
       isOnline: true,
-      usage: Math.floor(Math.random() * 50) + 25, // Random usage 25-75%
+      loadPercentage: 50, // Default 50% load
       createdAt: Date.now()
     };
 
@@ -720,7 +720,11 @@ export class FileStorage {
     
     // Calculate income from online servers (per minute, so divide by 60000ms)
     const totalIncome = servers.reduce((sum, server) => {
-      return sum + (server.isOnline ? server.incomePerMinute : 0);
+      if (!server.isOnline) return sum;
+      const baseIncome = server.incomePerMinute;
+      const loadPercentage = server.loadPercentage || 50;
+      const adjustedIncome = baseIncome * (loadPercentage / 100);
+      return sum + adjustedIncome;
     }, 0);
     
     // Calculate rental costs per minute (10% of income as standard)
