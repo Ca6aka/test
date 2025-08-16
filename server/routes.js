@@ -73,11 +73,11 @@ export async function registerRoutes(app) {
       const clientIP = req.ip || req.connection.remoteAddress || req.socket.remoteAddress || 
                       (req.connection.socket ? req.connection.socket.remoteAddress : null);
       
-      // Check if IP already registered accounts in last 24 hours
-      const recentRegistrations = await storage.checkRegistrationsByIP(clientIP);
-      if (recentRegistrations >= 3) {
-        return res.status(429).json({ 
-          message: 'Registration limit exceeded. Maximum 3 accounts per IP address per day.' 
+      // Check if IP already registered maximum accounts (lifetime limit)
+      const registrations = await storage.checkRegistrationsByIP(clientIP);
+      if (registrations >= 5) {
+        return res.status(400).json({ 
+          message: 'Registration limit exceeded. Maximum 5 accounts per IP address.' 
         });
       }
       

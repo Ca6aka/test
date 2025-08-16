@@ -73,6 +73,10 @@ export function ServersTab({ onTabChange }) {
   const repairServer = useMutation({
     mutationFn: async ({ serverId, repairType }) => {
       const response = await apiRequest('POST', `/api/servers/${serverId}/repair`, { repairType });
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to repair server');
+      }
       return await response.json();
     },
     onSuccess: (data) => {
@@ -80,13 +84,13 @@ export function ServersTab({ onTabChange }) {
       queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
       toast({
         title: t('serverRepaired'),
-        description: t('serverRepairedDesc').replace('${cost}', `$${data.cost.toLocaleString()}`).replace('{durability}', data.durabilityRestored),
+        description: t('serverRepairedDesc').replace('${cost}', `$${data.cost?.toLocaleString() || 'N/A'}`).replace('{durability}', data.durabilityRestored || 'N/A'),
       });
     },
     onError: (error) => {
       toast({
         title: t('repairFailed'),
-        description: error.message,
+        description: error.message || 'Unknown error occurred',
         variant: 'destructive',
       });
     },

@@ -649,15 +649,12 @@ export class FileStorage {
     }
   }
 
-  // Check registration count by IP in last 24 hours
+  // Check registration count by IP (lifetime limit)
   async checkRegistrationsByIP(ip) {
     const users = await this.getAllUsers();
-    const twentyFourHoursAgo = Date.now() - (24 * 60 * 60 * 1000);
     
     return users.filter(user => 
-      user.registrationIP === ip && 
-      user.registrationTime && 
-      user.registrationTime > twentyFourHoursAgo
+      user.registrationIP === ip
     ).length;
   }
 
