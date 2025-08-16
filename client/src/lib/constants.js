@@ -55,7 +55,7 @@ export const SERVER_PRODUCTS = [
   {
     id: 'tpu-server',
     name: 'TPU Server',
-    type: 'Вычисления',
+    type: 'Computing',
     price: 47500,
     incomePerMinute: 200,
     monthlyCost: 350,
