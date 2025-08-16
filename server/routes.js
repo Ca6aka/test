@@ -197,9 +197,20 @@ export async function registerRoutes(app) {
       }
       
       const servers = await storage.getUserServers(req.session.userId);
+      
+      // Check for server overloads in real-time
+      for (const server of servers) {
+        if (server.isOnline && server.loadPercentage) {
+          await storage.checkServerOverload(req.session.userId, server.id, server.loadPercentage);
+        }
+      }
+      
+      // Get updated servers after overload check
+      const updatedServers = await storage.getUserServers(req.session.userId);
+      
       // Sync with global servers JSON
-      await storage.syncServerData(servers);
-      res.json({ servers });
+      await storage.syncServerData(updatedServers);
+      res.json({ servers: updatedServers });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }

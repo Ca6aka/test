@@ -2,7 +2,7 @@
   "id": "e73513b4-65ec-40e1-bd85-339d155b7af0",
   "nickname": "Ca6aka",
   "password": "$2b$10$JpfJ4vb59zjxCtXN0I4kbee0VAqeB3by8xsWuYuW6PZo3fAATENv.",
-  "balance": 111958,
+  "balance": 142642,
   "level": 6,
   "experience": 644,
   "totalEarnings": 20650,
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755339457230,
+  "lastIncomeUpdate": 1755339590431,
   "jobCooldowns": {
     "maintenance": 1755334299865,
     "optimization": 1755334449530,
@@ -29,33 +29,36 @@
   "currentLearning": null,
   "activities": [
     {
-      "id": "24ed1457-b93f-4196-aa41-e4334e0e8d0c",
-      "description": "Income: +$92, Rental: -$9 (Net: +$83)",
-      "timestamp": "8/16/2025, 10:17:37 AM"
+      "id": "7346ace3-3255-4309-a121-00cf9d7460da",
+      "description": "Achievement unlocked: Efficient Worker (+$3,000)",
+      "timestamp": "8/16/2025, 10:19:50 AM"
     },
     {
-      "id": "4ffddc9b-75f2-48f8-9f92-b50fa3b8d964",
-      "description": "Quest reward claimed: Passive Income (+$1,500)",
-      "timestamp": "8/16/2025, 10:17:21 AM"
+      "id": "3adb6027-da17-46ec-8f11-5ff60ec5d11f",
+      "description": "Achievement unlocked: Early Earner (+$2,000)",
+      "timestamp": "8/16/2025, 10:19:50 AM"
     },
     {
-      "id": "818c8e0b-7c7e-4a9b-b9c5-999c65749451",
-      "description": "Income: +$92, Rental: -$9 (Net: +$83)",
-      "timestamp": "8/16/2025, 10:16:36 AM"
+      "id": "dacdea84-bb53-44eb-a5c0-c74d44a5e2f1",
+      "description": "Income: +$204, Rental: -$20 (Net: +$184)",
+      "timestamp": "8/16/2025, 10:19:50 AM"
     },
     {
-      "id": "61989b83-a25e-4df4-a8bd-fcda08eeed43",
-      "description": "Income: +$150, Rental: -$15 (Net: +$135)",
-      "timestamp": "8/16/2025, 10:15:36 AM"
+      "id": "451d8ed2-6c4a-4e92-911b-821f9bec00d5",
+      "description": "Achievement unlocked: Server Builder (+$7,500)",
+      "timestamp": "8/16/2025, 10:19:32 AM"
     },
     {
-      "id": "c4ea7c18-2eac-49e7-8564-ddb20ffd3553",
-      "description": "Purchased High Performance Server for $12,000",
-      "timestamp": "8/16/2025, 10:14:36 AM"
+      "id": "d3b0b3ad-2f80-422a-a37d-6d6ff6ba9983",
+      "description": "Achievement unlocked: Efficient Worker (+$3,000)",
+      "timestamp": "8/16/2025, 10:19:32 AM"
     }
   ],
   "achievements": [
-    "first-server"
+    "first-server",
+    "wealthy-investor",
+    "server-builder",
+    "efficient-worker"
   ],
   "completedJobsCount": 39,
   "completedCoursesCount": 1,
@@ -70,10 +73,9 @@
         "jobType": "maintenance",
         "count": 3
       },
-      "progress": 3,
-      "completed": true,
-      "date": "Sat Aug 16 2025",
-      "claimed": true
+      "progress": 0,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
     },
     {
       "id": "daily-income-Sat Aug 16 2025",
@@ -84,10 +86,9 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 5000,
-      "completed": true,
-      "date": "Sat Aug 16 2025",
-      "claimed": true
+      "progress": 0,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
     },
     {
       "id": "daily-optimization-Sat Aug 16 2025",
@@ -99,14 +100,108 @@
         "jobType": "optimization",
         "count": 2
       },
-      "progress": 2,
-      "completed": true,
-      "date": "Sat Aug 16 2025",
-      "claimed": true
+      "progress": 0,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
+    },
+    {
+      "id": "daily-security-Sat Aug 16 2025",
+      "title": "Security Check",
+      "description": "Complete 1 Security Audit job",
+      "reward": 2500,
+      "requirement": {
+        "type": "job",
+        "jobType": "security-audit",
+        "count": 1
+      },
+      "progress": 0,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
+    },
+    {
+      "id": "daily-earnings-Sat Aug 16 2025",
+      "title": "Daily Earnings",
+      "description": "Earn $10,000 from server income",
+      "reward": 3500,
+      "requirement": {
+        "type": "income",
+        "amount": 10000
+      },
+      "progress": 0,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
+    },
+    {
+      "id": "daily-worker-Sat Aug 16 2025",
+      "title": "Hard Worker",
+      "description": "Complete 5 jobs of any type",
+      "reward": 4000,
+      "requirement": {
+        "type": "job",
+        "jobType": "any",
+        "count": 5
+      },
+      "progress": 0,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
+    },
+    {
+      "id": "daily-mixed-jobs-Sat Aug 16 2025",
+      "title": "Mixed Tasks",
+      "description": "Complete 2 Maintenance and 1 Optimization job",
+      "reward": 3200,
+      "requirement": {
+        "type": "job",
+        "jobType": "mixed",
+        "count": 3
+      },
+      "progress": 0,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
+    },
+    {
+      "id": "daily-income-boost-Sat Aug 16 2025",
+      "title": "Income Boost",
+      "description": "Earn $20,000 from server income",
+      "reward": 5000,
+      "requirement": {
+        "type": "income",
+        "amount": 20000
+      },
+      "progress": 0,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
+    },
+    {
+      "id": "daily-job-spree-Sat Aug 16 2025",
+      "title": "Job Spree",
+      "description": "Complete 8 jobs of any type",
+      "reward": 6000,
+      "requirement": {
+        "type": "job",
+        "jobType": "any",
+        "count": 8
+      },
+      "progress": 0,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
+    },
+    {
+      "id": "daily-mega-earner-Sat Aug 16 2025",
+      "title": "Mega Earner",
+      "description": "Earn $50,000 from server income",
+      "reward": 8000,
+      "requirement": {
+        "type": "income",
+        "amount": 50000
+      },
+      "progress": 0,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
     }
   ],
-  "lastQuestReset": 1755327035906,
-  "lastSeen": 1755339536398,
+  "lastQuestReset": 1755339590435,
+  "lastSeen": 1755339740670,
   "completedLearning": [
     "basic-setup"
   ]
