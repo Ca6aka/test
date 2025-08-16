@@ -12,16 +12,6 @@ export const SERVER_PRODUCTS = [
     requiredLevel: 1
   },
   {
-    id: 'high-performance',
-    name: 'High Performance Server',
-    type: 'Gaming/Apps',
-    price: 12000,
-    incomePerMinute: 50,
-    monthlyCost: 120,
-    icon: 'fas fa-server',
-    requiredLevel: 4
-  },
-  {
     id: 'database-server',
     name: 'Database Server',
     type: 'Storage',
@@ -29,6 +19,16 @@ export const SERVER_PRODUCTS = [
     incomePerMinute: 25,
     monthlyCost: 85,
     icon: 'fas fa-database',
+    requiredLevel: 4
+  },
+  {
+    id: 'high-performance',
+    name: 'High Performance Server',
+    type: 'Gaming/Apps',
+    price: 12000,
+    incomePerMinute: 50,
+    monthlyCost: 120,
+    icon: 'fas fa-server',
     requiredLevel: 8
   },
   {

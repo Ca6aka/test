@@ -2,7 +2,7 @@
   "id": "e73513b4-65ec-40e1-bd85-339d155b7af0",
   "nickname": "Ca6aka",
   "password": "$2b$10$JpfJ4vb59zjxCtXN0I4kbee0VAqeB3by8xsWuYuW6PZo3fAATENv.",
-  "balance": 146186,
+  "balance": 146706,
   "level": 6,
   "experience": 644,
   "totalEarnings": 20650,
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755340469568,
+  "lastIncomeUpdate": 1755340766155,
   "jobCooldowns": {
     "maintenance": 1755334299865,
     "optimization": 1755334449530,
@@ -28,6 +28,16 @@
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "e81b322a-0137-4471-9a52-809217c08c84",
+      "description": "Income: +$117, Rental: -$11 (Net: +$106)",
+      "timestamp": "8/16/2025, 10:39:26 AM"
+    },
+    {
+      "id": "9e22e809-4605-4de8-8f16-dbdff5953a87",
+      "description": "Income: +$460, Rental: -$46 (Net: +$414)",
+      "timestamp": "8/16/2025, 10:38:25 AM"
+    },
     {
       "id": "df19c868-2807-408a-85b0-5d57641eb299",
       "description": "Income: +$117, Rental: -$11 (Net: +$106)",
@@ -42,16 +52,6 @@
       "id": "3e116467-44a9-4d64-8b85-e2bf4f56c35a",
       "description": "Income: +$325, Rental: -$32 (Net: +$293)",
       "timestamp": "16.08.2025, 12:32:15"
-    },
-    {
-      "id": "f7e362e3-a789-4a5c-a1d8-fda850723587",
-      "description": "Income: +$233, Rental: -$23 (Net: +$210)",
-      "timestamp": "8/16/2025, 10:29:28 AM"
-    },
-    {
-      "id": "88caa12b-7a5f-48a4-b40a-d657b530d5c2",
-      "description": "Income: +$149, Rental: -$14 (Net: +$135)",
-      "timestamp": "8/16/2025, 10:27:28 AM"
     }
   ],
   "achievements": [
@@ -87,7 +87,7 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 1711,
+      "progress": 2288,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -128,7 +128,7 @@
         "type": "income",
         "amount": 10000
       },
-      "progress": 1711,
+      "progress": 2288,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -169,7 +169,7 @@
         "type": "income",
         "amount": 20000
       },
-      "progress": 1711,
+      "progress": 2288,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -196,13 +196,13 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 1711,
+      "progress": 2288,
       "completed": false,
       "date": "Sat Aug 16 2025"
     }
   ],
   "lastQuestReset": 1755339590435,
-  "lastSeen": 1755340703507,
+  "lastSeen": 1755340770639,
   "completedLearning": [
     "basic-setup"
   ]
