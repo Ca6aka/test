@@ -53,38 +53,51 @@ function getExperienceForCurrentLevel(experience) {
 }
 
 // Avatar Generation System
-function generateRandomAvatar() {
-  const colors = [
-    'from-red-400 to-pink-600',
-    'from-blue-400 to-purple-600', 
-    'from-green-400 to-teal-600',
-    'from-yellow-400 to-orange-600',
-    'from-purple-400 to-indigo-600',
-    'from-pink-400 to-red-600',
-    'from-indigo-400 to-blue-600',
-    'from-teal-400 to-green-600',
-    'from-orange-400 to-yellow-600',
-    'from-cyan-400 to-blue-600',
-    'from-emerald-400 to-cyan-600',
-    'from-rose-400 to-pink-600',
-    'from-violet-400 to-purple-600',
-    'from-amber-400 to-orange-600',
-    'from-lime-400 to-green-600'
+function generateRandomAvatar(nickname = '') {
+  // Special avatar for Ca6aka (super admin)
+  if (nickname === 'Ca6aka') {
+    return {
+      gradient: 'from-purple-500 via-pink-500 via-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500',
+      pattern: 'rainbow-super-admin',
+      seed: 999999,
+      animation: 'rainbow-pulse'
+    };
+  }
+  
+  const multiColorGradients = [
+    'from-red-400 via-pink-500 to-purple-600',
+    'from-blue-400 via-purple-500 to-indigo-600', 
+    'from-green-400 via-teal-500 to-cyan-600',
+    'from-yellow-400 via-orange-500 to-red-600',
+    'from-purple-400 via-violet-500 to-indigo-600',
+    'from-pink-400 via-rose-500 to-red-600',
+    'from-indigo-400 via-blue-500 to-cyan-600',
+    'from-teal-400 via-emerald-500 to-green-600',
+    'from-orange-400 via-amber-500 to-yellow-600',
+    'from-cyan-400 via-sky-500 to-blue-600',
+    'from-emerald-400 via-green-500 to-teal-600',
+    'from-rose-400 via-pink-500 to-red-600',
+    'from-violet-400 via-purple-500 to-indigo-600',
+    'from-amber-400 via-orange-500 to-red-600',
+    'from-lime-400 via-green-500 to-emerald-600'
   ];
   
-  const patterns = [
-    'radial-gradient',
-    'conic-gradient', 
-    'linear-gradient'
+  const animations = [
+    'gradient-shift',
+    'pulse-glow', 
+    'shimmer-wave',
+    'color-dance',
+    'soft-pulse'
   ];
   
-  const selectedColor = colors[Math.floor(Math.random() * colors.length)];
-  const selectedPattern = patterns[Math.floor(Math.random() * patterns.length)];
+  const selectedGradient = multiColorGradients[Math.floor(Math.random() * multiColorGradients.length)];
+  const selectedAnimation = animations[Math.floor(Math.random() * animations.length)];
   
   return {
-    gradient: selectedColor,
-    pattern: selectedPattern,
-    seed: Math.floor(Math.random() * 1000000)
+    gradient: selectedGradient,
+    pattern: 'multi-color',
+    seed: Math.floor(Math.random() * 1000000),
+    animation: selectedAnimation
   };
 }
 
@@ -926,8 +939,8 @@ export class FileStorage {
       timestamp: new Date().toLocaleString()
     });
 
-    // Keep only last 50 activities
-    const trimmedActivities = activities.slice(0, 50);
+    // Keep only last 5 activities to save disk space
+    const trimmedActivities = activities.slice(0, 5);
 
     await this.updateUser(userId, { activities: trimmedActivities });
   }
@@ -1118,7 +1131,8 @@ export class FileStorage {
       nickname: user.nickname,
       message: message.trim(),
       timestamp: Date.now(),
-      deleted: false
+      deleted: false,
+      adminLevel: user.admin || 0  // Store admin level at time of message
     };
 
     messages.push(newMessage);

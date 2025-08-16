@@ -27,6 +27,87 @@
   }
 }
 
+/* Avatar animations */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.6); }
+  100% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); }
+}
+
+@keyframes shimmer-wave {
+  0% { transform: translateX(-100%) scaleY(1); }
+  50% { transform: translateX(0%) scaleY(1.2); }
+  100% { transform: translateX(100%) scaleY(1); }
+}
+
+@keyframes color-dance {
+  0% { filter: hue-rotate(0deg) brightness(1); }
+  25% { filter: hue-rotate(90deg) brightness(1.2); }
+  50% { filter: hue-rotate(180deg) brightness(1); }
+  75% { filter: hue-rotate(270deg) brightness(1.2); }
+  100% { filter: hue-rotate(360deg) brightness(1); }
+}
+
+@keyframes soft-pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.9; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes rainbow-pulse {
+  0% { 
+    background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+    transform: scale(1) rotate(0deg);
+  }
+  25% { 
+    background: linear-gradient(135deg, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000);
+    transform: scale(1.1) rotate(90deg);
+  }
+  50% { 
+    background: linear-gradient(225deg, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000, #ff7f00);
+    transform: scale(1) rotate(180deg);
+  }
+  75% { 
+    background: linear-gradient(315deg, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000, #ff7f00, #ffff00);
+    transform: scale(1.1) rotate(270deg);
+  }
+  100% { 
+    background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-shimmer-wave {
+  animation: shimmer-wave 2.5s ease-in-out infinite;
+}
+
+.animate-color-dance {
+  animation: color-dance 4s ease-in-out infinite;
+}
+
+.animate-soft-pulse {
+  animation: soft-pulse 3s ease-in-out infinite;
+}
+
+.animate-rainbow-pulse {
+  animation: rainbow-pulse 2s ease-in-out infinite;
+}
+
 /* Admin badge animations */
 @keyframes shimmer {
   0% {

@@ -105,10 +105,14 @@ function PlayerAvatar({ user, size = 'md', showLevel = true, showExperienceRing 
         
         {/* Avatar with animated gradient */}
         <div 
-          className={`${sizeClasses[size]} rounded-full bg-gradient-to-br ${user.avatar.gradient} flex items-center justify-center text-white font-bold ${textSizes[size]} shadow-lg border-2 border-white/20 relative overflow-hidden ${onClick ? 'group-hover:scale-105 transition-transform' : ''}`}
+          className={`${sizeClasses[size]} rounded-full bg-gradient-to-br ${user.avatar.gradient} flex items-center justify-center text-white font-bold ${textSizes[size]} shadow-lg border-2 border-white/20 relative overflow-hidden ${onClick ? 'group-hover:scale-105 transition-transform' : ''} ${user.avatar.animation ? `animate-${user.avatar.animation}` : 'animate-soft-pulse'}`}
         >
           {/* Animated background overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10 animate-shimmer opacity-60"></div>
+          {/* Special rainbow effect for super admin */}
+          {user.nickname === 'Ca6aka' && (
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 via-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 animate-rainbow-pulse opacity-80"></div>
+          )}
           <span className="relative z-10">{user.nickname[0].toUpperCase()}</span>
         </div>
 
@@ -149,7 +153,7 @@ export function PlayerProfileBar({ isOpen, onClose }) {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 overflow-hidden"
-        style={{ zIndex: 99999 }}
+        style={{ zIndex: 50 }}
         onClick={onClose}
       >
         <motion.div

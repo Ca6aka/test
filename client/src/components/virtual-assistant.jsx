@@ -354,12 +354,12 @@ function VirtualAssistant() {
                             >
                               {message.nickname}
                             </button>
-                            {userStatus?.admin >= 2 && (
+                            {message.adminLevel >= 2 && (
                               <span className="text-xs px-2 py-0.5 rounded-full bg-red-500/20 text-red-400 border border-red-500/30">
                                 SUPER-ADMIN
                               </span>
                             )}
-                            {userStatus?.admin === 1 && (
+                            {message.adminLevel === 1 && (
                               <span className="text-xs px-2 py-0.5 rounded-full bg-yellow-500/20 text-yellow-400 border border-yellow-500/30">
                                 ADMIN
                               </span>
