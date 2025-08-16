@@ -163,6 +163,10 @@ const translations = {
     dailyQuests: 'Daily Quests',
     achievements: 'Achievements',
     achievementsList: {
+      'first-steps': {
+        title: "First Steps",
+        description: "Complete your first job",
+      },
       'first_server': {
         title: "First Server",
         description: "Purchase your first server",
@@ -677,6 +681,10 @@ const translations = {
     dailyQuests: 'Ежедневные задания',
     achievements: 'Достижения',
     achievementsList: {
+      'first-steps': {
+        title: "Первые шаги",
+        description: "Выполните свое первое задание",
+      },
       'first_server': {
         title: "Первый сервер",
         description: "Купите свой первый сервер",
