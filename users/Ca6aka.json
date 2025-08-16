@@ -2,10 +2,10 @@
   "id": "e8162264-12da-4ee1-9dbc-a18a1f3f858b",
   "nickname": "Ca6aka",
   "password": "$2b$10$VyWHFzCGAu.7/osYGqrnxuPn.hOD46LZTHkP9KeljdyeY2j8FxfdO",
-  "balance": 27157,
-  "level": 5,
-  "experience": 599,
-  "totalEarnings": 19850,
+  "balance": 34746,
+  "level": 6,
+  "experience": 652,
+  "totalEarnings": 20750,
   "totalSpent": 34015,
   "avatar": {
     "gradient": "from-blue-400 via-purple-500 to-indigo-600",
@@ -20,11 +20,11 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755378207848,
+  "lastIncomeUpdate": 1755381560571,
   "jobCooldowns": {
-    "maintenance": 1755377918722,
-    "optimization": 1755378150991,
-    "security-audit": 1755378447170
+    "maintenance": 1755381688772,
+    "optimization": 1755381840553,
+    "security-audit": 1755382100401
   },
   "currentLearning": {
     "id": "advanced-management",
@@ -41,29 +41,29 @@
   },
   "activities": [
     {
-      "id": "b2461b1f-cef6-43a4-837f-535805ac3181",
-      "description": "Income: +$133, Rental: -$13 (Net: +$120)",
-      "timestamp": "16.08.2025, 23:03:27"
+      "id": "28a26331-3552-46e5-9bda-915f12e18c9a",
+      "description": "Income: +$243, Rental: -$24 (Net: +$219)",
+      "timestamp": "8/16/2025, 9:59:20 PM"
     },
     {
-      "id": "2ed82619-8144-466c-8e48-1124d2e7afcc",
-      "description": "Income: +$133, Rental: -$13 (Net: +$120)",
-      "timestamp": "16.08.2025, 23:02:27"
+      "id": "5bcd0933-e7e7-4a15-b833-7a66ad22e5fb",
+      "description": "Completed Security Audit (+$500, +25 XP)",
+      "timestamp": "8/16/2025, 9:58:20 PM"
     },
     {
-      "id": "6f6f3e71-82d5-4a4c-b8bb-9268980dc1e7",
-      "description": "Income: +$133, Rental: -$13 (Net: +$120)",
-      "timestamp": "16.08.2025, 23:01:27"
+      "id": "626899ed-415e-43c7-a307-a283a00c8dbe",
+      "description": "Income: +$7188, Rental: -$718 (Net: +$6470)",
+      "timestamp": "8/16/2025, 9:57:30 PM"
     },
     {
-      "id": "e60ff8b8-d8bc-4621-bc2a-d8b06dcfd7c9",
-      "description": "Income: +$133, Rental: -$13 (Net: +$120)",
-      "timestamp": "16.08.2025, 23:00:27"
+      "id": "db219e47-fe62-4687-a76d-e3d85beddd31",
+      "description": "Completed Performance Optimization (+$250, +18 XP) - Level Up! Now level 6",
+      "timestamp": "8/16/2025, 9:56:30 PM"
     },
     {
-      "id": "1a156edc-4011-4aa7-9b05-5ea958ac7d35",
-      "description": "Income: +$133, Rental: -$13 (Net: +$120)",
-      "timestamp": "16.08.2025, 22:59:27"
+      "id": "97c60c43-89cf-4c0b-acfa-079de45631bf",
+      "description": "Completed Server Maintenance (+$150, +10 XP)",
+      "timestamp": "8/16/2025, 9:56:28 PM"
     }
   ],
   "achievements": [
@@ -73,7 +73,7 @@
     "efficient-worker",
     "server-builder"
   ],
-  "completedJobsCount": 36,
+  "completedJobsCount": 39,
   "completedCoursesCount": 1,
   "completedLearning": [],
   "efficiencyBonus": 0,
@@ -146,8 +146,8 @@
         "type": "income",
         "amount": 10000
       },
-      "progress": 9195,
-      "completed": false,
+      "progress": 10000,
+      "completed": true,
       "date": "Sat Aug 16 2025"
     },
     {
@@ -187,7 +187,7 @@
         "type": "income",
         "amount": 20000
       },
-      "progress": 9195,
+      "progress": 16626,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -214,11 +214,11 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 9195,
+      "progress": 16626,
       "completed": false,
       "date": "Sat Aug 16 2025"
     }
   ],
   "lastQuestReset": 1755363722114,
-  "lastSeen": 1755381372009
+  "lastSeen": 1755381613868
 }

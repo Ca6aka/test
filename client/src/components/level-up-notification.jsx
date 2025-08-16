@@ -44,6 +44,14 @@ export function LevelUpNotification({ isOpen, onClose, level }) {
         exit={{ opacity: 0 }}
         className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[9999999]"
         style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
+        onClick={(e) => {
+          // Close on overlay click (but not on modal click)
+          if (e.target === e.currentTarget) {
+            if (typeof onClose === 'function') {
+              onClose();
+            }
+          }
+        }}
       >
         <motion.div
           initial={{ scale: 0.3, opacity: 0, rotateY: -180 }}

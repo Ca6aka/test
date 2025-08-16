@@ -754,13 +754,47 @@ export class FileStorage {
 
       const req = quest.requirement;
       
-      if (req.type === 'job' && questType === 'job' && req.jobType === data.jobType) {
-        quest.progress = Math.min(quest.progress + 1, req.count);
-        if (quest.progress >= req.count) {
-          quest.completed = true;
-          this.completeQuest(userId, quest);
+      if (req.type === 'job' && questType === 'job') {
+        // Handle different job quest types
+        if (req.jobType === 'any') {
+          // Any job type counts
+          quest.progress = Math.min(quest.progress + 1, req.count);
+          if (quest.progress >= req.count) {
+            quest.completed = true;
+            this.completeQuest(userId, quest);
+          }
+          updated = true;
+        } else if (req.jobType === data.jobType) {
+          // Specific job type
+          quest.progress = Math.min(quest.progress + 1, req.count);
+          if (quest.progress >= req.count) {
+            quest.completed = true;
+            this.completeQuest(userId, quest);
+          }
+          updated = true;
+        } else if (req.jobType === 'mixed') {
+          // Mixed jobs - track individual job types
+          if (!quest.jobCounts) {
+            quest.jobCounts = { maintenance: 0, optimization: 0, 'security-audit': 0 };
+          }
+          
+          if (quest.jobCounts[data.jobType] !== undefined) {
+            quest.jobCounts[data.jobType]++;
+            
+            // For mixed quest: 2 Maintenance + 1 Optimization
+            const maintenanceCount = quest.jobCounts.maintenance || 0;
+            const optimizationCount = quest.jobCounts.optimization || 0;
+            
+            if (maintenanceCount >= 2 && optimizationCount >= 1) {
+              quest.progress = req.count;
+              quest.completed = true;
+              this.completeQuest(userId, quest);
+            } else {
+              quest.progress = maintenanceCount + optimizationCount;
+            }
+            updated = true;
+          }
         }
-        updated = true;
       } else if (req.type === 'income' && questType === 'income') {
         quest.progress = Math.min(quest.progress + data.amount, req.amount);
         if (quest.progress >= req.amount) {
@@ -1447,8 +1481,9 @@ export class FileStorage {
           const userData = JSON.parse(await fs.readFile(userPath, 'utf8'));
           
           if (userData.nickname === nickname) {
-            // Count servers
-            userData.serverCount = userData.servers ? userData.servers.length : 0;
+            // Count servers correctly from servers.json
+            const userServers = await this.getUserServers(userData.id);
+            userData.serverCount = userServers.length;
             return userData;
           }
         } catch (err) {

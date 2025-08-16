@@ -180,6 +180,7 @@ export function GameProvider({ children }) {
       dispatch({ type: 'SET_USER', payload: data.user });
       queryClient.invalidateQueries({ queryKey: ['/api/activities'] });
       queryClient.invalidateQueries({ queryKey: ['/api/jobs/cooldowns'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/quests'] }); // Update quests after job completion
       
       // Show level-up notification if user leveled up
       if (data.leveledUp && data.newLevel) {
