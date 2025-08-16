@@ -8,10 +8,10 @@
     "monthlyCost": 45,
     "icon": "fas fa-globe",
     "isOnline": true,
-    "loadPercentage": 100,
+    "loadPercentage": 95,
     "createdAt": 1755327156059,
-    "lastUpdated": 1755341402531,
-    "lastOverloadCheck": 1755341269001
+    "lastUpdated": 1755342478799,
+    "lastOverloadCheck": 1755342245818
   },
   {
     "id": "0cd794e8-8cc0-43c1-b250-7dd68abae758",
@@ -22,10 +22,10 @@
     "monthlyCost": 45,
     "icon": "fas fa-globe",
     "isOnline": true,
-    "loadPercentage": 100,
+    "loadPercentage": 95,
     "createdAt": 1755327166748,
-    "lastUpdated": 1755341402531,
-    "lastOverloadCheck": 1755341269001
+    "lastUpdated": 1755342478799,
+    "lastOverloadCheck": 1755342478797
   },
   {
     "id": "8f58cfcc-6e09-4a35-b077-b7e0b2ee4cbb",
@@ -36,9 +36,22 @@
     "monthlyCost": 120,
     "icon": "fas fa-server",
     "isOnline": true,
-    "loadPercentage": 100,
+    "loadPercentage": 95,
     "createdAt": 1755339276221,
-    "lastUpdated": 1755341402531,
-    "lastOverloadCheck": 1755341269002
+    "lastUpdated": 1755342478799,
+    "lastOverloadCheck": 1755342245820
+  },
+  {
+    "id": "428eb38e-7993-4530-9e5c-db671ae9b22b",
+    "ownerId": "e73513b4-65ec-40e1-bd85-339d155b7af0",
+    "name": "Database Server",
+    "type": "Storage",
+    "incomePerMinute": 25,
+    "monthlyCost": 85,
+    "icon": "fas fa-database",
+    "isOnline": true,
+    "loadPercentage": 95,
+    "createdAt": 1755341989623,
+    "lastUpdated": 1755342478799
   }
 ]

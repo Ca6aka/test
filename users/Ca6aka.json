@@ -2,11 +2,11 @@
   "id": "e73513b4-65ec-40e1-bd85-339d155b7af0",
   "nickname": "Ca6aka",
   "password": "$2b$10$JpfJ4vb59zjxCtXN0I4kbee0VAqeB3by8xsWuYuW6PZo3fAATENv.",
-  "balance": 151268,
-  "level": 6,
-  "experience": 707,
-  "totalEarnings": 21700,
-  "totalSpent": 24000,
+  "balance": 166589,
+  "level": 7,
+  "experience": 823,
+  "totalEarnings": 23650,
+  "totalSpent": 32000,
   "avatar": {
     "gradient": "from-rose-400 via-pink-500 to-red-600",
     "pattern": "multi-color",
@@ -20,38 +20,38 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755341329165,
+  "lastIncomeUpdate": 1755342121188,
   "jobCooldowns": {
-    "maintenance": 1755341687577,
-    "optimization": 1755341514744,
-    "security-audit": 1755341669452
+    "maintenance": 1755342669586,
+    "optimization": 1755342631513,
+    "security-audit": 1755342953154
   },
   "currentLearning": null,
   "activities": [
     {
-      "id": "29197537-ab22-4457-890d-232b2c558854",
+      "id": "bca50a69-26b8-44ac-93f2-ca4ad9aaa00f",
+      "description": "Achievement unlocked: Security Expert (+$15,000)",
+      "timestamp": "8/16/2025, 11:06:09 AM"
+    },
+    {
+      "id": "ee92b0fd-d932-4965-a9b1-d11bd7c06130",
       "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "8/16/2025, 10:49:47 AM"
+      "timestamp": "8/16/2025, 11:06:09 AM"
     },
     {
-      "id": "193e0526-4c48-4049-b1e3-6e8824d9e8e0",
-      "description": "Income: +$121, Rental: -$12 (Net: +$109)",
-      "timestamp": "8/16/2025, 10:48:49 AM"
+      "id": "176b112f-b7c9-46b7-b372-a34b1c9c794b",
+      "description": "Completed Security Audit (+$500, +25 XP)",
+      "timestamp": "8/16/2025, 11:05:53 AM"
     },
     {
-      "id": "e04f7e77-367f-493e-8492-14649b97fede",
-      "description": "Income: +$121, Rental: -$12 (Net: +$109)",
-      "timestamp": "8/16/2025, 10:47:48 AM"
+      "id": "5b896244-a3b5-49c5-a95e-a36ccdd887aa",
+      "description": "Turned Basic Web Server online",
+      "timestamp": "8/16/2025, 11:05:04 AM"
     },
     {
-      "id": "2afbc9a5-d5a0-4374-be04-d9cf5037b0e5",
-      "description": "Income: +$407, Rental: -$40 (Net: +$367)",
-      "timestamp": "8/16/2025, 10:46:48 AM"
-    },
-    {
-      "id": "7888eb30-cdcc-4213-9683-37dc905b4de9",
-      "description": "Quest reward claimed: Security Check (+$2,500)",
-      "timestamp": "8/16/2025, 10:44:56 AM"
+      "id": "bc6bc630-da97-4d5f-a375-a5f683336f1f",
+      "description": "Turned Basic Web Server offline",
+      "timestamp": "8/16/2025, 11:05:03 AM"
     }
   ],
   "achievements": [
@@ -59,9 +59,10 @@
     "wealthy-investor",
     "server-builder",
     "efficient-worker",
-    "early-earner"
+    "early-earner",
+    "security-expert"
   ],
-  "completedJobsCount": 43,
+  "completedJobsCount": 50,
   "completedCoursesCount": 1,
   "dailyQuests": [
     {
@@ -74,9 +75,10 @@
         "jobType": "maintenance",
         "count": 3
       },
-      "progress": 2,
-      "completed": false,
-      "date": "Sat Aug 16 2025"
+      "progress": 3,
+      "completed": true,
+      "date": "Sat Aug 16 2025",
+      "claimed": true
     },
     {
       "id": "daily-income-Sat Aug 16 2025",
@@ -87,7 +89,7 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 3409,
+      "progress": 4926,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -101,9 +103,10 @@
         "jobType": "optimization",
         "count": 2
       },
-      "progress": 1,
-      "completed": false,
-      "date": "Sat Aug 16 2025"
+      "progress": 2,
+      "completed": true,
+      "date": "Sat Aug 16 2025",
+      "claimed": true
     },
     {
       "id": "daily-security-Sat Aug 16 2025",
@@ -129,7 +132,7 @@
         "type": "income",
         "amount": 10000
       },
-      "progress": 3409,
+      "progress": 4926,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -170,7 +173,7 @@
         "type": "income",
         "amount": 20000
       },
-      "progress": 3409,
+      "progress": 4926,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -197,12 +200,12 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 3409,
+      "progress": 4926,
       "completed": false,
       "date": "Sat Aug 16 2025"
     }
   ],
   "lastQuestReset": 1755339590435,
-  "lastSeen": 1755341424666,
+  "lastSeen": 1755342490527,
   "completedLearning": []
 }

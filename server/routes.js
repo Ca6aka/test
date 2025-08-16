@@ -286,6 +286,30 @@ export async function registerRoutes(app) {
     }
   });
 
+  app.post('/api/servers/:id/repair', async (req, res) => {
+    try {
+      if (!req.session.userId) {
+        return res.status(401).json({ message: 'Not authenticated' });
+      }
+      
+      const { id } = req.params;
+      const { repairType = 'full' } = req.body;
+      
+      if (!['full', 'partial'].includes(repairType)) {
+        return res.status(400).json({ message: 'Invalid repair type. Must be "full" or "partial"' });
+      }
+      
+      const result = await storage.repairServer(req.session.userId, id, repairType);
+      
+      res.json({ 
+        message: 'Server repaired successfully',
+        ...result
+      });
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  });
+
   // Job routes
   app.post('/api/jobs/:jobType/start', async (req, res) => {
     try {

@@ -22,18 +22,20 @@ import {
 } from 'lucide-react'
 import { useIsMobile } from '@/hooks/use-mobile'
 import { useGame } from '@/contexts/game-context'
+import { useLanguage } from '@/contexts/language-context'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 
 function VirtualAssistant() {
   const [input, setInput] = useState('')
-  const [isVisible, setIsVisible] = useState(false) // По умолчанию закрыт
+  const [isVisible, setIsVisible] = useState(false) // Closed by default
   const [muteUserId, setMuteUserId] = useState('')
   const [muteDuration, setMuteDuration] = useState('30')
   const [, setLocation] = useLocation()
   const isMobile = useIsMobile()
   const { gameState } = useGame()
+  const { t } = useLanguage()
   const user = gameState?.user
   const queryClient = useQueryClient()
 
@@ -231,7 +233,7 @@ function VirtualAssistant() {
           <div className="flex items-center justify-between">
             <CardTitle className="text-sm font-medium flex items-center gap-2">
               <MessageSquare className="w-4 h-4 text-blue-600" />
-              Общий чат
+              {t('generalChat')}
             </CardTitle>
             <div className="flex items-center gap-1">
               {user?.admin >= 1 && (
@@ -248,15 +250,15 @@ function VirtualAssistant() {
                   </DialogTrigger>
                   <DialogContent className="sm:max-w-md">
                     <DialogHeader>
-                      <DialogTitle>Панель администратора</DialogTitle>
+                      <DialogTitle>{t('adminPanel')}</DialogTitle>
                     </DialogHeader>
                     <div className="space-y-4">
                       <div>
-                        <label className="text-sm font-medium">Заглушить пользователя</label>
+                        <label className="text-sm font-medium">{t('muteUser')}</label>
                         <div className="flex gap-2 mt-2">
                           <Select value={muteUserId} onValueChange={setMuteUserId}>
                             <SelectTrigger className="flex-1">
-                              <SelectValue placeholder="Выберите пользователя" />
+                              <SelectValue placeholder={t('selectUser')} />
                             </SelectTrigger>
                             <SelectContent>
                               {rankings?.rankings
@@ -284,13 +286,13 @@ function VirtualAssistant() {
                             disabled={!muteUserId || muteUserMutation.isPending}
                             size="sm"
                           >
-                            Мут
+                            {t('mute')}
                           </Button>
                         </div>
                       </div>
                       
                       <div>
-                        <label className="text-sm font-medium">Активные муты</label>
+                        <label className="text-sm font-medium">{t('activeMutes')}</label>
                         <div className="mt-2 space-y-1">
                           {rankings?.rankings
                             ?.filter(u => {
@@ -306,7 +308,7 @@ function VirtualAssistant() {
                                   size="sm"
                                   variant="outline"
                                 >
-                                  Размут
+                                  {t('unmute')}
                                 </Button>
                               </div>
                             ))}
@@ -332,7 +334,7 @@ function VirtualAssistant() {
           <div className={`${isMobile ? 'h-60' : 'h-80'} overflow-y-auto p-3 space-y-2`}>
             {chatData?.messages?.length === 0 ? (
               <div className="text-center text-gray-500 text-sm py-8">
-                Нет сообщений. Начните общение!
+                {t('noMessages')}
               </div>
             ) : (
               chatData?.messages?.map((message) => {
@@ -341,7 +343,7 @@ function VirtualAssistant() {
                   <div key={message.id} className="group">
                     {message.deleted ? (
                       <div className="text-xs text-gray-400 italic">
-                        Сообщение удалено {message.deletedBy && `администратором ${message.deletedBy}`}
+                        {message.deletedBy ? t('messageDeletedBy').replace('{admin}', message.deletedBy) : t('messageDeleted')}
                       </div>
                     ) : (
                       <div className="space-y-1">
@@ -398,7 +400,7 @@ function VirtualAssistant() {
           {user?.admin >= 1 && rankings?.rankings && (
             <div className="border-t p-3 bg-gray-50 dark:bg-gray-900">
               <div className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-2">
-                Управление игроками
+                {t('playerManagement')}
               </div>
               <div className="space-y-2 max-h-32 overflow-y-auto">
                 {rankings.rankings
@@ -462,7 +464,7 @@ function VirtualAssistant() {
               <Input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Введите сообщение..."
+                placeholder={t('enterMessage')}
                 className="text-sm"
                 maxLength={500}
                 disabled={sendMessageMutation.isPending || user?.muted}
@@ -480,7 +482,7 @@ function VirtualAssistant() {
             </div>
             {user?.muted && (
               <div className="text-xs text-red-600 mt-1">
-                Вы заглушены и не можете отправлять сообщения
+                {t('youAreMuted')}
               </div>
             )}
           </form>

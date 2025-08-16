@@ -64,7 +64,7 @@ export const AdminPanel = ({ user, isOpen: externalIsOpen, onOpenChange }) => {
     if (!selectedUser || !action) {
       toast({
         title: t('error'),
-        description: 'Пожалуйста, выберите пользователя и действие',
+        description: t('pleaseSelectUserAndAction'),
         variant: 'destructive'
       });
       return;
@@ -74,7 +74,7 @@ export const AdminPanel = ({ user, isOpen: externalIsOpen, onOpenChange }) => {
     if ((action === 'addMoney' || action === 'removeMoney') && (!amount || amount <= 0)) {
       toast({
         title: t('error'),
-        description: 'Пожалуйста, введите корректную сумму',
+        description: t('pleaseEnterValidAmount'),
         variant: 'destructive'
       });
       return;
@@ -93,7 +93,7 @@ export const AdminPanel = ({ user, isOpen: externalIsOpen, onOpenChange }) => {
 
       toast({
         title: t('success'),
-        description: `Действие "${action}" успешно выполнено`
+        description: t('actionSuccessfullyCompleted').replace('{action}', action)
       });
 
       fetchUsers();
@@ -192,7 +192,7 @@ export const AdminPanel = ({ user, isOpen: externalIsOpen, onOpenChange }) => {
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
                   <Settings className="w-5 h-5" />
-                  <span>{isSuperAdmin ? t('adminManagement') : 'Управление пользователями'}</span>
+                  <span>{isSuperAdmin ? t('adminManagement') : t('playerManagement')}</span>
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -240,10 +240,10 @@ export const AdminPanel = ({ user, isOpen: externalIsOpen, onOpenChange }) => {
                                 {t('unbanUser')}
                               </SelectItem>
                               <SelectItem value="addMoney" disabled={!isSuperAdmin}>
-                                Выдать деньги
+                                {t('giveMoney')}
                               </SelectItem>
                               <SelectItem value="removeMoney" disabled={!isSuperAdmin}>
-                                Забрать деньги
+                                {t('takeMoney')}
                               </SelectItem>
                             </>
                           );
@@ -254,10 +254,10 @@ export const AdminPanel = ({ user, isOpen: externalIsOpen, onOpenChange }) => {
                 </div>
                 {(action === 'addMoney' || action === 'removeMoney') && (
                   <div className="space-y-2">
-                    <Label>Сумма</Label>
+                    <Label>{t('amount')}</Label>
                     <Input
                       type="number"
-                      placeholder="Введите сумму"
+                      placeholder={t('enterAmount')}
                       value={amount}
                       onChange={(e) => setAmount(e.target.value)}
                       min="1"

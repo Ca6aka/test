@@ -70,16 +70,36 @@ export function ServersTab({ onTabChange }) {
     },
   });
 
+  const repairServer = useMutation({
+    mutationFn: ({ serverId, repairType }) => 
+      apiRequest('POST', `/api/servers/${serverId}/repair`, { repairType }),
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: ['/api/servers'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
+      toast({
+        title: t('serverRepaired'),
+        description: t('serverRepairedDesc').replace('${cost}', `$${data.cost.toLocaleString()}`).replace('{durability}', data.durabilityRestored),
+      });
+    },
+    onError: (error) => {
+      toast({
+        title: t('repairFailed'),
+        description: error.message,
+        variant: 'destructive',
+      });
+    },
+  });
+
   const handleToggleServer = async (serverId) => {
     try {
       await toggleServer(serverId);
       toast({
-        title: "Server Status Updated",
-        description: "Server status has been changed successfully.",
+        title: t('serverStatusUpdated'),
+        description: t('serverStatusUpdatedDesc'),
       });
     } catch (error) {
       toast({
-        title: "Error",
+        title: t('error'),
         description: error.message,
         variant: "destructive",
       });
@@ -88,32 +108,32 @@ export function ServersTab({ onTabChange }) {
 
   const handleDeleteServer = async (serverId) => {
     const serverName = gameState.servers?.find(s => s.id === serverId)?.name;
-    const firstConfirm = window.confirm(`⚠️ ВНИМАНИЕ! Вы действительно хотите УДАЛИТЬ сервер "${serverName}"?\n\nЭто действие НЕОБРАТИМО!\n\nЕсли вы хотите просто отключить сервер, используйте кнопку "Включить/Выключить" вместо удаления.`);
+    const firstConfirm = window.confirm(`${t('deleteWarningTitle').replace('{serverName}', serverName)}\n\n${t('deleteWarningMessage')}`);
     
     if (firstConfirm) {
-      const secondConfirm = window.confirm(`🚨 ПОСЛЕДНЕЕ ПРЕДУПРЕЖДЕНИЕ!\n\nВы уверены, что хотите НАВСЕГДА удалить сервер "${serverName}"?\n\nНапишите "УДАЛИТЬ" чтобы подтвердить:`);
+      const secondConfirm = window.confirm(t('deleteLastWarning').replace('{serverName}', serverName));
       
       if (secondConfirm) {
-        const finalConfirm = prompt(`Введите "УДАЛИТЬ" чтобы окончательно подтвердить удаление сервера "${serverName}":`);;
+        const finalConfirm = prompt(t('deleteFinalConfirm').replace('{serverName}', serverName));;
         
-        if (finalConfirm === "УДАЛИТЬ") {
+        if (finalConfirm === t('deleteKeyword')) {
           try {
             await deleteServer(serverId);
             toast({
-              title: "Сервер удален",
-              description: `Сервер "${serverName}" был успешно удален.`,
+              title: t('serverDeleted'),
+              description: t('serverDeletedDesc').replace('{serverName}', serverName),
             });
           } catch (error) {
             toast({
-              title: "Ошибка",
+              title: t('error'),
               description: error.message,
               variant: "destructive",
             });
           }
         } else {
           toast({
-            title: "Удаление отменено",
-            description: "Сервер НЕ был удален.",
+            title: t('deleteCancelled'),
+            description: t('deleteCancelledDesc'),
             variant: "default",
           });
         }
@@ -223,6 +243,17 @@ export function ServersTab({ onTabChange }) {
                           </div>
                           
                           <div className="flex justify-between">
+                            <span className="text-slate-400 text-sm">{t('durability')}:</span>
+                            <span className={`font-medium text-sm ${
+                              (server.durability || 100) >= 80 ? 'text-green-400' :
+                              (server.durability || 100) >= 50 ? 'text-yellow-400' :
+                              (server.durability || 100) >= 20 ? 'text-orange-400' : 'text-red-400'
+                            }`}>
+                              {Math.round(server.durability || 100)}%
+                            </span>
+                          </div>
+                          
+                          <div className="flex justify-between">
                             <span className="text-slate-400 text-sm">{t('overloadRisk')}:</span>
                             <span className={`font-medium text-sm ${
                               (server.loadPercentage || 50) <= 49 ? 'text-green-400' :
@@ -241,7 +272,64 @@ export function ServersTab({ onTabChange }) {
                               {t('serverShutdownWarning')}
                             </div>
                           )}
+                          
+                          {(server.durability || 100) <= 0 && (
+                            <div className="text-red-300 text-xs mt-2 p-2 bg-red-500/10 rounded">
+                              <i className="fas fa-exclamation-triangle mr-1"></i>
+                              {t('maintenanceRequired')}
+                            </div>
+                          )}
                         </div>
+                        
+                        {/* Durability Progress Bar */}
+                        <div className="space-y-2">
+                          <div className="flex justify-between text-xs">
+                            <span className="text-slate-400">{t('serverCondition')}</span>
+                            <span className="text-slate-300">{Math.round(server.durability || 100)}%</span>
+                          </div>
+                          <div className="w-full bg-slate-700 rounded-full h-2">
+                            <div 
+                              className={`h-2 rounded-full transition-all duration-300 ${
+                                (server.durability || 100) >= 80 ? 'bg-green-500' :
+                                (server.durability || 100) >= 50 ? 'bg-yellow-500' :
+                                (server.durability || 100) >= 20 ? 'bg-orange-500' : 'bg-red-500'
+                              }`} 
+                              style={{ width: `${server.durability || 100}%` }}
+                            ></div>
+                          </div>
+                        </div>
+                        
+                        {/* Repair Section */}
+                        {(server.durability || 100) < 100 && (
+                          <div className="bg-slate-600/30 rounded-lg p-4 space-y-3">
+                            <h4 className="text-sm font-medium text-slate-200">{t('serverMaintenance')}</h4>
+                            <div className="flex space-x-2">
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                className="flex-1 bg-yellow-500/10 text-yellow-400 border-yellow-500/30 hover:bg-yellow-500/20"
+                                onClick={() => repairServer.mutate({ serverId: server.id, repairType: 'partial' })}
+                                disabled={repairServer.isPending}
+                              >
+                                <i className="fas fa-wrench mr-1"></i>
+                                {t('partialRepair')}
+                              </Button>
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                className="flex-1 bg-green-500/10 text-green-400 border-green-500/30 hover:bg-green-500/20"
+                                onClick={() => repairServer.mutate({ serverId: server.id, repairType: 'full' })}
+                                disabled={repairServer.isPending}
+                              >
+                                <i className="fas fa-tools mr-1"></i>
+                                {t('fullRepair')}
+                              </Button>
+                            </div>
+                            <div className="text-xs text-slate-400">
+                              {t('repairCostInfo')}
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </DialogContent>
                   </Dialog>
@@ -264,7 +352,7 @@ export function ServersTab({ onTabChange }) {
                     variant="ghost"
                     className="bg-transparent text-slate-500 hover:bg-red-500/20 hover:text-red-400 transition-colors border border-slate-700 hover:border-red-500/50"
                     onClick={() => handleDeleteServer(server.id)}
-                    title="⚠️ УДАЛИТЬ СЕРВЕР НАВСЕГДА (НЕОБРАТИМО!)"
+                    title={t('deleteServerTooltip')}
                   >
                     <i className="fas fa-trash text-xs"></i>
                   </Button>

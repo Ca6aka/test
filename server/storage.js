@@ -867,6 +867,8 @@ export class FileStorage {
       icon: product.icon,
       isOnline: true,
       loadPercentage: 50, // Default 50% load
+      durability: 100, // Server starts with 100% durability
+      lastDurabilityUpdate: Date.now(),
       createdAt: Date.now()
     };
 
@@ -894,6 +896,13 @@ export class FileStorage {
     
     if (serverIndex === -1) {
       throw new Error('Server not found');
+    }
+
+    const server = servers[serverIndex];
+    
+    // Check durability before turning on
+    if (!server.isOnline && (server.durability || 100) <= 0) {
+      throw new Error('Server requires maintenance before it can be turned on');
     }
 
     servers[serverIndex].isOnline = !servers[serverIndex].isOnline;
@@ -1171,9 +1180,107 @@ export class FileStorage {
   }
 
   // Income updates
+  async updateServersDurability() {
+    const servers = await this.getServers();
+    const now = Date.now();
+    let updated = false;
+    
+    for (const server of servers) {
+      const lastUpdate = server.lastDurabilityUpdate || server.createdAt || now;
+      const timeDiff = now - lastUpdate;
+      const tenMinutes = 10 * 60 * 1000; // 10 minutes in milliseconds
+      
+      // Only update durability for online servers every 10 minutes
+      if (server.isOnline && timeDiff >= tenMinutes) {
+        const durabilityLoss = Math.floor(timeDiff / tenMinutes); // 1% per 10 minutes
+        const currentDurability = server.durability || 100;
+        server.durability = Math.max(0, currentDurability - durabilityLoss);
+        server.lastDurabilityUpdate = now;
+        updated = true;
+        
+        // If durability reaches 0, turn server offline
+        if (server.durability <= 0) {
+          server.isOnline = false;
+          await this.addActivity(server.ownerId, `${server.name} went offline due to maintenance required`);
+        }
+      }
+      
+      // Add durability field to existing servers that don't have it
+      if (server.durability === undefined) {
+        server.durability = 100;
+        server.lastDurabilityUpdate = server.createdAt || now;
+        updated = true;
+      }
+    }
+    
+    if (updated) {
+      await this.saveServers(servers);
+    }
+  }
+
+  async repairServer(userId, serverId, repairType = 'full') {
+    const user = await this.getUser(userId);
+    if (!user) throw new Error('User not found');
+
+    const servers = await this.getServers();
+    const serverIndex = servers.findIndex(s => s.id === serverId && s.ownerId === userId);
+    
+    if (serverIndex === -1) {
+      throw new Error('Server not found');
+    }
+
+    const server = servers[serverIndex];
+    const currentDurability = server.durability || 100;
+    
+    if (currentDurability >= 100) {
+      throw new Error('Server does not need repair');
+    }
+
+    // Calculate repair cost based on damage and server income
+    const damage = 100 - currentDurability;
+    let repairCost;
+    let durabilityRestore;
+    
+    if (repairType === 'partial') {
+      // Partial repair: restore 50% of missing durability
+      durabilityRestore = Math.min(50, damage);
+      repairCost = Math.ceil((server.incomePerMinute || 15) * damage * 0.3); // 30% of income per minute per damage point
+    } else {
+      // Full repair: restore to 100%
+      durabilityRestore = damage;
+      repairCost = Math.ceil((server.incomePerMinute || 15) * damage * 0.5); // 50% of income per minute per damage point
+    }
+
+    if (user.balance < repairCost) {
+      throw new Error(`Insufficient funds. Repair cost: $${repairCost}`);
+    }
+
+    // Apply repair
+    servers[serverIndex].durability = Math.min(100, currentDurability + durabilityRestore);
+    await this.saveServers(servers);
+
+    // Update user balance
+    await this.updateUser(userId, {
+      balance: user.balance - repairCost,
+      totalSpent: (user.totalSpent || 0) + repairCost
+    });
+
+    const repairTypeText = repairType === 'partial' ? 'Partial repair' : 'Full repair';
+    await this.addActivity(userId, `${repairTypeText} of ${server.name} for $${repairCost.toLocaleString()}`);
+
+    return {
+      server: servers[serverIndex],
+      cost: repairCost,
+      durabilityRestored: durabilityRestore
+    };
+  }
+
   async updateIncome(userId) {
     const user = await this.getUser(userId);
     if (!user) throw new Error('User not found');
+
+    // Update server durability before calculating income
+    await this.updateServersDurability();
 
     const servers = await this.getUserServers(userId);
     const now = Date.now();
