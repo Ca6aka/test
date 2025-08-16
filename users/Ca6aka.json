@@ -2,11 +2,11 @@
   "id": "117f25bb-6136-49ba-aef8-865c4d9fd601",
   "nickname": "Ca6aka",
   "password": "$2b$10$MNgnDbNDq8XbGzZQB4nUl.hLgDWbgHjShiJ4Qu8bZ9fdpocrxcF/e",
-  "balance": 22800,
-  "level": 3,
-  "experience": 285,
-  "totalEarnings": 14800,
-  "totalSpent": 0,
+  "balance": 14700,
+  "level": 4,
+  "experience": 338,
+  "totalEarnings": 15700,
+  "totalSpent": 10000,
   "avatar": {
     "gradient": "from-purple-500 via-pink-500 via-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500",
     "pattern": "rainbow-super-admin",
@@ -22,40 +22,42 @@
   "isOnline": true,
   "lastIncomeUpdate": 1755321664028,
   "jobCooldowns": {
-    "maintenance": 1755324786386,
-    "optimization": 1755324599368,
-    "security-audit": 1755325030968
+    "maintenance": 1755325273857,
+    "optimization": 1755325423514,
+    "security-audit": 1755325660187
   },
   "currentLearning": null,
   "activities": [
     {
-      "id": "866b5f75-d1a7-455a-9b82-5f017f8081da",
-      "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "8/16/2025, 6:08:06 AM"
+      "id": "a476ccce-4cd0-4ce2-b2c8-dc14eb39a5eb",
+      "description": "Turned Basic Web Server offline",
+      "timestamp": "8/16/2025, 6:18:57 AM"
     },
     {
-      "id": "ebe1d622-b5a0-47cf-b52d-42d1854220a1",
-      "description": "Completed Security Audit (+$500, +25 XP)",
-      "timestamp": "8/16/2025, 6:07:10 AM"
+      "id": "90652f7e-3dce-4d4e-9a9c-d84c5aeeab30",
+      "description": "Purchased Basic Web Server for $5,000",
+      "timestamp": "8/16/2025, 6:18:26 AM"
     },
     {
-      "id": "e35db05c-aaf5-421a-9be0-9037ba449534",
-      "description": "Completed Performance Optimization (+$250, +18 XP)",
-      "timestamp": "8/16/2025, 6:02:29 AM"
+      "id": "89266c84-93db-4142-8818-8fb029fecb11",
+      "description": "Turned Basic Web Server offline",
+      "timestamp": "8/16/2025, 6:18:13 AM"
     },
     {
-      "id": "ab8ebcd2-acec-46ef-b7f3-c309627c3638",
-      "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "8/16/2025, 6:02:28 AM"
+      "id": "49ef1e67-567d-4f63-b826-f7291f4b4da7",
+      "description": "Achievement unlocked: First Steps (+$1,000)",
+      "timestamp": "8/16/2025, 6:17:58 AM"
     },
     {
-      "id": "1967f01a-aa2e-48f9-a53f-17e1c3292988",
-      "description": "Completed Security Audit (+$500, +25 XP) - Level Up! Now level 3",
-      "timestamp": "8/16/2025, 5:56:14 AM"
+      "id": "2e1f60a7-3c3f-4b74-a096-abf475bb571e",
+      "description": "Purchased Basic Web Server for $5,000",
+      "timestamp": "8/16/2025, 6:17:58 AM"
     }
   ],
-  "achievements": [],
-  "completedJobsCount": 17,
+  "achievements": [
+    "first-server"
+  ],
+  "completedJobsCount": 20,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -103,5 +105,5 @@
     }
   ],
   "lastQuestReset": 1755321664028,
-  "lastSeen": 1755324930174
+  "lastSeen": 1755325146466
 }

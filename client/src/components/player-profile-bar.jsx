@@ -84,7 +84,7 @@ function PlayerAvatar({ user, size = 'md', showLevel = true, showExperienceRing 
   return (
     <div className={`relative ${className}`} onClick={onClick}>
       {/* Avatar with experience ring */}
-      <div className={`${sizeClasses[size]} relative ${onClick ? 'cursor-pointer group' : ''}`}>
+      <div className={`${sizeClasses[size]} relative ${onClick ? 'cursor-pointer group' : ''} flex items-center justify-center`}>
         {/* Experience ring (only show in game context) */}
         {showLevel && showExperienceRing && (
           <svg className="absolute inset-0 w-full h-full -rotate-90 opacity-80">
@@ -110,7 +110,7 @@ function PlayerAvatar({ user, size = 'md', showLevel = true, showExperienceRing 
           </svg>
         )}
         
-        {/* Avatar with gradient */}
+        {/* Avatar with gradient - centered inside the ring */}
         <div 
           className={`${avatarSizeClasses[size]} rounded-full bg-gradient-to-br ${user.avatar.gradient} flex items-center justify-center text-white font-bold ${textSizes[size]} shadow-lg border-2 border-white/20 relative overflow-hidden ${user.nickname === 'Ca6aka' ? 'animate-rainbow-pulse' : ''}`}
         >
