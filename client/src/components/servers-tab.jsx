@@ -18,6 +18,7 @@ export function ServersTab({ onTabChange }) {
   const queryClient = useQueryClient();
   const [selectedServer, setSelectedServer] = useState(null);
   const [serverLoad, setServerLoad] = useState(50);
+  const [localLoadValue, setLocalLoadValue] = useState(50);
 
   const updateServerLoad = useMutation({
     mutationFn: ({ serverId, loadPercentage }) => 
@@ -130,6 +131,7 @@ export function ServersTab({ onTabChange }) {
                         onClick={() => {
                           setSelectedServer(server);
                           setServerLoad(server.loadPercentage || 50);
+                          setLocalLoadValue(server.loadPercentage || 50);
                         }}
                       >
                         <i className="fas fa-cog"></i>
@@ -142,17 +144,22 @@ export function ServersTab({ onTabChange }) {
                       <div className="space-y-6 py-4">
                         <div className="space-y-3">
                           <Label className="text-slate-300 text-sm font-medium">
-                            {t('loadPercentage')}: {server.loadPercentage || 50}%
+                            {t('loadPercentage')}: {selectedServer?.id === server.id ? localLoadValue : (server.loadPercentage || 50)}%
                           </Label>
                           <Slider
-                            value={[server.loadPercentage || 50]}
+                            value={[selectedServer?.id === server.id ? localLoadValue : (server.loadPercentage || 50)]}
+                            onValueChange={(value) => {
+                              if (selectedServer?.id === server.id) {
+                                setLocalLoadValue(value[0]);
+                              }
+                            }}
                             onValueCommit={(value) => {
                               updateServerLoad.mutate({ serverId: server.id, loadPercentage: value[0] });
                             }}
                             max={100}
                             min={10}
                             step={5}
-                            className="w-full"
+                            className="w-full cursor-pointer"
                           />
                           <div className="flex justify-between text-xs text-slate-400">
                             <span>10%</span>
@@ -164,7 +171,7 @@ export function ServersTab({ onTabChange }) {
                         <div className="bg-slate-700/30 rounded-lg p-4 space-y-2">
                           <div className="flex justify-between">
                             <span className="text-slate-400 text-sm">{t('currentLoad')}:</span>
-                            <span className="text-white font-medium">{server.loadPercentage || 50}%</span>
+                            <span className="text-white font-medium">{selectedServer?.id === server.id ? localLoadValue : (server.loadPercentage || 50)}%</span>
                           </div>
                           
                           <div className="flex justify-between">
@@ -219,7 +226,7 @@ export function ServersTab({ onTabChange }) {
                 <div className="bg-slate-700/30 rounded-lg p-3">
                   <p className="text-xs text-slate-400 mb-1">Income/min</p>
                   <p className={`font-semibold ${server.isOnline ? 'text-secondary' : 'text-slate-500'}`}>
-                    {server.isOnline ? `+${formatCurrency(Math.round(server.incomePerMinute * (server.loadPercentage || 50) / 100))}` : '$0 (Offline)'}
+                    {server.isOnline ? `+${formatCurrency(Math.round(server.incomePerMinute * ((server.loadPercentage || 50) <= 50 ? (server.loadPercentage || 50) / 50 : 1 + ((server.loadPercentage || 50) - 50) / 100)))}` : '$0 (Offline)'}
                   </p>
                 </div>
                 <div className="bg-slate-700/30 rounded-lg p-3">
