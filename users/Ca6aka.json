@@ -2,7 +2,7 @@
   "id": "2a06ad97-f261-4edb-a6a7-2135295a81ae",
   "nickname": "Ca6aka",
   "password": "$2b$10$mmST6.N8gIjxWcm6v1mRaebd3aujzbkjmzZBkU.uLRNQKY.goxvcm",
-  "balance": 25310,
+  "balance": 25884,
   "serverLimit": 3,
   "tutorialCompleted": true,
   "admin": 1,
@@ -10,14 +10,84 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755320070324,
+  "lastIncomeUpdate": 1755320825271,
   "jobCooldowns": {
-    "maintenance": 1755320399464,
-    "optimization": 1755320550608,
+    "maintenance": 1755320823217,
+    "optimization": 1755321094810,
     "security-audit": 1755320701569
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "d410b45d-6adf-4f7b-9690-58ecdb44d897",
+      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
+      "timestamp": "8/16/2025, 5:07:05 AM"
+    },
+    {
+      "id": "7d89dc7b-e2a9-4486-8178-3b75749158ba",
+      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
+      "timestamp": "8/16/2025, 5:06:05 AM"
+    },
+    {
+      "id": "ebddb90b-92e9-4308-b686-84f91b64b5f2",
+      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
+      "timestamp": "8/16/2025, 5:05:04 AM"
+    },
+    {
+      "id": "c9eb24f3-878b-4661-8a56-888e2e4282f8",
+      "description": "Completed Performance Optimization (+$250)",
+      "timestamp": "8/16/2025, 5:04:04 AM"
+    },
+    {
+      "id": "2d98eb22-0097-45eb-88b5-270222927c4a",
+      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
+      "timestamp": "8/16/2025, 5:04:03 AM"
+    },
+    {
+      "id": "51fd9038-588d-4e88-9787-71470f247cb7",
+      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
+      "timestamp": "8/16/2025, 5:03:03 AM"
+    },
+    {
+      "id": "7a5a6d47-cc63-45f9-9181-092ee4cac72a",
+      "description": "Completed Server Maintenance (+$150)",
+      "timestamp": "8/16/2025, 5:02:03 AM"
+    },
+    {
+      "id": "e2b09aad-4671-495c-86e8-7c25f6cbbc76",
+      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
+      "timestamp": "8/16/2025, 5:02:02 AM"
+    },
+    {
+      "id": "9227d0b0-3da3-408b-937e-1196ffa573c3",
+      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
+      "timestamp": "8/16/2025, 5:01:02 AM"
+    },
+    {
+      "id": "6bce8d28-b925-4bf8-87a4-3b9f9c878280",
+      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
+      "timestamp": "8/16/2025, 5:00:02 AM"
+    },
+    {
+      "id": "2f4eb87c-8013-4a75-84a2-e905fce65896",
+      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
+      "timestamp": "8/16/2025, 4:59:02 AM"
+    },
+    {
+      "id": "529a6bf1-b786-40a2-a599-336f367170cb",
+      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
+      "timestamp": "8/16/2025, 4:58:02 AM"
+    },
+    {
+      "id": "ac69bbd6-00af-4dda-a995-fcba9fd3525b",
+      "description": "Income: +$15, Rental: -$1 (Net: +$14)",
+      "timestamp": "8/16/2025, 4:57:01 AM"
+    },
+    {
+      "id": "7682ea81-e4f3-462a-b7f1-1b1e907d80d1",
+      "description": "Income: +$22, Rental: -$2 (Net: +$20)",
+      "timestamp": "8/16/2025, 4:56:01 AM"
+    },
     {
       "id": "9e4e4d6b-e9bb-4160-984d-6345a415b4f8",
       "description": "Completed Security Audit (+$500)",
@@ -197,32 +267,12 @@
       "id": "95807eae-c82b-40dc-be09-c04e99f25f13",
       "description": "Completed Performance Optimization (+$250)",
       "timestamp": "8/16/2025, 3:48:33 AM"
-    },
-    {
-      "id": "66439733-f79d-4b0f-9fe3-9ce54e232058",
-      "description": "Completed Server Maintenance (+$150)",
-      "timestamp": "8/16/2025, 3:48:33 AM"
-    },
-    {
-      "id": "eefffabd-d3a0-4093-81e8-2b761453770e",
-      "description": "Completed Security Audit (+$500)",
-      "timestamp": "8/16/2025, 3:39:00 AM"
-    },
-    {
-      "id": "9fc05eb8-10d7-4081-bbe2-53420b9ba63b",
-      "description": "Completed Performance Optimization (+$250)",
-      "timestamp": "8/16/2025, 3:38:59 AM"
-    },
-    {
-      "id": "882d3e37-7466-4197-9cc9-00d605c1867c",
-      "description": "Completed Server Maintenance (+$150)",
-      "timestamp": "8/16/2025, 3:38:58 AM"
     }
   ],
   "achievements": [
     "first-server"
   ],
-  "completedJobsCount": 22,
+  "completedJobsCount": 24,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -249,7 +299,7 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 1134,
+      "progress": 1321,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -270,5 +320,5 @@
     }
   ],
   "lastQuestReset": 1755315516547,
-  "lastSeen": 1755320109839
+  "lastSeen": 1755320913889
 }

@@ -1,13 +1,18 @@
+import { useState } from 'react';
+import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useGame } from '@/contexts/game-context';
 import { useLanguage } from '@/contexts/language-context';
 import { formatCurrency } from '@/lib/constants';
 import { AdminPanel } from './admin-panel';
+import { PlayerAvatar, PlayerProfileBar } from './player-profile-bar';
 
 export function StatusBar() {
   const { gameState, logout } = useGame();
   const { language, changeLanguage, t } = useLanguage();
+  const [, setLocation] = useLocation();
+  const [profileOpen, setProfileOpen] = useState(false);
 
   if (!gameState.user) return null;
 
@@ -20,7 +25,7 @@ export function StatusBar() {
       <div className="flex items-center justify-between max-w-7xl mx-auto">
         {/* Mobile Layout */}
         <div className="flex lg:hidden items-center justify-between w-full">
-          <h1 className="text-lg font-bold text-primary">GameStats</h1>
+          <h1 className="text-lg font-bold text-primary">Root Tycoon</h1>
           
           {/* Mobile Stats - Compact */}
           <div className="flex items-center space-x-2">
@@ -47,9 +52,11 @@ export function StatusBar() {
                 <SelectItem value="de">🇩🇪</SelectItem>
               </SelectContent>
             </Select>
-            <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
-              <i className="fas fa-user text-xs"></i>
-            </div>
+            <PlayerAvatar 
+              user={gameState.user} 
+              size="sm" 
+              onClick={() => setProfileOpen(true)}
+            />
             {/* Mobile Admin Panel */}
             {gameState.user && gameState.user.admin > 0 && (
               <div className="text-xs">
@@ -70,7 +77,7 @@ export function StatusBar() {
 
         {/* Desktop Layout */}
         <div className="hidden lg:flex items-center space-x-6">
-          <h1 className="text-xl font-bold text-primary">GameStats</h1>
+          <h1 className="text-xl font-bold text-primary">Root Tycoon</h1>
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2 bg-slate-700/50 px-3 py-1 rounded-lg">
               <i className="fas fa-coins text-accent"></i>
@@ -103,10 +110,18 @@ export function StatusBar() {
           
           {/* User Menu */}
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-              <i className="fas fa-user text-sm"></i>
-            </div>
-            <span className="font-medium">{gameState.user.nickname}</span>
+            <PlayerAvatar 
+              user={gameState.user} 
+              size="md" 
+              onClick={() => setProfileOpen(true)}
+            />
+            <span 
+              className="font-medium cursor-pointer hover:text-blue-400 transition-colors" 
+              onClick={() => setLocation(`/player/${gameState.user.nickname}`)}
+              data-testid="username-link"
+            >
+              {gameState.user.nickname}
+            </span>
             
             {/* Admin Panel */}
             {gameState.user && gameState.user.admin > 0 && (
@@ -132,6 +147,11 @@ export function StatusBar() {
           <span className="text-blue-400">+{formatCurrency(gameState.totalIncomePerMinute, true)}/min</span>
         </div>
       </div>
+      
+      <PlayerProfileBar 
+        isOpen={profileOpen} 
+        onClose={() => setProfileOpen(false)} 
+      />
     </header>
   );
 }

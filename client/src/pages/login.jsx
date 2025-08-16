@@ -90,7 +90,7 @@ export default function LoginPage() {
           <div className="flex items-center justify-between mb-4">
             <div className="flex-1"></div>
             <div className="flex-1 text-center">
-              <CardTitle className="text-2xl font-bold text-primary">GameStats</CardTitle>
+              <CardTitle className="text-2xl font-bold text-primary">Root Tycoon</CardTitle>
               <p className="text-slate-400">Server Hosting Simulator</p>
             </div>
             <div className="flex-1 flex justify-end">

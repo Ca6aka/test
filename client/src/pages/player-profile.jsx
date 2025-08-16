@@ -3,10 +3,10 @@ import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { ArrowLeft, Users, Server, TrendingUp, Trophy, Clock } from 'lucide-react';
+import { ArrowLeft, Users, Server, TrendingUp, Trophy, Clock, Star } from 'lucide-react';
 import { useLanguage } from '@/contexts/language-context';
 import { useGame } from '@/contexts/game-context';
+import { PlayerAvatar } from '@/components/player-profile-bar';
 
 export default function PlayerProfilePage() {
   const { nickname } = useParams();
@@ -65,6 +65,11 @@ export default function PlayerProfilePage() {
   const playerRank = rankingsData?.rankings?.find(r => r.nickname === nickname)?.rank || '?';
   const isOnline = playerData.isOnline;
   
+  // Calculate level and experience
+  const calculateLevel = (experience) => Math.floor(Math.sqrt(experience / 100)) + 1;
+  const level = player.level || calculateLevel(player.experience || 0);
+  const experience = player.experience || 0;
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Header */}
@@ -95,11 +100,11 @@ export default function PlayerProfilePage() {
         <Card className="bg-slate-800/50 border-slate-700 mb-8">
           <CardContent className="p-8">
             <div className="flex items-center space-x-6">
-              <Avatar className="w-20 h-20">
-                <AvatarFallback className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600">
-                  {player.nickname.slice(0, 2).toUpperCase()}
-                </AvatarFallback>
-              </Avatar>
+              <PlayerAvatar 
+                user={player} 
+                size="xl" 
+                showLevel={true}
+              />
               
               <div className="flex-1">
                 <div className="flex items-center space-x-3 mb-2">
@@ -138,7 +143,11 @@ export default function PlayerProfilePage() {
                   )}
                 </div>
                 
-                <div className="flex items-center space-x-6 text-slate-300">
+                <div className="flex items-center space-x-6 text-slate-300 flex-wrap">
+                  <div className="flex items-center space-x-2">
+                    <Star className="w-4 h-4 text-blue-400" />
+                    <span>Level {level}</span>
+                  </div>
                   <div className="flex items-center space-x-2">
                     <Trophy className="w-4 h-4 text-yellow-400" />
                     <span>Rank #{playerRank}</span>

@@ -67,9 +67,9 @@ export default function HomePage() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                GameStats
+                Root Tycoon
               </h1>
-              <span className="ml-2 text-slate-400 text-sm">Server Hosting Simulator</span>
+              <span className="ml-2 text-slate-400 text-sm">Server Management Tycoon</span>
             </div>
             
             <div className="flex items-center space-x-4">
@@ -246,7 +246,7 @@ export default function HomePage() {
       <footer className="border-t border-slate-700 bg-slate-900/50 py-6 sm:py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-slate-400 text-sm sm:text-base">
-            © 2025 GameStats. {t('allRightsReserved')}
+            © 2025 Root Tycoon. {t('allRightsReserved')}
           </p>
         </div>
       </footer>

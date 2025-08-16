@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from 'react';
 
 const translations = {
   en: {
-    tutorial: 'Tutorial',
+    tutorial: 'Start',
     servers: 'My Servers',
     hosting: 'Server Store',
     learning: 'Learning Center',
@@ -204,7 +204,7 @@ const translations = {
     rentalCost: 'Rental Cost/min',
   },
   ru: {
-    tutorial: 'Обучение',
+    tutorial: 'Старт',
     servers: 'Мои серверы',
     hosting: 'Магазин серверов',
     learning: 'Центр обучения',
@@ -418,7 +418,7 @@ const translations = {
     rentalCost: 'Аренда/мин',
   },
   uk: {
-    tutorial: 'Навчання',
+    tutorial: 'Старт',
     servers: 'Мої сервери',
     hosting: 'Магазин серверiв',
     learning: 'Центр навчання',

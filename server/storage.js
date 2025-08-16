@@ -8,6 +8,57 @@ const dataDir = path.join(__dirname, '..', 'data');
 const usersDir = path.join(__dirname, '..', 'users');
 const chatFile = path.join(dataDir, 'chat.json');
 
+// Level and Experience System
+function calculateLevel(experience) {
+  return Math.floor(Math.sqrt(experience / 100)) + 1;
+}
+
+function getExperienceForLevel(level) {
+  return Math.pow(level - 1, 2) * 100;
+}
+
+function getExperienceToNextLevel(experience) {
+  const currentLevel = calculateLevel(experience);
+  const nextLevelExp = getExperienceForLevel(currentLevel + 1);
+  return nextLevelExp - experience;
+}
+
+// Avatar Generation System
+function generateRandomAvatar() {
+  const colors = [
+    'from-red-400 to-pink-600',
+    'from-blue-400 to-purple-600', 
+    'from-green-400 to-teal-600',
+    'from-yellow-400 to-orange-600',
+    'from-purple-400 to-indigo-600',
+    'from-pink-400 to-red-600',
+    'from-indigo-400 to-blue-600',
+    'from-teal-400 to-green-600',
+    'from-orange-400 to-yellow-600',
+    'from-cyan-400 to-blue-600',
+    'from-emerald-400 to-cyan-600',
+    'from-rose-400 to-pink-600',
+    'from-violet-400 to-purple-600',
+    'from-amber-400 to-orange-600',
+    'from-lime-400 to-green-600'
+  ];
+  
+  const patterns = [
+    'radial-gradient',
+    'conic-gradient', 
+    'linear-gradient'
+  ];
+  
+  const selectedColor = colors[Math.floor(Math.random() * colors.length)];
+  const selectedPattern = patterns[Math.floor(Math.random() * patterns.length)];
+  
+  return {
+    gradient: selectedColor,
+    pattern: selectedPattern,
+    seed: Math.floor(Math.random() * 1000000)
+  };
+}
+
 // Server products configuration
 const SERVER_PRODUCTS = [
   {
@@ -269,11 +320,17 @@ export class FileStorage {
   }
 
   async createUser(userData) {
+    const avatar = generateRandomAvatar();
     const user = {
       id: randomUUID(),
       nickname: userData.nickname,
       password: userData.password,
       balance: 10000, // Starting balance
+      level: 1,
+      experience: 0,
+      totalEarnings: 10000, // Include starting balance
+      totalSpent: 0,
+      avatar: avatar,
       serverLimit: 3, // Starting server limit
       tutorialCompleted: false,
       admin: userData.admin || 0,
@@ -596,13 +653,31 @@ export class FileStorage {
       [jobType]: Date.now() + job.cooldown
     };
 
-    const updatedUser = await this.updateUser(userId, {
+    // Calculate experience gain (10-25 XP per job)
+    const experienceGain = Math.floor(Math.random() * 16) + 10;
+    const newExperience = (user.experience || 0) + experienceGain;
+    const newLevel = calculateLevel(newExperience);
+    const oldLevel = user.level || calculateLevel(user.experience || 0);
+    
+    const updates = {
       balance: user.balance + job.reward,
+      experience: newExperience,
+      level: newLevel,
+      totalEarnings: (user.totalEarnings || 10000) + job.reward,
       jobCooldowns: newCooldowns,
       completedJobsCount: (user.completedJobsCount || 0) + 1
-    });
+    };
+    
+    const updatedUser = await this.updateUser(userId, updates);
 
-    await this.addActivity(userId, `Completed ${job.name} (+$${job.reward.toLocaleString()})`);
+    let activityMessage = `Completed ${job.name} (+$${job.reward.toLocaleString()}, +${experienceGain} XP)`;
+    
+    // Check for level up
+    if (newLevel > oldLevel) {
+      activityMessage += ` - Level Up! Now level ${newLevel}`;
+    }
+    
+    await this.addActivity(userId, activityMessage);
 
     // Update daily quests
     await this.updateDailyQuest(userId, 'job', { jobType });
