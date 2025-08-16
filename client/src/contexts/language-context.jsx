@@ -224,8 +224,8 @@ const translations = {
     profileTooltip: 'Click on your avatar to see progress and other interesting information',
     nicknameTooltip: 'Click on your nickname or someone else\'s to view their profile',
     // Theme system
-    darkTheme: 'Dark Theme',
-    lightTheme: 'Light Theme',
+    darkTheme: 'Switch to Dark Theme',
+    lightTheme: 'Switch to Light Theme',
   },
   ru: {
     tutorial: 'Старт',
@@ -462,8 +462,8 @@ const translations = {
     profileTooltip: 'Нажмите на свою аватарку, чтобы увидеть прогресс и другую интересную информацию',
     nicknameTooltip: 'Если нажать на свой ник или чужой, можно заглянуть на чей-то профиль',
     // Theme system
-    darkTheme: 'Темная тема',
-    lightTheme: 'Светлая тема',
+    darkTheme: 'Переключить на темную тему',
+    lightTheme: 'Переключить на светлую тему',
   },
   ua: {
     tutorial: 'Старт',

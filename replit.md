@@ -10,6 +10,22 @@ Preferred communication style: Simple, everyday language.
 
 ## Recent Changes (Latest: August 16, 2025)
 
+### UI/UX Enhancements - Tooltips and Theme System (August 16, 2025)
+- **Tooltips System**: Added helpful tooltips for avatar and nickname interactions
+  - Avatar tooltip: "Click on your avatar to see progress and other interesting information"
+  - Nickname tooltip: "Click on your nickname or someone else's to view their profile"
+  - Support for both Russian and English languages
+- **Dark/Light Theme System**: Comprehensive theme switching capabilities
+  - Animated theme toggle with clear sun/moon symbols and smooth transitions
+  - Desktop: Toggle button with hover tooltip next to logout button
+  - Mobile: Compact toggle button (8x6px) next to language selector to prevent interface displacement
+  - Dark theme set as default with moon symbol, light theme with sun symbol
+  - Theme preferences saved in localStorage for persistence across sessions
+- **Enhanced User Experience**: 
+  - Improved visual feedback with clear iconography
+  - Responsive design optimized for both desktop and mobile interfaces
+  - Smooth animations and transitions for theme switching
+
 ### Migration Completion and Bug Fixes (August 16, 2025)
 - **Project Migration Completed**: Successfully migrated the server simulation game from Replit Agent to standard Replit environment
   - All Node.js dependencies properly installed via package manager

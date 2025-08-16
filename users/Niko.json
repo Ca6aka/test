@@ -2,10 +2,10 @@
   "id": "89d9b833-5345-47cc-b3d5-df00302f5ed9",
   "nickname": "Niko",
   "password": "$2b$10$G0HQ4jiWHobTKLBvgkfsF.HC/XLDC2wQjZJgjN8.t25RcxrLzoTAW",
-  "balance": 17800,
+  "balance": 18050,
   "level": 5,
-  "experience": 464,
-  "totalEarnings": 17800,
+  "experience": 482,
+  "totalEarnings": 18050,
   "totalSpent": 2000,
   "avatar": {
     "gradient": "from-orange-400 via-amber-500 to-yellow-600",
@@ -23,7 +23,7 @@
   "lastIncomeUpdate": 1755327443104,
   "jobCooldowns": {
     "maintenance": 1755333837878,
-    "optimization": 1755333636892,
+    "optimization": 1755334227446,
     "security-audit": 1755333787553
   },
   "currentLearning": {
@@ -40,6 +40,11 @@
     }
   },
   "activities": [
+    {
+      "id": "d707e797-b176-4783-a32b-68df401337d1",
+      "description": "Completed Performance Optimization (+$250, +18 XP)",
+      "timestamp": "8/16/2025, 8:42:57 AM"
+    },
     {
       "id": "8737f92c-5703-4117-9932-ec29df7f1f9f",
       "description": "Completed Server Maintenance (+$150, +10 XP) - Level Up! Now level 5",
@@ -59,15 +64,10 @@
       "id": "20b98987-8974-4094-9be7-0692d082a8b5",
       "description": "Completed Performance Optimization (+$250, +18 XP)",
       "timestamp": "8/16/2025, 8:33:06 AM"
-    },
-    {
-      "id": "ede4b077-93f9-4365-bd1c-9fe9fb6cb522",
-      "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "8/16/2025, 8:33:05 AM"
     }
   ],
   "achievements": [],
-  "completedJobsCount": 28,
+  "completedJobsCount": 29,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -114,5 +114,5 @@
     }
   ],
   "lastQuestReset": 1755327443105,
-  "lastSeen": 1755333695688
+  "lastSeen": 1755333861467
 }

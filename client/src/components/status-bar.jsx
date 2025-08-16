@@ -106,8 +106,8 @@ export function StatusBar() {
                       <SelectItem value="de">🇩🇪</SelectItem>
                     </SelectContent>
                   </Select>
+                  <ThemeToggle variant="mobile" />
                 </div>
-                <ThemeToggle variant="mobile" />
               </div>
             </div>
           </div>
