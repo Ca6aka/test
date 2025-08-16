@@ -83,12 +83,15 @@ export default function HomePage() {
                 </SelectContent>
               </Select>
               
-              <Link href="/reg">
-                <Button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700">
-                  {t('loginRegister')}
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
+              {/* Hide login button on mobile */}
+              <div className="hidden sm:block">
+                <Link href="/reg">
+                  <Button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700">
+                    {t('loginRegister')}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

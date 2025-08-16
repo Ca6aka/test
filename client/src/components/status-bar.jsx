@@ -3,6 +3,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { useGame } from '@/contexts/game-context';
 import { useLanguage } from '@/contexts/language-context';
 import { formatCurrency } from '@/lib/constants';
+import { AdminPanel } from './admin-panel';
 
 export function StatusBar() {
   const { gameState, logout } = useGame();
@@ -49,6 +50,13 @@ export function StatusBar() {
             <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
               <i className="fas fa-user text-xs"></i>
             </div>
+            {/* Mobile Admin Panel */}
+            {gameState.user && gameState.user.admin > 0 && (
+              <div className="text-xs">
+                <AdminPanel user={gameState.user} />
+              </div>
+            )}
+            
             <Button 
               variant="ghost" 
               size="sm" 
@@ -99,6 +107,12 @@ export function StatusBar() {
               <i className="fas fa-user text-sm"></i>
             </div>
             <span className="font-medium">{gameState.user.nickname}</span>
+            
+            {/* Admin Panel */}
+            {gameState.user && gameState.user.admin > 0 && (
+              <AdminPanel user={gameState.user} />
+            )}
+            
             <Button 
               variant="ghost" 
               size="sm" 

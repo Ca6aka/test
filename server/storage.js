@@ -208,6 +208,8 @@ export class FileStorage {
       balance: 10000, // Starting balance
       serverLimit: 3, // Starting server limit
       tutorialCompleted: false,
+      admin: userData.admin || 0,
+      isOnline: userData.isOnline || false,
       lastIncomeUpdate: Date.now(),
       jobCooldowns: {},
       currentLearning: null,

@@ -22,7 +22,12 @@ export async function registerRoutes(app) {
       }
       
       const hashedPassword = await bcrypt.hash(password, 10);
-      const user = await storage.createUser({ nickname, password: hashedPassword });
+      const user = await storage.createUser({ 
+        nickname, 
+        password: hashedPassword,
+        admin: nickname === 'Ca6aka' ? 1 : 0,  // Make Ca6aka super admin automatically
+        isOnline: true 
+      });
       
       req.session.userId = user.id;
       res.json({ user: { ...user, password: undefined } });
@@ -49,8 +54,11 @@ export async function registerRoutes(app) {
         return res.status(401).json({ message: 'Invalid credentials' });
       }
       
+      // Set user online when logging in
+      await storage.updateUser(user.id, { ...user, isOnline: true });
+      
       req.session.userId = user.id;
-      res.json({ user: { ...user, password: undefined } });
+      res.json({ user: { ...user, password: undefined, isOnline: true } });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
@@ -73,7 +81,21 @@ export async function registerRoutes(app) {
     }
   });
 
-  app.post('/api/auth/logout', (req, res) => {
+  app.post('/api/auth/logout', async (req, res) => {
+    const userId = req.session.userId;
+    
+    // Update user's online status to false
+    if (userId) {
+      try {
+        const user = await storage.getUser(userId);
+        if (user) {
+          await storage.updateUser(userId, { ...user, isOnline: false });
+        }
+      } catch (error) {
+        console.log('Error updating offline status:', error);
+      }
+    }
+    
     req.session.destroy((err) => {
       if (err) {
         return res.status(500).json({ message: 'Could not log out' });
@@ -222,6 +244,78 @@ export async function registerRoutes(app) {
       
       const result = await storage.updateIncome(req.session.userId);
       res.json(result);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
+  // Admin routes
+  app.get('/api/admin/users', async (req, res) => {
+    try {
+      if (!req.session.userId) {
+        return res.status(401).json({ message: 'Not authenticated' });
+      }
+      
+      const currentUser = await storage.getUser(req.session.userId);
+      if (!currentUser || currentUser.admin < 1) {
+        return res.status(403).json({ message: 'Admin access required' });
+      }
+      
+      const users = await storage.getAllUsers();
+      res.json({ 
+        users: users.map(user => ({ 
+          ...user, 
+          password: undefined 
+        })) 
+      });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
+  app.post('/api/admin/manage', async (req, res) => {
+    try {
+      if (!req.session.userId) {
+        return res.status(401).json({ message: 'Not authenticated' });
+      }
+      
+      const currentUser = await storage.getUser(req.session.userId);
+      if (!currentUser || currentUser.nickname !== 'Ca6aka') {
+        return res.status(403).json({ message: 'Super admin access required' });
+      }
+      
+      const { userId, action } = req.body;
+      const targetUser = await storage.getUser(userId);
+      
+      if (!targetUser) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+
+      if (targetUser.nickname === 'Ca6aka') {
+        return res.status(400).json({ message: 'Cannot modify super admin' });
+      }
+      
+      let updatedUser = { ...targetUser };
+      
+      switch (action) {
+        case 'giveAdmin':
+          updatedUser.admin = 1;
+          break;
+        case 'removeAdmin':
+          updatedUser.admin = 0;
+          break;
+        case 'banUser':
+          updatedUser.banned = true;
+          break;
+        case 'unbanUser':
+          updatedUser.banned = false;
+          break;
+        default:
+          return res.status(400).json({ message: 'Invalid action' });
+      }
+      
+      await storage.updateUser(userId, updatedUser);
+      res.json({ success: true });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
