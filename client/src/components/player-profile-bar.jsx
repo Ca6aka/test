@@ -57,6 +57,13 @@ function PlayerAvatar({ user, size = 'md', showLevel = true, showExperienceRing 
   if (!user?.avatar) return null;
 
   const sizeClasses = {
+    sm: 'w-8 h-8',
+    md: 'w-10 h-10',
+    lg: 'w-12 h-12',
+    xl: 'w-16 h-16'
+  };
+
+  const avatarSizeClasses = {
     sm: 'w-6 h-6',
     md: 'w-8 h-8',
     lg: 'w-10 h-10',
@@ -103,15 +110,17 @@ function PlayerAvatar({ user, size = 'md', showLevel = true, showExperienceRing 
           </svg>
         )}
         
-        {/* Avatar with static gradient */}
+        {/* Avatar with gradient */}
         <div 
-          className={`${sizeClasses[size]} rounded-full bg-gradient-to-br ${user.avatar.gradient} flex items-center justify-center text-white font-bold ${textSizes[size]} shadow-lg border-2 border-white/20 relative overflow-hidden`}
+          className={`${avatarSizeClasses[size]} rounded-full bg-gradient-to-br ${user.avatar.gradient} flex items-center justify-center text-white font-bold ${textSizes[size]} shadow-lg border-2 border-white/20 relative overflow-hidden ${user.nickname === 'Ca6aka' ? 'animate-rainbow-pulse' : ''}`}
         >
-          {/* Static background gradient animation */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-transparent to-white/5 opacity-40"></div>
-          {/* Special static rainbow effect for super admin */}
+          {/* Static background gradient for regular users */}
+          {user.nickname !== 'Ca6aka' && (
+            <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-transparent to-white/5 opacity-40"></div>
+          )}
+          {/* Special animated rainbow effect for super admin */}
           {user.nickname === 'Ca6aka' && (
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/60 via-pink-500/60 via-red-500/60 via-yellow-500/60 via-green-500/60 via-blue-500/60 to-purple-500/60"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 via-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 animate-rainbow-pulse opacity-80"></div>
           )}
           <span className="relative z-10">{user.nickname[0].toUpperCase()}</span>
         </div>
@@ -153,7 +162,7 @@ export function PlayerProfileBar({ isOpen, onClose }) {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 overflow-hidden"
-        style={{ zIndex: 100000 }}
+        style={{ zIndex: 999999 }}
         onClick={onClose}
       >
         <motion.div
