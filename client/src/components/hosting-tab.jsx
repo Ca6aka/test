@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { useGame } from '@/contexts/game-context';
+import { useLanguage } from '@/contexts/language-context';
 import { useToast } from '@/hooks/use-toast';
 import { SERVER_PRODUCTS, formatCurrency } from '@/lib/constants';
 import { Lock } from 'lucide-react';
@@ -24,6 +25,7 @@ const getServerTierColors = (serverId) => {
 
 export function HostingTab({ onTabChange }) {
   const { gameState, purchaseServer } = useGame();
+  const { t } = useLanguage();
   const { toast } = useToast();
 
   const handlePurchaseServer = async (productId) => {
@@ -33,8 +35,8 @@ export function HostingTab({ onTabChange }) {
     
     if (currentServers >= serverLimit) {
       toast({
-        title: "Server Limit Reached",
-        description: `You can only have ${serverLimit} servers. Complete learning courses to increase your limit.`,
+        title: t('serverLimitReached'),
+        description: t('serverLimitReachedDesc').replace('{serverLimit}', serverLimit),
         variant: "destructive",
       });
       return;
@@ -42,8 +44,8 @@ export function HostingTab({ onTabChange }) {
 
     if (gameState.user.balance < product.price) {
       toast({
-        title: "Insufficient Funds",
-        description: `You need ${formatCurrency(product.price)} to purchase this server.`,
+        title: t('insufficientFunds'),
+        description: t('needMoreMoney').replace('{amount}', formatCurrency(product.price)),
         variant: "destructive",
       });
       return;
@@ -52,12 +54,12 @@ export function HostingTab({ onTabChange }) {
     try {
       await purchaseServer(productId);
       toast({
-        title: "Server Purchased",
-        description: `${product.name} has been added to your servers!`,
+        title: t('serverPurchased'),
+        description: t('serverAddedToYourServers').replace('{serverName}', product.name),
       });
     } catch (error) {
       toast({
-        title: "Purchase Failed",
+        title: t('purchaseFailed'),
         description: error.message,
         variant: "destructive",
       });
@@ -73,9 +75,9 @@ export function HostingTab({ onTabChange }) {
   return (
     <div className="p-3 sm:p-6 max-w-6xl mx-auto">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6">
-        <h2 className="text-xl sm:text-2xl font-bold text-slate-100 mb-2 sm:mb-0">Server Store</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-slate-100 mb-2 sm:mb-0">{t('serverStore')}</h2>
         <div className="flex items-center space-x-2 sm:space-x-3">
-          <span className="text-xs sm:text-sm text-slate-400">Available Slots:</span>
+          <span className="text-xs sm:text-sm text-slate-400">{t('availableSlots')}:</span>
           <span className="bg-slate-700 px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm font-medium">
             {serverLimit - currentServers}/{serverLimit}
           </span>
@@ -87,10 +89,10 @@ export function HostingTab({ onTabChange }) {
         <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4 mb-6">
           <div className="flex items-center space-x-2">
             <i className="fas fa-lock text-red-400"></i>
-            <span className="text-red-400 font-medium">Server Limit Reached</span>
+            <span className="text-red-400 font-medium">{t('serverLimitReached')}</span>
           </div>
           <p className="text-sm text-slate-300 mt-1">
-            You've reached your server limit of {serverLimit}. Complete learning courses to unlock more slots!
+            {t('reachedServerLimit').replace('{serverLimit}', serverLimit)}
           </p>
         </div>
       )}
@@ -122,10 +124,10 @@ export function HostingTab({ onTabChange }) {
                     <h3 className="font-semibold text-slate-100 text-sm sm:text-base">{product.name}</h3>
                     <p className="text-xs sm:text-sm text-slate-400">{product.type}</p>
                     {!hasLevelRequirement && (
-                      <p className="text-xs text-red-400 mt-1">Requires Level {product.requiredLevel}</p>
+                      <p className="text-xs text-red-400 mt-1">{t('requiresLevel').replace('{level}', product.requiredLevel)}</p>
                     )}
                     {!hasLearningRequirement && (
-                      <p className="text-xs text-red-400 mt-1">Need Learning Course</p>
+                      <p className="text-xs text-red-400 mt-1">{t('needLearningCourse')}</p>
                     )}
                   </div>
                 </div>
@@ -136,15 +138,15 @@ export function HostingTab({ onTabChange }) {
 
               <div className="relative z-10 space-y-3 mb-6">
                 <div className="flex justify-between items-center p-3 bg-slate-700/30 rounded-lg">
-                  <span className="text-sm text-slate-400">Income per minute</span>
+                  <span className="text-sm text-slate-400">{t('income')}</span>
                   <span className="font-semibold text-secondary">+{formatCurrency(product.incomePerMinute)}</span>
                 </div>
                 <div className="flex justify-between items-center p-3 bg-slate-700/30 rounded-lg">
-                  <span className="text-sm text-slate-400">Monthly cost</span>
+                  <span className="text-sm text-slate-400">{t('monthlyCost')}</span>
                   <span className="font-semibold text-red-400">-{formatCurrency(product.monthlyCost)}</span>
                 </div>
                 <div className="flex justify-between items-center p-3 bg-slate-700/30 rounded-lg">
-                  <span className="text-sm text-slate-400">Net profit/month</span>
+                  <span className="text-sm text-slate-400">{t('netProfitMonth')}</span>
                   <span className="font-semibold text-secondary">
                     +{formatCurrency((product.incomePerMinute * 60 * 24 * 30) - product.monthlyCost)}
                   </span>
@@ -157,16 +159,16 @@ export function HostingTab({ onTabChange }) {
                 onClick={() => handlePurchaseServer(product.id)}
                 variant={isDisabled ? "secondary" : "default"}
               >
-                {!hasLevelRequirement ? `Requires Level ${product.requiredLevel}` :
-                 !hasLearningRequirement ? 'Need Learning Course' :
-                 !canPurchase ? 'Server Limit Reached' : 
-                 !canAfford ? 'Insufficient Funds' : 
-                 'Purchase Server'}
+                {!hasLevelRequirement ? t('requiresLevel').replace('{level}', product.requiredLevel) :
+                 !hasLearningRequirement ? t('needLearningCourse') :
+                 !canPurchase ? t('serverLimitReached') : 
+                 !canAfford ? t('insufficientFunds') : 
+                 t('purchaseServer')}
               </Button>
 
               {!canAfford && canPurchase && (
                 <p className="relative z-10 text-xs text-red-400 mt-2 text-center">
-                  Need {formatCurrency(product.price - gameState.user.balance)} more
+                  {t('needMoreFunds').replace('{amount}', formatCurrency(product.price - gameState.user.balance))}
                 </p>
               )}
             </div>
@@ -181,20 +183,19 @@ export function HostingTab({ onTabChange }) {
             <i className="fas fa-graduation-cap text-purple-400"></i>
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-purple-400">Want More Servers?</h3>
-            <p className="text-sm text-slate-400">Complete learning courses to increase your server limit</p>
+            <h3 className="text-lg font-semibold text-purple-400">{t('wantMoreServers')}</h3>
+            <p className="text-sm text-slate-400">{t('completeLearningCoursesToIncrease')}</p>
           </div>
         </div>
         <p className="text-sm text-slate-300 mb-4">
-          Each completed course can unlock additional server slots and improve your server efficiency. 
-          Visit the Learning Center to start your next course!
+          {t('learningCoursesBenefit')}
         </p>
         <Button 
           variant="outline" 
           className="border-purple-500/30 text-purple-400 hover:bg-purple-500/10"
           onClick={() => onTabChange && onTabChange('learning')}
         >
-          Browse Learning Courses
+          {t('browseLearningCourses')}
         </Button>
       </div>
     </div>

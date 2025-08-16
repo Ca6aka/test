@@ -72,7 +72,6 @@ const translations = {
     pleaseRefresh: 'Please refresh the page and try again',
     jobOnCooldown: 'Job is on cooldown for {seconds} seconds',
     insufficientFunds: 'Insufficient funds',
-    serverLimitReached: 'Server limit reached',
     
     // Tutorial
     tutorialProgress: 'Tutorial Progress',
@@ -125,7 +124,6 @@ const translations = {
     recentActivities: 'Recent Activities',
     
     // Server management
-    purchaseServer: 'Purchase Server',
     deleteServer: 'Delete Server',
     toggleServer: 'Toggle Server',
     noServersYet: 'No Servers Yet',
@@ -200,6 +198,61 @@ const translations = {
     playerManagement: 'Player Management',
     enterMessage: 'Enter message...',
     usefulTips: 'Useful Tips',
+    
+    // Server management additional
+    serverLimitNotice: 'Server Limit Notice',
+    serverLimitWarning: 'You\'re using {currentServers} of {serverLimit} available server slots. Complete learning courses to increase your limit!',
+    purchaseFirstServer: 'Purchase your first server from the Server Store to start earning income.',
+    noServersYet: 'No Servers Yet',
+    addNewServer: 'Add New Server',
+    availableServerSlots: 'You have {availableSlots} server slot{plural} available. Visit the Server Store to purchase new servers.',
+    browseServerStore: 'Browse Server Store',
+    serverLoadUpdated: 'Server load updated successfully',
+    
+    // Learning progress
+    learningInProgress: 'Learning in Progress',
+    timeRemaining: 'remaining',
+    
+    // Common
+    success: 'Success',
+    error: 'Error',
+    
+    // Server actions
+    serverRepaired: 'Server Repaired',
+    serverRepairedDesc: 'Server repaired for ${cost}. Durability restored by {durability}%',
+    repairFailed: 'Repair Failed',
+    serverStatusUpdated: 'Server Status Updated',
+    serverStatusUpdatedDesc: 'Server status has been updated successfully',
+    deleteWarningTitle: 'Delete Server: {serverName}',
+    deleteWarningMessage: 'This action cannot be undone!',
+    deleteLastWarning: 'Are you absolutely sure you want to delete {serverName}?',
+    deleteFinalConfirm: 'Type "DELETE" to confirm deletion of {serverName}:',
+    deleteKeyword: 'DELETE',
+    serverDeleted: 'Server Deleted',
+    serverDeletedDesc: '{serverName} has been successfully deleted',
+    deleteCancelled: 'Deletion Cancelled',
+    deleteCancelledDesc: 'Server deletion was cancelled',
+    deleteServerTooltip: 'Delete Server',
+    
+    // Server details
+    durability: 'Durability',
+    serverCondition: 'Server Condition',
+    partialRepair: 'Partial Repair',
+    fullRepair: 'Full Repair',
+    repairCostInfo: 'Repair costs scale with server value and damage',
+    maintenanceRequired: 'Maintenance required - server may shutdown!',
+    
+    // Additional hosting translations
+    availableSlots: 'Available Slots',
+    needMoreMoney: 'You need {amount} to purchase this server',
+    serverAddedToYourServers: '{serverName} has been added to your servers!',
+    needLearningCourse: 'Need Learning Course',
+    monthlyCost: 'Monthly cost',
+    netProfitMonth: 'Net profit/month',
+    needMoreFunds: 'Need {amount} more',
+    wantMoreServers: 'Want More Servers?',
+    learningCoursesBenefit: 'Each completed course can unlock additional server slots and improve your server efficiency. Visit the Learning Center to start your next course!',
+    
     giveMoney: 'Give Money',
     takeMoney: 'Take Money',
     amount: 'Amount',
@@ -288,6 +341,20 @@ const translations = {
     progressLabel: 'Progress',
     earnedLabel: 'Earned',
     completedTasks: 'tasks',
+    
+    // Additional UI strings
+    serverLimitNotice: 'Server Limit Notice',
+    serverLimitWarning: 'You\'re using {currentServers} of {serverLimit} available server slots. Complete learning courses to increase your limit!',
+    requiresLevel: 'Requires Level {level}',
+    purchaseFirstServer: 'Purchase your first server from the Server Store to start earning income.',
+    serverPurchased: 'Server Purchased',
+    purchaseFailed: 'Purchase Failed',
+    serverLimitReached: 'Server Limit Reached',
+    serverLimitReachedDesc: 'You can only have {serverLimit} servers. Complete learning courses to increase your limit.',
+    purchaseServer: 'Purchase Server',
+    reachedServerLimit: 'You\'ve reached your server limit of {serverLimit}. Complete learning courses to unlock more slots!',
+    completeLearningCoursesToIncrease: 'Complete learning courses to increase your server limit',
+    turnOnOff: 'Turn On/Off',
   },
   
   ru: {
@@ -577,6 +644,20 @@ const translations = {
     progressLabel: 'Прогресс',
     earnedLabel: 'Получено',
     completedTasks: 'заданий',
+    
+    // Additional UI strings
+    serverLimitNotice: 'Уведомление о лимите серверов',
+    serverLimitWarning: 'Вы используете {currentServers} из {serverLimit} доступных слотов серверов. Пройдите курсы обучения, чтобы увеличить лимит!',
+    requiresLevel: 'Требуется уровень {level}',
+    purchaseFirstServer: 'Купите свой первый сервер в магазине серверов, чтобы начать получать доход.',
+    serverPurchased: 'Сервер куплен',
+    purchaseFailed: 'Покупка не удалась',
+    serverLimitReached: 'Лимит серверов достигнут',
+    serverLimitReachedDesc: 'У вас может быть только {serverLimit} серверов. Пройдите курсы обучения, чтобы увеличить лимит.',
+    purchaseServer: 'Купить сервер',
+    reachedServerLimit: 'Вы достигли лимита серверов {serverLimit}. Пройдите курсы обучения, чтобы разблокировать больше слотов!',
+    completeLearningCoursesToIncrease: 'Пройдите курсы обучения, чтобы увеличить лимит серверов',
+    turnOnOff: 'Включить/Выключить',
   },
   
   ua: {
@@ -866,6 +947,20 @@ const translations = {
     progressLabel: 'Прогрес',
     earnedLabel: 'Отримано',
     completedTasks: 'завдань',
+    
+    // Additional UI strings
+    serverLimitNotice: 'Повідомлення про ліміт серверів',
+    serverLimitWarning: 'Ви використовуєте {currentServers} з {serverLimit} доступних слотів серверів. Пройдіть курси навчання, щоб збільшити ліміт!',
+    requiresLevel: 'Потрібен рівень {level}',
+    purchaseFirstServer: 'Купіть свій перший сервер у магазині серверів, щоб почати отримувати дохід.',
+    serverPurchased: 'Сервер куплено',
+    purchaseFailed: 'Покупка не вдалася',
+    serverLimitReached: 'Ліміт серверів досягнуто',
+    serverLimitReachedDesc: 'У вас може бути лише {serverLimit} серверів. Пройдіть курси навчання, щоб збільшити ліміт.',
+    purchaseServer: 'Купити сервер',
+    reachedServerLimit: 'Ви досягли ліміту серверів {serverLimit}. Пройдіть курси навчання, щоб розблокувати більше слотів!',
+    completeLearningCoursesToIncrease: 'Пройдіть курси навчання, щоб збільшити ліміт серверів',
+    turnOnOff: 'Увімкнути/Вимкнути',
   },
   
   de: {
@@ -1155,6 +1250,20 @@ const translations = {
     progressLabel: 'Fortschritt',
     earnedLabel: 'Verdient',
     completedTasks: 'aufgaben',
+    
+    // Additional UI strings
+    serverLimitNotice: 'Server-Limit-Hinweis',
+    serverLimitWarning: 'Sie verwenden {currentServers} von {serverLimit} verfügbaren Server-Slots. Absolvieren Sie Lernkurse, um Ihr Limit zu erhöhen!',
+    requiresLevel: 'Benötigt Level {level}',
+    purchaseFirstServer: 'Kaufen Sie Ihren ersten Server aus dem Server-Shop, um Einkommen zu erzielen.',
+    serverPurchased: 'Server gekauft',
+    purchaseFailed: 'Kauf fehlgeschlagen',
+    serverLimitReached: 'Server-Limit erreicht',
+    serverLimitReachedDesc: 'Sie können nur {serverLimit} Server haben. Absolvieren Sie Lernkurse, um Ihr Limit zu erhöhen.',
+    purchaseServer: 'Server kaufen',
+    reachedServerLimit: 'Sie haben Ihr Server-Limit von {serverLimit} erreicht. Absolvieren Sie Lernkurse, um mehr Slots freizuschalten!',
+    completeLearningCoursesToIncrease: 'Absolvieren Sie Lernkurse, um Ihr Server-Limit zu erhöhen',
+    turnOnOff: 'Ein/Aus',
   }
 };
 

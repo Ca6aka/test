@@ -2,10 +2,10 @@
   "id": "e73513b4-65ec-40e1-bd85-339d155b7af0",
   "nickname": "Ca6aka",
   "password": "$2b$10$JpfJ4vb59zjxCtXN0I4kbee0VAqeB3by8xsWuYuW6PZo3fAATENv.",
-  "balance": 168323,
+  "balance": 169909,
   "level": 7,
-  "experience": 876,
-  "totalEarnings": 24550,
+  "experience": 904,
+  "totalEarnings": 24950,
   "totalSpent": 34000,
   "avatar": {
     "gradient": "from-rose-400 via-pink-500 to-red-600",
@@ -20,10 +20,10 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755343348048,
+  "lastIncomeUpdate": 1755343860636,
   "jobCooldowns": {
-    "maintenance": 1755343453530,
-    "optimization": 1755343603142,
+    "maintenance": 1755344002641,
+    "optimization": 1755344152364,
     "security-audit": 1755343752804
   },
   "currentLearning": {
@@ -41,29 +41,29 @@
   },
   "activities": [
     {
-      "id": "13197c9b-a9c2-4cda-aff5-72cda897d521",
-      "description": "Income: +$155, Rental: -$15 (Net: +$140)",
-      "timestamp": "8/16/2025, 11:22:28 AM"
+      "id": "f3e30ce6-9286-41f4-81fc-c11c33bb75cb",
+      "description": "Income: +$647, Rental: -$64 (Net: +$583)",
+      "timestamp": "8/16/2025, 11:31:00 AM"
     },
     {
-      "id": "f6a8694d-582b-4e5b-ab99-2134cdfad1ed",
-      "description": "Income: +$188, Rental: -$18 (Net: +$170)",
-      "timestamp": "8/16/2025, 11:21:27 AM"
+      "id": "5cf508be-4f0e-42b5-9262-8aaa39a6828c",
+      "description": "Completed Server Maintenance (+$150, +10 XP)",
+      "timestamp": "8/16/2025, 11:28:22 AM"
     },
     {
-      "id": "cfeaaa76-f79b-4795-a0e5-d2ed6646c92f",
-      "description": "Started learning course: Basic Server Setup",
-      "timestamp": "8/16/2025, 11:20:27 AM"
+      "id": "b88ef66d-4419-4d81-86db-82fd6e9323d7",
+      "description": "Completed Performance Optimization (+$250, +18 XP)",
+      "timestamp": "8/16/2025, 11:28:22 AM"
     },
     {
-      "id": "08d59056-6d0c-48a1-95c0-64c98b58d2db",
-      "description": "Income: +$2804, Rental: -$280 (Net: +$2524)",
-      "timestamp": "8/16/2025, 11:20:14 AM"
+      "id": "4ca6f3c1-ba73-4109-bf96-58ac0f8b36bc",
+      "description": "Income: +$409, Rental: -$40 (Net: +$369)",
+      "timestamp": "8/16/2025, 11:26:48 AM"
     },
     {
-      "id": "fe28b14a-9ef0-4171-aa39-c025f4b2207c",
-      "description": "Daily quest completed: Passive Income - Reward ready to claim!",
-      "timestamp": "8/16/2025, 11:20:14 AM"
+      "id": "c9388d4f-31a4-4efa-b509-86d8f342a544",
+      "description": "Income: +$259, Rental: -$25 (Net: +$234)",
+      "timestamp": "8/16/2025, 11:24:09 AM"
     }
   ],
   "achievements": [
@@ -74,7 +74,7 @@
     "early-earner",
     "security-expert"
   ],
-  "completedJobsCount": 53,
+  "completedJobsCount": 55,
   "completedCoursesCount": 1,
   "dailyQuests": [
     {
@@ -144,7 +144,7 @@
         "type": "income",
         "amount": 10000
       },
-      "progress": 8073,
+      "progress": 9388,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -185,7 +185,7 @@
         "type": "income",
         "amount": 20000
       },
-      "progress": 8073,
+      "progress": 9388,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -212,12 +212,12 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 8073,
+      "progress": 9388,
       "completed": false,
       "date": "Sat Aug 16 2025"
     }
   ],
   "lastQuestReset": 1755339590435,
-  "lastSeen": 1755343391597,
+  "lastSeen": 1755343898771,
   "completedLearning": []
 }

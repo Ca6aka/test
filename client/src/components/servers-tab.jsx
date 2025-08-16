@@ -58,7 +58,7 @@ export function ServersTab({ onTabChange }) {
       queryClient.invalidateQueries({ queryKey: ['/api/servers'] });
       toast({
         title: t('success'),
-        description: 'Server load updated successfully',
+        description: t('serverLoadUpdated'),
       });
     },
     onError: (error) => {
@@ -164,11 +164,10 @@ export function ServersTab({ onTabChange }) {
         <div className="bg-accent/10 border border-accent/30 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6">
           <div className="flex items-center space-x-2">
             <i className="fas fa-exclamation-triangle text-accent text-sm"></i>
-            <span className="text-accent font-medium text-sm sm:text-base">Server Limit Notice</span>
+            <span className="text-accent font-medium text-sm sm:text-base">{t('serverLimitNotice')}</span>
           </div>
           <p className="text-xs sm:text-sm text-slate-300 mt-1">
-            You're using {currentServers} of {serverLimit} available server slots. 
-            Complete learning courses to increase your limit!
+            {t('serverLimitWarning').replace('{currentServers}', currentServers).replace('{serverLimit}', serverLimit)}
           </p>
         </div>
       )}
@@ -404,9 +403,9 @@ export function ServersTab({ onTabChange }) {
           <div className="w-16 h-16 bg-slate-700/50 rounded-full flex items-center justify-center mx-auto mb-4">
             <i className="fas fa-server text-slate-400 text-xl"></i>
           </div>
-          <h3 className="text-lg font-semibold text-slate-300 mb-2">No Servers Yet</h3>
+          <h3 className="text-lg font-semibold text-slate-300 mb-2">{t('noServersYet')}</h3>
           <p className="text-sm text-slate-400 mb-4">
-            Purchase your first server from the Server Store to start earning income.
+            {t('purchaseFirstServer')}
           </p>
         </div>
       )}
@@ -418,16 +417,17 @@ export function ServersTab({ onTabChange }) {
             <div className="w-16 h-16 bg-slate-700/50 rounded-full flex items-center justify-center mx-auto mb-4">
               <i className="fas fa-plus text-slate-400 text-xl"></i>
             </div>
-            <h3 className="text-lg font-semibold text-slate-300 mb-2">Add New Server</h3>
+            <h3 className="text-lg font-semibold text-slate-300 mb-2">{t('addNewServer')}</h3>
             <p className="text-sm text-slate-400 mb-4">
-              You have {availableSlots} server slot{availableSlots !== 1 ? 's' : ''} available. 
-              Visit the Server Store to purchase new servers.
+              {t('availableServerSlots')
+                .replace('{availableSlots}', availableSlots)
+                .replace('{plural}', availableSlots !== 1 ? 's' : '')}
             </p>
             <Button 
               className="bg-primary hover:bg-primary/80 text-white"
               onClick={() => onTabChange && onTabChange('hosting')}
             >
-              Browse Server Store
+              {t('browseServerStore')}
             </Button>
           </div>
         </div>
@@ -437,7 +437,7 @@ export function ServersTab({ onTabChange }) {
       {gameState.currentLearning && (
         <div className="mt-8 bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/30 rounded-xl p-6">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-purple-400">Learning in Progress</h3>
+            <h3 className="text-lg font-semibold text-purple-400">{t('learningInProgress')}</h3>
             <span className="bg-purple-500/20 text-purple-300 px-3 py-1 rounded-lg text-sm font-medium">
               {gameState.currentLearning.difficulty}
             </span>
@@ -457,7 +457,7 @@ export function ServersTab({ onTabChange }) {
             <div className="flex justify-between text-sm">
               <span className="text-slate-400">Progress</span>
               <span className="text-purple-400">
-                {gameState.currentLearning.progress}% ({gameState.currentLearning.timeRemaining} remaining)
+                {gameState.currentLearning.progress}% ({gameState.currentLearning.timeRemaining} {t('timeRemaining')})
               </span>
             </div>
             <Progress value={gameState.currentLearning.progress} className="h-3" />
