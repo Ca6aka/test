@@ -68,6 +68,18 @@ export async function registerRoutes(app) {
       if (password.length < 6) {
         return res.status(400).json({ message: 'Password must be at least 6 characters long' });
       }
+
+      // IP-based registration limits
+      const clientIP = req.ip || req.connection.remoteAddress || req.socket.remoteAddress || 
+                      (req.connection.socket ? req.connection.socket.remoteAddress : null);
+      
+      // Check if IP already registered accounts in last 24 hours
+      const recentRegistrations = await storage.checkRegistrationsByIP(clientIP);
+      if (recentRegistrations >= 3) {
+        return res.status(429).json({ 
+          message: 'Registration limit exceeded. Maximum 3 accounts per IP address per day.' 
+        });
+      }
       
       // Check for existing user with case-insensitive nickname
       const existingUser = await storage.getUserByNickname(nickname);
@@ -108,7 +120,9 @@ export async function registerRoutes(app) {
         password: hashedPassword,
         admin: nickname === 'Ca6aka' ? 2 : 0,  // Make Ca6aka super admin automatically
         isOnline: true,
-        avatar: randomAvatar
+        avatar: randomAvatar,
+        registrationIP: clientIP,
+        registrationTime: Date.now()
       });
       
       req.session.userId = user.id;

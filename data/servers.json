@@ -9,8 +9,8 @@
     "icon": "fas fa-database",
     "isOnline": true,
     "loadPercentage": 100,
-    "durability": 87,
-    "lastDurabilityUpdate": 1755382067814,
+    "durability": 86,
+    "lastDurabilityUpdate": 1755382944624,
     "createdAt": 1755374083224,
     "lastUpdated": 1755378142741,
     "lastOverloadCheck": 1755377915974
@@ -25,8 +25,8 @@
     "icon": "fas fa-database",
     "isOnline": true,
     "loadPercentage": 100,
-    "durability": 88,
-    "lastDurabilityUpdate": 1755382067814,
+    "durability": 87,
+    "lastDurabilityUpdate": 1755382944624,
     "createdAt": 1755374239409,
     "lastUpdated": 1755378142741,
     "lastOverloadCheck": 1755378098357
@@ -41,8 +41,8 @@
     "icon": "fas fa-database",
     "isOnline": true,
     "loadPercentage": 100,
-    "durability": 90,
-    "lastDurabilityUpdate": 1755382067814,
+    "durability": 89,
+    "lastDurabilityUpdate": 1755382944624,
     "createdAt": 1755375933459,
     "lastUpdated": 1755378142741,
     "lastOverloadCheck": 1755377915985
@@ -57,8 +57,8 @@
     "icon": "fas fa-database",
     "isOnline": true,
     "loadPercentage": 100,
-    "durability": 91,
-    "lastDurabilityUpdate": 1755382067814,
+    "durability": 90,
+    "lastDurabilityUpdate": 1755382944624,
     "createdAt": 1755376419872,
     "lastUpdated": 1755378142741,
     "lastOverloadCheck": 1755377994355
@@ -73,8 +73,8 @@
     "icon": "fas fa-database",
     "isOnline": true,
     "loadPercentage": 100,
-    "durability": 93,
-    "lastDurabilityUpdate": 1755382067814,
+    "durability": 92,
+    "lastDurabilityUpdate": 1755382944624,
     "createdAt": 1755377768431,
     "lastUpdated": 1755378142741
   },
@@ -88,8 +88,8 @@
     "icon": "fas fa-database",
     "isOnline": true,
     "loadPercentage": 100,
-    "durability": 93,
-    "lastDurabilityUpdate": 1755382067814,
+    "durability": 92,
+    "lastDurabilityUpdate": 1755382944624,
     "createdAt": 1755377790105,
     "lastUpdated": 1755378142741
   },
@@ -103,10 +103,10 @@
     "icon": "fas fa-globe",
     "isOnline": true,
     "loadPercentage": 95,
-    "durability": 82,
-    "lastDurabilityUpdate": 1755382067814,
+    "durability": 81,
+    "lastDurabilityUpdate": 1755382944624,
     "createdAt": 1755369446598,
-    "lastUpdated": 1755382884414,
+    "lastUpdated": 1755383157958,
     "lastOverloadCheck": 1755382884409
   },
   {
@@ -119,10 +119,10 @@
     "icon": "fas fa-database",
     "isOnline": true,
     "loadPercentage": 95,
-    "durability": 88,
-    "lastDurabilityUpdate": 1755382067814,
+    "durability": 87,
+    "lastDurabilityUpdate": 1755382944624,
     "createdAt": 1755374200688,
-    "lastUpdated": 1755382884414,
+    "lastUpdated": 1755383157958,
     "lastOverloadCheck": 1755382884411
   },
   {
@@ -135,10 +135,10 @@
     "icon": "fas fa-database",
     "isOnline": true,
     "loadPercentage": 95,
-    "durability": 88,
-    "lastDurabilityUpdate": 1755382067814,
+    "durability": 87,
+    "lastDurabilityUpdate": 1755382944624,
     "createdAt": 1755374201281,
-    "lastUpdated": 1755382884414,
+    "lastUpdated": 1755383157958,
     "lastOverloadCheck": 1755382884412
   },
   {
@@ -151,10 +151,10 @@
     "icon": "fas fa-database",
     "isOnline": true,
     "loadPercentage": 95,
-    "durability": 90,
-    "lastDurabilityUpdate": 1755382067814,
+    "durability": 89,
+    "lastDurabilityUpdate": 1755382944624,
     "createdAt": 1755375762167,
-    "lastUpdated": 1755382884414,
+    "lastUpdated": 1755383157958,
     "lastOverloadCheck": 1755382884413
   }
 ]

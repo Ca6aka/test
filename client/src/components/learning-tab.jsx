@@ -101,7 +101,7 @@ export function LearningTab() {
       </div>
 
       {/* Current Learning Progress */}
-      {gameState.currentLearning && (
+      {gameState.currentLearning && gameState.currentLearning.progress < 100 && (
         <div className="mb-8 bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/30 rounded-xl p-6">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-semibold text-purple-400">{t('currentCourse')}</h3>

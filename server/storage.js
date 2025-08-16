@@ -649,6 +649,18 @@ export class FileStorage {
     }
   }
 
+  // Check registration count by IP in last 24 hours
+  async checkRegistrationsByIP(ip) {
+    const users = await this.getAllUsers();
+    const twentyFourHoursAgo = Date.now() - (24 * 60 * 60 * 1000);
+    
+    return users.filter(user => 
+      user.registrationIP === ip && 
+      user.registrationTime && 
+      user.registrationTime > twentyFourHoursAgo
+    ).length;
+  }
+
   async createUser(userData) {
     const avatar = generateRandomAvatar();
     const user = {
@@ -678,7 +690,9 @@ export class FileStorage {
       completedLearning: [],
       efficiencyBonus: 0,
       dailyQuests: this.generateDailyQuests(),
-      lastQuestReset: Date.now()
+      lastQuestReset: Date.now(),
+      registrationIP: userData.registrationIP,
+      registrationTime: userData.registrationTime
     };
     
     await this.saveUserFile(user);

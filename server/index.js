@@ -6,6 +6,7 @@ import { setupVite, serveStatic, log } from "./vite.js";
 import { storage } from "./storage.js";
 
 const app = express();
+app.set('trust proxy', true); // Enable IP tracking for registration limits
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

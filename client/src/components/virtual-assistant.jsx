@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useLocation } from 'wouter'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -38,12 +38,21 @@ function VirtualAssistant() {
   const { t } = useLanguage()
   const user = gameState?.user
   const queryClient = useQueryClient()
+  
+  // Auto-scroll to bottom of chat when new messages arrive
+  const chatMessagesRef = useRef(null)
 
   // Fetch chat messages
   const { data: chatData, refetch: refetchMessages } = useQuery({
     queryKey: ['/api/chat/messages'],
     refetchInterval: 3000 // Refresh every 3 seconds
   })
+  
+  useEffect(() => {
+    if (chatMessagesRef.current && chatData?.messages?.length > 0) {
+      chatMessagesRef.current.scrollTop = chatMessagesRef.current.scrollHeight
+    }
+  }, [chatData?.messages, isVisible])
 
   const { data: rankings } = useQuery({
     queryKey: ['/api/rankings'],
@@ -331,7 +340,7 @@ function VirtualAssistant() {
           </div>
         </CardHeader>
         <CardContent className="p-0">
-          <div className={`${isMobile ? 'h-60' : 'h-80'} overflow-y-auto p-3 space-y-2`}>
+          <div ref={chatMessagesRef} className={`${isMobile ? 'h-60' : 'h-80'} overflow-y-auto p-3 space-y-2`}>
             {chatData?.messages?.length === 0 ? (
               <div className="text-center text-gray-500 text-sm py-8">
                 {t('noMessages')}

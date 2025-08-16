@@ -2,10 +2,10 @@
   "id": "e8162264-12da-4ee1-9dbc-a18a1f3f858b",
   "nickname": "Ca6aka",
   "password": "$2b$10$VyWHFzCGAu.7/osYGqrnxuPn.hOD46LZTHkP9KeljdyeY2j8FxfdO",
-  "balance": 41846,
+  "balance": 43477,
   "level": 8,
-  "experience": 1021,
-  "totalEarnings": 22200,
+  "experience": 1074,
+  "totalEarnings": 23100,
   "totalSpent": 34015,
   "avatar": {
     "gradient": "from-blue-400 via-purple-500 to-indigo-600",
@@ -13,57 +13,45 @@
     "seed": 917076,
     "animation": "shimmer-wave"
   },
-  "serverLimit": 4,
+  "serverLimit": 6,
   "tutorialCompleted": true,
   "admin": 2,
   "banned": false,
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755382638579,
+  "lastIncomeUpdate": 1755383004855,
   "jobCooldowns": {
-    "maintenance": 1755382631897,
-    "optimization": 1755382782191,
-    "security-audit": 1755382840739
+    "maintenance": 1755383413457,
+    "optimization": 1755383563112,
+    "security-audit": 1755383712813
   },
-  "currentLearning": {
-    "id": "advanced-management",
-    "title": "Advanced Server Management",
-    "description": "Master advanced server optimization and scaling techniques",
-    "difficulty": "Advanced",
-    "startTime": 1755375735128,
-    "endTime": 1755382935128,
-    "progress": 0,
-    "reward": {
-      "type": "serverSlots",
-      "amount": 2
-    }
-  },
+  "currentLearning": null,
   "activities": [
     {
-      "id": "91748ad6-a593-41fe-9b69-7fdd6dfb3670",
-      "description": "Income: +$545, Rental: -$54 (Net: +$491)",
-      "timestamp": "8/16/2025, 10:17:18 PM"
-    },
-    {
-      "id": "4d59356a-fafe-40cd-a9a2-d347fe5cf357",
-      "description": "Income: +$383, Rental: -$38 (Net: +$345)",
-      "timestamp": "8/16/2025, 10:13:12 PM"
-    },
-    {
-      "id": "c907d8ed-6929-4501-b3ed-bebfbe41e2d7",
-      "description": "Completed Performance Optimization (+$250, +18 XP)",
-      "timestamp": "8/16/2025, 10:12:12 PM"
-    },
-    {
-      "id": "7ea81f16-61d6-40a7-9680-769056dd99a2",
-      "description": "Daily quest completed: Hard Worker - Reward ready to claim!",
-      "timestamp": "8/16/2025, 10:12:11 PM"
-    },
-    {
-      "id": "5295664f-1518-4697-8754-2a7e5292d781",
+      "id": "647e6620-e29b-4910-9814-be0f36890330",
       "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "8/16/2025, 10:12:11 PM"
+      "timestamp": "8/16/2025, 10:25:13 PM"
+    },
+    {
+      "id": "c5c48e6f-a3c0-4b8e-9dd4-7845674596e0",
+      "description": "Daily quest completed: Job Spree - Reward ready to claim!",
+      "timestamp": "8/16/2025, 10:25:13 PM"
+    },
+    {
+      "id": "5d49b79b-fe08-4ebf-b2bf-735be2ad897f",
+      "description": "Completed Performance Optimization (+$250, +18 XP)",
+      "timestamp": "8/16/2025, 10:25:13 PM"
+    },
+    {
+      "id": "aed76b30-6106-4b94-9c39-c2cf81fffaf6",
+      "description": "Completed Security Audit (+$500, +25 XP)",
+      "timestamp": "8/16/2025, 10:25:12 PM"
+    },
+    {
+      "id": "001692d2-3538-4411-9025-6c932f3ceed3",
+      "description": "Income: +$133, Rental: -$13 (Net: +$120)",
+      "timestamp": "8/16/2025, 10:23:24 PM"
     }
   ],
   "achievements": [
@@ -73,8 +61,8 @@
     "efficient-worker",
     "server-builder"
   ],
-  "completedJobsCount": 45,
-  "completedCoursesCount": 1,
+  "completedJobsCount": 48,
+  "completedCoursesCount": 2,
   "completedLearning": [],
   "efficiencyBonus": 0,
   "dailyQuests": [
@@ -193,7 +181,7 @@
         "type": "income",
         "amount": 20000
       },
-      "progress": 19011,
+      "progress": 19822,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -207,8 +195,8 @@
         "jobType": "any",
         "count": 8
       },
-      "progress": 6,
-      "completed": false,
+      "progress": 8,
+      "completed": true,
       "date": "Sat Aug 16 2025"
     },
     {
@@ -220,11 +208,11 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 19011,
+      "progress": 19822,
       "completed": false,
       "date": "Sat Aug 16 2025"
     }
   ],
   "lastQuestReset": 1755363722114,
-  "lastSeen": 1755382913983
+  "lastSeen": 1755383161546
 }
