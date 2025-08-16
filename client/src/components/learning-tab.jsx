@@ -107,9 +107,11 @@ export function LearningTab() {
           const userLevel = gameState.user.level || 1;
           const canAfford = gameState.user.balance >= course.price;
           const hasLevelRequirement = userLevel >= course.requiredLevel;
+          const completedLearning = gameState.user.completedLearning || [];
+          const isCompleted = completedLearning.includes(course.id);
           const isLearning = gameState.currentLearning?.id === course.id;
           const hasLearning = gameState.currentLearning && !isLearning;
-          const isDisabled = !canAfford || hasLearning || !hasLevelRequirement;
+          const isDisabled = !canAfford || hasLearning || !hasLevelRequirement || isCompleted;
 
           const getRewardText = (reward) => {
             if (!reward || typeof reward !== 'object') return 'Unknown Reward';
@@ -130,15 +132,19 @@ export function LearningTab() {
           return (
             <div key={course.id} className={`bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:border-primary/30 transition-all ${
               isLearning ? 'border-purple-500/50 bg-purple-500/5' :
+              isCompleted ? 'border-green-500/50 bg-green-500/5' :
               isDisabled ? 'opacity-60' : ''
             }`}>
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-3">
                   <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                    isLearning ? 'bg-purple-500/20' : 'bg-primary/20'
+                    isLearning ? 'bg-purple-500/20' :
+                    isCompleted ? 'bg-green-500/20' : 'bg-primary/20'
                   }`}>
                     {!hasLevelRequirement ? (
                       <Lock className="text-slate-400 text-lg" />
+                    ) : isCompleted ? (
+                      <i className="fas fa-check text-green-400 text-lg"></i>
                     ) : (
                       <i className={`fas fa-brain ${isLearning ? 'text-purple-400' : 'text-primary'} text-lg`}></i>
                     )}
@@ -178,10 +184,11 @@ export function LearningTab() {
               <Button 
                 className="w-full"
                 disabled={isDisabled}
-                onClick={() => handleStartCourse(course.id)}
-                variant={isLearning ? "secondary" : isDisabled ? "ghost" : "default"}
+                onClick={() => !isCompleted && handleStartCourse(course.id)}
+                variant={isCompleted ? "secondary" : isLearning ? "secondary" : isDisabled ? "ghost" : "default"}
               >
                 {!hasLevelRequirement ? `Requires Level ${course.requiredLevel}` :
+                 isCompleted ? 'Completed' :
                  isLearning ? 'In Progress...' :
                  hasLearning ? 'Complete Current Course First' :
                  !canAfford ? 'Insufficient Funds' :

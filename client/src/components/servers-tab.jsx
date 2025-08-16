@@ -244,7 +244,14 @@ export function ServersTab({ onTabChange }) {
                 <div className="bg-slate-700/30 rounded-lg p-3">
                   <p className="text-xs text-slate-400 mb-1">Income/min</p>
                   <p className={`font-semibold ${server.isOnline ? 'text-secondary' : 'text-slate-500'}`}>
-                    {server.isOnline ? `+${formatCurrency(Math.round(server.incomePerMinute * (1 + ((server.loadPercentage || 50) - 50) / 100)))}` : '$0 (Offline)'}
+                    {server.isOnline ? (() => {
+                      const baseIncome = server.incomePerMinute;
+                      const loadPercentage = server.loadPercentage || 50;
+                      const loadAdjustment = baseIncome * (1 + (loadPercentage - 50) / 100);
+                      const efficiencyBonus = gameState.user.efficiencyBonus || 0;
+                      const finalIncome = Math.ceil(loadAdjustment * (1 + efficiencyBonus / 100));
+                      return `+${formatCurrency(finalIncome)}`;
+                    })() : '$0 (Offline)'}
                   </p>
                 </div>
                 <div className="bg-slate-700/30 rounded-lg p-3">

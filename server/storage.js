@@ -114,6 +114,16 @@ const SERVER_PRODUCTS = [
     requiredLevel: 1
   },
   {
+    id: 'high-performance',
+    name: 'High Performance Server',
+    type: 'Gaming/Apps',
+    price: 12000,
+    incomePerMinute: 50,
+    monthlyCost: 120,
+    icon: 'fas fa-server',
+    requiredLevel: 4
+  },
+  {
     id: 'database-server',
     name: 'Database Server',
     type: 'Storage',
@@ -124,16 +134,6 @@ const SERVER_PRODUCTS = [
     requiredLevel: 8
   },
   {
-    id: 'high-performance',
-    name: 'High Performance Server',
-    type: 'Gaming/Apps',
-    price: 12000,
-    incomePerMinute: 50,
-    monthlyCost: 120,
-    icon: 'fas fa-server',
-    requiredLevel: 15
-  },
-  {
     id: 'cdn-server',
     name: 'CDN Server',
     type: 'Content Delivery',
@@ -141,7 +141,29 @@ const SERVER_PRODUCTS = [
     incomePerMinute: 100,
     monthlyCost: 180,
     icon: 'fas fa-cloud',
-    requiredLevel: 25
+    requiredLevel: 12
+  },
+  {
+    id: 'gpu-server',
+    name: 'GPU Server',
+    type: 'AI',
+    price: 25000,
+    incomePerMinute: 150,
+    monthlyCost: 250,
+    icon: 'fas fa-microchip',
+    requiredLevel: 25,
+    requiredLearning: 'ai-gpu-settings'
+  },
+  {
+    id: 'tpu-server',
+    name: 'TPU Server',
+    type: 'Computing',
+    price: 47500,
+    incomePerMinute: 200,
+    monthlyCost: 350,
+    icon: 'fas fa-brain',
+    requiredLevel: 45,
+    requiredLearning: 'tpu-settings-machine'
   }
 ];
 
@@ -181,6 +203,16 @@ const LEARNING_COURSES = [
     duration: 30 * 60 * 1000, // 30 minutes in milliseconds
     reward: { type: 'serverSlots', amount: 1 },
     price: 2000,
+    requiredLevel: 1
+  },
+  {
+    id: 'advanced-management',
+    title: 'Advanced Server Management',
+    description: 'Master advanced server optimization and scaling techniques',
+    difficulty: 'Advanced',
+    duration: 120 * 60 * 1000, // 2 hours in milliseconds
+    reward: { type: 'serverSlots', amount: 2 },
+    price: 8000,
     requiredLevel: 5
   },
   {
@@ -194,14 +226,24 @@ const LEARNING_COURSES = [
     requiredLevel: 12
   },
   {
-    id: 'advanced-management',
-    title: 'Advanced Server Management',
-    description: 'Master advanced server optimization and scaling techniques',
-    difficulty: 'Advanced',
-    duration: 120 * 60 * 1000, // 2 hours in milliseconds
-    reward: { type: 'serverSlots', amount: 2 },
-    price: 8000,
-    requiredLevel: 20
+    id: 'ai-gpu-settings',
+    title: 'AI GPU Settings',
+    description: 'Master GPU configuration for AI workloads and machine learning tasks',
+    difficulty: 'Expert',
+    duration: 4 * 60 * 60 * 1000, // 4 hours in milliseconds
+    reward: { type: 'serverUnlock', serverType: 'gpu-server' },
+    price: 15000,
+    requiredLevel: 25
+  },
+  {
+    id: 'tpu-settings-machine',
+    title: 'TPU Settings Machine',
+    description: 'Advanced TPU configuration for high-performance computing and neural networks',
+    difficulty: 'Master',
+    duration: 6 * 60 * 60 * 1000, // 6 hours in milliseconds
+    reward: { type: 'serverUnlock', serverType: 'tpu-server' },
+    price: 25000,
+    requiredLevel: 45
   }
 ];
 
@@ -397,6 +439,8 @@ export class FileStorage {
       achievements: [],
       completedJobsCount: 0,
       completedCoursesCount: 0,
+      completedLearning: [],
+      efficiencyBonus: 0,
       dailyQuests: this.generateDailyQuests(),
       lastQuestReset: Date.now()
     };
@@ -872,8 +916,9 @@ export class FileStorage {
     if (learning.reward.type === 'serverSlots') {
       updates.serverLimit = user.serverLimit + learning.reward.amount;
     } else if (learning.reward.type === 'efficiency') {
-      // Efficiency bonus could be applied to future servers or existing ones
-      // For now, we'll just track it in activities
+      // Apply efficiency bonus to all current and future servers
+      const currentBonus = user.efficiencyBonus || 0;
+      updates.efficiencyBonus = currentBonus + learning.reward.amount;
     } else if (learning.reward.type === 'serverUnlock') {
       // Server unlock reward - just track completion, server will be unlocked via completedLearning array
     }
@@ -896,12 +941,15 @@ export class FileStorage {
     const timeDiff = now - lastUpdate;
     
     // Calculate income from online servers (per minute, so divide by 60000ms)
+    const efficiencyBonus = user.efficiencyBonus || 0;
     const totalIncome = servers.reduce((sum, server) => {
       if (!server.isOnline) return sum;
       const baseIncome = server.incomePerMinute;
       const loadPercentage = server.loadPercentage || 50;
-      const adjustedIncome = baseIncome * (1 + (loadPercentage - 50) / 100);
-      return sum + adjustedIncome;
+      const loadAdjustment = baseIncome * (1 + (loadPercentage - 50) / 100);
+      // Apply efficiency bonus (rounded up in favor of player)
+      const efficiencyAdjustment = Math.ceil(loadAdjustment * (1 + efficiencyBonus / 100));
+      return sum + efficiencyAdjustment;
     }, 0);
     
     // Calculate rental costs per minute (10% of income as standard)
