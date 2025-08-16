@@ -142,11 +142,16 @@ export function LearningTab() {
           const canAfford = gameState.user.balance >= course.price;
           const hasLevelRequirement = userLevel >= course.requiredLevel;
           const completedLearning = gameState.user.completedLearning || [];
-          const isCompleted = completedLearning.includes(course.id);
+          const isServerLimit25 = course.reward?.type === 'serverSlots' && (gameState.user.serverLimit || 3) >= 25;
+          
+          // For server slot courses, only consider them completed if we've reached the 25 server limit
+          const isCompleted = course.reward?.type === 'serverSlots' 
+            ? isServerLimit25
+            : completedLearning.includes(course.id);
+            
           const isLearning = gameState.currentLearning?.id === course.id;
           const hasLearning = gameState.currentLearning && !isLearning;
-          const isServerLimit25 = course.reward?.type === 'serverSlots' && (gameState.user.serverLimit || 3) >= 25;
-          const isDisabled = !canAfford || hasLearning || !hasLevelRequirement || isCompleted || isServerLimit25;
+          const isDisabled = !canAfford || hasLearning || !hasLevelRequirement || isCompleted;
 
           
 
@@ -213,12 +218,12 @@ export function LearningTab() {
               <Button 
                 className="relative z-10 w-full"
                 disabled={isDisabled}
-                onClick={() => !isCompleted && !isServerLimit25 && handleStartCourse(course.id)}
+                onClick={() => !isCompleted && handleStartCourse(course.id)}
                 variant={isCompleted ? "secondary" : isLearning ? "secondary" : isDisabled ? "ghost" : "default"}
               >
                 {!hasLevelRequirement ? `Requires Level ${course.requiredLevel}` :
                  isServerLimit25 ? 'Unavailable' :
-                 isCompleted ? 'Completed' :
+                 isCompleted && course.reward?.type !== 'serverSlots' ? 'Completed' :
                  isLearning ? 'In Progress...' :
                  hasLearning ? 'Complete Current Course First' :
                  !canAfford ? 'Insufficient Funds' :

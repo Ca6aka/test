@@ -1136,20 +1136,31 @@ export class FileStorage {
     const learning = user.currentLearning;
     const updates = { 
       currentLearning: null,
-      completedCoursesCount: (user.completedCoursesCount || 0) + 1,
-      completedLearning: [...(user.completedLearning || []), learning.id]
+      completedCoursesCount: (user.completedCoursesCount || 0) + 1
     };
 
     // Apply rewards
     if (learning.reward.type === 'serverSlots') {
       const newServerLimit = user.serverLimit + learning.reward.amount;
       updates.serverLimit = Math.min(newServerLimit, 25); // Max 25 servers
-    } else if (learning.reward.type === 'efficiency') {
-      // Apply efficiency bonus to all current and future servers
-      const currentBonus = user.efficiencyBonus || 0;
-      updates.efficiencyBonus = currentBonus + learning.reward.amount;
-    } else if (learning.reward.type === 'serverUnlock') {
-      // Server unlock reward - just track completion, server will be unlocked via completedLearning array
+      
+      // Only mark server slot courses as completed if we've reached the 25 server limit
+      if (updates.serverLimit >= 25) {
+        updates.completedLearning = [...(user.completedLearning || []), learning.id];
+      } else {
+        // Keep existing completed learning without adding this course
+        updates.completedLearning = user.completedLearning || [];
+      }
+    } else {
+      // For non-server-slot courses, always mark as completed
+      updates.completedLearning = [...(user.completedLearning || []), learning.id];
+      
+      if (learning.reward.type === 'efficiency') {
+        // Apply efficiency bonus to all current and future servers
+        const currentBonus = user.efficiencyBonus || 0;
+        updates.efficiencyBonus = currentBonus + learning.reward.amount;
+      }
+      // Server unlock rewards are handled by the completedLearning array
     }
 
     await this.updateUser(userId, updates);
