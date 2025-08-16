@@ -86,7 +86,7 @@ export function QuestsTab() {
                     <Calendar className="w-5 h-5 text-blue-400" />
                   )}
                   <span className={quest.completed ? 'text-green-400' : 'text-white'}>
-                    {quest.title}
+                    {t('dailyQuestsList')?.[quest.id]?.title || quest.title}
                   </span>
                 </div>
                 {quest.completed && (
@@ -98,7 +98,7 @@ export function QuestsTab() {
             </CardHeader>
             <CardContent>
               <p className="text-slate-400 text-sm mb-4">
-                {quest.description}
+                {t('dailyQuestsList')?.[quest.id]?.description || quest.description}
               </p>
               
               <div className="space-y-3">

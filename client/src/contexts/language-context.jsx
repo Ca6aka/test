@@ -308,6 +308,50 @@ const translations = {
     progress: 'Progress',
     claiming: 'Claiming...',
     
+    // Daily quests
+    dailyQuestsList: {
+      'daily-maintenance': {
+        title: 'Daily Maintenance',
+        description: 'Complete 3 Server Maintenance jobs'
+      },
+      'daily-income': {
+        title: 'Passive Income',
+        description: 'Earn $5,000 from server income'
+      },
+      'daily-optimization': {
+        title: 'Server Optimization',
+        description: 'Complete 2 Performance Optimization jobs'
+      },
+      'daily-security': {
+        title: 'Security Check',
+        description: 'Complete 1 Security Audit job'
+      },
+      'daily-earnings': {
+        title: 'Daily Earnings',
+        description: 'Earn $10,000 from server income'
+      },
+      'daily-worker': {
+        title: 'Hard Worker',
+        description: 'Complete 5 jobs of any type'
+      },
+      'daily-mixed-jobs': {
+        title: 'Mixed Tasks',
+        description: 'Complete 2 Maintenance and 1 Optimization job'
+      },
+      'daily-income-boost': {
+        title: 'Income Boost',
+        description: 'Earn $20,000 from server income'
+      },
+      'daily-job-spree': {
+        title: 'Job Spree',
+        description: 'Complete 8 jobs of any type'
+      },
+      'daily-mega-earner': {
+        title: 'Mega Earner',
+        description: 'Earn $50,000 from server income'
+      }
+    },
+    
     // Admin panel
     adminManagement: 'Admin Management',
     selectUser: 'Select User',
@@ -826,6 +870,50 @@ const translations = {
     progress: 'Прогресс',
     claiming: 'Получение...',
     
+    // Daily quests
+    dailyQuestsList: {
+      'daily-maintenance': {
+        title: 'Ежедневное обслуживание',
+        description: 'Выполните 3 задания по обслуживанию серверов'
+      },
+      'daily-income': {
+        title: 'Пассивный доход',
+        description: 'Заработайте $5,000 от доходов серверов'
+      },
+      'daily-optimization': {
+        title: 'Оптимизация серверов',
+        description: 'Выполните 2 задания по оптимизации производительности'
+      },
+      'daily-security': {
+        title: 'Проверка безопасности',
+        description: 'Выполните 1 задание по аудиту безопасности'
+      },
+      'daily-earnings': {
+        title: 'Ежедневные доходы',
+        description: 'Заработайте $10,000 от доходов серверов'
+      },
+      'daily-worker': {
+        title: 'Трудяга',
+        description: 'Выполните 5 заданий любого типа'
+      },
+      'daily-mixed-jobs': {
+        title: 'Смешанные задания',
+        description: 'Выполните 2 задания по обслуживанию и 1 по оптимизации'
+      },
+      'daily-income-boost': {
+        title: 'Ускорение дохода',
+        description: 'Заработайте $20,000 от доходов серверов'
+      },
+      'daily-job-spree': {
+        title: 'Череда заданий',
+        description: 'Выполните 8 заданий любого типа'
+      },
+      'daily-mega-earner': {
+        title: 'Мега-заработчик',
+        description: 'Заработайте $50,000 от доходов серверов'
+      }
+    },
+    
     // Admin panel
     adminManagement: 'Управление администраторами',
     selectUser: 'Выберите пользователя',
@@ -1146,7 +1234,11 @@ const translations = {
     dailyQuests: 'Щоденні завдання',
     achievements: 'Досягнення',
     achievementsList: {
-      'first_server': {
+      'first-steps': {
+        title: "Першi кроки",
+        description: "Виконайте своє перше завдання",
+      },
+      'first-server': {
         title: "Перший сервер",
         description: "Купіть свій перший сервер",
       },
@@ -1575,7 +1667,11 @@ const translations = {
     dailyQuests: 'Tägliche Aufgaben',
     achievements: 'Erfolge',
     achievementsList: {
-      'first_server': {
+      'first-steps': {
+        title: "Erste Schritte",
+        description: "Erledigen Sie Ihren ersten Auftrag",
+      },
+      'first-server': {
         title: "Erster Server",
         description: "Kaufen Sie Ihren ersten Server",
       },
