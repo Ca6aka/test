@@ -889,7 +889,7 @@ export class FileStorage {
       if (!server.isOnline) return sum;
       const baseIncome = server.incomePerMinute;
       const loadPercentage = server.loadPercentage || 50;
-      const adjustedIncome = baseIncome * (loadPercentage / 100);
+      const adjustedIncome = baseIncome * (1 + (loadPercentage - 50) / 100);
       return sum + adjustedIncome;
     }, 0);
     
