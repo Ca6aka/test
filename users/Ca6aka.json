@@ -2,7 +2,7 @@
   "id": "2a06ad97-f261-4edb-a6a7-2135295a81ae",
   "nickname": "Ca6aka",
   "password": "$2b$10$mmST6.N8gIjxWcm6v1mRaebd3aujzbkjmzZBkU.uLRNQKY.goxvcm",
-  "balance": 20750,
+  "balance": 17000,
   "serverLimit": 3,
   "tutorialCompleted": true,
   "admin": 1,
@@ -13,11 +13,26 @@
   "lastIncomeUpdate": 1755315516547,
   "jobCooldowns": {
     "maintenance": 1755317950844,
-    "optimization": 1755317812085,
+    "optimization": 1755318273057,
     "security-audit": 1755318249940
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "c97c9e8a-10ea-4c22-956c-f6074b341eed",
+      "description": "Achievement unlocked: First Steps (+$1,000)",
+      "timestamp": "8/16/2025, 4:17:11 AM"
+    },
+    {
+      "id": "e75eb9d8-e53e-4ded-a779-faf52a12c37b",
+      "description": "Purchased Basic Web Server for $5,000",
+      "timestamp": "8/16/2025, 4:17:11 AM"
+    },
+    {
+      "id": "cc87bd80-7abd-46ee-9462-45aa947054ca",
+      "description": "Completed Performance Optimization (+$250)",
+      "timestamp": "8/16/2025, 4:17:03 AM"
+    },
     {
       "id": "1c2b262c-1f75-46ae-a4b7-6bff9b9b2b22",
       "description": "Completed Server Maintenance (+$150)",
@@ -109,8 +124,10 @@
       "timestamp": "8/16/2025, 3:38:58 AM"
     }
   ],
-  "achievements": [],
-  "completedJobsCount": 13,
+  "achievements": [
+    "first-server"
+  ],
+  "completedJobsCount": 14,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -156,5 +173,5 @@
     }
   ],
   "lastQuestReset": 1755315516547,
-  "lastSeen": 1755317651020
+  "lastSeen": 1755317847635
 }
