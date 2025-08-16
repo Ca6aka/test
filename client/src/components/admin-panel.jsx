@@ -32,15 +32,15 @@ export const AdminPanel = ({ user, isOpen: externalIsOpen, onOpenChange }) => {
   const { t } = useLanguage();
   const { toast } = useToast();
   const [internalIsOpen, setInternalIsOpen] = useState(false);
-  
-  // Use external control if provided, otherwise use internal state
-  const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
-  const setIsOpen = onOpenChange || setInternalIsOpen;
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedUser, setSelectedUser] = useState('');
   const [action, setAction] = useState('');
   const [amount, setAmount] = useState('');
+
+  // Use external control if provided, otherwise use internal state
+  const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
+  const setIsOpen = onOpenChange || setInternalIsOpen;
 
   const isSuperAdmin = user.nickname === 'Ca6aka';
 
@@ -121,8 +121,8 @@ export const AdminPanel = ({ user, isOpen: externalIsOpen, onOpenChange }) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger asChild>
-        {externalIsOpen === undefined ? (
+      {externalIsOpen === undefined && (
+        <DialogTrigger asChild>
           <Button
             variant="outline"
             size="sm"
@@ -141,11 +141,9 @@ export const AdminPanel = ({ user, isOpen: externalIsOpen, onOpenChange }) => {
               </>
             )}
           </Button>
-        ) : (
-          <div />
-        )}
-      </DialogTrigger>
-      <DialogContent className="max-w-4xl bg-slate-900 text-slate-100">
+        </DialogTrigger>
+      )}
+      <DialogContent className="max-w-4xl bg-slate-900 text-slate-100 max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center space-x-2">
             {isSuperAdmin ? <Crown className="w-5 h-5 text-yellow-400" /> : <Shield className="w-5 h-5 text-purple-400" />}

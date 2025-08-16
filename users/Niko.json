@@ -2,10 +2,10 @@
   "id": "89d9b833-5345-47cc-b3d5-df00302f5ed9",
   "nickname": "Niko",
   "password": "$2b$10$G0HQ4jiWHobTKLBvgkfsF.HC/XLDC2wQjZJgjN8.t25RcxrLzoTAW",
-  "balance": 13000,
+  "balance": 13400,
   "level": 2,
-  "experience": 179,
-  "totalEarnings": 13000,
+  "experience": 207,
+  "totalEarnings": 13400,
   "totalSpent": 0,
   "avatar": {
     "gradient": "from-orange-400 via-amber-500 to-yellow-600",
@@ -22,12 +22,22 @@
   "isOnline": true,
   "lastIncomeUpdate": 1755327443104,
   "jobCooldowns": {
-    "maintenance": 1755329313044,
-    "optimization": 1755329151427,
+    "maintenance": 1755329637820,
+    "optimization": 1755329788589,
     "security-audit": 1755329530504
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "73ae2bfd-8f73-4ea0-b5bd-5b9a1b9b2c16",
+      "description": "Completed Performance Optimization (+$250, +18 XP)",
+      "timestamp": "8/16/2025, 7:28:58 AM"
+    },
+    {
+      "id": "92ec7dbd-1f3a-4d16-aa56-f79117d89d5c",
+      "description": "Completed Server Maintenance (+$150, +10 XP)",
+      "timestamp": "8/16/2025, 7:28:57 AM"
+    },
     {
       "id": "09c8d16e-985e-49f5-bb9a-509bb89c4853",
       "description": "Completed Server Maintenance (+$150, +10 XP)",
@@ -42,20 +52,10 @@
       "id": "bdba28f8-8a08-4e16-a18f-a3d4658f9fce",
       "description": "Given admin privileges by Ca6aka",
       "timestamp": "8/16/2025, 7:19:01 AM"
-    },
-    {
-      "id": "d5cf93b0-fda9-4d03-8edd-0fd8a4616cab",
-      "description": "Completed Performance Optimization (+$250, +18 XP)",
-      "timestamp": "8/16/2025, 7:18:21 AM"
-    },
-    {
-      "id": "3b98134f-f529-4fdf-9591-c04486418ade",
-      "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "8/16/2025, 7:18:20 AM"
     }
   ],
   "achievements": [],
-  "completedJobsCount": 11,
+  "completedJobsCount": 13,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -101,5 +101,5 @@
     }
   ],
   "lastQuestReset": 1755327443105,
-  "lastSeen": 1755329082461
+  "lastSeen": 1755329515310
 }

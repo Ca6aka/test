@@ -11,9 +11,9 @@ import { HostingTab } from '@/components/hosting-tab';
 import { LearningTab } from '@/components/learning-tab';
 import { AchievementsTab } from '@/components/achievements-tab';
 import { QuestsTab } from '@/components/quests-tab';
-import { RankingsPopup } from '@/components/rankings-popup';
 import { useGame } from '@/contexts/game-context';
 import { useLanguage } from '@/contexts/language-context';
+import { PlayerRankings } from '@/components/player-rankings';
 import { TUTORIAL_UNLOCK_THRESHOLD, formatCurrency } from '@/lib/constants';
 
 export default function DashboardPage() {
@@ -281,6 +281,12 @@ export default function DashboardPage() {
               {!isTabUnlocked('quests') && <Lock className="w-4 h-4 ml-auto" />}
             </Button>
           </nav>
+          
+          {/* Player Rankings */}
+          <div className="mt-6">
+            <h3 className="text-sm font-semibold text-slate-400 mb-3 px-3">{t('rankings')}</h3>
+            <PlayerRankings />
+          </div>
 
           {/* Progress to unlock sections - only show if tutorial not completed AND balance under 15000 */}
           {!gameState.user.tutorialCompleted && gameState.user.balance < TUTORIAL_UNLOCK_THRESHOLD && (
@@ -318,7 +324,6 @@ export default function DashboardPage() {
       </div>
 
       <VirtualAssistant />
-      <RankingsPopup />
       </div>
     </div>
   );
