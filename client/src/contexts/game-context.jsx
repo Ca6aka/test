@@ -110,7 +110,7 @@ export function GameProvider({ children }) {
   const incomeUpdateMutation = useMutation({
     mutationFn: async () => {
       const response = await apiRequest('POST', '/api/income/update');
-      return response.json();
+      return await response.json();
     },
     onSuccess: (data) => {
       dispatch({ type: 'UPDATE_INCOME', payload: data });
@@ -121,7 +121,7 @@ export function GameProvider({ children }) {
   const loginMutation = useMutation({
     mutationFn: async ({ nickname, password }) => {
       const response = await apiRequest('POST', '/api/auth/login', { nickname, password });
-      return response.json();
+      return await response.json();
     },
     onSuccess: (data) => {
       dispatch({ type: 'SET_USER', payload: data.user });
@@ -133,7 +133,7 @@ export function GameProvider({ children }) {
   const registerMutation = useMutation({
     mutationFn: async ({ nickname, password, confirmPassword }) => {
       const response = await apiRequest('POST', '/api/auth/register', { nickname, password, confirmPassword });
-      return response.json();
+      return await response.json();
     },
     onSuccess: (data) => {
       dispatch({ type: 'SET_USER', payload: data.user });
@@ -145,7 +145,7 @@ export function GameProvider({ children }) {
   const logoutMutation = useMutation({
     mutationFn: async () => {
       const response = await apiRequest('POST', '/api/auth/logout');
-      return response.json();
+      return await response.json();
     },
     onSuccess: () => {
       dispatch({ type: 'RESET' });
@@ -157,7 +157,7 @@ export function GameProvider({ children }) {
   const jobMutation = useMutation({
     mutationFn: async (jobType) => {
       const response = await apiRequest('POST', `/api/jobs/${jobType}/start`);
-      return response.json();
+      return await response.json();
     },
     onSuccess: (data) => {
       dispatch({ type: 'SET_USER', payload: data.user });
@@ -170,7 +170,7 @@ export function GameProvider({ children }) {
   const purchaseMutation = useMutation({
     mutationFn: async (productId) => {
       const response = await apiRequest('POST', '/api/servers/purchase', { productId });
-      return response.json();
+      return await response.json();
     },
     onSuccess: (data) => {
       dispatch({ type: 'SET_USER', payload: data.user });
@@ -183,7 +183,7 @@ export function GameProvider({ children }) {
   const toggleMutation = useMutation({
     mutationFn: async (serverId) => {
       const response = await apiRequest('POST', `/api/servers/${serverId}/toggle`);
-      return response.json();
+      return await response.json();
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/servers'] });
@@ -194,7 +194,7 @@ export function GameProvider({ children }) {
   const deleteMutation = useMutation({
     mutationFn: async (serverId) => {
       const response = await apiRequest('DELETE', `/api/servers/${serverId}`);
-      return response.json();
+      return await response.json();
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/servers'] });
@@ -206,7 +206,7 @@ export function GameProvider({ children }) {
   const tutorialMutation = useMutation({
     mutationFn: async () => {
       const response = await apiRequest('POST', '/api/tutorial/complete');
-      return response.json();
+      return await response.json();
     },
     onSuccess: (data) => {
       dispatch({ type: 'SET_USER', payload: data.user });
@@ -217,7 +217,7 @@ export function GameProvider({ children }) {
   const startLearningMutation = useMutation({
     mutationFn: async (courseId) => {
       const response = await apiRequest('POST', '/api/learning/start', { courseId });
-      return response.json();
+      return await response.json();
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/learning/current'] });

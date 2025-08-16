@@ -26,7 +26,7 @@ export default function LoginPage() {
       await login(loginData.nickname, loginData.password);
     } catch (error) {
       toast({
-        title: "Login Failed",
+        title: t('loginFailed'),
         description: error.message,
         variant: "destructive",
       });
@@ -37,8 +37,8 @@ export default function LoginPage() {
     e.preventDefault();
     if (registerData.password !== registerData.confirmPassword) {
       toast({
-        title: "Registration Failed",
-        description: "Passwords do not match",
+        title: t('registrationFailed'),
+        description: t('passwordsDoNotMatch'),
         variant: "destructive",
       });
       return;
@@ -47,7 +47,7 @@ export default function LoginPage() {
       await register(registerData.nickname, registerData.password, registerData.confirmPassword);
     } catch (error) {
       toast({
-        title: "Registration Failed",
+        title: t('registrationFailed'),
         description: error.message,
         variant: "destructive",
       });
@@ -81,14 +81,14 @@ export default function LoginPage() {
         <CardContent>
           <Tabs defaultValue="login" className="w-full">
             <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="login">Login</TabsTrigger>
-              <TabsTrigger value="register">Register</TabsTrigger>
+              <TabsTrigger value="login">{t('login')}</TabsTrigger>
+              <TabsTrigger value="register">{t('register')}</TabsTrigger>
             </TabsList>
             
             <TabsContent value="login">
               <form onSubmit={handleLogin} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="login-nickname">Nickname</Label>
+                  <Label htmlFor="login-nickname">{t('nickname')}</Label>
                   <Input
                     id="login-nickname"
                     type="text"
@@ -99,7 +99,7 @@ export default function LoginPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="login-password">Password</Label>
+                  <Label htmlFor="login-password">{t('password')}</Label>
                   <Input
                     id="login-password"
                     type="password"
@@ -110,7 +110,7 @@ export default function LoginPage() {
                   />
                 </div>
                 <Button type="submit" className="w-full" disabled={isLoading}>
-                  {isLoading ? 'Logging in...' : 'Login'}
+                  {isLoading ? t('loggingIn') : t('login')}
                 </Button>
               </form>
             </TabsContent>
@@ -118,7 +118,7 @@ export default function LoginPage() {
             <TabsContent value="register">
               <form onSubmit={handleRegister} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="register-nickname">Nickname</Label>
+                  <Label htmlFor="register-nickname">{t('nickname')}</Label>
                   <Input
                     id="register-nickname"
                     type="text"
@@ -129,7 +129,7 @@ export default function LoginPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="register-password">Password</Label>
+                  <Label htmlFor="register-password">{t('password')}</Label>
                   <Input
                     id="register-password"
                     type="password"
@@ -140,7 +140,7 @@ export default function LoginPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="register-confirm">Confirm Password</Label>
+                  <Label htmlFor="register-confirm">{t('confirmPassword')}</Label>
                   <Input
                     id="register-confirm"
                     type="password"
@@ -151,7 +151,7 @@ export default function LoginPage() {
                   />
                 </div>
                 <Button type="submit" className="w-full" disabled={isLoading}>
-                  {isLoading ? 'Creating Account...' : 'Register'}
+                  {isLoading ? t('creatingAccount') : t('register')}
                 </Button>
               </form>
             </TabsContent>
