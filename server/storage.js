@@ -529,6 +529,43 @@ export class FileStorage {
     await this.saveRankings(rankings);
   }
 
+  async getGeneralStats() {
+    try {
+      const users = await this.readJsonFile(this.usersFile);
+      const servers = [];
+      let totalRevenue = 0;
+      let onlineCount = 0;
+      
+      // Count all servers and calculate total revenue
+      for (const user of users) {
+        if (user.servers) {
+          servers.push(...user.servers);
+          totalRevenue += user.balance || 0;
+        }
+        // Simple online simulation - users who logged in recently
+        const lastSeen = user.lastSeen || 0;
+        const fiveMinutesAgo = Date.now() - 5 * 60 * 1000;
+        if (lastSeen > fiveMinutesAgo) {
+          onlineCount++;
+        }
+      }
+      
+      return {
+        totalPlayers: users.length,
+        onlinePlayers: onlineCount,
+        totalServers: servers.length,
+        totalRevenue: Math.floor(totalRevenue)
+      };
+    } catch (error) {
+      return {
+        totalPlayers: 0,
+        onlinePlayers: 0,
+        totalServers: 0,
+        totalRevenue: 0
+      };
+    }
+  }
+
   // Utility methods
   formatTime(milliseconds) {
     const seconds = Math.floor(milliseconds / 1000);

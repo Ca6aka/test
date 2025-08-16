@@ -251,6 +251,16 @@ export async function registerRoutes(app) {
     }
   });
 
+  // General stats route for landing page
+  app.get('/api/stats/general', async (req, res) => {
+    try {
+      const stats = await storage.getGeneralStats();
+      res.json(stats);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

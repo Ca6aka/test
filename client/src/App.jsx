@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
 import { GameProvider, useGame } from "@/contexts/game-context";
 import { LanguageProvider } from "@/contexts/language-context";
+import HomePage from "@/pages/home";
 import LoginPage from "@/pages/login";
 import DashboardPage from "@/pages/dashboard";
 import NotFound from "@/pages/not-found";
@@ -15,7 +16,11 @@ function AppRouter() {
 
   return (
     <Switch>
-      <Route path="/">
+      <Route path="/" component={HomePage} />
+      <Route path="/reg">
+        {gameState.user ? <DashboardPage /> : <LoginPage />}
+      </Route>
+      <Route path="/game">
         {gameState.user ? <DashboardPage /> : <LoginPage />}
       </Route>
       <Route component={NotFound} />
