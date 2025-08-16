@@ -2,7 +2,7 @@
   "id": "2a06ad97-f261-4edb-a6a7-2135295a81ae",
   "nickname": "Ca6aka",
   "password": "$2b$10$mmST6.N8gIjxWcm6v1mRaebd3aujzbkjmzZBkU.uLRNQKY.goxvcm",
-  "balance": 26016,
+  "balance": 26916,
   "serverLimit": 3,
   "tutorialCompleted": true,
   "admin": 1,
@@ -12,12 +12,27 @@
   "isOnline": true,
   "lastIncomeUpdate": 1755321404799,
   "jobCooldowns": {
-    "maintenance": 1755320823217,
-    "optimization": 1755321094810,
-    "security-audit": 1755320701569
+    "maintenance": 1755321820691,
+    "optimization": 1755321972488,
+    "security-audit": 1755322124289
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "9329530e-6738-4261-b53d-56b6ebe5f2a6",
+      "description": "Completed Security Audit (+$500, +25 XP)",
+      "timestamp": "8/16/2025, 5:18:44 AM"
+    },
+    {
+      "id": "dbf4f2c5-0899-4be9-a3c7-1083acfaa0bf",
+      "description": "Completed Performance Optimization (+$250, +18 XP)",
+      "timestamp": "8/16/2025, 5:18:42 AM"
+    },
+    {
+      "id": "ba566911-68eb-4c31-83b2-e840cab00b68",
+      "description": "Completed Server Maintenance (+$150, +10 XP)",
+      "timestamp": "8/16/2025, 5:18:40 AM"
+    },
     {
       "id": "8be8ed50-d216-421b-8cfb-24ee40a90d20",
       "description": "Income: +$30, Rental: -$3 (Net: +$27)",
@@ -252,27 +267,12 @@
       "id": "1ee2baae-a07f-48f5-9c13-416092749f94",
       "description": "Completed Performance Optimization (+$250)",
       "timestamp": "8/16/2025, 4:09:22 AM"
-    },
-    {
-      "id": "364a9f8f-ba82-40e0-948b-3fb0fea9993e",
-      "description": "Completed Server Maintenance (+$150)",
-      "timestamp": "8/16/2025, 4:06:22 AM"
-    },
-    {
-      "id": "4a4ef492-7366-4650-bb4a-99893c37d5e8",
-      "description": "Tutorial completed! All features unlocked.",
-      "timestamp": "8/16/2025, 4:03:42 AM"
-    },
-    {
-      "id": "5783b153-ee0c-4ca8-b6d1-4e1182d75edd",
-      "description": "Received $1,000 from super admin",
-      "timestamp": "8/16/2025, 4:00:51 AM"
     }
   ],
   "achievements": [
     "first-server"
   ],
-  "completedJobsCount": 24,
+  "completedJobsCount": 27,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -320,5 +320,8 @@
     }
   ],
   "lastQuestReset": 1755315516547,
-  "lastSeen": 1755321421568
+  "lastSeen": 1755321557289,
+  "experience": 53,
+  "level": 1,
+  "totalEarnings": 10900
 }
