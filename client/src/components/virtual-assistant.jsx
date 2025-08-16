@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useLocation } from 'wouter'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -30,6 +31,7 @@ function VirtualAssistant() {
   const [isVisible, setIsVisible] = useState(false) // По умолчанию закрыт
   const [muteUserId, setMuteUserId] = useState('')
   const [muteDuration, setMuteDuration] = useState('30')
+  const [, setLocation] = useLocation()
   const isMobile = useIsMobile()
   const { gameState } = useGame()
   const user = gameState?.user
@@ -345,9 +347,22 @@ function VirtualAssistant() {
                       <div className="space-y-1">
                         <div className="flex items-center justify-between text-xs text-gray-500">
                           <div className="flex items-center gap-2">
-                            <span className="font-medium">{message.nickname}</span>
-                            {userStatus?.admin >= 1 && (
-                              <Shield className="w-3 h-3 text-blue-600" />
+                            <button
+                              onClick={() => setLocation(`/player/${message.nickname}`)}
+                              className="font-medium text-blue-600 hover:text-blue-500 hover:underline transition-colors"
+                              data-testid={`link-profile-${message.nickname}`}
+                            >
+                              {message.nickname}
+                            </button>
+                            {userStatus?.admin >= 2 && (
+                              <span className="text-xs px-2 py-0.5 rounded-full bg-red-500/20 text-red-400 border border-red-500/30">
+                                SUPER-ADMIN
+                              </span>
+                            )}
+                            {userStatus?.admin === 1 && (
+                              <span className="text-xs px-2 py-0.5 rounded-full bg-yellow-500/20 text-yellow-400 border border-yellow-500/30">
+                                ADMIN
+                              </span>
                             )}
                             {userStatus?.isMuted && (
                               <VolumeX className="w-3 h-3 text-red-600" />
