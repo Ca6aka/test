@@ -10,6 +10,22 @@ Preferred communication style: Simple, everyday language.
 
 ## Recent Changes (Latest: August 16, 2025)
 
+### Admin System and UI Fixes (August 16, 2025)
+- **Player Management Restriction**: Removed Player Management section from chat for regular admins
+  - Only super-admin (Ca6aka) can access player management controls
+  - Regular admins no longer see money management and ban controls in chat
+- **Enhanced Admin Badge Styling**: Improved visual distinction between admin levels
+  - Super-admin badges: Red gradient with pulse animation and shadow effects
+  - Regular admin badges: Gold gradient with shadow effects for better visibility
+- **Z-Index Overlap Resolution**: Fixed notification overlapping issues on small screens
+  - Increased toast notification z-index to 999999999 for proper display over all elements
+  - Added relative positioning to player rankings to prevent interference
+  - Resolved learning completion notifications being hidden by rankings on small monitors
+- **Server Repair Success Notifications**: Fixed server repair feedback system
+  - Corrected mutation response handling to properly show success messages
+  - Server repair now displays cost and durability restored information
+  - Eliminated "failed to connect" errors when repair actually succeeds
+
 ### Critical Bug Fixes and Mobile Optimization (August 16, 2025)
 - **Nickname Validation Enhancement**: Added strict 8-character limit and special character restrictions
   - Only letters, numbers, hyphens, and underscores allowed in usernames

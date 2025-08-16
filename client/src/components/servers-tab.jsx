@@ -71,8 +71,10 @@ export function ServersTab({ onTabChange }) {
   });
 
   const repairServer = useMutation({
-    mutationFn: ({ serverId, repairType }) => 
-      apiRequest('POST', `/api/servers/${serverId}/repair`, { repairType }),
+    mutationFn: async ({ serverId, repairType }) => {
+      const response = await apiRequest('POST', `/api/servers/${serverId}/repair`, { repairType });
+      return await response.json();
+    },
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['/api/servers'] });
       queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });

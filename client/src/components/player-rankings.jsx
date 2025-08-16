@@ -45,7 +45,7 @@ export function PlayerRankings() {
   const userRank = rankings.find(r => r.id === gameState.user?.id);
 
   return (
-    <div className="bg-slate-700/30 rounded-lg p-3 space-y-2 max-h-80 overflow-y-auto">
+    <div className="bg-slate-700/30 rounded-lg p-3 space-y-2 max-h-80 overflow-y-auto relative z-10">
       {rankings.slice(0, 10).map((player, index) => {
         const isCurrentUser = player.id === gameState.user?.id;
         
