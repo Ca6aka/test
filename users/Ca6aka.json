@@ -2,10 +2,10 @@
   "id": "e8162264-12da-4ee1-9dbc-a18a1f3f858b",
   "nickname": "Ca6aka",
   "password": "$2b$10$VyWHFzCGAu.7/osYGqrnxuPn.hOD46LZTHkP9KeljdyeY2j8FxfdO",
-  "balance": 29300,
-  "level": 1,
-  "experience": 81,
-  "totalEarnings": 11300,
+  "balance": 29700,
+  "level": 2,
+  "experience": 109,
+  "totalEarnings": 11700,
   "totalSpent": 0,
   "avatar": {
     "gradient": "from-blue-400 via-purple-500 to-indigo-600",
@@ -22,12 +22,27 @@
   "isOnline": true,
   "lastIncomeUpdate": 1755363722114,
   "jobCooldowns": {
-    "maintenance": 1755364451130,
-    "optimization": 1755364692641,
+    "maintenance": 1755368807089,
+    "optimization": 1755368957389,
     "security-audit": 1755364327423
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "2c4a6455-a950-428e-ba29-1b8667f658c9",
+      "description": "Completed Performance Optimization (+$250, +18 XP) - Level Up! Now level 2",
+      "timestamp": "8/16/2025, 6:21:47 PM"
+    },
+    {
+      "id": "5490bc92-d005-440b-a9d6-11655e052b69",
+      "description": "Daily quest completed: Daily Maintenance - Reward ready to claim!",
+      "timestamp": "8/16/2025, 6:21:47 PM"
+    },
+    {
+      "id": "494b0da8-8ca6-4177-90e9-e66c6e2c2ee4",
+      "description": "Completed Server Maintenance (+$150, +10 XP)",
+      "timestamp": "8/16/2025, 6:21:47 PM"
+    },
     {
       "id": "a8f36b2d-b5da-4a0f-92ce-9d9763842294",
       "description": "Achievement unlocked: First Steps (+$500)",
@@ -37,28 +52,13 @@
       "id": "e072b568-0b57-485d-a73e-709480dfbf1d",
       "description": "Quest reward claimed: Security Check (+$2 500)",
       "timestamp": "16.08.2025, 19:45:01"
-    },
-    {
-      "id": "fcd73108-f7fc-4f73-80e6-5b09b5766bf8",
-      "description": "Quest reward claimed: Server Optimization (+$3 000)",
-      "timestamp": "16.08.2025, 19:45:00"
-    },
-    {
-      "id": "77bd7154-2c2c-41ba-985d-0021c24441d6",
-      "description": "Tutorial completed! All features unlocked.",
-      "timestamp": "16.08.2025, 19:10:56"
-    },
-    {
-      "id": "bbff69f5-bba3-4284-bc0b-db716ece234e",
-      "description": "Received $10 000 from super admin",
-      "timestamp": "16.08.2025, 19:10:50"
     }
   ],
   "achievements": [
     "early-earner",
     "first-steps"
   ],
-  "completedJobsCount": 5,
+  "completedJobsCount": 7,
   "completedCoursesCount": 0,
   "completedLearning": [],
   "efficiencyBonus": 0,
@@ -73,8 +73,8 @@
         "jobType": "maintenance",
         "count": 3
       },
-      "progress": 2,
-      "completed": false,
+      "progress": 3,
+      "completed": true,
       "date": "Sat Aug 16 2025"
     },
     {
@@ -203,5 +203,5 @@
     }
   ],
   "lastQuestReset": 1755363722114,
-  "lastSeen": 1755368488726
+  "lastSeen": 1755368512415
 }
