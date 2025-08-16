@@ -2,10 +2,10 @@
   "id": "e8162264-12da-4ee1-9dbc-a18a1f3f858b",
   "nickname": "Ca6aka",
   "password": "$2b$10$VyWHFzCGAu.7/osYGqrnxuPn.hOD46LZTHkP9KeljdyeY2j8FxfdO",
-  "balance": 29700,
+  "balance": 30200,
   "level": 2,
-  "experience": 109,
-  "totalEarnings": 11700,
+  "experience": 134,
+  "totalEarnings": 12200,
   "totalSpent": 0,
   "avatar": {
     "gradient": "from-blue-400 via-purple-500 to-indigo-600",
@@ -24,10 +24,15 @@
   "jobCooldowns": {
     "maintenance": 1755368807089,
     "optimization": 1755368957389,
-    "security-audit": 1755364327423
+    "security-audit": 1755369123405
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "11a2c662-3ea9-4a8a-8141-63e74eb01caf",
+      "description": "Completed Security Audit (+$500, +25 XP)",
+      "timestamp": "8/16/2025, 6:22:03 PM"
+    },
     {
       "id": "2c4a6455-a950-428e-ba29-1b8667f658c9",
       "description": "Completed Performance Optimization (+$250, +18 XP) - Level Up! Now level 2",
@@ -47,18 +52,13 @@
       "id": "a8f36b2d-b5da-4a0f-92ce-9d9763842294",
       "description": "Achievement unlocked: First Steps (+$500)",
       "timestamp": "8/16/2025, 6:06:10 PM"
-    },
-    {
-      "id": "e072b568-0b57-485d-a73e-709480dfbf1d",
-      "description": "Quest reward claimed: Security Check (+$2 500)",
-      "timestamp": "16.08.2025, 19:45:01"
     }
   ],
   "achievements": [
     "early-earner",
     "first-steps"
   ],
-  "completedJobsCount": 7,
+  "completedJobsCount": 8,
   "completedCoursesCount": 0,
   "completedLearning": [],
   "efficiencyBonus": 0,
@@ -203,5 +203,5 @@
     }
   ],
   "lastQuestReset": 1755363722114,
-  "lastSeen": 1755368512415
+  "lastSeen": 1755368750880
 }

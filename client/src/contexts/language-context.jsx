@@ -1043,6 +1043,8 @@ const translations = {
     purchaseServer: 'Купить сервер',
     reachedServerLimit: 'Вы достигли лимита серверов {serverLimit}. Пройдите курсы обучения, чтобы разблокировать больше слотов!',
     completeLearningCoursesToIncrease: 'Пройдите курсы обучения, чтобы увеличить лимит серверов',
+    
+    // Learning Center specific translations
     learningBenefits: 'Преимущества обучения',
     moreServers: 'Больше серверов',
     unlockAdditionalServerSlots: 'Разблокируйте дополнительные слоты серверов',
@@ -1050,6 +1052,28 @@ const translations = {
     increaseServerIncomeRates: 'Увеличьте доходность серверов',
     betterRankings: 'Лучший рейтинг',
     climbTheLeaderboards: 'Поднимайтесь в таблице лидеров',
+    
+    // Learning tab specific
+    unknownReward: 'Неизвестная награда',
+    serverSlotReward: '+{amount} слот{plural} сервера',
+    serverEfficiencyReward: '+{amount}% эффективности сервера',
+    unlockServerReward: 'Разблокирует {serverType}',
+    gpuServer: 'GPU сервер',
+    tpuServer: 'TPU сервер', 
+    specialServer: 'Специальный сервер',
+    learningInProgressError: 'Обучение в процессе',
+    oneCourseAtTime: 'Вы можете проходить только один курс за раз. Пожалуйста, дождитесь завершения текущего курса.',
+    needMoneyForCourse: 'Вам нужно {amount} для начала этого курса.',
+    courseStarted: 'Курс начат',
+    courseStartedDesc: 'Вы начали курс {courseTitle}. Проверьте свой прогресс во вкладке серверов!',
+    failedToStartCourse: 'Не удалось начать курс',
+    currentCourse: 'Текущий курс',
+    availableCourses: 'Доступные курсы',
+    duration: 'Длительность',
+    requiresLevelX: 'Требуется уровень {level}',
+    startCourse: 'Начать курс',
+    needMoreForCourse: 'Нужно еще {amount}',
+    completeCurrentFirst: 'Сначала завершите текущий курс',
     
     // Player profile
     loadingPlayerProfile: 'Загрузка профиля игрока...',
@@ -1520,6 +1544,8 @@ const translations = {
     purchaseServer: 'Купити сервер',
     reachedServerLimit: 'Ви досягли ліміту серверів {serverLimit}. Пройдіть курси навчання, щоб розблокувати більше слотів!',
     completeLearningCoursesToIncrease: 'Пройдіть курси навчання, щоб збільшити ліміт серверів',
+    
+    // Learning Center specific translations
     learningBenefits: 'Переваги навчання',
     moreServers: 'Більше серверів',
     unlockAdditionalServerSlots: 'Розблокуйте додаткові слоти серверів',
@@ -1527,6 +1553,28 @@ const translations = {
     increaseServerIncomeRates: 'Збільште дохідність серверів',
     betterRankings: 'Кращий рейтинг',
     climbTheLeaderboards: 'Піднімайтеся в таблиці лідерів',
+    
+    // Learning tab specific
+    unknownReward: 'Невідома нагорода',
+    serverSlotReward: '+{amount} слот{plural} сервера',
+    serverEfficiencyReward: '+{amount}% ефективності сервера',
+    unlockServerReward: 'Розблоковує {serverType}',
+    gpuServer: 'GPU сервер',
+    tpuServer: 'TPU сервер', 
+    specialServer: 'Спеціальний сервер',
+    learningInProgressError: 'Навчання в процесі',
+    oneCourseAtTime: 'Ви можете проходити тільки один курс за раз. Будь ласка, дочекайтеся завершення поточного курсу.',
+    needMoneyForCourse: 'Вам потрібно {amount} для початку цього курсу.',
+    courseStarted: 'Курс розпочато',
+    courseStartedDesc: 'Ви розпочали курс {courseTitle}. Перевірте свій прогрес у вкладці серверів!',
+    failedToStartCourse: 'Не вдалося розпочати курс',
+    currentCourse: 'Поточний курс',
+    availableCourses: 'Доступні курси',
+    duration: 'Тривалість',
+    requiresLevelX: 'Потрібен рівень {level}',
+    startCourse: 'Розпочати курс',
+    needMoreForCourse: 'Потрібно ще {amount}',
+    completeCurrentFirst: 'Спочатку завершіть поточний курс',
     
     // Player profile
     loadingPlayerProfile: 'Завантаження профілю гравця...',
@@ -1997,6 +2045,8 @@ const translations = {
     purchaseServer: 'Server kaufen',
     reachedServerLimit: 'Sie haben Ihr Server-Limit von {serverLimit} erreicht. Absolvieren Sie Lernkurse, um mehr Slots freizuschalten!',
     completeLearningCoursesToIncrease: 'Absolvieren Sie Lernkurse, um Ihr Server-Limit zu erhöhen',
+    
+    // Learning Center specific translations
     learningBenefits: 'Lernvorteile',
     moreServers: 'Mehr Server',
     unlockAdditionalServerSlots: 'Schalten Sie zusätzliche Server-Slots frei',
@@ -2004,6 +2054,28 @@ const translations = {
     increaseServerIncomeRates: 'Erhöhen Sie die Server-Einnahmeraten',
     betterRankings: 'Bessere Rankings',
     climbTheLeaderboards: 'Steigen Sie in den Bestenlisten auf',
+    
+    // Learning tab specific
+    unknownReward: 'Unbekannte Belohnung',
+    serverSlotReward: '+{amount} Server-Slot{plural}',
+    serverEfficiencyReward: '+{amount}% Server-Effizienz',
+    unlockServerReward: 'Schaltet {serverType} frei',
+    gpuServer: 'GPU-Server',
+    tpuServer: 'TPU-Server', 
+    specialServer: 'Spezial-Server',
+    learningInProgressError: 'Lernen läuft',
+    oneCourseAtTime: 'Sie können nur einen Kurs gleichzeitig belegen. Bitte warten Sie, bis der aktuelle Kurs abgeschlossen ist.',
+    needMoneyForCourse: 'Sie benötigen {amount}, um diesen Kurs zu starten.',
+    courseStarted: 'Kurs gestartet',
+    courseStartedDesc: 'Sie haben den Kurs {courseTitle} gestartet. Überprüfen Sie Ihren Fortschritt im Server-Tab!',
+    failedToStartCourse: 'Kurs konnte nicht gestartet werden',
+    currentCourse: 'Aktueller Kurs',
+    availableCourses: 'Verfügbare Kurse',
+    duration: 'Dauer',
+    requiresLevelX: 'Benötigt Level {level}',
+    startCourse: 'Kurs starten',
+    needMoreForCourse: 'Benötigen Sie noch {amount}',
+    completeCurrentFirst: 'Beenden Sie zuerst den aktuellen Kurs',
     
     // Player profile
     loadingPlayerProfile: 'Spielerprofil wird geladen...',
