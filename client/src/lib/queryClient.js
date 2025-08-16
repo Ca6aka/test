@@ -3,7 +3,30 @@ import { QueryClient } from "@tanstack/react-query";
 async function throwIfResNotOk(res) {
   if (!res.ok) {
     const text = (await res.text()) || res.statusText;
-    throw new Error(`${res.status}: ${text}`);
+    
+    // Create localized error message based on status code
+    let localizedError = '';
+    switch (res.status) {
+      case 400:
+        localizedError = 'errorBadRequest';
+        break;
+      case 401:
+        localizedError = 'errorUnauthorized';
+        break;
+      case 404:
+        localizedError = 'errorNotFound';
+        break;
+      case 500:
+        localizedError = 'errorServerError';
+        break;
+      default:
+        localizedError = 'errorGeneric';
+    }
+    
+    const error = new Error(`${res.status}: ${text}`);
+    error.localizedKey = localizedError;
+    error.statusCode = res.status;
+    throw error;
   }
 }
 

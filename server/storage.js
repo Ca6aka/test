@@ -499,29 +499,73 @@ export class FileStorage {
     return user?.activities || [];
   }
 
-  // Rankings
+  // Rankings - read directly from users folder
   async getRankings() {
-    const users = await this.getAllUsers();
-    const rankings = users
-      .map(user => ({
-        id: user.id,
-        nickname: user.nickname,
-        balance: user.balance,
-        serverCount: 0 // We'll calculate this
-      }))
-      .sort((a, b) => b.balance - a.balance)
-      .map((user, index) => ({
-        ...user,
-        rank: index + 1
-      }));
+    try {
+      const userFiles = await fs.readdir(usersDir);
+      const jsonFiles = userFiles.filter(file => file.endsWith('.json'));
+      
+      const rankings = [];
+      
+      for (const fileName of jsonFiles) {
+        try {
+          const userPath = path.join(usersDir, fileName);
+          const userData = JSON.parse(await fs.readFile(userPath, 'utf8'));
+          
+          rankings.push({
+            id: userData.id,
+            nickname: userData.nickname,
+            balance: userData.balance || 0,
+            serverCount: userData.servers ? userData.servers.length : 0,
+            isOnline: this.isUserOnline(userData)
+          });
+        } catch (err) {
+          // Skip invalid user files
+          continue;
+        }
+      }
+      
+      return rankings
+        .sort((a, b) => b.balance - a.balance)
+        .map((user, index) => ({
+          ...user,
+          rank: index + 1
+        }));
+    } catch (error) {
+      return [];
+    }
+  }
 
-    // Calculate server counts
-    const servers = await this.getServers();
-    rankings.forEach(user => {
-      user.serverCount = servers.filter(s => s.ownerId === user.id).length;
-    });
+  isUserOnline(userData) {
+    const lastActivity = userData.lastIncomeUpdate || userData.lastSeen || 0;
+    const twelveHoursAgo = Date.now() - 12 * 60 * 60 * 1000;
+    return lastActivity > twelveHoursAgo;
+  }
 
-    return rankings;
+  async getPlayerByNickname(nickname) {
+    try {
+      const userFiles = await fs.readdir(usersDir);
+      const jsonFiles = userFiles.filter(file => file.endsWith('.json'));
+      
+      for (const fileName of jsonFiles) {
+        try {
+          const userPath = path.join(usersDir, fileName);
+          const userData = JSON.parse(await fs.readFile(userPath, 'utf8'));
+          
+          if (userData.nickname === nickname) {
+            // Count servers
+            userData.serverCount = userData.servers ? userData.servers.length : 0;
+            return userData;
+          }
+        } catch (err) {
+          continue;
+        }
+      }
+      
+      return null;
+    } catch (error) {
+      return null;
+    }
   }
 
   async updateRankings() {
@@ -531,37 +575,51 @@ export class FileStorage {
 
   async getGeneralStats() {
     try {
-      const users = await this.readJsonFile(this.usersFile);
-      const servers = [];
-      let totalRevenue = 0;
+      // Read directly from users folder
+      const userFiles = await fs.readdir(usersDir);
+      const jsonFiles = userFiles.filter(file => file.endsWith('.json'));
+      
+      let totalBalance = 0;
+      let totalServers = 0;
       let onlineCount = 0;
       
-      // Count all servers and calculate total revenue
-      for (const user of users) {
-        if (user.servers) {
-          servers.push(...user.servers);
-          totalRevenue += user.balance || 0;
-        }
-        // Simple online simulation - users who logged in recently
-        const lastSeen = user.lastSeen || 0;
-        const fiveMinutesAgo = Date.now() - 5 * 60 * 1000;
-        if (lastSeen > fiveMinutesAgo) {
-          onlineCount++;
+      for (const fileName of jsonFiles) {
+        try {
+          const userPath = path.join(usersDir, fileName);
+          const userData = JSON.parse(await fs.readFile(userPath, 'utf8'));
+          
+          // Calculate total balance
+          totalBalance += userData.balance || 0;
+          
+          // Check if user is online (active within last 12 hours)
+          const lastActivity = userData.lastIncomeUpdate || userData.lastSeen || 0;
+          const twelveHoursAgo = Date.now() - 12 * 60 * 60 * 1000;
+          if (lastActivity > twelveHoursAgo) {
+            onlineCount++;
+          }
+          
+          // Count servers from user data
+          if (userData.servers) {
+            totalServers += userData.servers.length;
+          }
+        } catch (err) {
+          // Skip invalid user files
+          continue;
         }
       }
       
       return {
-        totalPlayers: users.length,
+        totalPlayers: jsonFiles.length,
         onlinePlayers: onlineCount,
-        totalServers: servers.length,
-        totalRevenue: Math.floor(totalRevenue)
+        totalServers: totalServers,
+        totalBalance: Math.floor(totalBalance)
       };
     } catch (error) {
       return {
         totalPlayers: 0,
         onlinePlayers: 0,
         totalServers: 0,
-        totalRevenue: 0
+        totalBalance: 0
       };
     }
   }

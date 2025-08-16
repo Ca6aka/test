@@ -35,7 +35,7 @@ const translations = {
     totalPlayers: 'Total Players',
     onlineNow: 'Online Now',
     serversHosted: 'Servers Hosted',
-    totalRevenue: 'Total Revenue',
+    totalBalance: 'Total Balance',
     gameFeatures: 'Game Features',
     featuresDescription: 'Discover what makes our server hosting simulator unique',
     feature1Title: 'Build Servers',
@@ -53,6 +53,17 @@ const translations = {
     joinCompetition: 'Join the Competition',
     allRightsReserved: 'All rights reserved.',
     loginRegister: 'Login / Register',
+    // Error messages
+    errorNotFound: 'Not Found',
+    errorServerError: 'Server Error',
+    errorNetworkError: 'Network Error',
+    errorUnauthorized: 'Access Denied',
+    errorBadRequest: 'Invalid Request',
+    errorGeneric: 'Something went wrong',
+    pleaseRefresh: 'Please refresh the page and try again',
+    // Tutorial progress
+    tutorialProgress: 'Tutorial Progress',
+    hideProgress: 'Hide Progress',
   },
   ru: {
     tutorial: 'Обучение',
@@ -88,7 +99,7 @@ const translations = {
     totalPlayers: 'Всего Игроков',
     onlineNow: 'Сейчас Онлайн',
     serversHosted: 'Серверов Размещено',
-    totalRevenue: 'Общий Доход',
+    totalBalance: 'Общий Баланс',
     gameFeatures: 'Особенности Игры',
     featuresDescription: 'Узнайте, что делает наш симулятор хостинга уникальным',
     feature1Title: 'Создавайте Серверы',
@@ -106,6 +117,17 @@ const translations = {
     joinCompetition: 'Присоединиться к Соревнованию',
     allRightsReserved: 'Все права защищены.',
     loginRegister: 'Вход / Регистрация',
+    // Error messages
+    errorNotFound: 'Не найдено',
+    errorServerError: 'Ошибка сервера',
+    errorNetworkError: 'Ошибка сети',
+    errorUnauthorized: 'Доступ запрещен',
+    errorBadRequest: 'Неверный запрос',
+    errorGeneric: 'Что-то пошло не так',
+    pleaseRefresh: 'Пожалуйста, обновите страницу и попробуйте снова',
+    // Tutorial progress
+    tutorialProgress: 'Прогресс обучения',
+    hideProgress: 'Скрыть прогресс',
   },
   de: {
     tutorial: 'Tutorial',

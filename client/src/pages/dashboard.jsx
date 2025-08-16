@@ -130,15 +130,27 @@ export default function DashboardPage() {
             </Button>
           </nav>
 
-          {/* Progress to unlock sections */}
-          {!gameState.user.tutorialCompleted && (
+          {/* Progress to unlock sections - only show if tutorial not completed AND balance under 15000 */}
+          {!gameState.user.tutorialCompleted && gameState.user.balance < TUTORIAL_UNLOCK_THRESHOLD && (
             <div className="mt-8 p-4 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg border border-primary/20">
               <h3 className="text-sm font-semibold text-primary mb-2">
-                Server Limit Upgrade
+                {t('tutorialProgress')}
               </h3>
               <Progress value={progressPercentage} className="mb-2" />
               <p className="text-xs text-slate-400">
                 {formatCurrency(gameState.user.balance)} / {formatCurrency(TUTORIAL_UNLOCK_THRESHOLD)}
+              </p>
+            </div>
+          )}
+          
+          {/* Show hide progress option if tutorial is completed but user achieved 15000 */}
+          {gameState.user.tutorialCompleted && gameState.user.balance >= TUTORIAL_UNLOCK_THRESHOLD && (
+            <div className="mt-8 p-4 bg-gradient-to-r from-green-500/10 to-blue-500/10 rounded-lg border border-green-500/20">
+              <h3 className="text-sm font-semibold text-green-400 mb-2">
+                ✓ Tutorial Completed
+              </h3>
+              <p className="text-xs text-slate-400">
+                All features unlocked!
               </p>
             </div>
           )}

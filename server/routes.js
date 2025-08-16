@@ -261,6 +261,30 @@ export async function registerRoutes(app) {
     }
   });
 
+  // Player profile route
+  app.get('/api/player/:nickname', async (req, res) => {
+    try {
+      const { nickname } = req.params;
+      const player = await storage.getPlayerByNickname(nickname);
+      
+      if (!player) {
+        return res.status(404).json({ message: 'Player not found' });
+      }
+      
+      const isOnline = storage.isUserOnline(player);
+      
+      res.json({ 
+        player: {
+          ...player,
+          password: undefined // Remove password from response
+        },
+        isOnline 
+      });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

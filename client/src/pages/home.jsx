@@ -14,7 +14,7 @@ export default function HomePage() {
     totalPlayers: 0,
     onlinePlayers: 0,
     totalServers: 0,
-    totalRevenue: 0
+    totalBalance: 0
   });
 
   // Fetch general stats for landing page
@@ -112,7 +112,12 @@ export default function HomePage() {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
-            <Button size="lg" variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-800">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-slate-600 text-slate-300 hover:bg-slate-800"
+              onClick={() => document.getElementById('features-section').scrollIntoView({ behavior: 'smooth' })}
+            >
               {t('learnMore')}
             </Button>
           </div>
@@ -150,8 +155,8 @@ export default function HomePage() {
             <Card className="bg-slate-800/50 border-slate-700">
               <CardContent className="p-6 text-center">
                 <TrendingUp className="h-8 w-8 text-green-400 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-white">${stats.totalRevenue?.toLocaleString() || '0'}</div>
-                <div className="text-slate-400">{t('totalRevenue')}</div>
+                <div className="text-2xl font-bold text-white">${stats.totalBalance?.toLocaleString() || '0'}</div>
+                <div className="text-slate-400">{t('totalBalance')}</div>
               </CardContent>
             </Card>
           </div>
@@ -159,7 +164,7 @@ export default function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20">
+      <section className="py-20" id="features-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-white mb-4">{t('gameFeatures')}</h2>
@@ -198,12 +203,18 @@ export default function HomePage() {
             <CardContent>
               <div className="space-y-4">
                 {rankingsResponse?.rankings?.slice(0, 10).map((player, index) => (
-                  <div key={player.id} className="flex items-center justify-between p-3 rounded-lg bg-slate-700/50">
+                  <div key={player.id} className="flex items-center justify-between p-3 rounded-lg bg-slate-700/50 hover:bg-slate-700/70 transition-colors cursor-pointer group">
                     <div className="flex items-center space-x-3">
                       <Badge variant="outline" className="border-slate-600 text-slate-300">
                         #{index + 1}
                       </Badge>
-                      <span className="text-white font-medium">{player.nickname}</span>
+                      <span 
+                        className="text-white font-medium group-hover:text-blue-400 transition-colors"
+                        onClick={() => window.location.href = `/player/${player.nickname}`}
+                      >
+                        {player.nickname}
+                        {player.isOnline && <span className="ml-2 w-2 h-2 bg-green-400 rounded-full inline-block animate-pulse"></span>}
+                      </span>
                     </div>
                     <div className="text-right">
                       <div className="text-green-400 font-bold">${player.balance?.toLocaleString()}</div>

@@ -9,6 +9,7 @@ import { LanguageProvider } from "@/contexts/language-context";
 import HomePage from "@/pages/home";
 import LoginPage from "@/pages/login";
 import DashboardPage from "@/pages/dashboard";
+import PlayerProfilePage from "@/pages/player-profile";
 import NotFound from "@/pages/not-found";
 
 
@@ -25,6 +26,12 @@ function AppRouter() {
       
       <Route path="/game">
         {gameState.user ? <DashboardPage /> : <Redirect to="/reg" />}
+      </Route>
+      
+      <Route path="/player/:nickname" component={PlayerProfilePage} />
+      
+      <Route path="/player">
+        {gameState.user ? <Redirect to="/game" /> : <Redirect to="/reg" />}
       </Route>
       
       <Route component={NotFound} />
