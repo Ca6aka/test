@@ -1,16 +1,17 @@
 {
-  "id": "f7a8faee-a7fa-4b89-a7dc-8342d8424c1e",
-  "nickname": "Niko",
-  "password": "$2b$10$tQjnbCMVmxhpPM/jQRicpOm8t78jAdMpGmiOIgnR0WiBO/MpecJXO",
-  "balance": 11800,
-  "level": 2,
-  "experience": 106,
-  "totalEarnings": 11800,
+  "id": "85961a83-b617-468d-bb52-176a03f1c95f",
+  "nickname": "ca6aka",
+  "password": "$2b$10$4DrmajJnnS7ApDO8e6.tyeVh0ChToWhqpb31iNC5aN.vZMgU3jhrS",
+  "balance": 10900,
+  "level": 1,
+  "experience": 53,
+  "totalEarnings": 10900,
   "totalSpent": 0,
   "avatar": {
-    "gradient": "from-purple-400 to-indigo-600",
-    "pattern": "conic-gradient",
-    "seed": 318556
+    "gradient": "from-emerald-400 via-green-500 to-teal-600",
+    "pattern": "multi-color",
+    "seed": 291114,
+    "animation": "shimmer-wave"
   },
   "serverLimit": 3,
   "tutorialCompleted": false,
@@ -19,42 +20,32 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755323052291,
+  "lastIncomeUpdate": 1755324554996,
   "jobCooldowns": {
-    "maintenance": 1755324281732,
-    "optimization": 1755324434213,
-    "security-audit": 1755324585111
+    "maintenance": 1755325060962,
+    "optimization": 1755325213244,
+    "security-audit": 1755325363584
   },
   "currentLearning": null,
   "activities": [
     {
-      "id": "bc7e0923-fee6-4cf8-9c51-722ff1d04690",
-      "description": "Completed Security Audit (+$500, +25 XP) - Level Up! Now level 2",
-      "timestamp": "8/16/2025, 5:59:45 AM"
+      "id": "1da9a6ea-8bfc-43b3-a2a4-fdf58769f24d",
+      "description": "Completed Security Audit (+$500, +25 XP)",
+      "timestamp": "8/16/2025, 6:12:43 AM"
     },
     {
-      "id": "22fa852c-cc9d-458e-be58-08cf4881f296",
+      "id": "88461371-66c6-47bd-b9cb-3d13230126a6",
       "description": "Completed Performance Optimization (+$250, +18 XP)",
-      "timestamp": "8/16/2025, 5:59:44 AM"
+      "timestamp": "8/16/2025, 6:12:43 AM"
     },
     {
-      "id": "23ed7365-43db-42af-8a3e-34db2acd6d86",
+      "id": "a8f25bdc-53b4-4e3d-8fe3-ff8974689a82",
       "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "8/16/2025, 5:59:41 AM"
-    },
-    {
-      "id": "b61fd89b-6f44-494c-80c9-2dec9bb4922d",
-      "description": "Admin privileges removed by Ca6aka",
-      "timestamp": "8/16/2025, 5:59:01 AM"
-    },
-    {
-      "id": "905d3288-576d-4c20-bf73-e3d5f68798a0",
-      "description": "Given admin privileges by Ca6aka",
-      "timestamp": "8/16/2025, 5:45:27 AM"
+      "timestamp": "8/16/2025, 6:12:40 AM"
     }
   ],
   "achievements": [],
-  "completedJobsCount": 6,
+  "completedJobsCount": 3,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -67,7 +58,7 @@
         "jobType": "maintenance",
         "count": 3
       },
-      "progress": 2,
+      "progress": 1,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -94,11 +85,11 @@
         "jobType": "optimization",
         "count": 2
       },
-      "progress": 2,
-      "completed": true,
+      "progress": 1,
+      "completed": false,
       "date": "Sat Aug 16 2025"
     }
   ],
-  "lastQuestReset": 1755323052291,
-  "lastSeen": 1755323987628
+  "lastQuestReset": 1755324554996,
+  "lastSeen": 1755324764944
 }

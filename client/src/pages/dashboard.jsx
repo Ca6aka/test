@@ -50,7 +50,7 @@ export default function DashboardPage() {
       <div className="absolute top-10 right-10 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl animate-pulse" />
       <div className="absolute bottom-20 left-20 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
       
-      <div className="relative z-10">
+      <div className="relative z-0">
         <StatusBar />
       
       <div className="flex flex-col lg:flex-row h-[calc(100vh-80px)]">
