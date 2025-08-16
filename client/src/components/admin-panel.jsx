@@ -180,13 +180,13 @@ export const AdminPanel = ({ user }) => {
             </Card>
           </div>
 
-          {/* Super Admin Controls */}
-          {isSuperAdmin && (
+          {/* Admin Controls */}
+          {(user.admin >= 1) && (
             <Card className="bg-slate-800/50 border-slate-700">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
                   <Settings className="w-5 h-5" />
-                  <span>{t('adminManagement')}</span>
+                  <span>{isSuperAdmin ? t('adminManagement') : 'Управление пользователями'}</span>
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -198,7 +198,7 @@ export const AdminPanel = ({ user }) => {
                         <SelectValue placeholder={t('chooseUser')} />
                       </SelectTrigger>
                       <SelectContent>
-                        {users.filter(u => u.nickname !== 'Ca6aka').map(user => (
+                        {users.map(user => (
                           <SelectItem key={user.id} value={user.id}>
                             {user.nickname} 
                             {user.admin > 0 && <Badge className="ml-2 text-xs">Admin</Badge>}
@@ -215,12 +215,33 @@ export const AdminPanel = ({ user }) => {
                         <SelectValue placeholder={t('chooseAction')} />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="giveAdmin">{t('giveAdmin')}</SelectItem>
-                        <SelectItem value="removeAdmin">{t('removeAdmin')}</SelectItem>
-                        <SelectItem value="banUser">{t('banUser')}</SelectItem>
-                        <SelectItem value="unbanUser">{t('unbanUser')}</SelectItem>
-                        <SelectItem value="addMoney">Выдать деньги</SelectItem>
-                        <SelectItem value="removeMoney">Забрать деньги</SelectItem>
+                        {(() => {
+                          const selectedUserData = users.find(u => u.id === selectedUser);
+                          const isSelf = selectedUserData?.nickname === user.nickname;
+                          
+                          return (
+                            <>
+                              <SelectItem value="giveAdmin" disabled={isSelf || !isSuperAdmin}>
+                                {t('giveAdmin')}
+                              </SelectItem>
+                              <SelectItem value="removeAdmin" disabled={isSelf || !isSuperAdmin}>
+                                {t('removeAdmin')}
+                              </SelectItem>
+                              <SelectItem value="banUser" disabled={isSelf}>
+                                {t('banUser')}
+                              </SelectItem>
+                              <SelectItem value="unbanUser" disabled={isSelf}>
+                                {t('unbanUser')}
+                              </SelectItem>
+                              <SelectItem value="addMoney" disabled={!isSuperAdmin}>
+                                Выдать деньги
+                              </SelectItem>
+                              <SelectItem value="removeMoney" disabled={!isSuperAdmin}>
+                                Забрать деньги
+                              </SelectItem>
+                            </>
+                          );
+                        })()}
                       </SelectContent>
                     </Select>
                   </div>

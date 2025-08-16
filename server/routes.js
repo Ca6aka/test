@@ -298,6 +298,7 @@ export async function registerRoutes(app) {
         return res.status(404).json({ message: 'User not found' });
       }
 
+      // Prevent non-super-admins from modifying super admin (except for money operations by super admin himself)
       if (targetUser.nickname === 'Ca6aka' && currentUser.nickname !== 'Ca6aka') {
         return res.status(400).json({ message: 'Cannot modify super admin' });
       }
