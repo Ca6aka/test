@@ -2,7 +2,7 @@
   "id": "e73513b4-65ec-40e1-bd85-339d155b7af0",
   "nickname": "Ca6aka",
   "password": "$2b$10$JpfJ4vb59zjxCtXN0I4kbee0VAqeB3by8xsWuYuW6PZo3fAATENv.",
-  "balance": 112286,
+  "balance": 112374,
   "level": 3,
   "experience": 278,
   "totalEarnings": 14550,
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755330081528,
+  "lastIncomeUpdate": 1755330221590,
   "jobCooldowns": {
     "maintenance": 1755330164982,
     "optimization": 1755330551295,
@@ -28,6 +28,16 @@
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "339a8bcc-6711-4485-93fb-82979850e582",
+      "description": "Income: +$42, Rental: -$4 (Net: +$38)",
+      "timestamp": "8/16/2025, 7:43:41 AM"
+    },
+    {
+      "id": "ba8d398b-ce4b-430f-88b7-d63b891f83a0",
+      "description": "Income: +$55, Rental: -$5 (Net: +$50)",
+      "timestamp": "8/16/2025, 7:42:41 AM"
+    },
     {
       "id": "4b4be280-54d5-4931-8689-4601a4e09977",
       "description": "Completed Performance Optimization (+$250, +18 XP)",
@@ -42,16 +52,6 @@
       "id": "85f23d36-e4ce-48a1-ae74-da91f46290ab",
       "description": "Income: +$87, Rental: -$8 (Net: +$79)",
       "timestamp": "8/16/2025, 7:39:45 AM"
-    },
-    {
-      "id": "524cb207-0c5e-4a35-8460-de64b17f7b3e",
-      "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "8/16/2025, 7:37:44 AM"
-    },
-    {
-      "id": "77c400f5-d77b-4d85-afb8-8cb33ea9970d",
-      "description": "Income: +$168, Rental: -$16 (Net: +$152)",
-      "timestamp": "8/16/2025, 7:37:40 AM"
     }
   ],
   "achievements": [
@@ -84,7 +84,7 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 1918,
+      "progress": 2015,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -105,5 +105,5 @@
     }
   ],
   "lastQuestReset": 1755327035906,
-  "lastSeen": 1755330124946
+  "lastSeen": 1755330322112
 }

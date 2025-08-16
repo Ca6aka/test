@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Lock } from 'lucide-react';
@@ -15,12 +15,14 @@ import { useGame } from '@/contexts/game-context';
 import { useLanguage } from '@/contexts/language-context';
 import { PlayerRankings } from '@/components/player-rankings';
 import { RankingsPopup } from '@/components/rankings-popup';
+import { PlayerProfileBar } from '@/components/player-profile-bar';
 import { TUTORIAL_UNLOCK_THRESHOLD, formatCurrency } from '@/lib/constants';
 
 export default function DashboardPage() {
   const { gameState } = useGame();
   const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState('tutorial');
+  const [profileOpen, setProfileOpen] = useState(false);
 
   const isTabUnlocked = (tab) => {
     if (tab === 'tutorial') return true;
@@ -39,6 +41,13 @@ export default function DashboardPage() {
       default: return <TutorialTab gameState={gameState} setActiveTab={setActiveTab} />;
     }
   };
+
+  // Listen for profile open events
+  useEffect(() => {
+    const handleOpenProfile = () => setProfileOpen(true);
+    window.addEventListener('openProfile', handleOpenProfile);
+    return () => window.removeEventListener('openProfile', handleOpenProfile);
+  }, []);
 
   if (!gameState.user) return null;
 
@@ -326,6 +335,12 @@ export default function DashboardPage() {
 
       <VirtualAssistant />
       <RankingsPopup />
+      
+      {/* Player Profile - rendered at top level */}
+      <PlayerProfileBar 
+        isOpen={profileOpen} 
+        onClose={() => setProfileOpen(false)} 
+      />
       </div>
     </div>
   );

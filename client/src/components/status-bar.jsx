@@ -6,14 +6,13 @@ import { useGame } from '@/contexts/game-context';
 import { useLanguage } from '@/contexts/language-context';
 import { formatCurrency } from '@/lib/constants';
 import { AdminPanel } from './admin-panel';
-import { PlayerAvatar, PlayerProfileBar } from './player-profile-bar';
+import { PlayerAvatar } from './player-profile-bar';
 import { Crown, Shield } from 'lucide-react';
 
 export function StatusBar() {
   const { gameState, logout } = useGame();
   const { language, changeLanguage, t } = useLanguage();
   const [, setLocation] = useLocation();
-  const [profileOpen, setProfileOpen] = useState(false);
   const [mobileAdminOpen, setMobileAdminOpen] = useState(false);
 
   if (!gameState.user) return null;
@@ -48,7 +47,7 @@ export function StatusBar() {
                 <PlayerAvatar 
                   user={gameState.user} 
                   size="sm" 
-                  onClick={() => setProfileOpen(true)}
+                  onClick={() => window.dispatchEvent(new CustomEvent('openProfile'))}
                 />
                 <span 
                   className="font-medium cursor-pointer hover:text-blue-400 transition-colors text-xs" 
@@ -163,7 +162,7 @@ export function StatusBar() {
             <PlayerAvatar 
               user={gameState.user} 
               size="md" 
-              onClick={() => setProfileOpen(true)}
+              onClick={() => window.dispatchEvent(new CustomEvent('openProfile'))}
             />
             <span 
               className="font-medium cursor-pointer hover:text-blue-400 transition-colors" 
@@ -191,12 +190,6 @@ export function StatusBar() {
       </div>
 
       
-      {profileOpen && (
-        <PlayerProfileBar 
-          isOpen={profileOpen} 
-          onClose={() => setProfileOpen(false)} 
-        />
-      )}
       
       {/* Mobile Admin Panel Dialog */}
       {gameState.user && gameState.user.admin > 0 && (
