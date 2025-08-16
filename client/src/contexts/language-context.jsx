@@ -220,6 +220,12 @@ const translations = {
     levelUp: 'Level Up!',
     levelUpCongrats: 'Congratulations! You\'ve reached level',
     newAbilitiesUnlocked: 'New abilities unlocked!',
+    // Tooltips and hints
+    profileTooltip: 'Click on your avatar to see progress and other interesting information',
+    nicknameTooltip: 'Click on your nickname or someone else\'s to view their profile',
+    // Theme system
+    darkTheme: 'Dark Theme',
+    lightTheme: 'Light Theme',
   },
   ru: {
     tutorial: 'Старт',
@@ -452,6 +458,12 @@ const translations = {
     levelUp: 'Повышение уровня!',
     levelUpCongrats: 'Поздравляем! Вы достигли уровня',
     newAbilitiesUnlocked: 'Новые способности разблокированы!',
+    // Tooltips and hints
+    profileTooltip: 'Нажмите на свою аватарку, чтобы увидеть прогресс и другую интересную информацию',
+    nicknameTooltip: 'Если нажать на свой ник или чужой, можно заглянуть на чей-то профиль',
+    // Theme system
+    darkTheme: 'Темная тема',
+    lightTheme: 'Светлая тема',
   },
   ua: {
     tutorial: 'Старт',

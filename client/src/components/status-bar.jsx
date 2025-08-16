@@ -7,6 +7,8 @@ import { useLanguage } from '@/contexts/language-context';
 import { formatCurrency } from '@/lib/constants';
 import { AdminPanel } from './admin-panel';
 import { PlayerAvatar } from './player-profile-bar';
+import { ThemeToggle } from './theme-toggle';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Crown, Shield } from 'lucide-react';
 
 export function StatusBar() {
@@ -44,18 +46,38 @@ export function StatusBar() {
               </div>
               
               <div className="flex items-center space-x-1">
-                <PlayerAvatar 
-                  user={gameState.user} 
-                  size="sm" 
-                  onClick={() => window.dispatchEvent(new CustomEvent('openProfile'))}
-                />
-                <span 
-                  className="font-medium cursor-pointer hover:text-blue-400 transition-colors text-xs" 
-                  onClick={() => setLocation(`/player/${gameState.user.nickname}`)}
-                  data-testid="username-link-mobile"
-                >
-                  {gameState.user.nickname}
-                </span>
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <div>
+                        <PlayerAvatar 
+                          user={gameState.user} 
+                          size="sm" 
+                          onClick={() => window.dispatchEvent(new CustomEvent('openProfile'))}
+                        />
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="text-xs">{t('profileTooltip')}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <span 
+                        className="font-medium cursor-pointer hover:text-blue-400 transition-colors text-xs" 
+                        onClick={() => setLocation(`/player/${gameState.user.nickname}`)}
+                        data-testid="username-link-mobile"
+                      >
+                        {gameState.user.nickname}
+                      </span>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="text-xs">{t('nicknameTooltip')}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               </div>
             </div>
             
@@ -70,19 +92,22 @@ export function StatusBar() {
                 {t('logout')}
               </Button>
               
-              {/* Language selector under logout */}
-              <div className="flex items-center space-x-1">
-                <Select value={language} onValueChange={changeLanguage}>
-                  <SelectTrigger className="w-[60px] h-6 bg-slate-700 border-slate-600 text-xs">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="en">🇺🇸</SelectItem>
-                    <SelectItem value="ru">🇷🇺</SelectItem>
-                    <SelectItem value="ua">🇺🇦</SelectItem>
-                    <SelectItem value="de">🇩🇪</SelectItem>
-                  </SelectContent>
-                </Select>
+              {/* Language selector and theme toggle under logout */}
+              <div className="flex flex-col items-end space-y-1">
+                <div className="flex items-center space-x-1">
+                  <Select value={language} onValueChange={changeLanguage}>
+                    <SelectTrigger className="w-[60px] h-6 bg-slate-700 border-slate-600 text-xs">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="en">🇺🇸</SelectItem>
+                      <SelectItem value="ru">🇷🇺</SelectItem>
+                      <SelectItem value="ua">🇺🇦</SelectItem>
+                      <SelectItem value="de">🇩🇪</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <ThemeToggle variant="mobile" />
               </div>
             </div>
           </div>
@@ -159,23 +184,45 @@ export function StatusBar() {
           
           {/* User Menu */}
           <div className="flex items-center space-x-2">
-            <PlayerAvatar 
-              user={gameState.user} 
-              size="md" 
-              onClick={() => window.dispatchEvent(new CustomEvent('openProfile'))}
-            />
-            <span 
-              className="font-medium cursor-pointer hover:text-blue-400 transition-colors" 
-              onClick={() => setLocation(`/player/${gameState.user.nickname}`)}
-              data-testid="username-link"
-            >
-              {gameState.user.nickname}
-            </span>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <div>
+                    <PlayerAvatar 
+                      user={gameState.user} 
+                      size="md" 
+                      onClick={() => window.dispatchEvent(new CustomEvent('openProfile'))}
+                    />
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className="text-sm">{t('profileTooltip')}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <span 
+                    className="font-medium cursor-pointer hover:text-blue-400 transition-colors" 
+                    onClick={() => setLocation(`/player/${gameState.user.nickname}`)}
+                    data-testid="username-link"
+                  >
+                    {gameState.user.nickname}
+                  </span>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className="text-sm">{t('nicknameTooltip')}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
             
             {/* Admin Panel */}
             {gameState.user && gameState.user.admin > 0 && (
               <AdminPanel user={gameState.user} />
             )}
+            
+            <ThemeToggle variant="desktop" />
             
             <Button 
               variant="ghost" 

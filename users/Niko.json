@@ -2,10 +2,10 @@
   "id": "89d9b833-5345-47cc-b3d5-df00302f5ed9",
   "nickname": "Niko",
   "password": "$2b$10$G0HQ4jiWHobTKLBvgkfsF.HC/XLDC2wQjZJgjN8.t25RcxrLzoTAW",
-  "balance": 17650,
-  "level": 4,
-  "experience": 454,
-  "totalEarnings": 17650,
+  "balance": 17800,
+  "level": 5,
+  "experience": 464,
+  "totalEarnings": 17800,
   "totalSpent": 2000,
   "avatar": {
     "gradient": "from-orange-400 via-amber-500 to-yellow-600",
@@ -22,7 +22,7 @@
   "isOnline": true,
   "lastIncomeUpdate": 1755327443104,
   "jobCooldowns": {
-    "maintenance": 1755333485497,
+    "maintenance": 1755333837878,
     "optimization": 1755333636892,
     "security-audit": 1755333787553
   },
@@ -40,6 +40,11 @@
     }
   },
   "activities": [
+    {
+      "id": "8737f92c-5703-4117-9932-ec29df7f1f9f",
+      "description": "Completed Server Maintenance (+$150, +10 XP) - Level Up! Now level 5",
+      "timestamp": "8/16/2025, 8:38:57 AM"
+    },
     {
       "id": "ddf9290a-0857-478d-ba9d-b96d2b530a41",
       "description": "Started learning course: Basic Server Setup",
@@ -59,15 +64,10 @@
       "id": "ede4b077-93f9-4365-bd1c-9fe9fb6cb522",
       "description": "Completed Server Maintenance (+$150, +10 XP)",
       "timestamp": "8/16/2025, 8:33:05 AM"
-    },
-    {
-      "id": "0cfe3a71-26b4-445b-ba32-cbd6042fdbb5",
-      "description": "Quest reward claimed: Daily Maintenance (+$2,000)",
-      "timestamp": "8/16/2025, 8:18:48 AM"
     }
   ],
   "achievements": [],
-  "completedJobsCount": 27,
+  "completedJobsCount": 28,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -114,5 +114,5 @@
     }
   ],
   "lastQuestReset": 1755327443105,
-  "lastSeen": 1755333298772
+  "lastSeen": 1755333695688
 }

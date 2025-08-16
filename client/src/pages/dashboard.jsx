@@ -17,6 +17,8 @@ import { PlayerRankings, RankingsCountdown } from '@/components/player-rankings'
 import { RankingsPopup } from '@/components/rankings-popup';
 import { PlayerProfileBar } from '@/components/player-profile-bar';
 import { LevelUpNotification } from '@/components/level-up-notification';
+import { ThemeToggle } from '@/components/theme-toggle';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { TUTORIAL_UNLOCK_THRESHOLD, formatCurrency } from '@/lib/constants';
 
 export default function DashboardPage() {

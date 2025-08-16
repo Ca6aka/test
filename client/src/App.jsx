@@ -50,7 +50,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
-        <ThemeProvider defaultTheme="light" storageKey="serversim-ui-theme">
+        <ThemeProvider defaultTheme="dark" storageKey="serversim-ui-theme">
           <GameProvider>
             <TooltipProvider>
               <Toaster />
