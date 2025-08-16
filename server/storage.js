@@ -391,11 +391,9 @@ export class FileStorage {
     const user = await this.getUser(userId);
     if (!user) return;
 
-    await this.updateUser(userId, {
-      balance: user.balance + quest.reward
-    });
-
-    await this.addActivity(userId, `Daily quest completed: ${quest.title} (+$${quest.reward.toLocaleString()})`);
+    // Mark quest as completed but not automatically claim reward
+    // User will need to manually claim the reward
+    await this.addActivity(userId, `Daily quest completed: ${quest.title} - Reward ready to claim!`);
   }
 
   // Achievements System

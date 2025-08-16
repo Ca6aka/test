@@ -85,7 +85,7 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('servers')}
             >
               <i className="fas fa-server"></i>
-              <span>{t('servers')}</span>
+              <span>{t('myServers')}</span>
               {gameState.servers && <span className="bg-secondary/20 text-secondary px-1 rounded text-xs">{gameState.servers.length}</span>}
             </Button>
 
@@ -199,7 +199,7 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('servers')}
             >
               <i className="fas fa-server text-lg"></i>
-              <span className="font-medium">{t('servers')}</span>
+              <span className="font-medium">{t('myServers')}</span>
               {gameState.servers && (
                 <span className="ml-auto bg-secondary/20 text-secondary text-xs px-2 py-1 rounded-full">
                   {gameState.servers.length}
@@ -222,7 +222,7 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('hosting')}
             >
               <i className="fas fa-shopping-cart text-lg"></i>
-              <span className="font-medium">{t('hosting')}</span>
+              <span className="font-medium">{t('serverStore')}</span>
               {!isTabUnlocked('hosting') && <Lock className="w-4 h-4 ml-auto" />}
             </Button>
 
@@ -240,7 +240,7 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('learning')}
             >
               <i className="fas fa-book text-lg"></i>
-              <span className="font-medium">{t('learning')}</span>
+              <span className="font-medium">{t('learningCenter')}</span>
               {!isTabUnlocked('learning') && <Lock className="w-4 h-4 ml-auto" />}
             </Button>
 

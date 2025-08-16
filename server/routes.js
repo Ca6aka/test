@@ -496,6 +496,49 @@ export async function registerRoutes(app) {
     }
   });
 
+  app.post('/api/quests/:questId/claim', async (req, res) => {
+    try {
+      if (!req.session.userId) {
+        return res.status(401).json({ message: 'Not authenticated' });
+      }
+      
+      const { questId } = req.params;
+      const user = await storage.getUser(req.session.userId);
+      if (!user) {
+        return res.status(401).json({ message: 'User not found' });
+      }
+
+      const quest = (user.dailyQuests || []).find(q => q.id === questId);
+      if (!quest) {
+        return res.status(404).json({ message: 'Quest not found' });
+      }
+      
+      if (!quest.completed) {
+        return res.status(400).json({ message: 'Quest not completed yet' });
+      }
+      
+      if (quest.claimed) {
+        return res.status(400).json({ message: 'Reward already claimed' });
+      }
+
+      // Mark quest as claimed and give reward
+      const updatedQuests = user.dailyQuests.map(q => 
+        q.id === questId ? { ...q, claimed: true } : q
+      );
+      
+      const updatedUser = await storage.updateUser(req.session.userId, {
+        balance: user.balance + quest.reward,
+        dailyQuests: updatedQuests
+      });
+
+      await storage.addActivity(req.session.userId, `Quest reward claimed: ${quest.title} (+$${quest.reward.toLocaleString()})`);
+      
+      res.json({ user: updatedUser, message: 'Reward claimed successfully' });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
   // Chat routes
   app.get('/api/chat/messages', async (req, res) => {
     try {

@@ -1,20 +1,34 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
-import { Calendar, CheckCircle2, Clock } from 'lucide-react';
+import { Calendar, CheckCircle2, Clock, Gift } from 'lucide-react';
 import { useGame } from '@/contexts/game-context';
 import { useLanguage } from '@/contexts/language-context';
 import { formatCurrency } from '@/lib/constants';
+import { apiRequest } from '@/lib/queryClient';
 
 export function QuestsTab() {
   const { gameState } = useGame();
   const { t } = useLanguage();
+  const queryClient = useQueryClient();
 
   const { data: questsResponse } = useQuery({
     queryKey: ['/api/quests'],
     enabled: !!gameState.user,
     refetchInterval: 30000, // Update every 30 seconds
+  });
+
+  const claimRewardMutation = useMutation({
+    mutationFn: (questId) => apiRequest(`/api/quests/${questId}/claim`, {
+      method: 'POST',
+    }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['/api/quests'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/activities'] });
+    },
   });
 
   const quests = questsResponse?.quests || [];
@@ -111,10 +125,28 @@ export function QuestsTab() {
                 
                 {/* Reward */}
                 <div className="flex justify-between items-center pt-2 border-t border-slate-700">
-                  <span className="text-sm text-slate-500">Награда:</span>
-                  <span className="text-sm font-medium text-yellow-400">
-                    {formatCurrency(quest.reward)}
-                  </span>
+                  <div className="flex flex-col">
+                    <span className="text-sm text-slate-500">Награда:</span>
+                    <span className="text-sm font-medium text-yellow-400">
+                      {formatCurrency(quest.reward)}
+                    </span>
+                  </div>
+                  {quest.completed && !quest.claimed && (
+                    <Button
+                      size="sm"
+                      onClick={() => claimRewardMutation.mutate(quest.id)}
+                      disabled={claimRewardMutation.isPending}
+                      className="bg-green-600 hover:bg-green-700 text-white"
+                    >
+                      <Gift className="w-4 h-4 mr-1" />
+                      {claimRewardMutation.isPending ? 'Получение...' : 'Забрать'}
+                    </Button>
+                  )}
+                  {quest.completed && quest.claimed && (
+                    <Badge variant="secondary" className="bg-green-500/20 text-green-300">
+                      Получено
+                    </Badge>
+                  )}
                 </div>
               </div>
             </CardContent>
