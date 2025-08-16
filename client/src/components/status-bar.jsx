@@ -7,6 +7,7 @@ import { useLanguage } from '@/contexts/language-context';
 import { formatCurrency } from '@/lib/constants';
 import { AdminPanel } from './admin-panel';
 import { PlayerAvatar, PlayerProfileBar } from './player-profile-bar';
+import { Crown, Shield } from 'lucide-react';
 
 export function StatusBar() {
   const { gameState, logout } = useGame();
@@ -104,13 +105,13 @@ export function StatusBar() {
                 variant="ghost"
                 size="sm"
                 onClick={() => setMobileAdminOpen(true)}
-                className="h-6 w-6 p-0 bg-purple-600/20 hover:bg-purple-600/30 border border-purple-500/50"
+                className="h-6 w-7 p-0 bg-purple-600/20 hover:bg-purple-600/30 border border-purple-500/50"
                 data-testid="mobile-admin-toggle"
               >
                 {gameState.user.nickname === 'Ca6aka' ? (
-                  <i className="fas fa-crown text-yellow-400 text-xs"></i>
+                  <Crown className="w-3 h-3 text-yellow-400" />
                 ) : (
-                  <i className="fas fa-shield-alt text-purple-400 text-xs"></i>
+                  <Shield className="w-3 h-3 text-purple-400" />
                 )}
               </Button>
             )}
@@ -198,7 +199,7 @@ export function StatusBar() {
       )}
       
       {/* Mobile Admin Panel Dialog */}
-      {mobileAdminOpen && gameState.user && gameState.user.admin > 0 && (
+      {gameState.user && gameState.user.admin > 0 && (
         <div className="lg:hidden">
           <AdminPanel 
             user={gameState.user} 
