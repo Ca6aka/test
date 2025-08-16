@@ -69,15 +69,15 @@ export function TutorialTab({ onTabChange }) {
   const tutorialProgress = Math.min((gameState.user.balance / 15000) * 100, 100);
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold text-slate-100 mb-2">Start</h2>
-        <p className="text-slate-400">Learn the basics of server hosting and earn your first income!</p>
+    <div className="p-3 sm:p-6 max-w-4xl mx-auto">
+      <div className="mb-4 sm:mb-6">
+        <h2 className="text-xl sm:text-2xl font-bold text-slate-100 mb-2">Start</h2>
+        <p className="text-sm sm:text-base text-slate-400">Learn the basics of server hosting and earn your first income!</p>
       </div>
 
       {/* Tutorial Progress - Only show if not completed */}
       {!gameState.user.tutorialCompleted && (
-        <div className="bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/30 rounded-xl p-6 mb-8">
+        <div className="bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/30 rounded-xl p-4 sm:p-6 mb-6 sm:mb-8">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-semibold text-primary">Tutorial Progress</h3>
             <span className="bg-primary/20 text-primary px-3 py-1 rounded-lg text-sm font-medium">
@@ -112,23 +112,23 @@ export function TutorialTab({ onTabChange }) {
           const isOnCooldown = cooldown > 0;
 
           return (
-            <div key={job.id} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:border-primary/30 transition-all">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
-                    <i className={job.icon + " text-primary text-lg"}></i>
+            <div key={job.id} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-4 sm:p-6 hover:border-primary/30 transition-all">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-3 sm:space-y-0">
+                <div className="flex items-center space-x-3 sm:space-x-4 flex-1">
+                  <div className="w-10 sm:w-12 h-10 sm:h-12 bg-primary/20 rounded-lg flex items-center justify-center">
+                    <i className={job.icon + " text-primary text-sm sm:text-lg"}></i>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-slate-200">{job.name}</h4>
-                    <p className="text-sm text-slate-400">
+                  <div className="flex-1">
+                    <h4 className="font-semibold text-slate-200 text-sm sm:text-base">{job.name}</h4>
+                    <p className="text-xs sm:text-sm text-slate-400">
                       Earn {formatCurrency(job.reward)} • Cooldown: {formatTime(job.cooldown)}
                     </p>
                   </div>
                 </div>
                 
-                <div className="text-right">
+                <div className="w-full sm:w-auto">
                   {isOnCooldown ? (
-                    <div className="text-center">
+                    <div className="text-center sm:text-right">
                       <p className="text-xs text-slate-400 mb-1">Available in</p>
                       <p className="text-sm font-medium text-accent">
                         {formatTime(cooldown)}
@@ -137,7 +137,7 @@ export function TutorialTab({ onTabChange }) {
                   ) : (
                     <Button 
                       onClick={() => handleStartJob(job.id)}
-                      className="bg-primary hover:bg-primary/80"
+                      className="bg-primary hover:bg-primary/80 w-full sm:w-auto text-sm"
                     >
                       Start Job
                     </Button>
@@ -159,7 +159,7 @@ export function TutorialTab({ onTabChange }) {
       </div>
 
       {/* Tutorial Tips */}
-      <div className="mt-8 bg-gradient-to-r from-accent/10 to-secondary/10 border border-accent/30 rounded-xl p-6">
+      <div className="mt-6 sm:mt-8 bg-gradient-to-r from-accent/10 to-secondary/10 border border-accent/30 rounded-xl p-4 sm:p-6">
         <h3 className="text-lg font-semibold text-accent mb-3">
           <i className="fas fa-lightbulb mr-2"></i>
           Tutorial Tips

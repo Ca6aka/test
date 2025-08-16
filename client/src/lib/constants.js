@@ -93,7 +93,18 @@ export const JOB_TYPES = [
   }
 ];
 
-export const formatCurrency = (amount) => {
+export const formatCurrency = (amount, compact = false) => {
+  if (!amount && amount !== 0) return '$0';
+  
+  if (compact && amount >= 1000) {
+    if (amount >= 1000000) {
+      return '$' + (amount / 1000000).toFixed(1) + 'M';
+    }
+    if (amount >= 1000) {
+      return '$' + (amount / 1000).toFixed(1) + 'K';
+    }
+  }
+  
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',

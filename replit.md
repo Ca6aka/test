@@ -8,6 +8,26 @@ A full-stack web application that simulates a server management business game. P
 
 Preferred communication style: Simple, everyday language.
 
+## Recent Changes (Latest: August 16, 2025)
+
+### Mobile Optimization (August 16, 2025)
+- **Status Bar**: Added responsive mobile layout with compact stats display and mobile navigation
+- **Dashboard Navigation**: Implemented horizontal scrollable tabs for mobile, hidden Player Rankings on mobile
+- **Component Responsiveness**: All major components (Learning, Servers, Hosting, Tutorial) now fully mobile-optimized
+- **Typography & Spacing**: Responsive text sizes, padding adjustments for mobile screens
+- **Touch-Friendly UI**: Minimum 44px touch targets, improved mobile interactions
+- **Compact Currency Display**: Added compact formatting (K/M) for mobile displays
+- **Mobile-First CSS**: Added scrollbar hiding and mobile-specific touch interactions
+
+### Previous Bug Fixes (August 16, 2025)
+- Fixed clickable player nicknames in rankings leading to player profiles
+- Fixed "Browse Server Store" button functionality
+- Added online/offline status indicators with green/red dots
+- Fixed logout redirect to /start page
+- Corrected server statistics display (now shows 4 servers correctly)
+- Fixed object rendering error in learning-tab component
+- Added Ukrainian language support
+
 ## System Architecture
 
 ### Frontend Architecture

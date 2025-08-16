@@ -40,18 +40,18 @@ export function VirtualAssistant() {
   return (
     <>
       {/* Assistant Button */}
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50">
         <Button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-14 h-14 bg-primary hover:bg-primary/80 rounded-full shadow-2xl transition-all hover:scale-105"
+          className="w-12 sm:w-14 h-12 sm:h-14 bg-primary hover:bg-primary/80 rounded-full shadow-2xl transition-all hover:scale-105"
         >
-          <i className="fas fa-robot text-white text-lg"></i>
+          <i className="fas fa-robot text-white text-sm sm:text-lg"></i>
         </Button>
       </div>
 
       {/* Assistant Panel */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 w-80">
+        <div className="fixed bottom-16 sm:bottom-20 right-4 sm:right-6 z-50 w-72 sm:w-80">
           <Card className="bg-slate-800/95 backdrop-blur-sm border-slate-700">
             <CardHeader className="pb-3">
               <CardTitle className="text-lg text-primary flex items-center space-x-2">

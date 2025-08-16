@@ -111,9 +111,11 @@ export function LearningTab() {
             if (!reward || typeof reward !== 'object') return 'Unknown Reward';
             
             if (reward.type === 'serverSlots') {
-              return `+${reward.amount ?? 0} Server Slot${(reward.amount ?? 0) > 1 ? 's' : ''}`;
+              const amount = reward.amount ?? 0;
+              return `+${amount} Server Slot${amount > 1 ? 's' : ''}`;
             } else if (reward.type === 'efficiency') {
-              return `+${reward.amount ?? 0}% Server Efficiency`;
+              const amount = reward.amount ?? 0;
+              return `+${amount}% Server Efficiency`;
             }
             return 'Unknown Reward';
           };          
@@ -128,7 +130,7 @@ export function LearningTab() {
           };
 
           return (
-            <div key={course.id} className={`bg-slate-800/50 backdrop-blur-sm border rounded-xl p-6 transition-all ${
+            <div key={course.id} className={`bg-slate-800/50 backdrop-blur-sm border rounded-xl p-4 sm:p-6 transition-all ${
               isLearning ? 'border-purple-500/50 bg-purple-500/5' :
               isDisabled ? 'border-slate-700 opacity-60' :
               'border-slate-700 hover:border-primary/30'
@@ -156,22 +158,22 @@ export function LearningTab() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-3 gap-4 mb-4">
-                <div className="text-center">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-4">
+                <div className="text-center sm:text-left">
                   <p className="text-xs text-slate-400 mb-1">Duration</p>
                   <p className="text-sm font-medium text-slate-300">
                     <i className="fas fa-clock mr-1"></i>
                     {formatTime(course.duration)}
                   </p>
                 </div>
-                <div className="text-center">
+                <div className="text-center sm:text-left">
                   <p className="text-xs text-slate-400 mb-1">Cost</p>
                   <p className="text-sm font-medium text-slate-300">
                     <i className="fas fa-coins mr-1"></i>
                     {formatCurrency(course.price)}
                   </p>
                 </div>
-                <div className="text-center">
+                <div className="text-center sm:text-left">
                   <p className="text-xs text-slate-400 mb-1">Reward</p>
                   <p className="text-sm font-medium text-accent">
                     <i className="fas fa-gift mr-1"></i>
@@ -205,7 +207,7 @@ export function LearningTab() {
       {/* Benefits Overview */}
       <div className="mt-8 bg-gradient-to-r from-blue-500/10 to-secondary/10 border border-blue-500/30 rounded-xl p-6">
         <h3 className="text-lg font-semibold text-blue-400 mb-3">Learning Benefits</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           <div className="text-center">
             <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mx-auto mb-2">
               <i className="fas fa-server text-blue-400"></i>

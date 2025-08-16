@@ -52,12 +52,12 @@ export function HostingTab({ onTabChange }) {
   const canPurchase = currentServers < serverLimit;
 
   return (
-    <div className="p-6 max-w-6xl mx-auto">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-slate-100">Server Store</h2>
-        <div className="flex items-center space-x-3">
-          <span className="text-sm text-slate-400">Available Slots:</span>
-          <span className="bg-slate-700 px-3 py-1 rounded-lg text-sm font-medium">
+    <div className="p-3 sm:p-6 max-w-6xl mx-auto">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6">
+        <h2 className="text-xl sm:text-2xl font-bold text-slate-100 mb-2 sm:mb-0">Server Store</h2>
+        <div className="flex items-center space-x-2 sm:space-x-3">
+          <span className="text-xs sm:text-sm text-slate-400">Available Slots:</span>
+          <span className="bg-slate-700 px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm font-medium">
             {serverLimit - currentServers}/{serverLimit}
           </span>
         </div>
@@ -77,23 +77,25 @@ export function HostingTab({ onTabChange }) {
       )}
 
       {/* Server Products Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         {SERVER_PRODUCTS.map((product) => {
           const canAfford = gameState.user.balance >= product.price;
           const isDisabled = !canPurchase || !canAfford;
 
           return (
-            <div key={product.id} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:border-primary/30 transition-all">
-              <div className="flex items-center space-x-4 mb-4">
-                <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
-                  <i className={product.icon + " text-primary text-lg"}></i>
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold text-slate-100">{product.name}</h3>
-                  <p className="text-sm text-slate-400">{product.type}</p>
+            <div key={product.id} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-4 sm:p-6 hover:border-primary/30 transition-all">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 mb-4">
+                <div className="flex items-center space-x-3 flex-1">
+                  <div className="w-10 sm:w-12 h-10 sm:h-12 bg-primary/20 rounded-lg flex items-center justify-center">
+                    <i className={product.icon + " text-primary text-sm sm:text-lg"}></i>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-slate-100 text-sm sm:text-base">{product.name}</h3>
+                    <p className="text-xs sm:text-sm text-slate-400">{product.type}</p>
+                  </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-lg font-bold text-primary">{formatCurrency(product.price)}</p>
+                  <p className="text-base sm:text-lg font-bold text-primary">{formatCurrency(product.price)}</p>
                 </div>
               </div>
 

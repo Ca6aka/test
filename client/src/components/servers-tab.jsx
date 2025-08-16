@@ -51,12 +51,12 @@ export function ServersTab({ onTabChange }) {
   const availableSlots = serverLimit - currentServers;
 
   return (
-    <div className="p-6 max-w-6xl mx-auto">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-slate-100">{t('servers')}</h2>
-        <div className="flex items-center space-x-3">
-          <span className="text-sm text-slate-400">Server Limit:</span>
-          <span className="bg-slate-700 px-3 py-1 rounded-lg text-sm font-medium">
+    <div className="p-3 sm:p-6 max-w-6xl mx-auto">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6">
+        <h2 className="text-xl sm:text-2xl font-bold text-slate-100 mb-2 sm:mb-0">{t('servers')}</h2>
+        <div className="flex items-center space-x-2 sm:space-x-3">
+          <span className="text-xs sm:text-sm text-slate-400">Server Limit:</span>
+          <span className="bg-slate-700 px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm font-medium">
             {currentServers}/{serverLimit} servers
           </span>
         </div>
@@ -64,12 +64,12 @@ export function ServersTab({ onTabChange }) {
 
       {/* Server Limit Warning */}
       {availableSlots <= 1 && (
-        <div className="bg-accent/10 border border-accent/30 rounded-lg p-4 mb-6">
+        <div className="bg-accent/10 border border-accent/30 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6">
           <div className="flex items-center space-x-2">
-            <i className="fas fa-exclamation-triangle text-accent"></i>
-            <span className="text-accent font-medium">Server Limit Notice</span>
+            <i className="fas fa-exclamation-triangle text-accent text-sm"></i>
+            <span className="text-accent font-medium text-sm sm:text-base">Server Limit Notice</span>
           </div>
-          <p className="text-sm text-slate-300 mt-1">
+          <p className="text-xs sm:text-sm text-slate-300 mt-1">
             You're using {currentServers} of {serverLimit} available server slots. 
             Complete learning courses to increase your limit!
           </p>

@@ -47,9 +47,80 @@ export default function DashboardPage() {
       <div className="relative z-10">
         <StatusBar />
       
-      <div className="flex h-[calc(100vh-80px)]">
-        {/* Sidebar Navigation */}
-        <aside className="w-80 bg-slate-800/50 backdrop-blur-sm border-r border-slate-700 p-6">
+      <div className="flex flex-col lg:flex-row h-[calc(100vh-80px)]">
+        {/* Mobile Navigation */}
+        <div className="lg:hidden bg-slate-800/50 backdrop-blur-sm border-b border-slate-700 p-2">
+          <div className="flex overflow-x-auto scrollbar-hide space-x-1">
+            <Button
+              variant={activeTab === 'tutorial' ? 'default' : 'ghost'}
+              size="sm"
+              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs ${
+                activeTab === 'tutorial'
+                  ? 'bg-primary/20 text-primary border border-primary/30'
+                  : 'text-slate-300 hover:bg-slate-700/50'
+              }`}
+              onClick={() => setActiveTab('tutorial')}
+            >
+              <i className="fas fa-graduation-cap"></i>
+              <span>Start</span>
+            </Button>
+            
+            <Button
+              variant={activeTab === 'servers' ? 'default' : 'ghost'}
+              size="sm"
+              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs ${
+                activeTab === 'servers'
+                  ? 'bg-primary/20 text-primary border border-primary/30'
+                  : isTabUnlocked('servers')
+                  ? 'text-slate-300 hover:bg-slate-700/50'
+                  : 'text-slate-500 opacity-50 cursor-not-allowed'
+              }`}
+              onClick={() => isTabUnlocked('servers') && setActiveTab('servers')}
+              disabled={!isTabUnlocked('servers')}
+            >
+              <i className="fas fa-server"></i>
+              <span>{t('servers')}</span>
+              {gameState.servers && <span className="bg-secondary/20 text-secondary px-1 rounded text-xs">{gameState.servers.length}</span>}
+            </Button>
+
+            <Button
+              variant={activeTab === 'hosting' ? 'default' : 'ghost'}
+              size="sm"
+              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs ${
+                activeTab === 'hosting'
+                  ? 'bg-primary/20 text-primary border border-primary/30'
+                  : isTabUnlocked('hosting')
+                  ? 'text-slate-300 hover:bg-slate-700/50'
+                  : 'text-slate-500 opacity-50 cursor-not-allowed'
+              }`}
+              onClick={() => isTabUnlocked('hosting') && setActiveTab('hosting')}
+              disabled={!isTabUnlocked('hosting')}
+            >
+              <i className="fas fa-store"></i>
+              <span>Store</span>
+            </Button>
+
+            <Button
+              variant={activeTab === 'learning' ? 'default' : 'ghost'}
+              size="sm"
+              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs ${
+                activeTab === 'learning'
+                  ? 'bg-primary/20 text-primary border border-primary/30'
+                  : isTabUnlocked('learning')
+                  ? 'text-slate-300 hover:bg-slate-700/50'
+                  : 'text-slate-500 opacity-50 cursor-not-allowed'
+              }`}
+              onClick={() => isTabUnlocked('learning') && setActiveTab('learning')}
+              disabled={!isTabUnlocked('learning')}
+            >
+              <i className="fas fa-book"></i>
+              <span>Learning</span>
+            </Button>
+          </div>
+        </div>
+        
+        {/* Desktop Sidebar Navigation */}
+        <aside className="hidden lg:block w-80 bg-slate-800/50 backdrop-blur-sm border-r border-slate-700 p-6">
           <nav className="space-y-2">
             {/* Tutorial Tab */}
             <Button
@@ -161,7 +232,9 @@ export default function DashboardPage() {
 
         {/* Content Area */}
         <main className="flex-1 overflow-auto">
-          {getTabContent()}
+          <div className="p-3 lg:p-6 h-full">
+            {getTabContent()}
+          </div>
         </main>
       </div>
 
