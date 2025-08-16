@@ -6,7 +6,8 @@
     "type": "Web Hosting",
     "isOnline": true,
     "loadPercentage": 50,
-    "lastUpdated": 1755326762730
+    "lastUpdated": 1755326762730,
+    "incomePerMinute": 15
   },
   {
     "id": "aaa5b910-0549-4b8d-8c18-ec148984b1ca",
@@ -15,6 +16,7 @@
     "type": "Web Hosting",
     "isOnline": true,
     "loadPercentage": 50,
-    "lastUpdated": 1755326762730
+    "lastUpdated": 1755326762730,
+    "incomePerMinute": 15
   }
 ]
