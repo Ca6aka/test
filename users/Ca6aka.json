@@ -2,7 +2,7 @@
   "id": "e73513b4-65ec-40e1-bd85-339d155b7af0",
   "nickname": "Ca6aka",
   "password": "$2b$10$JpfJ4vb59zjxCtXN0I4kbee0VAqeB3by8xsWuYuW6PZo3fAATENv.",
-  "balance": 118970,
+  "balance": 122119,
   "level": 6,
   "experience": 644,
   "totalEarnings": 20650,
@@ -13,33 +13,31 @@
     "seed": 520714,
     "animation": "soft-pulse"
   },
-  "serverLimit": 3,
+  "serverLimit": 4,
   "tutorialCompleted": true,
   "admin": 1,
   "banned": false,
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755334180431,
+  "lastIncomeUpdate": 1755339178248,
   "jobCooldowns": {
     "maintenance": 1755334299865,
     "optimization": 1755334449530,
     "security-audit": 1755334431720
   },
-  "currentLearning": {
-    "id": "basic-setup",
-    "title": "Basic Server Setup",
-    "description": "Learn the fundamentals of server configuration and deployment",
-    "difficulty": "Beginner",
-    "startTime": 1755332579409,
-    "endTime": 1755334379409,
-    "progress": 0,
-    "reward": {
-      "type": "serverSlots",
-      "amount": 1
-    }
-  },
+  "currentLearning": null,
   "activities": [
+    {
+      "id": "29bdc222-a869-41b6-9f21-443c6caf8cb8",
+      "description": "Daily quest completed: Passive Income - Reward ready to claim!",
+      "timestamp": "8/16/2025, 10:12:58 AM"
+    },
+    {
+      "id": "25ba73cf-16ba-4840-8bf3-d64bfb161b49",
+      "description": "Completed learning course: Basic Server Setup",
+      "timestamp": "8/16/2025, 10:11:58 AM"
+    },
     {
       "id": "50e05644-4601-4073-8756-434addb62c14",
       "description": "Income: +$42, Rental: -$4 (Net: +$38)",
@@ -54,23 +52,13 @@
       "id": "231aa04d-f290-486b-81bc-2af4e2aa81ef",
       "description": "Income: +$61, Rental: -$6 (Net: +$55)",
       "timestamp": "8/16/2025, 8:47:40 AM"
-    },
-    {
-      "id": "18c4a4fb-1d11-4367-81b8-f5532dc89a03",
-      "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "8/16/2025, 8:46:39 AM"
-    },
-    {
-      "id": "fdf61f5a-c5bf-4012-aeb5-0e95e959ed24",
-      "description": "Completed Performance Optimization (+$250, +18 XP)",
-      "timestamp": "8/16/2025, 8:46:39 AM"
     }
   ],
   "achievements": [
     "first-server"
   ],
   "completedJobsCount": 39,
-  "completedCoursesCount": 0,
+  "completedCoursesCount": 1,
   "dailyQuests": [
     {
       "id": "daily-maintenance-Sat Aug 16 2025",
@@ -96,8 +84,8 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 4733,
-      "completed": false,
+      "progress": 5000,
+      "completed": true,
       "date": "Sat Aug 16 2025"
     },
     {
@@ -117,5 +105,8 @@
     }
   ],
   "lastQuestReset": 1755327035906,
-  "lastSeen": 1755334182987
+  "lastSeen": 1755339211662,
+  "completedLearning": [
+    "basic-setup"
+  ]
 }

@@ -11,6 +11,20 @@ import { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
 
+// Helper function to get server tier colors
+const getServerTierColors = (serverType) => {
+  // Map server type to appropriate colors
+  if (serverType === 'Web Hosting') return { icon: 'text-green-400' }; // Basic Web Server
+  if (serverType === 'Storage') return { icon: 'text-blue-400' }; // Database Server
+  if (serverType === 'Gaming/Apps') return { icon: 'text-yellow-400' }; // High Performance Server
+  if (serverType === 'Content Delivery') return { icon: 'text-orange-400' }; // CDN Server
+  if (serverType === 'AI') return { icon: 'text-red-400' }; // GPU Server
+  if (serverType === 'Computing') return { icon: 'text-cyan-400' }; // TPU Server
+  
+  // Default fallback
+  return { icon: 'text-green-400' };
+};
+
 // Helper function to format reward text
 const getRewardText = (reward) => {
   if (!reward || typeof reward !== 'object') return 'Unknown Reward';
@@ -147,7 +161,7 @@ export function ServersTab({ onTabChange }) {
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
-                    <i className={server.icon || "fas fa-server"} style={{color: server.isOnline ? '#10B981' : '#6B7280'}}></i>
+                    <i className={`${server.icon || "fas fa-server"} ${server.isOnline ? getServerTierColors(server.type).icon : 'text-slate-500'}`}></i>
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-100">{server.name}</h3>

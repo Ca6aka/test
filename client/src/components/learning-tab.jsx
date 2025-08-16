@@ -213,26 +213,32 @@ export function LearningTab() {
       <div className="mt-8 bg-gradient-to-r from-blue-500/10 to-secondary/10 border border-blue-500/30 rounded-xl p-6">
         <h3 className="text-lg font-semibold text-blue-400 mb-3">Learning Benefits</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-          <div className="text-center">
-            <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mx-auto mb-2">
+          <div className="relative overflow-hidden bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-4 hover:border-blue-500/50 transition-all duration-300 transform hover:scale-105 text-center">
+            {/* Blue Gradient Background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-blue-600/20 opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+            <div className="relative z-10 w-12 h-12 bg-gradient-to-br from-blue-500/20 to-blue-600/20 rounded-full flex items-center justify-center mx-auto mb-2 border border-blue-500/50">
               <i className="fas fa-server text-blue-400"></i>
             </div>
-            <h4 className="font-medium text-slate-200">More Servers</h4>
-            <p className="text-xs text-slate-400">Unlock additional server slots</p>
+            <h4 className="relative z-10 font-medium text-slate-200">More Servers</h4>
+            <p className="relative z-10 text-xs text-slate-400">Unlock additional server slots</p>
           </div>
-          <div className="text-center">
-            <div className="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center mx-auto mb-2">
-              <i className="fas fa-tachometer-alt text-secondary"></i>
+          <div className="relative overflow-hidden bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-4 hover:border-orange-500/50 transition-all duration-300 transform hover:scale-105 text-center">
+            {/* Orange Gradient Background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-orange-600/20 opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+            <div className="relative z-10 w-12 h-12 bg-gradient-to-br from-orange-500/20 to-orange-600/20 rounded-full flex items-center justify-center mx-auto mb-2 border border-orange-500/50">
+              <i className="fas fa-tachometer-alt text-orange-400"></i>
             </div>
-            <h4 className="font-medium text-slate-200">Higher Efficiency</h4>
-            <p className="text-xs text-slate-400">Increase server income rates</p>
+            <h4 className="relative z-10 font-medium text-slate-200">Higher Efficiency</h4>
+            <p className="relative z-10 text-xs text-slate-400">Increase server income rates</p>
           </div>
-          <div className="text-center">
-            <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center mx-auto mb-2">
-              <i className="fas fa-trophy text-accent"></i>
+          <div className="relative overflow-hidden bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-4 hover:border-red-500/50 transition-all duration-300 transform hover:scale-105 text-center">
+            {/* Red Gradient Background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 to-red-600/20 opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+            <div className="relative z-10 w-12 h-12 bg-gradient-to-br from-red-500/20 to-red-600/20 rounded-full flex items-center justify-center mx-auto mb-2 border border-red-500/50">
+              <i className="fas fa-trophy text-red-400"></i>
             </div>
-            <h4 className="font-medium text-slate-200">Better Rankings</h4>
-            <p className="text-xs text-slate-400">Climb the leaderboards</p>
+            <h4 className="relative z-10 font-medium text-slate-200">Better Rankings</h4>
+            <p className="relative z-10 text-xs text-slate-400">Climb the leaderboards</p>
           </div>
         </div>
       </div>

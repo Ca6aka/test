@@ -4,6 +4,24 @@ import { useToast } from '@/hooks/use-toast';
 import { SERVER_PRODUCTS, formatCurrency } from '@/lib/constants';
 import { Lock } from 'lucide-react';
 
+// Helper function to get server tier colors
+const getServerTierColors = (serverId) => {
+  // Weak servers (green/blue)
+  if (serverId === 'basic-web') return { bg: 'from-green-500/20 to-green-600/20', icon: 'text-green-400', border: 'border-green-500/50' };
+  if (serverId === 'database-server') return { bg: 'from-blue-500/20 to-blue-600/20', icon: 'text-blue-400', border: 'border-blue-500/50' };
+  
+  // Medium servers (yellow/orange)
+  if (serverId === 'high-performance') return { bg: 'from-yellow-500/20 to-yellow-600/20', icon: 'text-yellow-400', border: 'border-yellow-500/50' };
+  if (serverId === 'cdn-server') return { bg: 'from-orange-500/20 to-orange-600/20', icon: 'text-orange-400', border: 'border-orange-500/50' };
+  
+  // Powerful servers (red/light blue)
+  if (serverId === 'gpu-server') return { bg: 'from-red-500/20 to-red-600/20', icon: 'text-red-400', border: 'border-red-500/50' };
+  if (serverId === 'tpu-server') return { bg: 'from-cyan-500/20 to-cyan-600/20', icon: 'text-cyan-400', border: 'border-cyan-500/50' };
+  
+  // Default fallback
+  return { bg: 'from-slate-500/20 to-slate-600/20', icon: 'text-primary', border: 'border-primary/50' };
+};
+
 export function HostingTab({ onTabChange }) {
   const { gameState, purchaseServer } = useGame();
   const { toast } = useToast();
@@ -88,17 +106,19 @@ export function HostingTab({ onTabChange }) {
           const isDisabled = !canPurchase || !canAfford || !hasLevelRequirement || !hasLearningRequirement;
 
           return (
-            <div key={product.id} className={`bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-4 sm:p-6 hover:border-primary/30 transition-all ${!hasLevelRequirement || !hasLearningRequirement ? 'opacity-60' : ''}`}>
+            <div key={product.id} className={`relative overflow-hidden bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-4 sm:p-6 hover:${getServerTierColors(product.id).border} transition-all duration-300 transform hover:scale-105 ${!hasLevelRequirement || !hasLearningRequirement ? 'opacity-60' : ''}`}>
+              {/* Gradient Background */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${getServerTierColors(product.id).bg} opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-xl`}></div>
               <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 mb-4">
                 <div className="flex items-center space-x-3 flex-1">
-                  <div className="w-10 sm:w-12 h-10 sm:h-12 bg-primary/20 rounded-lg flex items-center justify-center">
+                  <div className={`relative z-10 w-10 sm:w-12 h-10 sm:h-12 bg-gradient-to-br ${getServerTierColors(product.id).bg} rounded-lg flex items-center justify-center border ${getServerTierColors(product.id).border}`}>
                     {!hasLevelRequirement || !hasLearningRequirement ? (
                       <Lock className="text-slate-400 text-sm sm:text-lg" />
                     ) : (
-                      <i className={product.icon + " text-primary text-sm sm:text-lg"}></i>
+                      <i className={product.icon + ` ${getServerTierColors(product.id).icon} text-sm sm:text-lg`}></i>
                     )}
                   </div>
-                  <div className="flex-1">
+                  <div className="relative z-10 flex-1">
                     <h3 className="font-semibold text-slate-100 text-sm sm:text-base">{product.name}</h3>
                     <p className="text-xs sm:text-sm text-slate-400">{product.type}</p>
                     {!hasLevelRequirement && (
@@ -109,12 +129,12 @@ export function HostingTab({ onTabChange }) {
                     )}
                   </div>
                 </div>
-                <div className="text-right">
+                <div className="relative z-10 text-right">
                   <p className="text-base sm:text-lg font-bold text-primary">{formatCurrency(product.price)}</p>
                 </div>
               </div>
 
-              <div className="space-y-3 mb-6">
+              <div className="relative z-10 space-y-3 mb-6">
                 <div className="flex justify-between items-center p-3 bg-slate-700/30 rounded-lg">
                   <span className="text-sm text-slate-400">Income per minute</span>
                   <span className="font-semibold text-secondary">+{formatCurrency(product.incomePerMinute)}</span>
@@ -132,7 +152,7 @@ export function HostingTab({ onTabChange }) {
               </div>
 
               <Button 
-                className="w-full"
+                className="relative z-10 w-full"
                 disabled={isDisabled}
                 onClick={() => handlePurchaseServer(product.id)}
                 variant={isDisabled ? "secondary" : "default"}
@@ -145,7 +165,7 @@ export function HostingTab({ onTabChange }) {
               </Button>
 
               {!canAfford && canPurchase && (
-                <p className="text-xs text-red-400 mt-2 text-center">
+                <p className="relative z-10 text-xs text-red-400 mt-2 text-center">
                   Need {formatCurrency(product.price - gameState.user.balance)} more
                 </p>
               )}
