@@ -2,7 +2,7 @@
   "id": "e73513b4-65ec-40e1-bd85-339d155b7af0",
   "nickname": "Ca6aka",
   "password": "$2b$10$JpfJ4vb59zjxCtXN0I4kbee0VAqeB3by8xsWuYuW6PZo3fAATENv.",
-  "balance": 145111,
+  "balance": 145312,
   "level": 6,
   "experience": 644,
   "totalEarnings": 20650,
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755339857735,
+  "lastIncomeUpdate": 1755339972207,
   "jobCooldowns": {
     "maintenance": 1755334299865,
     "optimization": 1755334449530,
@@ -28,6 +28,11 @@
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "2f94de73-0a0c-4a21-b04f-f2811bb23486",
+      "description": "Income: +$223, Rental: -$22 (Net: +$201)",
+      "timestamp": "8/16/2025, 10:26:12 AM"
+    },
     {
       "id": "24990e34-a5be-439d-8515-9580341c772f",
       "description": "Income: +$117, Rental: -$11 (Net: +$106)",
@@ -46,11 +51,6 @@
     {
       "id": "7346ace3-3255-4309-a121-00cf9d7460da",
       "description": "Achievement unlocked: Efficient Worker (+$3,000)",
-      "timestamp": "8/16/2025, 10:19:50 AM"
-    },
-    {
-      "id": "3adb6027-da17-46ec-8f11-5ff60ec5d11f",
-      "description": "Achievement unlocked: Early Earner (+$2,000)",
       "timestamp": "8/16/2025, 10:19:50 AM"
     }
   ],
@@ -87,7 +87,7 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 520,
+      "progress": 743,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -128,7 +128,7 @@
         "type": "income",
         "amount": 10000
       },
-      "progress": 520,
+      "progress": 743,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -169,7 +169,7 @@
         "type": "income",
         "amount": 20000
       },
-      "progress": 520,
+      "progress": 743,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -196,13 +196,13 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 520,
+      "progress": 743,
       "completed": false,
       "date": "Sat Aug 16 2025"
     }
   ],
   "lastQuestReset": 1755339590435,
-  "lastSeen": 1755339955645,
+  "lastSeen": 1755339990894,
   "completedLearning": [
     "basic-setup"
   ]
