@@ -43,5 +43,14 @@
     "timestamp": 1755374845195,
     "deleted": false,
     "adminLevel": 0
+  },
+  {
+    "id": "67d793db-482e-407f-8ab9-1a76686c5eb4",
+    "userId": "e8162264-12da-4ee1-9dbc-a18a1f3f858b",
+    "nickname": "Ca6aka",
+    "message": "Привет",
+    "timestamp": 1755382174055,
+    "deleted": false,
+    "adminLevel": 1
   }
 ]
