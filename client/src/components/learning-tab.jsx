@@ -5,6 +5,18 @@ import { useToast } from '@/hooks/use-toast';
 import { LEARNING_COURSES, formatCurrency, formatTime } from '@/lib/constants';
 import { Lock } from 'lucide-react';
 
+// Helper function to get learning course colors based on difficulty
+const getLearningColors = (difficulty) => {
+  if (difficulty === 'Beginner') return { bg: 'from-blue-500/20 to-blue-600/20', icon: 'text-blue-400', border: 'border-blue-500/50' };
+  if (difficulty === 'Intermediate') return { bg: 'from-orange-500/20 to-orange-600/20', icon: 'text-orange-400', border: 'border-orange-500/50' };
+  if (difficulty === 'Advanced') return { bg: 'from-red-500/20 to-red-600/20', icon: 'text-red-400', border: 'border-red-500/50' };
+  if (difficulty === 'Expert') return { bg: 'from-purple-500/20 to-purple-600/20', icon: 'text-purple-400', border: 'border-purple-500/50' };
+  if (difficulty === 'Master') return { bg: 'from-cyan-500/20 to-cyan-600/20', icon: 'text-cyan-400', border: 'border-cyan-500/50' };
+  
+  // Default fallback
+  return { bg: 'from-blue-500/20 to-blue-600/20', icon: 'text-blue-400', border: 'border-blue-500/50' };
+};
+
 // Helper function to format reward text
 const getRewardText = (reward) => {
   if (!reward || typeof reward !== 'object') return 'Unknown Reward';
@@ -140,16 +152,20 @@ export function LearningTab() {
             }`}>
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-3">
-                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                    isLearning ? 'bg-purple-500/20' :
-                    isCompleted ? 'bg-green-500/20' : 'bg-primary/20'
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center border ${
+                    !hasLevelRequirement ? 'bg-slate-500/20 border-slate-500/50' :
+                    isCompleted ? 'bg-gradient-to-br from-green-500/20 to-green-600/20 border-green-500/50' : 
+                    isLearning ? 'bg-gradient-to-br from-purple-500/20 to-purple-600/20 border-purple-500/50' :
+                    `bg-gradient-to-br ${getLearningColors(course.difficulty).bg} ${getLearningColors(course.difficulty).border}`
                   }`}>
                     {!hasLevelRequirement ? (
                       <Lock className="text-slate-400 text-lg" />
                     ) : isCompleted ? (
                       <i className="fas fa-check text-green-400 text-lg"></i>
+                    ) : isLearning ? (
+                      <i className="fas fa-brain text-purple-400 text-lg"></i>
                     ) : (
-                      <i className={`fas fa-brain ${isLearning ? 'text-purple-400' : 'text-primary'} text-lg`}></i>
+                      <i className={`fas fa-brain ${getLearningColors(course.difficulty).icon} text-lg`}></i>
                     )}
                   </div>
                   <div>

@@ -10,7 +10,7 @@
     "isOnline": true,
     "loadPercentage": 90,
     "createdAt": 1755327156059,
-    "lastUpdated": 1755339117982,
+    "lastUpdated": 1755339276450,
     "lastOverloadCheck": 1755339178254
   },
   {
@@ -24,7 +24,20 @@
     "isOnline": true,
     "loadPercentage": 90,
     "createdAt": 1755327166748,
-    "lastUpdated": 1755339117982,
+    "lastUpdated": 1755339276450,
     "lastOverloadCheck": 1755339178254
+  },
+  {
+    "id": "8f58cfcc-6e09-4a35-b077-b7e0b2ee4cbb",
+    "ownerId": "e73513b4-65ec-40e1-bd85-339d155b7af0",
+    "name": "High Performance Server",
+    "type": "Gaming/Apps",
+    "incomePerMinute": 50,
+    "monthlyCost": 120,
+    "icon": "fas fa-server",
+    "isOnline": true,
+    "loadPercentage": 50,
+    "createdAt": 1755339276221,
+    "lastUpdated": 1755339276450
   }
 ]

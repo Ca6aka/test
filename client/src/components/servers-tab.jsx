@@ -160,7 +160,7 @@ export function ServersTab({ onTabChange }) {
             <div key={server.id} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:border-primary/30 transition-all">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
+                  <div className={`w-10 h-10 bg-gradient-to-br ${getServerTierColors(server.type).icon === 'text-green-400' ? 'from-green-500/20 to-green-600/20 border-green-500/50' : getServerTierColors(server.type).icon === 'text-blue-400' ? 'from-blue-500/20 to-blue-600/20 border-blue-500/50' : getServerTierColors(server.type).icon === 'text-yellow-400' ? 'from-yellow-500/20 to-yellow-600/20 border-yellow-500/50' : getServerTierColors(server.type).icon === 'text-orange-400' ? 'from-orange-500/20 to-orange-600/20 border-orange-500/50' : getServerTierColors(server.type).icon === 'text-red-400' ? 'from-red-500/20 to-red-600/20 border-red-500/50' : getServerTierColors(server.type).icon === 'text-cyan-400' ? 'from-cyan-500/20 to-cyan-600/20 border-cyan-500/50' : 'from-slate-500/20 to-slate-600/20 border-slate-500/50'} rounded-full flex items-center justify-center border`}>
                     <i className={`${server.icon || "fas fa-server"} ${server.isOnline ? getServerTierColors(server.type).icon : 'text-slate-500'}`}></i>
                   </div>
                   <div>
