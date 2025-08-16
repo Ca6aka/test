@@ -12,7 +12,7 @@ const initialState = {
   jobCooldowns: {},
   currentLearning: null,
   totalIncomePerMinute: 0,
-  unlockedTabs: ['tutorial'],
+  unlockedTabs: ['tutorial', ''],
 };
 
 function gameReducer(state, action) {

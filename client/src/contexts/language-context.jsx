@@ -162,6 +162,108 @@ const translations = {
     // Quest system
     dailyQuests: 'Daily Quests',
     achievements: 'Achievements',
+    achievementsList: {
+      'first_server': {
+        title: "First Server",
+        description: "Purchase your first server",
+      },
+      'server-collection': {
+        title: "Server Collector",
+        description: "Own 5 servers simultaneously",
+      },
+      'millionaire': {
+        title: "Millionaire",
+        description: "Accumulate $1,000,000 in balance",
+      },
+      'job-master': {
+        title: "Job Master",
+        description: "Complete 100 jobs",
+      },
+      'learning-enthusiast': {
+        title: "Learning Enthusiast",
+        description: "Complete all learning courses",
+      },
+      'early-earner': {
+        title: "Early Earner",
+        description: "Complete all learning courses",
+      },
+      'efficient-worker': {
+        title: "Efficient Worker",
+        description: "Complete 10 jobs",
+      },
+      'server-builder': {
+        title: "Server Builder",
+        description: "Own 3 different types of servers",
+      },
+      'security-expert': {
+        title: "Security Expert",
+        description: "Complete 50 Security Audit jobs",
+      },
+      'maintenance-guru': {
+        title: "Maintenance Guru",
+        description: "Complete 75 Maintenance jobs",
+      },
+      'optimization-master': {
+        title: "Optimization Master",
+        description: "Complete 60 Optimization jobs",
+      },
+      'wealthy-investor': {
+        title: "Wealthy Investor",
+        description: "Accumulate $100,000 in balance",
+      },
+      'server-mogul': {
+        title: "Server Mogul",
+        description: "Own 10 servers simultaneously",
+      },
+      'persistent-learner': {
+        title: "Persistent Learner",
+        description: "Complete 3 learning courses",
+      },
+      'speed-demon': {
+        title: "Speed Demon",
+        description: "Complete 200 jobs total",
+      },
+      'infrastructure-king': {
+        title: "Infrastructure King",
+        description: "Own 15 servers simultaneously",
+      },
+      'multi-millionaire': {
+        title: "Multi-Millionaire",
+        description: "Accumulate $5,000,000 in balance",
+      },
+      'course-completionist': {
+        title: "Course Completionist",
+        description: "Complete all available learning courses",
+      },
+      'workaholic': {
+        title: "Workaholic",
+        description: "Complete 500 jobs total",
+      },
+      'server-empire': {
+        title: "Server Empire",
+        description: "Own 20 servers simultaneously",
+      },
+      'financial-titan': {
+        title: "Financial Titan",
+        description: "Accumulate $10,000,000 in balance",
+      },
+      'legendary-worker': {
+        title: "Legendary Worker",
+        description: "Complete 1000 jobs total",
+      },
+      'server-overlord': {
+        title: "Server Overlord",
+        description: "Own 30 servers simultaneously",
+      },
+      'billionaire-club': {
+        title: "Billionaire Club",
+        description: "Accumulate $100,000,000 in balance",
+      },
+      'ultimate-legend': {
+        title: "Ultimate Legend",
+        description: "Complete 2500 jobs total",
+      }
+    },
     rankings: 'Rankings',
     claimReward: 'Claim Reward',
     rewardClaimed: 'Reward Claimed',
@@ -574,6 +676,108 @@ const translations = {
     // Quest system
     dailyQuests: 'Ежедневные задания',
     achievements: 'Достижения',
+    achievementsList: {
+      'first_server': {
+        title: "Первый сервер",
+        description: "Купите свой первый сервер",
+      },
+      'server-collection': {
+        title: "Коллекционер серверов",
+        description: "Владейте 5 серверами одновременно",
+      },
+      'millionaire': {
+        title: "Миллионер",
+        description: "Достигните баланса $1.000.000",
+      },
+      'job-master': {
+        title: "Мастер заданий",
+        description: "Выполните 100 заданий",
+      },
+      'learning-enthusiast': {
+        title: "Любитель учёбы",
+        description: "Пройти все обучающие курсы",
+      },
+      'early-earner': {
+        title: "Ранний заработок",
+        description: "Получить первые $10.000",
+      },
+      'efficient-worker': {
+        title: "Эффективный работник",
+        description: "Выполнить 10 заданий",
+      },
+      'server-builder': {
+        title: "Конструктор серверов",
+        description: "Владейте 3 различными типами серверов",
+      },
+      'security-expert': {
+        title: "Эксперт по безопасности",
+        description: "Выполнить 50 заданий по аудиту безопасности",
+      },
+      'maintenance-guru': {
+        title: "Гуру технического обслуживания",
+        description: "Выполнить 75 заданий по техническому обслуживанию",
+      },
+      'optimization-master': {
+        title: "Мастер оптимизации",
+        description: "Выполните 60 заданий по оптимизации",
+      },
+      'wealthy-investor': {
+        title: "Богатый инвестор",
+        description: "Накопите на балансе $100.000",
+      },
+      'server-mogul': {
+        title: "Серверный магнат",
+        description: "Владейте 10 серверами одновременно",
+      },
+      'persistent-learner': {
+        title: "Настойчивый ученик",
+        description: "Пройдите 3 учебных курса",
+      },
+      'speed-demon': {
+        title: "Демон скорости",
+        description: "Выполните 200 заданий",
+      },
+      'infrastructure-king': {
+        title: "Король инфраструктуры",
+        description: "Владейте 15 серверами одновременно",
+      },
+      'multi-millionaire': {
+        title: "Мультимиллионер",
+        description: "Накопите $5.000.000 на балансе",
+      },
+      'course-completionist': {
+        title: "Завершитель курсов",
+        description: "Пройдите все доступные учебные курсы",
+      },
+      'workaholic': {
+        title: "Трудоголик",
+        description: "Выполните в общей сложности 500 заданий.",
+      },
+      'server-empire': {
+        title: "Империя серверов",
+        description: "Владейте 20 серверами одновременно",
+      },
+      'financial-titan': {
+        title: "Финансовый титан",
+        description: "Накопите $10.000.000 на балансе",
+      },
+      'legendary-worker': {
+        title: "Легендарный работник",
+        description: "Выполните 1000 заданий",
+      },
+      'server-overlord': {
+        title: "Повелитель серверов",
+        description: "Владейте 30 серверами одновременно",
+      },
+      'billionaire-club': {
+        title: "Клуб миллиардеров",
+        description: "Накопите $100.000.000 на балансе",
+      },
+      'ultimate-legend': {
+        title: "Абсолютная легенда",
+        description: "Выполните 2500 заданий",
+      }
+    },
     rankings: 'Рейтинг',
     claimReward: 'Забрать награду',
     rewardClaimed: 'Награда получена',
@@ -901,6 +1105,108 @@ const translations = {
     // Quest system
     dailyQuests: 'Щоденні завдання',
     achievements: 'Досягнення',
+    achievementsList: {
+      'first_server': {
+        title: "Перший сервер",
+        description: "Купіть свій перший сервер",
+      },
+      'server-collection': {
+        title: "Колекціонер серверів",
+        description: "Володійте 5 серверами одночасно",
+      },
+      'millionaire': {
+        title: "Мільйонер",
+        description: "Досягніть балансу $1.000.000",
+      },
+      'job-master': {
+        title: "Майстер завдань",
+        description: "Виконайте 100 завдань",
+      },
+      'learning-enthusiast': {
+        title: "Любитель навчання",
+        description: "Пройти всі навчальні курси",
+      },
+      'early-earner': {
+        title: "Ранній заробіток",
+        description: "Отримати перші $10.000",
+      },
+      'efficient-worker': {
+        title: "Ефективний працівник",
+        description: "Виконати 10 завдань",
+      },
+      'server-builder': {
+        title: "Конструктор серверів",
+        description: "Володійте 3 різними т",
+      },
+      'security-expert': {
+        title: "Експерт з безпеки",
+        description: "Виконати 50 завдань з аудиту безпеки",
+      },
+      'maintenance-guru': {
+        title: "Гуру технічного обслуговування",
+        description: "Виконати 75 завдань з технічного обслуговування",
+      },
+      'optimization-master': {
+        title: "Майстер оптимізації",
+        description: "Виконайте 60 завдань з оптимізації",
+      },
+      'wealthy-investor': {
+        title: "Багатий інвестор",
+        description: "Накопичіть на балансі $100.000",
+      },
+      'server-mogul': {
+        title: "Серверний магнат",
+        description: "Володійте 10 серверами одночасно",
+      },
+      'persistent-learner': {
+        title: "Наполегливий учень",
+        description: "Пройдіть 3 навчальні курси",
+      },
+      'speed-demon': {
+        title: "Демон швидкості",
+        description: "Виконайте 200 завдань",
+      },
+      'infrastructure-king': {
+        title: "Король інфраструктури",
+        description: "Володійте 15 серверами одночасно",
+      },
+      'multi-millionaire': {
+        title: "Мультимільйонер",
+        description: "Накопичіть $5.000.000 на балансі",
+      },
+      'course-completionist': {
+        title: "Завершувач курсів",
+        description: "Пройдіть усі доступні навчальні курси",
+      },
+      'workaholic': {
+        title: "Трудоголік",
+        description: "Виконайте загалом 500 завдань.",
+      },
+      'server-empire': {
+        title: "Імперія серверів",
+        description: "Володійте 20 серверами одночасно",
+      },
+      'financial-titan': {
+        title: "Фінансовий титан",
+        description: "Накопичіть $10.000.000 на балансі",
+      },
+      'legendary-worker': {
+        title: "Легендарний працівник",
+        description: "Виконайте 1000 завдань",
+      },
+      'server-overlord': {
+        title: "Володар серверів",
+        description: "Володійте 30 серверами одночасно",
+      },
+      'billionaire-club': {
+        title: "Клуб мільярдерів",
+        description: "Накопичіть $100.000.000 на балансі",
+      },
+      'ultimate-legend': {
+        title: "Абсолютна легенда",
+        description: "Виконайте 2500 завдань",
+      }
+    },
     rankings: 'Рейтинг',
     claimReward: 'Забрати нагороду',
     rewardClaimed: 'Нагорода отримана',
@@ -1228,6 +1534,108 @@ const translations = {
     // Quest system
     dailyQuests: 'Tägliche Aufgaben',
     achievements: 'Erfolge',
+    achievementsList: {
+      'first_server': {
+        title: "Erster Server",
+        description: "Kaufen Sie Ihren ersten Server",
+      },
+      'server-collection': {
+        title: "Server-Sammler",
+        description: "5 Server gleichzeitig besitzen",
+      },
+      'millionaire': {
+        title: "Millionär",
+        description: "1.000.000 $ Guthaben anhäufen",
+      },
+      'job-master': {
+        title: "Job Master",
+        description: "100 Jobs erledigen",
+      },
+      'learning-enthusiast': {
+        title: "Lernbegeisterter",
+        description: "Alle Lernkurse abschließen",
+      },
+      'early-earner': {
+        title: "Frühverdiener",
+        description: "Alle Lernkurse abschließen",
+      },
+      'efficient-worker': {
+        title: "Effizienter Arbeiter",
+        description: "10 Jobs abschließen",
+      },
+      'server-builder': {
+        title: "Server Builder",
+        description: "Besitze 3 verschiedene Servertypen",
+      },
+      'security-expert': {
+        title: "Sicherheitsexperte",
+        description: "Erledige 50 Sicherheitsprüfungsaufträge",
+      },
+      'maintenance-guru': {
+        title: "Wartungsguru",
+        description: "Erledige 75 Wartungsaufträge",
+      },
+      'optimization-master': {
+        title: "Optimierungsmeister",
+        description: "Erledige 60 Optimierungsaufträge",
+      },
+      'wealthy-investor': {
+        title: "Wohlhabender Investor",
+        description: "100.000 $ Guthaben anhäufen",
+      },
+      'server-mogul': {
+        title: "Server Mogul",
+        description: "10 Server gleichzeitig besitzen",
+      },
+      'persistent-learner': {
+        title: "Ausdauernder Lerner",
+        description: "3 Lernkurse abschließen",
+      },
+      'speed-demon': {
+        title: "Geschwindigkeitsdämon",
+        description: "Insgesamt 200 Jobs erledigen",
+      },
+      'infrastructure-king': {
+        title: "Infrastrukturkönig",
+        description: "15 Server gleichzeitig besitzen",
+      },
+      'multi-millionaire': {
+        title: "Multi-Millionär",
+        description: "5.000.000 $ Guthaben anhäufen",
+      },
+      'course-completionist': {
+        title: "Kursabsolvent",
+        description: "Alle verfügbaren Lernkurse abschließen",
+      },
+      'workaholic': {
+        title: "Workaholic",
+        description: "Insgesamt 500 Jobs abschließen",
+      },
+      'server-empire': {
+        title: "Server-Imperium",
+        description: "20 Server gleichzeitig besitzen",
+      },
+      'financial-titan': {
+        title: "Finanz-Titan",
+        description: "10.000.000 $ Guthaben anhäufen",
+      },
+      'legendary-worker': {
+        title: "Legendärer Arbeiter",
+        description: "Insgesamt 1000 Jobs erledigen",
+      },
+      'server-overlord': {
+        title: "Server-Overlord",
+        description: "30 Server gleichzeitig besitzen",
+      },
+      'billionaire-club': {
+        title: "Billionaire Club",
+        description: "100.000.000 $ Guthaben anhäufen",
+      },
+      'ultimate-legend': {
+        title: "Ultimative Legende",
+        description: "Insgesamt 2500 Jobs erledigen",
+      }
+    },
     rankings: 'Rangliste',
     claimReward: 'Belohnung einfordern',
     rewardClaimed: 'Belohnung erhalten',
