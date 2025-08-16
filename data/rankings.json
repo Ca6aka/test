@@ -1,19 +1,35 @@
 [
   {
+    "id": "a66a7d88-03dc-48c9-862a-f8229356999a",
+    "nickname": "Ca6aka",
+    "balance": 87950,
+    "serverCount": 2,
+    "isOnline": true,
+    "rank": 1
+  },
+  {
     "id": "70bcd2c9-4002-461f-8d5f-c7abf22cbe02",
     "nickname": "Niko",
     "balance": 10900,
     "serverCount": 0,
     "isOnline": false,
-    "rank": 1
+    "rank": 2
   },
   {
     "id": "53cab66e-cd82-4269-a3dc-abc8fb361d76",
     "nickname": "Tyler ",
     "balance": 10900,
     "serverCount": 0,
+    "isOnline": false,
+    "rank": 3
+  },
+  {
+    "id": "a5756357-a978-4a5c-b15d-9c00c74980ce",
+    "nickname": "Tyler",
+    "balance": 10900,
+    "serverCount": 0,
     "isOnline": true,
-    "rank": 2
+    "rank": 4
   },
   {
     "id": "85961a83-b617-468d-bb52-176a03f1c95f",
@@ -21,14 +37,6 @@
     "balance": 10900,
     "serverCount": 0,
     "isOnline": false,
-    "rank": 3
-  },
-  {
-    "id": "a66a7d88-03dc-48c9-862a-f8229356999a",
-    "nickname": "Ca6aka",
-    "balance": 7950,
-    "serverCount": 0,
-    "isOnline": true,
-    "rank": 4
+    "rank": 5
   }
 ]

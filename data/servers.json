@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "id": "4d05f170-2eaa-4f22-8d17-f333eb88934f",
+    "name": "Basic Web Server",
+    "ownerId": "a66a7d88-03dc-48c9-862a-f8229356999a",
+    "type": "Web Hosting",
+    "isOnline": true,
+    "loadPercentage": 50,
+    "lastUpdated": 1755326689284
+  },
+  {
+    "id": "aaa5b910-0549-4b8d-8c18-ec148984b1ca",
+    "name": "Basic Web Server",
+    "ownerId": "a66a7d88-03dc-48c9-862a-f8229356999a",
+    "type": "Web Hosting",
+    "isOnline": true,
+    "loadPercentage": 50,
+    "lastUpdated": 1755326689284
+  }
+]

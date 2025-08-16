@@ -1259,14 +1259,9 @@ export class FileStorage {
       // Remove old entries for this user's servers
       allServers = allServers.filter(server => !userServers.find(us => us.id === server.id));
       
-      // Add ALL current user's servers (both online and offline)
+      // Add ALL current user's servers (both online and offline) - preserve ALL fields
       const updatedServers = userServers.map(server => ({
-        id: server.id,
-        name: server.name,
-        ownerId: server.ownerId,
-        type: server.type,
-        isOnline: server.isOnline,
-        loadPercentage: server.loadPercentage || 50,
+        ...server, // Preserve ALL server fields
         lastUpdated: Date.now()
       }));
       

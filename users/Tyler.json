@@ -1,0 +1,95 @@
+{
+  "id": "a5756357-a978-4a5c-b15d-9c00c74980ce",
+  "nickname": "Tyler",
+  "password": "$2b$10$dL/Fa75cyzA94cZX9pO.wegPUgSEKftMvd.mvYV89uYG0vrC1ReqG",
+  "balance": 10900,
+  "level": 1,
+  "experience": 53,
+  "totalEarnings": 10900,
+  "totalSpent": 0,
+  "avatar": {
+    "gradient": "from-rose-400 via-pink-500 to-red-600",
+    "pattern": "multi-color",
+    "seed": 608234,
+    "animation": "gradient-shift"
+  },
+  "serverLimit": 3,
+  "tutorialCompleted": false,
+  "admin": 0,
+  "banned": false,
+  "muted": false,
+  "muteExpires": null,
+  "isOnline": true,
+  "lastIncomeUpdate": 1755326406553,
+  "jobCooldowns": {
+    "maintenance": 1755326715148,
+    "optimization": 1755326865489,
+    "security-audit": 1755327016244
+  },
+  "currentLearning": null,
+  "activities": [
+    {
+      "id": "30c6dc9a-5940-442a-8c93-3de2f64ab41e",
+      "description": "Completed Security Audit (+$500, +25 XP)",
+      "timestamp": "8/16/2025, 6:40:16 AM"
+    },
+    {
+      "id": "35258d55-4bd4-48bd-8289-15b489ef50f9",
+      "description": "Completed Performance Optimization (+$250, +18 XP)",
+      "timestamp": "8/16/2025, 6:40:15 AM"
+    },
+    {
+      "id": "e9aa53d2-3f9c-4476-82a2-f36f03f98389",
+      "description": "Completed Server Maintenance (+$150, +10 XP)",
+      "timestamp": "8/16/2025, 6:40:15 AM"
+    }
+  ],
+  "achievements": [],
+  "completedJobsCount": 3,
+  "completedCoursesCount": 0,
+  "dailyQuests": [
+    {
+      "id": "daily-maintenance-Sat Aug 16 2025",
+      "title": "Daily Maintenance",
+      "description": "Complete 3 Server Maintenance jobs",
+      "reward": 2000,
+      "requirement": {
+        "type": "job",
+        "jobType": "maintenance",
+        "count": 3
+      },
+      "progress": 1,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
+    },
+    {
+      "id": "daily-income-Sat Aug 16 2025",
+      "title": "Passive Income",
+      "description": "Earn $5,000 from server income",
+      "reward": 1500,
+      "requirement": {
+        "type": "income",
+        "amount": 5000
+      },
+      "progress": 0,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
+    },
+    {
+      "id": "daily-optimization-Sat Aug 16 2025",
+      "title": "Server Optimization",
+      "description": "Complete 2 Performance Optimization jobs",
+      "reward": 3000,
+      "requirement": {
+        "type": "job",
+        "jobType": "optimization",
+        "count": 2
+      },
+      "progress": 1,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
+    }
+  ],
+  "lastQuestReset": 1755326406553,
+  "lastSeen": 1755326590121
+}
