@@ -30,9 +30,13 @@ function gameReducer(state, action) {
       };
 
     case 'SET_SERVERS':
-      const totalIncome = action.payload.reduce((sum, server) =>
-        sum + (server.isOnline ? server.incomePerMinute : 0), 0
-      );
+      const totalIncome = action.payload.reduce((sum, server) => {
+        if (!server.isOnline) return sum;
+        const baseIncome = server.incomePerMinute;
+        const loadPercentage = server.loadPercentage || 50;
+        const adjustedIncome = baseIncome * (1 + (loadPercentage - 50) / 100);
+        return sum + adjustedIncome;
+      }, 0);
       return {
         ...state,
         servers: action.payload,

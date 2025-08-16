@@ -244,7 +244,7 @@ export function ServersTab({ onTabChange }) {
                 <div className="bg-slate-700/30 rounded-lg p-3">
                   <p className="text-xs text-slate-400 mb-1">Income/min</p>
                   <p className={`font-semibold ${server.isOnline ? 'text-secondary' : 'text-slate-500'}`}>
-                    {server.isOnline ? `+${formatCurrency(Math.round(server.incomePerMinute * ((server.loadPercentage || 50) <= 50 ? (server.loadPercentage || 50) / 50 : 1 + ((server.loadPercentage || 50) - 50) / 100)))}` : '$0 (Offline)'}
+                    {server.isOnline ? `+${formatCurrency(Math.round(server.incomePerMinute * (1 + ((server.loadPercentage || 50) - 50) / 100)))}` : '$0 (Offline)'}
                   </p>
                 </div>
                 <div className="bg-slate-700/30 rounded-lg p-3">

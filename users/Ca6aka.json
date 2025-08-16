@@ -2,10 +2,10 @@
   "id": "e73513b4-65ec-40e1-bd85-339d155b7af0",
   "nickname": "Ca6aka",
   "password": "$2b$10$JpfJ4vb59zjxCtXN0I4kbee0VAqeB3by8xsWuYuW6PZo3fAATENv.",
-  "balance": 101996,
+  "balance": 102146,
   "level": 1,
-  "experience": 53,
-  "totalEarnings": 10900,
+  "experience": 63,
+  "totalEarnings": 11050,
   "totalSpent": 10000,
   "avatar": {
     "gradient": "from-rose-400 via-pink-500 to-red-600",
@@ -22,12 +22,17 @@
   "isOnline": true,
   "lastIncomeUpdate": 1755327272262,
   "jobCooldowns": {
-    "maintenance": 1755327365618,
+    "maintenance": 1755327690120,
     "optimization": 1755327516027,
     "security-audit": 1755327666524
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "f6e5f575-327e-4446-a96a-a32da0d23987",
+      "description": "Completed Server Maintenance (+$150, +10 XP)",
+      "timestamp": "8/16/2025, 6:56:30 AM"
+    },
     {
       "id": "6bacead0-c594-4f80-be2a-fc39de4094f2",
       "description": "Income: +$106, Rental: -$10 (Net: +$96)",
@@ -47,17 +52,12 @@
       "id": "8738ee28-4d68-4798-89f2-70cb6f7564ba",
       "description": "Purchased Basic Web Server for $5,000",
       "timestamp": "8/16/2025, 6:52:36 AM"
-    },
-    {
-      "id": "9460bce6-3229-4408-867d-a934bdbe1dba",
-      "description": "Tutorial completed! All features unlocked.",
-      "timestamp": "8/16/2025, 6:51:08 AM"
     }
   ],
   "achievements": [
     "first-server"
   ],
-  "completedJobsCount": 3,
+  "completedJobsCount": 4,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -70,7 +70,7 @@
         "jobType": "maintenance",
         "count": 3
       },
-      "progress": 1,
+      "progress": 2,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -103,5 +103,5 @@
     }
   ],
   "lastQuestReset": 1755327035906,
-  "lastSeen": 1755327319860
+  "lastSeen": 1755327450013
 }

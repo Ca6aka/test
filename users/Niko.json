@@ -1,0 +1,75 @@
+{
+  "id": "89d9b833-5345-47cc-b3d5-df00302f5ed9",
+  "nickname": "Niko",
+  "password": "$2b$10$G0HQ4jiWHobTKLBvgkfsF.HC/XLDC2wQjZJgjN8.t25RcxrLzoTAW",
+  "balance": 10000,
+  "level": 1,
+  "experience": 0,
+  "totalEarnings": 10000,
+  "totalSpent": 0,
+  "avatar": {
+    "gradient": "from-orange-400 via-amber-500 to-yellow-600",
+    "pattern": "multi-color",
+    "seed": 823764,
+    "animation": "gradient-shift"
+  },
+  "serverLimit": 3,
+  "tutorialCompleted": false,
+  "admin": 0,
+  "banned": false,
+  "muted": false,
+  "muteExpires": null,
+  "isOnline": true,
+  "lastIncomeUpdate": 1755327443104,
+  "jobCooldowns": {},
+  "currentLearning": null,
+  "activities": [],
+  "achievements": [],
+  "completedJobsCount": 0,
+  "completedCoursesCount": 0,
+  "dailyQuests": [
+    {
+      "id": "daily-maintenance-Sat Aug 16 2025",
+      "title": "Daily Maintenance",
+      "description": "Complete 3 Server Maintenance jobs",
+      "reward": 2000,
+      "requirement": {
+        "type": "job",
+        "jobType": "maintenance",
+        "count": 3
+      },
+      "progress": 0,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
+    },
+    {
+      "id": "daily-income-Sat Aug 16 2025",
+      "title": "Passive Income",
+      "description": "Earn $5,000 from server income",
+      "reward": 1500,
+      "requirement": {
+        "type": "income",
+        "amount": 5000
+      },
+      "progress": 0,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
+    },
+    {
+      "id": "daily-optimization-Sat Aug 16 2025",
+      "title": "Server Optimization",
+      "description": "Complete 2 Performance Optimization jobs",
+      "reward": 3000,
+      "requirement": {
+        "type": "job",
+        "jobType": "optimization",
+        "count": 2
+      },
+      "progress": 0,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
+    }
+  ],
+  "lastQuestReset": 1755327443105,
+  "lastSeen": 1755327450590
+}
