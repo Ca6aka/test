@@ -166,7 +166,7 @@ export function TutorialTab({ gameState, setActiveTab }) {
       <div className="mt-6 sm:mt-8 bg-gradient-to-r from-accent/10 to-secondary/10 border border-accent/30 rounded-xl p-4 sm:p-6">
         <h3 className="text-lg font-semibold text-accent mb-3">
           <i className="fas fa-lightbulb mr-2"></i>
-          {t('tutorialTips')}
+          Полезные советы
         </h3>
         <div className="space-y-2 text-sm text-slate-300">
           <p>• {t('tipCompleteJobs')}</p>
@@ -174,6 +174,8 @@ export function TutorialTab({ gameState, setActiveTab }) {
           <p>• {t('tipEarnToUnlock').replace('{amount}', formatCurrency(15000))}</p>
           <p>• {t('tipPurchaseServers')}</p>
           <p>• {t('tipTakeCourses')}</p>
+          <p>• Нажав на свой аватар, можно узнать больше полезной информации</p>
+          <p>• Если нажать на свой или чужой ник, можно перейти на чей-то профиль</p>
         </div>
         
         <div className="mt-4 flex flex-col sm:flex-row gap-3">

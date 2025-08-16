@@ -286,7 +286,167 @@ const ACHIEVEMENTS = [
     description: 'Complete all learning courses',
     icon: 'fas fa-graduation-cap',
     reward: 25000,
+    condition: { type: 'courses', count: 5 }
+  },
+  {
+    id: 'early-earner',
+    title: 'Early Earner',
+    description: 'Earn your first $10,000',
+    icon: 'fas fa-coins',
+    reward: 2000,
+    condition: { type: 'balance', amount: 10000 }
+  },
+  {
+    id: 'efficient-worker',
+    title: 'Efficient Worker',
+    description: 'Complete 10 jobs',
+    icon: 'fas fa-briefcase',
+    reward: 3000,
+    condition: { type: 'jobs', count: 10 }
+  },
+  {
+    id: 'server-builder',
+    title: 'Server Builder',
+    description: 'Own 3 different types of servers',
+    icon: 'fas fa-network-wired',
+    reward: 7500,
+    condition: { type: 'servers', count: 3 }
+  },
+  {
+    id: 'security-expert',
+    title: 'Security Expert',
+    description: 'Complete 50 Security Audit jobs',
+    icon: 'fas fa-shield-alt',
+    reward: 15000,
+    condition: { type: 'jobs', count: 50 }
+  },
+  {
+    id: 'maintenance-guru',
+    title: 'Maintenance Guru',
+    description: 'Complete 75 Maintenance jobs',
+    icon: 'fas fa-wrench',
+    reward: 12000,
+    condition: { type: 'jobs', count: 75 }
+  },
+  {
+    id: 'optimization-master',
+    title: 'Optimization Master',
+    description: 'Complete 60 Optimization jobs',
+    icon: 'fas fa-tachometer-alt',
+    reward: 13500,
+    condition: { type: 'jobs', count: 60 }
+  },
+  {
+    id: 'wealthy-investor',
+    title: 'Wealthy Investor',
+    description: 'Accumulate $100,000 in balance',
+    icon: 'fas fa-dollar-sign',
+    reward: 20000,
+    condition: { type: 'balance', amount: 100000 }
+  },
+  {
+    id: 'server-mogul',
+    title: 'Server Mogul',
+    description: 'Own 10 servers simultaneously',
+    icon: 'fas fa-building',
+    reward: 25000,
+    condition: { type: 'servers', count: 10 }
+  },
+  {
+    id: 'persistent-learner',
+    title: 'Persistent Learner',
+    description: 'Complete 3 learning courses',
+    icon: 'fas fa-book',
+    reward: 18000,
     condition: { type: 'courses', count: 3 }
+  },
+  {
+    id: 'speed-demon',
+    title: 'Speed Demon',
+    description: 'Complete 200 jobs total',
+    icon: 'fas fa-bolt',
+    reward: 30000,
+    condition: { type: 'jobs', count: 200 }
+  },
+  {
+    id: 'infrastructure-king',
+    title: 'Infrastructure King',
+    description: 'Own 15 servers simultaneously',
+    icon: 'fas fa-crown',
+    reward: 40000,
+    condition: { type: 'servers', count: 15 }
+  },
+  {
+    id: 'multi-millionaire',
+    title: 'Multi-Millionaire',
+    description: 'Accumulate $5,000,000 in balance',
+    icon: 'fas fa-gem',
+    reward: 100000,
+    condition: { type: 'balance', amount: 5000000 }
+  },
+  {
+    id: 'course-completionist',
+    title: 'Course Completionist',
+    description: 'Complete all available learning courses',
+    icon: 'fas fa-award',
+    reward: 35000,
+    condition: { type: 'courses', count: 5 }
+  },
+  {
+    id: 'workaholic',
+    title: 'Workaholic',
+    description: 'Complete 500 jobs total',
+    icon: 'fas fa-fire',
+    reward: 75000,
+    condition: { type: 'jobs', count: 500 }
+  },
+  {
+    id: 'server-empire',
+    title: 'Server Empire',
+    description: 'Own 20 servers simultaneously',
+    icon: 'fas fa-globe',
+    reward: 60000,
+    condition: { type: 'servers', count: 20 }
+  },
+  {
+    id: 'financial-titan',
+    title: 'Financial Titan',
+    description: 'Accumulate $10,000,000 in balance',
+    icon: 'fas fa-university',
+    reward: 200000,
+    condition: { type: 'balance', amount: 10000000 }
+  },
+  {
+    id: 'legendary-worker',
+    title: 'Legendary Worker',
+    description: 'Complete 1000 jobs total',
+    icon: 'fas fa-trophy',
+    reward: 150000,
+    condition: { type: 'jobs', count: 1000 }
+  },
+  {
+    id: 'server-overlord',
+    title: 'Server Overlord',
+    description: 'Own 30 servers simultaneously',
+    icon: 'fas fa-chess-king',
+    reward: 100000,
+    condition: { type: 'servers', count: 30 }
+  },
+  {
+    id: 'billionaire-club',
+    title: 'Billionaire Club',
+    description: 'Accumulate $100,000,000 in balance',
+    icon: 'fas fa-star',
+    reward: 500000,
+    condition: { type: 'balance', amount: 100000000 }
+  },
+  {
+    id: 'ultimate-legend',
+    title: 'Ultimate Legend',
+    description: 'Complete 2500 jobs total',
+    icon: 'fas fa-medal',
+    reward: 1000000,
+    condition: { type: 'jobs', count: 2500 }
   }
 ];
 
@@ -311,6 +471,55 @@ const DAILY_QUESTS = [
     description: 'Complete 2 Performance Optimization jobs',
     reward: 3000,
     requirement: { type: 'job', jobType: 'optimization', count: 2 }
+  },
+  {
+    id: 'daily-security',
+    title: 'Security Check',
+    description: 'Complete 1 Security Audit job',
+    reward: 2500,
+    requirement: { type: 'job', jobType: 'security-audit', count: 1 }
+  },
+  {
+    id: 'daily-earnings',
+    title: 'Daily Earnings',
+    description: 'Earn $10,000 from server income',
+    reward: 3500,
+    requirement: { type: 'income', amount: 10000 }
+  },
+  {
+    id: 'daily-worker',
+    title: 'Hard Worker',
+    description: 'Complete 5 jobs of any type',
+    reward: 4000,
+    requirement: { type: 'job', jobType: 'any', count: 5 }
+  },
+  {
+    id: 'daily-mixed-jobs',
+    title: 'Mixed Tasks',
+    description: 'Complete 2 Maintenance and 1 Optimization job',
+    reward: 3200,
+    requirement: { type: 'job', jobType: 'mixed', count: 3 }
+  },
+  {
+    id: 'daily-income-boost',
+    title: 'Income Boost',
+    description: 'Earn $20,000 from server income',
+    reward: 5000,
+    requirement: { type: 'income', amount: 20000 }
+  },
+  {
+    id: 'daily-job-spree',
+    title: 'Job Spree',
+    description: 'Complete 8 jobs of any type',
+    reward: 6000,
+    requirement: { type: 'job', jobType: 'any', count: 8 }
+  },
+  {
+    id: 'daily-mega-earner',
+    title: 'Mega Earner',
+    description: 'Earn $50,000 from server income',
+    reward: 8000,
+    requirement: { type: 'income', amount: 50000 }
   }
 ];
 

@@ -2,7 +2,7 @@
   "id": "e73513b4-65ec-40e1-bd85-339d155b7af0",
   "nickname": "Ca6aka",
   "password": "$2b$10$JpfJ4vb59zjxCtXN0I4kbee0VAqeB3by8xsWuYuW6PZo3fAATENv.",
-  "balance": 110292,
+  "balance": 111958,
   "level": 6,
   "experience": 644,
   "totalEarnings": 20650,
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755339336733,
+  "lastIncomeUpdate": 1755339457230,
   "jobCooldowns": {
     "maintenance": 1755334299865,
     "optimization": 1755334449530,
@@ -28,6 +28,21 @@
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "24ed1457-b93f-4196-aa41-e4334e0e8d0c",
+      "description": "Income: +$92, Rental: -$9 (Net: +$83)",
+      "timestamp": "8/16/2025, 10:17:37 AM"
+    },
+    {
+      "id": "4ffddc9b-75f2-48f8-9f92-b50fa3b8d964",
+      "description": "Quest reward claimed: Passive Income (+$1,500)",
+      "timestamp": "8/16/2025, 10:17:21 AM"
+    },
+    {
+      "id": "818c8e0b-7c7e-4a9b-b9c5-999c65749451",
+      "description": "Income: +$92, Rental: -$9 (Net: +$83)",
+      "timestamp": "8/16/2025, 10:16:36 AM"
+    },
     {
       "id": "61989b83-a25e-4df4-a8bd-fcda08eeed43",
       "description": "Income: +$150, Rental: -$15 (Net: +$135)",
@@ -37,21 +52,6 @@
       "id": "c4ea7c18-2eac-49e7-8564-ddb20ffd3553",
       "description": "Purchased High Performance Server for $12,000",
       "timestamp": "8/16/2025, 10:14:36 AM"
-    },
-    {
-      "id": "98f41ef4-2ee1-44fd-b49d-b3d6f6b0b5a8",
-      "description": "Income: +$42, Rental: -$4 (Net: +$38)",
-      "timestamp": "8/16/2025, 10:13:58 AM"
-    },
-    {
-      "id": "29bdc222-a869-41b6-9f21-443c6caf8cb8",
-      "description": "Daily quest completed: Passive Income - Reward ready to claim!",
-      "timestamp": "8/16/2025, 10:12:58 AM"
-    },
-    {
-      "id": "25ba73cf-16ba-4840-8bf3-d64bfb161b49",
-      "description": "Completed learning course: Basic Server Setup",
-      "timestamp": "8/16/2025, 10:11:58 AM"
     }
   ],
   "achievements": [
@@ -86,7 +86,8 @@
       },
       "progress": 5000,
       "completed": true,
-      "date": "Sat Aug 16 2025"
+      "date": "Sat Aug 16 2025",
+      "claimed": true
     },
     {
       "id": "daily-optimization-Sat Aug 16 2025",
@@ -105,7 +106,7 @@
     }
   ],
   "lastQuestReset": 1755327035906,
-  "lastSeen": 1755339393056,
+  "lastSeen": 1755339536398,
   "completedLearning": [
     "basic-setup"
   ]
