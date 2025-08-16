@@ -21,7 +21,7 @@ export function StatusBar() {
   };
 
   return (
-    <header className="bg-slate-800/80 backdrop-blur-sm border-b border-slate-700 p-3 sm:p-4">
+    <header className="bg-slate-800/80 backdrop-blur-sm border-b border-slate-700 p-3 sm:p-4 relative z-50">
       <div className="flex items-center justify-between max-w-7xl mx-auto">
         {/* Mobile Layout */}
         <div className="flex lg:hidden items-center justify-between w-full">
