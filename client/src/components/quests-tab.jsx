@@ -21,9 +21,7 @@ export function QuestsTab() {
   });
 
   const claimRewardMutation = useMutation({
-    mutationFn: (questId) => apiRequest(`/api/quests/${encodeURIComponent(questId)}/claim`, {
-      method: 'POST',
-    }),
+    mutationFn: (questId) => apiRequest('POST', `/api/quests/${encodeURIComponent(questId)}/claim`, null),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/quests'] });
       queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
@@ -93,7 +91,7 @@ export function QuestsTab() {
                 </div>
                 {quest.completed && (
                   <Badge variant="secondary" className="bg-green-500/20 text-green-300">
-                    Завершено
+                    {t('completed')}
                   </Badge>
                 )}
               </CardTitle>
@@ -107,10 +105,10 @@ export function QuestsTab() {
                 {/* Progress bar */}
                 <div>
                   <div className="flex justify-between text-xs text-slate-400 mb-1">
-                    <span>Прогресс</span>
+                    <span>{t('progress')}</span>
                     <span>
                       {quest.requirement?.type === 'job' && 
-                        `${quest.progress}/${quest.requirement.count} заданий`
+                        `${quest.progress}/${quest.requirement.count} ${t('completedTasks')}`
                       }
                       {quest.requirement?.type === 'income' && 
                         `${formatCurrency(quest.progress)}/${formatCurrency(quest.requirement.amount)}`
@@ -139,7 +137,7 @@ export function QuestsTab() {
                       className="bg-green-600 hover:bg-green-700 text-white"
                     >
                       <Gift className="w-4 h-4 mr-1" />
-                      {claimRewardMutation.isPending ? 'Получение...' : t('claimReward')}
+                      {claimRewardMutation.isPending ? t('claiming') : t('claimReward')}
                     </Button>
                   )}
                   {quest.completed && quest.claimed && (
@@ -158,7 +156,7 @@ export function QuestsTab() {
         <Card className="bg-slate-800/50 border-slate-700">
           <CardContent className="py-12 text-center">
             <Calendar className="w-12 h-12 text-slate-600 mx-auto mb-4" />
-            <p className="text-slate-400">Ежедневные задания загружаются...</p>
+            <p className="text-slate-400">{t('loading')}</p>
           </CardContent>
         </Card>
       )}

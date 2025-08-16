@@ -520,6 +520,59 @@ export class FileStorage {
     await this.saveServers(servers);
 
     await this.addActivity(userId, `Deleted server: ${serverName}`);
+  },
+
+  async updateServerLoad(userId, serverId, loadPercentage) {
+    const servers = await this.getServers();
+    const serverIndex = servers.findIndex(s => s.id === serverId && s.ownerId === userId);
+    
+    if (serverIndex === -1) {
+      throw new Error('Server not found');
+    }
+
+    // Update server load percentage
+    servers[serverIndex].loadPercentage = loadPercentage;
+    await this.saveServers(servers);
+    
+    return { success: true };
+  },
+
+  async checkServerOverload(userId, serverId, loadPercentage) {
+    // Calculate shutdown probability based on load
+    let shutdownChance = 0;
+    
+    if (loadPercentage > 89) {
+      shutdownChance = 0.8; // 80% chance per hour
+    } else if (loadPercentage > 74) {
+      shutdownChance = 0.5; // 50% chance per hour  
+    } else if (loadPercentage > 49) {
+      shutdownChance = 0.3; // 30% chance per hour
+    }
+    
+    // Convert hourly chance to per-minute chance
+    const minutelyChance = shutdownChance / 60;
+    
+    // Random check for shutdown
+    if (Math.random() < minutelyChance) {
+      await this.shutdownServerFromOverload(userId, serverId);
+    }
+  },
+
+  async shutdownServerFromOverload(userId, serverId) {
+    const servers = await this.getServers();
+    const serverIndex = servers.findIndex(s => s.id === serverId && s.ownerId === userId);
+    
+    if (serverIndex === -1 || !servers[serverIndex].isOnline) return;
+
+    // Shutdown the server
+    const serverName = servers[serverIndex].name;
+    const loadPercentage = servers[serverIndex].loadPercentage || 50;
+    servers[serverIndex].isOnline = false;
+    
+    await this.saveServers(servers);
+    
+    // Add activity log
+    await this.addActivity(userId, `Server "${serverName}" shutdown due to overload (${loadPercentage}% load)`);
   }
 
   // Job management
@@ -669,25 +722,51 @@ export class FileStorage {
     const totalIncome = servers.reduce((sum, server) => {
       return sum + (server.isOnline ? server.incomePerMinute : 0);
     }, 0);
+    
+    // Calculate rental costs per minute (convert monthly cost to per minute)
+    const totalRentalCost = servers.reduce((sum, server) => {
+      const monthlyRental = server.monthlyCost || 0;
+      const perMinuteRental = monthlyRental / (30 * 24 * 60); // Convert monthly to per minute
+      return sum + perMinuteRental;
+    }, 0);
 
     const incomeEarned = Math.floor((totalIncome * timeDiff) / 60000);
+    const rentalCost = Math.floor((totalRentalCost * timeDiff) / 60000);
+    const netIncome = incomeEarned - rentalCost;
 
-    if (incomeEarned > 0) {
+    if (Math.abs(netIncome) > 0) {
+      const newBalance = Math.max(0, user.balance + netIncome);
       const updatedUser = await this.updateUser(userId, {
-        balance: user.balance + incomeEarned,
+        balance: newBalance,
         lastIncomeUpdate: now
       });
 
       // Update daily quest for income
-      await this.updateDailyQuest(userId, 'income', { amount: incomeEarned });
+      if (incomeEarned > 0) {
+        await this.updateDailyQuest(userId, 'income', { amount: incomeEarned });
+      }
+
+      // Add activity log for income/expenses
+      if (incomeEarned > 0 && rentalCost > 0) {
+        await this.addActivity(userId, `Income: +$${incomeEarned}, Rental: -$${rentalCost} (Net: ${netIncome >= 0 ? '+' : ''}$${netIncome})`);
+      } else if (incomeEarned > 0) {
+        await this.addActivity(userId, `Income earned: +$${incomeEarned} from ${servers.filter(s => s.isOnline).length} active servers`);
+      } else if (rentalCost > 0) {
+        await this.addActivity(userId, `Rental cost: -$${rentalCost} for ${servers.length} servers`);
+      }
+
+      // Check for server overloads
+      for (const server of servers.filter(s => s.isOnline)) {
+        await this.checkServerOverload(userId, server.id, server.loadPercentage || 50);
+      }
 
       // Check achievements
       await this.checkAchievements(userId);
 
-      return { user: updatedUser, incomeEarned };
+      return { user: updatedUser, incomeEarned, rentalCost, netIncome };
     }
 
-    return { user, incomeEarned: 0 };
+    return { user, incomeEarned: 0, rentalCost: 0, netIncome: 0 };
   }
 
   // Tutorial

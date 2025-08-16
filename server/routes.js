@@ -170,6 +170,27 @@ export async function registerRoutes(app) {
     }
   });
 
+  app.post('/api/servers/:id/load', async (req, res) => {
+    try {
+      if (!req.session.userId) {
+        return res.status(401).json({ message: 'Not authenticated' });
+      }
+      
+      const { id } = req.params;
+      const { loadPercentage } = req.body;
+      
+      if (loadPercentage < 10 || loadPercentage > 100) {
+        return res.status(400).json({ message: 'Load percentage must be between 10 and 100' });
+      }
+      
+      await storage.updateServerLoad(req.session.userId, id, loadPercentage);
+      
+      res.json({ message: 'Server load updated successfully' });
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  });
+
   // Job routes
   app.post('/api/jobs/:jobType/start', async (req, res) => {
     try {

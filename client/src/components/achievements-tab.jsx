@@ -62,7 +62,7 @@ export function AchievementsTab() {
                 </div>
                 {achievement.earned && (
                   <Badge variant="secondary" className="bg-yellow-500/20 text-yellow-300">
-                    Получено
+                    {t('rewardClaimed')}
                   </Badge>
                 )}
               </CardTitle>
@@ -74,13 +74,13 @@ export function AchievementsTab() {
               
               <div className="flex items-center justify-between">
                 <div className="text-sm text-slate-500">
-                  Награда: {formatCurrency(achievement.reward)}
+                  {t('reward')}: {formatCurrency(achievement.reward)}
                 </div>
                 <div className="text-xs text-slate-500">
-                  {achievement.condition?.type === 'servers' && `${achievement.condition.count} серверов`}
-                  {achievement.condition?.type === 'balance' && `${formatCurrency(achievement.condition.amount)} баланс`}
-                  {achievement.condition?.type === 'jobs' && `${achievement.condition.count} заданий`}
-                  {achievement.condition?.type === 'courses' && `${achievement.condition.count} курсов`}
+                  {achievement.condition?.type === 'servers' && `${achievement.condition.count} ${t('serversLowercase')}`}
+                  {achievement.condition?.type === 'balance' && `${formatCurrency(achievement.condition.amount)} ${t('balance').toLowerCase()}`}
+                  {achievement.condition?.type === 'jobs' && `${achievement.condition.count} ${t('completedTasks')}`}
+                  {achievement.condition?.type === 'courses' && `${achievement.condition.count} ${t('coursesGenitive')}`}
                 </div>
               </div>
             </CardContent>
@@ -92,7 +92,7 @@ export function AchievementsTab() {
         <Card className="bg-slate-800/50 border-slate-700">
           <CardContent className="py-12 text-center">
             <Trophy className="w-12 h-12 text-slate-600 mx-auto mb-4" />
-            <p className="text-slate-400">Достижения загружаются...</p>
+            <p className="text-slate-400">{t('loading')}</p>
           </CardContent>
         </Card>
       )}

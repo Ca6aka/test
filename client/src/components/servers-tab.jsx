@@ -1,14 +1,42 @@
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Label } from '@/components/ui/label';
+import { Slider } from '@/components/ui/slider';
 import { useGame } from '@/contexts/game-context';
 import { useLanguage } from '@/contexts/language-context';
 import { useToast } from '@/hooks/use-toast';
 import { formatCurrency } from '@/lib/constants';
+import { useState } from 'react';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { apiRequest } from '@/lib/queryClient';
 
 export function ServersTab({ onTabChange }) {
   const { gameState, toggleServer, deleteServer } = useGame();
   const { t } = useLanguage();
   const { toast } = useToast();
+  const queryClient = useQueryClient();
+  const [selectedServer, setSelectedServer] = useState(null);
+  const [serverLoad, setServerLoad] = useState(50);
+
+  const updateServerLoad = useMutation({
+    mutationFn: ({ serverId, loadPercentage }) => 
+      apiRequest('POST', `/api/servers/${serverId}/load`, { loadPercentage }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['/api/servers'] });
+      toast({
+        title: t('success'),
+        description: 'Server load updated successfully',
+      });
+    },
+    onError: (error) => {
+      toast({
+        title: t('error'),
+        description: error.message,
+        variant: 'destructive',
+      });
+    },
+  });
 
   const handleToggleServer = async (serverId) => {
     try {
@@ -92,6 +120,76 @@ export function ServersTab({ onTabChange }) {
                   </div>
                 </div>
                 <div className="flex items-center space-x-2">
+                  {/* Server Settings Button */}
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="bg-slate-600/50 text-slate-300 hover:bg-slate-600/70"
+                        onClick={() => {
+                          setSelectedServer(server);
+                          setServerLoad(server.loadPercentage || 50);
+                        }}
+                      >
+                        <i className="fas fa-cog"></i>
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="bg-slate-800 border-slate-700">
+                      <DialogHeader>
+                        <DialogTitle className="text-white">{t('serverSettings')}: {server.name}</DialogTitle>
+                      </DialogHeader>
+                      <div className="space-y-6 py-4">
+                        <div className="space-y-3">
+                          <Label className="text-slate-300 text-sm font-medium">
+                            {t('loadPercentage')}: {server.loadPercentage || 50}%
+                          </Label>
+                          <Slider
+                            value={[server.loadPercentage || 50]}
+                            onValueChange={(value) => {
+                              updateServerLoad.mutate({ serverId: server.id, loadPercentage: value[0] });
+                            }}
+                            max={100}
+                            min={10}
+                            step={5}
+                            className="w-full"
+                          />
+                          <div className="flex justify-between text-xs text-slate-400">
+                            <span>10%</span>
+                            <span>50%</span>
+                            <span>100%</span>
+                          </div>
+                        </div>
+                        
+                        <div className="bg-slate-700/30 rounded-lg p-4 space-y-2">
+                          <div className="flex justify-between">
+                            <span className="text-slate-400 text-sm">{t('currentLoad')}:</span>
+                            <span className="text-white font-medium">{server.loadPercentage || 50}%</span>
+                          </div>
+                          
+                          <div className="flex justify-between">
+                            <span className="text-slate-400 text-sm">{t('overloadRisk')}:</span>
+                            <span className={`font-medium text-sm ${
+                              (server.loadPercentage || 50) <= 49 ? 'text-green-400' :
+                              (server.loadPercentage || 50) <= 74 ? 'text-yellow-400' :
+                              (server.loadPercentage || 50) <= 89 ? 'text-orange-400' : 'text-red-400'
+                            }`}>
+                              {(server.loadPercentage || 50) <= 49 ? t('low') :
+                               (server.loadPercentage || 50) <= 74 ? t('moderate') :
+                               (server.loadPercentage || 50) <= 89 ? t('high') : t('veryHigh')}
+                            </span>
+                          </div>
+                          
+                          {(server.loadPercentage || 50) > 49 && (
+                            <div className="text-orange-300 text-xs mt-2 p-2 bg-orange-500/10 rounded">
+                              <i className="fas fa-warning mr-1"></i>
+                              {t('serverShutdownWarning')}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
                   {/* Server Status Toggle */}
                   <Button
                     size="sm"
@@ -125,8 +223,8 @@ export function ServersTab({ onTabChange }) {
                   </p>
                 </div>
                 <div className="bg-slate-700/30 rounded-lg p-3">
-                  <p className="text-xs text-slate-400 mb-1">Monthly Cost</p>
-                  <p className="font-semibold text-red-400">-{formatCurrency(server.monthlyCost)}</p>
+                  <p className="text-xs text-slate-400 mb-1">{t('rentalCost')}</p>
+                  <p className="font-semibold text-red-400">-{formatCurrency(Math.round(server.monthlyCost / (30 * 24 * 60)))}</p>
                 </div>
               </div>
 
