@@ -65,9 +65,16 @@ export async function registerRoutes(app) {
         return res.status(400).json({ message: 'Passwords do not match' });
       }
       
+      // Check for existing user with case-insensitive nickname
       const existingUser = await storage.getUserByNickname(nickname);
       if (existingUser) {
         return res.status(400).json({ message: 'Nickname already exists' });
+      }
+      
+      // Additional check for case-insensitive duplicates
+      const existingUserCaseInsensitive = await storage.getUserByNicknameCaseInsensitive(nickname);
+      if (existingUserCaseInsensitive) {
+        return res.status(400).json({ message: 'A user with this nickname already exists (case-insensitive)' });
       }
       
       // Generate random avatar for new user

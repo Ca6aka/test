@@ -413,6 +413,25 @@ export class FileStorage {
     return await this.getUserFile(nickname);
   }
 
+  async getUserByNicknameCaseInsensitive(nickname) {
+    try {
+      const files = await fs.readdir(usersDir);
+      const normalizedNickname = nickname.toLowerCase();
+      
+      for (const file of files) {
+        if (file.endsWith('.json')) {
+          const fileNickname = file.replace('.json', '');
+          if (fileNickname.toLowerCase() === normalizedNickname) {
+            return await this.getUserFile(fileNickname);
+          }
+        }
+      }
+      return null;
+    } catch {
+      return null;
+    }
+  }
+
   async createUser(userData) {
     const avatar = generateRandomAvatar();
     const user = {

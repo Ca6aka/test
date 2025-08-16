@@ -5,6 +5,23 @@ import { useToast } from '@/hooks/use-toast';
 import { LEARNING_COURSES, formatCurrency, formatTime } from '@/lib/constants';
 import { Lock } from 'lucide-react';
 
+// Helper function to format reward text
+const getRewardText = (reward) => {
+  if (!reward || typeof reward !== 'object') return 'Unknown Reward';
+  
+  if (reward.type === 'serverSlots') {
+    const amount = reward.amount ?? 0;
+    return `+${amount} Server Slot${amount > 1 ? 's' : ''}`;
+  } else if (reward.type === 'efficiency') {
+    const amount = reward.amount ?? 0;
+    return `+${amount}% Server Efficiency`;
+  } else if (reward.type === 'serverUnlock') {
+    const serverType = reward.serverType;
+    return `Unlocks ${serverType === 'gpu-server' ? 'GPU Server' : serverType === 'tpu-server' ? 'TPU Server' : 'Special Server'}`;
+  }
+  return 'Unknown Reward';
+};
+
 export function LearningTab() {
   const { gameState, startLearning } = useGame();
   const { toast } = useToast();
@@ -92,7 +109,7 @@ export function LearningTab() {
           <div className="p-3 bg-purple-500/10 rounded-lg">
             <p className="text-sm text-purple-300">
               <i className="fas fa-gift mr-1"></i>
-              <strong>Reward:</strong> {gameState.currentLearning.reward}
+              <strong>Reward:</strong> {getRewardText(gameState.currentLearning.reward)}
             </p>
           </div>
         </div>
@@ -113,21 +130,7 @@ export function LearningTab() {
           const hasLearning = gameState.currentLearning && !isLearning;
           const isDisabled = !canAfford || hasLearning || !hasLevelRequirement || isCompleted;
 
-          const getRewardText = (reward) => {
-            if (!reward || typeof reward !== 'object') return 'Unknown Reward';
-            
-            if (reward.type === 'serverSlots') {
-              const amount = reward.amount ?? 0;
-              return `+${amount} Server Slot${amount > 1 ? 's' : ''}`;
-            } else if (reward.type === 'efficiency') {
-              const amount = reward.amount ?? 0;
-              return `+${amount}% Server Efficiency`;
-            } else if (reward.type === 'serverUnlock') {
-              const serverType = reward.serverType;
-              return `Unlocks ${serverType === 'gpu-server' ? 'GPU Server' : serverType === 'tpu-server' ? 'TPU Server' : 'Special Server'}`;
-            }
-            return 'Unknown Reward';
-          };          
+          
 
           return (
             <div key={course.id} className={`bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:border-primary/30 transition-all ${

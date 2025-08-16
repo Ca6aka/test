@@ -2,7 +2,7 @@
   "id": "e73513b4-65ec-40e1-bd85-339d155b7af0",
   "nickname": "Ca6aka",
   "password": "$2b$10$JpfJ4vb59zjxCtXN0I4kbee0VAqeB3by8xsWuYuW6PZo3fAATENv.",
-  "balance": 115707,
+  "balance": 115923,
   "level": 5,
   "experience": 510,
   "totalEarnings": 18450,
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755332494159,
+  "lastIncomeUpdate": 1755332837599,
   "jobCooldowns": {
     "maintenance": 1755332863734,
     "optimization": 1755332980185,
@@ -41,6 +41,11 @@
   },
   "activities": [
     {
+      "id": "b0b390be-d0c5-44e4-9a6b-564b87fa7793",
+      "description": "Income: +$240, Rental: -$24 (Net: +$216)",
+      "timestamp": "8/16/2025, 8:27:17 AM"
+    },
+    {
       "id": "763f06c5-2cb7-4e7a-aef6-80b4db67de10",
       "description": "Started learning course: Basic Server Setup",
       "timestamp": "8/16/2025, 8:22:59 AM"
@@ -59,11 +64,6 @@
       "id": "40c57a19-84a7-405e-a4c1-5b388e53c6f3",
       "description": "Completed Performance Optimization (+$250, +18 XP) - Level Up! Now level 5",
       "timestamp": "8/16/2025, 8:22:10 AM"
-    },
-    {
-      "id": "bd903a7d-fb66-4153-a803-2ed7baf1057f",
-      "description": "Income: +$42, Rental: -$4 (Net: +$38)",
-      "timestamp": "8/16/2025, 8:21:34 AM"
     }
   ],
   "achievements": [
@@ -96,7 +96,7 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 3557,
+      "progress": 3797,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -117,5 +117,5 @@
     }
   ],
   "lastQuestReset": 1755327035906,
-  "lastSeen": 1755332579549
+  "lastSeen": 1755332924525
 }
