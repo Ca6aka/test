@@ -197,22 +197,17 @@ export function ServersTab() {
             </div>
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-2 mb-4">
             <div className="flex justify-between text-sm">
               <span className="text-slate-400">Progress</span>
               <span className="text-purple-400">
                 {gameState.currentLearning.progress}% ({gameState.currentLearning.timeRemaining} remaining)
               </span>
             </div>
-            <div className="w-full bg-slate-700 rounded-full h-3">
-              <div 
-                className="bg-gradient-to-r from-purple-500 to-pink-500 h-3 rounded-full transition-all duration-300" 
-                style={{ width: `${gameState.currentLearning.progress}%` }}
-              ></div>
-            </div>
+            <Progress value={gameState.currentLearning.progress} className="h-3" />
           </div>
 
-          <div className="mt-4 p-3 bg-purple-500/10 rounded-lg">
+          <div className="p-3 bg-purple-500/10 rounded-lg">
             <p className="text-sm text-purple-300">
               <i className="fas fa-gift mr-1"></i>
               <strong>Reward:</strong> {gameState.currentLearning.reward}

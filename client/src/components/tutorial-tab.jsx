@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { useGame } from '@/contexts/game-context';
+import { useLanguage } from '@/contexts/language-context';
 import { useToast } from '@/hooks/use-toast';
 import { JOB_TYPES, formatCurrency, formatTime } from '@/lib/constants';
 
-export function TutorialTab() {
+export function TutorialTab({ onTabChange }) {
   const { gameState, completeJob, completeTutorial } = useGame();
   const { toast } = useToast();
+  const { localizeError } = useLanguage();
   const [cooldownTimers, setCooldownTimers] = useState({});
 
   // Update cooldown timers
@@ -56,7 +58,7 @@ export function TutorialTab() {
     } catch (error) {
       toast({
         title: "Error",
-        description: error.message,
+        description: localizeError(error),
         variant: "destructive",
       });
     }
@@ -69,35 +71,37 @@ export function TutorialTab() {
   return (
     <div className="p-6 max-w-4xl mx-auto">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-slate-100 mb-2">Tutorial</h2>
+        <h2 className="text-2xl font-bold text-slate-100 mb-2">Start</h2>
         <p className="text-slate-400">Learn the basics of server hosting and earn your first income!</p>
       </div>
 
-      {/* Tutorial Progress */}
-      <div className="bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/30 rounded-xl p-6 mb-8">
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-primary">Tutorial Progress</h3>
-          <span className="bg-primary/20 text-primary px-3 py-1 rounded-lg text-sm font-medium">
-            {gameState.user.tutorialCompleted ? 'Completed' : 'In Progress'}
-          </span>
-        </div>
-        
-        <div className="space-y-2 mb-4">
-          <div className="flex justify-between text-sm">
-            <span className="text-slate-400">Earn {formatCurrency(15000)} to unlock all features</span>
-            <span className="text-primary">
-              {formatCurrency(gameState.user.balance)} / {formatCurrency(15000)}
+      {/* Tutorial Progress - Only show if not completed OR balance is under 15000 */}
+      {(!gameState.user.tutorialCompleted || gameState.user.balance < 15000) && (
+        <div className="bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/30 rounded-xl p-6 mb-8">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-semibold text-primary">Tutorial Progress</h3>
+            <span className="bg-primary/20 text-primary px-3 py-1 rounded-lg text-sm font-medium">
+              {gameState.user.tutorialCompleted ? 'Completed' : 'In Progress'}
             </span>
           </div>
-          <Progress value={tutorialProgress} className="h-3" />
-        </div>
+          
+          <div className="space-y-2 mb-4">
+            <div className="flex justify-between text-sm">
+              <span className="text-slate-400">Earn {formatCurrency(15000)} to unlock all features</span>
+              <span className="text-primary">
+                {formatCurrency(gameState.user.balance)} / {formatCurrency(15000)}
+              </span>
+            </div>
+            <Progress value={tutorialProgress} className="h-3" />
+          </div>
 
-        {gameState.user.balance >= 15000 && !gameState.user.tutorialCompleted && (
-          <Button onClick={handleCompleteTutorial} className="w-full">
-            Complete Tutorial & Unlock All Features
-          </Button>
-        )}
-      </div>
+          {gameState.user.balance >= 15000 && !gameState.user.tutorialCompleted && (
+            <Button onClick={handleCompleteTutorial} className="w-full">
+              Complete Tutorial & Unlock All Features
+            </Button>
+          )}
+        </div>
+      )}
 
       {/* Tutorial Jobs */}
       <div className="space-y-4">
@@ -166,6 +170,23 @@ export function TutorialTab() {
           <p>• Earn {formatCurrency(15000)} to unlock servers, learning, and the store</p>
           <p>• Purchase servers to generate passive income</p>
           <p>• Take learning courses to unlock more server slots</p>
+        </div>
+        
+        <div className="mt-4 flex gap-3">
+          <Button 
+            variant="outline" 
+            className="border-blue-500/30 text-blue-400 hover:bg-blue-500/10"
+            onClick={() => onTabChange && onTabChange('hosting')}
+          >
+            Browse Server Store
+          </Button>
+          <Button 
+            variant="outline" 
+            className="border-purple-500/30 text-purple-400 hover:bg-purple-500/10"
+            onClick={() => onTabChange && onTabChange('learning')}
+          >
+            Browse Learning Courses
+          </Button>
         </div>
       </div>
 

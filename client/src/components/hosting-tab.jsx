@@ -3,7 +3,7 @@ import { useGame } from '@/contexts/game-context';
 import { useToast } from '@/hooks/use-toast';
 import { SERVER_PRODUCTS, formatCurrency } from '@/lib/constants';
 
-export function HostingTab() {
+export function HostingTab({ onTabChange }) {
   const { gameState, purchaseServer } = useGame();
   const { toast } = useToast();
 
@@ -150,7 +150,11 @@ export function HostingTab() {
           Each completed course can unlock additional server slots and improve your server efficiency. 
           Visit the Learning Center to start your next course!
         </p>
-        <Button variant="outline" className="border-purple-500/30 text-purple-400 hover:bg-purple-500/10">
+        <Button 
+          variant="outline" 
+          className="border-purple-500/30 text-purple-400 hover:bg-purple-500/10"
+          onClick={() => onTabChange && onTabChange('learning')}
+        >
           Browse Learning Courses
         </Button>
       </div>

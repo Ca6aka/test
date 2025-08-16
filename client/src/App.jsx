@@ -18,7 +18,13 @@ function AppRouter() {
 
   return (
     <Switch>
-      <Route path="/start" component={HomePage} />
+      <Route path="/">
+        {gameState.user ? <Redirect to="/game" /> : <HomePage />}
+      </Route>
+      
+      <Route path="/start">
+        {gameState.user ? <Redirect to="/game" /> : <HomePage />}
+      </Route>
       
       <Route path="/reg">
         {gameState.user ? <Redirect to="/game" /> : <LoginPage />}

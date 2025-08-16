@@ -1,0 +1,67 @@
+{
+  "id": "3fbe5878-38b7-43af-aa42-b069a5775d5b",
+  "nickname": "Nikor",
+  "password": "$2b$10$A6xLQDbELht7vsrFC/1souHCAex3BRs0aXsyU3tuAT55dS4Dxwk6q",
+  "balance": 8013,
+  "serverLimit": 3,
+  "tutorialCompleted": true,
+  "lastIncomeUpdate": 1755307568643,
+  "jobCooldowns": {
+    "maintenance": 1755307985796,
+    "optimization": 1755308286439,
+    "security-audit": 1755307958468
+  },
+  "currentLearning": null,
+  "activities": [
+    {
+      "id": "8e92e182-abe5-46e2-8766-90731a7d86cc",
+      "description": "Completed Performance Optimization (+$1,200)",
+      "timestamp": "8/16/2025, 1:28:06 AM"
+    },
+    {
+      "id": "3dc28ec2-b466-4a28-98d0-cc4199464566",
+      "description": "Completed Server Maintenance (+$500)",
+      "timestamp": "8/16/2025, 1:28:05 AM"
+    },
+    {
+      "id": "8f27b110-9b08-4689-826e-d03bcc0457ce",
+      "description": "Completed Security Audit (+$800)",
+      "timestamp": "8/16/2025, 1:25:08 AM"
+    },
+    {
+      "id": "8fa396bc-812e-44a7-bd8f-59de48702438",
+      "description": "Completed Server Maintenance (+$500)",
+      "timestamp": "8/16/2025, 1:22:59 AM"
+    },
+    {
+      "id": "3e297cec-570d-4111-ac19-b5b811608b55",
+      "description": "Purchased Database Server for $8,000",
+      "timestamp": "8/16/2025, 1:21:50 AM"
+    },
+    {
+      "id": "a9f7c005-5cf4-4d65-9904-2ecf8ca35de0",
+      "description": "Purchased Basic Web Server for $5,000",
+      "timestamp": "8/16/2025, 1:21:12 AM"
+    },
+    {
+      "id": "4938d05d-f480-4d2a-bb9c-70c11a090d45",
+      "description": "Tutorial completed! All features unlocked.",
+      "timestamp": "8/16/2025, 1:18:42 AM"
+    },
+    {
+      "id": "5310b0d2-7d73-44e2-9159-be680ed2390d",
+      "description": "Completed Security Audit (+$800)",
+      "timestamp": "8/16/2025, 1:17:35 AM"
+    },
+    {
+      "id": "ffc8b5a8-03c2-4bf0-8ac8-aeab0e4fbb50",
+      "description": "Completed Performance Optimization (+$1,200)",
+      "timestamp": "8/16/2025, 1:17:34 AM"
+    },
+    {
+      "id": "672532c5-aeb7-4565-be54-0ae1585ad3e9",
+      "description": "Completed Server Maintenance (+$500)",
+      "timestamp": "8/16/2025, 1:17:34 AM"
+    }
+  ]
+}

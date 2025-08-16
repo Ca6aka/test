@@ -61,6 +61,9 @@ const translations = {
     errorBadRequest: 'Invalid Request',
     errorGeneric: 'Something went wrong',
     pleaseRefresh: 'Please refresh the page and try again',
+    jobOnCooldown: 'Job is on cooldown for {seconds} seconds',
+    insufficientFunds: 'Insufficient funds',
+    serverLimitReached: 'Server limit reached',
     // Tutorial progress
     tutorialProgress: 'Tutorial Progress',
     hideProgress: 'Hide Progress',
@@ -125,6 +128,9 @@ const translations = {
     errorBadRequest: 'Неверный запрос',
     errorGeneric: 'Что-то пошло не так',
     pleaseRefresh: 'Пожалуйста, обновите страницу и попробуйте снова',
+    jobOnCooldown: 'Работа недоступна {seconds} секунд',
+    insufficientFunds: 'Недостаточно средств',
+    serverLimitReached: 'Достигнут лимит серверов',
     // Tutorial progress
     tutorialProgress: 'Прогресс обучения',
     hideProgress: 'Скрыть прогресс',
@@ -187,14 +193,28 @@ const translations = {
 const LanguageContext = createContext();
 
 export function LanguageProvider({ children }) {
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState(() => {
+    return localStorage.getItem('game-language') || 'en';
+  });
 
   const t = (key) => {
-    return translations[language][key] || key;
+    return translations[language]?.[key] || translations.en[key] || key;
+  };
+
+  const changeLanguage = (newLanguage) => {
+    setLanguage(newLanguage);
+    localStorage.setItem('game-language', newLanguage);
+  };
+
+  const value = {
+    language,
+    t,
+    changeLanguage,
+    localizeError: (error) => localizeError(error, language),
   };
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={value}>
       {children}
     </LanguageContext.Provider>
   );

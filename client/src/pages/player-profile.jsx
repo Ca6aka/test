@@ -28,10 +28,11 @@ export default function PlayerProfilePage() {
   });
 
   const handleBackClick = () => {
+    // Check if we came from the game (user is logged in) or from the homepage
     if (gameState.user) {
       setLocation('/game');
     } else {
-      setLocation('/reg');
+      setLocation('/start');
     }
   };
 

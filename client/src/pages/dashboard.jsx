@@ -25,11 +25,11 @@ export default function DashboardPage() {
 
   const getTabContent = () => {
     switch (activeTab) {
-      case 'tutorial': return <TutorialTab />;
+      case 'tutorial': return <TutorialTab onTabChange={setActiveTab} />;
       case 'servers': return <ServersTab />;
-      case 'hosting': return <HostingTab />;
+      case 'hosting': return <HostingTab onTabChange={setActiveTab} />;
       case 'learning': return <LearningTab />;
-      default: return <TutorialTab />;
+      default: return <TutorialTab onTabChange={setActiveTab} />;
     }
   };
 
@@ -62,7 +62,7 @@ export default function DashboardPage() {
               onClick={() => setActiveTab('tutorial')}
             >
               <i className="fas fa-graduation-cap text-lg"></i>
-              <span className="font-medium">{t('tutorial')}</span>
+              <span className="font-medium">Start</span>
               {!gameState.user.tutorialCompleted && (
                 <span className="ml-auto bg-accent/20 text-accent text-xs px-2 py-1 rounded-full">
                   Active
