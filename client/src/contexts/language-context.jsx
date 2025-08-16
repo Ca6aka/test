@@ -215,6 +215,10 @@ const translations = {
     noAchievementsYet: 'No achievements yet',
     earnAchievementsDesc: 'Complete jobs and reach milestones to earn achievements!',
     currentBalance: 'Current Balance',
+    // Level up notification
+    levelUp: 'Level Up!',
+    levelUpCongrats: 'Congratulations! You\'ve reached level',
+    newAbilitiesUnlocked: 'New abilities unlocked!',
   },
   ru: {
     tutorial: 'Старт',
@@ -442,6 +446,10 @@ const translations = {
     noAchievementsYet: 'Пока нет достижений',
     earnAchievementsDesc: 'Выполняйте работы и достигайте целей, чтобы получить достижения!',
     currentBalance: 'Текущий баланс',
+    // Level up notification
+    levelUp: 'Повышение уровня!',
+    levelUpCongrats: 'Поздравляем! Вы достигли уровня',
+    newAbilitiesUnlocked: 'Новые способности разблокированы!',
   },
   ua: {
     tutorial: 'Старт',
@@ -623,6 +631,10 @@ const translations = {
     noAchievementsYet: 'Поки немає досягнень',
     earnAchievementsDesc: 'Виконуйте роботи та досягайте цілей, щоб отримати досягнення!',
     currentBalance: 'Поточний баланс',
+    // Level up notification
+    levelUp: 'Підвищення рівня!',
+    levelUpCongrats: 'Вітаємо! Ви досягли рівня',
+    newAbilitiesUnlocked: 'Нові можливості розблоковані!',
   },
   de: {
     tutorial: 'Tutorial',
@@ -790,6 +802,10 @@ const translations = {
     noAchievementsYet: 'Noch keine Erfolge',
     earnAchievementsDesc: 'Erledige Jobs und erreiche Meilensteine, um Erfolge zu erhalten!',
     currentBalance: 'Aktuelles Guthaben',
+    // Level up notification
+    levelUp: 'Level Aufstieg!',
+    levelUpCongrats: 'Glückwunsch! Sie haben Level erreicht',
+    newAbilitiesUnlocked: 'Neue Fähigkeiten freigeschaltet!',
   }
 };
 

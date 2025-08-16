@@ -82,12 +82,10 @@ export function GameProvider({ children }) {
   
   // Level-up notification function
   const showLevelUpNotification = (newLevel) => {
-    toast({
-      title: `🎉 Level Up!`,
-      description: `Congratulations! You've reached level ${newLevel}!`,
-      duration: 5000,
-      className: "bg-gradient-to-r from-yellow-500 to-orange-500 text-white border-none",
-    });
+    // Dispatch custom event for the new level-up notification component
+    window.dispatchEvent(new CustomEvent('levelUp', { 
+      detail: { level: newLevel }
+    }));
   };
 
   // Fetch current user

@@ -16,6 +16,7 @@ import { useLanguage } from '@/contexts/language-context';
 import { PlayerRankings } from '@/components/player-rankings';
 import { RankingsPopup } from '@/components/rankings-popup';
 import { PlayerProfileBar } from '@/components/player-profile-bar';
+import { LevelUpNotification } from '@/components/level-up-notification';
 import { TUTORIAL_UNLOCK_THRESHOLD, formatCurrency } from '@/lib/constants';
 
 export default function DashboardPage() {
@@ -23,6 +24,7 @@ export default function DashboardPage() {
   const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState('tutorial');
   const [profileOpen, setProfileOpen] = useState(false);
+  const [levelUpNotification, setLevelUpNotification] = useState({ isOpen: false, level: null });
 
   const isTabUnlocked = (tab) => {
     if (tab === 'tutorial') return true;
@@ -42,11 +44,20 @@ export default function DashboardPage() {
     }
   };
 
-  // Listen for profile open events
+  // Listen for profile open events and level up notifications
   useEffect(() => {
     const handleOpenProfile = () => setProfileOpen(true);
+    const handleLevelUp = (event) => {
+      setLevelUpNotification({ isOpen: true, level: event.detail.level });
+    };
+    
     window.addEventListener('openProfile', handleOpenProfile);
-    return () => window.removeEventListener('openProfile', handleOpenProfile);
+    window.addEventListener('levelUp', handleLevelUp);
+    
+    return () => {
+      window.removeEventListener('openProfile', handleOpenProfile);
+      window.removeEventListener('levelUp', handleLevelUp);
+    };
   }, []);
 
   if (!gameState.user) return null;
@@ -340,6 +351,13 @@ export default function DashboardPage() {
       <PlayerProfileBar 
         isOpen={profileOpen} 
         onClose={() => setProfileOpen(false)} 
+      />
+      
+      {/* Level Up Notification - rendered at top level */}
+      <LevelUpNotification
+        isOpen={levelUpNotification.isOpen}
+        level={levelUpNotification.level}
+        onClose={() => setLevelUpNotification({ isOpen: false, level: null })}
       />
       </div>
     </div>
