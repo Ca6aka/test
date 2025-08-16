@@ -2,11 +2,11 @@
   "id": "e73513b4-65ec-40e1-bd85-339d155b7af0",
   "nickname": "Ca6aka",
   "password": "$2b$10$JpfJ4vb59zjxCtXN0I4kbee0VAqeB3by8xsWuYuW6PZo3fAATENv.",
-  "balance": 110900,
+  "balance": 106900,
   "level": 1,
   "experience": 53,
   "totalEarnings": 10900,
-  "totalSpent": 0,
+  "totalSpent": 5000,
   "avatar": {
     "gradient": "from-rose-400 via-pink-500 to-red-600",
     "pattern": "multi-color",
@@ -29,6 +29,16 @@
   "currentLearning": null,
   "activities": [
     {
+      "id": "7825a3ef-1bff-4efc-87f0-beae1b14973e",
+      "description": "Achievement unlocked: First Steps (+$1,000)",
+      "timestamp": "8/16/2025, 6:52:36 AM"
+    },
+    {
+      "id": "8738ee28-4d68-4798-89f2-70cb6f7564ba",
+      "description": "Purchased Basic Web Server for $5,000",
+      "timestamp": "8/16/2025, 6:52:36 AM"
+    },
+    {
       "id": "9460bce6-3229-4408-867d-a934bdbe1dba",
       "description": "Tutorial completed! All features unlocked.",
       "timestamp": "8/16/2025, 6:51:08 AM"
@@ -42,19 +52,11 @@
       "id": "b746e6f9-d47e-475b-982f-1c495bf42b5e",
       "description": "Completed Performance Optimization (+$250, +18 XP)",
       "timestamp": "8/16/2025, 6:51:06 AM"
-    },
-    {
-      "id": "9dba69bc-94d5-42b4-8af4-17f5ace95d27",
-      "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "8/16/2025, 6:51:05 AM"
-    },
-    {
-      "id": "9d90045d-28ec-4125-be70-b366c79a5fd6",
-      "description": "Received $100,000 from super admin",
-      "timestamp": "8/16/2025, 6:50:54 AM"
     }
   ],
-  "achievements": [],
+  "achievements": [
+    "first-server"
+  ],
   "completedJobsCount": 3,
   "completedCoursesCount": 0,
   "dailyQuests": [
@@ -101,5 +103,5 @@
     }
   ],
   "lastQuestReset": 1755327035906,
-  "lastSeen": 1755327098903
+  "lastSeen": 1755327165193
 }

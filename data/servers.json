@@ -1,22 +1,15 @@
 [
   {
-    "id": "4d05f170-2eaa-4f22-8d17-f333eb88934f",
+    "id": "b25e8d00-8aa5-4eec-87c4-04f582251e3c",
+    "ownerId": "e73513b4-65ec-40e1-bd85-339d155b7af0",
     "name": "Basic Web Server",
-    "ownerId": "a66a7d88-03dc-48c9-862a-f8229356999a",
     "type": "Web Hosting",
+    "incomePerMinute": 15,
+    "monthlyCost": 45,
+    "icon": "fas fa-globe",
     "isOnline": true,
     "loadPercentage": 50,
-    "lastUpdated": 1755326762730,
-    "incomePerMinute": 15
-  },
-  {
-    "id": "aaa5b910-0549-4b8d-8c18-ec148984b1ca",
-    "name": "Basic Web Server",
-    "ownerId": "a66a7d88-03dc-48c9-862a-f8229356999a",
-    "type": "Web Hosting",
-    "isOnline": true,
-    "loadPercentage": 50,
-    "lastUpdated": 1755326762730,
-    "incomePerMinute": 15
+    "createdAt": 1755327156059,
+    "lastUpdated": 1755327156247
   }
 ]
