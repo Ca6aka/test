@@ -2,10 +2,10 @@
   "id": "117f25bb-6136-49ba-aef8-865c4d9fd601",
   "nickname": "Ca6aka",
   "password": "$2b$10$MNgnDbNDq8XbGzZQB4nUl.hLgDWbgHjShiJ4Qu8bZ9fdpocrxcF/e",
-  "balance": 10900,
-  "level": 1,
-  "experience": 53,
-  "totalEarnings": 10900,
+  "balance": 11800,
+  "level": 2,
+  "experience": 106,
+  "totalEarnings": 11800,
   "totalSpent": 0,
   "avatar": {
     "gradient": "from-lime-400 to-green-600",
@@ -21,12 +21,32 @@
   "isOnline": true,
   "lastIncomeUpdate": 1755321664028,
   "jobCooldowns": {
-    "maintenance": 1755322008371,
-    "optimization": 1755322159915,
-    "security-audit": 1755322310354
+    "maintenance": 1755322796741,
+    "optimization": 1755322948554,
+    "security-audit": 1755323099744
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "4e162b52-ca01-44b1-9ee7-3abd73354036",
+      "description": "Completed Security Audit (+$500, +25 XP) - Level Up! Now level 2",
+      "timestamp": "8/16/2025, 5:34:59 AM"
+    },
+    {
+      "id": "1de4bec9-cd4b-4e05-84e8-d533c889e99a",
+      "description": "Daily quest completed: Server Optimization - Reward ready to claim!",
+      "timestamp": "8/16/2025, 5:34:58 AM"
+    },
+    {
+      "id": "634e138c-74ad-4449-8724-0d16c7bfb845",
+      "description": "Completed Performance Optimization (+$250, +18 XP)",
+      "timestamp": "8/16/2025, 5:34:58 AM"
+    },
+    {
+      "id": "f5a14738-87ac-4686-877c-d2631e82951e",
+      "description": "Completed Server Maintenance (+$150, +10 XP)",
+      "timestamp": "8/16/2025, 5:34:56 AM"
+    },
     {
       "id": "f2289be1-101c-4337-9eec-44a18c19aeac",
       "description": "Completed Security Audit (+$500, +25 XP)",
@@ -44,7 +64,7 @@
     }
   ],
   "achievements": [],
-  "completedJobsCount": 3,
+  "completedJobsCount": 6,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -57,7 +77,7 @@
         "jobType": "maintenance",
         "count": 3
       },
-      "progress": 1,
+      "progress": 2,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -84,11 +104,11 @@
         "jobType": "optimization",
         "count": 2
       },
-      "progress": 1,
-      "completed": false,
+      "progress": 2,
+      "completed": true,
       "date": "Sat Aug 16 2025"
     }
   ],
   "lastQuestReset": 1755321664028,
-  "lastSeen": 1755322487628
+  "lastSeen": 1755322728780
 }

@@ -652,11 +652,11 @@ export class FileStorage {
       shutdownChance = 0.3; // 30% chance per hour
     }
     
-    // Convert hourly chance to per-minute chance
-    const minutelyChance = shutdownChance / 60;
+    // Convert hourly chance to 5-minute chance
+    const fiveMinuteChance = shutdownChance / 12; // 60/5 = 12 five-minute intervals per hour
     
     // Random check for shutdown
-    if (Math.random() < minutelyChance) {
+    if (Math.random() < fiveMinuteChance) {
       await this.shutdownServerFromOverload(userId, serverId);
     }
   }
