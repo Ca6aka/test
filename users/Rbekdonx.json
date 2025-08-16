@@ -1,80 +1,32 @@
 {
-  "id": "e8162264-12da-4ee1-9dbc-a18a1f3f858b",
-  "nickname": "Ca6aka",
-  "password": "$2b$10$VyWHFzCGAu.7/osYGqrnxuPn.hOD46LZTHkP9KeljdyeY2j8FxfdO",
-  "balance": 24400,
-  "level": 5,
-  "experience": 546,
-  "totalEarnings": 18950,
-  "totalSpent": 34015,
+  "id": "0b258008-023b-4346-becd-47d0b8c05b69",
+  "nickname": "Rbekdonx",
+  "password": "$2b$10$czPy6zVtOw4IREX7pUqJmu8knaa2amG3jvM6jqtkQrHZFa.0TEhPy",
+  "balance": 10000,
+  "level": 1,
+  "experience": 0,
+  "totalEarnings": 10000,
+  "totalSpent": 0,
   "avatar": {
-    "gradient": "from-blue-400 via-purple-500 to-indigo-600",
+    "gradient": "from-violet-400 via-purple-500 to-indigo-600",
     "pattern": "multi-color",
-    "seed": 917076,
-    "animation": "shimmer-wave"
+    "seed": 305019,
+    "animation": "pulse-glow"
   },
-  "serverLimit": 4,
-  "tutorialCompleted": true,
-  "admin": 1,
+  "serverLimit": 3,
+  "tutorialCompleted": false,
+  "admin": 0,
   "banned": false,
   "muted": false,
   "muteExpires": null,
-  "isOnline": true,
-  "lastIncomeUpdate": 1755377189933,
-  "jobCooldowns": {
-    "maintenance": 1755377535402,
-    "optimization": 1755377685834,
-    "security-audit": 1755377836222
-  },
-  "currentLearning": {
-    "id": "advanced-management",
-    "title": "Advanced Server Management",
-    "description": "Master advanced server optimization and scaling techniques",
-    "difficulty": "Advanced",
-    "startTime": 1755375735128,
-    "endTime": 1755382935128,
-    "progress": 0,
-    "reward": {
-      "type": "serverSlots",
-      "amount": 2
-    }
-  },
-  "activities": [
-    {
-      "id": "417b9cdf-aaa5-4409-a616-68be0869abce",
-      "description": "Turned Database Server online",
-      "timestamp": "16.08.2025, 22:47:21"
-    },
-    {
-      "id": "7ec2f39e-705a-4aee-bcf6-35edb5fb6518",
-      "description": "Turned Database Server online",
-      "timestamp": "16.08.2025, 22:47:20"
-    },
-    {
-      "id": "384b4a77-3f9f-4b52-804a-54ee1c49ee56",
-      "description": "Completed Security Audit (+$500, +25 XP)",
-      "timestamp": "16.08.2025, 22:47:16"
-    },
-    {
-      "id": "5f7e583f-be16-416a-bf3e-91fee0d89c3d",
-      "description": "Completed Performance Optimization (+$250, +18 XP)",
-      "timestamp": "16.08.2025, 22:47:15"
-    },
-    {
-      "id": "2ebea5ff-0ebf-41ae-9b76-e9cc2b27450c",
-      "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "16.08.2025, 22:47:15"
-    }
-  ],
-  "achievements": [
-    "early-earner",
-    "first-steps",
-    "first-server",
-    "efficient-worker",
-    "server-builder"
-  ],
-  "completedJobsCount": 33,
-  "completedCoursesCount": 1,
+  "isOnline": false,
+  "lastIncomeUpdate": 1755372563375,
+  "jobCooldowns": {},
+  "currentLearning": null,
+  "activities": [],
+  "achievements": [],
+  "completedJobsCount": 0,
+  "completedCoursesCount": 0,
   "completedLearning": [],
   "efficiencyBonus": 0,
   "dailyQuests": [
@@ -88,10 +40,9 @@
         "jobType": "maintenance",
         "count": 3
       },
-      "progress": 3,
-      "completed": true,
-      "date": "Sat Aug 16 2025",
-      "claimed": true
+      "progress": 0,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
     },
     {
       "id": "daily-income-Sat Aug 16 2025",
@@ -102,10 +53,9 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 5000,
-      "completed": true,
-      "date": "Sat Aug 16 2025",
-      "claimed": true
+      "progress": 0,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
     },
     {
       "id": "daily-optimization-Sat Aug 16 2025",
@@ -117,10 +67,9 @@
         "jobType": "optimization",
         "count": 2
       },
-      "progress": 2,
-      "completed": true,
-      "date": "Sat Aug 16 2025",
-      "claimed": true
+      "progress": 0,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
     },
     {
       "id": "daily-security-Sat Aug 16 2025",
@@ -132,10 +81,9 @@
         "jobType": "security-audit",
         "count": 1
       },
-      "progress": 1,
-      "completed": true,
-      "date": "Sat Aug 16 2025",
-      "claimed": true
+      "progress": 0,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
     },
     {
       "id": "daily-earnings-Sat Aug 16 2025",
@@ -146,7 +94,7 @@
         "type": "income",
         "amount": 10000
       },
-      "progress": 7139,
+      "progress": 0,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -187,7 +135,7 @@
         "type": "income",
         "amount": 20000
       },
-      "progress": 7139,
+      "progress": 0,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -214,11 +162,11 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 7139,
+      "progress": 0,
       "completed": false,
       "date": "Sat Aug 16 2025"
     }
   ],
-  "lastQuestReset": 1755363722114,
-  "lastSeen": 1755377277814
+  "lastQuestReset": 1755372563375,
+  "lastSeen": 1755372575627
 }

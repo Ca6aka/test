@@ -1,1 +1,47 @@
-[]
+[
+  {
+    "id": "a57229f0-48e9-410d-bd5c-fe37ac78898e",
+    "userId": "566d2601-d46f-4bcd-94d2-1e14c2ca0229",
+    "nickname": "МАМУТ РАХАЛ",
+    "message": "куда реквизиты вписывать что-бы вывести?",
+    "timestamp": 1755371266776,
+    "deleted": false,
+    "adminLevel": 0
+  },
+  {
+    "id": "ec805d59-148d-42e9-bfac-55045700813d",
+    "userId": "e8162264-12da-4ee1-9dbc-a18a1f3f858b",
+    "nickname": "Ca6aka",
+    "message": "Привет",
+    "timestamp": 1755371730933,
+    "deleted": false,
+    "adminLevel": 1
+  },
+  {
+    "id": "78d1f62e-2f54-4048-9961-cb62f7224c7f",
+    "userId": "566d2601-d46f-4bcd-94d2-1e14c2ca0229",
+    "nickname": "МАМУТ РАХАЛ",
+    "message": "боты просыпаемся",
+    "timestamp": 1755373339073,
+    "deleted": false,
+    "adminLevel": 1
+  },
+  {
+    "id": "715e3549-fc77-42ab-bb37-2d1610b57249",
+    "userId": "f9e8d4f1-81c9-4755-aa84-5ff851e020ef",
+    "nickname": "Diskdkkf",
+    "message": "Хай",
+    "timestamp": 1755373387622,
+    "deleted": false,
+    "adminLevel": 0
+  },
+  {
+    "id": "e7d86c7d-12b1-423b-ba26-f80db830e7c3",
+    "userId": "44ef37e8-f121-47ee-b4bc-1b8c524795c0",
+    "nickname": "Niko",
+    "message": "Привет",
+    "timestamp": 1755374845195,
+    "deleted": false,
+    "adminLevel": 0
+  }
+]

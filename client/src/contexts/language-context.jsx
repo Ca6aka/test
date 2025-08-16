@@ -251,38 +251,6 @@ const translations = {
         title: "Financial Titan",
         description: "Accumulate $10,000,000 in balance",
       },
-      'persistent-learner': {
-        title: "Persistent Learner",
-        description: "Complete 3 learning courses",
-      },
-      'speed-demon': {
-        title: "Speed Demon",
-        description: "Complete 200 jobs total",
-      },
-      'infrastructure-king': {
-        title: "Infrastructure King",
-        description: "Own 15 servers simultaneously",
-      },
-      'multi-millionaire': {
-        title: "Multi-Millionaire",
-        description: "Accumulate $5,000,000 in balance",
-      },
-      'course-completionist': {
-        title: "Course Completionist",
-        description: "Complete all available learning courses",
-      },
-      'workaholic': {
-        title: "Workaholic",
-        description: "Complete 500 jobs total",
-      },
-      'server-empire': {
-        title: "Server Empire",
-        description: "Own 20 servers simultaneously",
-      },
-      'financial-titan': {
-        title: "Financial Titan",
-        description: "Accumulate $10,000,000 in balance",
-      },
       'legendary-worker': {
         title: "Legendary Worker",
         description: "Complete 1000 jobs total",
@@ -606,6 +574,8 @@ const translations = {
     // Basic UI
     balance: 'Баланс',
     income: 'Доход/мин',
+    monthlyCost: 'Месячная оплата',
+    netProfitMonth: 'Доход в месяц',
     serverLimit: 'Лимит серверов',
     settings: 'Настройки',
     logout: 'Выйти',
@@ -632,6 +602,17 @@ const translations = {
     onlineNow: 'Сейчас Онлайн',
     serversHosted: 'Серверов Размещено',
     totalBalance: 'Общий Баланс',
+
+    // Additional hosting translations
+    availableSlots: 'Доступные слоты',
+    needMoreMoney: 'cДля покупки этого сервера вам потребуется {amount}',
+    serverAddedToYourServers: '{serverName} был добавлен к вашим серверам!',
+    needLearningCourse: 'Необходимый курс обучения',
+    monthlyCost: 'Ежемесячная стоимость',
+    netProfitMonth: 'Чистая прибыль/месяц',
+    needMoreFunds: 'Не хватает {amount}',
+    wantMoreServers: 'Хотите больше серверов?',
+    learningCoursesBenefit: 'Каждый пройденный курс позволяет разблокировать дополнительные серверные слоты и повысить эффективность работы сервера. Посетите Учебный центр, чтобы начать свой следующий курс!',
     
     // Features
     gameFeatures: 'Особенности Игры',
@@ -721,6 +702,8 @@ const translations = {
     deleteServer: 'Удалить сервер',
     toggleServer: 'Переключить сервер',
     noServersYet: 'Серверов пока нет',
+    addNewServer: 'Добавить новый сервер',
+    availableServerSlots: 'Вам доступен {availableSlots} серверный слот. Посетите магазин серверов, чтобы приобрести новые серверы.',
     purchaseServersFromStore: 'Покупайте серверы в магазине, чтобы начать хостинг и получать пассивный доход!',
     visitServerStore: 'Посетить магазин серверов',
     serverSettings: 'Настройки сервера',
@@ -1055,8 +1038,8 @@ const translations = {
     
     // Learning tab specific
     unknownReward: 'Неизвестная награда',
-    serverSlotReward: '+{amount} слот{plural} сервера',
-    serverEfficiencyReward: '+{amount}% эффективности сервера',
+    serverSlotReward: '+{amount} слот сервера',
+    serverEfficiencyReward: '+{amount}% эффективности серверов',
     unlockServerReward: 'Разблокирует {serverType}',
     gpuServer: 'GPU сервер',
     tpuServer: 'TPU сервер', 
@@ -1107,6 +1090,8 @@ const translations = {
     // Basic UI
     balance: 'Баланс',
     income: 'Дохід/хв',
+    monthlyCost: 'Місячна оплата',
+    netProfitMonth: 'Дохід на місяць',
     serverLimit: 'Ліміт серверів',
     settings: 'Налаштування',
     logout: 'Вийти',
@@ -1133,6 +1118,17 @@ const translations = {
     onlineNow: 'Зараз Онлайн',
     serversHosted: 'Серверів Розміщено',
     totalBalance: 'Загальний Баланс',
+
+    // Additional hosting translations
+    availableSlots: 'Доступні слоти',
+    needMoreMoney: 'Для купівлі цього сервера вам буде потрібно {amount}',
+    serverAddedToYourServers: '{serverName} був доданий до ваших серверів!',
+    needLearningCourse: 'Необхідний курс навчання',
+    monthlyCost: 'Щомісячна вартість',
+    netProfitMonth: 'Чистий прибуток/місяць',
+    needMoreFunds: 'Не вистачає {amount}',
+    wantMoreServers: 'Хочете більше серверів?',
+    learningCoursesBenefit: 'Кожен пройдений курс дає змогу розблокувати додаткові серверні слоти та підвищити ефективність роботи сервера. Відвідайте Навчальний центр, щоб почати свій наступний курс!',
     
     // Features
     gameFeatures: 'Особливості Гри',
@@ -1222,6 +1218,8 @@ const translations = {
     deleteServer: 'Видалити сервер',
     toggleServer: 'Перемкнути сервер',
     noServersYet: 'Серверів поки немає',
+    addNewServer: 'Добавити новий сервер',
+    availableServerSlots: 'Вам доступний {availableSlots} серверний слот. Відвідайте магазин серверів, щоб придбати нові сервери.',
     purchaseServersFromStore: 'Купуйте сервери в магазині, щоб почати хостинг та отримувати пасивний дохід!',
     visitServerStore: 'Відвідати магазин серверів',
     serverSettings: 'Налаштування сервера',
@@ -1556,8 +1554,8 @@ const translations = {
     
     // Learning tab specific
     unknownReward: 'Невідома нагорода',
-    serverSlotReward: '+{amount} слот{plural} сервера',
-    serverEfficiencyReward: '+{amount}% ефективності сервера',
+    serverSlotReward: '+{amount} слот сервера',
+    serverEfficiencyReward: '+{amount}% ефективності серверiв',
     unlockServerReward: 'Розблоковує {serverType}',
     gpuServer: 'GPU сервер',
     tpuServer: 'TPU сервер', 
@@ -1608,6 +1606,8 @@ const translations = {
     // Basic UI
     balance: 'Guthaben',
     income: 'Einkommen/min',
+    monthlyCost: 'Monatliche Zahlung',
+    netProfitMonth: 'Einkommen pro Monat',
     serverLimit: 'Server-Limit',
     settings: 'Einstellungen',
     logout: 'Abmelden',
@@ -1634,6 +1634,17 @@ const translations = {
     onlineNow: 'Jetzt Online',
     serversHosted: 'Gehostete Server',
     totalBalance: 'Gesamtguthaben',
+
+    // Additional hosting translations
+    availableSlots: 'Verfügbare Slots',
+    needMoreMoney: 'Um diesen Server zu kaufen, benötigen Sie {amount}',
+    serverAddedToYourServers: '{serverName} wurde zu Ihren Servern hinzugefügt!',
+    needLearningCourse: 'Schulungskurs erforderlich',
+    monthlyCost: 'Monatliche Kosten',
+    netProfitMonth: 'Nettogewinn/Monat',
+    needMoreFunds: 'Nicht genug {amount}',
+    wantMoreServers: 'Mehr Server gewünscht?',
+    learningCoursesBenefit: 'Jeder abgeschlossene Kurs schaltet zusätzliche Server-Slots frei und erhöht die Server-Effizienz. Besuchen Sie das Schulungszentrum, um Ihren nächsten Kurs zu beginnen!',
     
     // Features
     gameFeatures: 'Spiel-Features',
@@ -1723,6 +1734,8 @@ const translations = {
     deleteServer: 'Server löschen',
     toggleServer: 'Server umschalten',
     noServersYet: 'Noch keine Server',
+    addNewServer: 'Einen neuen Server hinzufügen',
+    availableServerSlots: 'Sie haben einen {availableSlots} Serverplatz zur Verfügung. Besuchen Sie den Serverladen, um neue Server zu kaufen.',
     purchaseServersFromStore: 'Kaufen Sie Server im Shop, um mit dem Hosting zu beginnen und passives Einkommen zu erzielen!',
     visitServerStore: 'Server Shop besuchen',
     serverSettings: 'Server-Einstellungen',

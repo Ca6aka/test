@@ -1,80 +1,65 @@
 {
-  "id": "e8162264-12da-4ee1-9dbc-a18a1f3f858b",
-  "nickname": "Ca6aka",
-  "password": "$2b$10$VyWHFzCGAu.7/osYGqrnxuPn.hOD46LZTHkP9KeljdyeY2j8FxfdO",
-  "balance": 24400,
-  "level": 5,
-  "experience": 546,
-  "totalEarnings": 18950,
-  "totalSpent": 34015,
+  "id": "44ef37e8-f121-47ee-b4bc-1b8c524795c0",
+  "nickname": "Niko",
+  "password": "$2b$10$zYdXYoG4tHR/gzVV8vV7oOlRw4Vg0cKtrSgTOZWoREC7n6/.nObrW",
+  "balance": 14300,
+  "level": 2,
+  "experience": 106,
+  "totalEarnings": 11800,
+  "totalSpent": 0,
   "avatar": {
-    "gradient": "from-blue-400 via-purple-500 to-indigo-600",
+    "gradient": "from-purple-400 via-violet-500 to-indigo-600",
     "pattern": "multi-color",
-    "seed": 917076,
+    "seed": 404382,
     "animation": "shimmer-wave"
   },
-  "serverLimit": 4,
-  "tutorialCompleted": true,
-  "admin": 1,
+  "serverLimit": 3,
+  "tutorialCompleted": false,
+  "admin": 0,
   "banned": false,
   "muted": false,
   "muteExpires": null,
-  "isOnline": true,
-  "lastIncomeUpdate": 1755377189933,
+  "isOnline": false,
+  "lastIncomeUpdate": 1755371655757,
   "jobCooldowns": {
-    "maintenance": 1755377535402,
-    "optimization": 1755377685834,
-    "security-audit": 1755377836222
+    "maintenance": 1755375054523,
+    "optimization": 1755375204923,
+    "security-audit": 1755375355754
   },
-  "currentLearning": {
-    "id": "advanced-management",
-    "title": "Advanced Server Management",
-    "description": "Master advanced server optimization and scaling techniques",
-    "difficulty": "Advanced",
-    "startTime": 1755375735128,
-    "endTime": 1755382935128,
-    "progress": 0,
-    "reward": {
-      "type": "serverSlots",
-      "amount": 2
-    }
-  },
+  "currentLearning": null,
   "activities": [
     {
-      "id": "417b9cdf-aaa5-4409-a616-68be0869abce",
-      "description": "Turned Database Server online",
-      "timestamp": "16.08.2025, 22:47:21"
+      "id": "8e623245-60eb-41c7-b419-3f03643bf047",
+      "description": "Account unbanned by admin МАМУТ РАХАЛ",
+      "timestamp": "16.08.2025, 22:07:24"
     },
     {
-      "id": "7ec2f39e-705a-4aee-bcf6-35edb5fb6518",
-      "description": "Turned Database Server online",
-      "timestamp": "16.08.2025, 22:47:20"
+      "id": "a8b27944-f72a-4f2e-b10f-91ed2150339f",
+      "description": "Account banned by admin МАМУТ РАХАЛ",
+      "timestamp": "16.08.2025, 22:06:47"
     },
     {
-      "id": "384b4a77-3f9f-4b52-804a-54ee1c49ee56",
-      "description": "Completed Security Audit (+$500, +25 XP)",
-      "timestamp": "16.08.2025, 22:47:16"
+      "id": "220a8409-af1f-48c7-a656-ebe10e4eed45",
+      "description": "Account unbanned by admin МАМУТ РАХАЛ",
+      "timestamp": "16.08.2025, 22:06:37"
     },
     {
-      "id": "5f7e583f-be16-416a-bf3e-91fee0d89c3d",
-      "description": "Completed Performance Optimization (+$250, +18 XP)",
-      "timestamp": "16.08.2025, 22:47:15"
+      "id": "c8c2a835-2d77-458d-b70e-37dcbb474df1",
+      "description": "Account banned by admin МАМУТ РАХАЛ",
+      "timestamp": "16.08.2025, 22:06:07"
     },
     {
-      "id": "2ebea5ff-0ebf-41ae-9b76-e9cc2b27450c",
-      "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "16.08.2025, 22:47:15"
+      "id": "e9b63e6f-7397-4fe5-a14c-21f5f8318685",
+      "description": "Completed Security Audit (+$500, +25 XP) - Level Up! Now level 2",
+      "timestamp": "16.08.2025, 22:05:55"
     }
   ],
   "achievements": [
     "early-earner",
-    "first-steps",
-    "first-server",
-    "efficient-worker",
-    "server-builder"
+    "first-steps"
   ],
-  "completedJobsCount": 33,
-  "completedCoursesCount": 1,
+  "completedJobsCount": 6,
+  "completedCoursesCount": 0,
   "completedLearning": [],
   "efficiencyBonus": 0,
   "dailyQuests": [
@@ -88,10 +73,9 @@
         "jobType": "maintenance",
         "count": 3
       },
-      "progress": 3,
-      "completed": true,
-      "date": "Sat Aug 16 2025",
-      "claimed": true
+      "progress": 2,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
     },
     {
       "id": "daily-income-Sat Aug 16 2025",
@@ -102,10 +86,9 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 5000,
-      "completed": true,
-      "date": "Sat Aug 16 2025",
-      "claimed": true
+      "progress": 0,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
     },
     {
       "id": "daily-optimization-Sat Aug 16 2025",
@@ -119,8 +102,7 @@
       },
       "progress": 2,
       "completed": true,
-      "date": "Sat Aug 16 2025",
-      "claimed": true
+      "date": "Sat Aug 16 2025"
     },
     {
       "id": "daily-security-Sat Aug 16 2025",
@@ -134,8 +116,7 @@
       },
       "progress": 1,
       "completed": true,
-      "date": "Sat Aug 16 2025",
-      "claimed": true
+      "date": "Sat Aug 16 2025"
     },
     {
       "id": "daily-earnings-Sat Aug 16 2025",
@@ -146,7 +127,7 @@
         "type": "income",
         "amount": 10000
       },
-      "progress": 7139,
+      "progress": 0,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -187,7 +168,7 @@
         "type": "income",
         "amount": 20000
       },
-      "progress": 7139,
+      "progress": 0,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -214,11 +195,11 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 7139,
+      "progress": 0,
       "completed": false,
       "date": "Sat Aug 16 2025"
     }
   ],
-  "lastQuestReset": 1755363722114,
-  "lastSeen": 1755377277814
+  "lastQuestReset": 1755371655757,
+  "lastSeen": 1755374851241
 }

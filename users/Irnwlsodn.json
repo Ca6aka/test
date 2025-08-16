@@ -1,80 +1,65 @@
 {
-  "id": "e8162264-12da-4ee1-9dbc-a18a1f3f858b",
-  "nickname": "Ca6aka",
-  "password": "$2b$10$VyWHFzCGAu.7/osYGqrnxuPn.hOD46LZTHkP9KeljdyeY2j8FxfdO",
-  "balance": 24400,
-  "level": 5,
-  "experience": 546,
-  "totalEarnings": 18950,
-  "totalSpent": 34015,
+  "id": "95f1b950-323b-49ee-8f03-94aea21ee144",
+  "nickname": "Irnwlsodn",
+  "password": "$2b$10$lShfwPnpQSUKibJpqBfGo.6.WHGntwdgKAnTCHllPOVECewYGC8gu",
+  "balance": 13400,
+  "level": 1,
+  "experience": 53,
+  "totalEarnings": 10900,
+  "totalSpent": 0,
   "avatar": {
-    "gradient": "from-blue-400 via-purple-500 to-indigo-600",
+    "gradient": "from-red-400 via-pink-500 to-purple-600",
     "pattern": "multi-color",
-    "seed": 917076,
-    "animation": "shimmer-wave"
+    "seed": 212322,
+    "animation": "soft-pulse"
   },
-  "serverLimit": 4,
-  "tutorialCompleted": true,
-  "admin": 1,
+  "serverLimit": 3,
+  "tutorialCompleted": false,
+  "admin": 0,
   "banned": false,
   "muted": false,
   "muteExpires": null,
-  "isOnline": true,
-  "lastIncomeUpdate": 1755377189933,
+  "isOnline": false,
+  "lastIncomeUpdate": 1755372680356,
   "jobCooldowns": {
-    "maintenance": 1755377535402,
-    "optimization": 1755377685834,
-    "security-audit": 1755377836222
+    "maintenance": 1755372997863,
+    "optimization": 1755373148897,
+    "security-audit": 1755373299351
   },
-  "currentLearning": {
-    "id": "advanced-management",
-    "title": "Advanced Server Management",
-    "description": "Master advanced server optimization and scaling techniques",
-    "difficulty": "Advanced",
-    "startTime": 1755375735128,
-    "endTime": 1755382935128,
-    "progress": 0,
-    "reward": {
-      "type": "serverSlots",
-      "amount": 2
-    }
-  },
+  "currentLearning": null,
   "activities": [
     {
-      "id": "417b9cdf-aaa5-4409-a616-68be0869abce",
-      "description": "Turned Database Server online",
-      "timestamp": "16.08.2025, 22:47:21"
+      "id": "a9fc3ad1-60a3-4a38-ac9b-f39df2ac89ce",
+      "description": "Daily quest completed: Security Check - Reward ready to claim!",
+      "timestamp": "16.08.2025, 21:31:39"
     },
     {
-      "id": "7ec2f39e-705a-4aee-bcf6-35edb5fb6518",
-      "description": "Turned Database Server online",
-      "timestamp": "16.08.2025, 22:47:20"
-    },
-    {
-      "id": "384b4a77-3f9f-4b52-804a-54ee1c49ee56",
+      "id": "66990b9e-4c91-4f0e-ac8c-7723801b0f97",
       "description": "Completed Security Audit (+$500, +25 XP)",
-      "timestamp": "16.08.2025, 22:47:16"
+      "timestamp": "16.08.2025, 21:31:39"
     },
     {
-      "id": "5f7e583f-be16-416a-bf3e-91fee0d89c3d",
+      "id": "5e34ce40-04a1-4c57-b028-4702ccbab412",
+      "description": "Achievement unlocked: First Steps (+$500)",
+      "timestamp": "16.08.2025, 21:31:38"
+    },
+    {
+      "id": "2f93b121-faca-418c-b139-f0fa04bca0be",
       "description": "Completed Performance Optimization (+$250, +18 XP)",
-      "timestamp": "16.08.2025, 22:47:15"
+      "timestamp": "16.08.2025, 21:31:38"
     },
     {
-      "id": "2ebea5ff-0ebf-41ae-9b76-e9cc2b27450c",
-      "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "16.08.2025, 22:47:15"
+      "id": "f2c5deb8-e9c7-4de5-aadd-59d184e0a90f",
+      "description": "Achievement unlocked: Early Earner (+$2 000)",
+      "timestamp": "16.08.2025, 21:31:37"
     }
   ],
   "achievements": [
     "early-earner",
-    "first-steps",
-    "first-server",
-    "efficient-worker",
-    "server-builder"
+    "first-steps"
   ],
-  "completedJobsCount": 33,
-  "completedCoursesCount": 1,
+  "completedJobsCount": 3,
+  "completedCoursesCount": 0,
   "completedLearning": [],
   "efficiencyBonus": 0,
   "dailyQuests": [
@@ -88,10 +73,9 @@
         "jobType": "maintenance",
         "count": 3
       },
-      "progress": 3,
-      "completed": true,
-      "date": "Sat Aug 16 2025",
-      "claimed": true
+      "progress": 1,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
     },
     {
       "id": "daily-income-Sat Aug 16 2025",
@@ -102,10 +86,9 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 5000,
-      "completed": true,
-      "date": "Sat Aug 16 2025",
-      "claimed": true
+      "progress": 0,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
     },
     {
       "id": "daily-optimization-Sat Aug 16 2025",
@@ -117,10 +100,9 @@
         "jobType": "optimization",
         "count": 2
       },
-      "progress": 2,
-      "completed": true,
-      "date": "Sat Aug 16 2025",
-      "claimed": true
+      "progress": 1,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
     },
     {
       "id": "daily-security-Sat Aug 16 2025",
@@ -134,8 +116,7 @@
       },
       "progress": 1,
       "completed": true,
-      "date": "Sat Aug 16 2025",
-      "claimed": true
+      "date": "Sat Aug 16 2025"
     },
     {
       "id": "daily-earnings-Sat Aug 16 2025",
@@ -146,7 +127,7 @@
         "type": "income",
         "amount": 10000
       },
-      "progress": 7139,
+      "progress": 0,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -187,7 +168,7 @@
         "type": "income",
         "amount": 20000
       },
-      "progress": 7139,
+      "progress": 0,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -214,11 +195,11 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 7139,
+      "progress": 0,
       "completed": false,
       "date": "Sat Aug 16 2025"
     }
   ],
-  "lastQuestReset": 1755363722114,
-  "lastSeen": 1755377277814
+  "lastQuestReset": 1755372680356,
+  "lastSeen": 1755372760201
 }

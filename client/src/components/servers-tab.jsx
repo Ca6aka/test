@@ -154,7 +154,7 @@ export function ServersTab({ onTabChange }) {
         <div className="flex items-center space-x-2 sm:space-x-3">
           <span className="text-xs sm:text-sm text-slate-400">{t('serverLimit')}:</span>
           <span className="bg-slate-700 px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm font-medium">
-            {currentServers}/{serverLimit} servers
+            {currentServers}/{serverLimit} {t('servers')}
           </span>
         </div>
       </div>
@@ -360,7 +360,7 @@ export function ServersTab({ onTabChange }) {
               
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div className="bg-slate-700/30 rounded-lg p-3">
-                  <p className="text-xs text-slate-400 mb-1">Income/min</p>
+                  <p className="text-xs text-slate-400 mb-1">{t('income')}</p>
                   <p className={`font-semibold ${server.isOnline ? 'text-secondary' : 'text-slate-500'}`}>
                     {server.isOnline ? (() => {
                       const baseIncome = server.incomePerMinute;
