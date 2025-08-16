@@ -1,0 +1,99 @@
+{
+  "id": "f7a8faee-a7fa-4b89-a7dc-8342d8424c1e",
+  "nickname": "Niko",
+  "password": "$2b$10$tQjnbCMVmxhpPM/jQRicpOm8t78jAdMpGmiOIgnR0WiBO/MpecJXO",
+  "balance": 10900,
+  "level": 1,
+  "experience": 53,
+  "totalEarnings": 10900,
+  "totalSpent": 0,
+  "avatar": {
+    "gradient": "from-purple-400 to-indigo-600",
+    "pattern": "conic-gradient",
+    "seed": 318556
+  },
+  "serverLimit": 3,
+  "tutorialCompleted": false,
+  "admin": 1,
+  "banned": false,
+  "muted": false,
+  "muteExpires": null,
+  "isOnline": false,
+  "lastIncomeUpdate": 1755323052291,
+  "jobCooldowns": {
+    "maintenance": 1755323376452,
+    "optimization": 1755323528531,
+    "security-audit": 1755323679754
+  },
+  "currentLearning": null,
+  "activities": [
+    {
+      "id": "905d3288-576d-4c20-bf73-e3d5f68798a0",
+      "description": "Given admin privileges by Ca6aka",
+      "timestamp": "8/16/2025, 5:45:27 AM"
+    },
+    {
+      "id": "2177262a-57c2-4828-b9c9-2ae45ff35d35",
+      "description": "Completed Security Audit (+$500, +25 XP)",
+      "timestamp": "8/16/2025, 5:44:39 AM"
+    },
+    {
+      "id": "cc0261e7-4643-494d-9c1b-be9cb1de42e9",
+      "description": "Completed Performance Optimization (+$250, +18 XP)",
+      "timestamp": "8/16/2025, 5:44:38 AM"
+    },
+    {
+      "id": "c29e5f6b-9f11-489b-9e59-c3eeae477701",
+      "description": "Completed Server Maintenance (+$150, +10 XP)",
+      "timestamp": "8/16/2025, 5:44:36 AM"
+    }
+  ],
+  "achievements": [],
+  "completedJobsCount": 3,
+  "completedCoursesCount": 0,
+  "dailyQuests": [
+    {
+      "id": "daily-maintenance-Sat Aug 16 2025",
+      "title": "Daily Maintenance",
+      "description": "Complete 3 Server Maintenance jobs",
+      "reward": 2000,
+      "requirement": {
+        "type": "job",
+        "jobType": "maintenance",
+        "count": 3
+      },
+      "progress": 1,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
+    },
+    {
+      "id": "daily-income-Sat Aug 16 2025",
+      "title": "Passive Income",
+      "description": "Earn $5,000 from server income",
+      "reward": 1500,
+      "requirement": {
+        "type": "income",
+        "amount": 5000
+      },
+      "progress": 0,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
+    },
+    {
+      "id": "daily-optimization-Sat Aug 16 2025",
+      "title": "Server Optimization",
+      "description": "Complete 2 Performance Optimization jobs",
+      "reward": 3000,
+      "requirement": {
+        "type": "job",
+        "jobType": "optimization",
+        "count": 2
+      },
+      "progress": 1,
+      "completed": false,
+      "date": "Sat Aug 16 2025"
+    }
+  ],
+  "lastQuestReset": 1755323052291,
+  "lastSeen": 1755323105272
+}

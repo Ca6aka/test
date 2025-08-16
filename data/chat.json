@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "id": "fd618611-3804-4006-84a8-b3b8c46361fd",
+    "userId": "117f25bb-6136-49ba-aef8-865c4d9fd601",
+    "nickname": "Ca6aka",
+    "message": "Привет",
+    "timestamp": 1755323021613,
+    "deleted": false
+  },
+  {
+    "id": "bdfa3122-b60d-4d98-a1a3-33fb37b62915",
+    "userId": "f7a8faee-a7fa-4b89-a7dc-8342d8424c1e",
+    "nickname": "Niko",
+    "message": "привет",
+    "timestamp": 1755323066097,
+    "deleted": false
+  }
+]

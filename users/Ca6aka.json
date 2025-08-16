@@ -2,10 +2,10 @@
   "id": "117f25bb-6136-49ba-aef8-865c4d9fd601",
   "nickname": "Ca6aka",
   "password": "$2b$10$MNgnDbNDq8XbGzZQB4nUl.hLgDWbgHjShiJ4Qu8bZ9fdpocrxcF/e",
-  "balance": 12200,
+  "balance": 20850,
   "level": 2,
-  "experience": 134,
-  "totalEarnings": 12200,
+  "experience": 169,
+  "totalEarnings": 12850,
   "totalSpent": 0,
   "avatar": {
     "gradient": "from-lime-400 to-green-600",
@@ -13,7 +13,7 @@
     "seed": 84320
   },
   "serverLimit": 3,
-  "tutorialCompleted": false,
+  "tutorialCompleted": true,
   "admin": 1,
   "banned": false,
   "muted": false,
@@ -21,12 +21,42 @@
   "isOnline": true,
   "lastIncomeUpdate": 1755321664028,
   "jobCooldowns": {
-    "maintenance": 1755323109365,
+    "maintenance": 1755323412429,
     "optimization": 1755323402451,
-    "security-audit": 1755323099744
+    "security-audit": 1755323714312
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "7b9636e7-50f4-4133-8875-5d71165ec6d4",
+      "description": "Quest reward claimed: Server Optimization (+$3,000)",
+      "timestamp": "8/16/2025, 5:46:59 AM"
+    },
+    {
+      "id": "f895bf8f-ef52-41c7-8ced-09d7c9c3e757",
+      "description": "Quest reward claimed: Daily Maintenance (+$2,000)",
+      "timestamp": "8/16/2025, 5:46:58 AM"
+    },
+    {
+      "id": "bfc64c33-7012-4ba3-9274-6bf046c92c50",
+      "description": "Tutorial completed! All features unlocked.",
+      "timestamp": "8/16/2025, 5:46:07 AM"
+    },
+    {
+      "id": "1e451b0f-7ec2-4ea2-a221-137838ca720b",
+      "description": "Received $3,000 from super admin",
+      "timestamp": "8/16/2025, 5:45:58 AM"
+    },
+    {
+      "id": "60a016ba-8a15-4806-9d1f-21505b3970ff",
+      "description": "Completed Security Audit (+$500, +25 XP)",
+      "timestamp": "8/16/2025, 5:45:14 AM"
+    },
+    {
+      "id": "93c3ce95-e01d-4391-9325-8484f74f22bc",
+      "description": "Completed Server Maintenance (+$150, +10 XP)",
+      "timestamp": "8/16/2025, 5:45:12 AM"
+    },
     {
       "id": "0741cd99-7658-4bd0-ac52-79a1602fb5b9",
       "description": "Completed Performance Optimization (+$250, +18 XP)",
@@ -79,7 +109,7 @@
     }
   ],
   "achievements": [],
-  "completedJobsCount": 8,
+  "completedJobsCount": 10,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -94,7 +124,8 @@
       },
       "progress": 3,
       "completed": true,
-      "date": "Sat Aug 16 2025"
+      "date": "Sat Aug 16 2025",
+      "claimed": true
     },
     {
       "id": "daily-income-Sat Aug 16 2025",
@@ -121,9 +152,10 @@
       },
       "progress": 2,
       "completed": true,
-      "date": "Sat Aug 16 2025"
+      "date": "Sat Aug 16 2025",
+      "claimed": true
     }
   ],
   "lastQuestReset": 1755321664028,
-  "lastSeen": 1755323019749
+  "lastSeen": 1755323273420
 }
