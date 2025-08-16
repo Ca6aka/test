@@ -2,11 +2,11 @@
   "id": "117f25bb-6136-49ba-aef8-865c4d9fd601",
   "nickname": "Ca6aka",
   "password": "$2b$10$MNgnDbNDq8XbGzZQB4nUl.hLgDWbgHjShiJ4Qu8bZ9fdpocrxcF/e",
-  "balance": 14700,
+  "balance": 9700,
   "level": 4,
   "experience": 338,
   "totalEarnings": 15700,
-  "totalSpent": 10000,
+  "totalSpent": 15000,
   "avatar": {
     "gradient": "from-purple-500 via-pink-500 via-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500",
     "pattern": "rainbow-super-admin",
@@ -29,6 +29,16 @@
   "currentLearning": null,
   "activities": [
     {
+      "id": "8195ce5e-c9ef-48d8-8c29-4b5d441dbd7b",
+      "description": "Turned Basic Web Server offline",
+      "timestamp": "8/16/2025, 6:19:50 AM"
+    },
+    {
+      "id": "f1e947e0-d475-4eef-a311-7648fdca6e53",
+      "description": "Purchased Basic Web Server for $5,000",
+      "timestamp": "8/16/2025, 6:19:42 AM"
+    },
+    {
       "id": "a476ccce-4cd0-4ce2-b2c8-dc14eb39a5eb",
       "description": "Turned Basic Web Server offline",
       "timestamp": "8/16/2025, 6:18:57 AM"
@@ -42,16 +52,6 @@
       "id": "89266c84-93db-4142-8818-8fb029fecb11",
       "description": "Turned Basic Web Server offline",
       "timestamp": "8/16/2025, 6:18:13 AM"
-    },
-    {
-      "id": "49ef1e67-567d-4f63-b826-f7291f4b4da7",
-      "description": "Achievement unlocked: First Steps (+$1,000)",
-      "timestamp": "8/16/2025, 6:17:58 AM"
-    },
-    {
-      "id": "2e1f60a7-3c3f-4b74-a096-abf475bb571e",
-      "description": "Purchased Basic Web Server for $5,000",
-      "timestamp": "8/16/2025, 6:17:58 AM"
     }
   ],
   "achievements": [
@@ -105,5 +105,5 @@
     }
   ],
   "lastQuestReset": 1755321664028,
-  "lastSeen": 1755325146466
+  "lastSeen": 1755325262813
 }

@@ -1,16 +1,16 @@
 [
   {
-    "id": "117f25bb-6136-49ba-aef8-865c4d9fd601",
-    "nickname": "Ca6aka",
-    "balance": 14700,
-    "serverCount": 0,
-    "isOnline": true,
-    "rank": 1
-  },
-  {
     "id": "85961a83-b617-468d-bb52-176a03f1c95f",
     "nickname": "ca6aka",
     "balance": 10900,
+    "serverCount": 0,
+    "isOnline": false,
+    "rank": 1
+  },
+  {
+    "id": "117f25bb-6136-49ba-aef8-865c4d9fd601",
+    "nickname": "Ca6aka",
+    "balance": 9700,
     "serverCount": 0,
     "isOnline": true,
     "rank": 2

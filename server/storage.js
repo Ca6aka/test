@@ -654,22 +654,36 @@ export class FileStorage {
   }
 
   async checkServerOverload(userId, serverId, loadPercentage) {
-    // Calculate shutdown probability based on load
+    // Only check for overload if load is very high and after a delay
+    if (loadPercentage < 90) return; // Only check servers with 90%+ load
+    
+    // Get server to check last overload check time
+    const servers = await this.getServers();
+    const server = servers.find(s => s.id === serverId && s.ownerId === userId);
+    if (!server) return;
+    
+    const now = Date.now();
+    const lastOverloadCheck = server.lastOverloadCheck || 0;
+    const fiveMinutes = 5 * 60 * 1000; // 5 minutes in milliseconds
+    
+    // Only check every 5 minutes minimum
+    if (now - lastOverloadCheck < fiveMinutes) return;
+    
+    // Update last check time
+    server.lastOverloadCheck = now;
+    await this.saveServers(servers);
+    
+    // Calculate shutdown probability based on load (much lower chances)
     let shutdownChance = 0;
     
-    if (loadPercentage > 89) {
-      shutdownChance = 0.8; // 80% chance per hour
-    } else if (loadPercentage > 74) {
-      shutdownChance = 0.5; // 50% chance per hour  
-    } else if (loadPercentage > 49) {
-      shutdownChance = 0.3; // 30% chance per hour
+    if (loadPercentage > 95) {
+      shutdownChance = 0.15; // 15% chance every 5 minutes
+    } else if (loadPercentage > 90) {
+      shutdownChance = 0.05; // 5% chance every 5 minutes
     }
     
-    // Convert hourly chance to 5-minute chance
-    const fiveMinuteChance = shutdownChance / 12; // 60/5 = 12 five-minute intervals per hour
-    
     // Random check for shutdown
-    if (Math.random() < fiveMinuteChance) {
+    if (Math.random() < shutdownChance) {
       await this.shutdownServerFromOverload(userId, serverId);
     }
   }

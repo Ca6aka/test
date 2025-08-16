@@ -10,6 +10,14 @@ Preferred communication style: Simple, everyday language.
 
 ## Recent Changes (Latest: August 16, 2025)
 
+### Bug Fixes and Server Mechanics (August 16, 2025)
+- **Fixed Server Overload System**: 
+  - Servers no longer shut down immediately after load configuration
+  - Overload checks only happen every 5 minutes minimum, not on every income update
+  - Only servers with 90%+ load are checked for overload shutdown
+  - Reduced shutdown probabilities: 15% for 95%+ load, 5% for 90-95% load
+  - Servers should now stay online as intended unless severely overloaded
+
 ### Migration and Enhancements (August 16, 2025)
 - **Project Migration**: Successfully migrated from Replit Agent to standard Replit environment
   - All Node.js dependencies properly installed and configured
