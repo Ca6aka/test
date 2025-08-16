@@ -30,12 +30,13 @@ export async function setupVite(app, server) {
     plugins: [
       (await import("@vitejs/plugin-react")).default(),
       (await import("@replit/vite-plugin-runtime-error-modal")).default(),
-      ...(process.env.NODE_ENV !== "production" &&
-      process.env.REPL_ID !== undefined
-        ? [
-            (await import("@replit/vite-plugin-cartographer")).cartographer(),
-          ]
-        : []),
+      // Temporarily disabled due to traverse function error
+      // ...(process.env.NODE_ENV !== "production" &&
+      // process.env.REPL_ID !== undefined
+      //   ? [
+      //       (await import("@replit/vite-plugin-cartographer")).cartographer(),
+      //     ]
+      //   : []),
     ],
     resolve: {
       alias: {
