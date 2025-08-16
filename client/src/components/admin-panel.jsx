@@ -36,6 +36,7 @@ export const AdminPanel = ({ user }) => {
   const [loading, setLoading] = useState(false);
   const [selectedUser, setSelectedUser] = useState('');
   const [action, setAction] = useState('');
+  const [amount, setAmount] = useState('');
 
   const isSuperAdmin = user.nickname === 'Ca6aka';
 
@@ -65,13 +66,24 @@ export const AdminPanel = ({ user }) => {
       return;
     }
 
+    // Check if amount is required for money actions
+    if ((action === 'addMoney' || action === 'removeMoney') && (!amount || amount <= 0)) {
+      toast({
+        title: t('error'),
+        description: 'Пожалуйста, введите корректную сумму',
+        variant: 'destructive'
+      });
+      return;
+    }
+
     try {
       setLoading(true);
       await apiRequest('/api/admin/manage', {
         method: 'POST',
         body: JSON.stringify({
           userId: selectedUser,
-          action: action
+          action: action,
+          amount: action === 'addMoney' || action === 'removeMoney' ? parseInt(amount) : undefined
         })
       });
 
@@ -83,6 +95,7 @@ export const AdminPanel = ({ user }) => {
       fetchUsers();
       setSelectedUser('');
       setAction('');
+      setAmount('');
     } catch (error) {
       toast({
         title: t('error'),
@@ -206,10 +219,25 @@ export const AdminPanel = ({ user }) => {
                         <SelectItem value="removeAdmin">{t('removeAdmin')}</SelectItem>
                         <SelectItem value="banUser">{t('banUser')}</SelectItem>
                         <SelectItem value="unbanUser">{t('unbanUser')}</SelectItem>
+                        <SelectItem value="addMoney">Выдать деньги</SelectItem>
+                        <SelectItem value="removeMoney">Забрать деньги</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                 </div>
+                {(action === 'addMoney' || action === 'removeMoney') && (
+                  <div className="space-y-2">
+                    <Label>Сумма</Label>
+                    <Input
+                      type="number"
+                      placeholder="Введите сумму"
+                      value={amount}
+                      onChange={(e) => setAmount(e.target.value)}
+                      min="1"
+                      data-testid="input-amount"
+                    />
+                  </div>
+                )}
                 <Button 
                   onClick={handleAdminAction}
                   disabled={loading || !selectedUser || !action}

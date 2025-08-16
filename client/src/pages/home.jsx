@@ -21,11 +21,13 @@ export default function HomePage() {
   const { data: statsResponse } = useQuery({
     queryKey: ['/api/stats/general'],
     retry: false,
+    refetchInterval: 30000, // Update every 30 seconds
   });
 
   const { data: rankingsResponse } = useQuery({
     queryKey: ['/api/rankings'],
     retry: false,
+    refetchInterval: 30000, // Update every 30 seconds
   });
 
   useEffect(() => {
