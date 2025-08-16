@@ -2,7 +2,7 @@
   "id": "e73513b4-65ec-40e1-bd85-339d155b7af0",
   "nickname": "Ca6aka",
   "password": "$2b$10$JpfJ4vb59zjxCtXN0I4kbee0VAqeB3by8xsWuYuW6PZo3fAATENv.",
-  "balance": 142642,
+  "balance": 145005,
   "level": 6,
   "experience": 644,
   "totalEarnings": 20650,
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755339590431,
+  "lastIncomeUpdate": 1755339797253,
   "jobCooldowns": {
     "maintenance": 1755334299865,
     "optimization": 1755334449530,
@@ -28,6 +28,16 @@
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "4e79f0f7-7043-4a7f-a184-1827ed79736d",
+      "description": "Achievement unlocked: Early Earner (+$2,000)",
+      "timestamp": "8/16/2025, 10:23:17 AM"
+    },
+    {
+      "id": "f40b2a51-76ee-416e-aa7b-10ffdbcdef66",
+      "description": "Income: +$403, Rental: -$40 (Net: +$363)",
+      "timestamp": "8/16/2025, 10:23:17 AM"
+    },
     {
       "id": "7346ace3-3255-4309-a121-00cf9d7460da",
       "description": "Achievement unlocked: Efficient Worker (+$3,000)",
@@ -42,23 +52,14 @@
       "id": "dacdea84-bb53-44eb-a5c0-c74d44a5e2f1",
       "description": "Income: +$204, Rental: -$20 (Net: +$184)",
       "timestamp": "8/16/2025, 10:19:50 AM"
-    },
-    {
-      "id": "451d8ed2-6c4a-4e92-911b-821f9bec00d5",
-      "description": "Achievement unlocked: Server Builder (+$7,500)",
-      "timestamp": "8/16/2025, 10:19:32 AM"
-    },
-    {
-      "id": "d3b0b3ad-2f80-422a-a37d-6d6ff6ba9983",
-      "description": "Achievement unlocked: Efficient Worker (+$3,000)",
-      "timestamp": "8/16/2025, 10:19:32 AM"
     }
   ],
   "achievements": [
     "first-server",
     "wealthy-investor",
     "server-builder",
-    "efficient-worker"
+    "efficient-worker",
+    "early-earner"
   ],
   "completedJobsCount": 39,
   "completedCoursesCount": 1,
@@ -86,7 +87,7 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 0,
+      "progress": 403,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -127,7 +128,7 @@
         "type": "income",
         "amount": 10000
       },
-      "progress": 0,
+      "progress": 403,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -168,7 +169,7 @@
         "type": "income",
         "amount": 20000
       },
-      "progress": 0,
+      "progress": 403,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -195,13 +196,13 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 0,
+      "progress": 403,
       "completed": false,
       "date": "Sat Aug 16 2025"
     }
   ],
   "lastQuestReset": 1755339590435,
-  "lastSeen": 1755339743736,
+  "lastSeen": 1755339844287,
   "completedLearning": [
     "basic-setup"
   ]

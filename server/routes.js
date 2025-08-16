@@ -65,6 +65,10 @@ export async function registerRoutes(app) {
         return res.status(400).json({ message: 'Passwords do not match' });
       }
       
+      if (password.length < 6) {
+        return res.status(400).json({ message: 'Password must be at least 6 characters long' });
+      }
+      
       // Check for existing user with case-insensitive nickname
       const existingUser = await storage.getUserByNickname(nickname);
       if (existingUser) {
