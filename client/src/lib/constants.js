@@ -6,7 +6,7 @@ export const SERVER_PRODUCTS = [
     name: 'Basic Web Server',
     type: 'Web Hosting',
     price: 5000,
-    incomePerMinute: 150,
+    incomePerMinute: 15,
     monthlyCost: 45,
     icon: 'fas fa-globe'
   },
@@ -15,7 +15,7 @@ export const SERVER_PRODUCTS = [
     name: 'High Performance Server',
     type: 'Gaming/Apps',
     price: 12000,
-    incomePerMinute: 350,
+    incomePerMinute: 50,
     monthlyCost: 120,
     icon: 'fas fa-server'
   },
@@ -24,7 +24,7 @@ export const SERVER_PRODUCTS = [
     name: 'Database Server',
     type: 'Storage',
     price: 8000,
-    incomePerMinute: 200,
+    incomePerMinute: 25,
     monthlyCost: 85,
     icon: 'fas fa-database'
   },
@@ -33,7 +33,7 @@ export const SERVER_PRODUCTS = [
     name: 'CDN Server',
     type: 'Content Delivery',
     price: 15000,
-    incomePerMinute: 450,
+    incomePerMinute: 100,
     monthlyCost: 180,
     icon: 'fas fa-cloud'
   }
@@ -73,22 +73,22 @@ export const JOB_TYPES = [
   {
     id: 'maintenance',
     name: 'Server Maintenance',
-    reward: 500,
+    reward: 150,
     cooldown: 300000, // 5 minutes
     icon: 'fas fa-wrench'
   },
   {
     id: 'optimization',
     name: 'Performance Optimization',
-    reward: 1200,
-    cooldown: 600000, // 10 minutes
+    reward: 250,
+    cooldown: 450000, // 7.5 minutes
     icon: 'fas fa-tachometer-alt'
   },
   {
     id: 'security-audit',
     name: 'Security Audit',
-    reward: 800,
-    cooldown: 450000, // 7.5 minutes
+    reward: 500,
+    cooldown: 600000, // 10 minutes
     icon: 'fas fa-shield-alt'
   }
 ];

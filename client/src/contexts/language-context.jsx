@@ -4,6 +4,7 @@ const translations = {
   en: {
     tutorial: 'Tutorial',
     servers: 'My Servers',
+    hosting: 'Server Store',
     learning: 'Learning Center',
     balance: 'Balance',
     income: 'Income/min',
@@ -71,6 +72,7 @@ const translations = {
   ru: {
     tutorial: 'Обучение',
     servers: 'Мои серверы',
+    hosting: 'Магазин серверов',
     learning: 'Центр обучения',
     balance: 'Баланс',
     income: 'Доход/мин',
@@ -138,6 +140,7 @@ const translations = {
   uk: {
     tutorial: 'Навчання',
     servers: 'Мої сервери',
+    hosting: 'Магазин серверiв',
     learning: 'Центр навчання',
     balance: 'Баланс',
     income: 'Дохід/хв',
@@ -205,6 +208,7 @@ const translations = {
   de: {
     tutorial: 'Tutorial',
     servers: 'Meine Server',
+    hosting: 'Serverspeicher',
     learning: 'Lernzentrum',
     balance: 'Guthaben',
     income: 'Einkommen/min',

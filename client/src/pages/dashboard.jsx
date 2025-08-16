@@ -133,7 +133,7 @@ export default function DashboardPage() {
               onClick={() => setActiveTab('tutorial')}
             >
               <i className="fas fa-graduation-cap text-lg"></i>
-              <span className="font-medium">Start</span>
+              <span className="font-medium">{t('tutorial')}</span>
               {!gameState.user.tutorialCompleted && (
                 <span className="ml-auto bg-accent/20 text-accent text-xs px-2 py-1 rounded-full">
                   Active
@@ -178,7 +178,7 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('hosting')}
             >
               <i className="fas fa-shopping-cart text-lg"></i>
-              <span className="font-medium">Server Store</span>
+              <span className="font-medium">{t('hosting')}</span>
               {!isTabUnlocked('hosting') && <Lock className="w-4 h-4 ml-auto" />}
             </Button>
 

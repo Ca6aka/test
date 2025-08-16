@@ -1,124 +1,52 @@
 {
-  "id": "3fbe5878-38b7-43af-aa42-b069a5775d5b",
+  "id": "8fa068ba-ebc1-4380-92c9-c063ce19ea10",
   "nickname": "Nikor",
-  "password": "$2b$10$A6xLQDbELht7vsrFC/1souHCAex3BRs0aXsyU3tuAT55dS4Dxwk6q",
-  "balance": 1813,
+  "password": "$2b$10$/ywOMAzEMV.0XkJ80UptOOXgzrCPkR.YCdZRCU9wLEpLDQaNFlaWm",
+  "balance": 13900,
   "serverLimit": 3,
-  "tutorialCompleted": true,
-  "lastIncomeUpdate": 1755307568643,
+  "tutorialCompleted": false,
+  "lastIncomeUpdate": 1755311005093,
   "jobCooldowns": {
-    "maintenance": 1755308923333,
-    "optimization": 1755309223782,
-    "security-audit": 1755309074116
+    "maintenance": 1755312080782,
+    "security-audit": 1755312385080,
+    "optimization": 1755312233168
   },
-  "currentLearning": {
-    "id": "basic-setup",
-    "title": "Basic Server Setup",
-    "description": "Learn the fundamentals of server configuration and deployment",
-    "difficulty": "Beginner",
-    "startTime": 1755308628941,
-    "endTime": 1755310428941,
-    "progress": 0,
-    "reward": {
-      "type": "serverSlots",
-      "amount": 1
-    }
-  },
+  "currentLearning": null,
   "activities": [
     {
-      "id": "4312a2fd-7c47-4d33-a624-1c84d59f0c7c",
-      "description": "Started learning course: Basic Server Setup",
-      "timestamp": "16.08.2025, 03:43:48"
+      "id": "d79a9bed-4969-4fb2-88f8-33c0608b5a73",
+      "description": "Completed Security Audit (+$500)",
+      "timestamp": "16.08.2025, 04:36:25"
     },
     {
-      "id": "3e6927cb-b0b9-4f3c-bfdb-916894fc121a",
-      "description": "Completed Security Audit (+$800)",
-      "timestamp": "16.08.2025, 03:43:44"
+      "id": "c1cb4471-0b20-4d20-9ec1-0b7f264bc082",
+      "description": "Completed Performance Optimization (+$250)",
+      "timestamp": "16.08.2025, 04:36:23"
     },
     {
-      "id": "7c706c92-7ebb-4b82-859e-b6c8d05c084f",
+      "id": "dc746eb0-b0cf-4257-9545-180ce8b5f067",
+      "description": "Completed Server Maintenance (+$150)",
+      "timestamp": "16.08.2025, 04:36:20"
+    },
+    {
+      "id": "5aec0bd9-e8d5-41d9-b121-b27241509ce2",
+      "description": "Completed Server Maintenance (+$500)",
+      "timestamp": "16.08.2025, 04:30:10"
+    },
+    {
+      "id": "ce7dad74-3ed9-49e8-9979-5e0ec6fbee29",
       "description": "Completed Performance Optimization (+$1 200)",
-      "timestamp": "16.08.2025, 03:43:43"
+      "timestamp": "16.08.2025, 04:25:05"
     },
     {
-      "id": "57b47b62-1fe2-4504-8e4a-fa902a3bd59c",
-      "description": "Completed Server Maintenance (+$500)",
-      "timestamp": "16.08.2025, 03:43:43"
-    },
-    {
-      "id": "e798b328-76ea-4e0e-b8d7-c13ba48e4cd9",
-      "description": "Turned Database Server online",
-      "timestamp": "8/16/2025, 1:34:35 AM"
-    },
-    {
-      "id": "762c60d2-e4e8-45f0-a73a-ca3b398c2b87",
-      "description": "Turned Database Server offline",
-      "timestamp": "8/16/2025, 1:34:31 AM"
-    },
-    {
-      "id": "9b2589a1-c5ea-429d-8acb-893a549928d8",
-      "description": "Purchased Database Server for $8,000",
-      "timestamp": "8/16/2025, 1:34:18 AM"
-    },
-    {
-      "id": "bb937793-ba5e-401d-bdf3-987307308450",
+      "id": "8d52c4d6-66ee-4a5e-b7d2-32ed25034805",
       "description": "Completed Security Audit (+$800)",
-      "timestamp": "8/16/2025, 1:33:39 AM"
+      "timestamp": "16.08.2025, 04:25:04"
     },
     {
-      "id": "d35ff136-ecd9-43ed-914d-7ad7d2c56598",
+      "id": "017f4908-149e-4a4d-a01d-316bec99c561",
       "description": "Completed Server Maintenance (+$500)",
-      "timestamp": "8/16/2025, 1:33:38 AM"
-    },
-    {
-      "id": "8e92e182-abe5-46e2-8766-90731a7d86cc",
-      "description": "Completed Performance Optimization (+$1,200)",
-      "timestamp": "8/16/2025, 1:28:06 AM"
-    },
-    {
-      "id": "3dc28ec2-b466-4a28-98d0-cc4199464566",
-      "description": "Completed Server Maintenance (+$500)",
-      "timestamp": "8/16/2025, 1:28:05 AM"
-    },
-    {
-      "id": "8f27b110-9b08-4689-826e-d03bcc0457ce",
-      "description": "Completed Security Audit (+$800)",
-      "timestamp": "8/16/2025, 1:25:08 AM"
-    },
-    {
-      "id": "8fa396bc-812e-44a7-bd8f-59de48702438",
-      "description": "Completed Server Maintenance (+$500)",
-      "timestamp": "8/16/2025, 1:22:59 AM"
-    },
-    {
-      "id": "3e297cec-570d-4111-ac19-b5b811608b55",
-      "description": "Purchased Database Server for $8,000",
-      "timestamp": "8/16/2025, 1:21:50 AM"
-    },
-    {
-      "id": "a9f7c005-5cf4-4d65-9904-2ecf8ca35de0",
-      "description": "Purchased Basic Web Server for $5,000",
-      "timestamp": "8/16/2025, 1:21:12 AM"
-    },
-    {
-      "id": "4938d05d-f480-4d2a-bb9c-70c11a090d45",
-      "description": "Tutorial completed! All features unlocked.",
-      "timestamp": "8/16/2025, 1:18:42 AM"
-    },
-    {
-      "id": "5310b0d2-7d73-44e2-9159-be680ed2390d",
-      "description": "Completed Security Audit (+$800)",
-      "timestamp": "8/16/2025, 1:17:35 AM"
-    },
-    {
-      "id": "ffc8b5a8-03c2-4bf0-8ac8-aeab0e4fbb50",
-      "description": "Completed Performance Optimization (+$1,200)",
-      "timestamp": "8/16/2025, 1:17:34 AM"
-    },
-    {
-      "id": "672532c5-aeb7-4565-be54-0ae1585ad3e9",
-      "description": "Completed Server Maintenance (+$500)",
-      "timestamp": "8/16/2025, 1:17:34 AM"
+      "timestamp": "16.08.2025, 04:25:04"
     }
   ]
 }

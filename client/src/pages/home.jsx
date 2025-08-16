@@ -241,7 +241,7 @@ export default function HomePage() {
       <footer className="border-t border-slate-700 bg-slate-900/50 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-slate-400">
-            © 2024 GameStats. {t('allRightsReserved')}
+            © 2025 GameStats. {t('allRightsReserved')}
           </p>
         </div>
       </footer>

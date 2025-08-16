@@ -1,17 +1,17 @@
 [
   {
-    "id": "7cbbe073-b933-4e09-aba9-83ecb54044cc",
-    "nickname": "Ca6aka",
-    "balance": 7000,
+    "id": "8fa068ba-ebc1-4380-92c9-c063ce19ea10",
+    "nickname": "Nikor",
+    "balance": 13900,
     "serverCount": 0,
     "isOnline": true,
     "rank": 1
   },
   {
-    "id": "3fbe5878-38b7-43af-aa42-b069a5775d5b",
-    "nickname": "Nikor",
-    "balance": 1813,
-    "serverCount": 0,
+    "id": "af32cffd-9c64-4dcc-b3b7-3ef4ac710047",
+    "nickname": "Ca6aka",
+    "balance": 9917,
+    "serverCount": 1,
     "isOnline": true,
     "rank": 2
   }

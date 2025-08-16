@@ -1,50 +1,14 @@
 [
   {
-    "id": "5d8deb0f-50e0-401d-93cb-66b75bb663eb",
-    "ownerId": "3fbe5878-38b7-43af-aa42-b069a5775d5b",
+    "id": "176e718b-a973-4b1d-b01a-2d722db6ee67",
+    "ownerId": "af32cffd-9c64-4dcc-b3b7-3ef4ac710047",
     "name": "Basic Web Server",
     "type": "Web Hosting",
-    "incomePerMinute": 150,
+    "incomePerMinute": 15,
     "monthlyCost": 45,
     "icon": "fas fa-globe",
     "isOnline": true,
-    "usage": 40,
-    "createdAt": 1755307272790
-  },
-  {
-    "id": "5fc56347-d495-420b-a220-bfac42672723",
-    "ownerId": "3fbe5878-38b7-43af-aa42-b069a5775d5b",
-    "name": "Database Server",
-    "type": "Storage",
-    "incomePerMinute": 200,
-    "monthlyCost": 85,
-    "icon": "fas fa-database",
-    "isOnline": true,
-    "usage": 33,
-    "createdAt": 1755307310788
-  },
-  {
-    "id": "b69fb66b-8bf1-4e46-9372-231338ca89a7",
-    "ownerId": "3fbe5878-38b7-43af-aa42-b069a5775d5b",
-    "name": "Database Server",
-    "type": "Storage",
-    "incomePerMinute": 200,
-    "monthlyCost": 85,
-    "icon": "fas fa-database",
-    "isOnline": true,
-    "usage": 66,
-    "createdAt": 1755308058218
-  },
-  {
-    "id": "51c400a5-12d7-442a-8352-1c6c35e854a2",
-    "ownerId": "7cbbe073-b933-4e09-aba9-83ecb54044cc",
-    "name": "CDN Server",
-    "type": "Content Delivery",
-    "incomePerMinute": 450,
-    "monthlyCost": 180,
-    "icon": "fas fa-cloud",
-    "isOnline": true,
-    "usage": 39,
-    "createdAt": 1755308718413
+    "usage": 28,
+    "createdAt": 1755312510005
   }
 ]

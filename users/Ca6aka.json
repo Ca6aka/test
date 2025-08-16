@@ -1,149 +1,72 @@
 {
-  "id": "7cbbe073-b933-4e09-aba9-83ecb54044cc",
+  "id": "af32cffd-9c64-4dcc-b3b7-3ef4ac710047",
   "nickname": "Ca6aka",
-  "password": "$2b$10$ODnRRfchayBjt1IVGngeVe6REw73x/CViKxFqvEXn0kVbN3VNPu4W",
-  "balance": 7000,
+  "password": "$2b$10$RhmN.noZR4TbEl854YHmLuZBWfjlblpCb7a1wb3wxKIWvN4YlfNlK",
+  "balance": 9917,
   "serverLimit": 3,
-  "tutorialCompleted": true,
-  "lastIncomeUpdate": 1755303256099,
+  "tutorialCompleted": false,
+  "lastIncomeUpdate": 1755312585600,
   "jobCooldowns": {
-    "maintenance": 1755308951004,
-    "optimization": 1755309251234,
-    "security-audit": 1755309101535
+    "maintenance": 1755312907048,
+    "optimization": 1755312836795,
+    "security-audit": 1755313125547
   },
-  "currentLearning": {
-    "id": "advanced-management",
-    "title": "Advanced Server Management",
-    "description": "Master advanced server optimization and scaling techniques",
-    "difficulty": "Advanced",
-    "startTime": 1755304407298,
-    "endTime": 1755311607298,
-    "progress": 0,
-    "reward": {
-      "type": "serverSlots",
-      "amount": 2
-    }
-  },
+  "currentLearning": null,
   "activities": [
     {
-      "id": "7fa69f23-b54d-4613-8409-f68535daca9a",
-      "description": "Purchased CDN Server for $15 000",
-      "timestamp": "16.08.2025, 03:45:18"
+      "id": "ec775a1f-80dd-4d1b-ae71-d9af6508be66",
+      "description": "Completed Server Maintenance (+$150)",
+      "timestamp": "16.08.2025, 04:50:07"
     },
     {
-      "id": "a5a04dce-f3f9-4d3f-b3cd-09662c51d74f",
+      "id": "45483634-7560-4604-b579-24e607261cbf",
+      "description": "Completed Security Audit (+$500)",
+      "timestamp": "16.08.2025, 04:48:45"
+    },
+    {
+      "id": "521b65a5-7509-4ba0-a159-6f66ef0e1602",
+      "description": "Purchased Basic Web Server for $5 000",
+      "timestamp": "16.08.2025, 04:48:30"
+    },
+    {
+      "id": "deb812ce-8e60-4ae7-a7ac-f3d1814b6f96",
+      "description": "Completed Performance Optimization (+$250)",
+      "timestamp": "16.08.2025, 04:46:26"
+    },
+    {
+      "id": "bf407473-a287-4693-937b-9572d9cf02d6",
+      "description": "Completed Server Maintenance (+$150)",
+      "timestamp": "16.08.2025, 04:43:57"
+    },
+    {
+      "id": "beead226-9047-465d-8123-e38c81ffded2",
+      "description": "Completed Security Audit (+$500)",
+      "timestamp": "16.08.2025, 04:38:37"
+    },
+    {
+      "id": "0a3f30eb-d91e-4655-b36e-db692af101d3",
+      "description": "Completed Performance Optimization (+$250)",
+      "timestamp": "16.08.2025, 04:38:37"
+    },
+    {
+      "id": "b3fd16db-904c-485b-bec8-2e87d4cffc38",
+      "description": "Completed Server Maintenance (+$150)",
+      "timestamp": "16.08.2025, 04:38:37"
+    },
+    {
+      "id": "33cbf9de-0ad0-47f9-a128-0748d2a06865",
       "description": "Completed Security Audit (+$800)",
-      "timestamp": "16.08.2025, 03:44:11"
+      "timestamp": "16.08.2025, 04:21:49"
     },
     {
-      "id": "eba2c62a-cf8c-4a68-a5c7-d2ca77b4c2c1",
+      "id": "1d933968-6a96-44bc-8580-63c8671a36aa",
       "description": "Completed Performance Optimization (+$1 200)",
-      "timestamp": "16.08.2025, 03:44:11"
+      "timestamp": "16.08.2025, 04:21:48"
     },
     {
-      "id": "f500e6ac-0729-496f-a300-ad541b163799",
+      "id": "a8e7e93d-c00e-4942-be22-609f55cbe75d",
       "description": "Completed Server Maintenance (+$500)",
-      "timestamp": "16.08.2025, 03:44:11"
-    },
-    {
-      "id": "04154482-03f1-4bad-9a95-17e3f5d6688d",
-      "description": "Completed Security Audit (+$800)",
-      "timestamp": "8/16/2025, 1:14:55 AM"
-    },
-    {
-      "id": "4414a506-9a60-4c80-8164-d35d3ca32f95",
-      "description": "Completed Server Maintenance (+$500)",
-      "timestamp": "8/16/2025, 1:14:55 AM"
-    },
-    {
-      "id": "7f61cf74-216a-42ba-b237-17ce230760bf",
-      "description": "Completed Security Audit (+$800)",
-      "timestamp": "8/16/2025, 1:06:40 AM"
-    },
-    {
-      "id": "1e070705-86e9-4644-ac5b-cb9d9ef1a916",
-      "description": "Completed Performance Optimization (+$1,200)",
-      "timestamp": "8/16/2025, 1:06:39 AM"
-    },
-    {
-      "id": "23316601-6daf-4c70-b95e-777a04cb17f7",
-      "description": "Completed Server Maintenance (+$500)",
-      "timestamp": "8/16/2025, 1:06:38 AM"
-    },
-    {
-      "id": "48e327c2-64f3-49f8-ad17-511ac2522c50",
-      "description": "Completed Security Audit (+$800)",
-      "timestamp": "16.08.2025, 02:54:50"
-    },
-    {
-      "id": "5e2e776f-177a-4cd2-8bc5-9d2b74f77bdd",
-      "description": "Completed Server Maintenance (+$500)",
-      "timestamp": "16.08.2025, 02:54:09"
-    },
-    {
-      "id": "e5b086f8-b4c4-4934-a79c-d5c0a9cb12aa",
-      "description": "Completed Security Audit (+$800)",
-      "timestamp": "16.08.2025, 02:47:04"
-    },
-    {
-      "id": "e1cb048c-4627-43bf-9e17-09ea134e70e1",
-      "description": "Completed Performance Optimization (+$1 200)",
-      "timestamp": "16.08.2025, 02:47:04"
-    },
-    {
-      "id": "fc35e4b3-d1b0-4f65-99de-13dd96884a5d",
-      "description": "Completed Server Maintenance (+$500)",
-      "timestamp": "16.08.2025, 02:47:03"
-    },
-    {
-      "id": "120c6e59-9e91-4bbd-8f38-1a6a5e56bbf3",
-      "description": "Completed Security Audit (+$800)",
-      "timestamp": "16.08.2025, 02:39:27"
-    },
-    {
-      "id": "e7177ada-2c97-4bc6-bf31-c2f01d0fbd5a",
-      "description": "Completed Server Maintenance (+$500)",
-      "timestamp": "16.08.2025, 02:39:25"
-    },
-    {
-      "id": "6488973c-c051-40a4-9560-6b8670d0d5db",
-      "description": "Started learning course: Advanced Server Management",
-      "timestamp": "8/16/2025, 12:33:27 AM"
-    },
-    {
-      "id": "2977075e-511a-433b-b993-956eb4fc8413",
-      "description": "Tutorial completed! All features unlocked.",
-      "timestamp": "8/16/2025, 12:33:08 AM"
-    },
-    {
-      "id": "d6ffa9f5-ea6b-42b0-80a2-cd6c706b0888",
-      "description": "Completed Security Audit (+$800)",
-      "timestamp": "8/16/2025, 12:29:56 AM"
-    },
-    {
-      "id": "55e1f411-2343-4587-8da5-ad4bfaef90fa",
-      "description": "Completed Performance Optimization (+$1,200)",
-      "timestamp": "8/16/2025, 12:29:55 AM"
-    },
-    {
-      "id": "f39e0f63-f8be-46ae-a648-7697f4f652b6",
-      "description": "Completed Server Maintenance (+$500)",
-      "timestamp": "8/16/2025, 12:29:53 AM"
-    },
-    {
-      "id": "864d48f7-93d8-4a98-8d95-20ab657b8ce8",
-      "description": "Completed Security Audit (+$800)",
-      "timestamp": "8/16/2025, 12:14:45 AM"
-    },
-    {
-      "id": "cbc44c48-74c4-40e0-8803-5273524aebf8",
-      "description": "Completed Performance Optimization (+$1,200)",
-      "timestamp": "8/16/2025, 12:14:43 AM"
-    },
-    {
-      "id": "0c73a0a8-10ce-4322-9590-cf9afbf01736",
-      "description": "Completed Server Maintenance (+$500)",
-      "timestamp": "8/16/2025, 12:14:40 AM"
+      "timestamp": "16.08.2025, 04:21:48"
     }
   ]
 }
