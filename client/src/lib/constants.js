@@ -29,7 +29,7 @@ export const SERVER_PRODUCTS = [
     incomePerMinute: 25,
     monthlyCost: 85,
     icon: 'fas fa-database',
-    requiredLevel: 2
+    requiredLevel: 8
   },
   {
     id: 'cdn-server',
@@ -72,7 +72,7 @@ export const LEARNING_COURSES = [
     duration: 90 * 60 * 1000, // 1.5 hours in milliseconds
     reward: { type: 'efficiency', amount: 15 },
     price: 5000,
-    requiredLevel: 3
+    requiredLevel: 12
   }
 ];
 

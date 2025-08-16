@@ -2,10 +2,10 @@
   "id": "117f25bb-6136-49ba-aef8-865c4d9fd601",
   "nickname": "Ca6aka",
   "password": "$2b$10$MNgnDbNDq8XbGzZQB4nUl.hLgDWbgHjShiJ4Qu8bZ9fdpocrxcF/e",
-  "balance": 22150,
+  "balance": 22650,
   "level": 3,
-  "experience": 250,
-  "totalEarnings": 14150,
+  "experience": 275,
+  "totalEarnings": 14650,
   "totalSpent": 0,
   "avatar": {
     "gradient": "from-purple-500 via-pink-500 via-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500",
@@ -24,10 +24,15 @@
   "jobCooldowns": {
     "maintenance": 1755324448966,
     "optimization": 1755324599368,
-    "security-audit": 1755324374376
+    "security-audit": 1755325030968
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "ebe1d622-b5a0-47cf-b52d-42d1854220a1",
+      "description": "Completed Security Audit (+$500, +25 XP)",
+      "timestamp": "8/16/2025, 6:07:10 AM"
+    },
     {
       "id": "e35db05c-aaf5-421a-9be0-9037ba449534",
       "description": "Completed Performance Optimization (+$250, +18 XP)",
@@ -47,15 +52,10 @@
       "id": "1967f01a-aa2e-48f9-a53f-cfee7bfb5dcf",
       "description": "Completed Security Audit (+$500, +25 XP)",
       "timestamp": "8/16/2025, 5:56:14 AM"
-    },
-    {
-      "id": "c22ec0ea-1a48-4ecb-8431-a1bca4ef8aad",
-      "description": "Completed Performance Optimization (+$250, +18 XP)",
-      "timestamp": "8/16/2025, 5:54:01 AM"
     }
   ],
   "achievements": [],
-  "completedJobsCount": 15,
+  "completedJobsCount": 16,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -103,5 +103,5 @@
     }
   ],
   "lastQuestReset": 1755321664028,
-  "lastSeen": 1755324307242
+  "lastSeen": 1755324483198
 }

@@ -23,12 +23,18 @@ Preferred communication style: Simple, everyday language.
   - Implemented 5 different animation types: gradient-shift, pulse-glow, shimmer-wave, color-dance, soft-pulse
   - Created unique rainbow-pulse animation for super-admin (Ca6aka) with rotating colors
   - All new users get randomized multi-color gradients with animations
-- **Performance Optimizations**: 
+- **Level-Based Content Restrictions**: 
+  - Added lock icons for learning courses and server purchases requiring higher levels
+  - Security Protocols course now requires level 12, Database Server requires level 8
+  - Visual indicators show "Requires Level X" instead of error messages
+  - Enhanced UX with proper disabled states and tooltips for locked content
+- **Performance & UX Optimizations**: 
+  - Auto-dismissing notifications (5-second timeout) for cleaner interface
   - Limited user activity logs to 5 items to save disk space
-  - Fixed player profile popup z-index to display within game interface
+  - Fixed player profile popup z-index (9999) to properly display over game interface
 - **Enhanced User Experience**: 
   - Profile popups now properly contained within game interface
-  - Improved visual feedback with animated avatar effects
+  - Improved visual feedback with animated avatar effects and clear lock indicators
 
 ## Recent Changes (Latest: August 16, 2025)
 
