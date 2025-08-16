@@ -26,10 +26,10 @@ export function AchievementsTab() {
         <div>
           <h2 className="text-2xl font-bold text-white flex items-center">
             <Trophy className="w-6 h-6 text-yellow-400 mr-2" />
-            Достижения
+{t('achievements')}
           </h2>
           <p className="text-slate-400">
-            Прогресс: {earnedCount}/{achievements.length} достижений получено
+Прогресс: {earnedCount}/{achievements.length} достижений получено
           </p>
         </div>
         <div className="text-right">

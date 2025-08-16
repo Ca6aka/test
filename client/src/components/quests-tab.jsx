@@ -21,7 +21,7 @@ export function QuestsTab() {
   });
 
   const claimRewardMutation = useMutation({
-    mutationFn: (questId) => apiRequest(`/api/quests/${questId}/claim`, {
+    mutationFn: (questId) => apiRequest(`/api/quests/${encodeURIComponent(questId)}/claim`, {
       method: 'POST',
     }),
     onSuccess: () => {
@@ -54,10 +54,10 @@ export function QuestsTab() {
         <div>
           <h2 className="text-2xl font-bold text-white flex items-center">
             <Calendar className="w-6 h-6 text-blue-400 mr-2" />
-            Ежедневные задания
+{t('dailyQuests')}
           </h2>
           <p className="text-slate-400">
-            Выполнено: {completedCount}/{quests.length} заданий
+Выполнено: {completedCount}/{quests.length} заданий
           </p>
         </div>
         <div className="text-right">
@@ -126,7 +126,7 @@ export function QuestsTab() {
                 {/* Reward */}
                 <div className="flex justify-between items-center pt-2 border-t border-slate-700">
                   <div className="flex flex-col">
-                    <span className="text-sm text-slate-500">Награда:</span>
+                    <span className="text-sm text-slate-500">{t('reward')}:</span>
                     <span className="text-sm font-medium text-yellow-400">
                       {formatCurrency(quest.reward)}
                     </span>
@@ -139,12 +139,12 @@ export function QuestsTab() {
                       className="bg-green-600 hover:bg-green-700 text-white"
                     >
                       <Gift className="w-4 h-4 mr-1" />
-                      {claimRewardMutation.isPending ? 'Получение...' : 'Забрать'}
+                      {claimRewardMutation.isPending ? 'Получение...' : t('claimReward')}
                     </Button>
                   )}
                   {quest.completed && quest.claimed && (
                     <Badge variant="secondary" className="bg-green-500/20 text-green-300">
-                      Получено
+                      {t('rewardClaimed')}
                     </Badge>
                   )}
                 </div>
