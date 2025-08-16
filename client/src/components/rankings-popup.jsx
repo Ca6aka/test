@@ -5,11 +5,13 @@ import { useGame } from '@/contexts/game-context';
 import { useLanguage } from '@/contexts/language-context';
 import { formatCurrency } from '@/lib/constants';
 import { Link } from 'wouter';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 export function RankingsPopup() {
   const [isOpen, setIsOpen] = useState(false);
   const { gameState } = useGame();
   const { t } = useLanguage();
+  const isMobile = useIsMobile();
   
   const { data: rankingsData } = useQuery({
     queryKey: ['/api/rankings'],
@@ -17,7 +19,7 @@ export function RankingsPopup() {
     refetchInterval: 30000, // Update every 30 seconds
   });
 
-  if (!gameState.user) return null;
+  if (!gameState.user || !isMobile) return null; // Only show on mobile
 
   const rankings = rankingsData?.rankings || [];
   const userRank = rankings.find(r => r.id === gameState.user?.id);

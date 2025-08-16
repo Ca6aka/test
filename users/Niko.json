@@ -2,10 +2,10 @@
   "id": "89d9b833-5345-47cc-b3d5-df00302f5ed9",
   "nickname": "Niko",
   "password": "$2b$10$G0HQ4jiWHobTKLBvgkfsF.HC/XLDC2wQjZJgjN8.t25RcxrLzoTAW",
-  "balance": 13400,
-  "level": 2,
-  "experience": 207,
-  "totalEarnings": 13400,
+  "balance": 13900,
+  "level": 3,
+  "experience": 232,
+  "totalEarnings": 13900,
   "totalSpent": 0,
   "avatar": {
     "gradient": "from-orange-400 via-amber-500 to-yellow-600",
@@ -24,10 +24,15 @@
   "jobCooldowns": {
     "maintenance": 1755329637820,
     "optimization": 1755329788589,
-    "security-audit": 1755329530504
+    "security-audit": 1755330162572
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "437856de-9b4a-4336-9f19-9417f8966e69",
+      "description": "Completed Security Audit (+$500, +25 XP) - Level Up! Now level 3",
+      "timestamp": "8/16/2025, 7:32:42 AM"
+    },
     {
       "id": "73ae2bfd-8f73-4ea0-b5bd-5b9a1b9b2c16",
       "description": "Completed Performance Optimization (+$250, +18 XP)",
@@ -47,15 +52,10 @@
       "id": "c3c6b612-f112-4b3c-ad23-56696529fd48",
       "description": "Completed Security Audit (+$500, +25 XP)",
       "timestamp": "8/16/2025, 7:22:10 AM"
-    },
-    {
-      "id": "bdba28f8-8a08-4e16-a18f-a3d4658f9fce",
-      "description": "Given admin privileges by Ca6aka",
-      "timestamp": "8/16/2025, 7:19:01 AM"
     }
   ],
   "achievements": [],
-  "completedJobsCount": 13,
+  "completedJobsCount": 14,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -101,5 +101,5 @@
     }
   ],
   "lastQuestReset": 1755327443105,
-  "lastSeen": 1755329515310
+  "lastSeen": 1755329606387
 }

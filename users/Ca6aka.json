@@ -2,10 +2,10 @@
   "id": "e73513b4-65ec-40e1-bd85-339d155b7af0",
   "nickname": "Ca6aka",
   "password": "$2b$10$JpfJ4vb59zjxCtXN0I4kbee0VAqeB3by8xsWuYuW6PZo3fAATENv.",
-  "balance": 110559,
+  "balance": 110709,
   "level": 2,
-  "experience": 197,
-  "totalEarnings": 13250,
+  "experience": 207,
+  "totalEarnings": 13400,
   "totalSpent": 10000,
   "avatar": {
     "gradient": "from-rose-400 via-pink-500 to-red-600",
@@ -22,12 +22,17 @@
   "isOnline": true,
   "lastIncomeUpdate": 1755329406797,
   "jobCooldowns": {
-    "maintenance": 1755329445089,
+    "maintenance": 1755329859867,
     "optimization": 1755329643420,
     "security-audit": 1755329745728
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "9fbc1b30-9b29-4e50-ba15-fed50a33ff59",
+      "description": "Completed Server Maintenance (+$150, +10 XP)",
+      "timestamp": "8/16/2025, 7:32:39 AM"
+    },
     {
       "id": "0ee635ad-1a2a-4261-a2ed-cd06273df3f3",
       "description": "Income: +$42, Rental: -$4 (Net: +$38)",
@@ -47,17 +52,12 @@
       "id": "0db8bcc7-9366-4c54-b859-c826fe5b8711",
       "description": "Quest reward claimed: Server Optimization (+$3,000)",
       "timestamp": "8/16/2025, 7:26:29 AM"
-    },
-    {
-      "id": "75f4c789-f92e-4e75-8021-04019e993b07",
-      "description": "Quest reward claimed: Daily Maintenance (+$2,000)",
-      "timestamp": "8/16/2025, 7:26:27 AM"
     }
   ],
   "achievements": [
     "first-server"
   ],
-  "completedJobsCount": 12,
+  "completedJobsCount": 13,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -105,5 +105,5 @@
     }
   ],
   "lastQuestReset": 1755327035906,
-  "lastSeen": 1755329516189
+  "lastSeen": 1755329606371
 }

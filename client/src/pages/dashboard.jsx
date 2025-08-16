@@ -14,6 +14,7 @@ import { QuestsTab } from '@/components/quests-tab';
 import { useGame } from '@/contexts/game-context';
 import { useLanguage } from '@/contexts/language-context';
 import { PlayerRankings } from '@/components/player-rankings';
+import { RankingsPopup } from '@/components/rankings-popup';
 import { TUTORIAL_UNLOCK_THRESHOLD, formatCurrency } from '@/lib/constants';
 
 export default function DashboardPage() {
@@ -324,6 +325,7 @@ export default function DashboardPage() {
       </div>
 
       <VirtualAssistant />
+      <RankingsPopup />
       </div>
     </div>
   );
