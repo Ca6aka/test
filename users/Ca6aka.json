@@ -2,11 +2,11 @@
   "id": "a66a7d88-03dc-48c9-862a-f8229356999a",
   "nickname": "Ca6aka",
   "password": "$2b$10$2VSPHZhbA7AZDxzNRecq7uxZ.FHFrvK64rnZZKFEDUisoUKT31dMi",
-  "balance": 12300,
-  "level": 1,
-  "experience": 81,
-  "totalEarnings": 11300,
-  "totalSpent": 5000,
+  "balance": 7950,
+  "level": 2,
+  "experience": 116,
+  "totalEarnings": 11950,
+  "totalSpent": 10000,
   "avatar": {
     "gradient": "from-indigo-400 via-blue-500 to-cyan-600",
     "pattern": "multi-color",
@@ -22,42 +22,42 @@
   "isOnline": true,
   "lastIncomeUpdate": 1755325513895,
   "jobCooldowns": {
-    "maintenance": 1755326165466,
+    "maintenance": 1755326545031,
     "optimization": 1755326486388,
-    "security-audit": 1755326123891
+    "security-audit": 1755326730212
   },
   "currentLearning": null,
   "activities": [
     {
-      "id": "719024a9-27e1-44a6-bdc3-f6679d15117b",
-      "description": "Daily quest completed: Server Optimization - Reward ready to claim!",
-      "timestamp": "8/16/2025, 6:33:56 AM"
+      "id": "665aa49d-3f77-4055-92fc-99326c53d47d",
+      "description": "Daily quest completed: Daily Maintenance - Reward ready to claim!",
+      "timestamp": "8/16/2025, 6:37:25 AM"
     },
     {
-      "id": "31beb5e2-f0cf-4d7a-832e-509a70c79dce",
-      "description": "Completed Performance Optimization (+$250, +18 XP)",
-      "timestamp": "8/16/2025, 6:33:56 AM"
-    },
-    {
-      "id": "cea66c7e-dbfd-4ed4-be1b-386707e1f356",
+      "id": "318de164-2913-45af-949b-74a47db47f12",
       "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "8/16/2025, 6:31:05 AM"
+      "timestamp": "8/16/2025, 6:37:25 AM"
     },
     {
-      "id": "99b3c7b0-92f6-41a0-8ea7-34022adfad44",
+      "id": "87765e51-e270-42b3-ac25-93dca92ee695",
       "description": "Turned Basic Web Server offline",
-      "timestamp": "8/16/2025, 6:29:24 AM"
+      "timestamp": "8/16/2025, 6:36:20 AM"
     },
     {
-      "id": "d523fdd1-6873-47ba-a0dc-5bcb82efccf9",
-      "description": "Achievement unlocked: First Steps (+$1,000)",
-      "timestamp": "8/16/2025, 6:29:17 AM"
+      "id": "e906ce2b-ca07-4ec9-9533-9ae0ef4bbaa8",
+      "description": "Purchased Basic Web Server for $5,000",
+      "timestamp": "8/16/2025, 6:35:40 AM"
+    },
+    {
+      "id": "cca3a891-cbc9-4a5c-9ecd-621ad2c1fbfb",
+      "description": "Completed Security Audit (+$500, +25 XP) - Level Up! Now level 2",
+      "timestamp": "8/16/2025, 6:35:30 AM"
     }
   ],
   "achievements": [
     "first-server"
   ],
-  "completedJobsCount": 5,
+  "completedJobsCount": 7,
   "completedCoursesCount": 0,
   "dailyQuests": [
     {
@@ -70,8 +70,8 @@
         "jobType": "maintenance",
         "count": 3
       },
-      "progress": 2,
-      "completed": false,
+      "progress": 3,
+      "completed": true,
       "date": "Sat Aug 16 2025"
     },
     {
@@ -103,5 +103,5 @@
     }
   ],
   "lastQuestReset": 1755325513895,
-  "lastSeen": 1755326113764
+  "lastSeen": 1755326276354
 }
