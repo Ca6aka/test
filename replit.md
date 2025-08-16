@@ -6,7 +6,9 @@ A full-stack web application that simulates a server management business game. P
 
 ## User Preferences
 
-Preferred communication style: Simple, everyday language.
+- Preferred communication style: Simple, everyday language
+- Language: Russian preferred for communication
+- Uses Russian interface in the game
 
 ## Recent Changes (Latest: August 16, 2025)
 
