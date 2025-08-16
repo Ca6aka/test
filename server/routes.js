@@ -54,8 +54,13 @@ export async function registerRoutes(app) {
         return res.status(401).json({ message: 'Invalid credentials' });
       }
       
+      // Check if user is banned
+      if (user.banned) {
+        return res.status(403).json({ message: 'Account has been banned. Contact administrator.' });
+      }
+      
       // Set user online when logging in
-      await storage.updateUser(user.id, { ...user, isOnline: true });
+      await storage.updateUser(user.id, { ...user, isOnline: true, lastSeen: Date.now() });
       
       req.session.userId = user.id;
       res.json({ user: { ...user, password: undefined, isOnline: true } });
@@ -74,6 +79,8 @@ export async function registerRoutes(app) {
       if (!user) {
         return res.status(401).json({ message: 'User not found' });
       }
+      
+      // User activity is now updated by middleware
       
       res.json({ user: { ...user, password: undefined } });
     } catch (error) {
@@ -280,42 +287,80 @@ export async function registerRoutes(app) {
       }
       
       const currentUser = await storage.getUser(req.session.userId);
-      if (!currentUser || currentUser.nickname !== 'Ca6aka') {
-        return res.status(403).json({ message: 'Super admin access required' });
+      if (!currentUser || currentUser.admin < 1) {
+        return res.status(403).json({ message: 'Admin access required' });
       }
       
-      const { userId, action } = req.body;
+      const { userId, action, amount } = req.body;
       const targetUser = await storage.getUser(userId);
       
       if (!targetUser) {
         return res.status(404).json({ message: 'User not found' });
       }
 
-      if (targetUser.nickname === 'Ca6aka') {
+      if (targetUser.nickname === 'Ca6aka' && currentUser.nickname !== 'Ca6aka') {
         return res.status(400).json({ message: 'Cannot modify super admin' });
       }
       
       let updatedUser = { ...targetUser };
+      let actionDescription = '';
       
       switch (action) {
         case 'giveAdmin':
+          if (currentUser.nickname !== 'Ca6aka') {
+            return res.status(403).json({ message: 'Super admin access required' });
+          }
           updatedUser.admin = 1;
+          actionDescription = `Given admin privileges by ${currentUser.nickname}`;
           break;
         case 'removeAdmin':
+          if (currentUser.nickname !== 'Ca6aka') {
+            return res.status(403).json({ message: 'Super admin access required' });
+          }
           updatedUser.admin = 0;
+          actionDescription = `Admin privileges removed by ${currentUser.nickname}`;
           break;
         case 'banUser':
           updatedUser.banned = true;
+          updatedUser.isOnline = false;
+          actionDescription = `Account banned by admin ${currentUser.nickname}`;
           break;
         case 'unbanUser':
           updatedUser.banned = false;
+          actionDescription = `Account unbanned by admin ${currentUser.nickname}`;
+          break;
+        case 'addMoney':
+          if (currentUser.nickname !== 'Ca6aka') {
+            return res.status(403).json({ message: 'Super admin access required' });
+          }
+          if (!amount || amount <= 0) {
+            return res.status(400).json({ message: 'Valid amount required' });
+          }
+          updatedUser.balance = (targetUser.balance || 0) + amount;
+          actionDescription = `Received $${amount.toLocaleString()} from super admin`;
+          break;
+        case 'removeMoney':
+          if (currentUser.nickname !== 'Ca6aka') {
+            return res.status(403).json({ message: 'Super admin access required' });
+          }
+          if (!amount || amount <= 0) {
+            return res.status(400).json({ message: 'Valid amount required' });
+          }
+          updatedUser.balance = Math.max(0, (targetUser.balance || 0) - amount);
+          actionDescription = `$${amount.toLocaleString()} removed by super admin`;
           break;
         default:
           return res.status(400).json({ message: 'Invalid action' });
       }
       
       await storage.updateUser(userId, updatedUser);
-      res.json({ success: true });
+      
+      // Add activity to target user's log
+      if (actionDescription) {
+        await storage.addActivity(userId, actionDescription);
+      }
+      
+      res.json({ success: true, message: 'Action completed successfully' });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
@@ -374,6 +419,57 @@ export async function registerRoutes(app) {
         },
         isOnline 
       });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
+  // Achievements routes
+  app.get('/api/achievements', async (req, res) => {
+    try {
+      if (!req.session.userId) {
+        return res.status(401).json({ message: 'Not authenticated' });
+      }
+      
+      const user = await storage.getUser(req.session.userId);
+      if (!user) {
+        return res.status(401).json({ message: 'User not found' });
+      }
+
+      // Check for new achievements
+      await storage.checkAchievements(req.session.userId);
+      
+      const allAchievements = storage.getAchievements();
+      const userAchievements = user.achievements || [];
+      
+      const achievementsWithStatus = allAchievements.map(achievement => ({
+        ...achievement,
+        earned: userAchievements.includes(achievement.id)
+      }));
+      
+      res.json({ achievements: achievementsWithStatus });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
+  // Daily quests routes
+  app.get('/api/quests', async (req, res) => {
+    try {
+      if (!req.session.userId) {
+        return res.status(401).json({ message: 'Not authenticated' });
+      }
+      
+      const user = await storage.getUser(req.session.userId);
+      if (!user) {
+        return res.status(401).json({ message: 'User not found' });
+      }
+
+      // Check for quest reset
+      await storage.checkDailyQuestReset(req.session.userId);
+      
+      const updatedUser = await storage.getUser(req.session.userId);
+      res.json({ quests: updatedUser.dailyQuests || [] });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }

@@ -101,6 +101,73 @@ const LEARNING_COURSES = [
   }
 ];
 
+const ACHIEVEMENTS = [
+  {
+    id: 'first-server',
+    title: 'First Steps',
+    description: 'Purchase your first server',
+    icon: 'fas fa-server',
+    reward: 1000,
+    condition: { type: 'servers', count: 1 }
+  },
+  {
+    id: 'server-collection',
+    title: 'Server Collector',
+    description: 'Own 5 servers simultaneously',
+    icon: 'fas fa-warehouse',
+    reward: 5000,
+    condition: { type: 'servers', count: 5 }
+  },
+  {
+    id: 'millionaire',
+    title: 'Millionaire',
+    description: 'Accumulate $1,000,000 in balance',
+    icon: 'fas fa-money-bill-wave',
+    reward: 50000,
+    condition: { type: 'balance', amount: 1000000 }
+  },
+  {
+    id: 'job-master',
+    title: 'Job Master',
+    description: 'Complete 100 jobs',
+    icon: 'fas fa-tasks',
+    reward: 10000,
+    condition: { type: 'jobs', count: 100 }
+  },
+  {
+    id: 'learning-enthusiast',
+    title: 'Learning Enthusiast',
+    description: 'Complete all learning courses',
+    icon: 'fas fa-graduation-cap',
+    reward: 25000,
+    condition: { type: 'courses', count: 3 }
+  }
+];
+
+const DAILY_QUESTS = [
+  {
+    id: 'daily-maintenance',
+    title: 'Daily Maintenance',
+    description: 'Complete 3 Server Maintenance jobs',
+    reward: 2000,
+    requirement: { type: 'job', jobType: 'maintenance', count: 3 }
+  },
+  {
+    id: 'daily-income',
+    title: 'Passive Income',
+    description: 'Earn $5,000 from server income',
+    reward: 1500,
+    requirement: { type: 'income', amount: 5000 }
+  },
+  {
+    id: 'daily-optimization',
+    title: 'Server Optimization',
+    description: 'Complete 2 Performance Optimization jobs',
+    reward: 3000,
+    requirement: { type: 'job', jobType: 'optimization', count: 2 }
+  }
+];
+
 export class FileStorage {
   constructor() {
     this.ensureDataDirectory();
@@ -213,7 +280,12 @@ export class FileStorage {
       lastIncomeUpdate: Date.now(),
       jobCooldowns: {},
       currentLearning: null,
-      activities: []
+      activities: [],
+      achievements: [],
+      completedJobsCount: 0,
+      completedCoursesCount: 0,
+      dailyQuests: this.generateDailyQuests(),
+      lastQuestReset: Date.now()
     };
     
     await this.saveUserFile(user);
@@ -235,6 +307,133 @@ export class FileStorage {
     await this.updateRankings();
     
     return updatedUser;
+  }
+
+  async updateUserActivity(userId) {
+    const user = await this.getUser(userId);
+    if (!user) return;
+    
+    const now = Date.now();
+    await this.updateUser(userId, { 
+      lastSeen: now,
+      isOnline: true 
+    });
+  }
+
+  // Daily Quests System
+  generateDailyQuests() {
+    const today = new Date().toDateString();
+    return DAILY_QUESTS.map(quest => ({
+      ...quest,
+      id: `${quest.id}-${today}`,
+      progress: 0,
+      completed: false,
+      date: today
+    }));
+  }
+
+  async checkDailyQuestReset(userId) {
+    const user = await this.getUser(userId);
+    if (!user) return;
+
+    const lastReset = user.lastQuestReset || 0;
+    const oneDayAgo = Date.now() - 24 * 60 * 60 * 1000;
+    
+    if (lastReset < oneDayAgo) {
+      await this.updateUser(userId, {
+        dailyQuests: this.generateDailyQuests(),
+        lastQuestReset: Date.now()
+      });
+    }
+  }
+
+  async updateDailyQuest(userId, questType, data) {
+    const user = await this.getUser(userId);
+    if (!user || !user.dailyQuests) return;
+
+    await this.checkDailyQuestReset(userId);
+    
+    const quests = [...user.dailyQuests];
+    let updated = false;
+
+    quests.forEach(quest => {
+      if (quest.completed) return;
+
+      const req = quest.requirement;
+      
+      if (req.type === 'job' && questType === 'job' && req.jobType === data.jobType) {
+        quest.progress = Math.min(quest.progress + 1, req.count);
+        if (quest.progress >= req.count) {
+          quest.completed = true;
+          this.completeQuest(userId, quest);
+        }
+        updated = true;
+      } else if (req.type === 'income' && questType === 'income') {
+        quest.progress = Math.min(quest.progress + data.amount, req.amount);
+        if (quest.progress >= req.amount) {
+          quest.completed = true;
+          this.completeQuest(userId, quest);
+        }
+        updated = true;
+      }
+    });
+
+    if (updated) {
+      await this.updateUser(userId, { dailyQuests: quests });
+    }
+  }
+
+  async completeQuest(userId, quest) {
+    const user = await this.getUser(userId);
+    if (!user) return;
+
+    await this.updateUser(userId, {
+      balance: user.balance + quest.reward
+    });
+
+    await this.addActivity(userId, `Daily quest completed: ${quest.title} (+$${quest.reward.toLocaleString()})`);
+  }
+
+  // Achievements System
+  async checkAchievements(userId) {
+    const user = await this.getUser(userId);
+    if (!user) return;
+
+    const userAchievements = user.achievements || [];
+    const servers = await this.getUserServers(userId);
+    
+    for (const achievement of ACHIEVEMENTS) {
+      // Skip if already earned
+      if (userAchievements.includes(achievement.id)) continue;
+
+      let earned = false;
+      const condition = achievement.condition;
+
+      switch (condition.type) {
+        case 'servers':
+          earned = servers.length >= condition.count;
+          break;
+        case 'balance':
+          earned = user.balance >= condition.amount;
+          break;
+        case 'jobs':
+          earned = (user.completedJobsCount || 0) >= condition.count;
+          break;
+        case 'courses':
+          earned = (user.completedCoursesCount || 0) >= condition.count;
+          break;
+      }
+
+      if (earned) {
+        const newAchievements = [...userAchievements, achievement.id];
+        await this.updateUser(userId, {
+          achievements: newAchievements,
+          balance: user.balance + achievement.reward
+        });
+
+        await this.addActivity(userId, `Achievement unlocked: ${achievement.title} (+$${achievement.reward.toLocaleString()})`);
+      }
+    }
   }
 
   // Server management
@@ -284,6 +483,9 @@ export class FileStorage {
 
     // Add activity
     await this.addActivity(userId, `Purchased ${product.name} for $${product.price.toLocaleString()}`);
+
+    // Check achievements
+    await this.checkAchievements(userId);
 
     return { user: updatedUser, server: newServer };
   }
@@ -341,10 +543,17 @@ export class FileStorage {
 
     const updatedUser = await this.updateUser(userId, {
       balance: user.balance + job.reward,
-      jobCooldowns: newCooldowns
+      jobCooldowns: newCooldowns,
+      completedJobsCount: (user.completedJobsCount || 0) + 1
     });
 
     await this.addActivity(userId, `Completed ${job.name} (+$${job.reward.toLocaleString()})`);
+
+    // Update daily quests
+    await this.updateDailyQuest(userId, 'job', { jobType });
+
+    // Check achievements
+    await this.checkAchievements(userId);
 
     return { user: updatedUser };
   }
@@ -424,7 +633,10 @@ export class FileStorage {
     if (!user || !user.currentLearning) return;
 
     const learning = user.currentLearning;
-    const updates = { currentLearning: null };
+    const updates = { 
+      currentLearning: null,
+      completedCoursesCount: (user.completedCoursesCount || 0) + 1
+    };
 
     // Apply rewards
     if (learning.reward.type === 'serverSlots') {
@@ -436,6 +648,9 @@ export class FileStorage {
 
     await this.updateUser(userId, updates);
     await this.addActivity(userId, `Completed learning course: ${learning.title}`);
+    
+    // Check achievements
+    await this.checkAchievements(userId);
   }
 
   // Income updates
@@ -460,6 +675,12 @@ export class FileStorage {
         balance: user.balance + incomeEarned,
         lastIncomeUpdate: now
       });
+
+      // Update daily quest for income
+      await this.updateDailyQuest(userId, 'income', { amount: incomeEarned });
+
+      // Check achievements
+      await this.checkAchievements(userId);
 
       return { user: updatedUser, incomeEarned };
     }
@@ -542,9 +763,16 @@ export class FileStorage {
   }
 
   isUserOnline(userData) {
-    const lastActivity = userData.lastIncomeUpdate || userData.lastSeen || 0;
-    const twelveHoursAgo = Date.now() - 12 * 60 * 60 * 1000;
-    return lastActivity > twelveHoursAgo;
+    // Check if user has been banned
+    if (userData.banned) return false;
+    
+    // User is online if they've been active in the last 5 minutes
+    const lastActivity = Math.max(
+      userData.lastSeen || 0,
+      userData.lastIncomeUpdate || 0
+    );
+    const fiveMinutesAgo = Date.now() - 5 * 60 * 1000;
+    return lastActivity > fiveMinutesAgo;
   }
 
   async getPlayerByNickname(nickname) {
@@ -624,6 +852,16 @@ export class FileStorage {
         totalBalance: 0
       };
     }
+  }
+
+  // Get all achievements
+  getAchievements() {
+    return ACHIEVEMENTS;
+  }
+
+  // Get all daily quests templates
+  getDailyQuests() {
+    return DAILY_QUESTS;
   }
 
   // Utility methods

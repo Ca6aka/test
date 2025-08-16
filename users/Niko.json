@@ -8,12 +8,18 @@
   "admin": 1,
   "isOnline": true,
   "lastIncomeUpdate": 1755314077984,
+  "lastSeen": 1755314077984,
   "jobCooldowns": {
     "maintenance": 1755314380338,
     "optimization": 1755314530671,
     "security-audit": 1755314681074
   },
   "currentLearning": null,
+  "achievements": [],
+  "completedJobsCount": 3,
+  "completedCoursesCount": 0,
+  "dailyQuests": [],
+  "lastQuestReset": 1755314723000,
   "activities": [
     {
       "id": "0cd265e7-02a9-4de9-9da4-40b8329ad555",

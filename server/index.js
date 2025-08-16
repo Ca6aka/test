@@ -3,6 +3,7 @@ import session from "express-session";
 import os from "os";
 import { registerRoutes } from "./routes.js";
 import { setupVite, serveStatic, log } from "./vite.js";
+import { storage } from "./storage.js";
 
 const app = express();
 app.use(express.json());
@@ -47,6 +48,18 @@ app.use((req, res, next) => {
     }
   });
 
+  next();
+});
+
+// Middleware to update user activity on all API calls
+app.use('/api', async (req, res, next) => {
+  if (req.session.userId && !req.path.includes('/auth/logout')) {
+    try {
+      await storage.updateUserActivity(req.session.userId);
+    } catch (error) {
+      // Ignore errors to not interrupt the request
+    }
+  }
   next();
 });
 
