@@ -145,14 +145,18 @@ export function LearningTab() {
           
 
           return (
-            <div key={course.id} className={`bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:border-primary/30 transition-all ${
+            <div key={course.id} className={`relative overflow-hidden bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:${getLearningColors(course.difficulty).border} transition-all duration-300 transform hover:scale-105 ${
               isLearning ? 'border-purple-500/50 bg-purple-500/5' :
               isCompleted ? 'border-green-500/50 bg-green-500/5' :
               isDisabled ? 'opacity-60' : ''
             }`}>
+              {/* Gradient Background */}
+              {!isDisabled && (
+                <div className={`absolute inset-0 ${!hasLevelRequirement ? 'bg-gradient-to-br from-slate-500/20 to-slate-600/20' : isCompleted ? 'bg-gradient-to-br from-green-500/20 to-green-600/20' : isLearning ? 'bg-gradient-to-br from-purple-500/20 to-purple-600/20' : `bg-gradient-to-br ${getLearningColors(course.difficulty).bg}`} opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-xl`}></div>
+              )}
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-3">
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center border ${
+                  <div className={`relative z-10 w-10 h-10 rounded-full flex items-center justify-center border ${
                     !hasLevelRequirement ? 'bg-slate-500/20 border-slate-500/50' :
                     isCompleted ? 'bg-gradient-to-br from-green-500/20 to-green-600/20 border-green-500/50' : 
                     isLearning ? 'bg-gradient-to-br from-purple-500/20 to-purple-600/20 border-purple-500/50' :
@@ -176,14 +180,14 @@ export function LearningTab() {
                     )}
                   </div>
                 </div>
-                <div className="text-right">
+                <div className="relative z-10 text-right">
                   <p className="text-base font-bold text-primary">{formatCurrency(course.price)}</p>
                 </div>
               </div>
 
-              <p className="text-sm text-slate-400 mb-4">{course.description}</p>
+              <p className="relative z-10 text-sm text-slate-400 mb-4">{course.description}</p>
               
-              <div className="grid grid-cols-2 gap-4 mb-4">
+              <div className="relative z-10 grid grid-cols-2 gap-4 mb-4">
                 <div className="bg-slate-700/30 rounded-lg p-3">
                   <p className="text-xs text-slate-400 mb-1">Duration</p>
                   <p className="text-sm font-medium text-slate-300">
@@ -201,7 +205,7 @@ export function LearningTab() {
               </div>
 
               <Button 
-                className="w-full"
+                className="relative z-10 w-full"
                 disabled={isDisabled}
                 onClick={() => !isCompleted && handleStartCourse(course.id)}
                 variant={isCompleted ? "secondary" : isLearning ? "secondary" : isDisabled ? "ghost" : "default"}
@@ -215,7 +219,7 @@ export function LearningTab() {
               </Button>
 
               {!canAfford && !hasLearning && (
-                <p className="text-xs text-red-400 mt-2 text-center">
+                <p className="relative z-10 text-xs text-red-400 mt-2 text-center">
                   Need {formatCurrency(course.price - gameState.user.balance)} more
                 </p>
               )}

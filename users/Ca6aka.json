@@ -2,7 +2,7 @@
   "id": "e73513b4-65ec-40e1-bd85-339d155b7af0",
   "nickname": "Ca6aka",
   "password": "$2b$10$JpfJ4vb59zjxCtXN0I4kbee0VAqeB3by8xsWuYuW6PZo3fAATENv.",
-  "balance": 110157,
+  "balance": 110292,
   "level": 6,
   "experience": 644,
   "totalEarnings": 20650,
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755339238518,
+  "lastIncomeUpdate": 1755339336733,
   "jobCooldowns": {
     "maintenance": 1755334299865,
     "optimization": 1755334449530,
@@ -28,6 +28,11 @@
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "61989b83-a25e-4df4-a8bd-fcda08eeed43",
+      "description": "Income: +$150, Rental: -$15 (Net: +$135)",
+      "timestamp": "8/16/2025, 10:15:36 AM"
+    },
     {
       "id": "c4ea7c18-2eac-49e7-8564-ddb20ffd3553",
       "description": "Purchased High Performance Server for $12,000",
@@ -47,11 +52,6 @@
       "id": "25ba73cf-16ba-4840-8bf3-d64bfb161b49",
       "description": "Completed learning course: Basic Server Setup",
       "timestamp": "8/16/2025, 10:11:58 AM"
-    },
-    {
-      "id": "50e05644-4601-4073-8756-434addb62c14",
-      "description": "Income: +$42, Rental: -$4 (Net: +$38)",
-      "timestamp": "8/16/2025, 8:49:40 AM"
     }
   ],
   "achievements": [
@@ -105,7 +105,7 @@
     }
   ],
   "lastQuestReset": 1755327035906,
-  "lastSeen": 1755339310542,
+  "lastSeen": 1755339393056,
   "completedLearning": [
     "basic-setup"
   ]
