@@ -1347,6 +1347,50 @@ const translations = {
     progress: 'Прогрес',
     claiming: 'Отримання...',
     
+    // Daily quests
+    dailyQuestsList: {
+      'daily-maintenance': {
+        title: 'Щоденне обслуговування',
+        description: 'Виконайте 3 завдання з обслуговування серверів'
+      },
+      'daily-income': {
+        title: 'Пасивний дохід',
+        description: 'Заробіть $5,000 від доходів серверів'
+      },
+      'daily-optimization': {
+        title: 'Оптимізація серверів',
+        description: 'Виконайте 2 завдання з оптимізації продуктивності'
+      },
+      'daily-security': {
+        title: 'Перевірка безпеки',
+        description: 'Виконайте 1 завдання з аудиту безпеки'
+      },
+      'daily-earnings': {
+        title: 'Щоденні доходи',
+        description: 'Заробіть $10,000 від доходів серверів'
+      },
+      'daily-worker': {
+        title: 'Працьовитий',
+        description: 'Виконайте 5 завдань будь-якого типу'
+      },
+      'daily-mixed-jobs': {
+        title: 'Змішані завдання',
+        description: 'Виконайте 2 завдання з обслуговування та 1 з оптимізації'
+      },
+      'daily-income-boost': {
+        title: 'Прискорення доходу',
+        description: 'Заробіть $20,000 від доходів серверів'
+      },
+      'daily-job-spree': {
+        title: 'Серія завдань',
+        description: 'Виконайте 8 завдань будь-якого типу'
+      },
+      'daily-mega-earner': {
+        title: 'Мега-заробітчик',
+        description: 'Заробіть $50,000 від доходів серверів'
+      }
+    },
+    
     // Admin panel
     adminManagement: 'Управління адміністраторами',
     selectUser: 'Виберіть користувача',
@@ -1779,6 +1823,50 @@ const translations = {
     reward: 'Belohnung',
     progress: 'Fortschritt',
     claiming: 'Einfordern...',
+    
+    // Daily quests
+    dailyQuestsList: {
+      'daily-maintenance': {
+        title: 'Tägliche Wartung',
+        description: 'Führen Sie 3 Server-Wartungsaufgaben durch'
+      },
+      'daily-income': {
+        title: 'Passives Einkommen',
+        description: 'Verdienen Sie $5.000 aus Server-Einkommen'
+      },
+      'daily-optimization': {
+        title: 'Server-Optimierung',
+        description: 'Führen Sie 2 Leistungsoptimierungs-Aufgaben durch'
+      },
+      'daily-security': {
+        title: 'Sicherheitsprüfung',
+        description: 'Führen Sie 1 Sicherheitsaudit-Aufgabe durch'
+      },
+      'daily-earnings': {
+        title: 'Tägliche Einnahmen',
+        description: 'Verdienen Sie $10.000 aus Server-Einkommen'
+      },
+      'daily-worker': {
+        title: 'Fleißiger Arbeiter',
+        description: 'Führen Sie 5 Aufgaben beliebigen Typs durch'
+      },
+      'daily-mixed-jobs': {
+        title: 'Gemischte Aufgaben',
+        description: 'Führen Sie 2 Wartungs- und 1 Optimierungsaufgabe durch'
+      },
+      'daily-income-boost': {
+        title: 'Einkommens-Boost',
+        description: 'Verdienen Sie $20.000 aus Server-Einkommen'
+      },
+      'daily-job-spree': {
+        title: 'Aufgaben-Serie',
+        description: 'Führen Sie 8 Aufgaben beliebigen Typs durch'
+      },
+      'daily-mega-earner': {
+        title: 'Mega-Verdiener',
+        description: 'Verdienen Sie $50.000 aus Server-Einkommen'
+      }
+    },
     
     // Admin panel
     adminManagement: 'Admin-Verwaltung',

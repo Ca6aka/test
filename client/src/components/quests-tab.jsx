@@ -86,7 +86,13 @@ export function QuestsTab() {
                     <Calendar className="w-5 h-5 text-blue-400" />
                   )}
                   <span className={quest.completed ? 'text-green-400' : 'text-white'}>
-                    {t('dailyQuestsList')?.[quest.id]?.title || quest.title}
+                    {(() => {
+                      const questTranslations = t('dailyQuestsList');
+                      // Extract base quest ID (remove date suffix like "-Sat Aug 16 2025")
+                      const baseQuestId = quest.id.replace(/-[A-Z][a-z]{2}\s[A-Z][a-z]{2}\s\d{1,2}\s\d{4}$/, '');
+                      const translatedTitle = questTranslations?.[baseQuestId]?.title;
+                      return translatedTitle || quest.title;
+                    })()}
                   </span>
                 </div>
                 {quest.completed && (
@@ -98,7 +104,13 @@ export function QuestsTab() {
             </CardHeader>
             <CardContent>
               <p className="text-slate-400 text-sm mb-4">
-                {t('dailyQuestsList')?.[quest.id]?.description || quest.description}
+                {(() => {
+                  const questTranslations = t('dailyQuestsList');
+                  // Extract base quest ID (remove date suffix like "-Sat Aug 16 2025")
+                  const baseQuestId = quest.id.replace(/-[A-Z][a-z]{2}\s[A-Z][a-z]{2}\s\d{1,2}\s\d{4}$/, '');
+                  const translatedDesc = questTranslations?.[baseQuestId]?.description;
+                  return translatedDesc || quest.description;
+                })()}
               </p>
               
               <div className="space-y-3">
