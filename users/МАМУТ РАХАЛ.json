@@ -2,37 +2,37 @@
   "id": "566d2601-d46f-4bcd-94d2-1e14c2ca0229",
   "nickname": "МАМУТ РАХАЛ",
   "password": "$2b$10$APOYIiwcTYooegd9N697COClCb7HIc0lGNqmE55WEgp8ROhAZGrxK",
-  "balance": 5448,
-  "level": 6,
-  "experience": 702,
-  "totalEarnings": 21500,
-  "totalSpent": 53013,
+  "balance": 13866,
+  "level": 7,
+  "experience": 790,
+  "totalEarnings": 23050,
+  "totalSpent": 71013,
   "avatar": {
     "gradient": "from-orange-400 via-amber-500 to-yellow-600",
     "pattern": "multi-color",
     "seed": 400340,
     "animation": "color-dance"
   },
-  "serverLimit": 5,
+  "serverLimit": 6,
   "tutorialCompleted": true,
   "admin": 1,
   "banned": false,
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755377079387,
+  "lastIncomeUpdate": 1755378202789,
   "jobCooldowns": {
-    "maintenance": 1755377565601,
-    "optimization": 1755377589864,
-    "security-audit": 1755377308489
+    "maintenance": 1755378218246,
+    "optimization": 1755378060026,
+    "security-audit": 1755378526539
   },
   "currentLearning": {
     "id": "basic-setup",
     "title": "Basic Server Setup",
     "description": "Learn the fundamentals of server configuration and deployment",
     "difficulty": "Beginner",
-    "startTime": 1755375927637,
-    "endTime": 1755377727637,
+    "startTime": 1755377761309,
+    "endTime": 1755379561309,
     "progress": 0,
     "reward": {
       "type": "serverSlots",
@@ -41,29 +41,29 @@
   },
   "activities": [
     {
-      "id": "a3414b8f-805a-4b86-bf22-2c26986af4e4",
-      "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "16.08.2025, 22:47:45"
+      "id": "66ebd75a-01a9-4db1-abe1-9d9df5ae21fc",
+      "description": "Income: +$396, Rental: -$39 (Net: +$357)",
+      "timestamp": "16.08.2025, 23:03:22"
     },
     {
-      "id": "d8e0d68c-20d7-4bb6-8f6a-9fe14be8d210",
-      "description": "Completed Performance Optimization (+$250, +18 XP)",
-      "timestamp": "16.08.2025, 22:45:39"
+      "id": "5eb6fc81-7898-4615-964d-2a13d6d13493",
+      "description": "Income: +$535, Rental: -$53 (Net: +$482)",
+      "timestamp": "16.08.2025, 22:59:54"
     },
     {
-      "id": "8e817639-7d90-4237-85f1-36459ae2c7e5",
-      "description": "Income: +$175, Rental: -$17 (Net: +$158)",
-      "timestamp": "16.08.2025, 22:44:39"
+      "id": "152fce16-cfaa-4c26-a3b0-dc658a179845",
+      "description": "Turned Database Server online",
+      "timestamp": "16.08.2025, 22:59:01"
     },
     {
-      "id": "90f0d07a-cf90-4bc1-92eb-a60b255c7b7c",
-      "description": "Income: +$414, Rental: -$41 (Net: +$373)",
-      "timestamp": "16.08.2025, 22:43:39"
+      "id": "9866a6fe-b6e6-47e8-b21e-99ae9700924b",
+      "description": "Turned Database Server online",
+      "timestamp": "16.08.2025, 22:59:00"
     },
     {
-      "id": "107abc6d-90ef-47c8-8392-8d5f9c18c150",
-      "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "16.08.2025, 22:42:39"
+      "id": "33c44c5d-c208-4abe-8927-c37ece889cb8",
+      "description": "Completed Security Audit (+$500, +25 XP) - Level Up! Now level 7",
+      "timestamp": "16.08.2025, 22:58:46"
     }
   ],
   "achievements": [
@@ -72,10 +72,11 @@
     "first-server",
     "efficient-worker",
     "server-builder",
-    "server-collection"
+    "server-collection",
+    "persistent-learner"
   ],
-  "completedJobsCount": 44,
-  "completedCoursesCount": 2,
+  "completedJobsCount": 49,
+  "completedCoursesCount": 3,
   "completedLearning": [],
   "efficiencyBonus": 0,
   "dailyQuests": [
@@ -147,9 +148,10 @@
         "type": "income",
         "amount": 10000
       },
-      "progress": 9766,
-      "completed": false,
-      "date": "Sat Aug 16 2025"
+      "progress": 10000,
+      "completed": true,
+      "date": "Sat Aug 16 2025",
+      "claimed": true
     },
     {
       "id": "daily-worker-Sat Aug 16 2025",
@@ -188,7 +190,7 @@
         "type": "income",
         "amount": 20000
       },
-      "progress": 9766,
+      "progress": 13503,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -215,11 +217,11 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 9766,
+      "progress": 13503,
       "completed": false,
       "date": "Sat Aug 16 2025"
     }
   ],
   "lastQuestReset": 1755371083744,
-  "lastSeen": 1755377277890
+  "lastSeen": 1755378246709
 }

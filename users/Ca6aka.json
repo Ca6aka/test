@@ -2,10 +2,10 @@
   "id": "e8162264-12da-4ee1-9dbc-a18a1f3f858b",
   "nickname": "Ca6aka",
   "password": "$2b$10$VyWHFzCGAu.7/osYGqrnxuPn.hOD46LZTHkP9KeljdyeY2j8FxfdO",
-  "balance": 24400,
+  "balance": 27157,
   "level": 5,
-  "experience": 546,
-  "totalEarnings": 18950,
+  "experience": 599,
+  "totalEarnings": 19850,
   "totalSpent": 34015,
   "avatar": {
     "gradient": "from-blue-400 via-purple-500 to-indigo-600",
@@ -20,11 +20,11 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755377189933,
+  "lastIncomeUpdate": 1755378207848,
   "jobCooldowns": {
-    "maintenance": 1755377535402,
-    "optimization": 1755377685834,
-    "security-audit": 1755377836222
+    "maintenance": 1755377918722,
+    "optimization": 1755378150991,
+    "security-audit": 1755378447170
   },
   "currentLearning": {
     "id": "advanced-management",
@@ -41,29 +41,29 @@
   },
   "activities": [
     {
-      "id": "417b9cdf-aaa5-4409-a616-68be0869abce",
-      "description": "Turned Database Server online",
-      "timestamp": "16.08.2025, 22:47:21"
+      "id": "b2461b1f-cef6-43a4-837f-535805ac3181",
+      "description": "Income: +$133, Rental: -$13 (Net: +$120)",
+      "timestamp": "16.08.2025, 23:03:27"
     },
     {
-      "id": "7ec2f39e-705a-4aee-bcf6-35edb5fb6518",
-      "description": "Turned Database Server online",
-      "timestamp": "16.08.2025, 22:47:20"
+      "id": "2ed82619-8144-466c-8e48-1124d2e7afcc",
+      "description": "Income: +$133, Rental: -$13 (Net: +$120)",
+      "timestamp": "16.08.2025, 23:02:27"
     },
     {
-      "id": "384b4a77-3f9f-4b52-804a-54ee1c49ee56",
-      "description": "Completed Security Audit (+$500, +25 XP)",
-      "timestamp": "16.08.2025, 22:47:16"
+      "id": "6f6f3e71-82d5-4a4c-b8bb-9268980dc1e7",
+      "description": "Income: +$133, Rental: -$13 (Net: +$120)",
+      "timestamp": "16.08.2025, 23:01:27"
     },
     {
-      "id": "5f7e583f-be16-416a-bf3e-91fee0d89c3d",
-      "description": "Completed Performance Optimization (+$250, +18 XP)",
-      "timestamp": "16.08.2025, 22:47:15"
+      "id": "e60ff8b8-d8bc-4621-bc2a-d8b06dcfd7c9",
+      "description": "Income: +$133, Rental: -$13 (Net: +$120)",
+      "timestamp": "16.08.2025, 23:00:27"
     },
     {
-      "id": "2ebea5ff-0ebf-41ae-9b76-e9cc2b27450c",
-      "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "16.08.2025, 22:47:15"
+      "id": "1a156edc-4011-4aa7-9b05-5ea958ac7d35",
+      "description": "Income: +$133, Rental: -$13 (Net: +$120)",
+      "timestamp": "16.08.2025, 22:59:27"
     }
   ],
   "achievements": [
@@ -73,7 +73,7 @@
     "efficient-worker",
     "server-builder"
   ],
-  "completedJobsCount": 33,
+  "completedJobsCount": 36,
   "completedCoursesCount": 1,
   "completedLearning": [],
   "efficiencyBonus": 0,
@@ -146,7 +146,7 @@
         "type": "income",
         "amount": 10000
       },
-      "progress": 7139,
+      "progress": 9195,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -187,7 +187,7 @@
         "type": "income",
         "amount": 20000
       },
-      "progress": 7139,
+      "progress": 9195,
       "completed": false,
       "date": "Sat Aug 16 2025"
     },
@@ -214,11 +214,11 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 7139,
+      "progress": 9195,
       "completed": false,
       "date": "Sat Aug 16 2025"
     }
   ],
   "lastQuestReset": 1755363722114,
-  "lastSeen": 1755377277814
+  "lastSeen": 1755378207842
 }
