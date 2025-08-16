@@ -2,14 +2,14 @@
   "id": "7cbbe073-b933-4e09-aba9-83ecb54044cc",
   "nickname": "Ca6aka",
   "password": "$2b$10$ODnRRfchayBjt1IVGngeVe6REw73x/CViKxFqvEXn0kVbN3VNPu4W",
-  "balance": 19500,
+  "balance": 7000,
   "serverLimit": 3,
   "tutorialCompleted": true,
   "lastIncomeUpdate": 1755303256099,
   "jobCooldowns": {
-    "maintenance": 1755307195132,
-    "optimization": 1755306999845,
-    "security-audit": 1755307345986
+    "maintenance": 1755308951004,
+    "optimization": 1755309251234,
+    "security-audit": 1755309101535
   },
   "currentLearning": {
     "id": "advanced-management",
@@ -25,6 +25,26 @@
     }
   },
   "activities": [
+    {
+      "id": "7fa69f23-b54d-4613-8409-f68535daca9a",
+      "description": "Purchased CDN Server for $15 000",
+      "timestamp": "16.08.2025, 03:45:18"
+    },
+    {
+      "id": "a5a04dce-f3f9-4d3f-b3cd-09662c51d74f",
+      "description": "Completed Security Audit (+$800)",
+      "timestamp": "16.08.2025, 03:44:11"
+    },
+    {
+      "id": "eba2c62a-cf8c-4a68-a5c7-d2ca77b4c2c1",
+      "description": "Completed Performance Optimization (+$1 200)",
+      "timestamp": "16.08.2025, 03:44:11"
+    },
+    {
+      "id": "f500e6ac-0729-496f-a300-ad541b163799",
+      "description": "Completed Server Maintenance (+$500)",
+      "timestamp": "16.08.2025, 03:44:11"
+    },
     {
       "id": "04154482-03f1-4bad-9a95-17e3f5d6688d",
       "description": "Completed Security Audit (+$800)",

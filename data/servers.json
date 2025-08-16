@@ -34,5 +34,17 @@
     "isOnline": true,
     "usage": 66,
     "createdAt": 1755308058218
+  },
+  {
+    "id": "51c400a5-12d7-442a-8352-1c6c35e854a2",
+    "ownerId": "7cbbe073-b933-4e09-aba9-83ecb54044cc",
+    "name": "CDN Server",
+    "type": "Content Delivery",
+    "incomePerMinute": 450,
+    "monthlyCost": 180,
+    "icon": "fas fa-cloud",
+    "isOnline": true,
+    "usage": 39,
+    "createdAt": 1755308718413
   }
 ]

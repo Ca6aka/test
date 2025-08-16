@@ -2,17 +2,49 @@
   "id": "3fbe5878-38b7-43af-aa42-b069a5775d5b",
   "nickname": "Nikor",
   "password": "$2b$10$A6xLQDbELht7vsrFC/1souHCAex3BRs0aXsyU3tuAT55dS4Dxwk6q",
-  "balance": 1313,
+  "balance": 1813,
   "serverLimit": 3,
   "tutorialCompleted": true,
   "lastIncomeUpdate": 1755307568643,
   "jobCooldowns": {
-    "maintenance": 1755308318609,
-    "optimization": 1755308286439,
-    "security-audit": 1755308469192
+    "maintenance": 1755308923333,
+    "optimization": 1755309223782,
+    "security-audit": 1755309074116
   },
-  "currentLearning": null,
+  "currentLearning": {
+    "id": "basic-setup",
+    "title": "Basic Server Setup",
+    "description": "Learn the fundamentals of server configuration and deployment",
+    "difficulty": "Beginner",
+    "startTime": 1755308628941,
+    "endTime": 1755310428941,
+    "progress": 0,
+    "reward": {
+      "type": "serverSlots",
+      "amount": 1
+    }
+  },
   "activities": [
+    {
+      "id": "4312a2fd-7c47-4d33-a624-1c84d59f0c7c",
+      "description": "Started learning course: Basic Server Setup",
+      "timestamp": "16.08.2025, 03:43:48"
+    },
+    {
+      "id": "3e6927cb-b0b9-4f3c-bfdb-916894fc121a",
+      "description": "Completed Security Audit (+$800)",
+      "timestamp": "16.08.2025, 03:43:44"
+    },
+    {
+      "id": "7c706c92-7ebb-4b82-859e-b6c8d05c084f",
+      "description": "Completed Performance Optimization (+$1 200)",
+      "timestamp": "16.08.2025, 03:43:43"
+    },
+    {
+      "id": "57b47b62-1fe2-4504-8e4a-fa902a3bd59c",
+      "description": "Completed Server Maintenance (+$500)",
+      "timestamp": "16.08.2025, 03:43:43"
+    },
     {
       "id": "e798b328-76ea-4e0e-b8d7-c13ba48e4cd9",
       "description": "Turned Database Server online",
