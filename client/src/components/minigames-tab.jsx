@@ -93,12 +93,15 @@ const MiniGamesTab = () => {
   // DDoS Game Logic
   const startDdosGame = () => {
     setGameState('playing');
+    const numPackets = Math.floor(Math.random() * 15) + 25; // 25-40 packets
     setDdosState({
       packets: [],
       score: 0,
       timeLeft: 30,
-      speed: 1,
-      gameOver: false
+      speed: 2,
+      gameOver: false,
+      totalPackets: numPackets,
+      packetsSpawned: 0
     });
   };
 
@@ -110,19 +113,20 @@ const MiniGamesTab = () => {
           
           const newPackets = [...prev.packets];
           
-          // Add new packet - full width
-          if (Math.random() < 0.3) {
+          // Add new packets faster
+          if (prev.packetsSpawned < prev.totalPackets && Math.random() < 0.7) {
             newPackets.push({
-              id: Date.now(),
-              x: Math.random() * 560, // Full width of container
+              id: Date.now() + Math.random(),
+              x: Math.random() * 360 + 20,
               y: 0,
               speed: prev.speed
             });
+            prev.packetsSpawned++;
           }
           
-          // Move packets
+          // Move packets faster
           newPackets.forEach(packet => {
-            packet.y += packet.speed * 2;
+            packet.y += packet.speed * 3;
           });
           
           // Remove packets that reached bottom
@@ -130,14 +134,14 @@ const MiniGamesTab = () => {
           const reachedBottom = newPackets.length - filteredPackets.length;
           
           // Increase speed every 5 seconds
-          const newSpeed = prev.speed + (30 - prev.timeLeft) * 0.1;
+          const newSpeed = prev.speed + (30 - prev.timeLeft) * 0.2;
           
           return {
             ...prev,
             packets: filteredPackets,
             timeLeft: prev.timeLeft - 1,
             speed: newSpeed,
-            gameOver: prev.timeLeft <= 1 || reachedBottom > 10
+            gameOver: prev.timeLeft <= 1 || reachedBottom > 15
           };
         });
       }, 1000);
@@ -157,6 +161,7 @@ const MiniGamesTab = () => {
       requestsLeft: 15,
       correctChoices: 0,
       wrongChoices: 0,
+      currentIndex: 0,
       gameOver: false
     });
   };
@@ -167,34 +172,38 @@ const MiniGamesTab = () => {
     
     setFirewallState(prev => {
       const newRequestsLeft = prev.requestsLeft - 1;
-      const nextRequest = prev.requests[15 - newRequestsLeft];
+      const newIndex = prev.currentIndex + 1;
+      const nextRequest = prev.requests[newIndex];
       
       return {
         ...prev,
         currentRequest: nextRequest,
         requestsLeft: newRequestsLeft,
+        currentIndex: newIndex,
         correctChoices: prev.correctChoices + (correct ? 1 : 0),
         wrongChoices: prev.wrongChoices + (correct ? 0 : 1),
-        score: prev.score + (correct ? 1 : 0), // Changed from 5 to 1 XP per correct answer
+        score: prev.score + (correct ? 1 : 0),
         gameOver: newRequestsLeft <= 0
       };
     });
   };
 
   const finishGame = () => {
+    let scoreToAdd = 0;
     if (selectedGame?.id === 'ddos-protection') {
-      updateExpMutation.mutate(ddosState.score);
-      toast({
-        title: t('gameCompleted'),
-        description: t('earnedXP').replace('{amount}', ddosState.score)
-      });
+      scoreToAdd = ddosState.score;
     } else if (selectedGame?.id === 'firewall-filter') {
-      updateExpMutation.mutate(firewallState.score);
+      scoreToAdd = firewallState.score;
+    }
+    
+    if (scoreToAdd > 0) {
+      updateExpMutation.mutate(scoreToAdd);
       toast({
         title: t('gameCompleted'),
-        description: t('earnedXP').replace('{amount}', firewallState.score)
+        description: t('earnedXP').replace('{amount}', scoreToAdd)
       });
     }
+    
     setGameState('results');
   };
 
@@ -217,7 +226,7 @@ const MiniGamesTab = () => {
     setSelectedGame(null);
     setGameState('menu');
     setDdosState({ packets: [], score: 0, timeLeft: 30, speed: 1, gameOver: false });
-    setFirewallState({ requests: [], currentRequest: null, score: 0, requestsLeft: 15, correctChoices: 0, wrongChoices: 0, gameOver: false });
+    setFirewallState({ requests: [], currentRequest: null, score: 0, requestsLeft: 15, correctChoices: 0, wrongChoices: 0, currentIndex: 0, gameOver: false });
   };
 
   return (

@@ -2,10 +2,10 @@
   "id": "9b1a7cc0-8287-468a-9df7-de5d5e73402f",
   "nickname": "Ca6aka",
   "password": "$2b$10$vQisG/HiYpZCbDxhj9hAb.kSngBkSHarYFF0JExylZ1/d5j1tGgq6",
-  "balance": 225479,
+  "balance": 226379,
   "level": 5,
-  "experience": 530,
-  "totalEarnings": 215586,
+  "experience": 583,
+  "totalEarnings": 216486,
   "totalSpent": 67807,
   "avatar": {
     "gradient": "from-violet-400 via-purple-500 to-indigo-600",
@@ -22,12 +22,27 @@
   "isOnline": true,
   "lastIncomeUpdate": 1755468383627,
   "jobCooldowns": {
-    "maintenance": 1755464475247,
-    "optimization": 1755464406190,
-    "security-audit": 1755464526627
+    "maintenance": 1755471014865,
+    "optimization": 1755471148444,
+    "security-audit": 1755471274266
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "a4e15b0d-ce9d-430d-a78d-07ee0b348994",
+      "description": "Completed Security Audit (+$500, +25 XP)",
+      "timestamp": "8/17/2025, 10:47:34 PM"
+    },
+    {
+      "id": "c8187f25-0091-4396-a788-6ee97ecb4658",
+      "description": "Completed Performance Optimization (+$250, +18 XP)",
+      "timestamp": "8/17/2025, 10:47:28 PM"
+    },
+    {
+      "id": "a7d532a4-5e45-4d7c-a840-19cfa30d23e7",
+      "description": "Completed Server Maintenance (+$150, +10 XP)",
+      "timestamp": "8/17/2025, 10:47:14 PM"
+    },
     {
       "id": "132b04bc-4840-4f46-a932-620b59136bbe",
       "description": "Turned Basic Web Server offline",
@@ -37,21 +52,6 @@
       "id": "57691338-0255-45dd-a6fa-699ea69095bc",
       "description": "Income: +$11, Rental: -$1 (Net: +$10)",
       "timestamp": "8/17/2025, 10:06:23 PM"
-    },
-    {
-      "id": "475bbb9f-46c7-47c1-8255-edf7dc421fb4",
-      "description": "Turned Basic Web Server offline",
-      "timestamp": "8/17/2025, 10:06:19 PM"
-    },
-    {
-      "id": "2d2f9ce9-0ea9-41b2-a958-289c6abd06b4",
-      "description": "Income: +$57, Rental: -$5 (Net: +$52)",
-      "timestamp": "8/17/2025, 10:05:51 PM"
-    },
-    {
-      "id": "bb59a773-64eb-4ea6-afe9-dd645fd9c0dd",
-      "description": "Income: +$44, Rental: -$4 (Net: +$40)",
-      "timestamp": "8/17/2025, 10:04:33 PM"
     }
   ],
   "achievements": [
@@ -63,7 +63,7 @@
     "efficient-worker",
     "wealthy-investor"
   ],
-  "completedJobsCount": 33,
+  "completedJobsCount": 36,
   "completedCoursesCount": 1,
   "completedLearning": [],
   "efficiencyBonus": 0,
@@ -223,5 +223,5 @@
   "lastQuestReset": 1755392887200,
   "registrationIP": "192.168.0.136",
   "registrationTime": 1755392887200,
-  "lastSeen": 1755470707024
+  "lastSeen": 1755471346160
 }

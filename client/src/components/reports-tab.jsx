@@ -222,7 +222,7 @@ export function ReportsTab() {
                 </DialogHeader>
                 <div className="space-y-4">
                   <div>
-                    <label className="text-sm text-slate-300 mb-2 block">{t('subject')}</label>
+                    <label className="text-sm text-slate-300 mb-2 block">{t('reportSubject')}</label>
                     <Input
                       value={newReportSubject}
                       onChange={(e) => setNewReportSubject(e.target.value)}
@@ -235,23 +235,25 @@ export function ReportsTab() {
                     </div>
                   </div>
                   <div>
-                    <label className="text-sm text-slate-300 mb-2 block">{t('category')}</label>
+                    <label className="text-sm text-slate-300 mb-2 block">{t('reportType')}</label>
                     <Select value={newReportCategory} onValueChange={setNewReportCategory}>
                       <SelectTrigger className="bg-slate-700 border-slate-600 text-white">
                         <SelectValue placeholder={t('selectCategory')} />
                       </SelectTrigger>
                       <SelectContent className="bg-slate-700 border-slate-600">
-                        <SelectItem value="general" className="text-white">{t('generalIssue')}</SelectItem>
-                        <SelectItem value="technical" className="text-white">{t('technicalIssue')}</SelectItem>
+                        <SelectItem value="bug" className="text-white">{t('reportTypeBug')}</SelectItem>
+                        <SelectItem value="feature" className="text-white">{t('reportTypeFeature')}</SelectItem>
+                        <SelectItem value="complaint" className="text-white">{t('reportTypeComplaint')}</SelectItem>
+                        <SelectItem value="other" className="text-white">{t('reportTypeOther')}</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                   <div>
-                    <label className="text-sm text-slate-300 mb-2 block">{t('description')}</label>
+                    <label className="text-sm text-slate-300 mb-2 block">{t('reportMessage')}</label>
                     <textarea
                       value={newReportMessage}
                       onChange={(e) => setNewReportMessage(e.target.value)}
-                      placeholder={t('initialMessage')}
+                      placeholder={t('reportMessage')}
                       className="w-full p-3 bg-slate-700 border border-slate-600 text-white rounded-md min-h-[100px] resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
                       maxLength={500}
                     />
@@ -264,7 +266,7 @@ export function ReportsTab() {
                     disabled={createReportMutation.isPending}
                     className="w-full bg-blue-600 hover:bg-blue-700"
                   >
-                    {createReportMutation.isPending ? t('sending') : t('startChat')}
+                    {createReportMutation.isPending ? t('sending') : t('submitReport')}
                   </Button>
                 </div>
               </DialogContent>

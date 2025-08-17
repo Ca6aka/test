@@ -275,8 +275,10 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
               <div className="text-2xl font-bold text-green-600">{t('serverminigame5')}</div>
               <div className="text-gray-600 dark:text-gray-300">{t('serverminigame10')}</div>
               <Button onClick={() => {
-                updateServerMutation.mutate(server.id);
-                closeGame();
+                setTimeout(() => {
+                  updateServerMutation.mutate(server.id);
+                  closeGame();
+                }, 2000);
               }} className="bg-green-600 hover:bg-green-700">
                 {t('close')}
               </Button>

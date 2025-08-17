@@ -1322,6 +1322,17 @@ const translations = {
     subjectTooLong: 'Тема не должна превышать 50 символов',
     messageTooLong: 'Сообщение не должно превышать 500 символов',
     characters: 'символов',
+    reportSubject: 'Тема отчета',
+    reportType: 'Тип отчета',
+    reportTypeBug: 'Сообщение об ошибке',
+    reportTypeFeature: 'Запрос функции',
+    reportTypeComplaint: 'Жалоба',
+    reportTypeOther: 'Другое',
+    reportMessage: 'Сообщение',
+    submitReport: 'Отправить отчет',
+    tutorialJob1Desc: 'Выполните техническое обслуживание серверов',
+    tutorialJob2Desc: 'Настройте базу данных и улучшите производительность',
+    tutorialJob3Desc: 'Проведите анализ безопасности и устраните уязвимости',
     
     // Reports reopen functionality
     reopenChat: 'Переоткрыть чат',
