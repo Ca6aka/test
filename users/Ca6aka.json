@@ -13,7 +13,7 @@
     "seed": 259976,
     "animation": "soft-pulse"
   },
-  "serverLimit": 9,
+  "serverLimit": 10,
   "tutorialCompleted": true,
   "admin": 2,
   "banned": false,
@@ -26,20 +26,13 @@
     "optimization": 1755396739999,
     "security-audit": 1755396740463
   },
-  "currentLearning": {
-    "id": "basic-setup",
-    "title": "Basic Server Setup",
-    "description": "Learn the fundamentals of server configuration and deployment",
-    "difficulty": "Beginner",
-    "startTime": 1755396205402,
-    "endTime": 1755398005402,
-    "progress": 0,
-    "reward": {
-      "type": "serverSlots",
-      "amount": 1
-    }
-  },
+  "currentLearning": null,
   "activities": [
+    {
+      "id": "2149cfdd-054f-4f9a-9647-5f79e60ec0dc",
+      "description": "Completed learning course: Basic Server Setup",
+      "timestamp": "8/17/2025, 8:30:25 PM"
+    },
     {
       "id": "5f099e24-f1ef-4fa0-a2c7-ce299d9865cc",
       "description": "Basic Web Server went offline due to maintenance required",
@@ -59,11 +52,6 @@
       "id": "1cbcca8f-66a0-457b-bff5-de3fc48cda4d",
       "description": "Basic Web Server went offline due to maintenance required",
       "timestamp": "8/17/2025, 8:28:14 PM"
-    },
-    {
-      "id": "72324501-64d7-4ccb-b768-3b10c65376e2",
-      "description": "Basic Web Server went offline due to maintenance required",
-      "timestamp": "8/17/2025, 8:28:14 PM"
     }
   ],
   "achievements": [
@@ -75,7 +63,7 @@
     "efficient-worker"
   ],
   "completedJobsCount": 29,
-  "completedCoursesCount": 0,
+  "completedCoursesCount": 1,
   "completedLearning": [],
   "efficiencyBonus": 0,
   "dailyQuests": [
@@ -230,5 +218,5 @@
   "lastQuestReset": 1755392887200,
   "registrationIP": "192.168.0.136",
   "registrationTime": 1755392887200,
-  "lastSeen": 1755396712258
+  "lastSeen": 1755463075032
 }

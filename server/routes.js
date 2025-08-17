@@ -52,6 +52,14 @@ function generateRandomAvatar(nickname = '') {
 }
 
 export async function registerRoutes(app) {
+  // Middleware for requiring authentication
+  const requireAuth = (req, res, next) => {
+    if (!req.session.userId) {
+      return res.status(401).json({ message: 'Not authenticated' });
+    }
+    next();
+  };
+
   // Authentication routes
   app.post('/api/auth/register', async (req, res) => {
     try {
@@ -806,6 +814,176 @@ export async function registerRoutes(app) {
       res.json({ mutes: activeMutes });
     } catch (error) {
       res.status(500).json({ message: error.message });
+    }
+  });
+
+  // Reports System Routes
+  app.get('/api/reports', requireAuth, async (req, res) => {
+    try {
+      const user = await storage.getUser(req.session.userId);
+      if (!user) {
+        return res.status(401).json({ message: 'Unauthorized' });
+      }
+
+      let reports;
+      if (user.admin >= 1) {
+        // Admin sees all reports
+        reports = await storage.getAdminReports();
+      } else {
+        // User sees only their reports
+        reports = await storage.getUserReports(user.id);
+      }
+
+      res.json(reports);
+    } catch (error) {
+      console.error('Error getting reports:', error);
+      res.status(500).json({ message: 'Server error' });
+    }
+  });
+
+  app.post('/api/reports', requireAuth, async (req, res) => {
+    try {
+      const user = await storage.getUser(req.session.userId);
+      if (!user || user.banned) {
+        return res.status(403).json({ message: 'Access denied' });
+      }
+
+      const { subject, category, initialMessage } = req.body;
+
+      if (!subject || !category || !initialMessage) {
+        return res.status(400).json({ message: 'Subject, category, and initial message are required' });
+      }
+
+      if (subject.length > 100 || initialMessage.length > 1000) {
+        return res.status(400).json({ message: 'Subject or message too long' });
+      }
+
+      const report = await storage.createReport(user.id, subject, category, initialMessage);
+      res.json(report);
+    } catch (error) {
+      console.error('Error creating report:', error);
+      if (error.message === 'You already have an active report') {
+        return res.status(400).json({ message: error.message });
+      }
+      res.status(500).json({ message: 'Server error' });
+    }
+  });
+
+  app.get('/api/reports/:reportId/messages', requireAuth, async (req, res) => {
+    try {
+      const user = await storage.getUser(req.session.userId);
+      if (!user) {
+        return res.status(401).json({ message: 'Unauthorized' });
+      }
+
+      const { reportId } = req.params;
+      const report = await storage.getReportById(reportId);
+      
+      if (!report) {
+        return res.status(404).json({ message: 'Report not found' });
+      }
+
+      // Check if user can access this report
+      if (user.admin < 1 && report.userId !== user.id) {
+        return res.status(403).json({ message: 'Access denied' });
+      }
+
+      const messages = await storage.getReportMessages(reportId);
+      
+      // Mark as read by clearing new messages flag
+      if (user.admin >= 1 || report.userId === user.id) {
+        await storage.updateReport(reportId, { hasNewMessages: false });
+      }
+
+      res.json(messages);
+    } catch (error) {
+      console.error('Error getting report messages:', error);
+      res.status(500).json({ message: 'Server error' });
+    }
+  });
+
+  app.post('/api/reports/:reportId/messages', requireAuth, async (req, res) => {
+    try {
+      const user = await storage.getUser(req.session.userId);
+      if (!user || user.banned) {
+        return res.status(403).json({ message: 'Access denied' });
+      }
+
+      const { reportId } = req.params;
+      const { message } = req.body;
+
+      if (!message || message.length > 500) {
+        return res.status(400).json({ message: 'Message is required and must be under 500 characters' });
+      }
+
+      const report = await storage.getReportById(reportId);
+      if (!report) {
+        return res.status(404).json({ message: 'Report not found' });
+      }
+
+      if (report.status !== 'open') {
+        return res.status(400).json({ message: 'Cannot send message to closed report' });
+      }
+
+      // Check if user can send messages to this report
+      const isFromAdmin = user.admin >= 1;
+      if (!isFromAdmin && report.userId !== user.id) {
+        return res.status(403).json({ message: 'Access denied' });
+      }
+
+      const newMessage = await storage.createReportMessage(reportId, user.id, message, isFromAdmin);
+      res.json(newMessage);
+    } catch (error) {
+      console.error('Error creating report message:', error);
+      res.status(500).json({ message: 'Server error' });
+    }
+  });
+
+  app.post('/api/reports/:reportId/close', requireAuth, async (req, res) => {
+    try {
+      const user = await storage.getUser(req.session.userId);
+      if (!user || user.admin < 1) {
+        return res.status(403).json({ message: 'Admin access required' });
+      }
+
+      const { reportId } = req.params;
+      const updatedReport = await storage.closeReport(reportId, user.id);
+      res.json(updatedReport);
+    } catch (error) {
+      console.error('Error closing report:', error);
+      res.status(500).json({ message: 'Server error' });
+    }
+  });
+
+  app.post('/api/reports/:reportId/mark', requireAuth, async (req, res) => {
+    try {
+      const user = await storage.getUser(req.session.userId);
+      if (!user || user.admin < 1) {
+        return res.status(403).json({ message: 'Admin access required' });
+      }
+
+      const { reportId } = req.params;
+      const updatedReport = await storage.markReport(reportId, user.id);
+      res.json(updatedReport);
+    } catch (error) {
+      console.error('Error marking report:', error);
+      res.status(500).json({ message: 'Server error' });
+    }
+  });
+
+  app.delete('/api/reports/:reportId', requireAuth, async (req, res) => {
+    try {
+      const user = await storage.getUser(req.session.userId);
+      if (!user || user.admin < 1) {
+        return res.status(403).json({ message: 'Admin access required' });
+      }
+
+      const { reportId } = req.params;
+      await storage.deleteReport(reportId);
+      res.json({ success: true });
+    } catch (error) {
+      console.error('Error deleting report:', error);
+      res.status(500).json({ message: 'Server error' });
     }
   });
 

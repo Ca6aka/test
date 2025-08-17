@@ -11,6 +11,7 @@ import { HostingTab } from '@/components/hosting-tab';
 import { LearningTab } from '@/components/learning-tab';
 import { AchievementsTab } from '@/components/achievements-tab';
 import { QuestsTab } from '@/components/quests-tab';
+import { ReportsTab } from '@/components/reports-tab';
 import { useGame } from '@/contexts/game-context';
 import { useLanguage } from '@/contexts/language-context';
 import { PlayerRankings, RankingsCountdown } from '@/components/player-rankings';
@@ -42,6 +43,7 @@ export default function DashboardPage() {
       case 'learning': return <LearningTab />;
       case 'achievements': return <AchievementsTab />;
       case 'quests': return <QuestsTab />;
+      case 'reports': return <ReportsTab />;
       default: return <TutorialTab gameState={gameState} setActiveTab={setActiveTab} />;
     }
   };
@@ -183,6 +185,24 @@ export default function DashboardPage() {
               <span>{t('dailyQuests')}</span>
               {!isTabUnlocked('quests') && <Lock className="w-3 h-3 ml-1" />}
             </Button>
+
+            <Button
+              variant={activeTab === 'reports' ? 'default' : 'ghost'}
+              size="sm"
+              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs ${
+                activeTab === 'reports'
+                  ? 'bg-primary/20 text-primary border border-primary/30'
+                  : isTabUnlocked('reports')
+                  ? 'text-slate-300 hover:bg-slate-700/50'
+                  : 'text-slate-500 opacity-50 cursor-not-allowed'
+              }`}
+              onClick={() => isTabUnlocked('reports') && setActiveTab('reports')}
+              disabled={!isTabUnlocked('reports')}
+            >
+              <i className="fas fa-headset"></i>
+              <span>{t('reports')}</span>
+              {!isTabUnlocked('reports') && <Lock className="w-3 h-3 ml-1" />}
+            </Button>
             
           </div>
         </div>
@@ -302,6 +322,24 @@ export default function DashboardPage() {
               <i className="fas fa-calendar text-lg"></i>
               <span className="font-medium">{t('dailyQuests')}</span>
               {!isTabUnlocked('quests') && <Lock className="w-4 h-4 ml-auto" />}
+            </Button>
+
+            {/* Reports Tab */}
+            <Button
+              variant={activeTab === 'reports' ? 'default' : 'ghost'}
+              className={`w-full justify-start space-x-3 ${
+                activeTab === 'reports'
+                  ? 'bg-primary/20 text-primary border border-primary/30'
+                  : isTabUnlocked('reports')
+                  ? 'text-slate-300 hover:bg-slate-700/50'
+                  : 'text-slate-500 opacity-50 cursor-not-allowed'
+              }`}
+              onClick={() => isTabUnlocked('reports') && setActiveTab('reports')}
+              disabled={!isTabUnlocked('reports')}
+            >
+              <i className="fas fa-headset text-lg"></i>
+              <span className="font-medium">{t('reports')}</span>
+              {!isTabUnlocked('reports') && <Lock className="w-4 h-4 ml-auto" />}
             </Button>
           </nav>
           

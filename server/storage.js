@@ -1659,6 +1659,202 @@ export class FileStorage {
     return messages[messageIndex];
   }
 
+  // Reports System
+  async createReport(userId, subject, category, initialMessage) {
+    const user = await this.getUser(userId);
+    if (!user || user.banned) {
+      throw new Error('Cannot create report');
+    }
+
+    // Check if user has active report
+    const existingReports = await this.getUserReports(userId);
+    const hasActiveReport = existingReports.some(report => report.status === 'open');
+    if (hasActiveReport) {
+      throw new Error('You already have an active report');
+    }
+
+    const reportId = randomUUID();
+    const report = {
+      id: reportId,
+      userId,
+      userNickname: user.nickname,
+      subject,
+      category,
+      status: 'open',
+      createdAt: Date.now(),
+      closedAt: null,
+      closedBy: null,
+      isMarked: false,
+      hasNewMessages: false
+    };
+
+    let reports = [];
+    try {
+      const data = await fs.readFile('./data/reports.json', 'utf8');
+      reports = JSON.parse(data);
+    } catch (error) {
+      // File doesn't exist, start with empty array
+    }
+
+    reports.push(report);
+    await fs.writeFile('./data/reports.json', JSON.stringify(reports, null, 2));
+
+    // Create initial message
+    if (initialMessage) {
+      await this.createReportMessage(reportId, userId, initialMessage, false);
+    }
+
+    return report;
+  }
+
+  async getUserReports(userId) {
+    try {
+      const data = await fs.readFile('./data/reports.json', 'utf8');
+      const reports = JSON.parse(data);
+      return reports.filter(report => report.userId === userId);
+    } catch (error) {
+      return [];
+    }
+  }
+
+  async getAdminReports() {
+    try {
+      const data = await fs.readFile('./data/reports.json', 'utf8');
+      const reports = JSON.parse(data);
+      return reports.sort((a, b) => b.createdAt - a.createdAt);
+    } catch (error) {
+      return [];
+    }
+  }
+
+  async getReportById(reportId) {
+    try {
+      const data = await fs.readFile('./data/reports.json', 'utf8');
+      const reports = JSON.parse(data);
+      return reports.find(report => report.id === reportId);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  async updateReport(reportId, updates) {
+    try {
+      const data = await fs.readFile('./data/reports.json', 'utf8');
+      let reports = JSON.parse(data);
+      const reportIndex = reports.findIndex(report => report.id === reportId);
+      
+      if (reportIndex === -1) {
+        throw new Error('Report not found');
+      }
+
+      reports[reportIndex] = { ...reports[reportIndex], ...updates };
+      await fs.writeFile('./data/reports.json', JSON.stringify(reports, null, 2));
+      return reports[reportIndex];
+    } catch (error) {
+      throw new Error('Failed to update report');
+    }
+  }
+
+  async deleteReport(reportId) {
+    try {
+      const data = await fs.readFile('./data/reports.json', 'utf8');
+      let reports = JSON.parse(data);
+      reports = reports.filter(report => report.id !== reportId);
+      await fs.writeFile('./data/reports.json', JSON.stringify(reports, null, 2));
+
+      // Also delete all messages for this report
+      try {
+        const messagesData = await fs.readFile('./data/report-messages.json', 'utf8');
+        let messages = JSON.parse(messagesData);
+        messages = messages.filter(message => message.reportId !== reportId);
+        await fs.writeFile('./data/report-messages.json', JSON.stringify(messages, null, 2));
+      } catch (error) {
+        // Messages file doesn't exist
+      }
+
+      return true;
+    } catch (error) {
+      throw new Error('Failed to delete report');
+    }
+  }
+
+  async createReportMessage(reportId, userId, message, isFromAdmin = false) {
+    const user = await this.getUser(userId);
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    const reportMessage = {
+      id: randomUUID(),
+      reportId,
+      userId,
+      userNickname: user.nickname,
+      message: message.trim(),
+      isFromAdmin,
+      createdAt: Date.now()
+    };
+
+    let messages = [];
+    try {
+      const data = await fs.readFile('./data/report-messages.json', 'utf8');
+      messages = JSON.parse(data);
+    } catch (error) {
+      // File doesn't exist, start with empty array
+    }
+
+    messages.push(reportMessage);
+    await fs.writeFile('./data/report-messages.json', JSON.stringify(messages, null, 2));
+
+    // Update report to mark as having new messages
+    const report = await this.getReportById(reportId);
+    if (report) {
+      await this.updateReport(reportId, { hasNewMessages: true });
+    }
+
+    return reportMessage;
+  }
+
+  async getReportMessages(reportId) {
+    try {
+      const data = await fs.readFile('./data/report-messages.json', 'utf8');
+      const messages = JSON.parse(data);
+      return messages.filter(message => message.reportId === reportId)
+                    .sort((a, b) => a.createdAt - b.createdAt);
+    } catch (error) {
+      return [];
+    }
+  }
+
+  async closeReport(reportId, adminUserId) {
+    const admin = await this.getUser(adminUserId);
+    if (!admin || admin.admin < 1) {
+      throw new Error('Admin access required');
+    }
+
+    return await this.updateReport(reportId, {
+      status: 'closed',
+      closedAt: Date.now(),
+      closedBy: admin.nickname,
+      hasNewMessages: false
+    });
+  }
+
+  async markReport(reportId, adminUserId) {
+    const admin = await this.getUser(adminUserId);
+    if (!admin || admin.admin < 1) {
+      throw new Error('Admin access required');
+    }
+
+    const report = await this.getReportById(reportId);
+    if (!report) {
+      throw new Error('Report not found');
+    }
+
+    return await this.updateReport(reportId, {
+      isMarked: !report.isMarked
+    });
+  }
+
   async muteUser(targetUserId, adminUserId, duration) {
     const admin = await this.getUser(adminUserId);
     if (!admin || admin.admin < 1) {
