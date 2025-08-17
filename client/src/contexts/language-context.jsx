@@ -487,7 +487,8 @@ const translations = {
     earnAchievementsDesc: 'Complete jobs and reach milestones to earn achievements!',
     currentBalance: 'Current Balance',
     levelUp: 'Level Up!',
-    levelUpCongrats: 'Congratulations! You\'ve reached level',
+    levelUpCongrats: 'Congratulations! You\'ve reached',
+    levelUpCongrats3: 'level',
     levelUpCongrats2: 'To close the window, click somewhere',
     newAbilitiesUnlocked: 'New abilities unlocked!',
     
@@ -515,8 +516,8 @@ const translations = {
     
     // Server deletion confirmations
     deleteWarningTitle: '⚠️ WARNING! Do you really want to DELETE server "{serverName}"?',
-    deleteWarningMessage: 'This action is IRREVERSIBLE!\\n\\nIf you just want to turn off the server, use the "Turn On/Off" button instead of deleting.',
-    deleteLastWarning: '🚨 FINAL WARNING!\\n\\nAre you sure you want to PERMANENTLY delete server "{serverName}"?\\n\\nType "DELETE" to confirm:',
+    deleteWarningMessage: 'This action is IRREVERSIBLE!\nIf you just want to turn off the server, use the "Turn On/Off" button instead of deleting.',
+    deleteLastWarning: '🚨 FINAL WARNING!\nAre you sure you want to PERMANENTLY delete server "{serverName}"?\nType "DELETE" to confirm:',
     deleteFinalConfirm: 'Type "DELETE" to finally confirm deletion of server "{serverName}":',
     deleteKeyword: 'DELETE',
     serverDeleted: 'Server deleted',
@@ -718,7 +719,7 @@ const translations = {
     toggleServer: 'Переключить сервер',
     noServersYet: 'Серверов пока нет',
     addNewServer: 'Добавить новый сервер',
-    availableServerSlots: 'Вам доступен {availableSlots} серверный слот. Посетите магазин серверов, чтобы приобрести новые серверы.',
+    availableServerSlots: 'Доступно серверных слотов: {availableSlots}. Посетите магазин серверов, чтобы приобрести новые серверы.',
     purchaseServersFromStore: 'Покупайте серверы в магазине, чтобы начать хостинг и получать пассивный доход!',
     visitServerStore: 'Посетить магазин серверов',
     serverSettings: 'Настройки сервера',
@@ -966,7 +967,8 @@ const translations = {
     earnAchievementsDesc: 'Выполняйте работы и достигайте целей, чтобы получить достижения!',
     currentBalance: 'Текущий баланс',
     levelUp: 'Повышение уровня!',
-    levelUpCongrats: 'Поздравляем! Вы достигли уровня',
+    levelUpCongrats: 'Поздравляем! Вы достигли',
+    levelUpCongrats3: 'уровня',
     levelUpCongrats2: 'Чтобы закрыть окно, нажмите куда-нибудь',
     newAbilitiesUnlocked: 'Новые способности разблокированы!',
     
@@ -994,8 +996,8 @@ const translations = {
     
     // Server deletion confirmations
     deleteWarningTitle: '⚠️ ВНИМАНИЕ! Вы действительно хотите УДАЛИТЬ сервер "{serverName}"?',
-    deleteWarningMessage: 'Это действие НЕОБРАТИМО!\\n\\nЕсли вы хотите просто отключить сервер, используйте кнопку "Включить/Выключить" вместо удаления.',
-    deleteLastWarning: '🚨 ПОСЛЕДНЕЕ ПРЕДУПРЕЖДЕНИЕ!\\n\\nВы уверены, что хотите НАВСЕГДА удалить сервер "{serverName}"?\\n\\nНапишите "УДАЛИТЬ" чтобы подтвердить:',
+    deleteWarningMessage: 'Это действие НЕОБРАТИМО!\nЕсли вы хотите просто отключить сервер, используйте кнопку "Включить/Выключить" вместо удаления.',
+    deleteLastWarning: '🚨 ПОСЛЕДНЕЕ ПРЕДУПРЕЖДЕНИЕ!\nВы уверены, что хотите НАВСЕГДА удалить сервер "{serverName}"?\nНапишите "УДАЛИТЬ" чтобы подтвердить:',
     deleteFinalConfirm: 'Введите "УДАЛИТЬ" чтобы окончательно подтвердить удаление сервера "{serverName}":',
     deleteKeyword: 'УДАЛИТЬ',
     serverDeleted: 'Сервер удален',
@@ -1242,7 +1244,7 @@ const translations = {
     toggleServer: 'Перемкнути сервер',
     noServersYet: 'Серверів поки немає',
     addNewServer: 'Добавити новий сервер',
-    availableServerSlots: 'Вам доступний {availableSlots} серверний слот. Відвідайте магазин серверів, щоб придбати нові сервери.',
+    availableServerSlots: 'Доступно серверних слотів: {availableSlots}. Відвідайте магазин серверів, щоб придбати нові сервери.',
     purchaseServersFromStore: 'Купуйте сервери в магазині, щоб почати хостинг та отримувати пасивний дохід!',
     visitServerStore: 'Відвідати магазин серверів',
     serverSettings: 'Налаштування сервера',
@@ -1489,7 +1491,8 @@ const translations = {
     earnAchievementsDesc: 'Виконуйте роботи та досягайте цілей, щоб отримати досягнення!',
     currentBalance: 'Поточний баланс',
     levelUp: 'Підвищення рівня!',
-    levelUpCongrats: 'Вітаємо! Ви досягли рівня',
+    levelUpCongrats: 'Вітаємо! Ви досягли',
+    levelUpCongrats3: 'рівня',
     levelUpCongrats2: 'Щоб закрити вікно, клацніть де-небудь',
     newAbilitiesUnlocked: 'Нові можливості розблоковані!',
     
@@ -1517,8 +1520,8 @@ const translations = {
     
     // Server deletion confirmations
     deleteWarningTitle: '⚠️ УВАГА! Ви дійсно хочете ВИДАЛИТИ сервер "{serverName}"?',
-    deleteWarningMessage: 'Ця дія НЕЗВОРОТНА!\\n\\nЯкщо ви хочете просто вимкнути сервер, використовуйте кнопку "Увімкнути/Вимкнути" замість видалення.',
-    deleteLastWarning: '🚨 ОСТАННЄ ПОПЕРЕДЖЕННЯ!\\n\\nВи впевнені, що хочете НАЗАВЖДИ видалити сервер "{serverName}"?\\n\\nНапишіть "ВИДАЛИТИ" щоб підтвердити:',
+    deleteWarningMessage: 'Ця дія НЕЗВОРОТНА!\nЯкщо ви хочете просто вимкнути сервер, використовуйте кнопку "Увімкнути/Вимкнути" замість видалення.',
+    deleteLastWarning: '🚨 ОСТАННЄ ПОПЕРЕДЖЕННЯ!\nВи впевнені, що хочете НАЗАВЖДИ видалити сервер "{serverName}"?\nНапишіть "ВИДАЛИТИ" щоб підтвердити:',
     deleteFinalConfirm: 'Введіть "ВИДАЛИТИ" щоб остаточно підтвердити видалення сервера "{serverName}":',
     deleteKeyword: 'ВИДАЛИТИ',
     serverDeleted: 'Сервер видалено',
@@ -2011,7 +2014,8 @@ const translations = {
     earnAchievementsDesc: 'Schließen Sie Jobs ab und erreichen Sie Meilensteine, um Erfolge zu erhalten!',
     currentBalance: 'Aktuelles Guthaben',
     levelUp: 'Level aufgestiegen!',
-    levelUpCongrats: 'Herzlichen Glückwunsch! Sie haben Level erreicht',
+    levelUpCongrats: 'Herzlichen Glückwunsch! Sie haben erreicht',
+    levelUpCongrats3: 'Level',
     levelUpCongrats2: 'Um das Fenster zu schließen, klicken Sie irgendwo',
     newAbilitiesUnlocked: 'Neue Fähigkeiten freigeschaltet!',
     
@@ -2039,8 +2043,8 @@ const translations = {
     
     // Server deletion confirmations
     deleteWarningTitle: '⚠️ WARNUNG! Möchten Sie wirklich Server "{serverName}" LÖSCHEN?',
-    deleteWarningMessage: 'Diese Aktion ist IRREVERSIBEL!\\n\\nWenn Sie den Server nur ausschalten möchten, verwenden Sie die "Ein/Aus"-Taste anstatt zu löschen.',
-    deleteLastWarning: '🚨 LETZTE WARNUNG!\\n\\nSind Sie sicher, dass Sie Server "{serverName}" PERMANENT löschen möchten?\\n\\nGeben Sie "LÖSCHEN" ein, um zu bestätigen:',
+    deleteWarningMessage: 'Diese Aktion ist IRREVERSIBEL!\nWenn Sie den Server nur ausschalten möchten, verwenden Sie die "Ein/Aus"-Taste anstatt zu löschen.',
+    deleteLastWarning: '🚨 LETZTE WARNUNG!\nSind Sie sicher, dass Sie Server "{serverName}" PERMANENT löschen möchten?\nGeben Sie "LÖSCHEN" ein, um zu bestätigen:',
     deleteFinalConfirm: 'Geben Sie "LÖSCHEN" ein, um die Löschung von Server "{serverName}" endgültig zu bestätigen:',
     deleteKeyword: 'LÖSCHEN',
     serverDeleted: 'Server gelöscht',

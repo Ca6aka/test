@@ -235,14 +235,15 @@ function VirtualAssistant() {
       <div className="fixed bottom-4 right-4 z-50">
         <Button
           onClick={() => setIsVisible(true)}
-          className="rounded-full w-12 h-12 shadow-lg bg-blue-600 hover:bg-blue-700"
+          className="rounded-full w-15 h-14 shadow-lg bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 
+                     bg-[length:200%_200%] animate-gradient-xy"
           data-testid="show-chat"
         >
-          <MessageSquare className="w-6 h-6" />
+          <MessageSquare className="w-6 h-6 text-white" />
         </Button>
       </div>
     )
-  }
+  }  
 
   return (
     <div className={`fixed bottom-4 right-4 z-50 ${isMobile ? 'w-[calc(100vw-2rem)]' : 'w-80'}`}>

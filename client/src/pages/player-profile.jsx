@@ -120,41 +120,51 @@ export default function PlayerProfilePage() {
               />
               
               <div className="flex-1">
-                <div className="flex items-center space-x-3 mb-2">
-                  <h1 className="text-3xl font-bold text-white" data-testid="text-nickname">
-                    {player.nickname}
-                  </h1>
-                  {isOnline && (
-                    <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
-                      <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
-                      {t('online')}
-                    </Badge>
-                  )}
-                  {!isOnline && (
-                    <Badge variant="outline" className="border-slate-600 text-slate-400">
-                      <div className="w-2 h-2 bg-red-400 rounded-full mr-2"></div>
-                      {t('offline')}
-                    </Badge>
-                  )}
-                  {player.admin >= 1 && (
-                    <Badge 
-                      className={`${
-                        player.nickname === 'Ca6aka' 
-                          ? 'bg-red-500/20 text-red-400 border-red-500/30 animate-pulse' 
-                          : 'bg-purple-500/20 text-purple-400 border-purple-500/30'
-                      } relative overflow-hidden`}
-                    >
-                      <div className={`absolute inset-0 ${
-                        player.nickname === 'Ca6aka' 
-                          ? 'bg-gradient-to-r from-red-500/10 to-red-600/10' 
-                          : 'bg-gradient-to-r from-purple-500/10 to-purple-600/10'
-                      } animate-shimmer`}></div>
-                      <span className="relative z-10">
-                        {player.nickname === 'Ca6aka' ? 'SUPER-ADMIN' : 'Admin'}
-                      </span>
-                    </Badge>
-                  )}
-                </div>
+              <div className="flex items-center space-x-3 mb-2">
+  <h1 className={`text-3xl font-bold ${
+      player.nickname === 'Ca6aka'
+        ? 'relative overflow-hidden animate-gradient-text'
+        : 'text-white'
+    }`} 
+    data-testid="text-nickname"
+  >
+    {player.nickname}
+  </h1>
+
+  {isOnline && (
+    <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
+      <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+      {t('online')}
+    </Badge>
+  )}
+
+  {!isOnline && (
+    <Badge variant="outline" className="border-slate-600 text-slate-400">
+      <div className="w-2 h-2 bg-red-400 rounded-full mr-2"></div>
+      {t('offline')}
+    </Badge>
+  )}
+
+  {player.admin >= 1 && (
+    <Badge 
+      className={`${
+        player.nickname === 'Ca6aka' 
+          ? 'bg-red-500/20 text-red-400 border-red-500/30 animate-pulse' 
+          : 'bg-purple-500/20 text-purple-400 border-purple-500/30'
+      } relative overflow-hidden`}
+    >
+      <div className={`absolute inset-0 ${
+        player.nickname === 'Ca6aka' 
+          ? 'bg-gradient-to-r from-red-500/10 to-red-600/10' 
+          : 'bg-gradient-to-r from-purple-500/10 to-purple-600/10'
+      } animate-shimmer`}></div>
+      <span className="relative z-10">
+        {player.nickname === 'Ca6aka' ? 'SUPER-ADMIN' : 'Admin'}
+      </span>
+    </Badge>
+  )}
+</div>
+
                 
                 <div className="flex items-center space-x-6 text-slate-300 flex-wrap">
                   <div className="flex items-center space-x-2">

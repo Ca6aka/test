@@ -152,8 +152,10 @@ export function LevelUpNotification({ isOpen, onClose, level }) {
               transition={{ delay: 0.5 }}
               className="text-white text-lg mb-2 drop-shadow"
             >
-              {t('levelUpCongrats')} {level}!
-              {t('levelUpCongrats2')}
+              <div>
+                {t('levelUpCongrats')} {level} {t('levelUpCongrats3')}!<br />
+                {t('levelUpCongrats2')}
+              </div>
             </motion.p>
 
             {/* New Abilities Text */}

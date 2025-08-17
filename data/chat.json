@@ -1,1 +1,51 @@
-[]
+[
+  {
+    "id": "200640f3-d39d-4d91-a512-f7fb47811dc0",
+    "userId": "9b1a7cc0-8287-468a-9df7-de5d5e73402f",
+    "nickname": "Ca6aka",
+    "message": "1",
+    "timestamp": 1755395296976,
+    "deleted": false,
+    "adminLevel": 2
+  },
+  {
+    "id": "34405620-9534-4a2c-8d38-2abc05bb733a",
+    "userId": "6050cfe7-a3f7-47e6-9f66-511cbafad1a6",
+    "nickname": "MASIK",
+    "message": "НЕГРЫ ПИДОРАСЫ",
+    "timestamp": 1755395323324,
+    "deleted": false,
+    "adminLevel": 1
+  },
+  {
+    "id": "a9ab3e00-dcd7-4e4a-a094-5a5ee311ccc4",
+    "userId": "6050cfe7-a3f7-47e6-9f66-511cbafad1a6",
+    "nickname": "MASIK",
+    "message": "выаывывываывывавыыввыпвыываываывавыаыываываываываываываываывавы",
+    "timestamp": 1755395853063,
+    "deleted": true,
+    "adminLevel": 1,
+    "deletedBy": "Ca6aka",
+    "deletedAt": 1755395860948
+  },
+  {
+    "id": "02e20f4d-585f-4f4a-aab4-bcdd7db4f3f1",
+    "userId": "6050cfe7-a3f7-47e6-9f66-511cbafad1a6",
+    "nickname": "MASIK",
+    "message": "аа",
+    "timestamp": 1755395892517,
+    "deleted": true,
+    "adminLevel": 0,
+    "deletedBy": "Ca6aka",
+    "deletedAt": 1755395920956
+  },
+  {
+    "id": "2efff775-0345-49e4-a459-1089726046ab",
+    "userId": "6050cfe7-a3f7-47e6-9f66-511cbafad1a6",
+    "nickname": "MASIK",
+    "message": "соси хуй",
+    "timestamp": 1755396256088,
+    "deleted": false,
+    "adminLevel": 0
+  }
+]
