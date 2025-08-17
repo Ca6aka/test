@@ -274,7 +274,10 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
             <div className="text-center space-y-4">
               <div className="text-2xl font-bold text-green-600">{t('serverminigame5')}</div>
               <div className="text-gray-600 dark:text-gray-300">{t('serverminigame10')}</div>
-              <Button onClick={closeGame} className="bg-green-600 hover:bg-green-700">
+              <Button onClick={() => {
+                closeGame();
+                onServerStart();
+              }} className="bg-green-600 hover:bg-green-700">
                 {t('close')}
               </Button>
             </div>

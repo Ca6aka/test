@@ -176,7 +176,7 @@ const MiniGamesTab = () => {
         correctChoices: prev.correctChoices + (correct ? 1 : 0),
         wrongChoices: prev.wrongChoices + (correct ? 0 : 1),
         score: prev.score + (correct ? 1 : 0), // Changed from 5 to 1 XP per correct answer
-        gameOver: newRequestsLeft <= 0
+        gameOver: newRequestsLeft <= 0 || !nextRequest
       };
     });
   };
@@ -283,21 +283,10 @@ const MiniGamesTab = () => {
       <Dialog open={selectedGame !== null} onOpenChange={() => closeGame()}>
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <div className="flex items-center justify-between">
-              <DialogTitle className="flex items-center gap-2">
-                {selectedGame && React.createElement(selectedGame.icon, { className: "w-6 h-6" })}
-                {selectedGame?.title}
-              </DialogTitle>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={closeGame}
-                className="h-6 w-6 p-0"
-                data-testid="close-game"
-              >
-                <X className="w-4 h-4" />
-              </Button>
-            </div>
+            <DialogTitle className="flex items-center gap-2">
+              {selectedGame && React.createElement(selectedGame.icon, { className: "w-6 h-6" })}
+              {selectedGame?.title}
+            </DialogTitle>
           </DialogHeader>
 
           {gameState === 'menu' && selectedGame && (

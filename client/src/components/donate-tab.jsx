@@ -140,14 +140,9 @@ const DonateTab = () => {
               onClick={() => handlePurchase(pkg)}
               data-testid={`donate-package-${pkg.id}`}
             >
-              {/* Gradient overlay on hover */}
+              {/* Gradient overlay on hover - only for this card */}
               <div className={`absolute inset-0 bg-gradient-to-r from-yellow-600/20 via-yellow-500/20 to-yellow-400/20 opacity-0 transition-opacity duration-500 ${
                 isHovered ? 'opacity-100' : ''
-              }`} />
-              
-              {/* Reverse gradient on mouse leave */}
-              <div className={`absolute inset-0 bg-gradient-to-l from-yellow-600/10 via-yellow-500/10 to-yellow-400/10 opacity-0 transition-opacity duration-500 ${
-                !isHovered && hoveredPackage !== null ? 'opacity-100' : ''
               }`} />
 
               {pkg.popular && (
