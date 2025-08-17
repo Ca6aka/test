@@ -739,6 +739,25 @@ const translations = {
     buyNow: 'Buy Now',
     purchaseNotAvailable: 'Purchase Not Available',
     purchaseNotAvailableDesc: 'This is a demo version. Payment processing is not implemented.',
+    
+    // Server mini-game translations
+    serverminigame1: 'Server Connection',
+    serverminigame2: 'Connect all cables by colors to bring the server online. You have 30 seconds!',
+    serverminigame3: 'Wrong Connection',
+    serverminigame4: 'Make sure to connect cables of the same color!',
+    serverminigame5: 'Success!',
+    serverminigame6: 'Server is now online and ready to use.',
+    serverminigame7: 'Failed!',
+    serverminigame8: 'Time ran out! Server durability decreased by 1.',
+    serverminigame9: 'Connected:',
+    serverminigame10: 'Your server is now online and generating income.',
+    serverminigame11: 'Try again when your server is repaired.',
+    connectServer: 'Connect Server',
+    serverNowOnline: 'Server is now online and generating income.',
+    yourServer: 'Server',
+    timeLeft: 'Time Left',
+    startGame: 'Start Game',
+    close: 'Close',
   },
   
   ru: {
@@ -1401,6 +1420,25 @@ const translations = {
     buyNow: 'Купить сейчас',
     purchaseNotAvailable: 'Покупка недоступна',
     purchaseNotAvailableDesc: 'Это демо версия. Обработка платежей не реализована.',
+    
+    // Server mini-game translations
+    serverminigame1: 'Подключение сервера',
+    serverminigame2: 'Соедините все провода по цветам, чтобы включить сервер. У вас есть 30 секунд!',
+    serverminigame3: 'Неправильное подключение',
+    serverminigame4: 'Убедитесь, что соединяете провода одинакового цвета!',
+    serverminigame5: 'Успех!',
+    serverminigame6: 'Сервер теперь онлайн и готов к использованию.',
+    serverminigame7: 'Неудача!',
+    serverminigame8: 'Время вышло! Прочность сервера уменьшена на 1.',
+    serverminigame9: 'Подключено:',
+    serverminigame10: 'Ваш сервер теперь онлайн и генерирует доход.',
+    serverminigame11: 'Попробуйте снова, когда сервер будет отремонтирован.',
+    connectServer: 'Подключить сервер',
+    serverNowOnline: 'Сервер теперь онлайн и генерирует доход.',
+    yourServer: 'Сервер',
+    timeLeft: 'Осталось времени',
+    startGame: 'Начать игру',
+    close: 'Закрыть',
   },
   
   ua: {

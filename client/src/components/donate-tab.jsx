@@ -132,9 +132,9 @@ const DonateTab = () => {
           return (
             <Card
               key={pkg.id}
-              className={`relative overflow-hidden cursor-pointer transition-all duration-500 transform hover:scale-105 group ${
+              className={`relative overflow-hidden cursor-pointer transition-all duration-500 group ${
                 pkg.popular ? 'ring-2 ring-yellow-500 shadow-lg shadow-yellow-500/25' : ''
-              }`}
+              } ${isHovered ? 'transform scale-105' : ''}`}
               onMouseEnter={() => setHoveredPackage(pkg.id)}
               onMouseLeave={() => setHoveredPackage(null)}
               onClick={() => handlePurchase(pkg)}

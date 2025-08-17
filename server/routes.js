@@ -1048,6 +1048,27 @@ export async function registerRoutes(app) {
     }
   });
 
+  // Damage server durability (for failed mini-game)
+  app.post('/api/servers/:serverId/damage', requireAuth, async (req, res) => {
+    try {
+      const { serverId } = req.params;
+      const server = await storage.getServer(serverId);
+      
+      if (!server || server.ownerId !== req.session.userId) {
+        return res.status(404).json({ message: 'Server not found' });
+      }
+
+      const updatedServer = await storage.updateServer(serverId, {
+        durability: Math.max(0, server.durability - 1)
+      });
+
+      res.json({ server: updatedServer });
+    } catch (error) {
+      console.error('Error damaging server:', error);
+      res.status(500).json({ message: 'Server error' });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

@@ -10,6 +10,7 @@ import { formatCurrency } from '@/lib/constants';
 import { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
+import ServerConnectionGame from './server-connection-game';
 
 // Helper function to get server tier colors
 const getServerTierColors = (serverType) => {
@@ -50,6 +51,8 @@ export function ServersTab({ onTabChange }) {
   const [selectedServer, setSelectedServer] = useState(null);
   const [serverLoad, setServerLoad] = useState(50);
   const [localLoadValue, setLocalLoadValue] = useState(50);
+  const [connectionGameOpen, setConnectionGameOpen] = useState(false);
+  const [gameServer, setGameServer] = useState(null);
 
   const updateServerLoad = useMutation({
     mutationFn: ({ serverId, loadPercentage }) => 
@@ -145,6 +148,24 @@ export function ServersTab({ onTabChange }) {
         }
       }
     }
+  };
+
+  const startConnectionGame = (server) => {
+    setGameServer(server);
+    setConnectionGameOpen(true);
+  };
+
+  const closeConnectionGame = () => {
+    setConnectionGameOpen(false);
+    setGameServer(null);
+  };
+
+  const onGameSuccess = () => {
+    closeConnectionGame();
+    toast({
+      title: t('success'),
+      description: t('serverNowOnline'),
+    });
   };
 
   if (!gameState.user) return null;
@@ -338,6 +359,19 @@ export function ServersTab({ onTabChange }) {
                       </div>
                     </DialogContent>
                   </Dialog>
+                  {/* Server Connection Game (for offline servers) */}
+                  {!server.isOnline && (
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="bg-yellow-500/10 text-yellow-400 border-yellow-500/30 hover:bg-yellow-500/20"
+                      onClick={() => startConnectionGame(server)}
+                    >
+                      <i className="fas fa-plug mr-1"></i>
+                      {t('connectServer')}
+                    </Button>
+                  )}
+                  
                   {/* Server Status Toggle */}
                   <Button
                     size="sm"
@@ -477,6 +511,14 @@ export function ServersTab({ onTabChange }) {
           </div>
         </div>
       )}
+
+      {/* Server Connection Game */}
+      <ServerConnectionGame
+        isOpen={connectionGameOpen}
+        onClose={closeConnectionGame}
+        server={gameServer}
+        onSuccess={onGameSuccess}
+      />
     </div>
   );
 }
