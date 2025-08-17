@@ -17,13 +17,24 @@
   "tutorialCompleted": false,
   "admin": 0,
   "banned": false,
-  "muted": false,
-  "muteExpires": null,
+  "muted": true,
+  "muteExpires": 1755385960276,
   "isOnline": false,
   "lastIncomeUpdate": 1755372493866,
   "jobCooldowns": {},
   "currentLearning": null,
-  "activities": [],
+  "activities": [
+    {
+      "id": "74561928-5e88-4cd5-89b8-aad913e51ace",
+      "description": "Muted for 5 minutes by admin Ca6aka",
+      "timestamp": "17.08.2025, 01:07:40"
+    },
+    {
+      "id": "fabd32da-ea0b-454b-97cc-ae954042024e",
+      "description": "Muted for 5 minutes by admin Ca6aka",
+      "timestamp": "17.08.2025, 01:07:28"
+    }
+  ],
   "achievements": [],
   "completedJobsCount": 0,
   "completedCoursesCount": 0,

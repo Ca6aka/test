@@ -153,6 +153,7 @@ export function LevelUpNotification({ isOpen, onClose, level }) {
               className="text-white text-lg mb-2 drop-shadow"
             >
               {t('levelUpCongrats')} {level}!
+              {t('levelUpCongrats2')}
             </motion.p>
 
             {/* New Abilities Text */}

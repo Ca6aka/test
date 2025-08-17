@@ -461,7 +461,7 @@ export function ServersTab({ onTabChange }) {
 
           <div className="space-y-2 mb-4">
             <div className="flex justify-between text-sm">
-              <span className="text-slate-400">Progress</span>
+              <span className="text-slate-400">{t('progress')}</span>
               <span className="text-purple-400">
                 {gameState.currentLearning.progress}% ({gameState.currentLearning.timeRemaining} {t('timeRemaining')})
               </span>
@@ -472,7 +472,7 @@ export function ServersTab({ onTabChange }) {
           <div className="p-3 bg-purple-500/10 rounded-lg">
             <p className="text-sm text-purple-300">
               <i className="fas fa-gift mr-1"></i>
-              <strong>Reward:</strong> {getRewardText(gameState.currentLearning.reward)}
+              <strong>{t('reward')}:</strong> {getRewardText(gameState.currentLearning.reward)}
             </p>
           </div>
         </div>

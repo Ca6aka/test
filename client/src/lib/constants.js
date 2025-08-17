@@ -73,7 +73,7 @@ export const LEARNING_COURSES = [
     difficulty: 'Beginner',
     duration: 30 * 60 * 1000, // 30 minutes in milliseconds
     reward: { type: 'serverSlots', amount: 1 },
-    price: 2000,
+    price: 3500,
     requiredLevel: 1
   },
   {
@@ -123,21 +123,21 @@ export const JOB_TYPES = [
     id: 'maintenance',
     name: 'Server Maintenance',
     reward: 150,
-    cooldown: 300000, // 5 minutes
+    cooldown: 180000, // 5 minutes
     icon: 'fas fa-wrench'
   },
   {
     id: 'optimization',
     name: 'Performance Optimization',
     reward: 250,
-    cooldown: 450000, // 7.5 minutes
+    cooldown: 300000, // 7.5 minutes
     icon: 'fas fa-tachometer-alt'
   },
   {
     id: 'security-audit',
     name: 'Security Audit',
     reward: 500,
-    cooldown: 600000, // 10 minutes
+    cooldown: 420000, // 10 minutes
     icon: 'fas fa-shield-alt'
   }
 ];

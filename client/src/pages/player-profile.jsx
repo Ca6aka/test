@@ -150,7 +150,7 @@ export default function PlayerProfilePage() {
                           : 'bg-gradient-to-r from-purple-500/10 to-purple-600/10'
                       } animate-shimmer`}></div>
                       <span className="relative z-10">
-                        {player.nickname === 'Ca6aka' ? 'СУПЕР-АДМИН' : 'АДМИН'}
+                        {player.nickname === 'Ca6aka' ? 'SUPER-ADMIN' : 'Admin'}
                       </span>
                     </Badge>
                   )}

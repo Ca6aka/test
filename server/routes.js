@@ -66,7 +66,7 @@ export async function registerRoutes(app) {
       }
       
       if (password.length < 6) {
-        return res.status(400).json({ message: 'Password must be at least 6 characters long' });
+        return res.status(404).json({ success: false, message: 'Password must be at least 6 characters long' });
       }
 
       // IP-based registration limits

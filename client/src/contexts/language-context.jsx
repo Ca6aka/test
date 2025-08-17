@@ -75,6 +75,7 @@ const translations = {
     pleaseRefresh: 'Please refresh the page and try again',
     jobOnCooldown: 'Job is on cooldown for {seconds} seconds',
     insufficientFunds: 'Insufficient funds',
+    errorjob: 'Error, work is not yet available',
     
     // Tutorial
     tutorialProgress: 'Tutorial Progress',
@@ -99,7 +100,7 @@ const translations = {
     offline: 'Offline',
     
     // Jobs and actions
-    tutorialJobs: 'Tutorial Jobs',
+    tutorialJobs: 'Remote work',
     startJob: 'Start Job',
     completeJob: 'Complete Job',
     availableIn: 'Available in',
@@ -115,7 +116,7 @@ const translations = {
     
     // Tutorial tips
     tutorialTips: 'Tutorial Tips',
-    tipCompleteJobs: 'Complete jobs to earn money and gain experience',
+    tipCompleteJobs: 'Complete jobs to earn money and gain experience!',
     tipJobCooldown: 'Each job has a cooldown period before you can do it again',
     tipEarnToUnlock: 'Earn {amount} to unlock servers, learning, and the store',
     tipPurchaseServers: 'Purchase servers to generate passive income',
@@ -486,6 +487,7 @@ const translations = {
     currentBalance: 'Current Balance',
     levelUp: 'Level Up!',
     levelUpCongrats: 'Congratulations! You\'ve reached level',
+    levelUpCongrats2: 'To close the window, click somewhere',
     newAbilitiesUnlocked: 'New abilities unlocked!',
     
     // Tooltips and hints
@@ -603,6 +605,11 @@ const translations = {
     startPlaying: 'Начать Играть',
     learnMore: 'Узнать Больше',
     
+    // Learning progress
+    learningInProgress: 'Обучение в процессе',
+    timeRemaining: 'осталось',
+    serverSlotReward: '+{amount} Серверный слот',
+
     // Statistics
     totalPlayers: 'Всего Игроков',
     onlineNow: 'Сейчас Онлайн',
@@ -652,6 +659,7 @@ const translations = {
     jobOnCooldown: 'Работа недоступна {seconds} секунд',
     insufficientFunds: 'Недостаточно средств',
     serverLimitReached: 'Достигнут лимит серверов',
+    errorjob: 'Ошибка, работа пока еще недоступна',
     
     // Tutorial
     tutorialProgress: 'Прогресс обучения',
@@ -676,7 +684,7 @@ const translations = {
     offline: 'Офлайн',
     
     // Jobs and actions
-    tutorialJobs: 'Обучающие задания',
+    tutorialJobs: 'Удаленная работа',
     startJob: 'Начать работу',
     completeJob: 'Завершить работу',
     availableIn: 'Доступно через',
@@ -692,7 +700,7 @@ const translations = {
     
     // Tutorial tips
     tutorialTips: 'Подсказки обучения',
-    tipCompleteJobs: 'Выполняйте задания, чтобы заработать деньги и получить опыт',
+    tipCompleteJobs: 'Выполняйте задания, чтобы заработать деньги и получить опыт!',
     tipJobCooldown: 'У каждого задания есть период перезарядки перед повторным выполнением',
     tipEarnToUnlock: 'Заработайте {amount}, чтобы разблокировать серверы, обучение и магазин',
     tipPurchaseServers: 'Покупайте серверы для получения пассивного дохода',
@@ -748,7 +756,7 @@ const translations = {
     achievementsList: {
       'first-steps': {
         title: "Первые шаги",
-        description: "Выполните свое первое задание",
+        description: "Выполните свою первую работу",
       },
       'first-server': {
         title: "Первый сервер",
@@ -764,7 +772,7 @@ const translations = {
       },
       'job-master': {
         title: "Мастер заданий",
-        description: "Выполните 100 заданий",
+        description: "Выполните 100 работ",
       },
       'learning-enthusiast': {
         title: "Любитель учёбы",
@@ -776,7 +784,7 @@ const translations = {
       },
       'efficient-worker': {
         title: "Эффективный работник",
-        description: "Выполнить 10 заданий",
+        description: "Завершите 10 работ",
       },
       'server-builder': {
         title: "Конструктор серверов",
@@ -784,15 +792,15 @@ const translations = {
       },
       'security-expert': {
         title: "Эксперт по безопасности",
-        description: "Выполнить 50 заданий по аудиту безопасности",
+        description: "Выполнить 50 работ по аудиту безопасности",
       },
       'maintenance-guru': {
         title: "Гуру технического обслуживания",
-        description: "Выполнить 75 заданий по техническому обслуживанию",
+        description: "Выполнить 75 работ по техническому обслуживанию",
       },
       'optimization-master': {
         title: "Мастер оптимизации",
-        description: "Выполните 60 заданий по оптимизации",
+        description: "Выполните 60 работ по оптимизации",
       },
       'wealthy-investor': {
         title: "Богатый инвестор",
@@ -808,7 +816,7 @@ const translations = {
       },
       'speed-demon': {
         title: "Демон скорости",
-        description: "Выполните 200 заданий",
+        description: "Выполните 200 работ",
       },
       'infrastructure-king': {
         title: "Король инфраструктуры",
@@ -824,7 +832,7 @@ const translations = {
       },
       'workaholic': {
         title: "Трудоголик",
-        description: "Выполните в общей сложности 500 заданий.",
+        description: "Выполните в общей сложности 500 работ",
       },
       'server-empire': {
         title: "Империя серверов",
@@ -836,7 +844,7 @@ const translations = {
       },
       'legendary-worker': {
         title: "Легендарный работник",
-        description: "Выполните 1000 заданий",
+        description: "Выполните 1000 работ",
       },
       'server-overlord': {
         title: "Повелитель серверов",
@@ -848,7 +856,7 @@ const translations = {
       },
       'ultimate-legend': {
         title: "Абсолютная легенда",
-        description: "Выполните 2500 заданий",
+        description: "Выполните 2500 работ",
       }
     },
     rankings: 'Рейтинг',
@@ -898,7 +906,7 @@ const translations = {
         description: 'Выполните 8 заданий любого типа'
       },
       'daily-mega-earner': {
-        title: 'Мега-заработчик',
+        title: 'Кодер-магнат',
         description: 'Заработайте $50,000 от доходов серверов'
       }
     },
@@ -957,6 +965,7 @@ const translations = {
     currentBalance: 'Текущий баланс',
     levelUp: 'Повышение уровня!',
     levelUpCongrats: 'Поздравляем! Вы достигли уровня',
+    levelUpCongrats2: 'Чтобы закрыть окно, нажмите куда-нибудь',
     newAbilitiesUnlocked: 'Новые способности разблокированы!',
     
     // Tooltips and hints
@@ -1119,6 +1128,11 @@ const translations = {
     startPlaying: 'Почати Гру',
     learnMore: 'Дізнатися Більше',
     
+    // Learning progress
+    learningInProgress: 'Навчання в процесі',
+    timeRemaining: 'залишилося',
+    serverSlotReward: '+{amount} Серверний слот',
+
     // Statistics
     totalPlayers: 'Всього Гравців',
     onlineNow: 'Зараз Онлайн',
@@ -1168,6 +1182,7 @@ const translations = {
     jobOnCooldown: 'Робота недоступна {seconds} секунд',
     insufficientFunds: 'Недостатньо коштів',
     serverLimitReached: 'Досягнуто ліміт серверів',
+    errorjob: 'Помилка, робота поки що недоступна',
     
     // Tutorial
     tutorialProgress: 'Прогрес навчання',
@@ -1192,7 +1207,7 @@ const translations = {
     offline: 'Офлайн',
     
     // Jobs and actions
-    tutorialJobs: 'Навчальні завдання',
+    tutorialJobs: 'Дистанційна робота',
     startJob: 'Почати роботу',
     completeJob: 'Завершити роботу',
     availableIn: 'Доступно через',
@@ -1208,7 +1223,7 @@ const translations = {
     
     // Tutorial tips
     tutorialTips: 'Підказки навчання',
-    tipCompleteJobs: 'Виконуйте завдання, щоб заробити гроші та отримати досвід',
+    tipCompleteJobs: 'Виконуйте завдання, щоб заробити гроші та отримати досвід!',
     tipJobCooldown: 'У кожного завдання є період перезарядки перед повторним виконанням',
     tipEarnToUnlock: 'Заробіть {amount}, щоб розблокувати сервери, навчання та магазин',
     tipPurchaseServers: 'Купуйте сервери для отримання пасивного доходу',
@@ -1217,7 +1232,7 @@ const translations = {
     browseLearningCourses: 'Переглянути курси навчання',
     
     // Activities
-    recentActivities: 'Недавні дії',
+    recentActivities: 'Нещодавні дії',
     
     // Server management
     purchaseServer: 'Купити сервер',
@@ -1264,7 +1279,7 @@ const translations = {
     achievementsList: {
       'first-steps': {
         title: "Першi кроки",
-        description: "Виконайте своє перше завдання",
+        description: "Виконайте свою першу роботу",
       },
       'first-server': {
         title: "Перший сервер",
@@ -1280,7 +1295,7 @@ const translations = {
       },
       'job-master': {
         title: "Майстер завдань",
-        description: "Виконайте 100 завдань",
+        description: "Виконайте загалом 100 робіт",
       },
       'learning-enthusiast': {
         title: "Любитель навчання",
@@ -1292,27 +1307,27 @@ const translations = {
       },
       'efficient-worker': {
         title: "Ефективний працівник",
-        description: "Виконати 10 завдань",
+        description: "Виконати 10 робіт",
       },
       'server-builder': {
         title: "Конструктор серверів",
-        description: "Володійте 3 різними т",
+        description: "Володійте 3 різними типами серверів",
       },
       'security-expert': {
         title: "Експерт з безпеки",
-        description: "Виконати 50 завдань з аудиту безпеки",
+        description: "Виконати 50 робіт з аудиту безпеки",
       },
       'maintenance-guru': {
         title: "Гуру технічного обслуговування",
-        description: "Виконати 75 завдань з технічного обслуговування",
+        description: "Виконати 75 робіт з технічного обслуговування",
       },
       'optimization-master': {
         title: "Майстер оптимізації",
-        description: "Виконайте 60 завдань з оптимізації",
+        description: "Виконайте 60 робіт з оптимізації",
       },
       'wealthy-investor': {
         title: "Багатий інвестор",
-        description: "Накопичіть на балансі $100.000",
+        description: "Досягніть на балансі $100.000",
       },
       'server-mogul': {
         title: "Серверний магнат",
@@ -1324,7 +1339,7 @@ const translations = {
       },
       'speed-demon': {
         title: "Демон швидкості",
-        description: "Виконайте 200 завдань",
+        description: "Виконайте загалом 200 робіт",
       },
       'infrastructure-king': {
         title: "Король інфраструктури",
@@ -1332,7 +1347,7 @@ const translations = {
       },
       'multi-millionaire': {
         title: "Мультимільйонер",
-        description: "Накопичіть $5.000.000 на балансі",
+        description: "Досягніть $5.000.000 на балансі",
       },
       'course-completionist': {
         title: "Завершувач курсів",
@@ -1340,7 +1355,7 @@ const translations = {
       },
       'workaholic': {
         title: "Трудоголік",
-        description: "Виконайте загалом 500 завдань.",
+        description: "Виконайте загалом 500 робіт",
       },
       'server-empire': {
         title: "Імперія серверів",
@@ -1348,11 +1363,11 @@ const translations = {
       },
       'financial-titan': {
         title: "Фінансовий титан",
-        description: "Накопичіть $10.000.000 на балансі",
+        description: "Досягніть $10.000.000 на балансі",
       },
       'legendary-worker': {
         title: "Легендарний працівник",
-        description: "Виконайте 1000 завдань",
+        description: "Виконайте загалом 1000 робіт",
       },
       'server-overlord': {
         title: "Володар серверів",
@@ -1360,11 +1375,11 @@ const translations = {
       },
       'billionaire-club': {
         title: "Клуб мільярдерів",
-        description: "Накопичіть $100.000.000 на балансі",
+        description: "Досягніть $100.000.000 на балансі",
       },
       'ultimate-legend': {
         title: "Абсолютна легенда",
-        description: "Виконайте 2500 завдань",
+        description: "Виконайте загалом 2500 робіт",
       }
     },
     rankings: 'Рейтинг',
@@ -1414,7 +1429,7 @@ const translations = {
         description: 'Виконайте 8 завдань будь-якого типу'
       },
       'daily-mega-earner': {
-        title: 'Мега-заробітчик',
+        title: 'Кодер-магнат',
         description: 'Заробіть $50,000 від доходів серверів'
       }
     },
@@ -1473,11 +1488,12 @@ const translations = {
     currentBalance: 'Поточний баланс',
     levelUp: 'Підвищення рівня!',
     levelUpCongrats: 'Вітаємо! Ви досягли рівня',
+    levelUpCongrats2: 'Щоб закрити вікно, клацніть де-небудь',
     newAbilitiesUnlocked: 'Нові можливості розблоковані!',
     
     // Tooltips and hints
     profileTooltip: 'Натисніть на свою аватарку, щоб побачити прогрес та іншу цікаву інформацію',
-    nicknameTooltip: 'Якщо натиснути на свій нік або чужий, можна заглянути на чийсь профіль',
+    nicknameTooltip: 'Якщо натиснути на свій нік або чужий, можна перейти на профіль гравця',
     adminControlsInfo: 'Натиснувши на свій аватар, можна дізнатися більше корисної інформації',
     
     // Theme system
@@ -1635,6 +1651,10 @@ const translations = {
     startPlaying: 'Spielen Beginnen',
     learnMore: 'Mehr Erfahren',
     
+    // Learning progress
+    learningInProgress: 'Lernen im Prozess',
+    timeRemaining: 'verbleibende',
+
     // Statistics
     totalPlayers: 'Gesamtspieler',
     onlineNow: 'Jetzt Online',
@@ -1684,6 +1704,7 @@ const translations = {
     jobOnCooldown: 'Job ist für {seconds} Sekunden gesperrt',
     insufficientFunds: 'Unzureichende Mittel',
     serverLimitReached: 'Server-Limit erreicht',
+    errorjob: 'Fehler, Arbeit ist noch nicht verfügbar',
     
     // Tutorial
     tutorialProgress: 'Tutorial-Fortschritt',
@@ -1708,7 +1729,7 @@ const translations = {
     offline: 'Offline',
     
     // Jobs and actions
-    tutorialJobs: 'Tutorial-Aufgaben',
+    tutorialJobs: 'Fernarbeit',
     startJob: 'Job starten',
     completeJob: 'Job abschließen',
     availableIn: 'Verfügbar in',
@@ -1724,7 +1745,7 @@ const translations = {
     
     // Tutorial tips
     tutorialTips: 'Tutorial-Tipps',
-    tipCompleteJobs: 'Schließen Sie Jobs ab, um Geld zu verdienen und Erfahrung zu sammeln',
+    tipCompleteJobs: 'Schließen Sie Jobs ab, um Geld zu verdienen und Erfahrung zu sammeln!',
     tipJobCooldown: 'Jeder Job hat eine Abklingzeit, bevor Sie ihn erneut ausführen können',
     tipEarnToUnlock: 'Verdienen Sie {amount}, um Server, Lernen und Shop freizuschalten',
     tipPurchaseServers: 'Kaufen Sie Server, um passives Einkommen zu generieren',
@@ -1989,6 +2010,7 @@ const translations = {
     currentBalance: 'Aktuelles Guthaben',
     levelUp: 'Level aufgestiegen!',
     levelUpCongrats: 'Herzlichen Glückwunsch! Sie haben Level erreicht',
+    levelUpCongrats2: 'Um das Fenster zu schließen, klicken Sie irgendwo',
     newAbilitiesUnlocked: 'Neue Fähigkeiten freigeschaltet!',
     
     // Tooltips and hints

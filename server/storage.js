@@ -173,7 +173,7 @@ const JOB_TYPES = [
     name: 'Server Maintenance',
     reward: 150,
     experienceReward: 10,
-    cooldown: 300000, // 5 minutes
+    cooldown: 180000, // 5 minutes
     icon: 'fas fa-wrench'
   },
   {
@@ -181,7 +181,7 @@ const JOB_TYPES = [
     name: 'Performance Optimization',
     reward: 250,
     experienceReward: 18,
-    cooldown: 450000, // 7.5 minutes
+    cooldown: 300000, // 7.5 minutes
     icon: 'fas fa-tachometer-alt'
   },
   {
@@ -189,7 +189,7 @@ const JOB_TYPES = [
     name: 'Security Audit',
     reward: 500,
     experienceReward: 25,
-    cooldown: 600000, // 10 minutes
+    cooldown: 420000, // 10 minutes
     icon: 'fas fa-shield-alt'
   }
 ];
@@ -202,7 +202,7 @@ const LEARNING_COURSES = [
     difficulty: 'Beginner',
     duration: 30 * 60 * 1000, // 30 minutes in milliseconds
     reward: { type: 'serverSlots', amount: 1 },
-    price: 2000,
+    price: 3500,
     requiredLevel: 1
   },
   {
@@ -664,10 +664,10 @@ export class FileStorage {
       id: randomUUID(),
       nickname: userData.nickname,
       password: userData.password,
-      balance: 10000, // Starting balance
+      balance: 13000, // Starting balance
       level: 1,
       experience: 0,
-      totalEarnings: 10000, // Include starting balance
+      totalEarnings: 13000, // Include starting balance
       totalSpent: 0,
       avatar: avatar,
       serverLimit: 3, // Starting server limit
