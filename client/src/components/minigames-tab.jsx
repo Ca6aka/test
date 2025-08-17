@@ -73,7 +73,7 @@ const MiniGamesTab = () => {
       icon: Zap,
       difficulty: t('medium'),
       duration: '15 requests',
-      reward: '+5 XP/correct'
+      reward: '+1 XP/correct'
     }
   ];
 
@@ -110,11 +110,11 @@ const MiniGamesTab = () => {
           
           const newPackets = [...prev.packets];
           
-          // Add new packet
+          // Add new packet - full width
           if (Math.random() < 0.3) {
             newPackets.push({
               id: Date.now(),
-              x: Math.random() * 300,
+              x: Math.random() * 560, // Full width of container
               y: 0,
               speed: prev.speed
             });
@@ -175,7 +175,7 @@ const MiniGamesTab = () => {
         requestsLeft: newRequestsLeft,
         correctChoices: prev.correctChoices + (correct ? 1 : 0),
         wrongChoices: prev.wrongChoices + (correct ? 0 : 1),
-        score: prev.score + (correct ? 5 : 0),
+        score: prev.score + (correct ? 1 : 0), // Changed from 5 to 1 XP per correct answer
         gameOver: newRequestsLeft <= 0
       };
     });

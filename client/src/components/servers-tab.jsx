@@ -359,19 +359,6 @@ export function ServersTab({ onTabChange }) {
                       </div>
                     </DialogContent>
                   </Dialog>
-                  {/* Server Connection Game (for offline servers) */}
-                  {!server.isOnline && (
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="bg-yellow-500/10 text-yellow-400 border-yellow-500/30 hover:bg-yellow-500/20"
-                      onClick={() => startConnectionGame(server)}
-                    >
-                      <i className="fas fa-plug mr-1"></i>
-                      {t('connectServer')}
-                    </Button>
-                  )}
-                  
                   {/* Server Status Toggle */}
                   <Button
                     size="sm"
@@ -380,7 +367,7 @@ export function ServersTab({ onTabChange }) {
                       ? "bg-secondary/20 text-secondary hover:bg-secondary/30" 
                       : "bg-slate-600/50 text-slate-400"
                     }
-                    onClick={() => handleToggleServer(server.id)}
+                    onClick={() => server.isOnline ? handleToggleServer(server.id) : startConnectionGame(server)}
                   >
                     <i className="fas fa-power-off mr-1"></i>
                     {server.isOnline ? t('online') : t('offline')}

@@ -57,22 +57,24 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
     const numConnections = Math.floor(Math.random() * 3) + 4; // 4-6 connections
     const gameColors = colors.slice(0, numConnections);
     
-    // Create cables (left side)
+    // Create cables (left side) - randomize positions
+    const shuffledIndexes = Array.from({length: numConnections}, (_, i) => i).sort(() => Math.random() - 0.5);
     const newCables = gameColors.map((color, index) => ({
       id: `cable-${index}`,
       color,
-      x: 50,
-      y: 100 + index * 60,
+      x: 20,
+      y: 80 + shuffledIndexes[index] * 50,
       connected: false
     }));
 
-    // Create ports (right side)
+    // Create ports (right side) - randomize colors and positions
     const shuffledColors = [...gameColors].sort(() => Math.random() - 0.5);
+    const shuffledPortIndexes = Array.from({length: numConnections}, (_, i) => i).sort(() => Math.random() - 0.5);
     const newPorts = shuffledColors.map((color, index) => ({
       id: `port-${index}`,
       color,
-      x: 350,
-      y: 100 + index * 60,
+      x: 380,
+      y: 80 + shuffledPortIndexes[index] * 50,
       connected: false
     }));
 
@@ -185,10 +187,6 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
               </div>
 
               <div className="relative bg-gray-100 dark:bg-gray-800 rounded-lg p-4" style={{ height: '400px' }}>
-                {/* Server representation */}
-                <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-32 bg-gray-700 rounded-lg flex items-center justify-center">
-                  <div className="text-white text-xs">{t('yourServer')}</div>
-                </div>
 
                 {/* Cables (left side) */}
                 {cables.map((cable) => (

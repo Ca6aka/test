@@ -151,7 +151,7 @@ const DonateTab = () => {
               }`} />
 
               {pkg.popular && (
-                <div className="absolute top-4 right-4">
+                <div className="absolute top-2 right-4">
                   <Badge className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white border-0">
                     {t('popular')}
                   </Badge>
@@ -207,23 +207,12 @@ const DonateTab = () => {
       <Dialog open={selectedPackage !== null} onOpenChange={closeDialog}>
         <DialogContent className="max-w-md">
           <DialogHeader>
-            <div className="flex items-center justify-between">
-              <DialogTitle className="flex items-center gap-2">
-                {selectedPackage && React.createElement(selectedPackage.icon, { 
-                  className: "w-6 h-6 text-yellow-600" 
-                })}
-                {t('confirmPurchase')}
-              </DialogTitle>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={closeDialog}
-                className="h-6 w-6 p-0"
-                data-testid="close-purchase-dialog"
-              >
-                <X className="w-4 h-4" />
-              </Button>
-            </div>
+            <DialogTitle className="flex items-center gap-2">
+              {selectedPackage && React.createElement(selectedPackage.icon, { 
+                className: "w-6 h-6 text-yellow-600" 
+              })}
+              {t('confirmPurchase')}
+            </DialogTitle>
           </DialogHeader>
 
           {selectedPackage && (
