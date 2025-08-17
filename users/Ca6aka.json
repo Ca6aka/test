@@ -2,11 +2,11 @@
   "id": "9b1a7cc0-8287-468a-9df7-de5d5e73402f",
   "nickname": "Ca6aka",
   "password": "$2b$10$vQisG/HiYpZCbDxhj9hAb.kSngBkSHarYFF0JExylZ1/d5j1tGgq6",
-  "balance": 219912,
+  "balance": 220173,
   "level": 5,
   "experience": 530,
-  "totalEarnings": 209420,
-  "totalSpent": 67208,
+  "totalEarnings": 209710,
+  "totalSpent": 67237,
   "avatar": {
     "gradient": "from-violet-400 via-purple-500 to-indigo-600",
     "pattern": "multi-color",
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755465240077,
+  "lastIncomeUpdate": 1755465339258,
   "jobCooldowns": {
     "maintenance": 1755464475247,
     "optimization": 1755464406190,
@@ -28,6 +28,16 @@
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "6b035a09-ff92-4f7e-b19a-2696a4885e6e",
+      "description": "Server \"Basic Web Server\" shutdown due to overload (95% load)",
+      "timestamp": "8/17/2025, 9:15:39 PM"
+    },
+    {
+      "id": "d47ed216-df35-4cb3-936b-0e68b05a07e7",
+      "description": "Income: +$290, Rental: -$29 (Net: +$261)",
+      "timestamp": "8/17/2025, 9:15:39 PM"
+    },
     {
       "id": "3b0355db-1127-4ee1-a9b4-b901e1e950ca",
       "description": "Income: +$322, Rental: -$32 (Net: +$290)",
@@ -42,16 +52,6 @@
       "id": "ef91db78-b5e7-4313-96e2-50c83645733b",
       "description": "Income: +$176, Rental: -$17 (Net: +$159)",
       "timestamp": "8/17/2025, 9:10:14 PM"
-    },
-    {
-      "id": "25b0a393-50f3-475a-af19-1b7e90520a86",
-      "description": "Server \"Basic Web Server\" shutdown due to overload (95% load)",
-      "timestamp": "8/17/2025, 9:09:14 PM"
-    },
-    {
-      "id": "aa3d67eb-2156-4768-a172-d977ab8b2f85",
-      "description": "Income: +$198, Rental: -$19 (Net: +$179)",
-      "timestamp": "8/17/2025, 9:09:14 PM"
     }
   ],
   "achievements": [
