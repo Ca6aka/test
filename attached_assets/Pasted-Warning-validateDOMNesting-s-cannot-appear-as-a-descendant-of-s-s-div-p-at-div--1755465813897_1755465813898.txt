@@ -1,0 +1,26 @@
+Warning: validateDOMNesting(...): %s cannot appear as a descendant of <%s>.%s <div> p 
+    at div
+    at Badge (https://acd4a3ba-9c87-47a1-96aa-2ea45e3993d7-00-o5zo79ur5kt4.riker.replit.dev/src/components/ui/badge.jsx:37:3)
+    at p
+    at div
+    at div
+    at div
+    at div
+    at div
+    at ReportsTab (https://acd4a3ba-9c87-47a1-96aa-2ea45e3993d7-00-o5zo79ur5kt4.riker.replit.dev/src/components/reports-tab.jsx:35:17)
+    at div
+    at main
+    at div
+    at div
+    at div
+    at DashboardPage (https://acd4a3ba-9c87-47a1-96aa-2ea45e3993d7-00-o5zo79ur5kt4.riker.replit.dev/src/pages/dashboard.jsx:44:25)
+    at Route (https://acd4a3ba-9c87-47a1-96aa-2ea45e3993d7-00-o5zo79ur5kt4.riker.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=94ce1879:280:16)
+    at Switch (https://acd4a3ba-9c87-47a1-96aa-2ea45e3993d7-00-o5zo79ur5kt4.riker.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=94ce1879:336:17)
+    at AppRouter (https://acd4a3ba-9c87-47a1-96aa-2ea45e3993d7-00-o5zo79ur5kt4.riker.replit.dev/src/App.jsx?v=-OFfVWjTUXf-EQBrRuF5e:33:25)
+    at Provider (https://acd4a3ba-9c87-47a1-96aa-2ea45e3993d7-00-o5zo79ur5kt4.riker.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-PLT6GTVM.js?v=94ce1879:38:15)
+    at TooltipProvider (https://acd4a3ba-9c87-47a1-96aa-2ea45e3993d7-00-o5zo79ur5kt4.riker.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@radix-ui_react-tooltip.js?v=94ce1879:62:5)
+    at GameProvider (https://acd4a3ba-9c87-47a1-96aa-2ea45e3993d7-00-o5zo79ur5kt4.riker.replit.dev/src/contexts/game-context.jsx:83:32)
+    at ThemeProvider (https://acd4a3ba-9c87-47a1-96aa-2ea45e3993d7-00-o5zo79ur5kt4.riker.replit.dev/src/components/theme-provider.jsx:25:3)
+    at LanguageProvider (https://acd4a3ba-9c87-47a1-96aa-2ea45e3993d7-00-o5zo79ur5kt4.riker.replit.dev/src/contexts/language-context.jsx:2206:36)
+    at QueryClientProvider (https://acd4a3ba-9c87-47a1-96aa-2ea45e3993d7-00-o5zo79ur5kt4.riker.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=94ce1879:2929:3)
+    at App

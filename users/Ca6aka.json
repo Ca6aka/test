@@ -2,11 +2,11 @@
   "id": "9b1a7cc0-8287-468a-9df7-de5d5e73402f",
   "nickname": "Ca6aka",
   "password": "$2b$10$vQisG/HiYpZCbDxhj9hAb.kSngBkSHarYFF0JExylZ1/d5j1tGgq6",
-  "balance": 221043,
+  "balance": 221307,
   "level": 5,
   "experience": 530,
-  "totalEarnings": 210675,
-  "totalSpent": 67332,
+  "totalEarnings": 210967,
+  "totalSpent": 67360,
   "avatar": {
     "gradient": "from-violet-400 via-purple-500 to-indigo-600",
     "pattern": "multi-color",
@@ -19,8 +19,8 @@
   "banned": false,
   "muted": false,
   "muteExpires": null,
-  "isOnline": false,
-  "lastIncomeUpdate": 1755465716083,
+  "isOnline": true,
+  "lastIncomeUpdate": 1755465830050,
   "jobCooldowns": {
     "maintenance": 1755464475247,
     "optimization": 1755464406190,
@@ -28,6 +28,16 @@
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "47c9dd02-6605-4ec4-9399-63d49adebc86",
+      "description": "Income: +$136, Rental: -$13 (Net: +$123)",
+      "timestamp": "8/17/2025, 9:23:50 PM"
+    },
+    {
+      "id": "8c71c410-e607-414f-a7bf-975415cded6e",
+      "description": "Income: +$156, Rental: -$15 (Net: +$141)",
+      "timestamp": "8/17/2025, 9:22:57 PM"
+    },
     {
       "id": "433fe98d-d788-4599-b83a-c0060c1c1dbb",
       "description": "Income: +$154, Rental: -$15 (Net: +$139)",
@@ -42,16 +52,6 @@
       "id": "3857579e-a75c-46e9-8d5b-f8727af6dc88",
       "description": "Income: +$154, Rental: -$15 (Net: +$139)",
       "timestamp": "8/17/2025, 9:19:44 PM"
-    },
-    {
-      "id": "9891de30-a486-4ef7-b7ce-c345412a9483",
-      "description": "Income: +$474, Rental: -$47 (Net: +$427)",
-      "timestamp": "8/17/2025, 9:18:44 PM"
-    },
-    {
-      "id": "6b035a09-ff92-4f7e-b19a-2696a4885e6e",
-      "description": "Server \"Basic Web Server\" shutdown due to overload (95% load)",
-      "timestamp": "8/17/2025, 9:15:39 PM"
     }
   ],
   "achievements": [
@@ -223,5 +223,5 @@
   "lastQuestReset": 1755392887200,
   "registrationIP": "192.168.0.136",
   "registrationTime": 1755392887200,
-  "lastSeen": 1755465633005
+  "lastSeen": 1755465857811
 }

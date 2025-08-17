@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "id": "4f1f8bba-3535-479c-9fde-966e7df85642",
+    "reportId": "fb0d36db-5a96-4270-a866-c4db7c0423d6",
+    "userId": "011e7510-ad37-4cd3-a0f1-63dc531f8010",
+    "userNickname": "test",
+    "message": "Проверка епта блять",
+    "isFromAdmin": false,
+    "createdAt": 1755465747407
+  },
+  {
+    "id": "37171957-898f-41eb-b754-f38ce8e074b0",
+    "reportId": "fb0d36db-5a96-4270-a866-c4db7c0423d6",
+    "userId": "9b1a7cc0-8287-468a-9df7-de5d5e73402f",
+    "userNickname": "Ca6aka",
+    "message": "привет",
+    "isFromAdmin": true,
+    "createdAt": 1755465774112
+  }
+]

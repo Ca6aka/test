@@ -315,9 +315,11 @@ export function ReportsTab() {
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="font-semibold text-white">{selectedReport.subject}</h3>
-                  <p className="text-sm text-slate-400">
-                    {getCategoryIcon(selectedReport.category)} {t(selectedReport.category + 'Issue')} • {getStatusBadge(selectedReport.status)}
-                  </p>
+                  <div className="text-sm text-slate-400 flex items-center space-x-2">
+                    <span>{getCategoryIcon(selectedReport.category)} {t(selectedReport.category + 'Issue')}</span>
+                    <span>•</span>
+                    <span>{getStatusBadge(selectedReport.status)}</span>
+                  </div>
                 </div>
                 <div className="flex items-center space-x-2">
                   {isAdmin && selectedReport.status === 'open' && (

@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "id": "fb0d36db-5a96-4270-a866-c4db7c0423d6",
+    "userId": "011e7510-ad37-4cd3-a0f1-63dc531f8010",
+    "userNickname": "test",
+    "subject": "Проверка",
+    "category": "general",
+    "status": "open",
+    "createdAt": 1755465747406,
+    "closedAt": null,
+    "closedBy": null,
+    "isMarked": false,
+    "hasNewMessages": false
+  }
+]
