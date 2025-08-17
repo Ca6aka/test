@@ -2,11 +2,11 @@
   "id": "9b1a7cc0-8287-468a-9df7-de5d5e73402f",
   "nickname": "Ca6aka",
   "password": "$2b$10$vQisG/HiYpZCbDxhj9hAb.kSngBkSHarYFF0JExylZ1/d5j1tGgq6",
-  "balance": 217374,
+  "balance": 218442,
   "level": 5,
   "experience": 530,
-  "totalEarnings": 206608,
-  "totalSpent": 66934,
+  "totalEarnings": 207792,
+  "totalSpent": 67050,
   "avatar": {
     "gradient": "from-violet-400 via-purple-500 to-indigo-600",
     "pattern": "multi-color",
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755464355269,
+  "lastIncomeUpdate": 1755464714437,
   "jobCooldowns": {
     "maintenance": 1755464475247,
     "optimization": 1755464406190,
@@ -28,6 +28,21 @@
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "c4fda43a-0f0b-469f-b3fb-482ac5019ffe",
+      "description": "Income: +$198, Rental: -$19 (Net: +$179)",
+      "timestamp": "8/17/2025, 9:05:14 PM"
+    },
+    {
+      "id": "0f2be4a9-458f-4888-9fdb-b4460dfb23e9",
+      "description": "Income: +$197, Rental: -$19 (Net: +$178)",
+      "timestamp": "8/17/2025, 9:04:14 PM"
+    },
+    {
+      "id": "84ce790d-fe41-4093-90d8-e3123f8bd14f",
+      "description": "Income: +$789, Rental: -$78 (Net: +$711)",
+      "timestamp": "8/17/2025, 9:03:14 PM"
+    },
     {
       "id": "0d754351-d425-42c1-8927-2a2f75d8d596",
       "description": "Income: +$226, Rental: -$22 (Net: +$204)",
@@ -37,21 +52,6 @@
       "id": "e09c89bb-56a4-469f-b47d-a16fd4ac7f46",
       "description": "Completed Server Maintenance (+$150, +10 XP)",
       "timestamp": "17.08.2025, 22:58:15"
-    },
-    {
-      "id": "e8c855e5-aff4-4538-a633-52869fb509be",
-      "description": "Turned Basic Web Server online",
-      "timestamp": "17.08.2025, 22:58:11"
-    },
-    {
-      "id": "e4de0e56-162d-4554-969f-78ace30257bc",
-      "description": "Server \"Basic Web Server\" shutdown due to overload (95% load)",
-      "timestamp": "17.08.2025, 22:58:06"
-    },
-    {
-      "id": "383bca6a-1ab0-44a6-9b32-6713f06eb6cf",
-      "description": "Income: +$198, Rental: -$19 (Net: +$179)",
-      "timestamp": "17.08.2025, 22:58:06"
     }
   ],
   "achievements": [
