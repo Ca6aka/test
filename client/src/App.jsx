@@ -34,6 +34,10 @@ function AppRouter() {
         {gameState.user ? <DashboardPage /> : <Redirect to="/reg" />}
       </Route>
       
+      <Route path="/game/:tab">
+        {gameState.user ? <DashboardPage /> : <Redirect to="/reg" />}
+      </Route>
+      
       <Route path="/player/:nickname" component={PlayerProfilePage} />
       
       <Route path="/player">

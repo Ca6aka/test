@@ -20,7 +20,7 @@
     "nickname": "test",
     "balance": 16400,
     "serverCount": 0,
-    "isOnline": true,
+    "isOnline": false,
     "rank": 3
   },
   {

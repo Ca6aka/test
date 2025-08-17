@@ -305,7 +305,21 @@ export function ReportsTab() {
                       <span className="text-lg">{getCategoryIcon(report.category)}</span>
                       <div>
                         <h3 className="font-medium text-white text-sm truncate">
-                          {isAdmin ? `${report.userNickname}: ${report.subject}` : report.subject}
+                          {isAdmin ? (
+                            <>
+                              <button 
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  window.open(`/player/${report.userNickname}`, '_blank');
+                                }}
+                                className="text-blue-400 hover:text-blue-300 hover:underline transition-colors"
+                                data-testid={`link-player-${report.userNickname}`}
+                              >
+                                {report.userNickname}
+                              </button>
+                              : {report.subject}
+                            </>
+                          ) : report.subject}
                         </h3>
                         <p className="text-xs text-slate-400">
                           {new Date(report.createdAt).toLocaleDateString()}
@@ -412,8 +426,7 @@ export function ReportsTab() {
                       ) : (
                         <button
                           onClick={() => {
-                            // Open user profile dialog - можно добавить позже
-                            console.log('Open profile for:', message.userNickname);
+                            window.open(`/player/${message.userNickname}`, '_blank');
                           }}
                           className="text-xs font-medium hover:underline text-blue-200 hover:text-blue-100 transition-colors"
                           data-testid={`link-profile-${message.userNickname}`}

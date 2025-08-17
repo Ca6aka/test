@@ -204,7 +204,7 @@ export default function DashboardPage() {
                   ? 'text-slate-300 hover:bg-slate-700/50'
                   : 'text-slate-500 opacity-50 cursor-not-allowed'
               }`}
-              onClick={() => isTabUnlocked("achievements") && handleTabChange("achievements")}
+              onClick={() => isTabUnlocked('achievements') onClick={() => isTabUnlocked('achievements') && setActiveTab('achievements')onClick={() => isTabUnlocked('achievements') && setActiveTab('achievements') handleTabChange('achievements')}
               disabled={!isTabUnlocked('achievements')}
             >
               <i className="fas fa-trophy"></i>
@@ -222,7 +222,7 @@ export default function DashboardPage() {
                   ? 'text-slate-300 hover:bg-slate-700/50'
                   : 'text-slate-500 opacity-50 cursor-not-allowed'
               }`}
-              onClick={() => isTabUnlocked("quests") && handleTabChange("quests")}
+              onClick={() => isTabUnlocked('quests') onClick={() => isTabUnlocked('quests') && setActiveTab('quests')onClick={() => isTabUnlocked('quests') && setActiveTab('quests') handleTabChange('quests')}
               disabled={!isTabUnlocked('quests')}
             >
               <i className="fas fa-calendar"></i>
@@ -243,7 +243,7 @@ export default function DashboardPage() {
                   ? 'text-slate-300 hover:bg-slate-700/50'
                   : 'text-slate-500 opacity-50 cursor-not-allowed'
               }`}
-              onClick={() => isTabUnlocked("minigames") && handleTabChange("minigames")}
+              onClick={() => isTabUnlocked('minigames') onClick={() => isTabUnlocked('minigames') && setActiveTab('minigames')onClick={() => isTabUnlocked('minigames') && setActiveTab('minigames') handleTabChange('minigames')}
               disabled={!isTabUnlocked('minigames')}
             >
               <i className="fas fa-gamepad"></i>
@@ -259,7 +259,7 @@ export default function DashboardPage() {
                   ? 'text-yellow-300 shadow-lg shadow-yellow-500/25'
                   : 'text-yellow-400 hover:text-yellow-300'
               }`}
-              onClick={() => isTabUnlocked("donate") && handleTabChange("donate")}
+              onClick={() => isTabUnlocked('donate') onClick={() => isTabUnlocked('donate') && setActiveTab('donate')onClick={() => isTabUnlocked('donate') && setActiveTab('donate') handleTabChange('donate')}
               disabled={!isTabUnlocked('donate')}
             >
               <i className="fas fa-coins"></i>
@@ -277,7 +277,7 @@ export default function DashboardPage() {
                   ? 'text-slate-300 hover:bg-slate-700/50'
                   : 'text-slate-500 opacity-50 cursor-not-allowed'
               }`}
-              onClick={() => isTabUnlocked("reports") && handleTabChange("reports")}
+              onClick={() => isTabUnlocked('reports') onClick={() => isTabUnlocked('reports') && setActiveTab('reports')onClick={() => isTabUnlocked('reports') && setActiveTab('reports') handleTabChange('reports')}
               disabled={!isTabUnlocked('reports')}
             >
               <i className="fas fa-headset"></i>
@@ -323,7 +323,7 @@ export default function DashboardPage() {
                   ? 'text-slate-300 hover:bg-slate-700/50'
                   : 'text-slate-500 opacity-50 cursor-not-allowed'
               }`}
-              onClick={() => isTabUnlocked("servers") && handleTabChange("servers")}
+              onClick={() => isTabUnlocked('servers') onClick={() => isTabUnlocked('servers') && setActiveTab('servers')onClick={() => isTabUnlocked('servers') && setActiveTab('servers') handleTabChange('servers')}
               disabled={!isTabUnlocked('servers')}
             >
               <i className="fas fa-server text-lg"></i>
@@ -346,7 +346,7 @@ export default function DashboardPage() {
                   ? 'text-slate-300 hover:bg-slate-700/50'
                   : 'text-slate-500 opacity-50 cursor-not-allowed'
               }`}
-              onClick={() => isTabUnlocked("hosting") && handleTabChange("hosting")}
+              onClick={() => isTabUnlocked('hosting') onClick={() => isTabUnlocked('hosting') && setActiveTab('hosting')onClick={() => isTabUnlocked('hosting') && setActiveTab('hosting') handleTabChange('hosting')}
               disabled={!isTabUnlocked('hosting')}
             >
               <i className="fas fa-shopping-cart text-lg"></i>
@@ -364,7 +364,7 @@ export default function DashboardPage() {
                   ? 'text-slate-300 hover:bg-slate-700/50'
                   : 'text-slate-500 opacity-50 cursor-not-allowed'
               }`}
-              onClick={() => isTabUnlocked("learning") && handleTabChange("learning")}
+              onClick={() => isTabUnlocked('learning') onClick={() => isTabUnlocked('learning') && setActiveTab('learning')onClick={() => isTabUnlocked('learning') && setActiveTab('learning') handleTabChange('learning')}
               disabled={!isTabUnlocked('learning')}
             >
               <i className="fas fa-book text-lg"></i>
@@ -382,7 +382,7 @@ export default function DashboardPage() {
                   ? 'text-slate-300 hover:bg-slate-700/50'
                   : 'text-slate-500 opacity-50 cursor-not-allowed'
               }`}
-              onClick={() => isTabUnlocked("achievements") && handleTabChange("achievements")}
+              onClick={() => isTabUnlocked('achievements') onClick={() => isTabUnlocked('achievements') && setActiveTab('achievements')onClick={() => isTabUnlocked('achievements') && setActiveTab('achievements') handleTabChange('achievements')}
               disabled={!isTabUnlocked('achievements')}
             >
               <i className="fas fa-trophy text-lg"></i>
@@ -400,7 +400,7 @@ export default function DashboardPage() {
                   ? 'text-slate-300 hover:bg-slate-700/50'
                   : 'text-slate-500 opacity-50 cursor-not-allowed'
               }`}
-              onClick={() => isTabUnlocked("quests") && handleTabChange("quests")}
+              onClick={() => isTabUnlocked('quests') onClick={() => isTabUnlocked('quests') && setActiveTab('quests')onClick={() => isTabUnlocked('quests') && setActiveTab('quests') handleTabChange('quests')}
               disabled={!isTabUnlocked('quests')}
             >
               <i className="fas fa-calendar text-lg"></i>
@@ -421,7 +421,7 @@ export default function DashboardPage() {
                   ? 'text-slate-300 hover:bg-slate-700/50'
                   : 'text-slate-500 opacity-50 cursor-not-allowed'
               }`}
-              onClick={() => isTabUnlocked("minigames") && handleTabChange("minigames")}
+              onClick={() => isTabUnlocked('minigames') onClick={() => isTabUnlocked('minigames') && setActiveTab('minigames')onClick={() => isTabUnlocked('minigames') && setActiveTab('minigames') handleTabChange('minigames')}
               disabled={!isTabUnlocked('minigames')}
             >
               <i className="fas fa-gamepad text-lg"></i>
@@ -440,7 +440,7 @@ export default function DashboardPage() {
                   ? 'text-yellow-300 shadow-lg shadow-yellow-500/25'
                   : 'text-yellow-400 hover:text-yellow-300'
               }`}
-              onClick={() => isTabUnlocked("donate") && handleTabChange("donate")}
+              onClick={() => isTabUnlocked('donate') onClick={() => isTabUnlocked('donate') && setActiveTab('donate')onClick={() => isTabUnlocked('donate') && setActiveTab('donate') handleTabChange('donate')}
               disabled={!isTabUnlocked('donate')}
             >
               <i className="fas fa-coins text-lg"></i>
@@ -458,7 +458,7 @@ export default function DashboardPage() {
                   ? 'text-slate-300 hover:bg-slate-700/50'
                   : 'text-slate-500 opacity-50 cursor-not-allowed'
               }`}
-              onClick={() => isTabUnlocked("reports") && handleTabChange("reports")}
+              onClick={() => isTabUnlocked('reports') onClick={() => isTabUnlocked('reports') && setActiveTab('reports')onClick={() => isTabUnlocked('reports') && setActiveTab('reports') handleTabChange('reports')}
               disabled={!isTabUnlocked('reports')}
             >
               <i className="fas fa-headset text-lg"></i>

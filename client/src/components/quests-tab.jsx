@@ -21,7 +21,7 @@ export function QuestsTab() {
   });
 
   const claimRewardMutation = useMutation({
-    mutationFn: (questId) => apiRequest('POST', `/api/quests/${encodeURIComponent(questId)}/claim`, null),
+    mutationFn: (questId) => apiRequest(`/api/quests/${encodeURIComponent(questId)}/claim`, 'POST'),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/quests'] });
       queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });

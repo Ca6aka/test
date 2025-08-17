@@ -34,6 +34,16 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
     }
   });
 
+  const updateExpMutation = useMutation({
+    mutationFn: (xpGained) => apiRequest('/api/users/add-xp', 'POST', { xp: xpGained }),
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
+    },
+    onError: (error) => {
+      console.error('Failed to add XP:', error);
+    }
+  });
+
   const colors = ['#ff4444', '#44ff44', '#4444ff', '#ffff44', '#ff44ff', '#44ffff'];
 
   useEffect(() => {
@@ -125,6 +135,8 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
 
   const handleGameSuccess = () => {
     setGameState('success');
+    // Award XP for successful completion
+    updateExpMutation.mutate(5);
     updateServerMutation.mutate(server.id);
     toast({
       title: t('serverminigame5'),
@@ -144,6 +156,11 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
 
   const closeGame = () => {
     setGameState('instructions');
+    setConnections([]);
+    setCables(generateCables());
+    setPorts(generatePorts());
+    setTimeLeft(60);
+    setDraggedCable(null);
     onClose();
   };
 
@@ -162,6 +179,7 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
             size="sm"
             className="absolute right-4 top-4"
             onClick={closeGame}
+            data-testid="button-close-game"
           >
             <X className="w-4 h-4" />
           </Button>
@@ -274,12 +292,12 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
             <div className="text-center space-y-4">
               <div className="text-2xl font-bold text-green-600">{t('serverminigame5')}</div>
               <div className="text-gray-600 dark:text-gray-300">{t('serverminigame10')}</div>
-              <Button onClick={() => {
-                setTimeout(() => {
-                  updateServerMutation.mutate(server.id);
-                  closeGame();
-                }, 2000);
-              }} className="bg-green-600 hover:bg-green-700">
+              <div className="text-lg font-medium text-blue-400">+5 XP earned!</div>
+              <Button 
+                onClick={closeGame} 
+                className="bg-green-600 hover:bg-green-700"
+                data-testid="button-close-success"
+              >
                 {t('close')}
               </Button>
             </div>
@@ -289,7 +307,11 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
             <div className="text-center space-y-4">
               <div className="text-2xl font-bold text-red-600">{t('serverminigame7')}</div>
               <div className="text-gray-600 dark:text-gray-300">{t('serverminigame11')}</div>
-              <Button onClick={closeGame} variant="destructive">
+              <Button 
+                onClick={closeGame} 
+                variant="destructive"
+                data-testid="button-close-failed"
+              >
                 {t('close')}
               </Button>
             </div>

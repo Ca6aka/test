@@ -43,14 +43,17 @@ const MiniGamesTab = () => {
   const updateExpMutation = useMutation({
     mutationFn: (xpGained) => apiRequest('/api/users/add-xp', 'POST', { xp: xpGained }),
     onSuccess: (data) => {
-      console.log('XP successfully added:', data);
       queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
+      toast({
+        title: t('success'),
+        description: `+${data.xpGained || 'Unknown'} XP gained!`,
+        variant: 'default'
+      });
     },
     onError: (error) => {
-      console.error('Failed to add XP:', error);
       toast({
-        title: 'Error',
-        description: 'Failed to add XP',
+        title: t('error'),
+        description: t('failedToAddXp') || 'Failed to add XP',
         variant: 'destructive'
       });
     }
