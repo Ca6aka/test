@@ -2,7 +2,7 @@
   "id": "e8162264-12da-4ee1-9dbc-a18a1f3f858b",
   "nickname": "Ca6aka",
   "password": "$2b$10$VyWHFzCGAu.7/osYGqrnxuPn.hOD46LZTHkP9KeljdyeY2j8FxfdO",
-  "balance": 126094,
+  "balance": 127560,
   "level": 11,
   "experience": 1700,
   "totalEarnings": 33500,
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755390545705,
+  "lastIncomeUpdate": 1755390812646,
   "jobCooldowns": {
     "maintenance": 1755390399605,
     "optimization": 1755390593883,
@@ -41,6 +41,21 @@
   },
   "activities": [
     {
+      "id": "a6805a7c-a871-48d4-b015-9d6a623a298e",
+      "description": "Turned Database Server online",
+      "timestamp": "8/17/2025, 12:34:30 AM"
+    },
+    {
+      "id": "f9b6070e-1c68-4a65-b18f-8ec8dfc3fb9b",
+      "description": "Turned Basic Web Server online",
+      "timestamp": "8/17/2025, 12:34:29 AM"
+    },
+    {
+      "id": "d67e5f13-71bb-4cba-bdea-04fc1c701e4b",
+      "description": "Income: +$1628, Rental: -$162 (Net: +$1466)",
+      "timestamp": "8/17/2025, 12:33:32 AM"
+    },
+    {
       "id": "275a8417-ae3e-4521-af05-6f23c45f83ba",
       "description": "Server \"Database Server\" shutdown due to overload (95% load)",
       "timestamp": "17.08.2025, 02:29:05"
@@ -49,21 +64,6 @@
       "id": "892cc2fd-9661-481c-92c7-0687c9d21a47",
       "description": "Server \"Basic Web Server\" shutdown due to overload (95% load)",
       "timestamp": "17.08.2025, 02:29:05"
-    },
-    {
-      "id": "eaf2c826-f2f8-410d-8eeb-f227b52aae8f",
-      "description": "Income: +$2462, Rental: -$246 (Net: +$2216)",
-      "timestamp": "17.08.2025, 02:27:22"
-    },
-    {
-      "id": "340343f4-9f94-49f8-8530-a8ee26d8a824",
-      "description": "Completed Security Audit (+$500, +25 XP)",
-      "timestamp": "17.08.2025, 02:26:20"
-    },
-    {
-      "id": "fba4984c-d90b-48af-8124-cf9de6a87080",
-      "description": "Completed Performance Optimization (+$250, +18 XP)",
-      "timestamp": "17.08.2025, 02:24:53"
     }
   ],
   "achievements": [
@@ -230,11 +230,11 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 47930,
+      "progress": 49558,
       "completed": false,
       "date": "Sat Aug 16 2025"
     }
   ],
   "lastQuestReset": 1755363722114,
-  "lastSeen": 1755390557244
+  "lastSeen": 1755390872936
 }

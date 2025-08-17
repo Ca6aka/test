@@ -1361,10 +1361,23 @@ export class FileStorage {
 
     if (Math.abs(netIncome) > 0) {
       const newBalance = Math.max(0, user.balance + netIncome);
-      const updatedUser = await this.updateUser(userId, {
+      // Update totalEarnings and totalSpent separately for proper tracking
+      const updateData = {
         balance: newBalance,
         lastIncomeUpdate: now
-      });
+      };
+      
+      // Update totalEarnings if we earned money
+      if (incomeEarned > 0) {
+        updateData.totalEarnings = (user.totalEarnings || 0) + incomeEarned;
+      }
+      
+      // Update totalSpent if we had rental costs
+      if (rentalCost > 0) {
+        updateData.totalSpent = (user.totalSpent || 0) + rentalCost;
+      }
+      
+      const updatedUser = await this.updateUser(userId, updateData);
 
       // Update daily quest for income
       if (incomeEarned > 0) {

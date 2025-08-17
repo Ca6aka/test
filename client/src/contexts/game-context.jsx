@@ -129,6 +129,10 @@ export function GameProvider({ children }) {
     },
     onSuccess: (data) => {
       dispatch({ type: 'UPDATE_INCOME', payload: data });
+      // Invalidate queries to ensure UI updates immediately
+      queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/servers'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/activities'] });
     },
   });
 

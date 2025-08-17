@@ -10,6 +10,21 @@ A full-stack web application that simulates a server management business game. P
 - Language: Russian preferred for communication
 - Uses Russian interface in the game
 
+## Recent Changes (Latest: August 17, 2025)
+
+### Income Generation and Balance Update Fixes (August 17, 2025)
+- **Fixed Income Update Timing**: Corrected income generation to properly update every minute (60 seconds)
+  - Added proper cache invalidation to ensure balance updates immediately in UI without page refresh
+  - Fixed mutation handling to invalidate user data, server data, and activities queries
+- **Fixed Income/Expense Tracking**: Resolved totalEarnings and totalSpent calculation issues
+  - Server income now properly updates totalEarnings field during income generation
+  - Rental costs properly update totalSpent field for accurate financial tracking
+  - Player profile bar now shows correct income/expense statistics without requiring page refresh
+- **Enhanced Real-Time Updates**: Improved game state synchronization
+  - Balance changes appear instantly in the UI after income generation
+  - Fixed server rental costs tracking for proper financial reporting
+  - Maintained all existing security practices and client-server separation
+
 ## Recent Changes (Latest: August 16, 2025)
 
 ### Admin System and UI Fixes (August 16, 2025)
