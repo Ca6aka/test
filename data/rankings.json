@@ -10,17 +10,17 @@
   {
     "id": "6050cfe7-a3f7-47e6-9f66-511cbafad1a6",
     "nickname": "MASIK",
-    "balance": 188012,
+    "balance": 188528,
     "serverCount": 11,
-    "isOnline": true,
+    "isOnline": false,
     "rank": 2
   },
   {
     "id": "011e7510-ad37-4cd3-a0f1-63dc531f8010",
     "nickname": "test",
-    "balance": 15000,
+    "balance": 16400,
     "serverCount": 0,
-    "isOnline": false,
+    "isOnline": true,
     "rank": 3
   },
   {
