@@ -2087,6 +2087,27 @@ const translations = {
     buyNow: 'Купити зараз',
     purchaseNotAvailable: 'Покупка недоступна',
     purchaseNotAvailableDesc: 'Це демо версія. Обробка платежів не реалізована.',
+    
+    // Переводы отчетов
+    reports: 'Звіти',
+    reportsDesc: 'Залишайте скарги та пропозиції щодо покращення гри',
+    reportSubject: 'Тема',
+    reportMessage: 'Повідомлення',
+    reportType: 'Тип звіту',
+    reportTypeBug: 'Помилка',
+    reportTypeFeature: 'Пропозиція функції',
+    reportTypeComplaint: 'Скарга',
+    reportTypeOther: 'Інше',
+    submitReport: 'Надіслати звіт',
+    reportHistory: 'Історія звітів',
+    reportStatus: 'Статус',
+    reportCreated: 'Створений',
+    reportClosed: 'Закритий',
+    reportMarked: 'Позначений',
+    fillAllFields: 'Будь ласка, заповніть всі обов\'язкові поля',
+    subjectTooLong: 'Тема не повинна перевищувати 50 символів',
+    messageTooLong: 'Повідомлення не повинно перевищувати 500 символів',
+    characters: 'символів',
   },
   
   de: {
@@ -2697,6 +2718,27 @@ const translations = {
     buyNow: 'Jetzt kaufen',
     purchaseNotAvailable: 'Kauf nicht verfügbar',
     purchaseNotAvailableDesc: 'Dies ist eine Demo-Version. Zahlungsabwicklung ist nicht implementiert.',
+    
+    // Berichte Übersetzungen
+    reports: 'Berichte',
+    reportsDesc: 'Hinterlassen Sie Beschwerden und Verbesserungsvorschläge für das Spiel',
+    reportSubject: 'Betreff',
+    reportMessage: 'Nachricht',
+    reportType: 'Berichtstyp',
+    reportTypeBug: 'Fehler',
+    reportTypeFeature: 'Feature-Vorschlag',
+    reportTypeComplaint: 'Beschwerde',
+    reportTypeOther: 'Sonstiges',
+    submitReport: 'Bericht senden',
+    reportHistory: 'Berichtsverlauf',
+    reportStatus: 'Status',
+    reportCreated: 'Erstellt',
+    reportClosed: 'Geschlossen',
+    reportMarked: 'Markiert',
+    fillAllFields: 'Bitte füllen Sie alle Pflichtfelder aus',
+    subjectTooLong: 'Betreff darf nicht länger als 50 Zeichen sein',
+    messageTooLong: 'Nachricht darf nicht länger als 500 Zeichen sein',
+    characters: 'Zeichen',
   }
 };
 

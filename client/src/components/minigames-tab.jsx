@@ -176,7 +176,7 @@ const MiniGamesTab = () => {
         correctChoices: prev.correctChoices + (correct ? 1 : 0),
         wrongChoices: prev.wrongChoices + (correct ? 0 : 1),
         score: prev.score + (correct ? 1 : 0), // Changed from 5 to 1 XP per correct answer
-        gameOver: newRequestsLeft <= 0 || !nextRequest
+        gameOver: newRequestsLeft <= 0
       };
     });
   };

@@ -62,8 +62,8 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
     const newCables = gameColors.map((color, index) => ({
       id: `cable-${index}`,
       color,
-      x: 20,
-      y: 80 + shuffledIndexes[index] * 50,
+      x: 30,
+      y: 60 + shuffledIndexes[index] * 50,
       connected: false
     }));
 
@@ -74,7 +74,7 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
       id: `port-${index}`,
       color,
       x: 380,
-      y: 80 + shuffledPortIndexes[index] * 50,
+      y: 60 + shuffledPortIndexes[index] * 50,
       connected: false
     }));
 
@@ -275,8 +275,8 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
               <div className="text-2xl font-bold text-green-600">{t('serverminigame5')}</div>
               <div className="text-gray-600 dark:text-gray-300">{t('serverminigame10')}</div>
               <Button onClick={() => {
+                updateServerMutation.mutate(server.id);
                 closeGame();
-                onServerStart();
               }} className="bg-green-600 hover:bg-green-700">
                 {t('close')}
               </Button>
