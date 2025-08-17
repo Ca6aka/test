@@ -1791,6 +1791,7 @@ export class FileStorage {
       userNickname: user.nickname,
       message: message.trim(),
       isFromAdmin,
+      adminNickname: isFromAdmin ? user.nickname : null,
       createdAt: Date.now()
     };
 

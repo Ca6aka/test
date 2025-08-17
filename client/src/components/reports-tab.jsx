@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
-import { MessageCircle, Plus, MoreHorizontal, X, Send, Clock, CheckCircle, Flag } from 'lucide-react';
+import { MessageCircle, Plus, MoreHorizontal, X, Send, Clock, CheckCircle, Flag, RotateCcw, User } from 'lucide-react';
 import { useLanguage } from '@/contexts/language-context';
 import { useGame } from '@/contexts/game-context';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
@@ -33,15 +33,33 @@ export function ReportsTab() {
   const { data: reports = [], refetch: refetchReports } = useQuery({
     queryKey: ['/api/reports'],
     queryFn: () => fetch('/api/reports').then(res => res.json()),
-    refetchInterval: 5000 // Refresh every 5 seconds
+    refetchInterval: 5000, // Refresh every 5 seconds
+    onSuccess: (data) => {
+      // Check if currently selected report still exists
+      if (selectedReport && !data.find(report => report.id === selectedReport.id)) {
+        setSelectedReport(null);
+      }
+    }
   });
 
   // Fetch messages for selected report
   const { data: messages = [], refetch: refetchMessages } = useQuery({
     queryKey: ['/api/reports', selectedReport?.id, 'messages'],
-    queryFn: () => fetch(`/api/reports/${selectedReport.id}/messages`).then(res => res.json()),
+    queryFn: () => fetch(`/api/reports/${selectedReport.id}/messages`).then(res => {
+      if (!res.ok) {
+        throw new Error('Report not found');
+      }
+      return res.json();
+    }),
     enabled: !!selectedReport,
-    refetchInterval: 2000 // Refresh every 2 seconds
+    refetchInterval: 2000, // Refresh every 2 seconds
+    onError: (error) => {
+      // If report was deleted, clear selection
+      if (error.message === 'Report not found') {
+        setSelectedReport(null);
+        toast({ title: t('error'), description: t('reportDeleted'), variant: 'destructive' });
+      }
+    }
   });
 
   // Create new report
@@ -322,7 +340,7 @@ export function ReportsTab() {
                   </div>
                 </div>
                 <div className="flex items-center space-x-2">
-                  {isAdmin && selectedReport.status === 'open' && (
+                  {isAdmin && (
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
                         <Button variant="ghost" size="sm">
@@ -330,10 +348,28 @@ export function ReportsTab() {
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent className="bg-slate-700 border-slate-600">
-                        <DropdownMenuItem onClick={() => closeReportMutation.mutate(selectedReport.id)}>
-                          <CheckCircle className="w-4 h-4 mr-2" />
-                          {t('closeChat')}
-                        </DropdownMenuItem>
+                        {selectedReport.status === 'open' ? (
+                          <DropdownMenuItem onClick={() => closeReportMutation.mutate(selectedReport.id)}>
+                            <CheckCircle className="w-4 h-4 mr-2" />
+                            {t('closeChat')}
+                          </DropdownMenuItem>
+                        ) : (
+                          <DropdownMenuItem onClick={() => {
+                            // Reopen closed chat
+                            const response = apiRequest(`/api/reports/${selectedReport.id}/reopen`, {
+                              method: 'POST'
+                            });
+                            response.then(() => {
+                              queryClient.invalidateQueries({ queryKey: ['/api/reports'] });
+                              toast({ title: t('success'), description: t('reportReopened') });
+                            }).catch((error) => {
+                              toast({ title: t('error'), description: error.message, variant: 'destructive' });
+                            });
+                          }}>
+                            <RotateCcw className="w-4 h-4 mr-2" />
+                            {t('reopenChat')}
+                          </DropdownMenuItem>
+                        )}
                         <DropdownMenuItem onClick={() => deleteReportMutation.mutate(selectedReport.id)}>
                           <X className="w-4 h-4 mr-2" />
                           {t('deleteChat')}
@@ -367,9 +403,23 @@ export function ReportsTab() {
                     }`}
                   >
                     <div className="flex items-center space-x-2 mb-1">
-                      <span className="text-xs font-medium">
-                        {message.isFromAdmin ? t('admin') : message.userNickname}
-                      </span>
+                      {message.isFromAdmin ? (
+                        <span className="text-xs font-medium text-red-400">
+                          {message.adminNickname ? `${t('admin')} ${message.adminNickname}` : t('admin')}
+                        </span>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            // Open user profile dialog - можно добавить позже
+                            console.log('Open profile for:', message.userNickname);
+                          }}
+                          className="text-xs font-medium hover:underline text-blue-200 hover:text-blue-100 transition-colors"
+                          data-testid={`link-profile-${message.userNickname}`}
+                        >
+                          <User className="w-3 h-3 inline mr-1" />
+                          {message.userNickname}
+                        </button>
+                      )}
                       <span className="text-xs opacity-70">
                         {new Date(message.createdAt).toLocaleTimeString()}
                       </span>

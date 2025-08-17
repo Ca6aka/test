@@ -641,6 +641,36 @@ const translations = {
     subjectTooLong: 'Subject must be no more than 50 characters',
     messageTooLong: 'Message must be no more than 500 characters',
     characters: 'characters',
+    
+    // Reports reopen functionality
+    reopenChat: 'Reopen chat',
+    reportReopened: 'Report reopened',
+    reportReopenedDescription: 'Report has been successfully reopened for further communication',
+    chatClosedByAdmin: 'Chat closed by administrator',
+    
+    // Additional reports translations
+    myReports: 'My Reports',
+    incomingReports: 'Incoming Reports',
+    newTicket: 'New Ticket',
+    createNewTicket: 'Create New Ticket',
+    subject: 'Subject',
+    category: 'Category',
+    description: 'Description',
+    selectCategory: 'Select category',
+    generalIssue: 'General Issue',
+    technicalIssue: 'Technical Issue',
+    startChat: 'Start Chat',
+    sending: 'Sending...',
+    activeReportExists: 'You already have an active report. Please wait for admin response.',
+    noIncomingReports: 'No incoming reports',
+    selectReportToView: 'Select a report to view the conversation',
+    closeChat: 'Close chat',
+    deleteChat: 'Delete chat',
+    markChat: 'Mark chat',
+    unmarkChat: 'Unmark chat',
+    admin: 'Admin',
+    open: 'Open',
+    closed: 'Closed',
   },
   
   ru: {
@@ -1205,6 +1235,36 @@ const translations = {
     subjectTooLong: 'Тема не должна превышать 50 символов',
     messageTooLong: 'Сообщение не должно превышать 500 символов',
     characters: 'символов',
+    
+    // Reports reopen functionality
+    reopenChat: 'Переоткрыть чат',
+    reportReopened: 'Репорт переоткрыт',
+    reportReopenedDescription: 'Репорт был успешно переоткрыт для дальнейшего общения',
+    chatClosedByAdmin: 'Чат закрыт администратором',
+    
+    // Additional reports translations
+    myReports: 'Мои репорты',
+    incomingReports: 'Входящие репорты',
+    newTicket: 'Новый тикет',
+    createNewTicket: 'Создать новый тикет',
+    subject: 'Тема',
+    category: 'Категория',
+    description: 'Описание',
+    selectCategory: 'Выберите категорию',
+    generalIssue: 'Общая проблема',
+    technicalIssue: 'Техническая проблема',
+    startChat: 'Начать чат',
+    sending: 'Отправка...',
+    activeReportExists: 'У вас уже есть активный репорт. Дождитесь ответа администратора.',
+    noIncomingReports: 'Нет входящих репортов',
+    selectReportToView: 'Выберите репорт для просмотра беседы',
+    closeChat: 'Закрыть чат',
+    deleteChat: 'Удалить чат',
+    markChat: 'Отметить чат',
+    unmarkChat: 'Снять отметку с чата',
+    admin: 'Админ',
+    open: 'Открыт',
+    closed: 'Закрыт',
   },
   
   ua: {

@@ -984,6 +984,37 @@ export async function registerRoutes(app) {
     }
   });
 
+  app.post('/api/reports/:reportId/reopen', requireAuth, async (req, res) => {
+    try {
+      const user = await storage.getUser(req.session.userId);
+      if (!user || user.admin < 1) {
+        return res.status(403).json({ message: 'Admin access required' });
+      }
+
+      const { reportId } = req.params;
+      const report = await storage.getReportById(reportId);
+      
+      if (!report) {
+        return res.status(404).json({ message: 'Report not found' });
+      }
+
+      if (report.status === 'open') {
+        return res.status(400).json({ message: 'Report is already open' });
+      }
+
+      await storage.updateReport(reportId, {
+        status: 'open',
+        closedAt: null,
+        closedBy: null
+      });
+
+      res.json({ success: true });
+    } catch (error) {
+      console.error('Error reopening report:', error);
+      res.status(500).json({ message: 'Server error' });
+    }
+  });
+
   app.delete('/api/reports/:reportId', requireAuth, async (req, res) => {
     try {
       const user = await storage.getUser(req.session.userId);
