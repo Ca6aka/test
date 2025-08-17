@@ -47,7 +47,7 @@ A full-stack web application simulating a server management business game. Playe
 - **Admin System**: Multi-level admin roles (super-admin, regular admin) with granular permissions for user management, message moderation, and money management. Super-admin has exclusive access to critical controls and cannot be managed by regular admins. Admin badges reflect status at the time of message sending.
 
 ### Game Logic Architecture
-- **Server Mechanics**: Predefined server types with income, costs, and purchase prices. Income generation every minute. Server overload checks every 5 minutes (90%+ load), with reduced shutdown probabilities. Server repair displays cost and durability.
+- **Server Mechanics**: Predefined server types with income, costs, and purchase prices. **Automatic background income generation every minute for all users with active servers**. Server overload checks every 5 minutes (90%+ load), with reduced shutdown probabilities. Server repair displays cost and durability.
 - **Learning System**: Time-based courses unlocking capabilities and server slots (e.g., Security Protocols requires level 12, Database Server requires level 8).
 - **Gamification**:
     - **Achievements System**: 5 progressive achievements with rewards.

@@ -1751,6 +1751,58 @@ export class FileStorage {
     }
   }
 
+  // Background income updater for all users with active servers
+  async updateAllActiveUsersIncome() {
+    try {
+      const users = await this.getAllUsers();
+      const servers = await this.getServers();
+      const now = Date.now();
+      
+      let updatedUsersCount = 0;
+      
+      // Group servers by owner for efficiency
+      const serversByOwner = {};
+      servers.forEach(server => {
+        if (!serversByOwner[server.ownerId]) {
+          serversByOwner[server.ownerId] = [];
+        }
+        serversByOwner[server.ownerId].push(server);
+      });
+      
+      for (const user of users) {
+        const userServers = serversByOwner[user.id] || [];
+        const activeServers = userServers.filter(s => s.isOnline);
+        
+        // Only update income for users with active servers
+        if (activeServers.length > 0) {
+          const lastUpdate = user.lastIncomeUpdate || now;
+          const timeSinceUpdate = now - lastUpdate;
+          
+          // Only update if it's been more than 30 seconds since last update
+          // This prevents too frequent updates and potential conflicts
+          if (timeSinceUpdate > 30000) {
+            try {
+              const result = await this.updateIncome(user.id);
+              if (result.netIncome !== 0) {
+                updatedUsersCount++;
+                console.log(`Background income update: ${user.nickname} earned $${result.netIncome}`);
+              }
+            } catch (error) {
+              console.error(`Error updating income for ${user.nickname}:`, error.message);
+            }
+          }
+        }
+      }
+      
+      if (updatedUsersCount > 0) {
+        console.log(`Background income update completed: ${updatedUsersCount} users updated`);
+      }
+      
+    } catch (error) {
+      console.error('Error in background income update:', error);
+    }
+  }
+
   // Utility methods
   formatTime(milliseconds) {
     const seconds = Math.floor(milliseconds / 1000);

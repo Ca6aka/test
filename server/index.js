@@ -66,6 +66,15 @@ app.use('/api', async (req, res, next) => {
   next();
 });
 
+// Background income updater - runs every minute
+setInterval(async () => {
+  try {
+    await storage.updateAllActiveUsersIncome();
+  } catch (error) {
+    log(`Income update error: ${error.message}`);
+  }
+}, 60000); // Every 60 seconds
+
 (async () => {
   const server = await registerRoutes(app);
 

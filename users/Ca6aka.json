@@ -2,11 +2,11 @@
   "id": "e8162264-12da-4ee1-9dbc-a18a1f3f858b",
   "nickname": "Ca6aka",
   "password": "$2b$10$VyWHFzCGAu.7/osYGqrnxuPn.hOD46LZTHkP9KeljdyeY2j8FxfdO",
-  "balance": 200127,
+  "balance": 202621,
   "level": 11,
   "experience": 1763,
-  "totalEarnings": 35204,
-  "totalSpent": 89889,
+  "totalEarnings": 37972,
+  "totalSpent": 90163,
   "avatar": {
     "gradient": "from-blue-400 via-purple-500 to-indigo-600",
     "pattern": "multi-color",
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755391364214,
+  "lastIncomeUpdate": 1755391755384,
   "jobCooldowns": {
     "maintenance": 1755391391635,
     "optimization": 1755391332677,
@@ -29,29 +29,29 @@
   "currentLearning": null,
   "activities": [
     {
-      "id": "ac14d470-237a-4f10-a1b8-52103132fb6c",
-      "description": "Income: +$654, Rental: -$65 (Net: +$589)",
-      "timestamp": "8/17/2025, 12:42:44 AM"
+      "id": "e9769f3a-99e2-4579-a1f1-c522c89b9e35",
+      "description": "Income: +$852, Rental: -$85 (Net: +$767)",
+      "timestamp": "8/17/2025, 12:49:15 AM"
     },
     {
-      "id": "851dae2e-82e0-4526-acac-c6314dee2c14",
-      "description": "Income: +$774, Rental: -$77 (Net: +$697)",
-      "timestamp": "8/17/2025, 12:41:11 AM"
-    },
-    {
-      "id": "40dd3b8d-f897-4388-ae37-7455e59f27b9",
-      "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "8/17/2025, 12:40:11 AM"
-    },
-    {
-      "id": "7fb79fbd-ae64-4c5c-b6bd-6eb33c931aaf",
+      "id": "8d0372ad-439b-46ad-b513-a304bf29d22f",
       "description": "Income: +$426, Rental: -$42 (Net: +$384)",
-      "timestamp": "8/17/2025, 12:39:22 AM"
+      "timestamp": "8/17/2025, 12:47:14 AM"
     },
     {
-      "id": "a71f607e-ccc1-4b5e-ac20-cdb468a13896",
-      "description": "Income: +$715, Rental: -$71 (Net: +$644)",
-      "timestamp": "8/17/2025, 12:38:22 AM"
+      "id": "22464dbb-c922-42cd-924f-e87f0f298d13",
+      "description": "Income: +$426, Rental: -$42 (Net: +$384)",
+      "timestamp": "8/17/2025, 12:46:14 AM"
+    },
+    {
+      "id": "35954230-29b5-4185-9a32-4afd41a75344",
+      "description": "Income: +$426, Rental: -$42 (Net: +$384)",
+      "timestamp": "8/17/2025, 12:45:14 AM"
+    },
+    {
+      "id": "5e3ca96b-0750-43d5-933e-dfc213157e38",
+      "description": "Income: +$638, Rental: -$63 (Net: +$575)",
+      "timestamp": "8/17/2025, 12:44:14 AM"
     }
   ],
   "achievements": [
@@ -227,5 +227,5 @@
     }
   ],
   "lastQuestReset": 1755363722114,
-  "lastSeen": 1755391401299
+  "lastSeen": 1755391794144
 }

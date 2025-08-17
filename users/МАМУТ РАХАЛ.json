@@ -2,10 +2,10 @@
   "id": "566d2601-d46f-4bcd-94d2-1e14c2ca0229",
   "nickname": "МАМУТ РАХАЛ",
   "password": "$2b$10$APOYIiwcTYooegd9N697COClCb7HIc0lGNqmE55WEgp8ROhAZGrxK",
-  "balance": 104678,
+  "balance": 105978,
   "level": 10,
-  "experience": 1393,
-  "totalEarnings": 33000,
+  "experience": 1474,
+  "totalEarnings": 34300,
   "totalSpent": 196013,
   "avatar": {
     "gradient": "from-orange-400 via-amber-500 to-yellow-600",
@@ -18,13 +18,13 @@
   "admin": 1,
   "banned": false,
   "muted": false,
-  "muteExpires": 1755389694829,
+  "muteExpires": null,
   "isOnline": true,
   "lastIncomeUpdate": 1755390309677,
   "jobCooldowns": {
-    "maintenance": 1755391535948,
-    "optimization": 1755391399213,
-    "security-audit": 1755391522331
+    "maintenance": 1755391927385,
+    "optimization": 1755392027087,
+    "security-audit": 1755391960048
   },
   "currentLearning": {
     "id": "basic-setup",
@@ -41,29 +41,29 @@
   },
   "activities": [
     {
-      "id": "f80d34c7-dda1-4454-acf6-1cc88d306561",
-      "description": "Server \"High Performance Server\" shutdown due to overload (100% load)",
-      "timestamp": "8/17/2025, 12:43:01 AM"
-    },
-    {
-      "id": "c941692f-197f-4d9c-b125-3e55b38b592b",
-      "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "8/17/2025, 12:42:36 AM"
-    },
-    {
-      "id": "e364afcf-e51c-4764-937c-941d91dc172d",
-      "description": "Started learning course: Basic Server Setup",
-      "timestamp": "8/17/2025, 12:41:12 AM"
-    },
-    {
-      "id": "3cc26c52-3caa-480d-b3db-c654b3ea2622",
-      "description": "Purchased High Performance Server for $12,000",
-      "timestamp": "8/17/2025, 12:38:39 AM"
-    },
-    {
-      "id": "6a441e7d-1fa4-4b48-aab1-52f654eea21b",
+      "id": "2e72e125-8d68-4b6c-a28d-0125fc2a8f5d",
       "description": "Turned High Performance Server online",
-      "timestamp": "8/17/2025, 12:38:29 AM"
+      "timestamp": "8/17/2025, 12:49:21 AM"
+    },
+    {
+      "id": "4f2ca09e-d5b4-463e-9904-380c058fa62f",
+      "description": "Turned High Performance Server online",
+      "timestamp": "8/17/2025, 12:49:17 AM"
+    },
+    {
+      "id": "4ff63748-f32e-4d9f-bced-65b13d1a913c",
+      "description": "Completed Server Maintenance (+$150, +10 XP)",
+      "timestamp": "8/17/2025, 12:49:07 AM"
+    },
+    {
+      "id": "3ac290d7-0aff-422c-9f1c-7c98290ca82a",
+      "description": "Completed Performance Optimization (+$250, +18 XP)",
+      "timestamp": "8/17/2025, 12:48:47 AM"
+    },
+    {
+      "id": "dfcc8ba9-c993-434d-b3f8-e1f7a77f70ee",
+      "description": "Server \"High Performance Server\" shutdown due to overload (100% load)",
+      "timestamp": "8/17/2025, 12:48:33 AM"
     }
   ],
   "achievements": [
@@ -81,7 +81,7 @@
     "learning-enthusiast",
     "maintenance-guru"
   ],
-  "completedJobsCount": 87,
+  "completedJobsCount": 92,
   "completedCoursesCount": 6,
   "completedLearning": [],
   "efficiencyBonus": 0,
@@ -239,5 +239,5 @@
     }
   ],
   "lastQuestReset": 1755371083744,
-  "lastSeen": 1755391402187
+  "lastSeen": 1755391832856
 }
