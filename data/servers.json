@@ -342,11 +342,11 @@
     "icon": "fas fa-globe",
     "isOnline": true,
     "loadPercentage": 100,
-    "durability": 94,
-    "lastDurabilityUpdate": 1755467972287,
+    "durability": 93,
+    "lastDurabilityUpdate": 1755468642791,
     "createdAt": 1755393483516,
     "lastUpdated": 1755464347508,
-    "lastOverloadCheck": 1755468351222
+    "lastOverloadCheck": 1755468702810
   },
   {
     "id": "349a3a2d-97da-421a-9e91-d97d77f6dd6b",
@@ -358,11 +358,11 @@
     "icon": "fas fa-globe",
     "isOnline": true,
     "loadPercentage": 100,
-    "durability": 92,
-    "lastDurabilityUpdate": 1755467972287,
+    "durability": 91,
+    "lastDurabilityUpdate": 1755468642791,
     "createdAt": 1755393484142,
     "lastUpdated": 1755464347508,
-    "lastOverloadCheck": 1755468351223
+    "lastOverloadCheck": 1755468702811
   },
   {
     "id": "e7b071a0-d015-4ebc-971d-7c701c036510",
@@ -505,7 +505,7 @@
     "durability": 99,
     "lastDurabilityUpdate": 1755464654436,
     "createdAt": 1755392943182,
-    "lastUpdated": 1755468473688,
+    "lastUpdated": 1755468722836,
     "lastOverloadCheck": 1755464954447
   },
   {
@@ -521,7 +521,7 @@
     "durability": 94,
     "lastDurabilityUpdate": 1755467972287,
     "createdAt": 1755392989148,
-    "lastUpdated": 1755468473688,
+    "lastUpdated": 1755468722836,
     "lastOverloadCheck": 1755468273060
   },
   {
@@ -537,7 +537,7 @@
     "durability": 92,
     "lastDurabilityUpdate": 1755467972287,
     "createdAt": 1755392990072,
-    "lastUpdated": 1755468473688,
+    "lastUpdated": 1755468722836,
     "lastOverloadCheck": 1755467972294
   },
   {
@@ -553,7 +553,7 @@
     "durability": 93,
     "lastDurabilityUpdate": 1755467349477,
     "createdAt": 1755393460155,
-    "lastUpdated": 1755468473688,
+    "lastUpdated": 1755468722836,
     "lastOverloadCheck": 1755467349490
   },
   {
@@ -569,7 +569,7 @@
     "durability": 95,
     "lastDurabilityUpdate": 1755466051808,
     "createdAt": 1755393460653,
-    "lastUpdated": 1755468473688,
+    "lastUpdated": 1755468722836,
     "lastOverloadCheck": 1755466351877
   },
   {
@@ -585,7 +585,7 @@
     "durability": 94,
     "lastDurabilityUpdate": 1755466740153,
     "createdAt": 1755393603104,
-    "lastUpdated": 1755468473688,
+    "lastUpdated": 1755468722836,
     "lastOverloadCheck": 1755467049491
   },
   {
@@ -601,7 +601,7 @@
     "durability": 92,
     "lastDurabilityUpdate": 1755467972287,
     "createdAt": 1755393603661,
-    "lastUpdated": 1755468473688,
+    "lastUpdated": 1755468722836,
     "lastOverloadCheck": 1755468273061
   },
   {
@@ -617,7 +617,7 @@
     "durability": 96,
     "lastDurabilityUpdate": 1755465339257,
     "createdAt": 1755393605087,
-    "lastUpdated": 1755468473688,
+    "lastUpdated": 1755468722836,
     "lastOverloadCheck": 1755465339269
   },
   {
@@ -633,7 +633,7 @@
     "durability": 92,
     "lastDurabilityUpdate": 1755467972287,
     "createdAt": 1755393605694,
-    "lastUpdated": 1755468473688,
+    "lastUpdated": 1755468722836,
     "lastOverloadCheck": 1755467972301
   }
 ]
