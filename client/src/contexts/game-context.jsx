@@ -124,7 +124,9 @@ export function GameProvider({ children }) {
   // Income update mutation
   const incomeUpdateMutation = useMutation({
     mutationFn: async () => {
-      const response = await apiRequest('POST', '/api/income/update');
+      const response = await apiRequest('/api/income/update', {
+        method: 'POST'
+      });
       return await response.json();
     },
     onSuccess: (data) => {
@@ -139,7 +141,10 @@ export function GameProvider({ children }) {
   // Login mutation
   const loginMutation = useMutation({
     mutationFn: async ({ nickname, password }) => {
-      const response = await apiRequest('POST', '/api/auth/login', { nickname, password });
+      const response = await apiRequest('/api/auth/login', {
+        method: 'POST',
+        body: JSON.stringify({ nickname, password })
+      });
       return await response.json();
     },
     onSuccess: (data) => {
@@ -151,7 +156,10 @@ export function GameProvider({ children }) {
   // Register mutation
   const registerMutation = useMutation({
     mutationFn: async ({ nickname, password, confirmPassword }) => {
-      const response = await apiRequest('POST', '/api/auth/register', { nickname, password, confirmPassword });
+      const response = await apiRequest('/api/auth/register', {
+        method: 'POST',
+        body: JSON.stringify({ nickname, password, confirmPassword })
+      });
       return await response.json();
     },
     onSuccess: (data) => {
@@ -163,7 +171,9 @@ export function GameProvider({ children }) {
   // Logout mutation
   const logoutMutation = useMutation({
     mutationFn: async () => {
-      const response = await apiRequest('POST', '/api/auth/logout');
+      const response = await apiRequest('/api/auth/logout', {
+        method: 'POST'
+      });
       return await response.json();
     },
     onSuccess: () => {
@@ -177,7 +187,9 @@ export function GameProvider({ children }) {
   // Job completion mutation
   const jobMutation = useMutation({
     mutationFn: async (jobType) => {
-      const response = await apiRequest('POST', `/api/jobs/${jobType}/start`);
+      const response = await apiRequest(`/api/jobs/${jobType}/start`, {
+        method: 'POST'
+      });
       return await response.json();
     },
     onSuccess: (data) => {
@@ -196,7 +208,10 @@ export function GameProvider({ children }) {
   // Server purchase mutation
   const purchaseMutation = useMutation({
     mutationFn: async (productId) => {
-      const response = await apiRequest('POST', '/api/servers/purchase', { productId });
+      const response = await apiRequest('/api/servers/purchase', {
+        method: 'POST',
+        body: JSON.stringify({ productId })
+      });
       return await response.json();
     },
     onSuccess: (data) => {
@@ -210,7 +225,9 @@ export function GameProvider({ children }) {
   // Server toggle mutation
   const toggleMutation = useMutation({
     mutationFn: async (serverId) => {
-      const response = await apiRequest('POST', `/api/servers/${serverId}/toggle`);
+      const response = await apiRequest(`/api/servers/${serverId}/toggle`, {
+        method: 'POST'
+      });
       return await response.json();
     },
     onSuccess: () => {
@@ -222,7 +239,9 @@ export function GameProvider({ children }) {
   // Server delete mutation
   const deleteMutation = useMutation({
     mutationFn: async (serverId) => {
-      const response = await apiRequest('DELETE', `/api/servers/${serverId}`);
+      const response = await apiRequest(`/api/servers/${serverId}`, {
+        method: 'DELETE'
+      });
       return await response.json();
     },
     onSuccess: (data) => {
@@ -238,7 +257,9 @@ export function GameProvider({ children }) {
   // Tutorial completion mutation
   const tutorialMutation = useMutation({
     mutationFn: async () => {
-      const response = await apiRequest('POST', '/api/tutorial/complete');
+      const response = await apiRequest('/api/tutorial/complete', {
+        method: 'POST'
+      });
       return await response.json();
     },
     onSuccess: (data) => {
@@ -249,7 +270,10 @@ export function GameProvider({ children }) {
   // Learning start mutation
   const startLearningMutation = useMutation({
     mutationFn: async (courseId) => {
-      const response = await apiRequest('POST', '/api/learning/start', { courseId });
+      const response = await apiRequest('/api/learning/start', {
+        method: 'POST',
+        body: JSON.stringify({ courseId })
+      });
       return await response.json();
     },
     onSuccess: (data) => {
