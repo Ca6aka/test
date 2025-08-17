@@ -1948,6 +1948,31 @@ export class FileStorage {
     }
   }
 
+  // Add XP to user (for mini-games)
+  async addUserXP(userId, xpAmount) {
+    const user = await this.getUser(userId);
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    const currentXP = user.experience || 0;
+    const currentLevel = user.level || 1;
+    const newXP = currentXP + xpAmount;
+    
+    // Calculate new level (simple formula: level = floor(sqrt(XP/100)) + 1)
+    const newLevel = Math.floor(Math.sqrt(newXP / 100)) + 1;
+    
+    const updatedUser = await this.updateUser(userId, {
+      experience: newXP,
+      level: Math.max(currentLevel, newLevel)
+    });
+
+    // Add activity log
+    await this.addActivity(userId, `Gained ${xpAmount} XP from mini-game`);
+    
+    return updatedUser;
+  }
+
   // Background income updater for all users with active servers
   async updateAllActiveUsersIncome() {
     try {

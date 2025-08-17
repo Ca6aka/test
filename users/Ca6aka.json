@@ -2,11 +2,11 @@
   "id": "9b1a7cc0-8287-468a-9df7-de5d5e73402f",
   "nickname": "Ca6aka",
   "password": "$2b$10$vQisG/HiYpZCbDxhj9hAb.kSngBkSHarYFF0JExylZ1/d5j1tGgq6",
-  "balance": 223640,
+  "balance": 224630,
   "level": 5,
   "experience": 530,
-  "totalEarnings": 213554,
-  "totalSpent": 67614,
+  "totalEarnings": 214651,
+  "totalSpent": 67721,
   "avatar": {
     "gradient": "from-violet-400 via-purple-500 to-indigo-600",
     "pattern": "multi-color",
@@ -19,8 +19,8 @@
   "banned": false,
   "muted": false,
   "muteExpires": null,
-  "isOnline": false,
-  "lastIncomeUpdate": 1755466920155,
+  "isOnline": true,
+  "lastIncomeUpdate": 1755467529477,
   "jobCooldowns": {
     "maintenance": 1755464475247,
     "optimization": 1755464406190,
@@ -29,29 +29,29 @@
   "currentLearning": null,
   "activities": [
     {
-      "id": "ae6ba12d-b3a2-48b2-9752-3bab8db7710f",
-      "description": "Income: +$132, Rental: -$13 (Net: +$119)",
-      "timestamp": "8/17/2025, 9:42:00 PM"
+      "id": "8bb631ff-c70c-40c0-a99d-0b2209a57a8f",
+      "description": "Income: +$88, Rental: -$8 (Net: +$80)",
+      "timestamp": "8/17/2025, 9:52:09 PM"
     },
     {
-      "id": "1347ca5e-e5f1-48c9-ab91-be1bcb24607e",
-      "description": "Income: +$132, Rental: -$13 (Net: +$119)",
-      "timestamp": "8/17/2025, 9:41:00 PM"
+      "id": "510ceead-226c-4116-be5c-6b753959efb4",
+      "description": "Income: +$88, Rental: -$8 (Net: +$80)",
+      "timestamp": "8/17/2025, 9:51:09 PM"
     },
     {
-      "id": "89ffbb57-e7ab-415a-b099-7f6286e9b880",
-      "description": "Income: +$131, Rental: -$13 (Net: +$118)",
-      "timestamp": "8/17/2025, 9:40:00 PM"
+      "id": "203d8b76-9a37-4a25-a156-ac9d2466ef2b",
+      "description": "Income: +$88, Rental: -$8 (Net: +$80)",
+      "timestamp": "8/17/2025, 9:50:09 PM"
     },
     {
-      "id": "d74875e1-9dc5-4a3c-8bfa-867ea0772afa",
-      "description": "Income: +$590, Rental: -$59 (Net: +$531)",
-      "timestamp": "8/17/2025, 9:39:00 PM"
+      "id": "e341291d-d6a9-452d-88df-c3516aa0101f",
+      "description": "Server \"Basic Web Server\" shutdown due to overload (95% load)",
+      "timestamp": "8/17/2025, 9:49:09 PM"
     },
     {
-      "id": "89f9a1ec-981a-43ab-b13c-ea48149b89f7",
-      "description": "Income: +$132, Rental: -$13 (Net: +$119)",
-      "timestamp": "17.08.2025, 23:34:31"
+      "id": "c3ede0d0-f05d-4f5d-987d-1c75bb490d34",
+      "description": "Income: +$110, Rental: -$11 (Net: +$99)",
+      "timestamp": "8/17/2025, 9:49:09 PM"
     }
   ],
   "achievements": [
@@ -223,5 +223,5 @@
   "lastQuestReset": 1755392887200,
   "registrationIP": "192.168.0.136",
   "registrationTime": 1755392887200,
-  "lastSeen": 1755466220420
+  "lastSeen": 1755467642692
 }

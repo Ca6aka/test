@@ -11,6 +11,8 @@ import { HostingTab } from '@/components/hosting-tab';
 import { LearningTab } from '@/components/learning-tab';
 import { AchievementsTab } from '@/components/achievements-tab';
 import { QuestsTab } from '@/components/quests-tab';
+import MiniGamesTab from '@/components/minigames-tab';
+import DonateTab from '@/components/donate-tab';
 import { ReportsTab } from '@/components/reports-tab';
 import { useGame } from '@/contexts/game-context';
 import { useLanguage } from '@/contexts/language-context';
@@ -31,7 +33,7 @@ export default function DashboardPage() {
   const [levelUpNotification, setLevelUpNotification] = useState({ isOpen: false, level: null });
 
   const isTabUnlocked = (tab) => {
-    if (tab === 'tutorial' || tab === 'achievements' || tab === 'quests' || tab === 'reports') return true;
+    if (tab === 'tutorial' || tab === 'achievements' || tab === 'quests' || tab === 'minigames' || tab === 'donate' || tab === 'reports') return true;
     // Only require tutorial completion for servers, hosting, and learning tabs
     return gameState.user && gameState.user.tutorialCompleted;
   };
@@ -65,6 +67,8 @@ export default function DashboardPage() {
       case 'learning': return <LearningTab />;
       case 'achievements': return <AchievementsTab />;
       case 'quests': return <QuestsTab />;
+      case 'minigames': return <MiniGamesTab />;
+      case 'donate': return <DonateTab />;
       case 'reports': return <ReportsTab />;
       default: return <TutorialTab gameState={gameState} setActiveTab={setActiveTab} />;
     }
@@ -212,9 +216,43 @@ export default function DashboardPage() {
             </Button>
 
             <Button
+              variant={activeTab === 'minigames' ? 'default' : 'ghost'}
+              size="sm"
+              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs ${
+                activeTab === 'minigames'
+                  ? 'bg-primary/20 text-primary border border-primary/30'
+                  : isTabUnlocked('minigames')
+                  ? 'text-slate-300 hover:bg-slate-700/50'
+                  : 'text-slate-500 opacity-50 cursor-not-allowed'
+              }`}
+              onClick={() => isTabUnlocked('minigames') && setActiveTab('minigames')}
+              disabled={!isTabUnlocked('minigames')}
+            >
+              <i className="fas fa-gamepad"></i>
+              <span>{t('miniGames')}</span>
+              {!isTabUnlocked('minigames') && <Lock className="w-3 h-3 ml-1" />}
+            </Button>
+
+            <Button
+              variant={activeTab === 'donate' ? 'default' : 'ghost'}
+              size="sm"
+              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs ml-4 relative bg-gradient-to-r from-yellow-600/20 to-yellow-400/20 hover:from-yellow-600/30 hover:to-yellow-400/30 border border-yellow-500/30 ${
+                activeTab === 'donate'
+                  ? 'text-yellow-300 shadow-lg shadow-yellow-500/25'
+                  : 'text-yellow-400 hover:text-yellow-300'
+              }`}
+              onClick={() => isTabUnlocked('donate') && setActiveTab('donate')}
+              disabled={!isTabUnlocked('donate')}
+            >
+              <i className="fas fa-coins"></i>
+              <span>{t('donate')}</span>
+              {!isTabUnlocked('donate') && <Lock className="w-3 h-3 ml-1" />}
+            </Button>
+
+            <Button
               variant={activeTab === 'reports' ? 'default' : 'ghost'}
               size="sm"
-              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs ml-4 relative ${
+              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs relative ${
                 activeTab === 'reports'
                   ? 'bg-primary/20 text-primary border border-primary/30'
                   : isTabUnlocked('reports')
@@ -355,8 +393,42 @@ export default function DashboardPage() {
               )}
             </Button>
 
+            {/* Mini Games Tab */}
+            <Button
+              variant={activeTab === 'minigames' ? 'default' : 'ghost'}
+              className={`w-full justify-start space-x-3 ${
+                activeTab === 'minigames'
+                  ? 'bg-primary/20 text-primary border border-primary/30'
+                  : isTabUnlocked('minigames')
+                  ? 'text-slate-300 hover:bg-slate-700/50'
+                  : 'text-slate-500 opacity-50 cursor-not-allowed'
+              }`}
+              onClick={() => isTabUnlocked('minigames') && setActiveTab('minigames')}
+              disabled={!isTabUnlocked('minigames')}
+            >
+              <i className="fas fa-gamepad text-lg"></i>
+              <span className="font-medium">{t('miniGames')}</span>
+              {!isTabUnlocked('minigames') && <Lock className="w-4 h-4 ml-auto" />}
+            </Button>
+
             {/* Separator for different section */}
             <div className="border-t border-slate-600 my-4"></div>
+
+            {/* Donate Tab */}
+            <Button
+              variant={activeTab === 'donate' ? 'default' : 'ghost'}
+              className={`w-full justify-start space-x-3 relative bg-gradient-to-r from-yellow-600/20 to-yellow-400/20 hover:from-yellow-600/30 hover:to-yellow-400/30 border border-yellow-500/30 ${
+                activeTab === 'donate'
+                  ? 'text-yellow-300 shadow-lg shadow-yellow-500/25'
+                  : 'text-yellow-400 hover:text-yellow-300'
+              }`}
+              onClick={() => isTabUnlocked('donate') && setActiveTab('donate')}
+              disabled={!isTabUnlocked('donate')}
+            >
+              <i className="fas fa-coins text-lg"></i>
+              <span className="font-medium">{t('donate')}</span>
+              {!isTabUnlocked('donate') && <Lock className="w-4 h-4 ml-auto" />}
+            </Button>
             
             {/* Reports Tab */}
             <Button

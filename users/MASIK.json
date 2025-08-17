@@ -2,11 +2,11 @@
   "id": "6050cfe7-a3f7-47e6-9f66-511cbafad1a6",
   "nickname": "MASIK",
   "password": "$2b$10$/UrBsBa/yYD9Dszu8gw8KeAXRUDfP9t9W1MVhBVP2i58WkBJzX5ya",
-  "balance": 185374,
+  "balance": 185795,
   "level": 6,
   "experience": 727,
-  "totalEarnings": 212774,
-  "totalSpent": 130224,
+  "totalEarnings": 213236,
+  "totalSpent": 130265,
   "avatar": {
     "gradient": "from-lime-400 via-green-500 to-ruby-600",
     "pattern": "multi-color",
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755466920193,
+  "lastIncomeUpdate": 1755467529486,
   "jobCooldowns": {
     "maintenance": 1755464530577,
     "optimization": 1755464652724,
@@ -41,29 +41,29 @@
   },
   "activities": [
     {
-      "id": "c1b3dae4-9074-418f-99d3-84bca057e888",
-      "description": "Income: +$46, Rental: -$4 (Net: +$42)",
-      "timestamp": "8/17/2025, 9:42:00 PM"
-    },
-    {
-      "id": "de4a7ae8-167e-4747-845e-ac24a0ddcc6f",
+      "id": "4086e908-6343-4964-9c4a-68c924e33fee",
       "description": "Income: +$45, Rental: -$4 (Net: +$41)",
-      "timestamp": "8/17/2025, 9:41:00 PM"
+      "timestamp": "8/17/2025, 9:52:09 PM"
     },
     {
-      "id": "bfc07602-c200-4329-a522-5c364df94095",
+      "id": "9927924f-6179-4528-88bc-69fc62589122",
+      "description": "Income: +$45, Rental: -$4 (Net: +$41)",
+      "timestamp": "8/17/2025, 9:51:09 PM"
+    },
+    {
+      "id": "0509f5b2-e2f7-4721-b9b1-b2ee7a35f6af",
+      "description": "Income: +$45, Rental: -$4 (Net: +$41)",
+      "timestamp": "8/17/2025, 9:50:09 PM"
+    },
+    {
+      "id": "c46baae0-52ae-4c38-837c-41d4196fbf79",
       "description": "Income: +$46, Rental: -$4 (Net: +$42)",
-      "timestamp": "8/17/2025, 9:40:00 PM"
+      "timestamp": "8/17/2025, 9:49:09 PM"
     },
     {
-      "id": "71d7a0a8-b229-4375-9eaa-1615f47edee8",
-      "description": "Server \"Database Server\" shutdown due to overload (100% load)",
-      "timestamp": "8/17/2025, 9:39:00 PM"
-    },
-    {
-      "id": "8067cc32-cb03-4e9d-9021-4c8522913fce",
-      "description": "Server \"Basic Web Server\" shutdown due to overload (100% load)",
-      "timestamp": "8/17/2025, 9:39:00 PM"
+      "id": "7f976d88-87ff-45d7-a478-88702f8ed6dd",
+      "description": "Income: +$46, Rental: -$4 (Net: +$42)",
+      "timestamp": "8/17/2025, 9:48:09 PM"
     }
   ],
   "achievements": [

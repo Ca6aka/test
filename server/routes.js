@@ -1031,6 +1031,23 @@ export async function registerRoutes(app) {
     }
   });
 
+  // Add XP to user (for mini-games)
+  app.post('/api/users/add-xp', requireAuth, async (req, res) => {
+    try {
+      const { xp } = req.body;
+      
+      if (!xp || typeof xp !== 'number' || xp < 0) {
+        return res.status(400).json({ message: 'Invalid XP amount' });
+      }
+
+      const updatedUser = await storage.addUserXP(req.session.userId, xp);
+      res.json({ user: updatedUser });
+    } catch (error) {
+      console.error('Error adding XP:', error);
+      res.status(500).json({ message: 'Server error' });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
