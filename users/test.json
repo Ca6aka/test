@@ -19,7 +19,7 @@
   "banned": false,
   "muted": false,
   "muteExpires": null,
-  "isOnline": false,
+  "isOnline": true,
   "lastIncomeUpdate": 1755465648067,
   "jobCooldowns": {},
   "currentLearning": null,
@@ -178,5 +178,5 @@
   "lastQuestReset": 1755465648067,
   "registrationIP": "95.223.108.201",
   "registrationTime": 1755465648067,
-  "lastSeen": 1755465758647
+  "lastSeen": 1755466524134
 }

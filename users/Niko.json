@@ -1,70 +1,38 @@
 {
-  "id": "9b1a7cc0-8287-468a-9df7-de5d5e73402f",
-  "nickname": "Ca6aka",
-  "password": "$2b$10$vQisG/HiYpZCbDxhj9hAb.kSngBkSHarYFF0JExylZ1/d5j1tGgq6",
-  "balance": 222753,
-  "level": 5,
-  "experience": 530,
-  "totalEarnings": 212569,
-  "totalSpent": 67516,
+  "id": "726a8c10-84ad-477f-9af7-c5f0ce7278e7",
+  "nickname": "Niko",
+  "password": "$2b$10$QqJysDSkeZoFYen/8Wav5ui0dbLudoYbIj1GNYFHuzOVJmwin/e2G",
+  "balance": 13000,
+  "level": 1,
+  "experience": 0,
+  "totalEarnings": 13000,
+  "totalSpent": 0,
   "avatar": {
     "gradient": "from-violet-400 via-purple-500 to-indigo-600",
     "pattern": "multi-color",
-    "seed": 259976,
-    "animation": "soft-pulse"
+    "seed": 751806,
+    "animation": "color-dance"
   },
-  "serverLimit": 10,
-  "tutorialCompleted": true,
-  "admin": 2,
+  "serverLimit": 3,
+  "tutorialCompleted": false,
+  "admin": 1,
   "banned": false,
   "muted": false,
   "muteExpires": null,
-  "isOnline": false,
-  "lastIncomeUpdate": 1755466471889,
-  "jobCooldowns": {
-    "maintenance": 1755464475247,
-    "optimization": 1755464406190,
-    "security-audit": 1755464526627
-  },
+  "isOnline": true,
+  "lastIncomeUpdate": 1755466136817,
+  "jobCooldowns": {},
   "currentLearning": null,
   "activities": [
     {
-      "id": "89f9a1ec-981a-43ab-b13c-ea48149b89f7",
-      "description": "Income: +$132, Rental: -$13 (Net: +$119)",
-      "timestamp": "17.08.2025, 23:34:31"
-    },
-    {
-      "id": "5c45174f-ebba-416e-9934-c73f32b47cee",
-      "description": "Income: +$132, Rental: -$13 (Net: +$119)",
-      "timestamp": "17.08.2025, 23:33:31"
-    },
-    {
-      "id": "8de65e7d-66fe-4ac1-95d8-4248497d2673",
-      "description": "Server \"Basic Web Server\" shutdown due to overload (95% load)",
-      "timestamp": "17.08.2025, 23:32:31"
-    },
-    {
-      "id": "47b76509-fb7e-4acc-a4da-e8b2a8c159fc",
-      "description": "Income: +$154, Rental: -$15 (Net: +$139)",
-      "timestamp": "17.08.2025, 23:32:31"
-    },
-    {
-      "id": "128e45eb-db56-45e8-87fd-02d74feae659",
-      "description": "Income: +$154, Rental: -$15 (Net: +$139)",
-      "timestamp": "17.08.2025, 23:31:31"
+      "id": "709334a5-86c8-44d3-9eed-aea163f91aa5",
+      "description": "Given admin privileges by Ca6aka",
+      "timestamp": "17.08.2025, 23:29:09"
     }
   ],
-  "achievements": [
-    "early-earner",
-    "first-steps",
-    "first-server",
-    "server-builder",
-    "server-collection",
-    "efficient-worker",
-    "wealthy-investor"
-  ],
-  "completedJobsCount": 33,
-  "completedCoursesCount": 1,
+  "achievements": [],
+  "completedJobsCount": 0,
+  "completedCoursesCount": 0,
   "completedLearning": [],
   "efficiencyBonus": 0,
   "dailyQuests": [
@@ -78,10 +46,9 @@
         "jobType": "maintenance",
         "count": 3
       },
-      "progress": 3,
-      "completed": true,
-      "date": "Sun Aug 17 2025",
-      "claimed": true
+      "progress": 0,
+      "completed": false,
+      "date": "Sun Aug 17 2025"
     },
     {
       "id": "daily-income-Sun Aug 17 2025",
@@ -92,10 +59,9 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 5000,
-      "completed": true,
-      "date": "Sun Aug 17 2025",
-      "claimed": true
+      "progress": 0,
+      "completed": false,
+      "date": "Sun Aug 17 2025"
     },
     {
       "id": "daily-optimization-Sun Aug 17 2025",
@@ -107,10 +73,9 @@
         "jobType": "optimization",
         "count": 2
       },
-      "progress": 2,
-      "completed": true,
-      "date": "Sun Aug 17 2025",
-      "claimed": true
+      "progress": 0,
+      "completed": false,
+      "date": "Sun Aug 17 2025"
     },
     {
       "id": "daily-security-Sun Aug 17 2025",
@@ -122,10 +87,9 @@
         "jobType": "security-audit",
         "count": 1
       },
-      "progress": 1,
-      "completed": true,
-      "date": "Sun Aug 17 2025",
-      "claimed": true
+      "progress": 0,
+      "completed": false,
+      "date": "Sun Aug 17 2025"
     },
     {
       "id": "daily-earnings-Sun Aug 17 2025",
@@ -136,10 +100,9 @@
         "type": "income",
         "amount": 10000
       },
-      "progress": 10000,
-      "completed": true,
-      "date": "Sun Aug 17 2025",
-      "claimed": true
+      "progress": 0,
+      "completed": false,
+      "date": "Sun Aug 17 2025"
     },
     {
       "id": "daily-worker-Sun Aug 17 2025",
@@ -151,10 +114,9 @@
         "jobType": "any",
         "count": 5
       },
-      "progress": 5,
-      "completed": true,
-      "date": "Sun Aug 17 2025",
-      "claimed": true
+      "progress": 0,
+      "completed": false,
+      "date": "Sun Aug 17 2025"
     },
     {
       "id": "daily-mixed-jobs-Sun Aug 17 2025",
@@ -166,15 +128,9 @@
         "jobType": "mixed",
         "count": 3
       },
-      "progress": 3,
-      "completed": true,
-      "date": "Sun Aug 17 2025",
-      "jobCounts": {
-        "maintenance": 2,
-        "optimization": 1,
-        "security-audit": 1
-      },
-      "claimed": true
+      "progress": 0,
+      "completed": false,
+      "date": "Sun Aug 17 2025"
     },
     {
       "id": "daily-income-boost-Sun Aug 17 2025",
@@ -185,10 +141,9 @@
         "type": "income",
         "amount": 20000
       },
-      "progress": 20000,
-      "completed": true,
-      "date": "Sun Aug 17 2025",
-      "claimed": true
+      "progress": 0,
+      "completed": false,
+      "date": "Sun Aug 17 2025"
     },
     {
       "id": "daily-job-spree-Sun Aug 17 2025",
@@ -200,10 +155,9 @@
         "jobType": "any",
         "count": 8
       },
-      "progress": 8,
-      "completed": true,
-      "date": "Sun Aug 17 2025",
-      "claimed": true
+      "progress": 0,
+      "completed": false,
+      "date": "Sun Aug 17 2025"
     },
     {
       "id": "daily-mega-earner-Sun Aug 17 2025",
@@ -214,14 +168,13 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 50000,
-      "completed": true,
-      "date": "Sun Aug 17 2025",
-      "claimed": true
+      "progress": 0,
+      "completed": false,
+      "date": "Sun Aug 17 2025"
     }
   ],
-  "lastQuestReset": 1755392887200,
+  "lastQuestReset": 1755466136817,
   "registrationIP": "192.168.0.136",
-  "registrationTime": 1755392887200,
-  "lastSeen": 1755466220420
+  "registrationTime": 1755466136817,
+  "lastSeen": 1755466525951
 }

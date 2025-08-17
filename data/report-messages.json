@@ -16,5 +16,32 @@
     "message": "привет",
     "isFromAdmin": true,
     "createdAt": 1755465774112
+  },
+  {
+    "id": "d1c970bb-a323-44a2-a539-90f52a305743",
+    "reportId": "fb0d36db-5a96-4270-a866-c4db7c0423d6",
+    "userId": "9b1a7cc0-8287-468a-9df7-de5d5e73402f",
+    "userNickname": "Ca6aka",
+    "message": "привет",
+    "isFromAdmin": true,
+    "createdAt": 1755466068214
+  },
+  {
+    "id": "adab7e5e-098b-45de-b992-ca57265a79b8",
+    "reportId": "fb0d36db-5a96-4270-a866-c4db7c0423d6",
+    "userId": "9b1a7cc0-8287-468a-9df7-de5d5e73402f",
+    "userNickname": "Ca6aka",
+    "message": "пока",
+    "isFromAdmin": true,
+    "createdAt": 1755466081731
+  },
+  {
+    "id": "afd54a1b-6b24-4844-b34a-8545ec531ee7",
+    "reportId": "08b8631f-d20a-4840-9af8-1006c00f52e0",
+    "userId": "011e7510-ad37-4cd3-a0f1-63dc531f8010",
+    "userNickname": "test",
+    "message": "ыфвфы",
+    "isFromAdmin": false,
+    "createdAt": 1755466345831
   }
 ]
