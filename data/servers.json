@@ -342,11 +342,11 @@
     "icon": "fas fa-globe",
     "isOnline": true,
     "loadPercentage": 100,
-    "durability": 93,
-    "lastDurabilityUpdate": 1755468642791,
+    "durability": 92,
+    "lastDurabilityUpdate": 1755469436101,
     "createdAt": 1755393483516,
     "lastUpdated": 1755464347508,
-    "lastOverloadCheck": 1755468702810
+    "lastOverloadCheck": 1755469436120
   },
   {
     "id": "349a3a2d-97da-421a-9e91-d97d77f6dd6b",
@@ -358,11 +358,11 @@
     "icon": "fas fa-globe",
     "isOnline": true,
     "loadPercentage": 100,
-    "durability": 91,
-    "lastDurabilityUpdate": 1755468642791,
+    "durability": 90,
+    "lastDurabilityUpdate": 1755469436101,
     "createdAt": 1755393484142,
     "lastUpdated": 1755464347508,
-    "lastOverloadCheck": 1755468702811
+    "lastOverloadCheck": 1755469436121
   },
   {
     "id": "e7b071a0-d015-4ebc-971d-7c701c036510",
