@@ -8,6 +8,13 @@ A full-stack web application simulating a server management business game. Playe
 - Language: Russian preferred for communication
 - Uses Russian interface in the game
 
+## Recent Changes
+- **Migration Completed (August 17, 2025)**: Successfully migrated project from Replit Agent to standard Replit environment
+  - Installed all Node.js dependencies via packager tool
+  - Verified server startup and application functionality
+  - Application running on port 5000 with full features operational
+  - All migration checklist items completed successfully
+
 ## System Architecture
 
 ### Frontend Architecture
