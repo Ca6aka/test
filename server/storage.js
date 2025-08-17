@@ -1629,9 +1629,9 @@ export class FileStorage {
 
     messages.push(newMessage);
     
-    // Keep only last 100 messages
-    if (messages.length > 100) {
-      messages.splice(0, messages.length - 100);
+    // Keep only last 50 messages
+    if (messages.length > 50) {
+      messages.splice(0, messages.length - 50);
     }
 
     await this.saveChatMessages(messages);

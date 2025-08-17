@@ -41,6 +41,21 @@
   },
   "activities": [
     {
+      "id": "bf8d0c50-2035-45ee-abfe-0d40725b4e5f",
+      "description": "Database Server went offline due to maintenance required",
+      "timestamp": "8/17/2025, 8:28:14 PM"
+    },
+    {
+      "id": "ed8c8393-f21c-4031-8388-d9b3dac59531",
+      "description": "Basic Web Server went offline due to maintenance required",
+      "timestamp": "8/17/2025, 8:28:14 PM"
+    },
+    {
+      "id": "2d531180-37bb-4add-9af6-f0479d39637f",
+      "description": "Basic Web Server went offline due to maintenance required",
+      "timestamp": "8/17/2025, 8:28:14 PM"
+    },
+    {
       "id": "cb3f5fac-f8e8-4b5e-8bb1-fd1cca7f58fd",
       "description": "Server \"Database Server\" shutdown due to overload (100% load)",
       "timestamp": "17.08.2025, 04:36:47"
@@ -49,21 +64,6 @@
       "id": "c8b354cb-d358-4899-a36a-0156e6f9b80e",
       "description": "Server \"Basic Web Server\" shutdown due to overload (100% load)",
       "timestamp": "17.08.2025, 04:36:47"
-    },
-    {
-      "id": "c9dcebb6-7f1a-4103-a1f8-e09fc5d3fdb7",
-      "description": "Income: +$145, Rental: -$14 (Net: +$131)",
-      "timestamp": "17.08.2025, 04:36:47"
-    },
-    {
-      "id": "44a7bb4a-6a74-4259-a49d-db2b28b45f88",
-      "description": "Income: +$145, Rental: -$14 (Net: +$131)",
-      "timestamp": "17.08.2025, 04:35:47"
-    },
-    {
-      "id": "a9c621d5-305c-4c4c-b541-a6516000bb31",
-      "description": "Income: +$145, Rental: -$14 (Net: +$131)",
-      "timestamp": "17.08.2025, 04:34:47"
     }
   ],
   "achievements": [

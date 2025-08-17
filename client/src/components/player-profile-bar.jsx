@@ -147,7 +147,7 @@ export function PlayerProfileBar({ isOpen, onClose }) {
   const experience = user.experience || 0;
   const expProgress = getExperienceProgress(experience);
   const expToNext = getExperienceToNextLevel(experience);
-  const totalEarnings = user.totalEarnings || user.balance || 0;
+  const totalEarnings = user.totalEarnings || 0;
   const totalSpent = user.totalSpent || 0;
   const netProfit = totalEarnings - totalSpent;
 

@@ -4,7 +4,7 @@
     "nickname": "Ca6aka",
     "balance": 25296,
     "serverCount": 9,
-    "isOnline": true,
+    "isOnline": false,
     "rank": 1
   },
   {
@@ -12,7 +12,7 @@
     "nickname": "MASIK",
     "balance": 10991,
     "serverCount": 10,
-    "isOnline": true,
+    "isOnline": false,
     "rank": 2
   }
 ]
