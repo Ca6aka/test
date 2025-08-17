@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Progress } from '@/components/ui/progress';
 import { Shield, Zap, X, Play, CheckCircle, XCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/language-context';
@@ -299,6 +299,9 @@ const MiniGamesTab = () => {
               {selectedGame && React.createElement(selectedGame.icon, { className: "w-6 h-6" })}
               {selectedGame?.title}
             </DialogTitle>
+            <DialogDescription>
+              {selectedGame?.description || 'Play mini-games to earn XP and improve your skills'}
+            </DialogDescription>
           </DialogHeader>
 
           {gameState === 'menu' && selectedGame && (

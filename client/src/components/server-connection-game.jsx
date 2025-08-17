@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { X, Zap } from 'lucide-react';
@@ -63,31 +63,41 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
     }
   }, [timeLeft, gameState]);
 
-  const initializeGame = () => {
+  const generateCables = () => {
     const numConnections = Math.floor(Math.random() * 3) + 4; // 4-6 connections
     const gameColors = colors.slice(0, numConnections);
     
     // Create cables (left side) - randomize positions
     const shuffledIndexes = Array.from({length: numConnections}, (_, i) => i).sort(() => Math.random() - 0.5);
-    const newCables = gameColors.map((color, index) => ({
+    return gameColors.map((color, index) => ({
       id: `cable-${index}`,
       color,
       x: 30,
       y: 60 + shuffledIndexes[index] * 50,
       connected: false
     }));
+  };
 
+  const generatePorts = () => {
+    const numConnections = cables.length || Math.floor(Math.random() * 3) + 4;
+    const gameColors = colors.slice(0, numConnections);
+    
     // Create ports (right side) - randomize colors and positions
     const shuffledColors = [...gameColors].sort(() => Math.random() - 0.5);
     const shuffledPortIndexes = Array.from({length: numConnections}, (_, i) => i).sort(() => Math.random() - 0.5);
-    const newPorts = shuffledColors.map((color, index) => ({
+    return shuffledColors.map((color, index) => ({
       id: `port-${index}`,
       color,
       x: 380,
       y: 60 + shuffledPortIndexes[index] * 50,
       connected: false
     }));
+  };
 
+  const initializeGame = () => {
+    const newCables = generateCables();
+    const newPorts = generatePorts();
+    
     setCables(newCables);
     setPorts(newPorts);
     setConnections([]);
@@ -135,8 +145,7 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
 
   const handleGameSuccess = () => {
     setGameState('success');
-    // Award XP for successful completion
-    updateExpMutation.mutate(5);
+    // Server connection game should NOT give XP, only activate the server
     updateServerMutation.mutate(server.id);
     toast({
       title: t('serverminigame5'),
@@ -174,6 +183,9 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
             <Zap className="w-6 h-6 text-yellow-500" />
             {t('serverminigame1')}
           </DialogTitle>
+          <DialogDescription>
+            {t('serverminigame2') || 'Connect the cables to their matching ports to activate the server'}
+          </DialogDescription>
           <Button
             variant="ghost"
             size="sm"
@@ -292,7 +304,7 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
             <div className="text-center space-y-4">
               <div className="text-2xl font-bold text-green-600">{t('serverminigame5')}</div>
               <div className="text-gray-600 dark:text-gray-300">{t('serverminigame10')}</div>
-              <div className="text-lg font-medium text-blue-400">+5 XP earned!</div>
+              <div className="text-lg font-medium text-green-400">Server activated successfully!</div>
               <Button 
                 onClick={closeGame} 
                 className="bg-green-600 hover:bg-green-700"
