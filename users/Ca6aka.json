@@ -2,11 +2,11 @@
   "id": "9b1a7cc0-8287-468a-9df7-de5d5e73402f",
   "nickname": "Ca6aka",
   "password": "$2b$10$vQisG/HiYpZCbDxhj9hAb.kSngBkSHarYFF0JExylZ1/d5j1tGgq6",
-  "balance": 218442,
+  "balance": 219317,
   "level": 5,
   "experience": 530,
-  "totalEarnings": 207792,
-  "totalSpent": 67050,
+  "totalEarnings": 208760,
+  "totalSpent": 67143,
   "avatar": {
     "gradient": "from-violet-400 via-purple-500 to-indigo-600",
     "pattern": "multi-color",
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755464714437,
+  "lastIncomeUpdate": 1755465014441,
   "jobCooldowns": {
     "maintenance": 1755464475247,
     "optimization": 1755464406190,
@@ -29,29 +29,29 @@
   "currentLearning": null,
   "activities": [
     {
-      "id": "c4fda43a-0f0b-469f-b3fb-482ac5019ffe",
+      "id": "ef91db78-b5e7-4313-96e2-50c83645733b",
+      "description": "Income: +$176, Rental: -$17 (Net: +$159)",
+      "timestamp": "8/17/2025, 9:10:14 PM"
+    },
+    {
+      "id": "25b0a393-50f3-475a-af19-1b7e90520a86",
+      "description": "Server \"Basic Web Server\" shutdown due to overload (95% load)",
+      "timestamp": "8/17/2025, 9:09:14 PM"
+    },
+    {
+      "id": "aa3d67eb-2156-4768-a172-d977ab8b2f85",
       "description": "Income: +$198, Rental: -$19 (Net: +$179)",
-      "timestamp": "8/17/2025, 9:05:14 PM"
+      "timestamp": "8/17/2025, 9:09:14 PM"
     },
     {
-      "id": "0f2be4a9-458f-4888-9fdb-b4460dfb23e9",
-      "description": "Income: +$197, Rental: -$19 (Net: +$178)",
-      "timestamp": "8/17/2025, 9:04:14 PM"
+      "id": "07a67554-10e8-4776-8c0c-34f578334ef2",
+      "description": "Income: +$198, Rental: -$19 (Net: +$179)",
+      "timestamp": "8/17/2025, 9:08:14 PM"
     },
     {
-      "id": "84ce790d-fe41-4093-90d8-e3123f8bd14f",
-      "description": "Income: +$789, Rental: -$78 (Net: +$711)",
-      "timestamp": "8/17/2025, 9:03:14 PM"
-    },
-    {
-      "id": "0d754351-d425-42c1-8927-2a2f75d8d596",
-      "description": "Income: +$226, Rental: -$22 (Net: +$204)",
-      "timestamp": "17.08.2025, 22:59:15"
-    },
-    {
-      "id": "e09c89bb-56a4-469f-b47d-a16fd4ac7f46",
-      "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "17.08.2025, 22:58:15"
+      "id": "5f8f1a8c-8fa7-42d8-8a6a-131ba977e947",
+      "description": "Income: +$198, Rental: -$19 (Net: +$179)",
+      "timestamp": "8/17/2025, 9:07:14 PM"
     }
   ],
   "achievements": [

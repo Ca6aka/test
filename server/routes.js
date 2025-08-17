@@ -89,6 +89,9 @@ export async function registerRoutes(app) {
         });
       }
       
+      // Normalize nickname to handle auto-translation issues
+      const normalizedNickname = nickname.toLowerCase().trim();
+      
       // Check for existing user with case-insensitive nickname
       const existingUser = await storage.getUserByNickname(nickname);
       if (existingUser) {
@@ -148,7 +151,13 @@ export async function registerRoutes(app) {
         return res.status(400).json({ message: 'Nickname and password are required' });
       }
       
-      const user = await storage.getUserByNickname(nickname);
+      // Try to find user by exact match first, then case-insensitive
+      let user = await storage.getUserByNickname(nickname);
+      if (!user) {
+        // Try case-insensitive search to handle auto-translation issues
+        user = await storage.getUserByNicknameCaseInsensitive(nickname);
+      }
+      
       if (!user) {
         return res.status(401).json({ message: 'Invalid credentials' });
       }

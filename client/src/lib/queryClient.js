@@ -30,12 +30,11 @@ async function throwIfResNotOk(res) {
   }
 }
 
-export async function apiRequest(method, url, data) {
+export async function apiRequest(url, options = {}) {
   const res = await fetch(url, {
-    method,
-    headers: data ? { "Content-Type": "application/json" } : {},
-    body: data ? JSON.stringify(data) : undefined,
+    headers: options.body ? { "Content-Type": "application/json" } : {},
     credentials: "include",
+    ...options,
   });
 
   await throwIfResNotOk(res);
