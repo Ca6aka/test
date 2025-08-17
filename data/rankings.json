@@ -2,7 +2,7 @@
   {
     "id": "e8162264-12da-4ee1-9dbc-a18a1f3f858b",
     "nickname": "Ca6aka",
-    "balance": 127560,
+    "balance": 200127,
     "serverCount": 8,
     "isOnline": true,
     "rank": 1
@@ -10,10 +10,18 @@
   {
     "id": "566d2601-d46f-4bcd-94d2-1e14c2ca0229",
     "nickname": "МАМУТ РАХАЛ",
-    "balance": 119128,
-    "serverCount": 8,
-    "isOnline": false,
+    "balance": 104678,
+    "serverCount": 9,
+    "isOnline": true,
     "rank": 2
+  },
+  {
+    "id": "78dab50b-672d-45f3-b8e2-38a33dd598e7",
+    "nickname": "masik",
+    "balance": 16400,
+    "serverCount": 0,
+    "isOnline": false,
+    "rank": 3
   },
   {
     "id": "44ef37e8-f121-47ee-b4bc-1b8c524795c0",
@@ -21,7 +29,7 @@
     "balance": 15200,
     "serverCount": 0,
     "isOnline": false,
-    "rank": 3
+    "rank": 4
   },
   {
     "id": "95f1b950-323b-49ee-8f03-94aea21ee144",
@@ -29,7 +37,7 @@
     "balance": 13400,
     "serverCount": 0,
     "isOnline": false,
-    "rank": 4
+    "rank": 5
   },
   {
     "id": "ed94da9b-15f5-47d1-932c-e06fe778d717",
@@ -37,7 +45,7 @@
     "balance": 13000,
     "serverCount": 0,
     "isOnline": false,
-    "rank": 5
+    "rank": 6
   },
   {
     "id": "a3ad5fb3-f3d3-4c1c-9172-2461f4c5494f",
@@ -45,7 +53,7 @@
     "balance": 10000,
     "serverCount": 0,
     "isOnline": false,
-    "rank": 6
+    "rank": 7
   },
   {
     "id": "f9e8d4f1-81c9-4755-aa84-5ff851e020ef",
@@ -53,7 +61,7 @@
     "balance": 10000,
     "serverCount": 0,
     "isOnline": false,
-    "rank": 7
+    "rank": 8
   },
   {
     "id": "ba15a1ad-b7f1-4bb3-be9f-323c02f3ee73",
@@ -61,7 +69,7 @@
     "balance": 10000,
     "serverCount": 0,
     "isOnline": false,
-    "rank": 8
+    "rank": 9
   },
   {
     "id": "58d57b70-289f-465c-bec3-190bbca98427",
@@ -69,7 +77,7 @@
     "balance": 10000,
     "serverCount": 0,
     "isOnline": false,
-    "rank": 9
+    "rank": 10
   },
   {
     "id": "bb191c28-b5c3-4a52-98a2-d2f4638baafe",
@@ -77,7 +85,7 @@
     "balance": 10000,
     "serverCount": 0,
     "isOnline": false,
-    "rank": 10
+    "rank": 11
   },
   {
     "id": "0b258008-023b-4346-becd-47d0b8c05b69",
@@ -85,7 +93,7 @@
     "balance": 10000,
     "serverCount": 0,
     "isOnline": false,
-    "rank": 11
+    "rank": 12
   },
   {
     "id": "5aa2d17c-5019-4b50-942f-04878089b687",
@@ -93,7 +101,7 @@
     "balance": 10000,
     "serverCount": 0,
     "isOnline": false,
-    "rank": 12
+    "rank": 13
   },
   {
     "id": "ae803c3a-5814-4878-8879-c7851b05fef8",
@@ -101,6 +109,6 @@
     "balance": 10000,
     "serverCount": 0,
     "isOnline": false,
-    "rank": 13
+    "rank": 14
   }
 ]

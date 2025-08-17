@@ -9,11 +9,11 @@
     "icon": "fas fa-server",
     "isOnline": true,
     "loadPercentage": 100,
-    "durability": 97,
-    "lastDurabilityUpdate": 1755390442890,
+    "durability": 96,
+    "lastDurabilityUpdate": 1755391102360,
     "createdAt": 1755388396023,
-    "lastUpdated": 1755390558689,
-    "lastOverloadCheck": 1755390309691
+    "lastUpdated": 1755391381946,
+    "lastOverloadCheck": 1755391381900
   },
   {
     "id": "8db1a356-5c8b-43bc-b324-2a2a27295b01",
@@ -25,11 +25,11 @@
     "icon": "fas fa-server",
     "isOnline": true,
     "loadPercentage": 100,
-    "durability": 97,
-    "lastDurabilityUpdate": 1755390442890,
+    "durability": 96,
+    "lastDurabilityUpdate": 1755391162540,
     "createdAt": 1755388396651,
-    "lastUpdated": 1755390558689,
-    "lastOverloadCheck": 1755390309691
+    "lastUpdated": 1755391381946,
+    "lastOverloadCheck": 1755391381901
   },
   {
     "id": "eec5efc4-d204-49bd-9c60-6600017e34fb",
@@ -41,11 +41,11 @@
     "icon": "fas fa-server",
     "isOnline": true,
     "loadPercentage": 100,
-    "durability": 97,
-    "lastDurabilityUpdate": 1755390442890,
+    "durability": 96,
+    "lastDurabilityUpdate": 1755391102360,
     "createdAt": 1755388397193,
-    "lastUpdated": 1755390558689,
-    "lastOverloadCheck": 1755390309691
+    "lastUpdated": 1755391381946,
+    "lastOverloadCheck": 1755391381902
   },
   {
     "id": "e56c4cff-3ea8-4388-b6d2-938fbf2bd9d7",
@@ -57,11 +57,11 @@
     "icon": "fas fa-server",
     "isOnline": true,
     "loadPercentage": 100,
-    "durability": 97,
-    "lastDurabilityUpdate": 1755390442890,
+    "durability": 96,
+    "lastDurabilityUpdate": 1755391102360,
     "createdAt": 1755388397693,
-    "lastUpdated": 1755390558689,
-    "lastOverloadCheck": 1755390309692
+    "lastUpdated": 1755391381946,
+    "lastOverloadCheck": 1755391381905
   },
   {
     "id": "93a775f3-5e2e-45f9-a812-042835619770",
@@ -73,11 +73,11 @@
     "icon": "fas fa-server",
     "isOnline": true,
     "loadPercentage": 100,
-    "durability": 97,
-    "lastDurabilityUpdate": 1755390442890,
+    "durability": 96,
+    "lastDurabilityUpdate": 1755391102360,
     "createdAt": 1755388398115,
-    "lastUpdated": 1755390558689,
-    "lastOverloadCheck": 1755390309692
+    "lastUpdated": 1755391381946,
+    "lastOverloadCheck": 1755391381907
   },
   {
     "id": "4d9a8c26-2e2c-4c0c-8df5-acb6ac8392a1",
@@ -87,13 +87,13 @@
     "incomePerMinute": 50,
     "monthlyCost": 120,
     "icon": "fas fa-server",
-    "isOnline": true,
+    "isOnline": false,
     "loadPercentage": 100,
-    "durability": 97,
-    "lastDurabilityUpdate": 1755390442890,
+    "durability": 96,
+    "lastDurabilityUpdate": 1755391102360,
     "createdAt": 1755388398565,
-    "lastUpdated": 1755390558689,
-    "lastOverloadCheck": 1755390309699
+    "lastUpdated": 1755391381946,
+    "lastOverloadCheck": 1755391381908
   },
   {
     "id": "a7b84807-3bda-49ac-b4ba-959e38dc4e2f",
@@ -105,11 +105,11 @@
     "icon": "fas fa-server",
     "isOnline": true,
     "loadPercentage": 100,
-    "durability": 97,
-    "lastDurabilityUpdate": 1755390442890,
+    "durability": 96,
+    "lastDurabilityUpdate": 1755391102360,
     "createdAt": 1755388399016,
-    "lastUpdated": 1755390558689,
-    "lastOverloadCheck": 1755390309700
+    "lastUpdated": 1755391381946,
+    "lastOverloadCheck": 1755391381944
   },
   {
     "id": "3c491875-9268-4f9f-af41-306de53942c1",
@@ -121,11 +121,26 @@
     "icon": "fas fa-server",
     "isOnline": true,
     "loadPercentage": 100,
-    "durability": 98,
-    "lastDurabilityUpdate": 1755390545705,
+    "durability": 97,
+    "lastDurabilityUpdate": 1755391162540,
     "createdAt": 1755389238593,
-    "lastUpdated": 1755390558689,
-    "lastOverloadCheck": 1755390491873
+    "lastUpdated": 1755391381946,
+    "lastOverloadCheck": 1755391381945
+  },
+  {
+    "id": "ab500b98-b780-45f0-bf55-5acfcaf68b92",
+    "ownerId": "566d2601-d46f-4bcd-94d2-1e14c2ca0229",
+    "name": "High Performance Server",
+    "type": "Gaming/Apps",
+    "incomePerMinute": 50,
+    "monthlyCost": 120,
+    "icon": "fas fa-server",
+    "isOnline": true,
+    "loadPercentage": 100,
+    "durability": 100,
+    "lastDurabilityUpdate": 1755391119514,
+    "createdAt": 1755391119514,
+    "lastUpdated": 1755391381946
   },
   {
     "id": "766a9b09-ca65-47e3-b907-c4bf6dc56386",
@@ -137,11 +152,11 @@
     "icon": "fas fa-globe",
     "isOnline": true,
     "loadPercentage": 95,
-    "durability": 99,
-    "lastDurabilityUpdate": 1755390095291,
+    "durability": 98,
+    "lastDurabilityUpdate": 1755390879524,
     "createdAt": 1755369446598,
-    "lastUpdated": 1755390870284,
-    "lastOverloadCheck": 1755390869699
+    "lastUpdated": 1755391394202,
+    "lastOverloadCheck": 1755391271850
   },
   {
     "id": "0435c9e1-b918-4aba-9a38-885a140d9477",
@@ -156,8 +171,8 @@
     "durability": 90,
     "lastDurabilityUpdate": 1755390812645,
     "createdAt": 1755374200688,
-    "lastUpdated": 1755390870284,
-    "lastOverloadCheck": 1755390869701
+    "lastUpdated": 1755391394202,
+    "lastOverloadCheck": 1755391271851
   },
   {
     "id": "701330a5-455c-4f23-80fd-54e36208200d",
@@ -169,11 +184,11 @@
     "icon": "fas fa-database",
     "isOnline": true,
     "loadPercentage": 95,
-    "durability": 78,
-    "lastDurabilityUpdate": 1755390095291,
+    "durability": 77,
+    "lastDurabilityUpdate": 1755390879524,
     "createdAt": 1755374201281,
-    "lastUpdated": 1755390870284,
-    "lastOverloadCheck": 1755390870282
+    "lastUpdated": 1755391394202,
+    "lastOverloadCheck": 1755391271852
   },
   {
     "id": "989e949e-316e-4692-a3b5-a93df5b6b0ab",
@@ -188,8 +203,8 @@
     "durability": 79,
     "lastDurabilityUpdate": 1755390812645,
     "createdAt": 1755375762167,
-    "lastUpdated": 1755390870284,
-    "lastOverloadCheck": 1755390869702
+    "lastUpdated": 1755391394202,
+    "lastOverloadCheck": 1755391271853
   },
   {
     "id": "166c1f74-59a4-4b99-89a3-6f22602efef7",
@@ -204,8 +219,8 @@
     "durability": 96,
     "lastDurabilityUpdate": 1755390812645,
     "createdAt": 1755387462383,
-    "lastUpdated": 1755390870284,
-    "lastOverloadCheck": 1755390869703
+    "lastUpdated": 1755391394202,
+    "lastOverloadCheck": 1755391271854
   },
   {
     "id": "f180586d-beea-42f1-8d43-70ffa8c1ac72",
@@ -220,8 +235,8 @@
     "durability": 96,
     "lastDurabilityUpdate": 1755390812645,
     "createdAt": 1755387462743,
-    "lastUpdated": 1755390870284,
-    "lastOverloadCheck": 1755390869703
+    "lastUpdated": 1755391394202,
+    "lastOverloadCheck": 1755391271854
   },
   {
     "id": "ca42045e-e71d-4f4e-82c6-2b475d35652b",
@@ -236,8 +251,8 @@
     "durability": 96,
     "lastDurabilityUpdate": 1755390812645,
     "createdAt": 1755387463144,
-    "lastUpdated": 1755390870284,
-    "lastOverloadCheck": 1755390869706
+    "lastUpdated": 1755391394202,
+    "lastOverloadCheck": 1755391271855
   },
   {
     "id": "e3657803-ea25-41a1-ba2d-bb582455823a",
@@ -249,10 +264,10 @@
     "icon": "fas fa-server",
     "isOnline": true,
     "loadPercentage": 95,
-    "durability": 98,
-    "lastDurabilityUpdate": 1755390545705,
+    "durability": 97,
+    "lastDurabilityUpdate": 1755391162540,
     "createdAt": 1755389229456,
-    "lastUpdated": 1755390870284,
-    "lastOverloadCheck": 1755390812677
+    "lastUpdated": 1755391394202,
+    "lastOverloadCheck": 1755391162610
   }
 ]

@@ -130,7 +130,15 @@ function VirtualAssistant() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/rankings'] })
+      queryClient.invalidateQueries({ queryKey: ['/api/chat/active-mutes'] })
     }
+  })
+
+  // Fetch active mutes for admin panel
+  const { data: activeMutesData, refetch: refetchMutes } = useQuery({
+    queryKey: ['/api/chat/active-mutes'],
+    enabled: user?.admin >= 1,
+    refetchInterval: 10000 // Refresh every 10 seconds
   })
 
   const adminMutation = useMutation({
@@ -182,6 +190,7 @@ function VirtualAssistant() {
       await muteUserMutation.mutateAsync({ userId: muteUserId, duration: muteDuration })
       setMuteUserId('')
       setMuteDuration('30')
+      refetchMutes()
     } catch (error) {
       console.error('Failed to mute user:', error)
     }
@@ -302,25 +311,32 @@ function VirtualAssistant() {
                       
                       <div>
                         <label className="text-sm font-medium">{t('activeMutes')}</label>
-                        <div className="mt-2 space-y-1">
-                          {rankings?.rankings
-                            ?.filter(u => {
-                              const status = getUserStatus(u.id)
-                              return status?.isMuted
-                            })
-                            ?.map(u => (
-                              <div key={u.id} className="flex items-center justify-between text-sm">
-                                <span>{u.nickname}</span>
+                        <div className="mt-2 space-y-2 max-h-32 overflow-y-auto">
+                          {activeMutesData?.mutes?.length === 0 ? (
+                            <div className="text-xs text-gray-500 text-center py-2">
+                              {t('noActiveMutes')}
+                            </div>
+                          ) : (
+                            activeMutesData?.mutes?.map(mute => (
+                              <div key={mute.id} className="flex items-center justify-between text-xs bg-gray-100 dark:bg-gray-800 rounded p-2">
+                                <div>
+                                  <div className="font-medium">{mute.nickname}</div>
+                                  <div className="text-gray-500">
+                                    {mute.timeLeft}м осталось
+                                  </div>
+                                </div>
                                 <Button
-                                  onClick={() => handleUnmuteUser(u.id)}
+                                  onClick={() => handleUnmuteUser(mute.id)}
                                   disabled={unmuteUserMutation.isPending}
                                   size="sm"
                                   variant="outline"
+                                  className="h-6 px-2"
                                 >
                                   {t('unmute')}
                                 </Button>
                               </div>
-                            ))}
+                            ))
+                          )}
                         </div>
                       </div>
                     </div>

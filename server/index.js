@@ -57,6 +57,8 @@ app.use('/api', async (req, res, next) => {
   if (req.session.userId && !req.path.includes('/auth/logout')) {
     try {
       await storage.updateUserActivity(req.session.userId);
+      // Check expired mutes periodically
+      await storage.checkExpiredMutes();
     } catch (error) {
       // Ignore errors to not interrupt the request
     }

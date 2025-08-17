@@ -2,18 +2,18 @@
   "id": "566d2601-d46f-4bcd-94d2-1e14c2ca0229",
   "nickname": "МАМУТ РАХАЛ",
   "password": "$2b$10$APOYIiwcTYooegd9N697COClCb7HIc0lGNqmE55WEgp8ROhAZGrxK",
-  "balance": 119128,
-  "level": 9,
-  "experience": 1330,
-  "totalEarnings": 31950,
-  "totalSpent": 180513,
+  "balance": 104678,
+  "level": 10,
+  "experience": 1393,
+  "totalEarnings": 33000,
+  "totalSpent": 196013,
   "avatar": {
     "gradient": "from-orange-400 via-amber-500 to-yellow-600",
     "pattern": "multi-color",
     "seed": 400340,
     "animation": "color-dance"
   },
-  "serverLimit": 8,
+  "serverLimit": 9,
   "tutorialCompleted": true,
   "admin": 1,
   "banned": false,
@@ -22,17 +22,17 @@
   "isOnline": true,
   "lastIncomeUpdate": 1755390309677,
   "jobCooldowns": {
-    "maintenance": 1755390602585,
-    "optimization": 1755390735973,
-    "security-audit": 1755390914676
+    "maintenance": 1755391535948,
+    "optimization": 1755391399213,
+    "security-audit": 1755391522331
   },
   "currentLearning": {
     "id": "basic-setup",
     "title": "Basic Server Setup",
     "description": "Learn the fundamentals of server configuration and deployment",
     "difficulty": "Beginner",
-    "startTime": 1755389247284,
-    "endTime": 1755391047284,
+    "startTime": 1755391272964,
+    "endTime": 1755393072964,
     "progress": 0,
     "reward": {
       "type": "serverSlots",
@@ -41,29 +41,29 @@
   },
   "activities": [
     {
-      "id": "6066f05d-4cf3-4664-aeff-c17d41786c7e",
-      "description": "Completed Security Audit (+$500, +25 XP)",
-      "timestamp": "17.08.2025, 02:28:14"
+      "id": "f80d34c7-dda1-4454-acf6-1cc88d306561",
+      "description": "Server \"High Performance Server\" shutdown due to overload (100% load)",
+      "timestamp": "8/17/2025, 12:43:01 AM"
     },
     {
-      "id": "d9b4ca4b-f1ed-432f-97da-78cf65528e79",
-      "description": "Completed Performance Optimization (+$250, +18 XP)",
-      "timestamp": "17.08.2025, 02:27:15"
-    },
-    {
-      "id": "cb30d9f7-0fda-4d12-ac73-97958f2533d6",
+      "id": "c941692f-197f-4d9c-b125-3e55b38b592b",
       "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "17.08.2025, 02:27:02"
+      "timestamp": "8/17/2025, 12:42:36 AM"
     },
     {
-      "id": "ee62125e-6580-444f-9537-086d19c41d41",
+      "id": "e364afcf-e51c-4764-937c-941d91dc172d",
+      "description": "Started learning course: Basic Server Setup",
+      "timestamp": "8/17/2025, 12:41:12 AM"
+    },
+    {
+      "id": "3cc26c52-3caa-480d-b3db-c654b3ea2622",
+      "description": "Purchased High Performance Server for $12,000",
+      "timestamp": "8/17/2025, 12:38:39 AM"
+    },
+    {
+      "id": "6a441e7d-1fa4-4b48-aab1-52f654eea21b",
       "description": "Turned High Performance Server online",
-      "timestamp": "17.08.2025, 02:25:41"
-    },
-    {
-      "id": "4a11998c-3603-4ca0-b1da-6fc1555a503a",
-      "description": "Turned High Performance Server offline",
-      "timestamp": "17.08.2025, 02:25:40"
+      "timestamp": "8/17/2025, 12:38:29 AM"
     }
   ],
   "achievements": [
@@ -81,8 +81,8 @@
     "learning-enthusiast",
     "maintenance-guru"
   ],
-  "completedJobsCount": 83,
-  "completedCoursesCount": 5,
+  "completedJobsCount": 87,
+  "completedCoursesCount": 6,
   "completedLearning": [],
   "efficiencyBonus": 0,
   "dailyQuests": [
@@ -239,5 +239,5 @@
     }
   ],
   "lastQuestReset": 1755371083744,
-  "lastSeen": 1755390561771
+  "lastSeen": 1755391398718
 }

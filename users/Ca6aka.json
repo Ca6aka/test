@@ -2,68 +2,56 @@
   "id": "e8162264-12da-4ee1-9dbc-a18a1f3f858b",
   "nickname": "Ca6aka",
   "password": "$2b$10$VyWHFzCGAu.7/osYGqrnxuPn.hOD46LZTHkP9KeljdyeY2j8FxfdO",
-  "balance": 127560,
+  "balance": 200127,
   "level": 11,
-  "experience": 1700,
-  "totalEarnings": 33500,
-  "totalSpent": 89824,
+  "experience": 1763,
+  "totalEarnings": 35204,
+  "totalSpent": 89889,
   "avatar": {
     "gradient": "from-blue-400 via-purple-500 to-indigo-600",
     "pattern": "multi-color",
     "seed": 917076,
     "animation": "shimmer-wave"
   },
-  "serverLimit": 8,
+  "serverLimit": 9,
   "tutorialCompleted": true,
   "admin": 2,
   "banned": false,
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755390812646,
+  "lastIncomeUpdate": 1755391364214,
   "jobCooldowns": {
-    "maintenance": 1755390399605,
-    "optimization": 1755390593883,
-    "security-audit": 1755390800416
+    "maintenance": 1755391391635,
+    "optimization": 1755391332677,
+    "security-audit": 1755391449684
   },
-  "currentLearning": {
-    "id": "basic-setup",
-    "title": "Basic Server Setup",
-    "description": "Learn the fundamentals of server configuration and deployment",
-    "difficulty": "Beginner",
-    "startTime": 1755389224166,
-    "endTime": 1755391024166,
-    "progress": 0,
-    "reward": {
-      "type": "serverSlots",
-      "amount": 1
-    }
-  },
+  "currentLearning": null,
   "activities": [
     {
-      "id": "a6805a7c-a871-48d4-b015-9d6a623a298e",
-      "description": "Turned Database Server online",
-      "timestamp": "8/17/2025, 12:34:30 AM"
+      "id": "ac14d470-237a-4f10-a1b8-52103132fb6c",
+      "description": "Income: +$654, Rental: -$65 (Net: +$589)",
+      "timestamp": "8/17/2025, 12:42:44 AM"
     },
     {
-      "id": "f9b6070e-1c68-4a65-b18f-8ec8dfc3fb9b",
-      "description": "Turned Basic Web Server online",
-      "timestamp": "8/17/2025, 12:34:29 AM"
+      "id": "851dae2e-82e0-4526-acac-c6314dee2c14",
+      "description": "Income: +$774, Rental: -$77 (Net: +$697)",
+      "timestamp": "8/17/2025, 12:41:11 AM"
     },
     {
-      "id": "d67e5f13-71bb-4cba-bdea-04fc1c701e4b",
-      "description": "Income: +$1628, Rental: -$162 (Net: +$1466)",
-      "timestamp": "8/17/2025, 12:33:32 AM"
+      "id": "40dd3b8d-f897-4388-ae37-7455e59f27b9",
+      "description": "Completed Server Maintenance (+$150, +10 XP)",
+      "timestamp": "8/17/2025, 12:40:11 AM"
     },
     {
-      "id": "275a8417-ae3e-4521-af05-6f23c45f83ba",
-      "description": "Server \"Database Server\" shutdown due to overload (95% load)",
-      "timestamp": "17.08.2025, 02:29:05"
+      "id": "7fb79fbd-ae64-4c5c-b6bd-6eb33c931aaf",
+      "description": "Income: +$426, Rental: -$42 (Net: +$384)",
+      "timestamp": "8/17/2025, 12:39:22 AM"
     },
     {
-      "id": "892cc2fd-9661-481c-92c7-0687c9d21a47",
-      "description": "Server \"Basic Web Server\" shutdown due to overload (95% load)",
-      "timestamp": "17.08.2025, 02:29:05"
+      "id": "a71f607e-ccc1-4b5e-ac20-cdb468a13896",
+      "description": "Income: +$715, Rental: -$71 (Net: +$644)",
+      "timestamp": "8/17/2025, 12:38:22 AM"
     }
   ],
   "achievements": [
@@ -77,10 +65,12 @@
     "persistent-learner",
     "wealthy-investor",
     "server-collection",
-    "maintenance-guru"
+    "maintenance-guru",
+    "course-completionist",
+    "learning-enthusiast"
   ],
-  "completedJobsCount": 86,
-  "completedCoursesCount": 4,
+  "completedJobsCount": 90,
+  "completedCoursesCount": 5,
   "completedLearning": [],
   "efficiencyBonus": 0,
   "dailyQuests": [
@@ -230,11 +220,12 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 49558,
-      "completed": false,
-      "date": "Sat Aug 16 2025"
+      "progress": 50000,
+      "completed": true,
+      "date": "Sat Aug 16 2025",
+      "claimed": true
     }
   ],
   "lastQuestReset": 1755363722114,
-  "lastSeen": 1755390872936
+  "lastSeen": 1755391397684
 }

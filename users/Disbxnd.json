@@ -17,13 +17,18 @@
   "tutorialCompleted": false,
   "admin": 0,
   "banned": false,
-  "muted": true,
-  "muteExpires": 1755385960276,
+  "muted": false,
+  "muteExpires": null,
   "isOnline": false,
   "lastIncomeUpdate": 1755372493866,
   "jobCooldowns": {},
   "currentLearning": null,
   "activities": [
+    {
+      "id": "98a202b1-e7c0-4aa2-9bad-15b064a6deab",
+      "description": "Mute automatically expired",
+      "timestamp": "8/17/2025, 12:41:43 AM"
+    },
     {
       "id": "74561928-5e88-4cd5-89b8-aad913e51ace",
       "description": "Muted for 5 minutes by admin Ca6aka",

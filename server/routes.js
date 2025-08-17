@@ -790,6 +790,25 @@ export async function registerRoutes(app) {
     }
   });
 
+  // Get active mutes for admin panel
+  app.get('/api/chat/active-mutes', async (req, res) => {
+    try {
+      if (!req.session.userId) {
+        return res.status(401).json({ message: 'Not authenticated' });
+      }
+      
+      const user = await storage.getUser(req.session.userId);
+      if (!user || user.admin < 1) {
+        return res.status(403).json({ message: 'Admin access required' });
+      }
+      
+      const activeMutes = await storage.getActiveMutes();
+      res.json({ mutes: activeMutes });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

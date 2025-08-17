@@ -1708,6 +1708,49 @@ export class FileStorage {
     return { success: true };
   }
 
+  async getActiveMutes() {
+    const users = await this.getAllUsers();
+    const now = Date.now();
+    
+    // Filter users who are currently muted
+    const mutedUsers = users.filter(user => {
+      if (!user.muted || !user.muteExpires) return false;
+      
+      // If mute has expired, automatically unmute them
+      if (now >= user.muteExpires) {
+        this.updateUser(user.id, {
+          muted: false,
+          muteExpires: null
+        });
+        return false;
+      }
+      
+      return true;
+    });
+
+    return mutedUsers.map(user => ({
+      id: user.id,
+      nickname: user.nickname,
+      muteExpires: user.muteExpires,
+      timeLeft: Math.ceil((user.muteExpires - now) / 60000) // minutes left
+    }));
+  }
+
+  async checkExpiredMutes() {
+    const users = await this.getAllUsers();
+    const now = Date.now();
+    
+    for (const user of users) {
+      if (user.muted && user.muteExpires && now >= user.muteExpires) {
+        await this.updateUser(user.id, {
+          muted: false,
+          muteExpires: null
+        });
+        await this.addActivity(user.id, 'Mute automatically expired');
+      }
+    }
+  }
+
   // Utility methods
   formatTime(milliseconds) {
     const seconds = Math.floor(milliseconds / 1000);

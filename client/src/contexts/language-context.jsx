@@ -472,6 +472,7 @@ const translations = {
     selectMuteDuration: '5m',
     mute: 'Mute',
     activeMutes: 'Active Mutes',
+    noActiveMutes: 'No active mutes',
     
     // Profile and level system
     progressToLevel: 'Progress to Level',
@@ -950,6 +951,7 @@ const translations = {
     selectMuteDuration: '5м',
     mute: 'Мут',
     activeMutes: 'Активные муты',
+    noActiveMutes: 'Нет активных мутов',
     
     // Profile and level system
     progressToLevel: 'Прогресс до уровня',

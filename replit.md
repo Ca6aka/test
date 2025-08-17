@@ -1,248 +1,88 @@
 # Server Simulation Game
 
 ## Overview
-
-A full-stack web application that simulates a server management business game. Players manage virtual servers, earn income, complete learning courses, and progress through a gamified experience. The application features a modern React frontend with a Node.js/Express backend, utilizing PostgreSQL for data persistence and Drizzle ORM for database operations.
+A full-stack web application simulating a server management business game. Players manage virtual servers, generate income, complete learning courses, and engage in a gamified experience. The project aims to provide an engaging, educational, and financially rewarding simulation, leveraging modern web technologies for a robust and scalable platform. Key capabilities include server management, economic simulation, gamified learning, and real-time interaction.
 
 ## User Preferences
-
 - Preferred communication style: Simple, everyday language
 - Language: Russian preferred for communication
 - Uses Russian interface in the game
 
-## Recent Changes (Latest: August 17, 2025)
-
-### Income Generation and Balance Update Fixes (August 17, 2025)
-- **Fixed Income Update Timing**: Corrected income generation to properly update every minute (60 seconds)
-  - Added proper cache invalidation to ensure balance updates immediately in UI without page refresh
-  - Fixed mutation handling to invalidate user data, server data, and activities queries
-- **Fixed Income/Expense Tracking**: Resolved totalEarnings and totalSpent calculation issues
-  - Server income now properly updates totalEarnings field during income generation
-  - Rental costs properly update totalSpent field for accurate financial tracking
-  - Player profile bar now shows correct income/expense statistics without requiring page refresh
-- **Enhanced Real-Time Updates**: Improved game state synchronization
-  - Balance changes appear instantly in the UI after income generation
-  - Fixed server rental costs tracking for proper financial reporting
-  - Maintained all existing security practices and client-server separation
-
-## Recent Changes (Latest: August 16, 2025)
-
-### Admin System and UI Fixes (August 16, 2025)
-- **Player Management Restriction**: Removed Player Management section from chat for regular admins
-  - Only super-admin (Ca6aka) can access player management controls
-  - Regular admins no longer see money management and ban controls in chat
-- **Enhanced Admin Badge Styling**: Improved visual distinction between admin levels
-  - Super-admin badges: Red gradient with pulse animation and shadow effects
-  - Regular admin badges: Gold gradient with shadow effects for better visibility
-- **Z-Index Overlap Resolution**: Fixed notification overlapping issues on small screens
-  - Increased toast notification z-index to 999999999 for proper display over all elements
-  - Added relative positioning to player rankings to prevent interference
-  - Resolved learning completion notifications being hidden by rankings on small monitors
-- **Server Repair Success Notifications**: Fixed server repair feedback system
-  - Corrected mutation response handling to properly show success messages
-  - Server repair now displays cost and durability restored information
-  - Eliminated "failed to connect" errors when repair actually succeeds
-
-### Critical Bug Fixes and Mobile Optimization (August 16, 2025)
-- **Nickname Validation Enhancement**: Added strict 8-character limit and special character restrictions
-  - Only letters, numbers, hyphens, and underscores allowed in usernames
-  - Real-time input filtering prevents invalid characters from being typed
-  - Client-side validation with proper error messages in Russian and English
-  - Server-side validation ensures data integrity
-- **Level-Up Notification Auto-Close Fix**: Resolved Chrome compatibility issue
-  - Improved timer cleanup using useRef for reliable notification dismissal
-  - Fixed memory leaks that prevented proper auto-close functionality
-  - Enhanced mobile performance with reduced animation complexity
-- **Mobile Chrome Auto-Translator Compatibility**: Prevented React crashes
-  - Reduced particle animations on mobile devices (4 vs 8 particles)
-  - Simplified blur effects for better mobile browser performance
-  - Hidden resource-intensive background animations on small screens
-  - Optimized level-up notifications for mobile rendering
-
-### Final Migration Completion (August 16, 2025)
-- **Project Migration Successfully Completed**: Full transition from Replit Agent to standard Replit environment
-  - All Node.js dependencies properly installed and verified working
-  - Express server running cleanly on port 5000 with proper logging
-  - React frontend loading and communicating with backend API
-  - Client-server separation maintained for security compliance
-  - Project ready for continued development and deployment
-
-### UI/UX Enhancements - Colored Task Circles and Achievements Translation Fix (August 16, 2025)
-- **Colored Task Indicators**: Added difficulty-based colored circles next to tutorial job names
-  - Blue circle for maintenance tasks (easy difficulty)
-  - Orange circle for optimization tasks (medium difficulty) 
-  - Red circle for security audit tasks (hard difficulty)
-  - Improves visual hierarchy and task recognition on the Start screen
-- **Achievements Translation Fix**: Fixed Russian language display in Achievements tab
-  - Now properly uses translation system instead of raw server responses
-  - All achievement titles and descriptions display correctly in Russian
-  - Maintains fallback to English for missing translations
-
-### UI/UX Enhancements - Tooltips and Theme System (August 16, 2025)
-- **Tooltips System**: Added helpful tooltips for avatar and nickname interactions
-  - Avatar tooltip: "Click on your avatar to see progress and other interesting information"
-  - Nickname tooltip: "Click on your nickname or someone else's to view their profile"
-  - Support for both Russian and English languages
-- **Dark/Light Theme System**: Comprehensive theme switching capabilities
-  - Animated theme toggle with clear sun/moon symbols and smooth transitions
-  - Desktop: Toggle button with hover tooltip next to logout button
-  - Mobile: Compact toggle button (8x6px) next to language selector to prevent interface displacement
-  - Dark theme set as default with moon symbol, light theme with sun symbol
-  - Theme preferences saved in localStorage for persistence across sessions
-- **Enhanced User Experience**: 
-  - Improved visual feedback with clear iconography
-  - Responsive design optimized for both desktop and mobile interfaces
-  - Smooth animations and transitions for theme switching
-
-### Migration Completion and Bug Fixes (August 16, 2025)
-- **Project Migration Completed**: Successfully migrated the server simulation game from Replit Agent to standard Replit environment
-  - All Node.js dependencies properly installed via package manager
-  - Express server running cleanly on port 5000 without errors
-  - React frontend and backend communication fully functional
-  - Fixed React rendering error in learning component (object display issue)
-  - Added case-insensitive username registration prevention to avoid duplicate accounts
-  - All security practices maintained during migration
-
-### Bug Fixes and Server Mechanics (August 16, 2025)
-- **Fixed Server Overload System**: 
-  - Servers no longer shut down immediately after load configuration
-  - Overload checks only happen every 5 minutes minimum, not on every income update
-  - Only servers with 90%+ load are checked for overload shutdown
-  - Reduced shutdown probabilities: 15% for 95%+ load, 5% for 90-95% load
-  - Servers should now stay online as intended unless severely overloaded
-
-### Migration and Enhancements (August 16, 2025)
-- **Project Migration**: Successfully migrated from Replit Agent to standard Replit environment
-  - All Node.js dependencies properly installed and configured
-  - Full server functionality restored with Express.js backend
-  - Client-server separation maintained for security
-- **Chat System Improvements**: 
-  - Fixed admin badges to show status at time of message, not current status
-  - Admin badges now persist correctly based on when message was sent
-- **Avatar System Overhaul**: 
-  - Regular users have static avatar gradients with no animations
-  - Super-admin (Ca6aka) has unique rainbow-pulse animation with rotating colors and scaling
-  - Avatar circles are slightly smaller than experience rings to show progress better
-  - Experience rings maintain original size for better visibility
-- **Level-Based Content Restrictions**: 
-  - Added lock icons for learning courses and server purchases requiring higher levels
-  - Security Protocols course now requires level 12, Database Server requires level 8
-  - Visual indicators show "Requires Level X" instead of error messages
-  - Enhanced UX with proper disabled states and tooltips for locked content
-- **Performance & UX Optimizations**: 
-  - Auto-dismissing notifications (5-second timeout) for cleaner interface
-  - Limited user activity logs to 5 items to save disk space
-  - Fixed player profile popup z-index (999999) to properly display over all game interface elements
-- **Enhanced User Experience**: 
-  - Profile popups now properly contained within game interface
-  - Improved visual feedback with animated avatar effects and clear lock indicators
-
-## Recent Changes (Latest: August 16, 2025)
-
-### Major Updates (August 16, 2025)
-- **Chat System**: Implemented general text chat to replace AI assistant
-  - Real-time messaging with 100-message history
-  - Admin controls for message deletion and user muting
-  - Automatic mute expiration and status tracking
-- **Enhanced Admin System**: 
-  - Super-admin only access for banning other admins
-  - Money management (add/remove) for super-admin
-  - Mute/unmute functionality with duration control
-  - Protected admin accounts from regular admin actions
-- **Game Features**: Added achievements and daily quests system
-  - 5 different achievements with progressive rewards
-  - 3 daily quests that reset every 24 hours
-  - Automatic progress tracking and reward distribution
-- **Improved Online Status**: 
-  - Real-time activity tracking (5-minute window)
-  - Automatic status updates on all API calls
-  - Fixed persistent online status bug
-
-### Mobile Optimization (August 16, 2025)
-- **Status Bar**: Added responsive mobile layout with compact stats display and mobile navigation
-- **Dashboard Navigation**: Implemented horizontal scrollable tabs for mobile, hidden Player Rankings on mobile
-- **Component Responsiveness**: All major components (Learning, Servers, Hosting, Tutorial) now fully mobile-optimized
-- **Typography & Spacing**: Responsive text sizes, padding adjustments for mobile screens
-- **Touch-Friendly UI**: Minimum 44px touch targets, improved mobile interactions
-- **Compact Currency Display**: Added compact formatting (K/M) for mobile displays
-- **Mobile-First CSS**: Added scrollbar hiding and mobile-specific touch interactions
-
-### Previous Bug Fixes (August 16, 2025)
-- Fixed clickable player nicknames in rankings leading to player profiles
-- Fixed "Browse Server Store" button functionality
-- Added online/offline status indicators with green/red dots
-- Fixed logout redirect to /start page
-- Corrected server statistics display (now shows 4 servers correctly)
-- Fixed object rendering error in learning-tab component
-- Added Ukrainian language support
-
 ## System Architecture
 
 ### Frontend Architecture
-- **Framework**: React 18 with TypeScript for type safety and modern development
-- **Routing**: Wouter for lightweight client-side routing
-- **State Management**: TanStack Query (React Query) for server state management and caching
-- **UI Framework**: Radix UI components with shadcn/ui design system for consistent, accessible interfaces
-- **Styling**: Tailwind CSS with CSS variables for theming and responsive design
-- **Build Tool**: Vite for fast development and optimized production builds
+- **Framework**: React 18 with TypeScript.
+- **Routing**: Wouter.
+- **State Management**: TanStack Query for server state and caching.
+- **UI Framework**: Radix UI components with shadcn/ui design system.
+- **Styling**: Tailwind CSS with CSS variables for theming and responsiveness.
+- **Build Tool**: Vite.
+- **UI/UX Decisions**:
+    - **Theming**: Comprehensive dark/light theme system with animated toggles, persistent preferences via localStorage. Default is dark theme.
+    - **Visual Indicators**: Difficulty-based colored circles for tutorial jobs (blue for easy, orange for medium, red for hard). Lock icons for level-restricted content.
+    - **Notifications**: Auto-dismissing notifications (5-second timeout), toast notifications with high z-index to prevent overlap.
+    - **Tooltips**: Contextual tooltips for interactive elements (e.g., avatar, nickname).
+    - **Admin Badges**: Distinct styling for super-admin (red gradient, pulse animation) and regular admin (gold gradient).
+    - **Avatar System**: Regular users have static gradients; super-admin has unique rainbow-pulse animation.
+    - **Responsiveness**: Mobile-first design with compact layouts, responsive typography, scrollable tabs, and optimized component rendering for smaller screens. Reduced particle animations and simplified blur effects for mobile performance.
+    - **Error Handling**: Client-side validation with real-time feedback and server-side validation.
 
 ### Backend Architecture
-- **Runtime**: Node.js with Express.js for RESTful API endpoints
-- **Language**: TypeScript for consistent type safety across the stack
-- **API Design**: RESTful architecture with `/api` prefix for all endpoints
-- **Middleware**: Custom logging middleware for request/response tracking
-- **Development**: Hot reloading with tsx for rapid development cycles
+- **Runtime**: Node.js with Express.js.
+- **Language**: TypeScript.
+- **API Design**: RESTful architecture (`/api` prefix).
+- **Middleware**: Custom logging.
+- **Development**: Hot reloading with tsx.
 
 ### Data Storage Solutions
-- **Database**: PostgreSQL for reliable ACID-compliant data storage
-- **ORM**: Drizzle ORM for type-safe database operations and schema management
-- **Connection**: Neon Database serverless PostgreSQL for cloud-native scaling
-- **Migrations**: Drizzle Kit for database schema migrations and version control
-- **Fallback Storage**: In-memory storage implementation for development/testing environments
+- **Database**: PostgreSQL.
+- **ORM**: Drizzle ORM for type-safe operations.
+- **Cloud Database**: Neon Database (serverless PostgreSQL).
+- **Migrations**: Drizzle Kit for schema management.
 
 ### Authentication and Authorization
-- **Session Management**: Express sessions for user authentication state
-- **Storage**: PostgreSQL-backed session storage using connect-pg-simple
-- **Security**: HTTP-only cookies with secure flags for production environments
-- **User Model**: Simple username/password authentication with hashed passwords
+- **Session Management**: Express sessions with PostgreSQL-backed storage (connect-pg-simple).
+- **Security**: HTTP-only cookies with secure flags.
+- **User Model**: Username/password authentication with hashed passwords. Case-insensitive username registration prevention.
+- **Admin System**: Multi-level admin roles (super-admin, regular admin) with granular permissions for user management, message moderation, and money management. Super-admin has exclusive access to critical controls and cannot be managed by regular admins. Admin badges reflect status at the time of message sending.
 
 ### Game Logic Architecture
-- **Server Products**: Predefined server types with income generation, costs, and purchase prices
-- **Learning System**: Time-based courses that unlock new capabilities and server slots
-- **Income Generation**: Passive income system with per-minute calculations
-- **Activity Tracking**: User action logging for game progression and analytics
-- **Tutorial System**: Guided onboarding with completion tracking
-- **Chat System**: Real-time messaging with admin moderation capabilities
-- **Achievements System**: Progressive rewards for game milestones and activities
-- **Daily Quests**: Time-limited challenges that reset every 24 hours
+- **Server Mechanics**: Predefined server types with income, costs, and purchase prices. Income generation every minute. Server overload checks every 5 minutes (90%+ load), with reduced shutdown probabilities. Server repair displays cost and durability.
+- **Learning System**: Time-based courses unlocking capabilities and server slots (e.g., Security Protocols requires level 12, Database Server requires level 8).
+- **Gamification**:
+    - **Achievements System**: 5 progressive achievements with rewards.
+    - **Daily Quests**: 3 challenges resetting every 24 hours.
+- **Chat System**: Real-time general text chat with 100-message history, admin moderation (message deletion, user muting with expiration).
+- **Activity Tracking**: User action logging, real-time online status tracking (5-minute window) via API calls.
+- **Tutorial System**: Guided onboarding with completion tracking.
+- **Financial Tracking**: Accurate calculation of total earnings and total spent, with real-time balance updates in UI.
 
 ## External Dependencies
 
 ### Core Framework Dependencies
-- **React Ecosystem**: React 18, React DOM, React Hook Form for form management
-- **State Management**: TanStack React Query for server state synchronization
-- **Routing**: Wouter for declarative routing without heavy overhead
+- **React Ecosystem**: React 18, React DOM, React Hook Form.
+- **State Management**: TanStack React Query.
+- **Routing**: Wouter.
 
 ### UI and Styling
-- **Component Library**: Radix UI primitives for accessible, unstyled components
-- **Styling**: Tailwind CSS with PostCSS for utility-first styling
-- **Icons**: Lucide React for consistent iconography
-- **Design System**: shadcn/ui component collection built on Radix primitives
+- **Component Library**: Radix UI.
+- **Styling**: Tailwind CSS, PostCSS.
+- **Icons**: Lucide React.
+- **Design System**: shadcn/ui.
 
 ### Backend Infrastructure
-- **Web Framework**: Express.js with TypeScript support
-- **Database**: PostgreSQL via Neon Database serverless platform
-- **ORM**: Drizzle ORM with Drizzle Kit for schema management
-- **Session Management**: express-session with connect-pg-simple for PostgreSQL storage
+- **Web Framework**: Express.js.
+- **Database**: PostgreSQL (via Neon Database).
+- **ORM**: Drizzle ORM, Drizzle Kit.
+- **Session Management**: express-session, connect-pg-simple.
 
 ### Development Tools
-- **Build System**: Vite with React plugin for fast development and building
-- **TypeScript**: Full-stack TypeScript for type safety and developer experience
-- **Development Server**: tsx for TypeScript execution in development
-- **Replit Integration**: Specialized plugins for Replit environment compatibility
+- **Build System**: Vite.
+- **TypeScript**: Used full-stack.
+- **Development Server**: tsx.
 
 ### Data Validation and Utilities
-- **Schema Validation**: Zod for runtime type checking and API validation
-- **Date Handling**: date-fns for date manipulation and formatting
-- **Utility Libraries**: clsx and tailwind-merge for conditional CSS classes
-- **UUID Generation**: Built-in crypto module for unique identifier creation
+- **Schema Validation**: Zod.
+- **Date Handling**: date-fns.
+- **Utility Libraries**: clsx, tailwind-merge.
+- **UUID Generation**: Node.js built-in crypto module.
