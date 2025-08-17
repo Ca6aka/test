@@ -54,8 +54,8 @@ export default function DashboardPage() {
     reportsData.some(report => report.hasNewMessages && (gameState.user?.admin >= 1 || report.userId === gameState.user?.id)) :
     false;
 
-  // Check if there are completed quests - simplified for now
-  const hasCompletedQuests = false; // Will be implemented when quest system is fully integrated
+  // Check if there are completed quests - simplified for now (temporarily true for testing)
+  const hasCompletedQuests = true; // Will be implemented when quest system is fully integrated
 
   const getTabContent = () => {
     switch (activeTab) {
@@ -207,7 +207,7 @@ export default function DashboardPage() {
               <span>{t('dailyQuests')}</span>
               {!isTabUnlocked('quests') && <Lock className="w-3 h-3 ml-1" />}
               {hasCompletedQuests && (
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-500 rounded-full animate-pulse border-2 border-slate-800"></div>
+                <div className="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-1/2 w-3 h-3 bg-yellow-500 rounded-full animate-pulse border-2 border-slate-800"></div>
               )}
             </Button>
 
@@ -228,7 +228,7 @@ export default function DashboardPage() {
               <span>{t('reports')}</span>
               {!isTabUnlocked('reports') && <Lock className="w-3 h-3 ml-1" />}
               {hasUnreadReports && (
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse border-2 border-slate-800"></div>
+                <div className="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-1/2 w-3 h-3 bg-red-500 rounded-full animate-pulse border-2 border-slate-800"></div>
               )}
             </Button>
             
@@ -351,7 +351,7 @@ export default function DashboardPage() {
               <span className="font-medium">{t('dailyQuests')}</span>
               {!isTabUnlocked('quests') && <Lock className="w-4 h-4 ml-auto" />}
               {hasCompletedQuests && (
-                <div className="absolute top-1 right-1 w-3 h-3 bg-yellow-500 rounded-full animate-pulse border border-slate-800"></div>
+                <div className="absolute top-1/2 right-2 transform -translate-y-1/2 w-3 h-3 bg-yellow-500 rounded-full animate-pulse border border-slate-800"></div>
               )}
             </Button>
 
@@ -375,7 +375,7 @@ export default function DashboardPage() {
               <span className="font-medium">{t('reports')}</span>
               {!isTabUnlocked('reports') && <Lock className="w-4 h-4 ml-auto" />}
               {hasUnreadReports && (
-                <div className="absolute top-1 right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse border border-slate-800"></div>
+                <div className="absolute top-1/2 right-2 transform -translate-y-1/2 w-3 h-3 bg-red-500 rounded-full animate-pulse border border-slate-800"></div>
               )}
             </Button>
           </nav>
