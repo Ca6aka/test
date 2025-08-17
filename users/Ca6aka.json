@@ -2,7 +2,7 @@
   "id": "9b1a7cc0-8287-468a-9df7-de5d5e73402f",
   "nickname": "Ca6aka",
   "password": "$2b$10$vQisG/HiYpZCbDxhj9hAb.kSngBkSHarYFF0JExylZ1/d5j1tGgq6",
-  "balance": 25296,
+  "balance": 30296,
   "level": 5,
   "experience": 467,
   "totalEarnings": 35532,
@@ -29,29 +29,29 @@
   "currentLearning": null,
   "activities": [
     {
+      "id": "b2f44ab1-bd31-4698-8193-c258a680a98f",
+      "description": "Turned Basic Web Server offline",
+      "timestamp": "8/17/2025, 8:48:03 PM"
+    },
+    {
+      "id": "3e3a1247-ce2c-43fd-a9c0-5ef54d677a38",
+      "description": "Turned Basic Web Server online",
+      "timestamp": "8/17/2025, 8:48:02 PM"
+    },
+    {
+      "id": "672230b5-c653-4bcf-be4e-d90f7b9370da",
+      "description": "Quest reward claimed: Daily Earnings (+$3,500)",
+      "timestamp": "8/17/2025, 8:46:33 PM"
+    },
+    {
+      "id": "00e4ac02-16d5-4bf4-b2ad-223a577bdb28",
+      "description": "Quest reward claimed: Passive Income (+$1,500)",
+      "timestamp": "8/17/2025, 8:46:31 PM"
+    },
+    {
       "id": "2149cfdd-054f-4f9a-9647-5f79e60ec0dc",
       "description": "Completed learning course: Basic Server Setup",
       "timestamp": "8/17/2025, 8:30:25 PM"
-    },
-    {
-      "id": "5f099e24-f1ef-4fa0-a2c7-ce299d9865cc",
-      "description": "Basic Web Server went offline due to maintenance required",
-      "timestamp": "8/17/2025, 8:28:14 PM"
-    },
-    {
-      "id": "bfa40eac-f9ab-41ca-bc89-6dec7d5134cb",
-      "description": "Basic Web Server went offline due to maintenance required",
-      "timestamp": "8/17/2025, 8:28:14 PM"
-    },
-    {
-      "id": "31b32342-0bb3-4f90-93ab-5134eef8cf91",
-      "description": "Basic Web Server went offline due to maintenance required",
-      "timestamp": "8/17/2025, 8:28:14 PM"
-    },
-    {
-      "id": "1cbcca8f-66a0-457b-bff5-de3fc48cda4d",
-      "description": "Basic Web Server went offline due to maintenance required",
-      "timestamp": "8/17/2025, 8:28:14 PM"
     }
   ],
   "achievements": [
@@ -93,7 +93,8 @@
       },
       "progress": 5000,
       "completed": true,
-      "date": "Sun Aug 17 2025"
+      "date": "Sun Aug 17 2025",
+      "claimed": true
     },
     {
       "id": "daily-optimization-Sun Aug 17 2025",
@@ -136,7 +137,8 @@
       },
       "progress": 10000,
       "completed": true,
-      "date": "Sun Aug 17 2025"
+      "date": "Sun Aug 17 2025",
+      "claimed": true
     },
     {
       "id": "daily-worker-Sun Aug 17 2025",
@@ -218,5 +220,5 @@
   "lastQuestReset": 1755392887200,
   "registrationIP": "192.168.0.136",
   "registrationTime": 1755392887200,
-  "lastSeen": 1755463589045
+  "lastSeen": 1755463746454
 }

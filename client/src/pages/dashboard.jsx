@@ -54,8 +54,8 @@ export default function DashboardPage() {
     reportsData.some(report => report.hasNewMessages && (gameState.user?.admin >= 1 || report.userId === gameState.user?.id)) :
     false;
 
-  // Check if there are completed quests - simplified for now (temporarily true for testing)
-  const hasCompletedQuests = true; // Will be implemented when quest system is fully integrated
+  // Check if there are completed quests that can be claimed
+  const hasCompletedQuests = questsData?.quests?.some(quest => quest.completed && !quest.claimed) || false;
 
   const getTabContent = () => {
     switch (activeTab) {
