@@ -1,4 +1,4 @@
-import { Switch, Route, Redirect} from "wouter"
+import { Switch, Route, Redirect, useLocation } from "wouter"
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -15,11 +15,27 @@ import NotFound from "@/pages/not-found";
 
 function AppRouter() {
   const { gameState } = useGame();
+  const [location] = useLocation();
+
+  // Preserve the last route when user is authenticated
+  const getDefaultGameRoute = () => {
+    // If we're already on a game route, preserve it
+    if (location.startsWith('/game/')) {
+      return location;
+    }
+    // Check localStorage for last visited tab
+    const lastTab = localStorage.getItem('lastGameTab');
+    if (lastTab && lastTab !== 'null') {
+      return `/game/${lastTab}`;
+    }
+    // Default to tutorial for first-time users or when tutorial isn't complete
+    return gameState.user?.tutorialCompleted ? '/game/servers' : '/game/tutorial';
+  };
 
   return (
     <Switch>
       <Route path="/">
-        {gameState.user ? <Redirect to="/game" /> : <HomePage />}
+        {gameState.user ? <Redirect to={getDefaultGameRoute()} /> : <HomePage />}
       </Route>
       
       <Route path="/start">

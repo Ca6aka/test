@@ -31,7 +31,13 @@ export default function DashboardPage() {
   const { t } = useLanguage();
   const [, params] = useRoute('/game/:tab?');
   const [, setLocation] = useLocation();
-  const [activeTab, setActiveTab] = useState(params?.tab || 'tutorial');
+  const [activeTab, setActiveTab] = useState(() => {
+    // Initialize from URL params or localStorage
+    if (params?.tab) return params.tab;
+    const lastTab = localStorage.getItem('lastGameTab');
+    if (lastTab && lastTab !== 'null') return lastTab;
+    return 'tutorial';
+  });
   const [profileOpen, setProfileOpen] = useState(false);
   const [levelUpNotification, setLevelUpNotification] = useState({ isOpen: false, level: null });
 
@@ -44,10 +50,11 @@ export default function DashboardPage() {
     }
   }, [params?.tab, activeTab, setLocation]);
 
-  // Tab change handler that updates URL
+  // Tab change handler that updates URL and saves to localStorage
   const handleTabChange = (tab) => {
     setActiveTab(tab);
     setLocation(`/game/${tab}`);
+    localStorage.setItem('lastGameTab', tab);
   };
 
   const isTabUnlocked = (tab) => {
