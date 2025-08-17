@@ -21,6 +21,7 @@ import { LevelUpNotification } from '@/components/level-up-notification';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { TUTORIAL_UNLOCK_THRESHOLD, formatCurrency } from '@/lib/constants';
+import { useQuery } from '@tanstack/react-query';
 
 export default function DashboardPage() {
   const { gameState } = useGame();
@@ -34,6 +35,27 @@ export default function DashboardPage() {
     // STRICT: Only allow other tabs after tutorial is actually completed
     return gameState.user && gameState.user.tutorialCompleted;
   };
+
+  // Check for new notifications
+  const { data: reportsData } = useQuery({
+    queryKey: ['/api/reports'],
+    enabled: !!gameState.user && isTabUnlocked('reports'),
+    refetchInterval: 5000
+  });
+
+  const { data: questsData } = useQuery({
+    queryKey: ['/api/quests'],
+    enabled: !!gameState.user && isTabUnlocked('quests'),
+    refetchInterval: 5000
+  });
+
+  // Check if there are unread report messages
+  const hasUnreadReports = Array.isArray(reportsData) ? 
+    reportsData.some(report => report.hasNewMessages && (gameState.user?.admin >= 1 || report.userId === gameState.user?.id)) :
+    false;
+
+  // Check if there are completed quests - simplified for now
+  const hasCompletedQuests = false; // Will be implemented when quest system is fully integrated
 
   const getTabContent = () => {
     switch (activeTab) {
@@ -171,7 +193,7 @@ export default function DashboardPage() {
             <Button
               variant={activeTab === 'quests' ? 'default' : 'ghost'}
               size="sm"
-              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs ${
+              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs relative ${
                 activeTab === 'quests'
                   ? 'bg-primary/20 text-primary border border-primary/30'
                   : isTabUnlocked('quests')
@@ -184,12 +206,15 @@ export default function DashboardPage() {
               <i className="fas fa-calendar"></i>
               <span>{t('dailyQuests')}</span>
               {!isTabUnlocked('quests') && <Lock className="w-3 h-3 ml-1" />}
+              {hasCompletedQuests && (
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-500 rounded-full animate-pulse border-2 border-slate-800"></div>
+              )}
             </Button>
 
             <Button
               variant={activeTab === 'reports' ? 'default' : 'ghost'}
               size="sm"
-              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs ${
+              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs ml-4 relative ${
                 activeTab === 'reports'
                   ? 'bg-primary/20 text-primary border border-primary/30'
                   : isTabUnlocked('reports')
@@ -202,6 +227,9 @@ export default function DashboardPage() {
               <i className="fas fa-headset"></i>
               <span>{t('reports')}</span>
               {!isTabUnlocked('reports') && <Lock className="w-3 h-3 ml-1" />}
+              {hasUnreadReports && (
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse border-2 border-slate-800"></div>
+              )}
             </Button>
             
           </div>
@@ -309,7 +337,7 @@ export default function DashboardPage() {
             {/* Daily Quests Tab */}
             <Button
               variant={activeTab === 'quests' ? 'default' : 'ghost'}
-              className={`w-full justify-start space-x-3 ${
+              className={`w-full justify-start space-x-3 relative ${
                 activeTab === 'quests'
                   ? 'bg-primary/20 text-primary border border-primary/30'
                   : isTabUnlocked('quests')
@@ -322,12 +350,18 @@ export default function DashboardPage() {
               <i className="fas fa-calendar text-lg"></i>
               <span className="font-medium">{t('dailyQuests')}</span>
               {!isTabUnlocked('quests') && <Lock className="w-4 h-4 ml-auto" />}
+              {hasCompletedQuests && (
+                <div className="absolute top-1 right-1 w-3 h-3 bg-yellow-500 rounded-full animate-pulse border border-slate-800"></div>
+              )}
             </Button>
 
+            {/* Separator for different section */}
+            <div className="border-t border-slate-600 my-4"></div>
+            
             {/* Reports Tab */}
             <Button
               variant={activeTab === 'reports' ? 'default' : 'ghost'}
-              className={`w-full justify-start space-x-3 ${
+              className={`w-full justify-start space-x-3 relative ${
                 activeTab === 'reports'
                   ? 'bg-primary/20 text-primary border border-primary/30'
                   : isTabUnlocked('reports')
@@ -340,6 +374,9 @@ export default function DashboardPage() {
               <i className="fas fa-headset text-lg"></i>
               <span className="font-medium">{t('reports')}</span>
               {!isTabUnlocked('reports') && <Lock className="w-4 h-4 ml-auto" />}
+              {hasUnreadReports && (
+                <div className="absolute top-1 right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse border border-slate-800"></div>
+              )}
             </Button>
           </nav>
           

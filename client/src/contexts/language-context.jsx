@@ -10,6 +10,9 @@ const translations = {
     myServers: 'My Servers',
     serverStore: 'Server Store',
     learningCenter: 'Learning Center',
+    achievements: 'Achievements',
+    dailyQuests: 'Daily Quests',
+    reports: 'Reports',
     
     // Basic UI
     balance: 'Balance',
@@ -616,6 +619,9 @@ const translations = {
     myServers: 'Мои серверы',
     serverStore: 'Магазин серверов',
     learningCenter: 'Центр обучения',
+    achievements: 'Достижения',
+    dailyQuests: 'Ежедневные задания',
+    reports: 'Репорты',
     
     // Basic UI
     balance: 'Баланс',
