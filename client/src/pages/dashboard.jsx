@@ -31,8 +31,8 @@ export default function DashboardPage() {
   const [levelUpNotification, setLevelUpNotification] = useState({ isOpen: false, level: null });
 
   const isTabUnlocked = (tab) => {
-    if (tab === 'tutorial') return true;
-    // STRICT: Only allow other tabs after tutorial is actually completed
+    if (tab === 'tutorial' || tab === 'achievements' || tab === 'quests' || tab === 'reports') return true;
+    // Only require tutorial completion for servers, hosting, and learning tabs
     return gameState.user && gameState.user.tutorialCompleted;
   };
 

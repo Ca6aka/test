@@ -2,11 +2,11 @@
   "id": "6050cfe7-a3f7-47e6-9f66-511cbafad1a6",
   "nickname": "MASIK",
   "password": "$2b$10$/UrBsBa/yYD9Dszu8gw8KeAXRUDfP9t9W1MVhBVP2i58WkBJzX5ya",
-  "balance": 182687,
+  "balance": 183048,
   "level": 6,
   "experience": 727,
-  "totalEarnings": 209798,
-  "totalSpent": 129935,
+  "totalEarnings": 210198,
+  "totalSpent": 129974,
   "avatar": {
     "gradient": "from-lime-400 via-green-500 to-ruby-600",
     "pattern": "multi-color",
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755465584479,
+  "lastIncomeUpdate": 1755465716095,
   "jobCooldowns": {
     "maintenance": 1755464530577,
     "optimization": 1755464652724,
@@ -41,6 +41,16 @@
   },
   "activities": [
     {
+      "id": "49b567b9-1b88-4dfd-9f5a-a83236b3a78d",
+      "description": "Income: +$182, Rental: -$18 (Net: +$164)",
+      "timestamp": "8/17/2025, 9:21:56 PM"
+    },
+    {
+      "id": "2248476f-1a73-4b64-88c0-c5387259d764",
+      "description": "Income: +$218, Rental: -$21 (Net: +$197)",
+      "timestamp": "8/17/2025, 9:20:56 PM"
+    },
+    {
       "id": "3ff41024-8ba4-4167-9ae2-3e8796d80175",
       "description": "Income: +$183, Rental: -$18 (Net: +$165)",
       "timestamp": "8/17/2025, 9:19:44 PM"
@@ -54,16 +64,6 @@
       "id": "240dfd63-2a11-422c-b02a-038ad52005d3",
       "description": "Income: +$302, Rental: -$30 (Net: +$272)",
       "timestamp": "8/17/2025, 9:15:39 PM"
-    },
-    {
-      "id": "ea737b1c-47e1-4a57-8362-4430747a4b0b",
-      "description": "Income: +$335, Rental: -$33 (Net: +$302)",
-      "timestamp": "8/17/2025, 9:14:00 PM"
-    },
-    {
-      "id": "03cf052e-0e83-4241-aa1c-24bcad92647b",
-      "description": "Income: +$352, Rental: -$35 (Net: +$317)",
-      "timestamp": "8/17/2025, 9:12:10 PM"
     }
   ],
   "achievements": [

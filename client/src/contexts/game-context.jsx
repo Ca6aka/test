@@ -18,8 +18,8 @@ const initialState = {
 function gameReducer(state, action) {
   switch (action.type) {
     case 'SET_USER':
-      const unlockedTabs = ['tutorial'];
-      // STRICT: Only unlock tabs when tutorial is actually completed
+      const unlockedTabs = ['tutorial', 'achievements', 'quests', 'reports'];
+      // Only unlock servers, hosting, and learning tabs when tutorial is completed
       if (action.payload?.tutorialCompleted) {
         unlockedTabs.push('servers', 'hosting', 'learning');
       }
