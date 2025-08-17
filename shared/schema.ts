@@ -39,11 +39,16 @@ export const insertUserSchema = createInsertSchema(users).pick({
 export const insertReportSchema = createInsertSchema(reports).pick({
   subject: true,
   category: true,
+}).extend({
+  subject: z.string().min(1).max(50, "Subject must be no more than 50 characters"),
+  message: z.string().min(1).max(500, "Message must be no more than 500 characters"),
 });
 
 export const insertReportMessageSchema = createInsertSchema(reportMessages).pick({
   reportId: true,
   message: true,
+}).extend({
+  message: z.string().min(1).max(500, "Message must be no more than 500 characters"),
 });
 
 export type InsertUser = z.infer<typeof insertUserSchema>;

@@ -857,17 +857,21 @@ export async function registerRoutes(app) {
         return res.status(403).json({ message: 'Access denied' });
       }
 
-      const { subject, category, initialMessage } = req.body;
+      const { subject, category, message } = req.body;
 
-      if (!subject || !category || !initialMessage) {
-        return res.status(400).json({ message: 'Subject, category, and initial message are required' });
+      if (!subject || !category || !message) {
+        return res.status(400).json({ message: 'Subject, category, and message are required' });
       }
 
-      if (subject.length > 100 || initialMessage.length > 1000) {
-        return res.status(400).json({ message: 'Subject or message too long' });
+      if (subject.length > 50) {
+        return res.status(400).json({ message: 'Subject must be no more than 50 characters' });
       }
 
-      const report = await storage.createReport(user.id, subject, category, initialMessage);
+      if (message.length > 500) {
+        return res.status(400).json({ message: 'Message must be no more than 500 characters' });
+      }
+
+      const report = await storage.createReport(user.id, subject, category, message);
       res.json(report);
     } catch (error) {
       console.error('Error creating report:', error);

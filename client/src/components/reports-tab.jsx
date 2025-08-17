@@ -132,15 +132,33 @@ export function ReportsTab() {
       return;
     }
 
+    // Validate character limits
+    if (newReportSubject.length > 50) {
+      toast({ title: t('error'), description: t('subjectTooLong'), variant: 'destructive' });
+      return;
+    }
+
+    if (newReportMessage.length > 500) {
+      toast({ title: t('error'), description: t('messageTooLong'), variant: 'destructive' });
+      return;
+    }
+
     createReportMutation.mutate({
       subject: newReportSubject,
       category: newReportCategory,
-      initialMessage: newReportMessage
+      message: newReportMessage
     });
   };
 
   const handleSendMessage = () => {
     if (!newMessage.trim()) return;
+    
+    // Validate message length
+    if (newMessage.length > 500) {
+      toast({ title: t('error'), description: t('messageTooLong'), variant: 'destructive' });
+      return;
+    }
+    
     sendMessageMutation.mutate(newMessage);
   };
 
@@ -190,10 +208,13 @@ export function ReportsTab() {
                     <Input
                       value={newReportSubject}
                       onChange={(e) => setNewReportSubject(e.target.value)}
-                      placeholder={t('enterSubject')}
+                      placeholder={t('reportSubject')}
                       className="bg-slate-700 border-slate-600 text-white"
-                      maxLength={100}
+                      maxLength={50}
                     />
+                    <div className="text-xs text-slate-400 mt-1">
+                      {newReportSubject.length}/50 {t('characters')}
+                    </div>
                   </div>
                   <div>
                     <label className="text-sm text-slate-300 mb-2 block">{t('category')}</label>
@@ -212,10 +233,13 @@ export function ReportsTab() {
                     <textarea
                       value={newReportMessage}
                       onChange={(e) => setNewReportMessage(e.target.value)}
-                      placeholder={t('describeIssue')}
+                      placeholder={t('initialMessage')}
                       className="w-full p-3 bg-slate-700 border border-slate-600 text-white rounded-md min-h-[100px] resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      maxLength={1000}
+                      maxLength={500}
                     />
+                    <div className="text-xs text-slate-400 mt-1">
+                      {newReportMessage.length}/500 {t('characters')}
+                    </div>
                   </div>
                   <Button 
                     onClick={handleCreateReport}
@@ -358,18 +382,24 @@ export function ReportsTab() {
             {selectedReport.status === 'open' ? (
               <div className="border-t border-slate-700 p-4">
                 <div className="flex space-x-2">
-                  <Input
-                    value={newMessage}
-                    onChange={(e) => setNewMessage(e.target.value)}
-                    placeholder={t('typeMessage')}
-                    className="flex-1 bg-slate-700 border-slate-600 text-white"
-                    onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                    maxLength={500}
-                  />
+                  <div className="flex-1">
+                    <Input
+                      value={newMessage}
+                      onChange={(e) => setNewMessage(e.target.value)}
+                      placeholder={t('typeMessage')}
+                      className="bg-slate-700 border-slate-600 text-white"
+                      onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+                      maxLength={500}
+                    />
+                    <div className="text-xs text-slate-400 mt-1">
+                      {newMessage.length}/500 {t('characters')}
+                    </div>
+                  </div>
                   <Button 
                     onClick={handleSendMessage}
                     disabled={sendMessageMutation.isPending || !newMessage.trim()}
                     size="sm"
+                    className="self-start"
                   >
                     <Send className="w-4 h-4" />
                   </Button>

@@ -638,6 +638,9 @@ const translations = {
     reportClosed: 'Closed',
     reportMarked: 'Marked',
     fillAllFields: 'Please fill all required fields',
+    subjectTooLong: 'Subject must be no more than 50 characters',
+    messageTooLong: 'Message must be no more than 500 characters',
+    characters: 'characters',
   },
   
   ru: {
@@ -1199,6 +1202,9 @@ const translations = {
     reportClosed: 'Закрыт',
     reportMarked: 'Отмечен',
     fillAllFields: 'Пожалуйста, заполните все обязательные поля',
+    subjectTooLong: 'Тема не должна превышать 50 символов',
+    messageTooLong: 'Сообщение не должно превышать 500 символов',
+    characters: 'символов',
   },
   
   ua: {
@@ -1753,6 +1759,9 @@ const translations = {
     reportClosed: 'Закритий',
     reportMarked: 'Позначений',
     fillAllFields: 'Будь ласка, заповніть всі обов\'язкові поля',
+    subjectTooLong: 'Тема не повинна перевищувати 50 символів',
+    messageTooLong: 'Повідомлення не повинно перевищувати 500 символів',
+    characters: 'символів',
   },
   
   de: {
@@ -2293,6 +2302,9 @@ const translations = {
     reportStatus: 'Status',
     reportCreated: 'Erstellt',
     fillAllFields: 'Bitte füllen Sie alle Pflichtfelder aus',
+    subjectTooLong: 'Betreff darf nicht länger als 50 Zeichen sein',
+    messageTooLong: 'Nachricht darf nicht länger als 500 Zeichen sein',
+    characters: 'Zeichen',
   }
 };
 
