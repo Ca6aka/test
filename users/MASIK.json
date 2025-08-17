@@ -2,11 +2,11 @@
   "id": "6050cfe7-a3f7-47e6-9f66-511cbafad1a6",
   "nickname": "MASIK",
   "password": "$2b$10$/UrBsBa/yYD9Dszu8gw8KeAXRUDfP9t9W1MVhBVP2i58WkBJzX5ya",
-  "balance": 181440,
+  "balance": 181742,
   "level": 6,
   "experience": 727,
-  "totalEarnings": 208414,
-  "totalSpent": 129798,
+  "totalEarnings": 208749,
+  "totalSpent": 129831,
   "avatar": {
     "gradient": "from-lime-400 via-green-500 to-ruby-600",
     "pattern": "multi-color",
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755465130001,
+  "lastIncomeUpdate": 1755465240096,
   "jobCooldowns": {
     "maintenance": 1755464530577,
     "optimization": 1755464652724,
@@ -41,6 +41,11 @@
   },
   "activities": [
     {
+      "id": "ea737b1c-47e1-4a57-8362-4430747a4b0b",
+      "description": "Income: +$335, Rental: -$33 (Net: +$302)",
+      "timestamp": "8/17/2025, 9:14:00 PM"
+    },
+    {
       "id": "03cf052e-0e83-4241-aa1c-24bcad92647b",
       "description": "Income: +$352, Rental: -$35 (Net: +$317)",
       "timestamp": "8/17/2025, 9:12:10 PM"
@@ -58,11 +63,6 @@
     {
       "id": "6339a926-c32f-4231-aec2-e05bdcb96715",
       "description": "Server \"Basic Web Server\" shutdown due to overload (100% load)",
-      "timestamp": "8/17/2025, 9:09:14 PM"
-    },
-    {
-      "id": "1a13ef3e-4e67-49cf-8488-ace9aef48746",
-      "description": "Income: +$244, Rental: -$24 (Net: +$220)",
       "timestamp": "8/17/2025, 9:09:14 PM"
     }
   ],
