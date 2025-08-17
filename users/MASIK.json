@@ -2,37 +2,37 @@
   "id": "6050cfe7-a3f7-47e6-9f66-511cbafad1a6",
   "nickname": "MASIK",
   "password": "$2b$10$/UrBsBa/yYD9Dszu8gw8KeAXRUDfP9t9W1MVhBVP2i58WkBJzX5ya",
-  "balance": 10991,
+  "balance": 178402,
   "level": 6,
-  "experience": 621,
-  "totalEarnings": 43123,
-  "totalSpent": 101956,
+  "experience": 727,
+  "totalEarnings": 205042,
+  "totalSpent": 129464,
   "avatar": {
     "gradient": "from-lime-400 via-green-500 to-ruby-600",
     "pattern": "multi-color",
     "seed": 758344,
     "animation": "shimmer-wave"
   },
-  "serverLimit": 10,
+  "serverLimit": 11,
   "tutorialCompleted": true,
   "admin": 0,
   "banned": false,
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755398207652,
+  "lastIncomeUpdate": 1755464376333,
   "jobCooldowns": {
-    "maintenance": 1755396508124,
-    "optimization": 1755396717783,
-    "security-audit": 1755396835950
+    "maintenance": 1755464530577,
+    "optimization": 1755464652724,
+    "security-audit": 1755464774505
   },
   "currentLearning": {
     "id": "basic-setup",
     "title": "Basic Server Setup",
     "description": "Learn the fundamentals of server configuration and deployment",
     "difficulty": "Beginner",
-    "startTime": 1755394861760,
-    "endTime": 1755396661760,
+    "startTime": 1755463955214,
+    "endTime": 1755465755214,
     "progress": 0,
     "reward": {
       "type": "serverSlots",
@@ -41,29 +41,29 @@
   },
   "activities": [
     {
-      "id": "bf8d0c50-2035-45ee-abfe-0d40725b4e5f",
-      "description": "Database Server went offline due to maintenance required",
-      "timestamp": "8/17/2025, 8:28:14 PM"
+      "id": "02066eeb-7f0a-4fc4-8f9b-55812fa6b768",
+      "description": "Income: +$358, Rental: -$35 (Net: +$323)",
+      "timestamp": "17.08.2025, 22:59:36"
     },
     {
-      "id": "ed8c8393-f21c-4031-8388-d9b3dac59531",
-      "description": "Basic Web Server went offline due to maintenance required",
-      "timestamp": "8/17/2025, 8:28:14 PM"
+      "id": "8493ee4e-5298-4719-90b9-f63b961568be",
+      "description": "Completed Security Audit (+$500, +25 XP)",
+      "timestamp": "17.08.2025, 22:59:14"
     },
     {
-      "id": "2d531180-37bb-4add-9af6-f0479d39637f",
-      "description": "Basic Web Server went offline due to maintenance required",
-      "timestamp": "8/17/2025, 8:28:14 PM"
+      "id": "609559f4-b34d-4a59-9bd7-fbefed4c287a",
+      "description": "Completed Performance Optimization (+$250, +18 XP)",
+      "timestamp": "17.08.2025, 22:59:12"
     },
     {
-      "id": "cb3f5fac-f8e8-4b5e-8bb1-fd1cca7f58fd",
-      "description": "Server \"Database Server\" shutdown due to overload (100% load)",
-      "timestamp": "17.08.2025, 04:36:47"
+      "id": "1a5831b7-2f80-4240-bb6d-09b7787dfce8",
+      "description": "Completed Server Maintenance (+$150, +10 XP)",
+      "timestamp": "17.08.2025, 22:59:10"
     },
     {
-      "id": "c8b354cb-d358-4899-a36a-0156e6f9b80e",
-      "description": "Server \"Basic Web Server\" shutdown due to overload (100% load)",
-      "timestamp": "17.08.2025, 04:36:47"
+      "id": "93384650-b172-42d0-91ae-43eedae2c20a",
+      "description": "Turned Database Server online",
+      "timestamp": "17.08.2025, 22:58:52"
     }
   ],
   "achievements": [
@@ -73,10 +73,11 @@
     "server-builder",
     "server-collection",
     "efficient-worker",
-    "server-mogul"
+    "server-mogul",
+    "wealthy-investor"
   ],
-  "completedJobsCount": 39,
-  "completedCoursesCount": 1,
+  "completedJobsCount": 45,
+  "completedCoursesCount": 2,
   "completedLearning": [],
   "efficiencyBonus": 0,
   "dailyQuests": [
@@ -197,9 +198,10 @@
         "type": "income",
         "amount": 20000
       },
-      "progress": 19757,
-      "completed": false,
-      "date": "Sun Aug 17 2025"
+      "progress": 20000,
+      "completed": true,
+      "date": "Sun Aug 17 2025",
+      "claimed": true
     },
     {
       "id": "daily-job-spree-Sun Aug 17 2025",
@@ -225,13 +227,14 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 19757,
-      "completed": false,
-      "date": "Sun Aug 17 2025"
+      "progress": 50000,
+      "completed": true,
+      "date": "Sun Aug 17 2025",
+      "claimed": true
     }
   ],
   "lastQuestReset": 1755392888185,
   "registrationIP": "192.168.0.89",
   "registrationTime": 1755392888185,
-  "lastSeen": 1755396500333
+  "lastSeen": 1755464373319
 }

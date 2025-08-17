@@ -2,11 +2,11 @@
   "id": "9b1a7cc0-8287-468a-9df7-de5d5e73402f",
   "nickname": "Ca6aka",
   "password": "$2b$10$vQisG/HiYpZCbDxhj9hAb.kSngBkSHarYFF0JExylZ1/d5j1tGgq6",
-  "balance": 30296,
+  "balance": 217374,
   "level": 5,
-  "experience": 467,
-  "totalEarnings": 35532,
-  "totalSpent": 49936,
+  "experience": 530,
+  "totalEarnings": 206608,
+  "totalSpent": 66934,
   "avatar": {
     "gradient": "from-violet-400 via-purple-500 to-indigo-600",
     "pattern": "multi-color",
@@ -20,38 +20,38 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755398207643,
+  "lastIncomeUpdate": 1755464355269,
   "jobCooldowns": {
-    "maintenance": 1755396757256,
-    "optimization": 1755396739999,
-    "security-audit": 1755396740463
+    "maintenance": 1755464475247,
+    "optimization": 1755464406190,
+    "security-audit": 1755464526627
   },
   "currentLearning": null,
   "activities": [
     {
-      "id": "b2f44ab1-bd31-4698-8193-c258a680a98f",
-      "description": "Turned Basic Web Server offline",
-      "timestamp": "8/17/2025, 8:48:03 PM"
+      "id": "0d754351-d425-42c1-8927-2a2f75d8d596",
+      "description": "Income: +$226, Rental: -$22 (Net: +$204)",
+      "timestamp": "17.08.2025, 22:59:15"
     },
     {
-      "id": "3e3a1247-ce2c-43fd-a9c0-5ef54d677a38",
+      "id": "e09c89bb-56a4-469f-b47d-a16fd4ac7f46",
+      "description": "Completed Server Maintenance (+$150, +10 XP)",
+      "timestamp": "17.08.2025, 22:58:15"
+    },
+    {
+      "id": "e8c855e5-aff4-4538-a633-52869fb509be",
       "description": "Turned Basic Web Server online",
-      "timestamp": "8/17/2025, 8:48:02 PM"
+      "timestamp": "17.08.2025, 22:58:11"
     },
     {
-      "id": "672230b5-c653-4bcf-be4e-d90f7b9370da",
-      "description": "Quest reward claimed: Daily Earnings (+$3,500)",
-      "timestamp": "8/17/2025, 8:46:33 PM"
+      "id": "e4de0e56-162d-4554-969f-78ace30257bc",
+      "description": "Server \"Basic Web Server\" shutdown due to overload (95% load)",
+      "timestamp": "17.08.2025, 22:58:06"
     },
     {
-      "id": "00e4ac02-16d5-4bf4-b2ad-223a577bdb28",
-      "description": "Quest reward claimed: Passive Income (+$1,500)",
-      "timestamp": "8/17/2025, 8:46:31 PM"
-    },
-    {
-      "id": "2149cfdd-054f-4f9a-9647-5f79e60ec0dc",
-      "description": "Completed learning course: Basic Server Setup",
-      "timestamp": "8/17/2025, 8:30:25 PM"
+      "id": "383bca6a-1ab0-44a6-9b32-6713f06eb6cf",
+      "description": "Income: +$198, Rental: -$19 (Net: +$179)",
+      "timestamp": "17.08.2025, 22:58:06"
     }
   ],
   "achievements": [
@@ -60,9 +60,10 @@
     "first-server",
     "server-builder",
     "server-collection",
-    "efficient-worker"
+    "efficient-worker",
+    "wealthy-investor"
   ],
-  "completedJobsCount": 29,
+  "completedJobsCount": 33,
   "completedCoursesCount": 1,
   "completedLearning": [],
   "efficiencyBonus": 0,
@@ -184,9 +185,10 @@
         "type": "income",
         "amount": 20000
       },
-      "progress": 14832,
-      "completed": false,
-      "date": "Sun Aug 17 2025"
+      "progress": 20000,
+      "completed": true,
+      "date": "Sun Aug 17 2025",
+      "claimed": true
     },
     {
       "id": "daily-job-spree-Sun Aug 17 2025",
@@ -212,13 +214,14 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 14832,
-      "completed": false,
-      "date": "Sun Aug 17 2025"
+      "progress": 50000,
+      "completed": true,
+      "date": "Sun Aug 17 2025",
+      "claimed": true
     }
   ],
   "lastQuestReset": 1755392887200,
   "registrationIP": "192.168.0.136",
   "registrationTime": 1755392887200,
-  "lastSeen": 1755463747602
+  "lastSeen": 1755464370860
 }
