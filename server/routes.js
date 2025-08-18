@@ -1131,7 +1131,7 @@ export async function registerRoutes(app) {
       }
 
       const updatedUser = await storage.addUserXP(req.session.userId, xp);
-      res.json({ user: updatedUser });
+      res.json({ user: updatedUser, xpGained: xp });
     } catch (error) {
       console.error('Error adding XP:', error);
       res.status(500).json({ message: 'Server error' });

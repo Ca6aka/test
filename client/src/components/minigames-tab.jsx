@@ -45,8 +45,8 @@ const MiniGamesTab = () => {
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
       toast({
-        title: t('success'),
-        description: `+${data.xpGained || 'Unknown'} XP gained!`,
+        title: t('gameCompleted'),
+        description: `+${data.xpGained} XP gained!`,
         variant: 'default'
       });
     },
@@ -203,10 +203,6 @@ const MiniGamesTab = () => {
     
     if (scoreToAdd > 0) {
       updateExpMutation.mutate(scoreToAdd);
-      toast({
-        title: t('gameCompleted'),
-        description: t('earnedXP').replace('{amount}', scoreToAdd)
-      });
     }
     
     setGameState('results');

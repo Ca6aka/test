@@ -95,6 +95,14 @@ export function GameProvider({ children }) {
     retry: false,
   });
 
+  // Refetch user data periodically to catch balance/XP updates from external sources
+  const { data: userUpdateResponse } = useQuery({
+    queryKey: ['/api/auth/me', 'periodic'],
+    enabled: !!gameState.user,
+    refetchInterval: 5000, // Check every 5 seconds for balance/XP updates
+    retry: false,
+  });
+
   // Fetch servers
   const { data: serversResponse } = useQuery({
     queryKey: ['/api/servers'],
@@ -285,6 +293,13 @@ export function GameProvider({ children }) {
       dispatch({ type: 'SET_USER', payload: userResponse.user });
     }
   }, [userResponse]);
+
+  // Handle periodic user updates for real-time balance/XP changes
+  useEffect(() => {
+    if (userUpdateResponse?.user) {
+      dispatch({ type: 'SET_USER', payload: userUpdateResponse.user });
+    }
+  }, [userUpdateResponse]);
 
   useEffect(() => {
     if (serversResponse?.servers) {
