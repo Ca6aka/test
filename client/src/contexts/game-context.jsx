@@ -212,7 +212,7 @@ export function GameProvider({ children }) {
         method: 'POST',
         body: JSON.stringify({ productId })
       });
-      return await response.json();
+      return response;
     },
     onSuccess: (data) => {
       dispatch({ type: 'SET_USER', payload: data.user });
@@ -254,7 +254,7 @@ export function GameProvider({ children }) {
       const response = await apiRequest('/api/tutorial/complete', {
         method: 'POST'
       });
-      return await response.json();
+      return response;
     },
     onSuccess: (data) => {
       dispatch({ type: 'SET_USER', payload: data.user });
@@ -268,7 +268,7 @@ export function GameProvider({ children }) {
         method: 'POST',
         body: JSON.stringify({ courseId })
       });
-      return await response.json();
+      return response;
     },
     onSuccess: (data) => {
       if (data.user) {

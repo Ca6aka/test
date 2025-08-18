@@ -7,12 +7,12 @@
     "incomePerMinute": 15,
     "monthlyCost": 45,
     "icon": "fas fa-globe",
-    "isOnline": false,
-    "loadPercentage": 50,
+    "isOnline": true,
+    "loadPercentage": 90,
     "durability": 100,
     "lastDurabilityUpdate": 1755478707334,
     "createdAt": 1755478707334,
-    "lastUpdated": 1755478719769
+    "lastUpdated": 1755478812451
   },
   {
     "id": "3cec945b-071b-4b71-aef2-5f0b3a9445e0",
@@ -23,10 +23,10 @@
     "monthlyCost": 45,
     "icon": "fas fa-globe",
     "isOnline": false,
-    "loadPercentage": 50,
+    "loadPercentage": 90,
     "durability": 100,
     "lastDurabilityUpdate": 1755478709516,
     "createdAt": 1755478709516,
-    "lastUpdated": 1755478719769
+    "lastUpdated": 1755478812451
   }
 ]

@@ -2,11 +2,11 @@
   "id": "a8fcdc71-5ed3-4c9f-9a12-649414e21713",
   "nickname": "Ca6aka",
   "password": "$2b$10$GCF67U8ods0WVp37vs/TYeprY.p3HKy4xHX/h2M4xxFgOZ0dHckl2",
-  "balance": 1400,
+  "balance": 1636,
   "level": 1,
   "experience": 53,
-  "totalEarnings": 13900,
-  "totalSpent": 18500,
+  "totalEarnings": 14162,
+  "totalSpent": 18526,
   "avatar": {
     "gradient": "from-purple-400 via-violet-500 to-indigo-600",
     "pattern": "multi-color",
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755478029538,
+  "lastIncomeUpdate": 1755478779934,
   "jobCooldowns": {
     "maintenance": 1755478232613,
     "optimization": 1755478353692,
@@ -41,6 +41,16 @@
   },
   "activities": [
     {
+      "id": "b70b367b-bbc2-4cb0-8bff-73e5836de4d1",
+      "description": "Income: +$262, Rental: -$26 (Net: +$236)",
+      "timestamp": "8/18/2025, 12:59:39 AM"
+    },
+    {
+      "id": "badad764-1841-48b2-879d-d2d1cac588df",
+      "description": "Turned Basic Web Server online",
+      "timestamp": "8/18/2025, 12:59:27 AM"
+    },
+    {
       "id": "ec4c0612-8611-4a6a-99cc-5a171fba54c9",
       "description": "Started learning course: Basic Server Setup",
       "timestamp": "8/18/2025, 12:58:30 AM"
@@ -54,16 +64,6 @@
       "id": "b5dd8fb5-267e-4f2d-96cf-b246e8cbdb37",
       "description": "Purchased Basic Web Server for $5,000",
       "timestamp": "8/18/2025, 12:58:27 AM"
-    },
-    {
-      "id": "da013e30-2252-4d56-bf9e-1eb9fc7d1275",
-      "description": "Deleted server: Basic Web Server",
-      "timestamp": "8/18/2025, 12:58:22 AM"
-    },
-    {
-      "id": "9b68801b-43e5-405a-b7a0-c8b045e94a5f",
-      "description": "Quest reward claimed: Security Check (+$2,500)",
-      "timestamp": "8/18/2025, 12:55:41 AM"
     }
   ],
   "achievements": [
@@ -99,7 +99,7 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 0,
+      "progress": 262,
       "completed": false,
       "date": "Mon Aug 18 2025"
     },
@@ -141,7 +141,7 @@
         "type": "income",
         "amount": 10000
       },
-      "progress": 0,
+      "progress": 262,
       "completed": false,
       "date": "Mon Aug 18 2025"
     },
@@ -187,7 +187,7 @@
         "type": "income",
         "amount": 20000
       },
-      "progress": 0,
+      "progress": 262,
       "completed": false,
       "date": "Mon Aug 18 2025"
     },
@@ -214,7 +214,7 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 0,
+      "progress": 262,
       "completed": false,
       "date": "Mon Aug 18 2025"
     }
@@ -222,5 +222,5 @@
   "lastQuestReset": 1755478029538,
   "registrationIP": "95.223.108.201",
   "registrationTime": 1755478029537,
-  "lastSeen": 1755478726632
+  "lastSeen": 1755478818772
 }
