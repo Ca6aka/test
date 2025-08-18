@@ -13,6 +13,7 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [gameState, setGameState] = useState('instructions'); // instructions, playing, success, failed
+  const [gameCompleted, setGameCompleted] = useState(false);
   const [timeLeft, setTimeLeft] = useState(30);
   const [connections, setConnections] = useState([]);
   const [draggedCable, setDraggedCable] = useState(null);
@@ -47,10 +48,10 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
   const colors = ['#ff4444', '#44ff44', '#4444ff', '#ffff44', '#ff44ff', '#44ffff'];
 
   useEffect(() => {
-    if (isOpen && gameState === 'instructions') {
+    if (isOpen && gameState === 'instructions' && !gameCompleted) {
       initializeGame();
     }
-  }, [isOpen]);
+  }, [isOpen, gameCompleted]);
 
   useEffect(() => {
     if (gameState === 'playing' && timeLeft > 0) {
@@ -144,31 +145,40 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
   };
 
   const handleGameSuccess = () => {
-    setGameState('success');
-    // Server connection game should NOT give XP, only activate the server
-    updateServerMutation.mutate(server.id);
-    toast({
-      title: t('serverminigame5'),
-      description: t('serverminigame6'),
-    });
+    setGameCompleted(true);
+    // Add 1 second delay before showing result window
+    setTimeout(() => {
+      setGameState('success');
+      // Server connection game should NOT give XP, only activate the server
+      updateServerMutation.mutate(server.id);
+      toast({
+        title: t('serverminigame5'),
+        description: t('serverminigame6'),
+      });
+    }, 1000);
   };
 
   const handleGameFailed = () => {
-    setGameState('failed');
-    damageServerMutation.mutate(server.id);
-    toast({
-      title: t('serverminigame7'),
-      description: t('serverminigame8'),
-      variant: 'destructive'
-    });
+    setGameCompleted(true);
+    // Add 1 second delay before showing result window
+    setTimeout(() => {
+      setGameState('failed');
+      damageServerMutation.mutate(server.id);
+      toast({
+        title: t('serverminigame7'),
+        description: t('serverminigame8'),
+        variant: 'destructive'
+      });
+    }, 1000);
   };
 
   const closeGame = () => {
     setGameState('instructions');
+    setGameCompleted(false);
     setConnections([]);
     setCables(generateCables());
     setPorts(generatePorts());
-    setTimeLeft(60);
+    setTimeLeft(30);
     setDraggedCable(null);
     onClose();
   };

@@ -151,6 +151,16 @@ export function ServersTab({ onTabChange }) {
   };
 
   const startConnectionGame = (server) => {
+    // Prevent opening if server is already online or if game was already completed
+    if (server.isOnline) {
+      toast({
+        title: t('serverAlreadyOnline'),
+        description: t('serverAlreadyOnlineDesc'),
+        variant: "default",
+      });
+      return;
+    }
+    
     setGameServer(server);
     setConnectionGameOpen(true);
   };

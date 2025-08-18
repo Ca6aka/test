@@ -918,7 +918,7 @@ export class FileStorage {
       incomePerMinute: product.incomePerMinute,
       monthlyCost: product.monthlyCost,
       icon: product.icon,
-      isOnline: true,
+      isOnline: false, // Server starts offline and requires activation
       loadPercentage: 50, // Default 50% load
       durability: 100, // Server starts with 100% durability
       lastDurabilityUpdate: Date.now(),
