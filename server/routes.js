@@ -692,6 +692,8 @@ export async function registerRoutes(app) {
       }
       
       const questId = decodeURIComponent(req.params.questId);
+      console.log('Claiming quest:', questId, 'for user:', req.session.userId);
+      
       const user = await storage.getUser(req.session.userId);
       if (!user) {
         return res.status(401).json({ message: 'User not found' });
@@ -699,8 +701,11 @@ export async function registerRoutes(app) {
 
       const quest = (user.dailyQuests || []).find(q => q.id === questId);
       if (!quest) {
+        console.log('Quest not found:', questId, 'Available quests:', user.dailyQuests?.map(q => q.id));
         return res.status(404).json({ message: 'Quest not found' });
       }
+      
+      console.log('Quest found:', quest);
       
       if (!quest.completed) {
         return res.status(400).json({ message: 'Quest not completed yet' });
@@ -715,15 +720,20 @@ export async function registerRoutes(app) {
         q.id === questId ? { ...q, claimed: true } : q
       );
       
+      const newBalance = user.balance + quest.reward;
+      console.log('Updating balance from', user.balance, 'to', newBalance, 'reward:', quest.reward);
+      
       const updatedUser = await storage.updateUser(req.session.userId, {
-        balance: user.balance + quest.reward,
+        balance: newBalance,
         dailyQuests: updatedQuests
       });
 
       await storage.addActivity(req.session.userId, `Quest reward claimed: ${quest.title} (+$${quest.reward.toLocaleString()})`);
       
+      console.log('Reward claimed successfully, new balance:', updatedUser.balance);
       res.json({ user: updatedUser, message: 'Reward claimed successfully' });
     } catch (error) {
+      console.error('Error claiming quest reward:', error);
       res.status(500).json({ message: error.message });
     }
   });
