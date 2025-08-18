@@ -2,7 +2,7 @@
   "id": "a8fcdc71-5ed3-4c9f-9a12-649414e21713",
   "nickname": "Ca6aka",
   "password": "$2b$10$GCF67U8ods0WVp37vs/TYeprY.p3HKy4xHX/h2M4xxFgOZ0dHckl2",
-  "balance": 12400,
+  "balance": 14900,
   "level": 1,
   "experience": 53,
   "totalEarnings": 13900,
@@ -29,6 +29,11 @@
   "currentLearning": null,
   "activities": [
     {
+      "id": "9b68801b-43e5-405a-b7a0-c8b045e94a5f",
+      "description": "Quest reward claimed: Security Check (+$2,500)",
+      "timestamp": "8/18/2025, 12:55:41 AM"
+    },
+    {
       "id": "0deabe0a-9795-44fc-8a8b-1ec907f9825b",
       "description": "Achievement unlocked: First Server (+$1,000)",
       "timestamp": "8/18/2025, 12:48:55 AM"
@@ -46,11 +51,6 @@
     {
       "id": "4eb565cb-097a-48c4-b9df-be7aa6a44a53",
       "description": "Daily quest completed: Security Check - Reward ready to claim!",
-      "timestamp": "8/18/2025, 12:47:38 AM"
-    },
-    {
-      "id": "697d7c7a-6f85-4a83-846e-6909905910f7",
-      "description": "Completed Security Audit (+$500, +25 XP)",
       "timestamp": "8/18/2025, 12:47:38 AM"
     }
   ],
@@ -117,7 +117,8 @@
       },
       "progress": 1,
       "completed": true,
-      "date": "Mon Aug 18 2025"
+      "date": "Mon Aug 18 2025",
+      "claimed": true
     },
     {
       "id": "daily-earnings-Mon Aug 18 2025",
@@ -209,5 +210,5 @@
   "lastQuestReset": 1755478029538,
   "registrationIP": "95.223.108.201",
   "registrationTime": 1755478029537,
-  "lastSeen": 1755478247201
+  "lastSeen": 1755478563490
 }

@@ -99,9 +99,16 @@ export function ServersTab({ onTabChange }) {
     },
   });
 
+  const toggleServerMutation = useMutation({
+    mutationFn: (serverId) => apiRequest(`/api/servers/${serverId}/toggle`, 'POST'),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['/api/servers'] });
+    },
+  });
+
   const handleToggleServer = async (serverId) => {
     try {
-      await toggleServer(serverId);
+      await toggleServerMutation.mutateAsync(serverId);
       toast({
         title: t('serverStatusUpdated'),
         description: t('serverStatusUpdatedDesc'),
@@ -115,6 +122,14 @@ export function ServersTab({ onTabChange }) {
     }
   };
 
+  const deleteServerMutation = useMutation({
+    mutationFn: (serverId) => apiRequest(`/api/servers/${serverId}`, 'DELETE'),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['/api/servers'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
+    },
+  });
+
   const handleDeleteServer = async (serverId) => {
     const serverName = gameState.servers?.find(s => s.id === serverId)?.name;
     const firstConfirm = window.confirm(`${t('deleteWarningTitle').replace('{serverName}', serverName)}\n\n${t('deleteWarningMessage')}`);
@@ -127,7 +142,7 @@ export function ServersTab({ onTabChange }) {
         
         if (finalConfirm === t('deleteKeyword')) {
           try {
-            await deleteServer(serverId);
+            await deleteServerMutation.mutateAsync(serverId);
             toast({
               title: t('serverDeleted'),
               description: t('serverDeletedDesc').replace('{serverName}', serverName),

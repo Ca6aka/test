@@ -30,15 +30,21 @@ async function throwIfResNotOk(res) {
   }
 }
 
-export async function apiRequest(url, options = {}) {
-  const res = await fetch(url, {
-    headers: options.body ? { "Content-Type": "application/json" } : {},
+export async function apiRequest(url, method = 'GET', data = null) {
+  const options = {
+    method,
+    headers: data ? { "Content-Type": "application/json" } : {},
     credentials: "include",
-    ...options,
-  });
+  };
+  
+  if (data) {
+    options.body = JSON.stringify(data);
+  }
+
+  const res = await fetch(url, options);
 
   await throwIfResNotOk(res);
-  return res;
+  return res.json();
 }
 
 export const getQueryFn = ({ on401: unauthorizedBehavior }) =>

@@ -685,27 +685,89 @@ export async function registerRoutes(app) {
     }
   });
 
-  app.post('/api/quests/:questId/claim', async (req, res) => {
+  // Handle both GET and POST for quest claim (some frontend libraries might use GET)
+  app.get('/api/quests/:questId/claim', async (req, res) => {
+    console.log('*** CLAIM QUEST ENDPOINT HIT (GET) ***', req.params.questId);
     try {
       if (!req.session.userId) {
+        console.log('*** Not authenticated ***');
         return res.status(401).json({ message: 'Not authenticated' });
       }
       
       const questId = decodeURIComponent(req.params.questId);
-      console.log('Claiming quest:', questId, 'for user:', req.session.userId);
+      console.log('*** Claiming quest (GET):', questId, 'for user:', req.session.userId, '***');
       
       const user = await storage.getUser(req.session.userId);
       if (!user) {
+        console.log('User not found:', req.session.userId);
         return res.status(401).json({ message: 'User not found' });
       }
 
+      console.log('User found, checking quests:', user.dailyQuests?.length || 0);
       const quest = (user.dailyQuests || []).find(q => q.id === questId);
       if (!quest) {
         console.log('Quest not found:', questId, 'Available quests:', user.dailyQuests?.map(q => q.id));
         return res.status(404).json({ message: 'Quest not found' });
       }
       
-      console.log('Quest found:', quest);
+      console.log('Quest found:', quest.title, 'completed:', quest.completed, 'claimed:', quest.claimed);
+      
+      if (!quest.completed) {
+        return res.status(400).json({ message: 'Quest not completed yet' });
+      }
+      
+      if (quest.claimed) {
+        return res.status(400).json({ message: 'Reward already claimed' });
+      }
+
+      // Mark quest as claimed and give reward
+      const updatedQuests = user.dailyQuests.map(q => 
+        q.id === questId ? { ...q, claimed: true } : q
+      );
+      
+      const newBalance = user.balance + quest.reward;
+      console.log('Updating balance from', user.balance, 'to', newBalance, 'reward:', quest.reward);
+      
+      const updatedUser = await storage.updateUser(req.session.userId, {
+        balance: newBalance,
+        dailyQuests: updatedQuests
+      });
+
+      await storage.addActivity(req.session.userId, `Quest reward claimed: ${quest.title} (+$${quest.reward.toLocaleString()})`);
+      
+      console.log('Reward claimed successfully, new balance:', updatedUser.balance);
+      res.json({ user: updatedUser, message: 'Reward claimed successfully' });
+    } catch (error) {
+      console.error('Error claiming quest reward:', error);
+      res.status(500).json({ message: error.message });
+    }
+  });
+
+  app.post('/api/quests/:questId/claim', async (req, res) => {
+    console.log('*** CLAIM QUEST ENDPOINT HIT (POST) ***', req.params.questId);
+    try {
+      if (!req.session.userId) {
+        console.log('*** Not authenticated ***');
+        return res.status(401).json({ message: 'Not authenticated' });
+      }
+      
+      const questId = decodeURIComponent(req.params.questId);
+      console.log('*** Claiming quest (POST):', questId, 'for user:', req.session.userId, '***');
+      
+      const user = await storage.getUser(req.session.userId);
+      if (!user) {
+        console.log('User not found:', req.session.userId);
+        return res.status(401).json({ message: 'User not found' });
+      }
+
+      console.log('User found, checking quests:', user.dailyQuests?.length || 0);
+      const quest = (user.dailyQuests || []).find(q => q.id === questId);
+      if (!quest) {
+        console.log('Quest not found:', questId, 'Available quests:', user.dailyQuests?.map(q => q.id));
+        return res.status(404).json({ message: 'Quest not found' });
+      }
+      
+      console.log('Quest found:', quest.title, 'completed:', quest.completed, 'claimed:', quest.claimed);
       
       if (!quest.completed) {
         return res.status(400).json({ message: 'Quest not completed yet' });

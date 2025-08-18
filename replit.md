@@ -9,6 +9,12 @@ A full-stack web application simulating a server management business game. Playe
 - Uses Russian interface in the game
 
 [LIVE] ## Recent Changes
+- **Critical Bug Fixes Completed (August 18, 2025)**: All major game functionality now working properly
+  - **Fixed apiRequest function**: Corrected function signature to properly handle POST requests with data
+  - **Daily Quest Rewards**: Quest reward claiming now works - money correctly added to user balance
+  - **Server Management**: Fixed deletion and load adjustment functions using proper API mutations
+  - **Server Functionality**: All server operations (delete, load adjustment, repair) now functional
+  - All previously reported bugs have been resolved - game is fully operational
 - **Migration Re-Verified (August 18, 2025)**: Successfully confirmed project migration from Replit Agent to standard Replit environment
   - All Node.js dependencies properly installed and functioning
   - Server running smoothly on port 5000 with all API endpoints operational
