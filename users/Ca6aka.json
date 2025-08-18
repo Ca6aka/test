@@ -2,11 +2,11 @@
   "id": "9b1a7cc0-8287-468a-9df7-de5d5e73402f",
   "nickname": "Ca6aka",
   "password": "$2b$10$vQisG/HiYpZCbDxhj9hAb.kSngBkSHarYFF0JExylZ1/d5j1tGgq6",
-  "balance": 218258,
+  "balance": 218312,
   "level": 5,
   "experience": 583,
-  "totalEarnings": 218568,
-  "totalSpent": 78010,
+  "totalEarnings": 218626,
+  "totalSpent": 78014,
   "avatar": {
     "gradient": "from-violet-400 via-purple-500 to-indigo-600",
     "pattern": "multi-color",
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755476521863,
+  "lastIncomeUpdate": 1755476642142,
   "jobCooldowns": {
     "maintenance": 1755471014865,
     "optimization": 1755471148444,
@@ -29,29 +29,29 @@
   "currentLearning": null,
   "activities": [
     {
+      "id": "5fc8133b-393d-4810-97d8-3d28e36722b8",
+      "description": "Income earned: +$4 from 2 active servers",
+      "timestamp": "8/18/2025, 12:24:02 AM"
+    },
+    {
+      "id": "84482122-77d9-4431-be84-11c63edb810f",
+      "description": "Income: +$25, Rental: -$2 (Net: +$23)",
+      "timestamp": "8/18/2025, 12:23:52 AM"
+    },
+    {
+      "id": "75bdf3fc-3fc2-4f3f-be51-005d2b9c158a",
+      "description": "Income earned: +$4 from 2 active servers",
+      "timestamp": "8/18/2025, 12:23:02 AM"
+    },
+    {
+      "id": "f924ed22-2fdb-4ed6-b2e0-3e63649f43ce",
+      "description": "Income: +$25, Rental: -$2 (Net: +$23)",
+      "timestamp": "8/18/2025, 12:22:52 AM"
+    },
+    {
       "id": "73e0e1e0-136f-41fe-bb22-b9941337d70d",
       "description": "Income earned: +$4 from 2 active servers",
       "timestamp": "8/18/2025, 12:22:01 AM"
-    },
-    {
-      "id": "b03ec9e0-9752-4340-b385-1ac717334e4d",
-      "description": "Income: +$25, Rental: -$2 (Net: +$23)",
-      "timestamp": "8/18/2025, 12:21:52 AM"
-    },
-    {
-      "id": "742bbffc-52d1-4297-a3cd-4cfa7c7baf8d",
-      "description": "Income earned: +$4 from 2 active servers",
-      "timestamp": "8/18/2025, 12:21:01 AM"
-    },
-    {
-      "id": "7d9ebee9-2a95-4b09-b70f-cc14cec6e8f7",
-      "description": "Income: +$25, Rental: -$2 (Net: +$23)",
-      "timestamp": "8/18/2025, 12:20:52 AM"
-    },
-    {
-      "id": "e40f168c-cfaa-4c34-a990-90035f1226de",
-      "description": "Income earned: +$4 from 2 active servers",
-      "timestamp": "8/18/2025, 12:20:01 AM"
     }
   ],
   "achievements": [
@@ -223,5 +223,5 @@
   "lastQuestReset": 1755392887200,
   "registrationIP": "192.168.0.136",
   "registrationTime": 1755392887200,
-  "lastSeen": 1755476526197
+  "lastSeen": 1755476677571
 }

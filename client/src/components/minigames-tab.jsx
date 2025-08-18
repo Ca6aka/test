@@ -170,13 +170,15 @@ const MiniGamesTab = () => {
   };
 
   const handleFirewallChoice = (choice) => {
+    if (firewallState.gameOver) return; // Prevent clicks after game over
+    
     const currentReq = firewallState.currentRequest;
     const correct = (choice === 'allow' && currentReq.safe) || (choice === 'block' && !currentReq.safe);
     
     setFirewallState(prev => {
       const newRequestsLeft = prev.requestsLeft - 1;
       const newIndex = prev.currentIndex + 1;
-      const nextRequest = prev.requests[newIndex];
+      const nextRequest = newIndex < prev.requests.length ? prev.requests[newIndex] : null;
       
       return {
         ...prev,
@@ -381,7 +383,7 @@ const MiniGamesTab = () => {
               
               <Progress value={(15 - firewallState.requestsLeft) / 15 * 100} className="w-full" />
               
-              {firewallState.currentRequest && (
+              {firewallState.currentRequest && !firewallState.gameOver && (
                 <div className="text-center space-y-6">
                   <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg">
                     <div className="text-2xl font-bold mb-4">
@@ -398,6 +400,7 @@ const MiniGamesTab = () => {
                       variant="destructive"
                       size="lg"
                       data-testid="block-request"
+                      disabled={firewallState.gameOver}
                     >
                       <XCircle className="w-6 h-6 mr-2" />
                       {t('block')}
@@ -407,11 +410,22 @@ const MiniGamesTab = () => {
                       variant="default"
                       size="lg"
                       data-testid="allow-request"
+                      disabled={firewallState.gameOver}
                     >
                       <CheckCircle className="w-6 h-6 mr-2" />
                       {t('allow')}
                     </Button>
                   </div>
+                </div>
+              )}
+
+              {firewallState.gameOver && gameState === 'playing' && (
+                <div className="text-center space-y-4">
+                  <div className="text-2xl font-bold text-green-600">{t('gameCompleted')}</div>
+                  <div className="text-lg">
+                    {t('score')}: {firewallState.score}/15
+                  </div>
+                  <div className="text-lg text-green-600">+{firewallState.score} XP</div>
                 </div>
               )}
             </div>

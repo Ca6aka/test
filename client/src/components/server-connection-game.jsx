@@ -200,14 +200,16 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
     // Immediately activate server
     updateServerMutation.mutate(server.id);
     
-    // Add 1 second delay before showing result window
+    // Show toast notification and close game
+    toast({
+      title: t('serverminigame5'),
+      description: t('serverminigame6'),
+    });
+    
+    // Close game after brief delay
     setTimeout(() => {
-      setGameState('success');
-      toast({
-        title: t('serverminigame5'),
-        description: t('serverminigame6'),
-      });
-    }, 1000);
+      closeGame();
+    }, 1500);
   };
 
   const handleGameFailed = () => {
@@ -364,20 +366,7 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
             </div>
           )}
 
-          {gameState === 'success' && (
-            <div className="text-center space-y-4">
-              <div className="text-2xl font-bold text-green-600">{t('serverminigame5')}</div>
-              <div className="text-gray-600 dark:text-gray-300">{t('serverminigame10')}</div>
-              <div className="text-lg font-medium text-green-400">Server activated successfully!</div>
-              <Button 
-                onClick={closeGame} 
-                className="bg-green-600 hover:bg-green-700"
-                data-testid="button-close-success"
-              >
-                {t('close')}
-              </Button>
-            </div>
-          )}
+
 
           {gameState === 'failed' && (
             <div className="text-center space-y-4">
