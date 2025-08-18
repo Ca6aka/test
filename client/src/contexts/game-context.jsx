@@ -225,10 +225,7 @@ export function GameProvider({ children }) {
   // Server toggle mutation
   const toggleMutation = useMutation({
     mutationFn: async (serverId) => {
-      const response = await apiRequest(`/api/servers/${serverId}/toggle`, {
-        method: 'POST'
-      });
-      return await response.json();
+      return await apiRequest(`/api/servers/${serverId}/toggle`, 'POST');
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/servers'] });
@@ -239,10 +236,7 @@ export function GameProvider({ children }) {
   // Server delete mutation
   const deleteMutation = useMutation({
     mutationFn: async (serverId) => {
-      const response = await apiRequest(`/api/servers/${serverId}`, {
-        method: 'DELETE'
-      });
-      return await response.json();
+      return await apiRequest(`/api/servers/${serverId}`, 'DELETE');
     },
     onSuccess: (data) => {
       if (data.user) {

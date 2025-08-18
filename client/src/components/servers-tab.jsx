@@ -75,12 +75,7 @@ export function ServersTab({ onTabChange }) {
 
   const repairServer = useMutation({
     mutationFn: async ({ serverId, repairType }) => {
-      const response = await apiRequest('POST', `/api/servers/${serverId}/repair`, { repairType });
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to repair server');
-      }
-      return await response.json();
+      return await apiRequest(`/api/servers/${serverId}/repair`, 'POST', { repairType });
     },
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['/api/servers'] });
@@ -253,14 +248,12 @@ export function ServersTab({ onTabChange }) {
                       <div className="space-y-6 py-4">
                         <div className="space-y-3">
                           <Label className="text-slate-300 text-sm font-medium">
-                            {t('loadPercentage')}: {selectedServer?.id === server.id ? localLoadValue : (server.loadPercentage || 50)}%
+                            {t('loadPercentage')}: {localLoadValue}%
                           </Label>
                           <Slider
-                            value={[selectedServer?.id === server.id ? localLoadValue : (server.loadPercentage || 50)]}
+                            value={[localLoadValue]}
                             onValueChange={(value) => {
-                              if (selectedServer?.id === server.id) {
-                                setLocalLoadValue(value[0]);
-                              }
+                              setLocalLoadValue(value[0]);
                             }}
                             onValueCommit={(value) => {
                               updateServerLoad.mutate({ serverId: server.id, loadPercentage: value[0] });
@@ -280,7 +273,7 @@ export function ServersTab({ onTabChange }) {
                         <div className="bg-slate-700/30 rounded-lg p-4 space-y-2">
                           <div className="flex justify-between">
                             <span className="text-slate-400 text-sm">{t('currentLoad')}:</span>
-                            <span className="text-white font-medium">{selectedServer?.id === server.id ? localLoadValue : (server.loadPercentage || 50)}%</span>
+                            <span className="text-white font-medium">{localLoadValue}%</span>
                           </div>
                           
                           <div className="flex justify-between">
