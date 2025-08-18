@@ -27,9 +27,12 @@ export function QuestsTab() {
       return apiRequest(`/api/quests/${encodeURIComponent(cleanQuestId)}/claim`, 'POST');
     },
     onSuccess: () => {
+      // Invalidate all related queries to update UI immediately
       queryClient.invalidateQueries({ queryKey: ['/api/quests'] });
       queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/auth/me', 'periodic'] });
       queryClient.invalidateQueries({ queryKey: ['/api/activities'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/servers'] });
     },
   });
 

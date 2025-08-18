@@ -44,6 +44,7 @@ const MiniGamesTab = () => {
     mutationFn: (xpGained) => apiRequest('/api/users/add-xp', 'POST', { xp: xpGained }),
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/auth/me', 'periodic'] });
       toast({
         title: t('gameCompleted'),
         description: `+${data.xpGained} XP gained!`,
@@ -346,7 +347,7 @@ const MiniGamesTab = () => {
                 className="relative bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden"
                 style={{ height: '400px', width: '100%' }}
               >
-                {ddosState.packets.map(packet => (
+                {!ddosState.gameOver && ddosState.packets.map(packet => (
                   <div
                     key={packet.id}
                     className="absolute bg-red-500 text-white rounded p-2 cursor-pointer hover:bg-red-600 transition-colors"
@@ -366,6 +367,18 @@ const MiniGamesTab = () => {
                   <Shield className="w-12 h-12 text-blue-600 mx-auto" />
                   <div className="text-sm mt-2">{t('yourServer')}</div>
                 </div>
+                
+                {ddosState.gameOver && gameState === 'playing' && (
+                  <div className="absolute inset-0 bg-black bg-opacity-75 flex items-center justify-center">
+                    <div className="bg-white dark:bg-gray-800 p-8 rounded-lg text-center space-y-4">
+                      <div className="text-2xl font-bold text-green-600">{t('gameCompleted')}</div>
+                      <div className="text-lg">
+                        {t('packetsDestroyed')}: {ddosState.score}
+                      </div>
+                      <div className="text-lg text-green-600">+{ddosState.score} XP</div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           )}
