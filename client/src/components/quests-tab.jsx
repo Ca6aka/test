@@ -21,7 +21,11 @@ export function QuestsTab() {
   });
 
   const claimRewardMutation = useMutation({
-    mutationFn: (questId) => apiRequest(`/api/quests/${encodeURIComponent(questId)}/claim`, 'POST'),
+    mutationFn: (questId) => {
+      // Убираем двойное кодирование, так как apiRequest может дважды кодировать
+      const cleanQuestId = decodeURIComponent(questId);
+      return apiRequest(`/api/quests/${encodeURIComponent(cleanQuestId)}/claim`, 'POST');
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/quests'] });
       queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });

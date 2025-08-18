@@ -74,5 +74,14 @@
     "timestamp": 1755464252624,
     "deleted": false,
     "adminLevel": 2
+  },
+  {
+    "id": "8b115143-63cc-4480-a92b-85e9bcdc5784",
+    "userId": "a8fcdc71-5ed3-4c9f-9a12-649414e21713",
+    "nickname": "Ca6aka",
+    "message": "1",
+    "timestamp": 1755478044078,
+    "deleted": false,
+    "adminLevel": 2
   }
 ]

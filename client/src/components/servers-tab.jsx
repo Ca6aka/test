@@ -65,6 +65,11 @@ export function ServersTab({ onTabChange }) {
       });
     },
     onError: (error) => {
+      // Восстанавливаем предыдущее значение при ошибке
+      if (selectedServer) {
+        setLocalLoadValue(selectedServer.loadPercentage || 50);
+        setServerLoad(selectedServer.loadPercentage || 50);
+      }
       toast({
         title: t('error'),
         description: error.message,
@@ -234,8 +239,9 @@ export function ServersTab({ onTabChange }) {
                         className="bg-slate-600/50 text-slate-300 hover:bg-slate-600/70"
                         onClick={() => {
                           setSelectedServer(server);
-                          setServerLoad(server.loadPercentage || 50);
-                          setLocalLoadValue(server.loadPercentage || 50);
+                          const currentLoad = server.loadPercentage || 50;
+                          setServerLoad(currentLoad);
+                          setLocalLoadValue(currentLoad);
                         }}
                       >
                         <i className="fas fa-cog"></i>
@@ -254,6 +260,7 @@ export function ServersTab({ onTabChange }) {
                             value={[localLoadValue]}
                             onValueChange={(value) => {
                               setLocalLoadValue(value[0]);
+                              setServerLoad(value[0]);
                             }}
                             onValueCommit={(value) => {
                               updateServerLoad.mutate({ serverId: server.id, loadPercentage: value[0] });
