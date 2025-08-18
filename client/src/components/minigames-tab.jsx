@@ -13,11 +13,18 @@ import { useToast } from '@/hooks/use-toast';
 
 const MiniGamesTab = () => {
   const { t } = useLanguage();
-  const { user } = useGame();
+  const { gameState: globalGameState, dispatch } = useGame();
   const { toast } = useToast();
   const queryClient = useQueryClient();
+  
+  // Level-up notification function
+  const showLevelUpNotification = (newLevel) => {
+    window.dispatchEvent(new CustomEvent('levelUp', { 
+      detail: { level: newLevel }
+    }));
+  };
   const [selectedGame, setSelectedGame] = useState(null);
-  const [gameState, setGameState] = useState('menu'); // menu, tutorial, playing, results
+  const [miniGameState, setMiniGameState] = useState('menu'); // menu, tutorial, playing, results
   const [hoveredGame, setHoveredGame] = useState(null);
   
   // Game 1: DDoS Protection
@@ -43,13 +50,28 @@ const MiniGamesTab = () => {
   const updateExpMutation = useMutation({
     mutationFn: (xpGained) => apiRequest('/api/users/add-xp', 'POST', { xp: xpGained }),
     onSuccess: (data) => {
+      // Immediately update the UI with new XP and level
+      dispatch({ 
+        type: 'UPDATE_EXPERIENCE', 
+        payload: {
+          experience: data.experience,
+          level: data.level,
+          balance: data.balance
+        }
+      });
+      
       queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
       queryClient.invalidateQueries({ queryKey: ['/api/auth/me', 'periodic'] });
+      
       toast({
         title: t('gameCompleted'),
         description: `+${data.xpGained} XP gained!`,
         variant: 'default'
       });
+
+      if (data.leveledUp && data.newLevel) {
+        showLevelUpNotification(data.newLevel);
+      }
     },
     onError: (error) => {
       toast({
@@ -96,7 +118,7 @@ const MiniGamesTab = () => {
 
   // DDoS Game Logic
   const startDdosGame = () => {
-    setGameState('playing');
+    setMiniGameState('playing');
     const numPackets = Math.floor(Math.random() * 15) + 25; // 25-40 packets
     setDdosState({
       packets: [],
@@ -110,7 +132,7 @@ const MiniGamesTab = () => {
   };
 
   useEffect(() => {
-    if (gameState === 'playing' && selectedGame?.id === 'ddos-protection' && ddosState.timeLeft > 0) {
+    if (miniGameState === 'playing' && selectedGame?.id === 'ddos-protection' && ddosState.timeLeft > 0) {
       const gameInterval = setInterval(() => {
         setDdosState(prev => {
           if (prev.timeLeft <= 0) return { ...prev, gameOver: true };
@@ -152,11 +174,11 @@ const MiniGamesTab = () => {
 
       return () => clearInterval(gameInterval);
     }
-  }, [gameState, selectedGame, ddosState.timeLeft]);
+  }, [miniGameState, selectedGame, ddosState.timeLeft]);
 
   // Firewall Game Logic
   const startFirewallGame = () => {
-    setGameState('playing');
+    setMiniGameState('playing');
     const shuffledRequests = [...requestTypes].sort(() => Math.random() - 0.5);
     setFirewallState({
       requests: shuffledRequests.slice(0, 10),
@@ -206,7 +228,7 @@ const MiniGamesTab = () => {
       updateExpMutation.mutate(scoreToAdd);
     }
     
-    setGameState('results');
+    setMiniGameState('results');
   };
 
   const destroyPacket = (packetId) => {
@@ -226,7 +248,7 @@ const MiniGamesTab = () => {
 
   const closeGame = () => {
     setSelectedGame(null);
-    setGameState('menu');
+    setMiniGameState('menu');
     setDdosState({ packets: [], score: 0, timeLeft: 30, speed: 1, gameOver: false });
     setFirewallState({ requests: [], currentRequest: null, score: 0, requestsLeft: 15, correctChoices: 0, wrongChoices: 0, currentIndex: 0, gameOver: false });
   };
@@ -303,7 +325,7 @@ const MiniGamesTab = () => {
             </DialogDescription>
           </DialogHeader>
 
-          {gameState === 'menu' && selectedGame && (
+          {miniGameState === 'menu' && selectedGame && (
             <div className="space-y-6">
               <div className="text-center">
                 <p className="text-lg mb-4">{selectedGame.description}</p>
@@ -336,7 +358,7 @@ const MiniGamesTab = () => {
             </div>
           )}
 
-          {gameState === 'playing' && selectedGame?.id === 'ddos-protection' && (
+          {miniGameState === 'playing' && selectedGame?.id === 'ddos-protection' && (
             <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <div className="text-lg font-bold">{t('score')}: {ddosState.score}</div>
@@ -368,7 +390,7 @@ const MiniGamesTab = () => {
                   <div className="text-sm mt-2">{t('yourServer')}</div>
                 </div>
                 
-                {ddosState.gameOver && gameState === 'playing' && (
+                {ddosState.gameOver && miniGameState === 'playing' && (
                   <div className="absolute inset-0 bg-black bg-opacity-75 flex items-center justify-center">
                     <div className="bg-white dark:bg-gray-800 p-8 rounded-lg text-center space-y-4">
                       <div className="text-2xl font-bold text-green-600">{t('gameCompleted')}</div>
@@ -383,7 +405,7 @@ const MiniGamesTab = () => {
             </div>
           )}
 
-          {gameState === 'playing' && selectedGame?.id === 'firewall-filter' && (
+          {miniGameState === 'playing' && selectedGame?.id === 'firewall-filter' && (
             <div className="space-y-6">
               <div className="flex justify-between items-center">
                 <div className="text-lg font-bold">{t('score')}: {firewallState.score}</div>
@@ -428,7 +450,7 @@ const MiniGamesTab = () => {
                 </div>
               )}
 
-              {firewallState.gameOver && gameState === 'playing' && (
+              {firewallState.gameOver && miniGameState === 'playing' && (
                 <div className="text-center space-y-4">
                   <div className="text-2xl font-bold text-green-600">{t('gameCompleted')}</div>
                   <div className="text-lg">
@@ -440,7 +462,7 @@ const MiniGamesTab = () => {
             </div>
           )}
 
-          {gameState === 'results' && (
+          {miniGameState === 'results' && (
             <div className="text-center space-y-6">
               <div className="text-3xl font-bold text-green-600">{t('gameCompleted')}</div>
               

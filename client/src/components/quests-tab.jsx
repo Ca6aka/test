@@ -10,7 +10,7 @@ import { formatCurrency } from '@/lib/constants';
 import { apiRequest } from '@/lib/queryClient';
 
 export function QuestsTab() {
-  const { gameState } = useGame();
+  const { gameState, dispatch } = useGame();
   const { t } = useLanguage();
   const queryClient = useQueryClient();
 
@@ -26,7 +26,18 @@ export function QuestsTab() {
       const cleanQuestId = decodeURIComponent(questId);
       return apiRequest(`/api/quests/${encodeURIComponent(cleanQuestId)}/claim`, 'POST');
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
+      // Immediately update user balance in UI
+      if (data.user) {
+        dispatch({ 
+          type: 'UPDATE_USER_DATA', 
+          payload: {
+            balance: data.user.balance,
+            totalEarnings: data.user.totalEarnings
+          }
+        });
+      }
+      
       // Invalidate all related queries to update UI immediately
       queryClient.invalidateQueries({ queryKey: ['/api/quests'] });
       queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });

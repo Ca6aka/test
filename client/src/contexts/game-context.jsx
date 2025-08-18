@@ -67,6 +67,36 @@ function gameReducer(state, action) {
         user: action.payload.user,
       };
 
+    case 'UPDATE_EXPERIENCE':
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          experience: action.payload.experience,
+          level: action.payload.level,
+          balance: action.payload.balance || state.user.balance
+        }
+      };
+
+    case 'UPDATE_USER_DATA':
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          ...action.payload
+        }
+      };
+
+    case 'COMPLETE_LEARNING':
+      return {
+        ...state,
+        currentLearning: null,
+        user: {
+          ...state.user,
+          ...action.payload.user
+        }
+      };
+
     case 'RESET':
       return initialState;
 
