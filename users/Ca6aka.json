@@ -2,11 +2,11 @@
   "id": "a8fcdc71-5ed3-4c9f-9a12-649414e21713",
   "nickname": "Ca6aka",
   "password": "$2b$10$GCF67U8ods0WVp37vs/TYeprY.p3HKy4xHX/h2M4xxFgOZ0dHckl2",
-  "balance": 14900,
+  "balance": 1400,
   "level": 1,
   "experience": 53,
   "totalEarnings": 13900,
-  "totalSpent": 5000,
+  "totalSpent": 18500,
   "avatar": {
     "gradient": "from-purple-400 via-violet-500 to-indigo-600",
     "pattern": "multi-color",
@@ -26,32 +26,44 @@
     "optimization": 1755478353692,
     "security-audit": 1755478478987
   },
-  "currentLearning": null,
+  "currentLearning": {
+    "id": "basic-setup",
+    "title": "Basic Server Setup",
+    "description": "Learn the fundamentals of server configuration and deployment",
+    "difficulty": "Beginner",
+    "startTime": 1755478710921,
+    "endTime": 1755480510921,
+    "progress": 0,
+    "reward": {
+      "type": "serverSlots",
+      "amount": 1
+    }
+  },
   "activities": [
+    {
+      "id": "ec4c0612-8611-4a6a-99cc-5a171fba54c9",
+      "description": "Started learning course: Basic Server Setup",
+      "timestamp": "8/18/2025, 12:58:30 AM"
+    },
+    {
+      "id": "6f81538e-2bdf-4696-9922-e1f0c68baee7",
+      "description": "Purchased Basic Web Server for $5,000",
+      "timestamp": "8/18/2025, 12:58:29 AM"
+    },
+    {
+      "id": "b5dd8fb5-267e-4f2d-96cf-b246e8cbdb37",
+      "description": "Purchased Basic Web Server for $5,000",
+      "timestamp": "8/18/2025, 12:58:27 AM"
+    },
+    {
+      "id": "da013e30-2252-4d56-bf9e-1eb9fc7d1275",
+      "description": "Deleted server: Basic Web Server",
+      "timestamp": "8/18/2025, 12:58:22 AM"
+    },
     {
       "id": "9b68801b-43e5-405a-b7a0-c8b045e94a5f",
       "description": "Quest reward claimed: Security Check (+$2,500)",
       "timestamp": "8/18/2025, 12:55:41 AM"
-    },
-    {
-      "id": "0deabe0a-9795-44fc-8a8b-1ec907f9825b",
-      "description": "Achievement unlocked: First Server (+$1,000)",
-      "timestamp": "8/18/2025, 12:48:55 AM"
-    },
-    {
-      "id": "617e3cd4-2617-4792-9dab-0c09b5506ef1",
-      "description": "Purchased Basic Web Server for $5,000",
-      "timestamp": "8/18/2025, 12:48:55 AM"
-    },
-    {
-      "id": "073b4dbe-96cc-4b95-a536-245c86ca8ae4",
-      "description": "Tutorial completed! All features unlocked.",
-      "timestamp": "8/18/2025, 12:47:47 AM"
-    },
-    {
-      "id": "4eb565cb-097a-48c4-b9df-be7aa6a44a53",
-      "description": "Daily quest completed: Security Check - Reward ready to claim!",
-      "timestamp": "8/18/2025, 12:47:38 AM"
     }
   ],
   "achievements": [
@@ -210,5 +222,5 @@
   "lastQuestReset": 1755478029538,
   "registrationIP": "95.223.108.201",
   "registrationTime": 1755478029537,
-  "lastSeen": 1755478699194
+  "lastSeen": 1755478726632
 }
