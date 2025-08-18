@@ -268,16 +268,24 @@ export async function registerRoutes(app) {
 
   app.post('/api/servers/:id/toggle', async (req, res) => {
     try {
+      console.log(`[SERVER TOGGLE] Request received for server ${req.params.id}`);
+      console.log(`[SERVER TOGGLE] User ID: ${req.session.userId}`);
+      
       if (!req.session.userId) {
+        console.log('[SERVER TOGGLE] Not authenticated');
         return res.status(401).json({ message: 'Not authenticated' });
       }
       
       const { id } = req.params;
+      console.log(`[SERVER TOGGLE] Calling storage.toggleServer for user ${req.session.userId}, server ${id}`);
+      
       await storage.toggleServer(req.session.userId, id);
       
-      res.json({ message: 'Server status updated' });
+      console.log(`[SERVER TOGGLE] Server ${id} toggled successfully`);
+      res.json({ message: 'Server status updated', success: true });
     } catch (error) {
-      res.status(400).json({ message: error.message });
+      console.error(`[SERVER TOGGLE] Error: ${error.message}`);
+      res.status(400).json({ message: error.message, success: false });
     }
   });
 

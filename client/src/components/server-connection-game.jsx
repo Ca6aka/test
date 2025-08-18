@@ -22,19 +22,50 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
 
   const updateServerMutation = useMutation({
     mutationFn: async (serverId) => {
-      const response = await apiRequest(`/api/servers/${serverId}/toggle`, 'POST');
-      if (!response.ok) {
-        throw new Error('Failed to activate server');
+      console.log(`[MINI-GAME] Activating server ${serverId}`);
+      
+      try {
+        const response = await fetch(`/api/servers/${serverId}/toggle`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include'
+        });
+        
+        console.log(`[MINI-GAME] Response status: ${response.status}`);
+        console.log(`[MINI-GAME] Response headers:`, Object.fromEntries(response.headers));
+        
+        const responseText = await response.text();
+        console.log(`[MINI-GAME] Response text:`, responseText);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${responseText}`);
+        }
+        
+        let responseData;
+        try {
+          responseData = JSON.parse(responseText);
+        } catch (jsonError) {
+          console.error('[MINI-GAME] JSON parse error:', jsonError);
+          throw new Error(`Invalid JSON response: ${responseText.substring(0, 100)}`);
+        }
+        
+        console.log(`[MINI-GAME] Server activation response:`, responseData);
+        return responseData;
+      } catch (error) {
+        console.error('[MINI-GAME] Server activation error:', error);
+        throw error;
       }
-      return response.json();
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
+      console.log('[MINI-GAME] Server activated successfully:', data);
       queryClient.invalidateQueries({ queryKey: ['/api/servers'] });
       queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
       if (onSuccess) onSuccess();
     },
     onError: (error) => {
-      console.error('Failed to activate server:', error);
+      console.error('[MINI-GAME] Failed to activate server:', error);
       toast({
         title: t('error'),
         description: 'Failed to activate server: ' + error.message,
