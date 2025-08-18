@@ -12,7 +12,7 @@
     "durability": 100,
     "lastDurabilityUpdate": 1755475047075,
     "createdAt": 1755475047075,
-    "lastUpdated": 1755476076144
+    "lastUpdated": 1755476341453
   },
   {
     "id": "5d46543b-5451-43b3-93ea-8ec121fefb60",
@@ -22,11 +22,11 @@
     "incomePerMinute": 15,
     "monthlyCost": 45,
     "icon": "fas fa-globe",
-    "isOnline": false,
+    "isOnline": true,
     "loadPercentage": 50,
     "durability": 100,
     "lastDurabilityUpdate": 1755476015742,
     "createdAt": 1755476015742,
-    "lastUpdated": 1755476076144
+    "lastUpdated": 1755476341453
   }
 ]

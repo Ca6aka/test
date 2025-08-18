@@ -112,8 +112,7 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
     }
   }, [timeLeft, gameState]);
 
-  const generateCables = () => {
-    const numConnections = Math.floor(Math.random() * 3) + 4; // 4-6 connections
+  const generateCables = (numConnections) => {
     const gameColors = colors.slice(0, numConnections);
     
     // Create cables (left side) - randomize positions
@@ -127,8 +126,7 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
     }));
   };
 
-  const generatePorts = () => {
-    const numConnections = cables.length || Math.floor(Math.random() * 3) + 4;
+  const generatePorts = (numConnections) => {
     const gameColors = colors.slice(0, numConnections);
     
     // Create ports (right side) - randomize colors and positions
@@ -144,12 +142,15 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
   };
 
   const initializeGame = () => {
-    const newCables = generateCables();
-    const newPorts = generatePorts();
+    // Generate same number of connections for both cables and ports
+    const numConnections = Math.floor(Math.random() * 3) + 4; // 4-6 connections
+    const newCables = generateCables(numConnections);
+    const newPorts = generatePorts(numConnections);
     
     setCables(newCables);
     setPorts(newPorts);
     setConnections([]);
+    setDraggedCable(null);
     setTimeLeft(30);
   };
 
@@ -231,8 +232,6 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
     setGameState('instructions');
     setGameCompleted(false);
     setConnections([]);
-    setCables(generateCables());
-    setPorts(generatePorts());
     setTimeLeft(30);
     setDraggedCable(null);
     onClose();
