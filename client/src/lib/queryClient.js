@@ -30,15 +30,28 @@ async function throwIfResNotOk(res) {
   }
 }
 
-export async function apiRequest(url, method = 'GET', data = null) {
-  const options = {
-    method,
-    headers: data ? { "Content-Type": "application/json" } : {},
-    credentials: "include",
-  };
+export async function apiRequest(url, methodOrOptions = 'GET', data = null) {
+  let options;
   
-  if (data) {
-    options.body = JSON.stringify(data);
+  // Support both old format (url, options) and new format (url, method, data)
+  if (typeof methodOrOptions === 'string') {
+    // New format: apiRequest(url, method, data)
+    options = {
+      method: methodOrOptions,
+      headers: data ? { "Content-Type": "application/json" } : {},
+      credentials: "include",
+    };
+    
+    if (data) {
+      options.body = JSON.stringify(data);
+    }
+  } else {
+    // Old format: apiRequest(url, options)
+    options = {
+      headers: methodOrOptions.body ? { "Content-Type": "application/json" } : {},
+      credentials: "include",
+      ...methodOrOptions,
+    };
   }
 
   const res = await fetch(url, options);

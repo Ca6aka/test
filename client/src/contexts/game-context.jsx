@@ -127,7 +127,7 @@ export function GameProvider({ children }) {
       const response = await apiRequest('/api/income/update', {
         method: 'POST'
       });
-      return await response.json();
+      return response;
     },
     onSuccess: (data) => {
       dispatch({ type: 'UPDATE_INCOME', payload: data });
@@ -145,7 +145,7 @@ export function GameProvider({ children }) {
         method: 'POST',
         body: JSON.stringify({ nickname, password })
       });
-      return await response.json();
+      return response;
     },
     onSuccess: (data) => {
       dispatch({ type: 'SET_USER', payload: data.user });
@@ -160,7 +160,7 @@ export function GameProvider({ children }) {
         method: 'POST',
         body: JSON.stringify({ nickname, password, confirmPassword })
       });
-      return await response.json();
+      return response;
     },
     onSuccess: (data) => {
       dispatch({ type: 'SET_USER', payload: data.user });
@@ -174,7 +174,7 @@ export function GameProvider({ children }) {
       const response = await apiRequest('/api/auth/logout', {
         method: 'POST'
       });
-      return await response.json();
+      return response;
     },
     onSuccess: () => {
       dispatch({ type: 'RESET' });
@@ -190,7 +190,7 @@ export function GameProvider({ children }) {
       const response = await apiRequest(`/api/jobs/${jobType}/start`, {
         method: 'POST'
       });
-      return await response.json();
+      return response;
     },
     onSuccess: (data) => {
       dispatch({ type: 'SET_USER', payload: data.user });

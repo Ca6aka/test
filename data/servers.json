@@ -8,10 +8,10 @@
     "monthlyCost": 45,
     "icon": "fas fa-globe",
     "isOnline": false,
-    "loadPercentage": 50,
+    "loadPercentage": 90,
     "durability": 100,
     "lastDurabilityUpdate": 1755478135551,
     "createdAt": 1755478135551,
-    "lastUpdated": 1755478561179
+    "lastUpdated": 1755478697733
   }
 ]
