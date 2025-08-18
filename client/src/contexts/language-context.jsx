@@ -676,7 +676,7 @@ const translations = {
     donateDesc: 'Support the game development and get exclusive benefits!',
     donate1: 'Starter Pack',
     donate1Desc: 'Get started with basic benefits',
-    donate2: 'Premium Pack',
+    donate2: 'Premium Pack (Forever)',
     donate2Desc: 'Advanced features for serious players',
     donate3: 'Boost Pack',
     donate3Desc: 'Accelerate your progress significantly',
@@ -1042,43 +1042,43 @@ const translations = {
     dailyQuestsList: {
       'daily-maintenance': {
         title: 'Ежедневное обслуживание',
-        description: 'Выполните 3 задания по обслуживанию серверов'
+        description: 'Выполните 3 работы по обслуживанию серверов'
       },
       'daily-income': {
         title: 'Пассивный доход',
-        description: 'Заработайте $5,000 от доходов серверов'
+        description: 'Заработайте $5.000 от доходов серверов'
       },
       'daily-optimization': {
         title: 'Оптимизация серверов',
-        description: 'Выполните 2 задания по оптимизации производительности'
+        description: 'Выполните 2 работы по оптимизации производительности'
       },
       'daily-security': {
         title: 'Проверка безопасности',
-        description: 'Выполните 1 задание по аудиту безопасности'
+        description: 'Выполните 1 работу по аудиту безопасности'
       },
       'daily-earnings': {
         title: 'Ежедневные доходы',
-        description: 'Заработайте $10,000 от доходов серверов'
+        description: 'Заработайте $10.000 от доходов серверов'
       },
       'daily-worker': {
         title: 'Трудяга',
-        description: 'Выполните 5 заданий любого типа'
+        description: 'Выполните 5 работ любого типа'
       },
       'daily-mixed-jobs': {
         title: 'Смешанные задания',
-        description: 'Выполните 2 задания по обслуживанию и 1 по оптимизации'
+        description: 'Выполните 2 работы по обслуживанию и 1 по оптимизации'
       },
       'daily-income-boost': {
         title: 'Ускорение дохода',
-        description: 'Заработайте $20,000 от доходов серверов'
+        description: 'Заработайте $20.000 от доходов серверов'
       },
       'daily-job-spree': {
-        title: 'Череда заданий',
-        description: 'Выполните 8 заданий любого типа'
+        title: 'Череда работ',
+        description: 'Выполните 8 работ любого типа'
       },
       'daily-mega-earner': {
         title: 'Кодер-магнат',
-        description: 'Заработайте $50,000 от доходов серверов'
+        description: 'Заработайте $50.000 от доходов серверов'
       }
     },
     
@@ -1371,7 +1371,7 @@ const translations = {
     donateDesc: 'Поддержите разработку игры и получите эксклюзивные преимущества!',
     donate1: 'Стартовый пакет',
     donate1Desc: 'Начните с базовых преимуществ',
-    donate2: 'Премиум пакет',
+    donate2: 'Премиум пакет (Навсегда)',
     donate2Desc: 'Продвинутые функции для серьезных игроков',
     donate3: 'Пакет ускорения',
     donate3Desc: 'Значительно ускорьте свой прогресс',
@@ -1393,7 +1393,7 @@ const translations = {
     feature10: 'Максимальная емкость серверов',
     feature11: 'Приоритетная поддержка в чате',
     feature12: 'Эксклюзивные достижения',
-    feature13: '10,000 внутриигровых монет',
+    feature13: '10.000 внутриигровых монет',
     feature14: 'Без комиссий за транзакции',
     feature15: 'Множитель бонуса монет',
     feature16: 'Сезонные награды',
@@ -1755,43 +1755,43 @@ const translations = {
     dailyQuestsList: {
       'daily-maintenance': {
         title: 'Щоденне обслуговування',
-        description: 'Виконайте 3 завдання з обслуговування серверів'
+        description: 'Виконайте 3 роботи з обслуговування серверів'
       },
       'daily-income': {
         title: 'Пасивний дохід',
-        description: 'Заробіть $5,000 від доходів серверів'
+        description: 'Заробіть $5.000 від доходів серверів'
       },
       'daily-optimization': {
         title: 'Оптимізація серверів',
-        description: 'Виконайте 2 завдання з оптимізації продуктивності'
+        description: 'Виконайте 2 роботи з оптимізації продуктивності'
       },
       'daily-security': {
         title: 'Перевірка безпеки',
-        description: 'Виконайте 1 завдання з аудиту безпеки'
+        description: 'Виконайте 1 роботу з аудиту безпеки'
       },
       'daily-earnings': {
         title: 'Щоденні доходи',
-        description: 'Заробіть $10,000 від доходів серверів'
+        description: 'Заробіть $10.000 від доходів серверів'
       },
       'daily-worker': {
         title: 'Працьовитий',
-        description: 'Виконайте 5 завдань будь-якого типу'
+        description: 'Виконайте 5 робіт будь-якого типу'
       },
       'daily-mixed-jobs': {
         title: 'Змішані завдання',
-        description: 'Виконайте 2 завдання з обслуговування та 1 з оптимізації'
+        description: 'Виконайте 2 роботи з обслуговування та 1 з оптимізації'
       },
       'daily-income-boost': {
         title: 'Прискорення доходу',
-        description: 'Заробіть $20,000 від доходів серверів'
+        description: 'Заробіть $20.000 від доходів серверів'
       },
       'daily-job-spree': {
-        title: 'Серія завдань',
-        description: 'Виконайте 8 завдань будь-якого типу'
+        title: 'Серія робіт',
+        description: 'Виконайте 8 робіт будь-якого типу'
       },
       'daily-mega-earner': {
         title: 'Кодер-магнат',
-        description: 'Заробіть $50,000 від доходів серверів'
+        description: 'Заробіть $50.000 від доходів серверів'
       }
     },
     
@@ -2079,7 +2079,7 @@ const translations = {
     donateDesc: 'Підтримайте розробку гри та отримайте ексклюзивні переваги!',
     donate1: 'Стартовий пакет',
     donate1Desc: 'Почніть з базових переваг',
-    donate2: 'Преміум пакет',
+    donate2: 'Преміум пакет (Навсегда)',
     donate2Desc: 'Просунуті функції для серйозних гравців',
     donate3: 'Пакет прискорення',
     donate3Desc: 'Значно прискорте свій прогрес',
@@ -2101,7 +2101,7 @@ const translations = {
     feature10: 'Максимальна ємність серверів',
     feature11: 'Пріоритетна підтримка в чаті',
     feature12: 'Ексклюзивні досягнення',
-    feature13: '10,000 внутрішньоігрових монет',
+    feature13: '10.000 внутрішньоігрових монет',
     feature14: 'Без комісій за транзакції',
     feature15: 'Множник бонусу монет',
     feature16: 'Сезонні нагороди',
@@ -2417,7 +2417,7 @@ const translations = {
     dailyQuestsList: {
       'daily-maintenance': {
         title: 'Tägliche Wartung',
-        description: 'Führen Sie 3 Server-Wartungsaufgaben durch'
+        description: 'Führen Sie 3 Server-Wartungsaufgaben arbeit'
       },
       'daily-income': {
         title: 'Passives Einkommen',
@@ -2425,11 +2425,11 @@ const translations = {
       },
       'daily-optimization': {
         title: 'Server-Optimierung',
-        description: 'Führen Sie 2 Leistungsoptimierungs-Aufgaben durch'
+        description: 'Führen Sie 2 Leistungsoptimierungs-Aufgaben arbeit'
       },
       'daily-security': {
         title: 'Sicherheitsprüfung',
-        description: 'Führen Sie 1 Sicherheitsaudit-Aufgabe durch'
+        description: 'Führen Sie 1 Sicherheitsaudit-Aufgabe arbeit'
       },
       'daily-earnings': {
         title: 'Tägliche Einnahmen',
@@ -2437,11 +2437,11 @@ const translations = {
       },
       'daily-worker': {
         title: 'Fleißiger Arbeiter',
-        description: 'Führen Sie 5 Aufgaben beliebigen Typs durch'
+        description: 'Führen Sie 5 Aufgaben beliebigen Typs arbeit'
       },
       'daily-mixed-jobs': {
         title: 'Gemischte Aufgaben',
-        description: 'Führen Sie 2 Wartungs- und 1 Optimierungsaufgabe durch'
+        description: 'Führen Sie 2 Wartungs- und 1 Optimierungsaufgabe arbeit'
       },
       'daily-income-boost': {
         title: 'Einkommens-Boost',
@@ -2449,7 +2449,7 @@ const translations = {
       },
       'daily-job-spree': {
         title: 'Aufgaben-Serie',
-        description: 'Führen Sie 8 Aufgaben beliebigen Typs durch'
+        description: 'Führen Sie 8 Aufgaben beliebigen Typs arbeit'
       },
       'daily-mega-earner': {
         title: 'Mega-Verdiener',
@@ -2732,7 +2732,7 @@ const translations = {
     donateDesc: 'Unterstützen Sie die Spielentwicklung und erhalten Sie exklusive Vorteile!',
     donate1: 'Starter-Paket',
     donate1Desc: 'Beginnen Sie mit grundlegenden Vorteilen',
-    donate2: 'Premium-Paket',
+    donate2: 'Premium-Paket (Für immer)',
     donate2Desc: 'Erweiterte Funktionen für ernsthafte Spieler',
     donate3: 'Boost-Paket',
     donate3Desc: 'Beschleunigen Sie Ihren Fortschritt erheblich',

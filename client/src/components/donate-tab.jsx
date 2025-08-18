@@ -33,7 +33,7 @@ const DonateTab = () => {
       id: 'premium',
       title: t('donate2'),
       description: t('donate2Desc'), 
-      price: '$1.00',
+      price: '$5.00',
       icon: Crown,
       features: [
         t('feature4'),
@@ -46,7 +46,7 @@ const DonateTab = () => {
       id: 'boost',
       title: t('donate3'),
       description: t('donate3Desc'),
-      price: '$1.00',
+      price: '$3.00',
       icon: Zap,
       features: [
         t('feature7'),
@@ -59,7 +59,7 @@ const DonateTab = () => {
       id: 'ultimate',
       title: t('donate4'),
       description: t('donate4Desc'),
-      price: '$1.00',
+      price: '$10.00',
       icon: Shield,
       features: [
         t('feature10'),
@@ -72,7 +72,7 @@ const DonateTab = () => {
       id: 'coins',
       title: t('donate5'),
       description: t('donate5Desc'),
-      price: '$1.00',
+      price: '$4.00',
       icon: Coins,
       features: [
         t('feature13'),
@@ -85,7 +85,7 @@ const DonateTab = () => {
       id: 'special',
       title: t('donate6'),
       description: t('donate6Desc'),
-      price: '$1.00',
+      price: '$20.00',
       icon: Gift,
       features: [
         t('feature16'),
