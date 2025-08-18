@@ -292,14 +292,19 @@ export async function registerRoutes(app) {
   app.delete('/api/servers/:id', async (req, res) => {
     try {
       if (!req.session.userId) {
+        console.log('[SERVER DELETE] No user ID in session');
         return res.status(401).json({ message: 'Not authenticated' });
       }
       
       const { id } = req.params;
+      console.log(`[SERVER DELETE] User ${req.session.userId} deleting server ${id}`);
+      
       await storage.deleteServer(req.session.userId, id);
       
+      console.log(`[SERVER DELETE] Server ${id} deleted successfully`);
       res.json({ message: 'Server deleted successfully' });
     } catch (error) {
+      console.error(`[SERVER DELETE] Error: ${error.message}`);
       res.status(400).json({ message: error.message });
     }
   });
@@ -307,11 +312,14 @@ export async function registerRoutes(app) {
   app.post('/api/servers/:id/load', async (req, res) => {
     try {
       if (!req.session.userId) {
+        console.log('[SERVER LOAD] No user ID in session');
         return res.status(401).json({ message: 'Not authenticated' });
       }
       
       const { id } = req.params;
       const { loadPercentage } = req.body;
+      
+      console.log(`[SERVER LOAD] User ${req.session.userId} updating server ${id} to ${loadPercentage}%`);
       
       if (loadPercentage < 10 || loadPercentage > 100) {
         return res.status(400).json({ message: 'Load percentage must be between 10 and 100' });
@@ -319,8 +327,10 @@ export async function registerRoutes(app) {
       
       await storage.updateServerLoad(req.session.userId, id, loadPercentage);
       
+      console.log(`[SERVER LOAD] Server ${id} load updated successfully to ${loadPercentage}%`);
       res.json({ message: 'Server load updated successfully' });
     } catch (error) {
+      console.error(`[SERVER LOAD] Error: ${error.message}`);
       res.status(400).json({ message: error.message });
     }
   });

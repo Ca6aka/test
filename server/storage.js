@@ -981,17 +981,26 @@ export class FileStorage {
   }
 
   async updateServerLoad(userId, serverId, loadPercentage) {
+    console.log(`[STORAGE] updateServerLoad called: userId=${userId}, serverId=${serverId}, loadPercentage=${loadPercentage}`);
+    
     const servers = await this.getServers();
+    console.log(`[STORAGE] Found ${servers.length} servers`);
+    
     const serverIndex = servers.findIndex(s => s.id === serverId && s.ownerId === userId);
+    console.log(`[STORAGE] Server index: ${serverIndex}`);
     
     if (serverIndex === -1) {
+      console.log(`[STORAGE] Server not found. Available servers:`, servers.map(s => ({ id: s.id, ownerId: s.ownerId })));
       throw new Error('Server not found');
     }
 
+    console.log(`[STORAGE] Updating server ${serverId} load from ${servers[serverIndex].loadPercentage} to ${loadPercentage}`);
+    
     // Update server load percentage
     servers[serverIndex].loadPercentage = loadPercentage;
     await this.saveServers(servers);
     
+    console.log(`[STORAGE] Server load updated successfully`);
     return { success: true };
   }
 
