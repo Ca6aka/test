@@ -2,11 +2,11 @@
   "id": "9b1a7cc0-8287-468a-9df7-de5d5e73402f",
   "nickname": "Ca6aka",
   "password": "$2b$10$vQisG/HiYpZCbDxhj9hAb.kSngBkSHarYFF0JExylZ1/d5j1tGgq6",
-  "balance": 226379,
+  "balance": 221379,
   "level": 5,
   "experience": 583,
   "totalEarnings": 216486,
-  "totalSpent": 67807,
+  "totalSpent": 72807,
   "avatar": {
     "gradient": "from-violet-400 via-purple-500 to-indigo-600",
     "pattern": "multi-color",
@@ -29,6 +29,21 @@
   "currentLearning": null,
   "activities": [
     {
+      "id": "cf0f2adf-3917-4135-b832-b8731f1d1425",
+      "description": "Turned Basic Web Server offline",
+      "timestamp": "8/17/2025, 11:58:08 PM"
+    },
+    {
+      "id": "4370c1ba-4429-419b-ae28-ec1e451748dd",
+      "description": "Turned Basic Web Server offline",
+      "timestamp": "8/17/2025, 11:57:30 PM"
+    },
+    {
+      "id": "c807e2ea-0d6e-402e-9c06-2e27d00d37b0",
+      "description": "Purchased Basic Web Server for $5,000",
+      "timestamp": "8/17/2025, 11:57:27 PM"
+    },
+    {
       "id": "a4e15b0d-ce9d-430d-a78d-07ee0b348994",
       "description": "Completed Security Audit (+$500, +25 XP)",
       "timestamp": "8/17/2025, 10:47:34 PM"
@@ -37,21 +52,6 @@
       "id": "c8187f25-0091-4396-a788-6ee97ecb4658",
       "description": "Completed Performance Optimization (+$250, +18 XP)",
       "timestamp": "8/17/2025, 10:47:28 PM"
-    },
-    {
-      "id": "a7d532a4-5e45-4d7c-a840-19cfa30d23e7",
-      "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "8/17/2025, 10:47:14 PM"
-    },
-    {
-      "id": "132b04bc-4840-4f46-a932-620b59136bbe",
-      "description": "Turned Basic Web Server offline",
-      "timestamp": "8/17/2025, 10:06:27 PM"
-    },
-    {
-      "id": "57691338-0255-45dd-a6fa-699ea69095bc",
-      "description": "Income: +$11, Rental: -$1 (Net: +$10)",
-      "timestamp": "8/17/2025, 10:06:23 PM"
     }
   ],
   "achievements": [
@@ -223,5 +223,5 @@
   "lastQuestReset": 1755392887200,
   "registrationIP": "192.168.0.136",
   "registrationTime": 1755392887200,
-  "lastSeen": 1755474998033
+  "lastSeen": 1755475228078
 }
