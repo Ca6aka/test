@@ -56,7 +56,7 @@ export function ServersTab({ onTabChange }) {
 
   const updateServerLoad = useMutation({
     mutationFn: ({ serverId, loadPercentage }) => 
-      apiRequest('POST', `/api/servers/${serverId}/load`, { loadPercentage }),
+      apiRequest(`/api/servers/${serverId}/load`, 'POST', { loadPercentage }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/servers'] });
       toast({

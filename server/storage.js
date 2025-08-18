@@ -1387,8 +1387,6 @@ export class FileStorage {
       // Add activity log for income/expenses
       if (incomeEarned > 0 && rentalCost > 0) {
         await this.addActivity(userId, `Income: +$${incomeEarned}, Rental: -$${rentalCost} (Net: ${netIncome >= 0 ? '+' : ''}$${netIncome})`);
-      } else if (incomeEarned > 0) {
-        await this.addActivity(userId, `Income earned: +$${incomeEarned} from ${servers.filter(s => s.isOnline).length} active servers`);
       } else if (rentalCost > 0) {
         await this.addActivity(userId, `Rental cost: -$${rentalCost} for ${servers.length} servers`);
       }

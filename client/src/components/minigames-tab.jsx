@@ -158,10 +158,10 @@ const MiniGamesTab = () => {
     setGameState('playing');
     const shuffledRequests = [...requestTypes].sort(() => Math.random() - 0.5);
     setFirewallState({
-      requests: shuffledRequests.slice(0, 15),
+      requests: shuffledRequests.slice(0, 10),
       currentRequest: shuffledRequests[0],
       score: 0,
-      requestsLeft: 15,
+      requestsLeft: 10,
       correctChoices: 0,
       wrongChoices: 0,
       currentIndex: 0,
@@ -381,7 +381,7 @@ const MiniGamesTab = () => {
                 <div className="text-lg">{t('requestsLeft')}: {firewallState.requestsLeft}</div>
               </div>
               
-              <Progress value={(15 - firewallState.requestsLeft) / 15 * 100} className="w-full" />
+              <Progress value={(10 - firewallState.requestsLeft) / 10 * 100} className="w-full" />
               
               {firewallState.currentRequest && !firewallState.gameOver && (
                 <div className="text-center space-y-6">
@@ -423,7 +423,7 @@ const MiniGamesTab = () => {
                 <div className="text-center space-y-4">
                   <div className="text-2xl font-bold text-green-600">{t('gameCompleted')}</div>
                   <div className="text-lg">
-                    {t('score')}: {firewallState.score}/15
+                    {t('score')}: {firewallState.score}/10
                   </div>
                   <div className="text-lg text-green-600">+{firewallState.score} XP</div>
                 </div>
