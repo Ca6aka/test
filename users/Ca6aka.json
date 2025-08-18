@@ -2,11 +2,11 @@
   "id": "9b1a7cc0-8287-468a-9df7-de5d5e73402f",
   "nickname": "Ca6aka",
   "password": "$2b$10$vQisG/HiYpZCbDxhj9hAb.kSngBkSHarYFF0JExylZ1/d5j1tGgq6",
-  "balance": 219063,
+  "balance": 219090,
   "level": 6,
   "experience": 611,
-  "totalEarnings": 219410,
-  "totalSpent": 78047,
+  "totalEarnings": 219439,
+  "totalSpent": 78049,
   "avatar": {
     "gradient": "from-violet-400 via-purple-500 to-indigo-600",
     "pattern": "multi-color",
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755477425845,
+  "lastIncomeUpdate": 1755477485981,
   "jobCooldowns": {
     "maintenance": 1755476886793,
     "optimization": 1755477187324,
@@ -28,6 +28,11 @@
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "303c535a-fea5-42dc-9c04-270475f08ecb",
+      "description": "Income: +$25, Rental: -$2 (Net: +$23)",
+      "timestamp": "8/18/2025, 12:37:56 AM"
+    },
     {
       "id": "dc591e93-3c7c-4398-8cd4-d1430fdc59cb",
       "description": "Income: +$25, Rental: -$2 (Net: +$23)",
@@ -47,11 +52,6 @@
       "id": "8441b6b7-24e3-4a02-a6b7-5e957b451966",
       "description": "Income: +$25, Rental: -$2 (Net: +$23)",
       "timestamp": "8/18/2025, 12:33:56 AM"
-    },
-    {
-      "id": "1b42a6d6-6c47-485e-aee6-f29d2db0be5b",
-      "description": "Income: +$30, Rental: -$3 (Net: +$27)",
-      "timestamp": "8/18/2025, 12:32:56 AM"
     }
   ],
   "achievements": [
@@ -223,5 +223,5 @@
   "lastQuestReset": 1755392887200,
   "registrationIP": "192.168.0.136",
   "registrationTime": 1755392887200,
-  "lastSeen": 1755477470694
+  "lastSeen": 1755477533875
 }
