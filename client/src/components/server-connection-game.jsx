@@ -21,10 +21,25 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
   const [ports, setPorts] = useState([]);
 
   const updateServerMutation = useMutation({
-    mutationFn: (serverId) => apiRequest(`/api/servers/${serverId}/toggle`, 'POST'),
+    mutationFn: async (serverId) => {
+      const response = await apiRequest(`/api/servers/${serverId}/toggle`, 'POST');
+      if (!response.ok) {
+        throw new Error('Failed to activate server');
+      }
+      return response.json();
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/servers'] });
-      onSuccess();
+      queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
+      if (onSuccess) onSuccess();
+    },
+    onError: (error) => {
+      console.error('Failed to activate server:', error);
+      toast({
+        title: t('error'),
+        description: 'Failed to activate server: ' + error.message,
+        variant: 'destructive'
+      });
     }
   });
 
@@ -48,10 +63,12 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
   const colors = ['#ff4444', '#44ff44', '#4444ff', '#ffff44', '#ff44ff', '#44ffff'];
 
   useEffect(() => {
-    if (isOpen && gameState === 'instructions' && !gameCompleted) {
+    if (isOpen && gameState === 'instructions') {
+      // Reset game state when opening
+      setGameCompleted(false);
       initializeGame();
     }
-  }, [isOpen, gameCompleted]);
+  }, [isOpen]);
 
   useEffect(() => {
     if (gameState === 'playing' && timeLeft > 0) {
@@ -145,12 +162,15 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
   };
 
   const handleGameSuccess = () => {
+    if (gameCompleted) return; // Prevent multiple executions
+    
     setGameCompleted(true);
+    // Immediately activate server
+    updateServerMutation.mutate(server.id);
+    
     // Add 1 second delay before showing result window
     setTimeout(() => {
       setGameState('success');
-      // Server connection game should NOT give XP, only activate the server
-      updateServerMutation.mutate(server.id);
       toast({
         title: t('serverminigame5'),
         description: t('serverminigame6'),
@@ -159,11 +179,15 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
   };
 
   const handleGameFailed = () => {
+    if (gameCompleted) return; // Prevent multiple executions
+    
     setGameCompleted(true);
+    // Immediately damage server
+    damageServerMutation.mutate(server.id);
+    
     // Add 1 second delay before showing result window
     setTimeout(() => {
       setGameState('failed');
-      damageServerMutation.mutate(server.id);
       toast({
         title: t('serverminigame7'),
         description: t('serverminigame8'),
