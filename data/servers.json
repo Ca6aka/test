@@ -9,8 +9,8 @@
     "icon": "fas fa-globe",
     "isOnline": true,
     "loadPercentage": 90,
-    "durability": 97,
-    "lastDurabilityUpdate": 1755480672004,
+    "durability": 96,
+    "lastDurabilityUpdate": 1755481335391,
     "createdAt": 1755478707334,
     "lastUpdated": 1755478834758
   },
@@ -57,6 +57,21 @@
     "durability": 100,
     "lastDurabilityUpdate": 1755479055680,
     "createdAt": 1755479055680,
-    "lastUpdated": 1755481257215
+    "lastUpdated": 1755481435991
+  },
+  {
+    "id": "7d02657f-3a34-4c83-85a8-7a0b1173928d",
+    "ownerId": "7c97bc93-baab-4868-8f40-5aabafc409e4",
+    "name": "Basic Web Server",
+    "type": "Web Hosting",
+    "incomePerMinute": 15,
+    "monthlyCost": 45,
+    "icon": "fas fa-globe",
+    "isOnline": false,
+    "loadPercentage": 50,
+    "durability": 100,
+    "lastDurabilityUpdate": 1755481342323,
+    "createdAt": 1755481342323,
+    "lastUpdated": 1755481435991
   }
 ]

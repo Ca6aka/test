@@ -2,11 +2,11 @@
   "id": "7c97bc93-baab-4868-8f40-5aabafc409e4",
   "nickname": "Ca6aka",
   "password": "$2b$10$mXfDn03WnT0RWcNVZf6z.uKT3OPDISIZjHONY4avvOSb6yQCPZNva",
-  "balance": 21832,
+  "balance": 30832,
   "level": 2,
-  "experience": 134,
-  "totalEarnings": 14200,
-  "totalSpent": 8500,
+  "experience": 187,
+  "totalEarnings": 15100,
+  "totalSpent": 13500,
   "avatar": {
     "gradient": "from-lime-400 via-green-500 to-emerald-600",
     "pattern": "multi-color",
@@ -22,36 +22,36 @@
   "isOnline": true,
   "lastIncomeUpdate": 1755479032717,
   "jobCooldowns": {
-    "maintenance": 1755481282466,
-    "optimization": 1755479341581,
-    "security-audit": 1755479463693
+    "maintenance": 1755481545360,
+    "optimization": 1755481560197,
+    "security-audit": 1755481681386
   },
   "currentLearning": null,
   "activities": [
     {
-      "id": "4e36303b-2399-47e8-a897-f0b7ec8a7aba",
-      "description": "Received $100 from super admin",
-      "timestamp": "8/18/2025, 1:40:24 AM"
+      "id": "681a63ae-6a0c-4440-9c6d-b9210dedd276",
+      "description": "Quest reward claimed: Job Spree (+$6,000)",
+      "timestamp": "8/18/2025, 1:42:53 AM"
     },
     {
-      "id": "8c462b88-1b16-4030-a6e1-32d669a45983",
-      "description": "Quest reward claimed: Hard Worker (+$4,000)",
-      "timestamp": "8/18/2025, 1:38:33 AM"
+      "id": "9b5d3593-5d2b-424f-8508-cc269157d660",
+      "description": "Daily quest completed: Job Spree - Reward ready to claim!",
+      "timestamp": "8/18/2025, 1:42:45 AM"
     },
     {
-      "id": "763c1245-0373-43d3-96ef-dda0abb67ef0",
-      "description": "Quest reward claimed: Daily Maintenance (+$2,000)",
-      "timestamp": "8/18/2025, 1:38:26 AM"
-    },
-    {
-      "id": "5643133a-54c6-473a-8bf6-25ddd9bf1be7",
+      "id": "c7f597fd-aa81-4c83-ac41-00b874ee1a58",
       "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "8/18/2025, 1:38:22 AM"
+      "timestamp": "8/18/2025, 1:42:45 AM"
     },
     {
-      "id": "dc573875-dc6a-47fe-8527-ff7c65d9a4b3",
-      "description": "Received $500 from super admin",
-      "timestamp": "8/18/2025, 1:38:01 AM"
+      "id": "eb26f84d-8fcd-4573-83c7-df46f0779372",
+      "description": "Received $100 from super admin",
+      "timestamp": "8/18/2025, 1:42:35 AM"
+    },
+    {
+      "id": "66ba9843-a17c-4457-b14b-176fff4bf3f8",
+      "description": "Purchased Basic Web Server for $5,000",
+      "timestamp": "8/18/2025, 1:42:22 AM"
     }
   ],
   "achievements": [
@@ -59,7 +59,7 @@
     "first-steps",
     "first-server"
   ],
-  "completedJobsCount": 5,
+  "completedJobsCount": 8,
   "completedCoursesCount": 1,
   "completedLearning": [],
   "efficiencyBonus": 0,
@@ -102,9 +102,10 @@
         "jobType": "optimization",
         "count": 2
       },
-      "progress": 1,
-      "completed": false,
-      "date": "Mon Aug 18 2025"
+      "progress": 2,
+      "completed": true,
+      "date": "Mon Aug 18 2025",
+      "claimed": true
     },
     {
       "id": "daily-security-Mon Aug 18 2025",
@@ -192,9 +193,10 @@
         "jobType": "any",
         "count": 8
       },
-      "progress": 5,
-      "completed": false,
-      "date": "Mon Aug 18 2025"
+      "progress": 8,
+      "completed": true,
+      "date": "Mon Aug 18 2025",
+      "claimed": true
     },
     {
       "id": "daily-mega-earner-Mon Aug 18 2025",
@@ -213,5 +215,5 @@
   "lastQuestReset": 1755479032717,
   "registrationIP": "192.168.0.136",
   "registrationTime": 1755479032717,
-  "lastSeen": 1755481259487
+  "lastSeen": 1755481436360
 }
