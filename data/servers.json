@@ -9,8 +9,8 @@
     "icon": "fas fa-globe",
     "isOnline": true,
     "loadPercentage": 50,
-    "durability": 97,
-    "lastDurabilityUpdate": 1755476996118,
+    "durability": 96,
+    "lastDurabilityUpdate": 1755477740314,
     "createdAt": 1755475047075,
     "lastUpdated": 1755477521297
   },
@@ -24,8 +24,8 @@
     "icon": "fas fa-globe",
     "isOnline": true,
     "loadPercentage": 50,
-    "durability": 98,
-    "lastDurabilityUpdate": 1755477236783,
+    "durability": 97,
+    "lastDurabilityUpdate": 1755477860320,
     "createdAt": 1755476015742,
     "lastUpdated": 1755477521297
   }
