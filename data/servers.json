@@ -57,11 +57,11 @@
     "icon": "fas fa-microchip",
     "isOnline": true,
     "loadPercentage": 85,
-    "durability": 96,
-    "lastDurabilityUpdate": 1755631592534,
+    "durability": 95,
+    "lastDurabilityUpdate": 1755632194847,
     "createdAt": 1755602346409,
     "lastUpdated": 1755630177496,
-    "lastOverloadCheck": 1755631774878
+    "lastOverloadCheck": 1755632134877
   },
   {
     "id": "9bd6949b-264f-4855-a91c-3d14ae320417",
@@ -87,13 +87,13 @@
     "incomePerMinute": 150,
     "monthlyCost": 250,
     "icon": "fas fa-microchip",
-    "isOnline": true,
+    "isOnline": false,
     "loadPercentage": 85,
     "durability": 96,
     "lastDurabilityUpdate": 1755631592534,
     "createdAt": 1755602347058,
     "lastUpdated": 1755630177496,
-    "lastOverloadCheck": 1755631774879
+    "lastOverloadCheck": 1755632134878
   },
   {
     "id": "dcb21f90-7e60-4852-bc0d-75da30626b85",
@@ -105,11 +105,11 @@
     "icon": "fas fa-microchip",
     "isOnline": true,
     "loadPercentage": 85,
-    "durability": 96,
-    "lastDurabilityUpdate": 1755631592534,
+    "durability": 95,
+    "lastDurabilityUpdate": 1755632194847,
     "createdAt": 1755602347247,
     "lastUpdated": 1755630177496,
-    "lastOverloadCheck": 1755631774880
+    "lastOverloadCheck": 1755632134884
   },
   {
     "id": "2f993930-8eaa-48ff-8ed3-47863ef10cac",
@@ -153,11 +153,11 @@
     "icon": "fas fa-microchip",
     "isOnline": true,
     "loadPercentage": 85,
-    "durability": 96,
-    "lastDurabilityUpdate": 1755631592534,
+    "durability": 95,
+    "lastDurabilityUpdate": 1755632194847,
     "createdAt": 1755602347824,
     "lastUpdated": 1755630177496,
-    "lastOverloadCheck": 1755631774881
+    "lastOverloadCheck": 1755632134884
   },
   {
     "id": "fecc1258-287c-4ec2-8f68-d393b6b4e186",
@@ -185,11 +185,11 @@
     "icon": "fas fa-microchip",
     "isOnline": true,
     "loadPercentage": 85,
-    "durability": 96,
-    "lastDurabilityUpdate": 1755631592534,
+    "durability": 95,
+    "lastDurabilityUpdate": 1755632194847,
     "createdAt": 1755602348188,
     "lastUpdated": 1755630177496,
-    "lastOverloadCheck": 1755631774881
+    "lastOverloadCheck": 1755632134885
   },
   {
     "id": "9cc620fe-c426-4c66-aa95-24fb6184af3f",
@@ -217,11 +217,11 @@
     "icon": "fas fa-microchip",
     "isOnline": true,
     "loadPercentage": 85,
-    "durability": 96,
-    "lastDurabilityUpdate": 1755631592534,
+    "durability": 95,
+    "lastDurabilityUpdate": 1755632194847,
     "createdAt": 1755602348552,
     "lastUpdated": 1755630177496,
-    "lastOverloadCheck": 1755631774884
+    "lastOverloadCheck": 1755632134887
   },
   {
     "id": "3205c1b2-44c5-4c53-b199-103b5556dec2",
@@ -279,13 +279,13 @@
     "incomePerMinute": 150,
     "monthlyCost": 250,
     "icon": "fas fa-microchip",
-    "isOnline": true,
+    "isOnline": false,
     "loadPercentage": 85,
     "durability": 96,
     "lastDurabilityUpdate": 1755631592534,
     "createdAt": 1755602349251,
     "lastUpdated": 1755630177496,
-    "lastOverloadCheck": 1755631774885
+    "lastOverloadCheck": 1755632134888
   },
   {
     "id": "07e88637-f947-45f5-9ec7-d13af82490b9",
@@ -329,11 +329,11 @@
     "icon": "fas fa-microchip",
     "isOnline": true,
     "loadPercentage": 85,
-    "durability": 96,
-    "lastDurabilityUpdate": 1755631592534,
+    "durability": 95,
+    "lastDurabilityUpdate": 1755632194847,
     "createdAt": 1755604664720,
     "lastUpdated": 1755630177496,
-    "lastOverloadCheck": 1755631774892
+    "lastOverloadCheck": 1755632134893
   },
   {
     "id": "f861d546-1b0e-49b0-acb5-ad1e0982ce51",
@@ -361,88 +361,11 @@
     "icon": "fas fa-microchip",
     "isOnline": true,
     "loadPercentage": 85,
-    "durability": 97,
-    "lastDurabilityUpdate": 1755631592534,
+    "durability": 96,
+    "lastDurabilityUpdate": 1755632194847,
     "createdAt": 1755629622976,
     "lastUpdated": 1755630177496,
-    "lastOverloadCheck": 1755631774893
-  },
-  {
-    "id": "b73ef2d5-29bc-4ad2-ac8a-2de31f6bff00",
-    "ownerId": "47db7feb-7e70-455c-9989-2dad66321fc6",
-    "name": "Basic Web Server",
-    "type": "Web Hosting",
-    "incomePerMinute": 15,
-    "monthlyCost": 45,
-    "icon": "fas fa-globe",
-    "isOnline": false,
-    "loadPercentage": 85,
-    "durability": 100,
-    "lastDurabilityUpdate": 1755609349500,
-    "createdAt": 1755532297459,
-    "lastUpdated": 1755631295191
-  },
-  {
-    "id": "58b55125-136e-43e6-8e1f-67be029da0c7",
-    "ownerId": "47db7feb-7e70-455c-9989-2dad66321fc6",
-    "name": "Basic Web Server",
-    "type": "Web Hosting",
-    "incomePerMinute": 15,
-    "monthlyCost": 45,
-    "icon": "fas fa-globe",
-    "isOnline": false,
-    "loadPercentage": 85,
-    "durability": 100,
-    "lastDurabilityUpdate": 1755609349500,
-    "createdAt": 1755537734477,
-    "lastUpdated": 1755631295191,
-    "lastOverloadCheck": 1755548481729
-  },
-  {
-    "id": "c35ef29f-f4b9-41d2-a9d2-b4aee54dc1dd",
-    "ownerId": "47db7feb-7e70-455c-9989-2dad66321fc6",
-    "name": "Basic Web Server",
-    "type": "Web Hosting",
-    "incomePerMinute": 15,
-    "monthlyCost": 45,
-    "icon": "fas fa-globe",
-    "isOnline": false,
-    "loadPercentage": 85,
-    "durability": 100,
-    "lastDurabilityUpdate": 1755609349500,
-    "createdAt": 1755537735020,
-    "lastUpdated": 1755631295191
-  },
-  {
-    "id": "3f278d46-2702-46d2-a600-72d25c11827f",
-    "ownerId": "47db7feb-7e70-455c-9989-2dad66321fc6",
-    "name": "Basic Web Server",
-    "type": "Web Hosting",
-    "incomePerMinute": 15,
-    "monthlyCost": 45,
-    "icon": "fas fa-globe",
-    "isOnline": false,
-    "loadPercentage": 85,
-    "durability": 100,
-    "lastDurabilityUpdate": 1755609349500,
-    "createdAt": 1755548451144,
-    "lastUpdated": 1755631295191
-  },
-  {
-    "id": "2218a211-4b0d-499f-a48a-e7a41e0dff11",
-    "ownerId": "47db7feb-7e70-455c-9989-2dad66321fc6",
-    "name": "Database Server",
-    "type": "Storage",
-    "incomePerMinute": 25,
-    "monthlyCost": 85,
-    "icon": "fas fa-database",
-    "isOnline": true,
-    "loadPercentage": 50,
-    "durability": 96,
-    "lastDurabilityUpdate": 1755631592534,
-    "createdAt": 1755607302129,
-    "lastUpdated": 1755631295191,
-    "lastOverloadCheck": 1755631774910
+    "lastOverloadCheck": 1755632134897
   },
   {
     "id": "08cc4951-d2d6-453e-b0ab-1c74b247d311",
@@ -454,11 +377,11 @@
     "icon": "fas fa-cloud",
     "isOnline": true,
     "loadPercentage": 80,
-    "durability": 97,
-    "lastDurabilityUpdate": 1755631418086,
+    "durability": 96,
+    "lastDurabilityUpdate": 1755632074847,
     "createdAt": 1755560941995,
-    "lastUpdated": 1755631893472,
-    "lastOverloadCheck": 1755631744698
+    "lastUpdated": 1755632361938,
+    "lastOverloadCheck": 1755632350834
   },
   {
     "id": "99502981-b7c8-4887-ab6f-00d3a82d6503",
@@ -473,7 +396,7 @@
     "durability": 98,
     "lastDurabilityUpdate": 1755630806154,
     "createdAt": 1755563000592,
-    "lastUpdated": 1755631893472,
+    "lastUpdated": 1755632361938,
     "lastOverloadCheck": 1755630806173
   },
   {
@@ -486,11 +409,11 @@
     "icon": "fas fa-cloud",
     "isOnline": true,
     "loadPercentage": 80,
-    "durability": 97,
-    "lastDurabilityUpdate": 1755631418086,
+    "durability": 96,
+    "lastDurabilityUpdate": 1755632074847,
     "createdAt": 1755563000859,
-    "lastUpdated": 1755631893472,
-    "lastOverloadCheck": 1755631744700
+    "lastUpdated": 1755632361938,
+    "lastOverloadCheck": 1755632350835
   },
   {
     "id": "1d28a64c-905e-4589-a0ea-1106d72341c0",
@@ -505,7 +428,7 @@
     "durability": 97,
     "lastDurabilityUpdate": 1755631418086,
     "createdAt": 1755563001161,
-    "lastUpdated": 1755631893472,
+    "lastUpdated": 1755632361938,
     "lastOverloadCheck": 1755631744703
   },
   {
@@ -521,7 +444,7 @@
     "durability": 99,
     "lastDurabilityUpdate": 1755629891408,
     "createdAt": 1755563001495,
-    "lastUpdated": 1755631893472,
+    "lastUpdated": 1755632361938,
     "lastOverloadCheck": 1755630410137
   },
   {
@@ -534,11 +457,11 @@
     "icon": "fas fa-cloud",
     "isOnline": true,
     "loadPercentage": 80,
-    "durability": 97,
-    "lastDurabilityUpdate": 1755631418086,
+    "durability": 96,
+    "lastDurabilityUpdate": 1755632074847,
     "createdAt": 1755563001850,
-    "lastUpdated": 1755631893472,
-    "lastOverloadCheck": 1755631744712
+    "lastUpdated": 1755632361938,
+    "lastOverloadCheck": 1755632350836
   },
   {
     "id": "4b509796-4e80-45d1-a23c-368bb2fa7874",
@@ -550,11 +473,11 @@
     "icon": "fas fa-cloud",
     "isOnline": true,
     "loadPercentage": 80,
-    "durability": 97,
-    "lastDurabilityUpdate": 1755631418086,
+    "durability": 96,
+    "lastDurabilityUpdate": 1755632074847,
     "createdAt": 1755563002172,
-    "lastUpdated": 1755631893472,
-    "lastOverloadCheck": 1755631744713
+    "lastUpdated": 1755632361938,
+    "lastOverloadCheck": 1755632350837
   },
   {
     "id": "6ee0a836-3ec3-4b2b-838a-1f57f094b865",
@@ -564,13 +487,13 @@
     "incomePerMinute": 100,
     "monthlyCost": 180,
     "icon": "fas fa-cloud",
-    "isOnline": true,
+    "isOnline": false,
     "loadPercentage": 80,
     "durability": 96,
     "lastDurabilityUpdate": 1755631592534,
     "createdAt": 1755568830065,
-    "lastUpdated": 1755631893472,
-    "lastOverloadCheck": 1755631744714
+    "lastUpdated": 1755632361938,
+    "lastOverloadCheck": 1755632047484
   },
   {
     "id": "b205a647-10db-4f85-9711-5ed2969375be",
@@ -585,7 +508,7 @@
     "durability": 98,
     "lastDurabilityUpdate": 1755630268674,
     "createdAt": 1755568830453,
-    "lastUpdated": 1755631893472,
+    "lastUpdated": 1755632361938,
     "lastOverloadCheck": 1755630806185
   },
   {
@@ -601,7 +524,7 @@
     "durability": 97,
     "lastDurabilityUpdate": 1755630926156,
     "createdAt": 1755604376513,
-    "lastUpdated": 1755631893472,
+    "lastUpdated": 1755632361938,
     "lastOverloadCheck": 1755631106722
   },
   {
@@ -617,7 +540,7 @@
     "durability": 97,
     "lastDurabilityUpdate": 1755630926156,
     "createdAt": 1755605849369,
-    "lastUpdated": 1755631893472,
+    "lastUpdated": 1755632361938,
     "lastOverloadCheck": 1755631106735
   },
   {
@@ -630,11 +553,11 @@
     "icon": "fas fa-cloud",
     "isOnline": true,
     "loadPercentage": 80,
-    "durability": 96,
-    "lastDurabilityUpdate": 1755631592534,
+    "durability": 95,
+    "lastDurabilityUpdate": 1755632194847,
     "createdAt": 1755610958356,
-    "lastUpdated": 1755631893472,
-    "lastOverloadCheck": 1755631744715
+    "lastUpdated": 1755632361938,
+    "lastOverloadCheck": 1755632350840
   },
   {
     "id": "d7ef1005-502e-452c-96c2-9220bef30646",
@@ -646,11 +569,11 @@
     "icon": "fas fa-cloud",
     "isOnline": true,
     "loadPercentage": 80,
-    "durability": 96,
-    "lastDurabilityUpdate": 1755631774839,
+    "durability": 95,
+    "lastDurabilityUpdate": 1755632429302,
     "createdAt": 1755629176134,
-    "lastUpdated": 1755631893472,
-    "lastOverloadCheck": 1755631744716
+    "lastUpdated": 1755632361938,
+    "lastOverloadCheck": 1755632350842
   },
   {
     "id": "ddfcfdf1-d57a-48b6-8648-a0562cc4ef38",
@@ -662,10 +585,87 @@
     "icon": "fas fa-cloud",
     "isOnline": true,
     "loadPercentage": 80,
-    "durability": 96,
-    "lastDurabilityUpdate": 1755631774839,
+    "durability": 95,
+    "lastDurabilityUpdate": 1755632429302,
     "createdAt": 1755629176564,
-    "lastUpdated": 1755631893472,
-    "lastOverloadCheck": 1755631744718
+    "lastUpdated": 1755632361938,
+    "lastOverloadCheck": 1755632350844
+  },
+  {
+    "id": "b73ef2d5-29bc-4ad2-ac8a-2de31f6bff00",
+    "ownerId": "47db7feb-7e70-455c-9989-2dad66321fc6",
+    "name": "Basic Web Server",
+    "type": "Web Hosting",
+    "incomePerMinute": 15,
+    "monthlyCost": 45,
+    "icon": "fas fa-globe",
+    "isOnline": false,
+    "loadPercentage": 85,
+    "durability": 100,
+    "lastDurabilityUpdate": 1755609349500,
+    "createdAt": 1755532297459,
+    "lastUpdated": 1755632447232
+  },
+  {
+    "id": "58b55125-136e-43e6-8e1f-67be029da0c7",
+    "ownerId": "47db7feb-7e70-455c-9989-2dad66321fc6",
+    "name": "Basic Web Server",
+    "type": "Web Hosting",
+    "incomePerMinute": 15,
+    "monthlyCost": 45,
+    "icon": "fas fa-globe",
+    "isOnline": false,
+    "loadPercentage": 85,
+    "durability": 100,
+    "lastDurabilityUpdate": 1755609349500,
+    "createdAt": 1755537734477,
+    "lastUpdated": 1755632447232,
+    "lastOverloadCheck": 1755548481729
+  },
+  {
+    "id": "c35ef29f-f4b9-41d2-a9d2-b4aee54dc1dd",
+    "ownerId": "47db7feb-7e70-455c-9989-2dad66321fc6",
+    "name": "Basic Web Server",
+    "type": "Web Hosting",
+    "incomePerMinute": 15,
+    "monthlyCost": 45,
+    "icon": "fas fa-globe",
+    "isOnline": false,
+    "loadPercentage": 85,
+    "durability": 100,
+    "lastDurabilityUpdate": 1755609349500,
+    "createdAt": 1755537735020,
+    "lastUpdated": 1755632447232
+  },
+  {
+    "id": "3f278d46-2702-46d2-a600-72d25c11827f",
+    "ownerId": "47db7feb-7e70-455c-9989-2dad66321fc6",
+    "name": "Basic Web Server",
+    "type": "Web Hosting",
+    "incomePerMinute": 15,
+    "monthlyCost": 45,
+    "icon": "fas fa-globe",
+    "isOnline": false,
+    "loadPercentage": 85,
+    "durability": 100,
+    "lastDurabilityUpdate": 1755609349500,
+    "createdAt": 1755548451144,
+    "lastUpdated": 1755632447232
+  },
+  {
+    "id": "2218a211-4b0d-499f-a48a-e7a41e0dff11",
+    "ownerId": "47db7feb-7e70-455c-9989-2dad66321fc6",
+    "name": "Database Server",
+    "type": "Storage",
+    "incomePerMinute": 25,
+    "monthlyCost": 85,
+    "icon": "fas fa-database",
+    "isOnline": true,
+    "loadPercentage": 50,
+    "durability": 95,
+    "lastDurabilityUpdate": 1755632194847,
+    "createdAt": 1755607302129,
+    "lastUpdated": 1755632447232,
+    "lastOverloadCheck": 1755632447230
   }
 ]

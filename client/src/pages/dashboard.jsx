@@ -70,8 +70,8 @@ const ONE_DAY = 24 * 60 * 60 * 1000;
 const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
 
   const isTabUnlocked = (tab) => {
-    if (tab === 'tutorial' || tab === 'achievements' || tab === 'quests' || tab === 'minigames' || tab === 'donate' || tab === 'reports') return true;
-    // Only require tutorial completion for servers, hosting, and learning tabs
+    if (tab === 'tutorial' || tab === 'quests' || tab === 'minigames' || tab === 'donate' || tab === 'reports') return true;
+    // Require tutorial completion for servers, hosting, learning, and achievements tabs
     return gameState.user && gameState.user.tutorialCompleted;
   };
 

@@ -2,33 +2,19 @@
   {
     "id": "b372059f-652f-45a9-ac0c-429dcdbb3043",
     "nickname": "MASIK",
-    "balance": 3033108,
+    "balance": 3049749,
     "serverCount": 23,
     "isOnline": false,
+    "level": 12,
     "rank": 1
   },
   {
     "id": "65a91d9d-7213-4a2e-abd6-c9017bc7ae80",
     "nickname": "Ca6aka",
-    "balance": 1206716,
+    "balance": 1216483,
     "serverCount": 14,
     "isOnline": true,
+    "level": 6,
     "rank": 2
-  },
-  {
-    "id": "47db7feb-7e70-455c-9989-2dad66321fc6",
-    "nickname": "Niko",
-    "balance": 151014,
-    "serverCount": 5,
-    "isOnline": false,
-    "rank": 3
-  },
-  {
-    "id": "050c141e-81d5-4ced-804b-b0784a98f373",
-    "nickname": "test",
-    "balance": 21350,
-    "serverCount": 0,
-    "isOnline": false,
-    "rank": 4
   }
 ]

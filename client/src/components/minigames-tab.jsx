@@ -77,11 +77,15 @@ const MiniGamesTab = () => {
       }
     },
     onError: (error) => {
-      toast({
-        title: t('error'),
-        description: t('failedToAddXp') || 'Failed to add XP',
-        variant: 'destructive'
-      });
+      console.error('XP update error:', error);
+      // Only show error if it's actually a failed request, not a successful one
+      if (error?.message && !error.message.includes('XP')) {
+        toast({
+          title: t('error'),
+          description: t('failedToAddXp') || 'Failed to add XP',
+          variant: 'destructive'
+        });
+      }
     }
   });
 

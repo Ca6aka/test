@@ -11,6 +11,21 @@ export function AchievementsTab() {
   const { gameState } = useGame();
   const { t } = useLanguage();
 
+  // Check if user has completed tutorial
+  const hasCompletedTutorial = gameState.user?.tutorialCompleted;
+
+  if (!hasCompletedTutorial) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[400px] text-center space-y-4">
+        <Lock className="w-16 h-16 text-slate-500" />
+        <h3 className="text-xl font-semibold text-slate-300">{t('achievementsLocked')}</h3>
+        <p className="text-slate-400 max-w-md">
+          {t('completeTutorialToUnlock')}
+        </p>
+      </div>
+    );
+  }
+
   const { data: achievementsResponse } = useQuery({
     queryKey: ['/api/achievements'],
     enabled: !!gameState.user,

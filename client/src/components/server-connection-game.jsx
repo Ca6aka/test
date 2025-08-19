@@ -115,13 +115,13 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
   const generateCables = (numConnections) => {
     const gameColors = colors.slice(0, numConnections);
     
-    // Create cables (left side) - randomize positions
+    // Create cables (left side) - improved spacing for mobile
     const shuffledIndexes = Array.from({length: numConnections}, (_, i) => i).sort(() => Math.random() - 0.5);
     return gameColors.map((color, index) => ({
       id: `cable-${index}`,
       color,
-      x: 30,
-      y: 60 + shuffledIndexes[index] * 50,
+      x: 40,
+      y: 80 + shuffledIndexes[index] * 60, // Increased spacing and Y offset
       connected: false
     }));
   };
@@ -129,14 +129,14 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
   const generatePorts = (numConnections) => {
     const gameColors = colors.slice(0, numConnections);
     
-    // Create ports (right side) - randomize colors and positions
+    // Create ports (right side) - improved spacing for mobile
     const shuffledColors = [...gameColors].sort(() => Math.random() - 0.5);
     const shuffledPortIndexes = Array.from({length: numConnections}, (_, i) => i).sort(() => Math.random() - 0.5);
     return shuffledColors.map((color, index) => ({
       id: `port-${index}`,
       color,
-      x: 300,
-      y: 60 + shuffledPortIndexes[index] * 50,
+      x: 320,
+      y: 80 + shuffledPortIndexes[index] * 60, // Increased spacing and Y offset
       connected: false
     }));
   };
@@ -282,7 +282,7 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
                 <Progress value={(30 - timeLeft) / 30 * 100} className="w-32" />
               </div>
 
-              <div className="relative bg-gray-100 dark:bg-gray-800 rounded-lg p-4" style={{ height: '400px' }}>
+              <div className="relative bg-gray-100 dark:bg-gray-800 rounded-lg p-4 overflow-hidden" style={{ height: '400px', minWidth: '360px' }}>
 
                 {/* Cables (left side) */}
                 {cables.map((cable) => (

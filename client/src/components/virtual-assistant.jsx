@@ -18,7 +18,8 @@ import {
   Trash2,
   Settings,
   Volume2,
-  VolumeX
+  VolumeX,
+  X
 } from 'lucide-react'
 import { useIsMobile } from '@/hooks/use-mobile'
 import { useGame } from '@/contexts/game-context'
@@ -32,10 +33,12 @@ function VirtualAssistant() {
   const [isVisible, setIsVisible] = useState(false) // Closed by default
   const [muteUserId, setMuteUserId] = useState('')
   const [muteDuration, setMuteDuration] = useState('30')
+  const [showRules, setShowRules] = useState(false)
+  const [chatLanguage, setChatLanguage] = useState('ru')
   const [, setLocation] = useLocation()
   const isMobile = useIsMobile()
   const { gameState } = useGame()
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const user = gameState?.user
   const queryClient = useQueryClient()
   
@@ -255,6 +258,29 @@ function VirtualAssistant() {
               {t('generalChat')}
             </CardTitle>
             <div className="flex items-center gap-1">
+              {/* Chat Language Selector */}
+              <Select value={chatLanguage} onValueChange={setChatLanguage}>
+                <SelectTrigger className="w-14 h-6 p-1 text-xs">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="ru">RU</SelectItem>
+                  <SelectItem value="en">EN</SelectItem>
+                  <SelectItem value="ua">UA</SelectItem>
+                  <SelectItem value="de">DE</SelectItem>
+                </SelectContent>
+              </Select>
+              
+              {/* Rules Toggle */}
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setShowRules(!showRules)}
+                className="h-6 w-6 p-0"
+                title={t('chatRules')}
+              >
+                <Settings className="w-4 h-4" />
+              </Button>
               {user?.admin >= 1 && (
                 <Dialog>
                   <DialogTrigger asChild>
@@ -356,8 +382,32 @@ function VirtualAssistant() {
             </div>
           </div>
         </CardHeader>
+        
+        {/* Chat Rules */}
+        {showRules && (
+          <div className="px-3 py-2 bg-slate-50 dark:bg-slate-800 border-b">
+            <div className="flex items-center justify-between mb-2">
+              <h4 className="text-xs font-medium text-slate-700 dark:text-slate-300">{t('chatRules')}</h4>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setShowRules(false)}
+                className="h-4 w-4 p-0"
+              >
+                <X className="w-3 h-3" />
+              </Button>
+            </div>
+            <div className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
+              <div>• {t('chatRule1')}</div>
+              <div>• {t('chatRule2')}</div>
+              <div>• {t('chatRule3')}</div>
+              <div>• {t('chatRule4')}</div>
+            </div>
+          </div>
+        )}
+        
         <CardContent className="p-0">
-          <div ref={chatMessagesRef} className={`${isMobile ? 'h-60' : 'h-80'} overflow-y-auto p-3 space-y-2`}>
+          <div ref={chatMessagesRef} className={`${showRules ? (isMobile ? 'h-48' : 'h-64') : (isMobile ? 'h-60' : 'h-80')} overflow-y-auto p-3 space-y-2`}>
             {chatData?.messages?.length === 0 ? (
               <div className="text-center text-gray-500 text-sm py-8">
                 {t('noMessages')}

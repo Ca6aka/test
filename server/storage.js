@@ -1467,6 +1467,14 @@ export class FileStorage {
           const userPath = path.join(usersDir, fileName);
           const userData = JSON.parse(await fs.readFile(userPath, 'utf8'));
           
+          // Calculate user level
+          const userLevel = Math.floor(Math.sqrt((userData.experience || 0) / 100)) + 1;
+          
+          // Only include players level 5 and above
+          if (userLevel < 5) {
+            continue;
+          }
+          
           // Get server count for this user from servers.json
           const userServers = await this.getUserServers(userData.id);
           
@@ -1475,7 +1483,8 @@ export class FileStorage {
             nickname: userData.nickname,
             balance: userData.balance || 0,
             serverCount: userServers.length,
-            isOnline: this.isUserOnline(userData)
+            isOnline: this.isUserOnline(userData),
+            level: userLevel
           });
         } catch (err) {
           // Skip invalid user files
