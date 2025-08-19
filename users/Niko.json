@@ -1,70 +1,87 @@
 {
-  "id": "655702b8-c30f-45ba-849b-25e59e515189",
+  "id": "47db7feb-7e70-455c-9989-2dad66321fc6",
   "nickname": "Niko",
-  "password": "$2b$10$fbycZ8MapTD1TyL9.unuAOPpbHe6cZnPF/403GhoVD7ClzHRxAkF6",
-  "balance": 22400,
-  "level": 1,
-  "experience": 73,
-  "totalEarnings": 14200,
-  "totalSpent": 0,
+  "password": "$2b$10$xpp57uAPzObKG5AqKrflveYOlrYmw0wjKv.Thk/xYaog6x79qppYO",
+  "balance": 132498,
+  "level": 6,
+  "experience": 629,
+  "totalEarnings": 125719,
+  "totalSpent": 54421,
   "avatar": {
-    "gradient": "from-yellow-400 via-orange-500 to-red-600",
+    "gradient": "from-purple-400 via-violet-500 to-indigo-600",
     "pattern": "multi-color",
-    "seed": 208242,
+    "seed": 420922,
     "animation": "soft-pulse"
   },
-  "serverLimit": 3,
+  "serverLimit": 5,
   "tutorialCompleted": true,
   "admin": 0,
   "banned": false,
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755479248627,
+  "lastIncomeUpdate": 1755630448739,
   "jobCooldowns": {
-    "maintenance": 1755480217432,
-    "optimization": 1755479647561,
-    "security-audit": 1755479768481
+    "maintenance": 1755610135544,
+    "optimization": 1755610258018,
+    "security-audit": 1755610379265
   },
-  "currentLearning": null,
+  "currentLearning": {
+    "id": "advanced-management",
+    "title": "Advanced Server Management",
+    "description": "Master advanced server optimization and scaling techniques",
+    "difficulty": "Advanced",
+    "startTime": 1755607298220,
+    "endTime": 1755612698220,
+    "progress": 0,
+    "reward": {
+      "type": "serverSlots",
+      "amount": 2
+    }
+  },
   "activities": [
     {
-      "id": "2bfde59e-6350-41a7-8d7e-a49135e39f11",
-      "description": "Daily quest completed: Daily Maintenance - Reward ready to claim!",
-      "timestamp": "18.08.2025, 03:20:37"
+      "id": "a9ec9737-16d6-45ca-b886-078fe2e1ebe3",
+      "description": "Income: +$25, Rental: -$2 (Net: +$23)",
+      "timestamp": "19.08.2025, 21:07:28"
     },
     {
-      "id": "8bd8a18e-41f4-4b9a-a63f-6146aab2fc7a",
-      "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "18.08.2025, 03:20:37"
+      "id": "c73f7e9d-a51a-483b-992c-20cde0dc18fc",
+      "description": "Income: +$25, Rental: -$2 (Net: +$23)",
+      "timestamp": "19.08.2025, 21:06:28"
     },
     {
-      "id": "af95f20c-a0ab-4d04-b0a5-a1b5b40346a4",
-      "description": "Quest reward claimed: Mixed Tasks (+$3 200)",
-      "timestamp": "18.08.2025, 03:19:22"
+      "id": "abb4e342-6ce9-4ca6-acee-a1a9626cdeb7",
+      "description": "Income: +$25, Rental: -$2 (Net: +$23)",
+      "timestamp": "19.08.2025, 21:05:28"
     },
     {
-      "id": "20a62632-473b-472a-8797-d72f845411f1",
-      "description": "Daily quest completed: Mixed Tasks - Reward ready to claim!",
-      "timestamp": "18.08.2025, 03:12:46"
+      "id": "ec447864-a40a-426a-a0f8-684eeeb7751e",
+      "description": "Income: +$25, Rental: -$2 (Net: +$23)",
+      "timestamp": "19.08.2025, 21:04:28"
     },
     {
-      "id": "6bf1b483-05cd-4cbb-a895-46a662ac0602",
-      "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "18.08.2025, 03:12:46"
+      "id": "5195c738-6d4f-48e7-80c2-5d5da652e53a",
+      "description": "Income: +$24, Rental: -$2 (Net: +$22)",
+      "timestamp": "19.08.2025, 21:03:28"
     }
   ],
   "achievements": [
     "early-earner",
-    "first-steps"
+    "first-steps",
+    "first-server",
+    "server-builder",
+    "efficient-worker",
+    "wealthy-investor",
+    "server-collection"
   ],
-  "completedJobsCount": 5,
-  "completedCoursesCount": 0,
+  "completedJobsCount": 35,
+  "completedCoursesCount": 2,
   "completedLearning": [],
   "efficiencyBonus": 0,
   "dailyQuests": [
     {
-      "id": "daily-maintenance-Mon Aug 18 2025",
+      "id": "daily-maintenance-Tue Aug 19 2025",
       "title": "Daily Maintenance",
       "description": "Complete 3 Server Maintenance jobs",
       "reward": 2000,
@@ -73,12 +90,12 @@
         "jobType": "maintenance",
         "count": 3
       },
-      "progress": 3,
-      "completed": true,
-      "date": "Mon Aug 18 2025"
+      "progress": 0,
+      "completed": false,
+      "date": "Tue Aug 19 2025"
     },
     {
-      "id": "daily-income-Mon Aug 18 2025",
+      "id": "daily-income-Tue Aug 19 2025",
       "title": "Passive Income",
       "description": "Earn $5,000 from server income",
       "reward": 1500,
@@ -86,12 +103,12 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 0,
+      "progress": 841,
       "completed": false,
-      "date": "Mon Aug 18 2025"
+      "date": "Tue Aug 19 2025"
     },
     {
-      "id": "daily-optimization-Mon Aug 18 2025",
+      "id": "daily-optimization-Tue Aug 19 2025",
       "title": "Server Optimization",
       "description": "Complete 2 Performance Optimization jobs",
       "reward": 3000,
@@ -100,12 +117,12 @@
         "jobType": "optimization",
         "count": 2
       },
-      "progress": 1,
+      "progress": 0,
       "completed": false,
-      "date": "Mon Aug 18 2025"
+      "date": "Tue Aug 19 2025"
     },
     {
-      "id": "daily-security-Mon Aug 18 2025",
+      "id": "daily-security-Tue Aug 19 2025",
       "title": "Security Check",
       "description": "Complete 1 Security Audit job",
       "reward": 2500,
@@ -114,13 +131,12 @@
         "jobType": "security-audit",
         "count": 1
       },
-      "progress": 1,
-      "completed": true,
-      "date": "Mon Aug 18 2025",
-      "claimed": true
+      "progress": 0,
+      "completed": false,
+      "date": "Tue Aug 19 2025"
     },
     {
-      "id": "daily-earnings-Mon Aug 18 2025",
+      "id": "daily-earnings-Tue Aug 19 2025",
       "title": "Daily Earnings",
       "description": "Earn $10,000 from server income",
       "reward": 3500,
@@ -128,12 +144,12 @@
         "type": "income",
         "amount": 10000
       },
-      "progress": 0,
+      "progress": 841,
       "completed": false,
-      "date": "Mon Aug 18 2025"
+      "date": "Tue Aug 19 2025"
     },
     {
-      "id": "daily-worker-Mon Aug 18 2025",
+      "id": "daily-worker-Tue Aug 19 2025",
       "title": "Hard Worker",
       "description": "Complete 5 jobs of any type",
       "reward": 4000,
@@ -142,12 +158,12 @@
         "jobType": "any",
         "count": 5
       },
-      "progress": 5,
-      "completed": true,
-      "date": "Mon Aug 18 2025"
+      "progress": 0,
+      "completed": false,
+      "date": "Tue Aug 19 2025"
     },
     {
-      "id": "daily-mixed-jobs-Mon Aug 18 2025",
+      "id": "daily-mixed-jobs-Tue Aug 19 2025",
       "title": "Mixed Tasks",
       "description": "Complete 2 Maintenance and 1 Optimization job",
       "reward": 3200,
@@ -156,18 +172,12 @@
         "jobType": "mixed",
         "count": 3
       },
-      "progress": 3,
-      "completed": true,
-      "date": "Mon Aug 18 2025",
-      "jobCounts": {
-        "maintenance": 2,
-        "optimization": 1,
-        "security-audit": 1
-      },
-      "claimed": true
+      "progress": 0,
+      "completed": false,
+      "date": "Tue Aug 19 2025"
     },
     {
-      "id": "daily-income-boost-Mon Aug 18 2025",
+      "id": "daily-income-boost-Tue Aug 19 2025",
       "title": "Income Boost",
       "description": "Earn $20,000 from server income",
       "reward": 5000,
@@ -175,12 +185,12 @@
         "type": "income",
         "amount": 20000
       },
-      "progress": 0,
+      "progress": 841,
       "completed": false,
-      "date": "Mon Aug 18 2025"
+      "date": "Tue Aug 19 2025"
     },
     {
-      "id": "daily-job-spree-Mon Aug 18 2025",
+      "id": "daily-job-spree-Tue Aug 19 2025",
       "title": "Job Spree",
       "description": "Complete 8 jobs of any type",
       "reward": 6000,
@@ -189,12 +199,12 @@
         "jobType": "any",
         "count": 8
       },
-      "progress": 5,
+      "progress": 0,
       "completed": false,
-      "date": "Mon Aug 18 2025"
+      "date": "Tue Aug 19 2025"
     },
     {
-      "id": "daily-mega-earner-Mon Aug 18 2025",
+      "id": "daily-mega-earner-Tue Aug 19 2025",
       "title": "Mega Earner",
       "description": "Earn $50,000 from server income",
       "reward": 8000,
@@ -202,13 +212,13 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 0,
+      "progress": 841,
       "completed": false,
-      "date": "Mon Aug 18 2025"
+      "date": "Tue Aug 19 2025"
     }
   ],
-  "lastQuestReset": 1755479248627,
+  "lastQuestReset": 1755628419380,
   "registrationIP": "192.168.0.136",
-  "registrationTime": 1755479248627,
-  "lastSeen": 1755480037428
+  "registrationTime": 1755532222304,
+  "lastSeen": 1755610389192
 }

@@ -1,93 +1,89 @@
 {
-  "id": "65a91d9d-7213-4a2e-abd6-c9017bc7ae80",
-  "nickname": "Ca6aka",
-  "password": "$2b$10$G1sTjzxqs2js60d52sYQXOCbGLW1o.6TCUNzzuimD5iwHk21qh6vq",
-  "balance": 1167305,
-  "level": 15,
-  "experience": 2774,
-  "totalEarnings": 1481102,
-  "totalSpent": 614496,
+  "id": "b372059f-652f-45a9-ac0c-429dcdbb3043",
+  "nickname": "MASIK",
+  "password": "$2b$10$lZmWuTI9.wxFGXivr0wjJu1FxBv1dWlCHFZfjwG7bZRixDs0IHyyu",
+  "balance": 2962937,
+  "level": 28,
+  "experience": 12652,
+  "totalEarnings": 1871672,
+  "totalSpent": 261435,
   "avatar": {
-    "gradient": "from-green-400 via-teal-500 to-cyan-600",
+    "gradient": "from-teal-400 via-emerald-500 to-green-600",
     "pattern": "multi-color",
-    "seed": 898168,
-    "animation": "shimmer-wave"
+    "seed": 155139,
+    "animation": "pulse-glow"
   },
-  "serverLimit": 14,
+  "serverLimit": 23,
   "tutorialCompleted": true,
-  "admin": 2,
+  "admin": 0,
   "banned": false,
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755630472123,
+  "lastIncomeUpdate": 1755630448717,
   "jobCooldowns": {
-    "maintenance": 1755610333627,
-    "optimization": 1755610486597,
-    "security-audit": 1755610303752
+    "maintenance": 1755630256601,
+    "optimization": 1755630375183,
+    "security-audit": 1755630200632
   },
   "currentLearning": {
-    "id": "basic-setup",
-    "title": "Basic Server Setup",
-    "description": "Learn the fundamentals of server configuration and deployment",
-    "difficulty": "Beginner",
-    "startTime": 1755629152834,
-    "endTime": 1755630952834,
+    "id": "advanced-management",
+    "title": "Advanced Server Management",
+    "description": "Master advanced server optimization and scaling techniques",
+    "difficulty": "Advanced",
+    "startTime": 1755629210446,
+    "endTime": 1755634610446,
     "progress": 0,
     "reward": {
       "type": "serverSlots",
-      "amount": 1
+      "amount": 2
     }
   },
   "activities": [
     {
-      "id": "2cf3057f-f47f-4689-b768-7547b68a9655",
-      "description": "Income: +$761, Rental: -$76 (Net: +$685)",
-      "timestamp": "19.08.2025, 21:07:52"
-    },
-    {
-      "id": "ccb11442-c294-4500-910a-b295dae5cc87",
-      "description": "Income: +$1253, Rental: -$125 (Net: +$1128)",
+      "id": "da77bb26-b8c7-42b3-85d4-45f24fd86b7e",
+      "description": "Server \"GPU Server\" shutdown due to overload (85% load)",
       "timestamp": "19.08.2025, 21:07:28"
     },
     {
-      "id": "8d752485-efef-4f1b-a78b-6961a08d81da",
-      "description": "Daily quest completed: Mega Earner - Reward ready to claim!",
+      "id": "170f8d2e-1b8d-4484-97b5-e8555dcf3ed8",
+      "description": "Server \"GPU Server\" shutdown due to overload (85% load)",
       "timestamp": "19.08.2025, 21:07:28"
     },
     {
-      "id": "81a3fb4d-692a-417f-a42f-6a6aeebdfded",
-      "description": "Server \"CDN Server\" shutdown due to overload (80% load)",
-      "timestamp": "19.08.2025, 21:06:50"
+      "id": "527bc09b-0438-483a-9971-6d487a9585ff",
+      "description": "Server \"GPU Server\" shutdown due to overload (85% load)",
+      "timestamp": "19.08.2025, 21:07:28"
     },
     {
-      "id": "b9bdc2b8-0f9f-4921-bb71-8caa9dd62928",
-      "description": "Income: +$750, Rental: -$75 (Net: +$675)",
-      "timestamp": "19.08.2025, 21:06:50"
+      "id": "dbddf489-88bd-499d-8334-12de2d4bcafb",
+      "description": "Income: +$4893, Rental: -$489 (Net: +$4404)",
+      "timestamp": "19.08.2025, 21:07:28"
+    },
+    {
+      "id": "fa6d1a44-29ee-4ec6-87f3-bcdc916bf967",
+      "description": "Income: +$4893, Rental: -$489 (Net: +$4404)",
+      "timestamp": "19.08.2025, 21:06:28"
     }
   ],
   "achievements": [
     "early-earner",
-    "first-steps",
-    "first-server",
-    "server-builder",
-    "efficient-worker",
-    "server-collection",
-    "persistent-learner",
-    "security-expert",
-    "optimization-master",
-    "maintenance-guru",
-    "course-completionist",
-    "learning-enthusiast",
-    "job-master",
-    "wealthy-investor",
+    "server-empire",
+    "infrastructure-king",
     "server-mogul",
-    "millionaire"
+    "wealthy-investor",
+    "server-builder",
+    "server-collection",
+    "first-server",
+    "millionaire",
+    "first-steps",
+    "efficient-worker"
   ],
-  "completedJobsCount": 144,
-  "completedCoursesCount": 11,
+  "completedJobsCount": 13,
+  "completedCoursesCount": 1,
   "completedLearning": [
-    "security-protocols"
+    "security-protocols",
+    "ai-gpu-settings"
   ],
   "efficiencyBonus": 15,
   "dailyQuests": [
@@ -101,9 +97,10 @@
         "jobType": "maintenance",
         "count": 3
       },
-      "progress": 0,
-      "completed": false,
-      "date": "Tue Aug 19 2025"
+      "progress": 3,
+      "completed": true,
+      "date": "Tue Aug 19 2025",
+      "claimed": true
     },
     {
       "id": "daily-income-Tue Aug 19 2025",
@@ -129,9 +126,10 @@
         "jobType": "optimization",
         "count": 2
       },
-      "progress": 0,
-      "completed": false,
-      "date": "Tue Aug 19 2025"
+      "progress": 2,
+      "completed": true,
+      "date": "Tue Aug 19 2025",
+      "claimed": true
     },
     {
       "id": "daily-security-Tue Aug 19 2025",
@@ -143,9 +141,10 @@
         "jobType": "security-audit",
         "count": 1
       },
-      "progress": 0,
-      "completed": false,
-      "date": "Tue Aug 19 2025"
+      "progress": 1,
+      "completed": true,
+      "date": "Tue Aug 19 2025",
+      "claimed": true
     },
     {
       "id": "daily-earnings-Tue Aug 19 2025",
@@ -171,9 +170,10 @@
         "jobType": "any",
         "count": 5
       },
-      "progress": 0,
-      "completed": false,
-      "date": "Tue Aug 19 2025"
+      "progress": 5,
+      "completed": true,
+      "date": "Tue Aug 19 2025",
+      "claimed": true
     },
     {
       "id": "daily-mixed-jobs-Tue Aug 19 2025",
@@ -185,9 +185,15 @@
         "jobType": "mixed",
         "count": 3
       },
-      "progress": 0,
-      "completed": false,
-      "date": "Tue Aug 19 2025"
+      "progress": 3,
+      "completed": true,
+      "date": "Tue Aug 19 2025",
+      "jobCounts": {
+        "maintenance": 2,
+        "optimization": 1,
+        "security-audit": 1
+      },
+      "claimed": true
     },
     {
       "id": "daily-income-boost-Tue Aug 19 2025",
@@ -213,9 +219,10 @@
         "jobType": "any",
         "count": 8
       },
-      "progress": 0,
-      "completed": false,
-      "date": "Tue Aug 19 2025"
+      "progress": 8,
+      "completed": true,
+      "date": "Tue Aug 19 2025",
+      "claimed": true
     },
     {
       "id": "daily-mega-earner-Tue Aug 19 2025",
@@ -228,11 +235,12 @@
       },
       "progress": 50000,
       "completed": true,
-      "date": "Tue Aug 19 2025"
+      "date": "Tue Aug 19 2025",
+      "claimed": true
     }
   ],
-  "lastQuestReset": 1755628419352,
-  "registrationIP": "192.168.0.136",
-  "registrationTime": 1755531070984,
-  "lastSeen": 1755630480262
+  "lastQuestReset": 1755604916018,
+  "registrationIP": "192.168.0.109",
+  "registrationTime": 1755604916018,
+  "lastSeen": 1755630180826
 }

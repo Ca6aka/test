@@ -11,6 +11,7 @@ import { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
 import ServerConnectionGame from './server-connection-game';
+import { Trash2, Settings } from 'lucide-react'
 
 // Helper function to get server tier colors
 const getServerTierColors = (serverType) => {
@@ -260,6 +261,7 @@ export function ServersTab({ onTabChange }) {
                         }}
                       >
                         <i className="fas fa-cog"></i>
+                        <Settings className="w-4 h-4 text-grau-600" />
                       </Button>
                     </DialogTrigger>
                     <DialogContent className="bg-slate-800 border-slate-700">
@@ -291,13 +293,13 @@ export function ServersTab({ onTabChange }) {
                             <span>100%</span>
                           </div>
                         </div>
-                        
                         <div className="bg-slate-700/30 rounded-lg p-4 space-y-2">
                           <div className="flex justify-between">
                             <span className="text-slate-400 text-sm">{t('currentLoad')}:</span>
                             <span className="text-white font-medium">{localLoadValue}%</span>
                           </div>
                           
+                        {/* 
                           <div className="flex justify-between">
                             <span className="text-slate-400 text-sm">{t('durability')}:</span>
                             <span className={`font-medium text-sm ${
@@ -307,7 +309,7 @@ export function ServersTab({ onTabChange }) {
                             }`}>
                               {Math.round(server.durability || 100)}%
                             </span>
-                          </div>
+                          </div>*/}
                           
                           <div className="flex justify-between">
                             <span className="text-slate-400 text-sm">{t('overloadRisk')}:</span>
@@ -393,15 +395,21 @@ export function ServersTab({ onTabChange }) {
                   <Button
                     size="sm"
                     variant={server.isOnline ? "default" : "secondary"}
-                    className={server.isOnline 
-                      ? "bg-secondary/20 text-secondary hover:bg-secondary/30" 
-                      : "bg-slate-600/50 text-slate-400"
+                    className={
+                      server.isOnline
+                        ? "bg-secondary/20 text-secondary hover:bg-secondary/30"
+                        : "bg-slate-600/50 text-slate-400 border border-red-500"
                     }
-                    onClick={() => server.isOnline ? handleToggleServer(server.id) : startConnectionGame(server)}
+                    onClick={() =>
+                      server.isOnline
+                        ? handleToggleServer(server.id)
+                        : startConnectionGame(server)
+                    }
                   >
                     <i className="fas fa-power-off mr-1"></i>
-                    {server.isOnline ? t('online') : t('offline')}
+                    {server.isOnline ? t("online") : t("offline")}
                   </Button>
+
                   {/* Delete Server Button - Made less prominent */}
                   <Button
                     size="sm"
@@ -409,7 +417,7 @@ export function ServersTab({ onTabChange }) {
                     className="bg-transparent text-slate-500 hover:bg-red-500/20 hover:text-red-400 transition-colors border border-slate-700 hover:border-red-500/50"
                     onClick={() => handleDeleteServer(server.id)}
                     title={t('deleteServerTooltip')}
-                  >
+                  ><Trash2 className="w-4 h-4 text-red-600" />
                     <i className="fas fa-trash text-xs"></i>
                   </Button>
                 </div>
@@ -471,7 +479,7 @@ export function ServersTab({ onTabChange }) {
       {availableSlots > 0 && (
         <div className="bg-slate-800/30 border border-dashed border-slate-600 rounded-xl p-8 text-center">
           <div className="max-w-md mx-auto">
-            <div className="w-16 h-16 bg-slate-700/50 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 bg-blue-700/50 rounded-full flex items-center justify-center mx-auto mb-4">
               <i className="fas fa-plus text-slate-400 text-xl"></i>
             </div>
             <h3 className="text-lg font-semibold text-slate-300 mb-2">{t('addNewServer')}</h3>

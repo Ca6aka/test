@@ -9,7 +9,7 @@ import { AdminPanel } from './admin-panel';
 import { PlayerAvatar } from './player-profile-bar';
 import { ThemeToggle } from './theme-toggle';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { Crown, Shield } from 'lucide-react';
+import { Crown, Shield, Server, TrendingUp, CircleDollarSign } from 'lucide-react';
 
 export function StatusBar() {
   const { gameState, logout } = useGame();
@@ -31,17 +31,18 @@ export function StatusBar() {
           {/* First Row - Title, Income/Avatar/Username in center, Logout button top right */}
           <div className="flex items-center">
             <h1 
-              className="text-lg font-bold text-primary cursor-pointer hover:text-blue-400 transition-colors" 
+              className="text-lg font-bold cursor-pointer bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent animate-gradient"
               onClick={() => setLocation('/start')}
               data-testid="title-link"
             >
-              Root Tycoon
+              Root <br />Tycoon
             </h1>
             
             {/* Center content - Income, Avatar, Username */}
             <div className="flex-1 flex items-center justify-center space-x-3">
               <div className="flex items-center space-x-1 bg-blue-500/10 border border-blue-500/30 px-2 py-1 rounded text-xs">
                 <i className="fas fa-chart-line text-blue-400 text-xs"></i>
+                <TrendingUp className="h-5 w-4 sm:h-2 sm:w-2 text-green-400 mx-auto"/>
                 <span className="text-blue-400">+{formatCurrency(gameState.totalIncomePerMinute, true)}/min</span>
               </div>
               
@@ -52,8 +53,8 @@ export function StatusBar() {
                       <div>
                         <PlayerAvatar 
                           user={gameState.user} 
-                          size="sm" 
                           onClick={() => window.dispatchEvent(new CustomEvent('openProfile'))}
+                          style={{ width: '50px', height: '50px' }}
                         />
                       </div>
                     </TooltipTrigger>
@@ -66,7 +67,7 @@ export function StatusBar() {
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <span 
-                        className="font-medium cursor-pointer hover:text-blue-400 transition-colors text-xs" 
+                        className="font-medium cursor-pointer hover:text-blue-400 transition-colors text-base" 
                         onClick={() => setLocation(`/player/${gameState.user.nickname}`)}
                         data-testid="username-link-mobile"
                       >
@@ -85,9 +86,9 @@ export function StatusBar() {
             <div className="flex flex-col items-end space-y-1">
               <Button 
                 variant="ghost" 
-                size="sm" 
+                size="lg" 
                 onClick={handleLogout}
-                className="text-slate-400 hover:text-slate-200 text-xs px-2 py-1 h-6"
+                className="text-slate-400 hover:text-slate-200 text-md px-1 py-1 h-6"
               >
                 {t('logout')}
               </Button>
@@ -113,13 +114,15 @@ export function StatusBar() {
           </div>
           
           {/* Second Row - Balance and Server Count under title */}
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-1 bg-slate-700/50 px-3 py-1 rounded text-xs">
+          <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-1 bg-slate-700/50 px-2 py-1 rounded text-xs">
               <i className="fas fa-coins text-accent text-xs"></i>
+              <CircleDollarSign className="w-4 h-4 text-green-600" />
               <span className="font-semibold">{formatCurrency(gameState.user.balance, true)}</span>
             </div>
             <div className="flex items-center space-x-1 bg-slate-700/50 px-3 py-1 rounded text-xs">
               <i className="fas fa-server text-secondary text-xs"></i>
+              <Server className="h-4 w-4 text-blue-400"/>
               <span>{gameState.servers?.length || 0}/{gameState.user.serverLimit || 3}</span>
             </div>
             
@@ -146,23 +149,27 @@ export function StatusBar() {
         {/* Desktop Layout */}
         <div className="hidden lg:flex items-center space-x-6">
           <h1 
-            className="text-xl font-bold text-primary cursor-pointer hover:text-blue-400 transition-colors" 
-            onClick={() => setLocation('/start')}
-            data-testid="title-link-desktop"
-          >
-            Root Tycoon
-          </h1>
+          className="text-xl font-bold cursor-pointer bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent animate-gradient"
+          onClick={() => setLocation('/start')}
+          data-testid="title-link-desktop"
+        >
+          Root Tycoon
+        </h1>
+        
           <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-2 bg-slate-700/50 px-3 py-1 rounded-lg">
+            <div className="flex items-center space-x-1 bg-slate-700/50 px-2 py-1 rounded-lg">
               <i className="fas fa-coins text-accent"></i>
+              <CircleDollarSign className="w-4 h-4 text-green-600" />
               <span className="font-semibold">{formatCurrency(gameState.user.balance)}</span>
             </div>
-            <div className="flex items-center space-x-2 bg-slate-700/50 px-3 py-1 rounded-lg">
-              <i className="fas fa-server text-secondary"></i>
+              <div className="flex items-center space-x-2 bg-slate-700/50 px-3 py-1 rounded-lg">
+              <Server className="h-4 w-4 text-blue-400"/>
               <span>{gameState.servers?.length || 0}/{gameState.user.serverLimit || 3}</span>
             </div>
+
             <div className="flex items-center space-x-2 bg-slate-700/50 px-3 py-1 rounded-lg">
               <i className="fas fa-chart-line text-blue-400"></i>
+              <TrendingUp className="sm:h-4 sm:w-4 text-green-400 mx-auto"/>
               <span>+{formatCurrency(gameState.totalIncomePerMinute)}/min</span>
             </div>
           </div>

@@ -25,6 +25,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { TUTORIAL_UNLOCK_THRESHOLD, formatCurrency } from '@/lib/constants';
 import { useQuery } from '@tanstack/react-query';
 import { useRoute, useLocation } from 'wouter';
+import { ShoppingCart, Server, Play, BookOpenText, Award, ClipboardList, Gamepad2, CreditCard, Bug, AlignJustify } from 'lucide-react';
 
 export default function DashboardPage() {
   const { gameState } = useGame();
@@ -56,6 +57,17 @@ export default function DashboardPage() {
     setLocation(`/game/${tab}`);
     localStorage.setItem('lastGameTab', tab);
   };
+
+  const [now, setNow] = useState(Date.now());
+
+useEffect(() => {
+  const interval = setInterval(() => setNow(Date.now()), 5000);
+  return () => clearInterval(interval);
+}, []);
+
+const ONE_DAY = 24 * 60 * 60 * 1000;
+
+const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
 
   const isTabUnlocked = (tab) => {
     if (tab === 'tutorial' || tab === 'achievements' || tab === 'quests' || tab === 'minigames' || tab === 'donate' || tab === 'reports') return true;
@@ -144,6 +156,7 @@ export default function DashboardPage() {
               onClick={() => handleTabChange('tutorial')}
             >
               <i className="fas fa-graduation-cap"></i>
+              <Play className="w-3 h-3 text-white" />
               <span>{t('start')}</span>
             </Button>
             
@@ -161,8 +174,10 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('servers')}
             >
               <i className="fas fa-server"></i>
+              <Server className="w-3 h-3 text-white" />
               <span>{t('myServers')}</span>
-              {gameState.servers && <span className="bg-secondary/20 text-secondary px-1 rounded text-xs">{gameState.servers.length}</span>}
+
+              {/* {gameState.servers && <span className="bg-secondary/20 text-secondary px-1 rounded text-xs">{gameState.servers.length}</span>} */}
             </Button>
 
             <Button
@@ -179,6 +194,7 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('hosting')}
             >
               <i className="fas fa-store"></i>
+              <ShoppingCart className="w-3 h-3 text-white" />
               <span>{t('serverStore')}</span>
               {!isTabUnlocked('hosting') && <Lock className="w-3 h-3 ml-1" />}
             </Button>
@@ -197,6 +213,7 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('learning')}
             >
               <i className="fas fa-book"></i>
+              <BookOpenText className="w-3 h-3 text-white" />
               <span>{t('learningCenter')}</span>
               {!isTabUnlocked('learning') && <Lock className="w-3 h-3 ml-1" />}
             </Button>
@@ -215,6 +232,7 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('achievements')}
             >
               <i className="fas fa-trophy"></i>
+              <Award className="w-3 h-3 text-white" />
               <span>{t('achievements')}</span>
               {!isTabUnlocked('achievements') && <Lock className="w-3 h-3 ml-1" />}
             </Button>
@@ -233,6 +251,7 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('quests')}
             >
               <i className="fas fa-calendar"></i>
+              <ClipboardList className="w-3 h-3 text-white" />
               <span>{t('dailyQuests')}</span>
               {!isTabUnlocked('quests') && <Lock className="w-3 h-3 ml-1" />}
               {hasCompletedQuests && (
@@ -254,6 +273,7 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('minigames')}
             >
               <i className="fas fa-gamepad"></i>
+              <Gamepad2 className="w-3 h-3 text-white" />
               <span>{t('miniGames')}</span>
               {!isTabUnlocked('minigames') && <Lock className="w-3 h-3 ml-1" />}
             </Button>
@@ -270,6 +290,7 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('donate')}
             >
               <i className="fas fa-coins"></i>
+              <CreditCard className="w-3 h-3 text-white" />
               <span>{t('donate')}</span>
               {!isTabUnlocked('donate') && <Lock className="w-3 h-3 ml-1" />}
             </Button>
@@ -288,6 +309,7 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('reports')}
             >
               <i className="fas fa-headset"></i>
+              <Bug className="w-3 h-3 text-white" />
               <span>{t('reports')}</span>
               {!isTabUnlocked('reports') && <Lock className="w-3 h-3 ml-1" />}
               {hasUnreadReports && (
@@ -312,6 +334,7 @@ export default function DashboardPage() {
               onClick={() => handleTabChange('tutorial')}
             >
               <i className="fas fa-graduation-cap text-lg"></i>
+              <Play className="w-4 h-4 text-white" />
               <span className="font-medium">{t('tutorial')}</span>
               {!gameState.user.tutorialCompleted && (
                 <span className="ml-auto bg-accent/20 text-accent text-xs px-2 py-1 rounded-full">
@@ -334,12 +357,19 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('servers')}
             >
               <i className="fas fa-server text-lg"></i>
+              <Server className="w-4 h-4 text-white" />
               <span className="font-medium">{t('myServers')}</span>
+              {/* 
+              
+              Display the number of servers near the tab
               {gameState.servers && (
                 <span className="ml-auto bg-secondary/20 text-secondary text-xs px-2 py-1 rounded-full">
                   {gameState.servers.length}
                 </span>
               )}
+
+              */}
+
               {!isTabUnlocked('servers') && <Lock className="w-4 h-4 ml-auto" />}
             </Button>
 
@@ -357,6 +387,7 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('hosting')}
             >
               <i className="fas fa-shopping-cart text-lg"></i>
+              <ShoppingCart className="w-4 h-4 text-white" />
               <span className="font-medium">{t('serverStore')}</span>
               {!isTabUnlocked('hosting') && <Lock className="w-4 h-4 ml-auto" />}
             </Button>
@@ -375,6 +406,7 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('learning')}
             >
               <i className="fas fa-book text-lg"></i>
+              <BookOpenText className="w-4 h-4 text-white" />
               <span className="font-medium">{t('learningCenter')}</span>
               {!isTabUnlocked('learning') && <Lock className="w-4 h-4 ml-auto" />}
             </Button>
@@ -393,6 +425,7 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('achievements')}
             >
               <i className="fas fa-trophy text-lg"></i>
+              <Award className="w-4 h-4 text-white" />
               <span className="font-medium">{t('achievements')}</span>
               {!isTabUnlocked('achievements') && <Lock className="w-4 h-4 ml-auto" />}
             </Button>
@@ -411,6 +444,7 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('quests')}
             >
               <i className="fas fa-calendar text-lg"></i>
+              <ClipboardList className="w-4 h-4 text-white" />
               <span className="font-medium">{t('dailyQuests')}</span>
               {!isTabUnlocked('quests') && <Lock className="w-4 h-4 ml-auto" />}
               {hasCompletedQuests && (
@@ -432,6 +466,7 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('minigames')}
             >
               <i className="fas fa-gamepad text-lg"></i>
+              <Gamepad2 className="w-4 h-4 text-white" />
               <span className="font-medium">{t('miniGames')}</span>
               {!isTabUnlocked('minigames') && <Lock className="w-4 h-4 ml-auto" />}
             </Button>
@@ -451,6 +486,7 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('donate')}
             >
               <i className="fas fa-coins text-lg"></i>
+              <CreditCard className="w-4 h-4 text-white" />
               <span className="font-medium">{t('donate')}</span>
               {!isTabUnlocked('donate') && <Lock className="w-4 h-4 ml-auto" />}
             </Button>
@@ -469,6 +505,7 @@ export default function DashboardPage() {
               disabled={!isTabUnlocked('reports')}
             >
               <i className="fas fa-headset text-lg"></i>
+              <Bug className="w-4 h-4 text-white" />
               <span className="font-medium">{t('reports')}</span>
               {!isTabUnlocked('reports') && <Lock className="w-4 h-4 ml-auto" />}
               {hasUnreadReports && (
@@ -480,6 +517,7 @@ export default function DashboardPage() {
           {/* Player Rankings */}
           <div className="mt-6">
             <h3 className="text-sm font-semibold text-slate-400 mb-3 px-3 flex items-center">
+            <AlignJustify className="w-4 h-4 text-white" />
               {t('rankings')}
               <RankingsCountdown />
             </h3>
@@ -498,18 +536,21 @@ export default function DashboardPage() {
               </p>
             </div>
           )}
-          
-          {/* Show hide progress option if tutorial is completed but user achieved 15000 */}
-          {gameState.user.tutorialCompleted && gameState.user.balance >= TUTORIAL_UNLOCK_THRESHOLD && (
-            <div className="mt-8 p-4 bg-gradient-to-r from-green-500/10 to-blue-500/10 rounded-lg border border-green-500/20">
-              <h3 className="text-sm font-semibold text-green-400 mb-2">
-                ✓ {t('tutorialCompleted')}
-              </h3>
-              <p className="text-xs text-slate-400">
-                {t('allFeaturesUnlocked')}
-              </p>
-            </div>
-          )}
+
+{gameState.user.tutorialCompleted && !hideAfter24h && (
+  <div className="mt-8 p-4 bg-gradient-to-r from-green-500/10 to-blue-500/10 rounded-lg border border-green-500/20">
+    <h3 className="text-sm font-semibold text-green-400 mb-2">
+      ✓ {t('tutorialCompleted')}
+    </h3>
+    <p className="text-xs text-slate-400">
+      {t('allFeaturesUnlocked')}
+    </p>
+  </div>
+)}
+
+
+
+
 
         </aside>
 

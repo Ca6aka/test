@@ -90,7 +90,8 @@ const MiniGamesTab = () => {
       icon: Shield,
       difficulty: t('medium'),
       duration: '30s',
-      reward: '+1 XP/packet'
+      reward: '+1 XP',
+      reward2: t('packet')
     },
     {
       id: 'firewall-filter',
@@ -98,8 +99,10 @@ const MiniGamesTab = () => {
       description: t('minigame2Desc'),
       icon: Zap,
       difficulty: t('medium'),
-      duration: '15 requests',
-      reward: '+1 XP/correct'
+      duration: '10',
+      duration2: t('requests'),
+      reward: '+1 XP',
+      reward2: t('correct2')
     }
   ];
 
@@ -295,11 +298,11 @@ const MiniGamesTab = () => {
                 <div className="space-y-2 text-xs">
                   <div className="flex justify-between">
                     <span>{t('duration')}:</span>
-                    <span className="font-medium">{game.duration}</span>
+                    <span className="font-medium">{game.duration} {game.duration2}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>{t('reward')}:</span>
-                    <span className="font-medium text-green-600">{game.reward}</span>
+                    <span className="font-medium text-green-600">{game.reward}/{game.reward2}</span>
                   </div>
                 </div>
                 <Button className="w-full mt-4" data-testid={`start-${game.id}`}>

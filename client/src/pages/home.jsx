@@ -66,7 +66,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent test-name-1">
                 Root Tycoon
               </h1>
               <span className="ml-2 text-slate-400 text-sm">Server Management Tycoon</span>
@@ -144,7 +144,7 @@ export default function HomePage() {
             
             <Card className="bg-slate-800/50 border-slate-700">
               <CardContent className="p-4 sm:p-6 text-center">
-                <div className="h-2 w-2 bg-green-400 rounded-full mx-auto mb-2 animate-pulse"></div>
+                <div className="h-5 w-5 bg-green-400 rounded-full mx-auto mb-5 animate-pulse"></div>
                 <div className="text-xl sm:text-2xl font-bold text-white">{stats.onlinePlayers || '0'}</div>
                 <div className="text-sm sm:text-base text-slate-400">{t('onlineNow')}</div>
               </CardContent>

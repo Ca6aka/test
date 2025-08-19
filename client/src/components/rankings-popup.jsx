@@ -7,6 +7,7 @@ import { formatCurrency } from '@/lib/constants';
 import { Link } from 'wouter';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { RankingsCountdown } from '@/components/player-rankings';
+import { AlignJustify} from 'lucide-react';
 
 export function RankingsPopup() {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,7 +34,7 @@ export function RankingsPopup() {
           onClick={() => setIsOpen(!isOpen)}
           className="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-500 to-amber-600 hover:from-yellow-600 hover:to-amber-700 shadow-lg border-2 border-yellow-400/30 text-white flex items-center justify-center"
           data-testid="rankings-toggle"
-        >
+        ><AlignJustify className="w-4 h-4 text-white" />
           <i className="fas fa-crown text-lg"></i>
         </Button>
       </div>
@@ -45,6 +46,7 @@ export function RankingsPopup() {
             <div className="flex items-center space-x-2">
               <i className="fas fa-trophy text-white text-lg"></i>
               <h3 className="text-white font-bold flex items-center">
+              <AlignJustify className="w-4 h-4 text-white" />
                 {t('rankings')}
                 <span className="text-xs text-yellow-200 ml-2 opacity-80">
                   <RankingsCountdown />

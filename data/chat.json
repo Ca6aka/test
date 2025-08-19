@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "id": "e875f74e-fe50-47e3-aae5-f0a3d23ae88c",
+    "userId": "65a91d9d-7213-4a2e-abd6-c9017bc7ae80",
+    "nickname": "Ca6aka",
+    "message": "1",
+    "timestamp": 1755605579045,
+    "deleted": true,
+    "adminLevel": 2,
+    "deletedBy": "Ca6aka",
+    "deletedAt": 1755607138170
+  }
+]

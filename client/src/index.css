@@ -169,6 +169,44 @@
   animation: shimmer 2s infinite;
 }
 
+@keyframes gradient-x {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-x 6s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.test-name-1 {
+  background: linear-gradient(270deg, #3b82f6, #8b5cf6, #3b82f6);
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  animation: gradientShift 5s ease infinite;
+}
+
+
+:root {
+  --game-name-1: #3b82f6; /* синий */
+  --game-name-2: #8b5cf6; /* фиолетовый */
+  --game-name-3: #ec4899; /* розовый */
+  --game-name-4: #f97316; /* оранжевый */
+}
+
 :root {
   --background: hsl(0 0% 100%);
   --foreground: hsl(210 25% 7.8431%);
@@ -307,4 +345,38 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: rainbowGradient 7s linear infinite;
+}
+
+@keyframes avatarFancy {
+  0% {
+    background-position: 0% 50%;
+    transform: scale(1) rotate(0deg);
+    filter: brightness(1);
+  }
+  25% {
+    background-position: 50% 50%;
+    transform: scale(1.05) rotate(2deg);
+    filter: brightness(1.1);
+  }
+  50% {
+    background-position: 100% 50%;
+    transform: scale(1) rotate(0deg);
+    filter: brightness(1);
+  }
+  75% {
+    background-position: 50% 50%;
+    transform: scale(0.95) rotate(-2deg);
+    filter: brightness(0.95);
+  }
+  100% {
+    background-position: 0% 50%;
+    transform: scale(1) rotate(0deg);
+    filter: brightness(1);
+  }
+}
+
+.animate-avatar-fancy {
+  background-size: 300% 300%;
+  animation: avatarFancy 8s ease-in-out infinite;
+  border-radius: 50%;
 }

@@ -15,7 +15,7 @@ export const SERVER_PRODUCTS = [
     id: 'database-server',
     name: 'Database Server',
     type: 'Storage',
-    price: 8000,
+    price: 9000,
     incomePerMinute: 25,
     monthlyCost: 85,
     icon: 'fas fa-database',
@@ -35,7 +35,7 @@ export const SERVER_PRODUCTS = [
     id: 'cdn-server',
     name: 'CDN Server',
     type: 'Content Delivery',
-    price: 15000,
+    price: 17000,
     incomePerMinute: 100,
     monthlyCost: 180,
     icon: 'fas fa-cloud',
@@ -45,7 +45,7 @@ export const SERVER_PRODUCTS = [
     id: 'gpu-server',
     name: 'GPU Server',
     type: 'AI',
-    price: 25000,
+    price: 30000,
     incomePerMinute: 150,
     monthlyCost: 250,
     icon: 'fas fa-microchip',
@@ -56,7 +56,7 @@ export const SERVER_PRODUCTS = [
     id: 'tpu-server',
     name: 'TPU Server',
     type: 'Computing',
-    price: 47500,
+    price: 50000,
     incomePerMinute: 200,
     monthlyCost: 350,
     icon: 'fas fa-brain',
@@ -81,7 +81,7 @@ export const LEARNING_COURSES = [
     title: 'Advanced Server Management',
     description: 'Master advanced server optimization and scaling techniques',
     difficulty: 'Advanced',
-    duration: 120 * 60 * 1000, // 2 hours in milliseconds
+    duration: 90 * 60 * 1000, // 2 hours in milliseconds
     reward: { type: 'serverSlots', amount: 2 },
     price: 8000,
     requiredLevel: 5
@@ -91,9 +91,9 @@ export const LEARNING_COURSES = [
     title: 'Security Protocols',
     description: 'Implement robust security measures for your server infrastructure',
     difficulty: 'Intermediate',
-    duration: 90 * 60 * 1000, // 1.5 hours in milliseconds
+    duration: 120 * 60 * 1000, // 1.5 hours in milliseconds
     reward: { type: 'efficiency', amount: 15 },
-    price: 5000,
+    price: 10000,
     requiredLevel: 12
   },
   {
@@ -103,7 +103,7 @@ export const LEARNING_COURSES = [
     difficulty: 'Expert',
     duration: 4 * 60 * 60 * 1000, // 4 hours in milliseconds
     reward: { type: 'serverUnlock', serverType: 'gpu-server' },
-    price: 15000,
+    price: 20000,
     requiredLevel: 25
   },
   {
@@ -113,7 +113,7 @@ export const LEARNING_COURSES = [
     difficulty: 'Master',
     duration: 6 * 60 * 60 * 1000, // 6 hours in milliseconds
     reward: { type: 'serverUnlock', serverType: 'tpu-server' },
-    price: 25000,
+    price: 40000,
     requiredLevel: 45
   }
 ];
@@ -146,6 +146,9 @@ export const formatCurrency = (amount, compact = false) => {
   if (!amount && amount !== 0) return '$0';
   
   if (compact && amount >= 1000) {
+    if (amount >= 1000000000) {
+      return '$' + (amount / 1000000000).toFixed(1) + 'B';
+    }
     if (amount >= 1000000) {
       return '$' + (amount / 1000000).toFixed(1) + 'M';
     }

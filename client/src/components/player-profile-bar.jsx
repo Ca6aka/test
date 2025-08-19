@@ -110,20 +110,23 @@ function PlayerAvatar({ user, size = 'md', showLevel = true, showExperienceRing 
           </svg>
         )}
         
-        {/* Avatar with gradient - centered inside the ring */}
-        <div 
-          className={`${avatarSizeClasses[size]} rounded-full bg-gradient-to-br ${user.avatar.gradient} flex items-center justify-center text-white font-bold ${textSizes[size]} shadow-lg border-2 border-white/20 relative overflow-hidden ${user.nickname === 'Ca6aka' ? 'animate-rainbow-pulse' : ''}`}
-        >
-          {/* Static background gradient for regular users */}
-          {user.nickname !== 'Ca6aka' && (
-            <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-transparent to-white/5 opacity-40"></div>
-          )}
-          {/* Special animated rainbow effect for super admin */}
-          {user.nickname === 'Ca6aka' && (
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 via-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 animate-rainbow-pulse opacity-80"></div>
-          )}
-          <span className="relative z-10">{user.nickname[0].toUpperCase()}</span>
-        </div>
+{/* Avatar with fancy animated gradient */}
+<div 
+  className={`${avatarSizeClasses[size]} rounded-full flex items-center justify-center text-white font-bold ${textSizes[size]} shadow-lg border-2 border-white/20 relative overflow-hidden ${user.nickname === 'Ca6aka' ? 'animate-avatar-fancy' : ''}`}
+>
+  {/* Static background for normal users */}
+  {user.nickname !== 'Ca6aka' && (
+    <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-transparent to-white/5 opacity-40"></div>
+  )}
+
+  {/* Special animated effect for super admin */}
+  {user.nickname === 'Ca6aka' && (
+    <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 via-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 opacity-80 animate-avatar-fancy"></div>
+  )}
+
+  <span className="relative z-10">{user.nickname[0].toUpperCase()}</span>
+</div>
+
 
         {/* Level badge */}
         {showLevel && (
@@ -173,41 +176,64 @@ export function PlayerProfileBar({ isOpen, onClose }) {
           className="bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
           onClick={(e) => e.stopPropagation()}
         >
-          <CardHeader className="relative pb-4">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={onClose}
-              className="absolute top-4 right-4 text-slate-400 hover:text-white"
-            >
-              <X className="w-4 h-4" />
-            </Button>
+<CardHeader className="relative pb-4">
+  <Button
+    variant="ghost"
+    size="sm"
+    onClick={onClose}
+    className="absolute top-4 right-4 text-slate-400 hover:text-white"
+  >
+    <X className="w-4 h-4" />
+  </Button>
 
-            <div className="flex items-center space-x-6">
-              <PlayerAvatar user={user} size="xl" />
-              <div className="flex-1">
-                <CardTitle className="text-2xl font-bold text-white mb-2">
-                  {user.nickname}
-                </CardTitle>
-                <div className="space-y-2">
-                  <div className="flex items-center space-x-2">
-                    <Star className="w-4 h-4 text-yellow-500" />
-                    <span className="text-slate-300">Level {level}</span>
-                    <Badge variant="outline" className="border-blue-500 text-blue-400">
-                      {experience} XP
-                    </Badge>
-                  </div>
-                  <div className="space-y-1">
-                    <div className="flex justify-between text-sm text-slate-400">
-                      <span>{t('progressToLevel')} {level + 1}</span>
-                      <span>{expToNext} {t('xpNeeded')}</span>
-                    </div>
-                    <Progress value={expProgress} className="h-2" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </CardHeader>
+  <div className="flex items-center space-x-6">
+    <PlayerAvatar user={user} size="xl" />
+    <div className="flex-1">
+    <CardTitle className="text-xl sm:text-2xl font-bold text-white mb-2 flex items-center justify-between">
+  <span>{user.nickname}</span>
+  <span
+    className="
+      text-xs sm:text-sm
+      px-2 sm:px-3 py-0.5 sm:py-1
+      text-green-700 border border-green-400 rounded-full
+      flex flex-col items-center text-center ml-auto
+    "
+    style={{
+      background: 'linear-gradient(135deg, rgba(34,197,94,0.15), rgba(132,211,244,0.1))',
+    }}
+  >
+    <span>{t('registrationdate')}</span>
+    <span>
+      {new Date(user.registrationTime).toLocaleDateString('ru-RU', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+      })}
+    </span>
+  </span>
+</CardTitle>
+
+
+      <div className="space-y-2">
+        <div className="flex items-center space-x-2">
+          <Star className="w-4 h-4 text-yellow-500" />
+          <span className="text-slate-300">{t('level')} {level}</span>
+          <Badge variant="outline" className="border-blue-500 text-blue-400">
+            {experience} XP
+          </Badge>
+        </div>
+        <div className="space-y-1">
+          <div className="flex justify-between text-sm text-slate-400">
+            <span>{t('progressToLevel')} {level + 1}</span>
+            <span>{expToNext} {t('xpNeeded')}</span>
+          </div>
+          <Progress value={expProgress} className="h-2" />
+        </div>
+      </div>
+    </div>
+  </div>
+</CardHeader>
+
 
           <CardContent className="space-y-6">
             {/* Financial Stats */}

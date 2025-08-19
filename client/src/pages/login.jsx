@@ -115,8 +115,13 @@ export default function LoginPage() {
           <div className="flex items-center justify-between mb-4">
             <div className="flex-1"></div>
             <div className="flex-1 text-center">
-              <CardTitle className="text-2xl font-bold text-primary">Root Tycoon</CardTitle>
-              <p className="text-slate-400">Server Hosting Simulator</p>
+              <CardTitle>
+                <span className="text-2xl font-bold text-primary bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent test-name-1">
+                  Root Tycoon
+                </span>
+              </CardTitle>
+
+              <p className="text-slate-400 mt-1">Server Hosting Simulator</p>
             </div>
             <div className="flex-1 flex justify-end">
               <Select value={language} onValueChange={changeLanguage}>

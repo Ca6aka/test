@@ -117,7 +117,7 @@ const SERVER_PRODUCTS = [
     id: 'database-server',
     name: 'Database Server',
     type: 'Storage',
-    price: 8000,
+    price: 9000,
     incomePerMinute: 25,
     monthlyCost: 85,
     icon: 'fas fa-database',
@@ -137,7 +137,7 @@ const SERVER_PRODUCTS = [
     id: 'cdn-server',
     name: 'CDN Server',
     type: 'Content Delivery',
-    price: 15000,
+    price: 17000,
     incomePerMinute: 100,
     monthlyCost: 180,
     icon: 'fas fa-cloud',
@@ -147,7 +147,7 @@ const SERVER_PRODUCTS = [
     id: 'gpu-server',
     name: 'GPU Server',
     type: 'AI',
-    price: 25000,
+    price: 30000,
     incomePerMinute: 150,
     monthlyCost: 250,
     icon: 'fas fa-microchip',
@@ -158,7 +158,7 @@ const SERVER_PRODUCTS = [
     id: 'tpu-server',
     name: 'TPU Server',
     type: 'Computing',
-    price: 47500,
+    price: 50000,
     incomePerMinute: 200,
     monthlyCost: 350,
     icon: 'fas fa-brain',
@@ -210,7 +210,7 @@ const LEARNING_COURSES = [
     title: 'Advanced Server Management',
     description: 'Master advanced server optimization and scaling techniques',
     difficulty: 'Advanced',
-    duration: 120 * 60 * 1000, // 2 hours in milliseconds
+    duration: 90 * 60 * 1000, // 2 hours in milliseconds
     reward: { type: 'serverSlots', amount: 2 },
     price: 8000,
     requiredLevel: 5
@@ -220,9 +220,9 @@ const LEARNING_COURSES = [
     title: 'Security Protocols',
     description: 'Implement robust security measures for your server infrastructure',
     difficulty: 'Intermediate',
-    duration: 90 * 60 * 1000, // 1.5 hours in milliseconds
+    duration: 120 * 60 * 1000, // 1.5 hours in milliseconds
     reward: { type: 'efficiency', amount: 15 },
-    price: 5000,
+    price: 10000,
     requiredLevel: 12
   },
   {
@@ -232,7 +232,7 @@ const LEARNING_COURSES = [
     difficulty: 'Expert',
     duration: 4 * 60 * 60 * 1000, // 4 hours in milliseconds
     reward: { type: 'serverUnlock', serverType: 'gpu-server' },
-    price: 15000,
+    price: 20000,
     requiredLevel: 25
   },
   {
@@ -242,7 +242,7 @@ const LEARNING_COURSES = [
     difficulty: 'Master',
     duration: 6 * 60 * 60 * 1000, // 6 hours in milliseconds
     reward: { type: 'serverUnlock', serverType: 'tpu-server' },
-    price: 25000,
+    price: 40000,
     requiredLevel: 45
   }
 ];
@@ -1006,7 +1006,7 @@ export class FileStorage {
 
   async checkServerOverload(userId, serverId, loadPercentage) {
     // Only check for overload if load is very high and after a delay
-    if (loadPercentage < 90) return; // Only check servers with 90%+ load
+    if (loadPercentage < 50) return; // Only check servers with 50%+ load
     
     // Get server to check last overload check time
     const servers = await this.getServers();
@@ -1032,9 +1032,15 @@ export class FileStorage {
     // Calculate shutdown probability based on load (much lower chances)
     let shutdownChance = 0;
     
-    if (loadPercentage > 95) {
+    if (loadPercentage >= 95) {
+      shutdownChance = 0.25; // 25% chance every 5 minutes
+    } else if (loadPercentage >= 90) {
+      shutdownChance = 0.20; // 20% chance every 5 minutes
+    } else if (loadPercentage >= 80) {
       shutdownChance = 0.15; // 15% chance every 5 minutes
-    } else if (loadPercentage > 90) {
+    } else if (loadPercentage >= 70) {
+      shutdownChance = 0.10; // 10% chance every 5 minutes
+    } else if (loadPercentage >= 50) {
       shutdownChance = 0.05; // 5% chance every 5 minutes
     }
     
@@ -1255,7 +1261,7 @@ export class FileStorage {
       // Only update durability for online servers every 10 minutes
       if (server.isOnline && timeDiff >= tenMinutes) {
         const durabilityLoss = Math.floor(timeDiff / tenMinutes); // 1% per 10 minutes
-        const currentDurability = server.durability || 100;
+        const currentDurability = server.durability !== undefined ? server.durability : 100;
         server.durability = Math.max(0, currentDurability - durabilityLoss);
         server.lastDurabilityUpdate = now;
         updated = true;

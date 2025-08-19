@@ -241,10 +241,10 @@ export function ReportsTab() {
                         <SelectValue placeholder={t('selectCategory')} />
                       </SelectTrigger>
                       <SelectContent className="bg-slate-700 border-slate-600">
-                        <SelectItem value="bug" className="text-white">{t('reportTypeBug')}</SelectItem>
-                        <SelectItem value="feature" className="text-white">{t('reportTypeFeature')}</SelectItem>
-                        <SelectItem value="complaint" className="text-white">{t('reportTypeComplaint')}</SelectItem>
-                        <SelectItem value="other" className="text-white">{t('reportTypeOther')}</SelectItem>
+                        <SelectItem value={t('reportTypeBug')} className="text-white">{t('reportTypeBug')}</SelectItem>
+                        <SelectItem value={t('reportTypeFeature')} className="text-white">{t('reportTypeFeature')}</SelectItem>
+                        <SelectItem value={t('reportTypeComplaint')} className="text-white">{t('reportTypeComplaint')}</SelectItem>
+                        <SelectItem value={t('reportTypeOther')} className="text-white">{t('reportTypeOther')}</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -350,7 +350,7 @@ export function ReportsTab() {
                 <div>
                   <h3 className="font-semibold text-white">{selectedReport.subject}</h3>
                   <div className="text-sm text-slate-400 flex items-center space-x-2">
-                    <span>{getCategoryIcon(selectedReport.category)} {t(selectedReport.category + 'Issue')}</span>
+                    <span>{getCategoryIcon(selectedReport.category)} {t(selectedReport.category)}</span>
                     <span>•</span>
                     <span>{getStatusBadge(selectedReport.status)}</span>
                   </div>

@@ -124,7 +124,7 @@ export function LearningTab() {
             <div className="flex justify-between text-sm">
               <span className="text-slate-400">{t('progress')}</span>
               <span className="text-purple-400">
-                {gameState.currentLearning.progress}% ({gameState.currentLearning.timeRemaining} {t('remaining')})
+                {gameState.currentLearning.progress}% ({gameState.currentLearning.timeRemaining} {t('timeRemaining')})
               </span>
             </div>
             <Progress value={gameState.currentLearning.progress} className="h-3" />

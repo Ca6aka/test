@@ -135,7 +135,7 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
     return shuffledColors.map((color, index) => ({
       id: `port-${index}`,
       color,
-      x: 380,
+      x: 300,
       y: 60 + shuffledPortIndexes[index] * 50,
       connected: false
     }));
@@ -288,7 +288,7 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
                 {cables.map((cable) => (
                   <div
                     key={cable.id}
-                    className={`absolute w-4 h-4 rounded-full cursor-pointer transition-transform hover:scale-110 ${
+                    className={`absolute w-5 h-5 rounded-full cursor-pointer transition-transform hover:scale-110 ${
                       cable.connected ? 'opacity-50' : ''
                     }`}
                     style={{
@@ -306,7 +306,7 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
                 {ports.map((port) => (
                   <div
                     key={port.id}
-                    className={`absolute w-4 h-4 cursor-pointer transition-transform hover:scale-110 ${
+                    className={`absolute w-5 h-5 cursor-pointer transition-transform hover:scale-110 ${
                       port.connected ? 'opacity-50' : ''
                     }`}
                     style={{

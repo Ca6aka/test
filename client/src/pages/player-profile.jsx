@@ -84,28 +84,36 @@ export default function PlayerProfilePage() {
   
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      {/* Header */}
-      <header className="border-b border-slate-700 bg-slate-900/50 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Button 
-              variant="ghost" 
-              onClick={handleBackClick}
-              className="text-slate-300 hover:text-white hover:bg-slate-800"
-              data-testid="button-back"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              {t('back')}
-            </Button>
-            
-            <div className="flex items-center">
-              <h1 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                {t('playerProfile')}
-              </h1>
-            </div>
-          </div>
-        </div>
-      </header>
+  {/* Header */}
+  <header className="border-b border-slate-700 bg-slate-900/50 backdrop-blur-sm">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="flex justify-between items-center h-16">
+        <Button 
+          variant="ghost" 
+          onClick={handleBackClick}
+          className="text-slate-300 hover:text-white hover:bg-slate-800"
+          data-testid="button-back"
+        >
+          <ArrowLeft className="w-4 h-4 mr-2" />
+          {t('back')}
+        </Button>
+
+        {/* Root Tycoon слева */}
+        <h1 
+          className="text-xl font-bold cursor-pointer bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent animate-gradient"
+          onClick={() => setLocation('/start')}
+          data-testid="title-link-desktop"
+        >
+          Root Tycoon
+        </h1>
+
+        {/* Player profile справа */}
+        <h1 className="text-xl font-bold text-primary">
+          {t('playerProfile')}
+        </h1>
+      </div>
+    </div>
+  </header>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Player Info Card */}

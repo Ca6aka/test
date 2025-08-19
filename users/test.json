@@ -1,95 +1,67 @@
 {
-  "id": "65a91d9d-7213-4a2e-abd6-c9017bc7ae80",
-  "nickname": "Ca6aka",
-  "password": "$2b$10$G1sTjzxqs2js60d52sYQXOCbGLW1o.6TCUNzzuimD5iwHk21qh6vq",
-  "balance": 1167305,
-  "level": 15,
-  "experience": 2774,
-  "totalEarnings": 1481102,
-  "totalSpent": 614496,
+  "id": "050c141e-81d5-4ced-804b-b0784a98f373",
+  "nickname": "test",
+  "password": "$2b$10$e8j1sdbiBLVKsc9Bi3NzquZD0Cho8aI2V1BcgjO.Sg7QaELDQtZJK",
+  "balance": 21350,
+  "level": 2,
+  "experience": 118,
+  "totalEarnings": 13150,
+  "totalSpent": 0,
   "avatar": {
-    "gradient": "from-green-400 via-teal-500 to-cyan-600",
+    "gradient": "from-red-400 via-pink-500 to-purple-600",
     "pattern": "multi-color",
-    "seed": 898168,
-    "animation": "shimmer-wave"
+    "seed": 245177,
+    "animation": "pulse-glow"
   },
-  "serverLimit": 14,
-  "tutorialCompleted": true,
-  "admin": 2,
+  "serverLimit": 25,
+  "tutorialCompleted": false,
+  "admin": 0,
   "banned": false,
   "muted": false,
   "muteExpires": null,
-  "isOnline": true,
-  "lastIncomeUpdate": 1755630472123,
+  "isOnline": false,
+  "lastIncomeUpdate": 1755567104653,
   "jobCooldowns": {
-    "maintenance": 1755610333627,
-    "optimization": 1755610486597,
-    "security-audit": 1755610303752
+    "maintenance": 1755567746761,
+    "optimization": 1755567524075,
+    "security-audit": 1755567524075
   },
-  "currentLearning": {
-    "id": "basic-setup",
-    "title": "Basic Server Setup",
-    "description": "Learn the fundamentals of server configuration and deployment",
-    "difficulty": "Beginner",
-    "startTime": 1755629152834,
-    "endTime": 1755630952834,
-    "progress": 0,
-    "reward": {
-      "type": "serverSlots",
-      "amount": 1
-    }
-  },
+  "currentLearning": null,
   "activities": [
     {
-      "id": "2cf3057f-f47f-4689-b768-7547b68a9655",
-      "description": "Income: +$761, Rental: -$76 (Net: +$685)",
-      "timestamp": "19.08.2025, 21:07:52"
+      "id": "c56dfae1-fc02-4dea-948f-26a5407e34c8",
+      "description": "Quest reward claimed: Mixed Tasks (+$3 200)",
+      "timestamp": "19.08.2025, 03:54:21"
     },
     {
-      "id": "ccb11442-c294-4500-910a-b295dae5cc87",
-      "description": "Income: +$1253, Rental: -$125 (Net: +$1128)",
-      "timestamp": "19.08.2025, 21:07:28"
+      "id": "6e325c20-e05c-4675-a2b7-7b32bb12d985",
+      "description": "Quest reward claimed: Security Check (+$2 500)",
+      "timestamp": "19.08.2025, 03:54:14"
     },
     {
-      "id": "8d752485-efef-4f1b-a78b-6961a08d81da",
-      "description": "Daily quest completed: Mega Earner - Reward ready to claim!",
-      "timestamp": "19.08.2025, 21:07:28"
+      "id": "b2f4a0f0-3668-47b7-9753-5305ab26f1be",
+      "description": "Achievement unlocked: First Steps (+$500)",
+      "timestamp": "19.08.2025, 03:54:12"
     },
     {
-      "id": "81a3fb4d-692a-417f-a42f-6a6aeebdfded",
-      "description": "Server \"CDN Server\" shutdown due to overload (80% load)",
-      "timestamp": "19.08.2025, 21:06:50"
+      "id": "ca046e54-286b-4bd2-96bc-ff03666b4cda",
+      "description": "Gained 6 XP from mini-game",
+      "timestamp": "19.08.2025, 03:52:23"
     },
     {
-      "id": "b9bdc2b8-0f9f-4921-bb71-8caa9dd62928",
-      "description": "Income: +$750, Rental: -$75 (Net: +$675)",
-      "timestamp": "19.08.2025, 21:06:50"
+      "id": "c78d4efa-e0ee-44d8-9520-0fd089737f4e",
+      "description": "Gained 6 XP from mini-game",
+      "timestamp": "19.08.2025, 03:51:21"
     }
   ],
   "achievements": [
     "early-earner",
-    "first-steps",
-    "first-server",
-    "server-builder",
-    "efficient-worker",
-    "server-collection",
-    "persistent-learner",
-    "security-expert",
-    "optimization-master",
-    "maintenance-guru",
-    "course-completionist",
-    "learning-enthusiast",
-    "job-master",
-    "wealthy-investor",
-    "server-mogul",
-    "millionaire"
+    "first-steps"
   ],
-  "completedJobsCount": 144,
-  "completedCoursesCount": 11,
-  "completedLearning": [
-    "security-protocols"
-  ],
-  "efficiencyBonus": 15,
+  "completedJobsCount": 4,
+  "completedCoursesCount": 0,
+  "completedLearning": [],
+  "efficiencyBonus": 0,
   "dailyQuests": [
     {
       "id": "daily-maintenance-Tue Aug 19 2025",
@@ -101,7 +73,7 @@
         "jobType": "maintenance",
         "count": 3
       },
-      "progress": 0,
+      "progress": 2,
       "completed": false,
       "date": "Tue Aug 19 2025"
     },
@@ -114,10 +86,9 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 5000,
-      "completed": true,
-      "date": "Tue Aug 19 2025",
-      "claimed": true
+      "progress": 0,
+      "completed": false,
+      "date": "Tue Aug 19 2025"
     },
     {
       "id": "daily-optimization-Tue Aug 19 2025",
@@ -129,7 +100,7 @@
         "jobType": "optimization",
         "count": 2
       },
-      "progress": 0,
+      "progress": 1,
       "completed": false,
       "date": "Tue Aug 19 2025"
     },
@@ -143,9 +114,10 @@
         "jobType": "security-audit",
         "count": 1
       },
-      "progress": 0,
-      "completed": false,
-      "date": "Tue Aug 19 2025"
+      "progress": 1,
+      "completed": true,
+      "date": "Tue Aug 19 2025",
+      "claimed": true
     },
     {
       "id": "daily-earnings-Tue Aug 19 2025",
@@ -156,10 +128,9 @@
         "type": "income",
         "amount": 10000
       },
-      "progress": 10000,
-      "completed": true,
-      "date": "Tue Aug 19 2025",
-      "claimed": true
+      "progress": 0,
+      "completed": false,
+      "date": "Tue Aug 19 2025"
     },
     {
       "id": "daily-worker-Tue Aug 19 2025",
@@ -171,7 +142,7 @@
         "jobType": "any",
         "count": 5
       },
-      "progress": 0,
+      "progress": 4,
       "completed": false,
       "date": "Tue Aug 19 2025"
     },
@@ -185,9 +156,15 @@
         "jobType": "mixed",
         "count": 3
       },
-      "progress": 0,
-      "completed": false,
-      "date": "Tue Aug 19 2025"
+      "progress": 3,
+      "completed": true,
+      "date": "Tue Aug 19 2025",
+      "jobCounts": {
+        "maintenance": 2,
+        "optimization": 1,
+        "security-audit": 1
+      },
+      "claimed": true
     },
     {
       "id": "daily-income-boost-Tue Aug 19 2025",
@@ -198,10 +175,9 @@
         "type": "income",
         "amount": 20000
       },
-      "progress": 20000,
-      "completed": true,
-      "date": "Tue Aug 19 2025",
-      "claimed": true
+      "progress": 0,
+      "completed": false,
+      "date": "Tue Aug 19 2025"
     },
     {
       "id": "daily-job-spree-Tue Aug 19 2025",
@@ -213,7 +189,7 @@
         "jobType": "any",
         "count": 8
       },
-      "progress": 0,
+      "progress": 4,
       "completed": false,
       "date": "Tue Aug 19 2025"
     },
@@ -226,13 +202,13 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 50000,
-      "completed": true,
+      "progress": 0,
+      "completed": false,
       "date": "Tue Aug 19 2025"
     }
   ],
-  "lastQuestReset": 1755628419352,
+  "lastQuestReset": 1755567104653,
   "registrationIP": "192.168.0.136",
-  "registrationTime": 1755531070984,
-  "lastSeen": 1755630480262
+  "registrationTime": 1755567104652,
+  "lastSeen": 1755568502034
 }

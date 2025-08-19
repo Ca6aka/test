@@ -127,7 +127,7 @@ export function GameProvider({ children }) {
 
   // Refetch user data periodically to catch balance/XP updates from external sources
   const { data: userUpdateResponse } = useQuery({
-    queryKey: ['/api/auth/me', 'periodic'],
+    queryKey: ['/api/auth/me'],
     enabled: !!gameState.user,
     refetchInterval: 5000, // Check every 5 seconds for balance/XP updates
     retry: false,
@@ -173,7 +173,6 @@ export function GameProvider({ children }) {
       dispatch({ type: 'UPDATE_INCOME', payload: data });
       // Invalidate queries to ensure UI updates immediately
       queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
-      queryClient.invalidateQueries({ queryKey: ['/api/auth/me', 'periodic'] });
       queryClient.invalidateQueries({ queryKey: ['/api/servers'] });
       queryClient.invalidateQueries({ queryKey: ['/api/activities'] });
     },
@@ -239,7 +238,6 @@ export function GameProvider({ children }) {
       queryClient.invalidateQueries({ queryKey: ['/api/jobs/cooldowns'] });
       queryClient.invalidateQueries({ queryKey: ['/api/quests'] }); // Update quests after job completion
       queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
-      queryClient.invalidateQueries({ queryKey: ['/api/auth/me', 'periodic'] });
       
       // Show level-up notification if user leveled up
       if (data.leveledUp && data.newLevel) {
@@ -262,7 +260,6 @@ export function GameProvider({ children }) {
       queryClient.invalidateQueries({ queryKey: ['/api/servers'] });
       queryClient.invalidateQueries({ queryKey: ['/api/activities'] });
       queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
-      queryClient.invalidateQueries({ queryKey: ['/api/auth/me', 'periodic'] });
     },
   });
 
@@ -274,7 +271,6 @@ export function GameProvider({ children }) {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/servers'] });
       queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
-      queryClient.invalidateQueries({ queryKey: ['/api/auth/me', 'periodic'] });
     },
   });
 
@@ -290,7 +286,6 @@ export function GameProvider({ children }) {
       queryClient.invalidateQueries({ queryKey: ['/api/servers'] });
       queryClient.invalidateQueries({ queryKey: ['/api/activities'] });
       queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
-      queryClient.invalidateQueries({ queryKey: ['/api/auth/me', 'periodic'] });
     },
   });
 
@@ -322,10 +317,9 @@ export function GameProvider({ children }) {
       }
       queryClient.invalidateQueries({ queryKey: ['/api/learning/current'] });
       queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
-      queryClient.invalidateQueries({ queryKey: ['/api/auth/me', 'periodic'] });
     },
   });
-
+  
   // Update state when data changes
   useEffect(() => {
     if (userResponse?.user) {

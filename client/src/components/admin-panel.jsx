@@ -295,7 +295,7 @@ export const AdminPanel = ({ user, isOpen: externalIsOpen, onOpenChange }) => {
                         <div className={`w-3 h-3 rounded-full ${user.isOnline ? 'bg-green-400' : 'bg-red-400'}`} />
                         <span className="font-medium">{user.nickname}</span>
                         {user.admin > 0 && (
-                          <Badge variant="secondary" className="text-xs">
+                          <Badge variant="secondary" className="text-xs bg-red-500 animate-pulse">
                             {user.nickname === 'Ca6aka' ? 'Super Admin' : 'Admin'}
                           </Badge>
                         )}
