@@ -87,20 +87,20 @@ export default function PlayerProfilePage() {
   {/* Header */}
   <header className="border-b border-slate-700 bg-slate-900/50 backdrop-blur-sm">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex justify-between items-center h-16">
+      <div className="flex justify-between items-center h-16 overflow-hidden">
         <Button 
           variant="ghost" 
           onClick={handleBackClick}
-          className="text-slate-300 hover:text-white hover:bg-slate-800"
+          className="text-slate-300 hover:text-white hover:bg-slate-800 flex-shrink-0"
           data-testid="button-back"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
-          {t('back')}
+          <span className="hidden sm:inline">{t('back')}</span>
         </Button>
 
-        {/* Root Tycoon слева */}
+        {/* Root Tycoon по центру */}
         <h1 
-          className="text-xl font-bold cursor-pointer bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent animate-gradient"
+          className="text-lg sm:text-xl font-bold cursor-pointer bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent animate-gradient flex-shrink-0 truncate"
           onClick={() => setLocation('/start')}
           data-testid="title-link-desktop"
         >
@@ -108,7 +108,7 @@ export default function PlayerProfilePage() {
         </h1>
 
         {/* Player profile справа */}
-        <h1 className="text-xl font-bold text-primary">
+        <h1 className="text-sm sm:text-xl font-bold text-primary flex-shrink-0 truncate">
           {t('playerProfile')}
         </h1>
       </div>
@@ -118,78 +118,82 @@ export default function PlayerProfilePage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Player Info Card */}
         <Card className="bg-slate-800/50 border-slate-700 mb-8">
-          <CardContent className="p-8">
-            <div className="flex items-center space-x-6">
-              <PlayerAvatar 
-                user={player} 
-                size="xl" 
-                showLevel={true}
-                showExperienceRing={false}
-              />
+          <CardContent className="p-4 sm:p-8">
+            <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
+              <div className="flex-shrink-0">
+                <PlayerAvatar 
+                  user={player} 
+                  size="xl" 
+                  showLevel={true}
+                  showExperienceRing={false}
+                />
+              </div>
               
               <div className="flex-1">
-              <div className="flex items-center space-x-3 mb-2">
-  <h1 className={`text-3xl font-bold ${
-      player.nickname === 'Ca6aka'
-        ? 'relative overflow-hidden animate-gradient-text'
-        : 'text-white'
-    }`} 
-    data-testid="text-nickname"
-  >
-    {player.nickname}
-  </h1>
+              <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-2 sm:space-y-0 sm:space-x-3 mb-2">
+                <h1 className={`text-2xl sm:text-3xl font-bold text-center sm:text-left break-words ${
+                    player.nickname === 'Ca6aka'
+                      ? 'relative overflow-hidden animate-gradient-text'
+                      : 'text-white'
+                  }`} 
+                  data-testid="text-nickname"
+                >
+                  {player.nickname}
+                </h1>
 
-  {isOnline && (
-    <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
-      <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
-      {t('online')}
-    </Badge>
-  )}
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                  {isOnline && (
+                    <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
+                      <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+                      {t('online')}
+                    </Badge>
+                  )}
 
-  {!isOnline && (
-    <Badge variant="outline" className="border-slate-600 text-slate-400">
-      <div className="w-2 h-2 bg-red-400 rounded-full mr-2"></div>
-      {t('offline')}
-    </Badge>
-  )}
+                  {!isOnline && (
+                    <Badge variant="outline" className="border-slate-600 text-slate-400">
+                      <div className="w-2 h-2 bg-red-400 rounded-full mr-2"></div>
+                      {t('offline')}
+                    </Badge>
+                  )}
 
-  {player.admin >= 1 && (
-    <Badge 
-      className={`${
-        player.nickname === 'Ca6aka' 
-          ? 'bg-red-500/20 text-red-400 border-red-500/30 animate-pulse' 
-          : 'bg-purple-500/20 text-purple-400 border-purple-500/30'
-      } relative overflow-hidden`}
-    >
-      <div className={`absolute inset-0 ${
-        player.nickname === 'Ca6aka' 
-          ? 'bg-gradient-to-r from-red-500/10 to-red-600/10' 
-          : 'bg-gradient-to-r from-purple-500/10 to-purple-600/10'
-      } animate-shimmer`}></div>
-      <span className="relative z-10">
-        {player.nickname === 'Ca6aka' ? 'SUPER-ADMIN' : 'Admin'}
-      </span>
-    </Badge>
-  )}
-</div>
+                  {player.admin >= 1 && (
+                    <Badge 
+                      className={`${
+                        player.nickname === 'Ca6aka' 
+                          ? 'bg-red-500/20 text-red-400 border-red-500/30 animate-pulse' 
+                          : 'bg-purple-500/20 text-purple-400 border-purple-500/30'
+                      } relative overflow-hidden`}
+                    >
+                      <div className={`absolute inset-0 ${
+                        player.nickname === 'Ca6aka' 
+                          ? 'bg-gradient-to-r from-red-500/10 to-red-600/10' 
+                          : 'bg-gradient-to-r from-purple-500/10 to-purple-600/10'
+                      } animate-shimmer`}></div>
+                      <span className="relative z-10">
+                        {player.nickname === 'Ca6aka' ? 'SUPER-ADMIN' : 'Admin'}
+                      </span>
+                    </Badge>
+                  )}
+                </div>
+              </div>
 
                 
-                <div className="flex items-center space-x-6 text-slate-300 flex-wrap">
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 text-slate-300 mt-4">
                   <div className="flex items-center space-x-2">
                     <Star className="w-4 h-4 text-blue-400" />
-                    <span>{t('level')}: {level}</span>
+                    <span className="text-sm">{t('level')}: {level}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Trophy className="w-4 h-4 text-yellow-400" />
-                    <span>{t('rank')} #{playerRank}</span>
+                    <span className="text-sm">{t('rank')} #{playerRank}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Server className="w-4 h-4 text-purple-400" />
-                    <span>{player.serverCount || 0} {t('servers')}</span>
+                    <span className="text-sm">{player.serverCount || 0} {t('servers')}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <TrendingUp className="w-4 h-4 text-green-400" />
-                    <span>${player.balance?.toLocaleString() || '0'}</span>
+                    <span className="text-sm">${player.balance?.toLocaleString() || '0'}</span>
                   </div>
                 </div>
               </div>

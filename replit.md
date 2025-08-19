@@ -9,7 +9,12 @@ A full-stack web application simulating a server management business game. Playe
 - Uses Russian interface in the game
 
 [LIVE] ## Recent Changes
-- **Critical Bug Fixes Completed (August 19, 2025)**: Fixed major user experience issues
+- **Comprehensive Bug Fixes Completed (August 19, 2025)**: Fixed all major user experience issues
+  - **Mini-Game XP Fix**: XP rewards from mini-games now properly trigger level-up animations and notifications with improved server response data
+  - **Reports Mobile Optimization**: Fixed mobile layout with proper height constraints, infinite background scrolling, and red notification dots
+  - **Player Profile Mobile**: Optimized mobile layout with responsive headers, text wrapping, and flexible card layouts
+  - **Ban System Enhancement**: Users banned by admins now have all servers automatically turned offline and income generation stopped
+  - **Daily Quests Progress**: Added proper progress bar showing time elapsed in 24-hour cycle alongside quest completion tracking
   - **Learning Completion Fix**: Learning blocks now disappear immediately at 99% without requiring page refresh
   - **Online Status Fix**: Users now correctly go offline after 5 minutes of inactivity (income updates no longer count as activity)
   - **Mobile UI Fix**: Chat button repositioned to not overlap with report submission on mobile devices

@@ -69,8 +69,11 @@ const MiniGamesTab = () => {
         variant: 'default'
       });
 
+      // Show level-up notification with delay for better UX
       if (data.leveledUp && data.newLevel) {
-        showLevelUpNotification(data.newLevel);
+        setTimeout(() => {
+          showLevelUpNotification(data.newLevel);
+        }, 500);
       }
     },
     onError: (error) => {

@@ -2006,8 +2006,8 @@ export class FileStorage {
         const userServers = serversByOwner[user.id] || [];
         const activeServers = userServers.filter(s => s.isOnline);
         
-        // Only update income for users with active servers
-        if (activeServers.length > 0) {
+        // Only update income for users with active servers who are not banned
+        if (activeServers.length > 0 && !user.banned) {
           const lastUpdate = user.lastIncomeUpdate || now;
           const timeSinceUpdate = now - lastUpdate;
           

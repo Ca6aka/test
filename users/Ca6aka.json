@@ -2,68 +2,56 @@
   "id": "65a91d9d-7213-4a2e-abd6-c9017bc7ae80",
   "nickname": "Ca6aka",
   "password": "$2b$10$G1sTjzxqs2js60d52sYQXOCbGLW1o.6TCUNzzuimD5iwHk21qh6vq",
-  "balance": 1183016,
+  "balance": 1203295,
   "level": 15,
   "experience": 2774,
-  "totalEarnings": 1498557,
-  "totalSpent": 616240,
+  "totalEarnings": 1512197,
+  "totalSpent": 617601,
   "avatar": {
     "gradient": "from-green-400 via-teal-500 to-cyan-600",
     "pattern": "multi-color",
     "seed": 898168,
     "animation": "shimmer-wave"
   },
-  "serverLimit": 14,
+  "serverLimit": 15,
   "tutorialCompleted": true,
   "admin": 2,
   "banned": false,
   "muted": false,
   "muteExpires": null,
-  "isOnline": true,
-  "lastIncomeUpdate": 1755631046155,
+  "isOnline": false,
+  "lastIncomeUpdate": 1755631652536,
   "jobCooldowns": {
     "maintenance": 1755610333627,
     "optimization": 1755610486597,
     "security-audit": 1755610303752
   },
-  "currentLearning": {
-    "id": "basic-setup",
-    "title": "Basic Server Setup",
-    "description": "Learn the fundamentals of server configuration and deployment",
-    "difficulty": "Beginner",
-    "startTime": 1755629152834,
-    "endTime": 1755630952834,
-    "progress": 0,
-    "reward": {
-      "type": "serverSlots",
-      "amount": 1
-    }
-  },
+  "currentLearning": null,
   "activities": [
     {
-      "id": "9df88237-3fc6-4cee-aebb-ccc7cac34f1a",
-      "description": "Income: +$1650, Rental: -$165 (Net: +$1485)",
-      "timestamp": "8/19/2025, 7:17:26 PM"
+      "id": "3d70eadc-8d1c-41bf-ae59-e6743e68f6d7",
+      "description": "Income: +$1350, Rental: -$135 (Net: +$1215)",
+      "timestamp": "8/19/2025, 7:27:32 PM"
     },
     {
-      "id": "2800e82d-a522-458e-9315-e23bce728801",
-      "description": "Income: +$1649, Rental: -$164 (Net: +$1485)",
-      "timestamp": "8/19/2025, 7:16:26 PM"
+      "id": "f603dd75-de18-4db0-bac3-8d294a97602d",
+      "description": "Income: +$2574, Rental: -$257 (Net: +$2317)",
+      "timestamp": "8/19/2025, 7:26:32 PM"
     },
     {
-      "id": "399f7bd5-16ed-4f38-883c-bffe1ad7fc68",
-      "description": "Income: +$1650, Rental: -$165 (Net: +$1485)",
-      "timestamp": "8/19/2025, 7:15:26 PM"
+      "id": "7e4c996e-416d-455a-8f50-3b7719300246",
+      "description": "Income: +$1350, Rental: -$135 (Net: +$1215)",
+      "timestamp": "8/19/2025, 7:24:38 PM"
     },
     {
-      "id": "91e52818-ac45-47cd-8c72-1d7a9c5ff3ff",
-      "description": "Income: +$1650, Rental: -$165 (Net: +$1485)",
-      "timestamp": "8/19/2025, 7:14:26 PM"
+      "id": "3c6569e3-1f3d-43af-a634-2560ec1b36a4",
+      "description": "Income: +$1350, Rental: -$135 (Net: +$1215)",
+      "timestamp": "8/19/2025, 7:23:38 PM"
     },
     {
-      "id": "1540df90-edaa-416d-bb92-63d588ce6c34",
-      "description": "Server \"CDN Server\" shutdown due to overload (80% load)",
-      "timestamp": "8/19/2025, 7:13:26 PM"
+      "id": "19bbda06-1617-4a68-981c-a412a3cc9316",
+      "description": "Income: +$1350, Rental: -$135 (Net: +$1215)",
+      "timestamp": "8/19/2025, 7:22:38 PM"
     }
   ],
   "achievements": [
@@ -85,7 +73,7 @@
     "millionaire"
   ],
   "completedJobsCount": 144,
-  "completedCoursesCount": 11,
+  "completedCoursesCount": 12,
   "completedLearning": [
     "security-protocols"
   ],
@@ -228,11 +216,12 @@
       },
       "progress": 50000,
       "completed": true,
-      "date": "Tue Aug 19 2025"
+      "date": "Tue Aug 19 2025",
+      "claimed": true
     }
   ],
   "lastQuestReset": 1755628419352,
   "registrationIP": "192.168.0.136",
   "registrationTime": 1755531070984,
-  "lastSeen": 1755630480262
+  "lastSeen": 1755631163670
 }

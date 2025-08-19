@@ -67,12 +67,20 @@ export function QuestsTab() {
     const nextReset = lastReset + 24 * 60 * 60 * 1000; // 24 hours from last reset
     const timeLeft = nextReset - Date.now();
     
-    if (timeLeft <= 0) return t('resetAvailable');
+    if (timeLeft <= 0) return { text: t('resetAvailable'), progressPercent: 100 };
     
     const hours = Math.floor(timeLeft / (60 * 60 * 1000));
     const minutes = Math.floor((timeLeft % (60 * 60 * 1000)) / (60 * 1000));
     
-    return `${hours}${t('hours')} ${minutes}${t('minutes')} ${t('until')} ${t('reset')}`;
+    // Calculate progress: how much of the 24 hours has passed
+    const totalDayMs = 24 * 60 * 60 * 1000;
+    const elapsedMs = totalDayMs - timeLeft;
+    const progressPercent = Math.max(0, Math.min(100, (elapsedMs / totalDayMs) * 100));
+    
+    return { 
+      text: `${hours}${t('hours')} ${minutes}${t('minutes')} ${t('until')} ${t('reset')}`,
+      progressPercent 
+    };
   };
 
   return (
@@ -90,9 +98,14 @@ export function QuestsTab() {
         <div className="text-right">
           <div className="text-sm text-slate-400 flex items-center">
             <Clock className="w-4 h-4 mr-1" />
-            {getTimeUntilReset()}
+            {getTimeUntilReset().text}
           </div>
-          <Progress value={(completedCount / Math.max(quests.length, 1)) * 100} className="w-32 mt-1" />
+          <div className="space-y-1 mt-1">
+            <div className="text-xs text-slate-500">{t('questsCompleted')}</div>
+            <Progress value={(completedCount / Math.max(quests.length, 1)) * 100} className="w-32" />
+            <div className="text-xs text-slate-500">{t('timeProgress')}</div>
+            <Progress value={getTimeUntilReset().progressPercent} className="w-32" />
+          </div>
         </div>
       </div>
 

@@ -2,68 +2,56 @@
   "id": "47db7feb-7e70-455c-9989-2dad66321fc6",
   "nickname": "Niko",
   "password": "$2b$10$xpp57uAPzObKG5AqKrflveYOlrYmw0wjKv.Thk/xYaog6x79qppYO",
-  "balance": 132720,
+  "balance": 150947,
   "level": 6,
   "experience": 629,
-  "totalEarnings": 125963,
-  "totalSpent": 54443,
+  "totalEarnings": 126210,
+  "totalSpent": 54463,
   "avatar": {
     "gradient": "from-purple-400 via-violet-500 to-indigo-600",
     "pattern": "multi-color",
     "seed": 420922,
     "animation": "soft-pulse"
   },
-  "serverLimit": 5,
+  "serverLimit": 7,
   "tutorialCompleted": true,
   "admin": 0,
   "banned": false,
   "muted": false,
   "muteExpires": null,
-  "isOnline": true,
-  "lastIncomeUpdate": 1755631046186,
+  "isOnline": false,
+  "lastIncomeUpdate": 1755631652634,
   "jobCooldowns": {
     "maintenance": 1755610135544,
     "optimization": 1755610258018,
     "security-audit": 1755610379265
   },
-  "currentLearning": {
-    "id": "advanced-management",
-    "title": "Advanced Server Management",
-    "description": "Master advanced server optimization and scaling techniques",
-    "difficulty": "Advanced",
-    "startTime": 1755607298220,
-    "endTime": 1755612698220,
-    "progress": 0,
-    "reward": {
-      "type": "serverSlots",
-      "amount": 2
-    }
-  },
+  "currentLearning": null,
   "activities": [
     {
-      "id": "077272e0-5e27-4c05-ab3e-0b595439c97a",
-      "description": "Income: +$24, Rental: -$2 (Net: +$22)",
-      "timestamp": "8/19/2025, 7:17:26 PM"
+      "id": "b1ce71e4-17ed-4e77-8fdb-70da84b2f2e2",
+      "description": "Income: +$25, Rental: -$2 (Net: +$23)",
+      "timestamp": "8/19/2025, 7:27:32 PM"
     },
     {
-      "id": "2574f6c9-8c6b-4a87-93ad-bb1ba0dcf353",
-      "description": "Income: +$24, Rental: -$2 (Net: +$22)",
-      "timestamp": "8/19/2025, 7:16:26 PM"
+      "id": "3b07af34-690c-41b1-942c-c08cbbc1a36f",
+      "description": "Income: +$47, Rental: -$4 (Net: +$43)",
+      "timestamp": "8/19/2025, 7:26:32 PM"
     },
     {
-      "id": "07ceb73e-c60d-434c-94c6-fe5cab256dc1",
+      "id": "36476688-e5d8-4b7c-9499-dd5b31b1596d",
       "description": "Income: +$24, Rental: -$2 (Net: +$22)",
-      "timestamp": "8/19/2025, 7:15:26 PM"
+      "timestamp": "8/19/2025, 7:24:38 PM"
     },
     {
-      "id": "df4548d9-967d-4ae8-b23d-1be62a439474",
-      "description": "Income: +$24, Rental: -$2 (Net: +$22)",
-      "timestamp": "8/19/2025, 7:14:26 PM"
+      "id": "b446f474-0b2b-4651-a3f7-845702b6e2b5",
+      "description": "Income: +$25, Rental: -$2 (Net: +$23)",
+      "timestamp": "8/19/2025, 7:23:38 PM"
     },
     {
-      "id": "7962c9f0-9626-46b5-b68d-cfe5d4c1494e",
-      "description": "Income: +$148, Rental: -$14 (Net: +$134)",
-      "timestamp": "8/19/2025, 7:13:26 PM"
+      "id": "8d08b85d-9694-4457-904a-f628c1480ae9",
+      "description": "Income: +$25, Rental: -$2 (Net: +$23)",
+      "timestamp": "8/19/2025, 7:22:38 PM"
     }
   ],
   "achievements": [
@@ -73,10 +61,11 @@
     "server-builder",
     "efficient-worker",
     "wealthy-investor",
-    "server-collection"
+    "server-collection",
+    "persistent-learner"
   ],
   "completedJobsCount": 35,
-  "completedCoursesCount": 2,
+  "completedCoursesCount": 3,
   "completedLearning": [],
   "efficiencyBonus": 0,
   "dailyQuests": [
@@ -103,7 +92,7 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 1085,
+      "progress": 1332,
       "completed": false,
       "date": "Tue Aug 19 2025"
     },
@@ -144,7 +133,7 @@
         "type": "income",
         "amount": 10000
       },
-      "progress": 1085,
+      "progress": 1332,
       "completed": false,
       "date": "Tue Aug 19 2025"
     },
@@ -185,7 +174,7 @@
         "type": "income",
         "amount": 20000
       },
-      "progress": 1085,
+      "progress": 1332,
       "completed": false,
       "date": "Tue Aug 19 2025"
     },
@@ -212,7 +201,7 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 1085,
+      "progress": 1332,
       "completed": false,
       "date": "Tue Aug 19 2025"
     }
@@ -220,5 +209,5 @@
   "lastQuestReset": 1755628419380,
   "registrationIP": "192.168.0.136",
   "registrationTime": 1755532222304,
-  "lastSeen": 1755610389192
+  "lastSeen": 1755631298436
 }

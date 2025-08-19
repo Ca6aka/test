@@ -201,7 +201,7 @@ export function ReportsTab() {
   return (
     <div className="h-full flex flex-col lg:flex-row bg-slate-900/50 rounded-lg border border-slate-700">
       {/* Left Panel - Reports List */}
-      <div className="w-full lg:w-1/3 border-b lg:border-b-0 lg:border-r border-slate-700 p-4">
+      <div className="w-full lg:w-1/3 border-b lg:border-b-0 lg:border-r border-slate-700 p-4 max-h-[70vh] lg:max-h-none">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-bold text-white">{isAdmin ? t('incomingReports') : t('myReports')}</h2>
           {!isAdmin && (
@@ -280,7 +280,7 @@ export function ReportsTab() {
           </div>
         )}
 
-        <div className="space-y-2 max-h-[400px] lg:max-h-[600px] overflow-y-auto">
+        <div className="space-y-2 max-h-[300px] lg:max-h-[calc(100vh-200px)] overflow-y-auto">
           {reports.length === 0 ? (
             <div className="text-center py-8 text-slate-400">
               <MessageCircle className="w-12 h-12 mx-auto mb-3 opacity-50" />
@@ -341,7 +341,7 @@ export function ReportsTab() {
       </div>
 
       {/* Right Panel - Chat */}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col bg-slate-900/30 min-h-[400px] lg:min-h-0">
         {selectedReport ? (
           <>
             {/* Chat Header */}
@@ -405,7 +405,7 @@ export function ReportsTab() {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-3">
+            <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-slate-900/30 min-h-0">
               {messages.map((message) => (
                 <div
                   key={message.id}

@@ -517,6 +517,23 @@ export async function registerRoutes(app) {
           }
           updatedUser.banned = true;
           updatedUser.isOnline = false;
+          
+          // Turn off all user's servers when banned
+          try {
+            const servers = await storage.getUserServers(userId);
+            for (const server of servers) {
+              if (server.isOnline) {
+                await storage.toggleServer(userId, server.id);
+              }
+            }
+          } catch (error) {
+            console.error('Failed to turn off banned user servers:', error);
+          }
+          
+          // Force logout the banned user by destroying their session
+          // Note: This will only work if we track sessions by userId, 
+          // but it's a good practice to implement
+          
           actionDescription = `Account banned by admin ${currentUser.nickname}`;
           break;
         case 'unbanUser':
@@ -1130,8 +1147,23 @@ export async function registerRoutes(app) {
         return res.status(400).json({ message: 'Invalid XP amount' });
       }
 
+      const user = await storage.getUser(req.session.userId);
+      const oldLevel = user.level || 1;
+      
       const updatedUser = await storage.addUserXP(req.session.userId, xp);
-      res.json({ user: updatedUser, xpGained: xp });
+      const newLevel = updatedUser.level || 1;
+      
+      const leveledUp = newLevel > oldLevel;
+      
+      res.json({ 
+        user: updatedUser, 
+        xpGained: xp,
+        experience: updatedUser.experience,
+        level: updatedUser.level,
+        balance: updatedUser.balance,
+        leveledUp,
+        newLevel: leveledUp ? newLevel : undefined
+      });
     } catch (error) {
       console.error('Error adding XP:', error);
       res.status(500).json({ message: 'Server error' });
