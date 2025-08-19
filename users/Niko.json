@@ -2,11 +2,11 @@
   "id": "47db7feb-7e70-455c-9989-2dad66321fc6",
   "nickname": "Niko",
   "password": "$2b$10$xpp57uAPzObKG5AqKrflveYOlrYmw0wjKv.Thk/xYaog6x79qppYO",
-  "balance": 132498,
+  "balance": 132632,
   "level": 6,
   "experience": 629,
-  "totalEarnings": 125719,
-  "totalSpent": 54421,
+  "totalEarnings": 125867,
+  "totalSpent": 54435,
   "avatar": {
     "gradient": "from-purple-400 via-violet-500 to-indigo-600",
     "pattern": "multi-color",
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755630448739,
+  "lastIncomeUpdate": 1755630806250,
   "jobCooldowns": {
     "maintenance": 1755610135544,
     "optimization": 1755610258018,
@@ -41,6 +41,11 @@
   },
   "activities": [
     {
+      "id": "7962c9f0-9626-46b5-b68d-cfe5d4c1494e",
+      "description": "Income: +$148, Rental: -$14 (Net: +$134)",
+      "timestamp": "8/19/2025, 7:13:26 PM"
+    },
+    {
       "id": "a9ec9737-16d6-45ca-b886-078fe2e1ebe3",
       "description": "Income: +$25, Rental: -$2 (Net: +$23)",
       "timestamp": "19.08.2025, 21:07:28"
@@ -59,11 +64,6 @@
       "id": "ec447864-a40a-426a-a0f8-684eeeb7751e",
       "description": "Income: +$25, Rental: -$2 (Net: +$23)",
       "timestamp": "19.08.2025, 21:04:28"
-    },
-    {
-      "id": "5195c738-6d4f-48e7-80c2-5d5da652e53a",
-      "description": "Income: +$24, Rental: -$2 (Net: +$22)",
-      "timestamp": "19.08.2025, 21:03:28"
     }
   ],
   "achievements": [
@@ -103,7 +103,7 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 841,
+      "progress": 989,
       "completed": false,
       "date": "Tue Aug 19 2025"
     },
@@ -144,7 +144,7 @@
         "type": "income",
         "amount": 10000
       },
-      "progress": 841,
+      "progress": 989,
       "completed": false,
       "date": "Tue Aug 19 2025"
     },
@@ -185,7 +185,7 @@
         "type": "income",
         "amount": 20000
       },
-      "progress": 841,
+      "progress": 989,
       "completed": false,
       "date": "Tue Aug 19 2025"
     },
@@ -212,7 +212,7 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 841,
+      "progress": 989,
       "completed": false,
       "date": "Tue Aug 19 2025"
     }

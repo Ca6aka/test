@@ -2,11 +2,11 @@
   "id": "65a91d9d-7213-4a2e-abd6-c9017bc7ae80",
   "nickname": "Ca6aka",
   "password": "$2b$10$G1sTjzxqs2js60d52sYQXOCbGLW1o.6TCUNzzuimD5iwHk21qh6vq",
-  "balance": 1167305,
+  "balance": 1177076,
   "level": 15,
   "experience": 2774,
-  "totalEarnings": 1481102,
-  "totalSpent": 614496,
+  "totalEarnings": 1491958,
+  "totalSpent": 615581,
   "avatar": {
     "gradient": "from-green-400 via-teal-500 to-cyan-600",
     "pattern": "multi-color",
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755630472123,
+  "lastIncomeUpdate": 1755630806156,
   "jobCooldowns": {
     "maintenance": 1755610333627,
     "optimization": 1755610486597,
@@ -41,6 +41,21 @@
   },
   "activities": [
     {
+      "id": "1540df90-edaa-416d-bb92-63d588ce6c34",
+      "description": "Server \"CDN Server\" shutdown due to overload (80% load)",
+      "timestamp": "8/19/2025, 7:13:26 PM"
+    },
+    {
+      "id": "be9cd045-f392-4642-8f3d-809fc25bd211",
+      "description": "Server \"CDN Server\" shutdown due to overload (80% load)",
+      "timestamp": "8/19/2025, 7:13:26 PM"
+    },
+    {
+      "id": "12dc6580-d38a-42a1-9396-84fb22b0dee6",
+      "description": "Income: +$10856, Rental: -$1085 (Net: +$9771)",
+      "timestamp": "8/19/2025, 7:13:26 PM"
+    },
+    {
       "id": "2cf3057f-f47f-4689-b768-7547b68a9655",
       "description": "Income: +$761, Rental: -$76 (Net: +$685)",
       "timestamp": "19.08.2025, 21:07:52"
@@ -49,21 +64,6 @@
       "id": "ccb11442-c294-4500-910a-b295dae5cc87",
       "description": "Income: +$1253, Rental: -$125 (Net: +$1128)",
       "timestamp": "19.08.2025, 21:07:28"
-    },
-    {
-      "id": "8d752485-efef-4f1b-a78b-6961a08d81da",
-      "description": "Daily quest completed: Mega Earner - Reward ready to claim!",
-      "timestamp": "19.08.2025, 21:07:28"
-    },
-    {
-      "id": "81a3fb4d-692a-417f-a42f-6a6aeebdfded",
-      "description": "Server \"CDN Server\" shutdown due to overload (80% load)",
-      "timestamp": "19.08.2025, 21:06:50"
-    },
-    {
-      "id": "b9bdc2b8-0f9f-4921-bb71-8caa9dd62928",
-      "description": "Income: +$750, Rental: -$75 (Net: +$675)",
-      "timestamp": "19.08.2025, 21:06:50"
     }
   ],
   "achievements": [
