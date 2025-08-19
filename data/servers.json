@@ -57,11 +57,11 @@
     "icon": "fas fa-microchip",
     "isOnline": true,
     "loadPercentage": 85,
-    "durability": 95,
-    "lastDurabilityUpdate": 1755632194847,
+    "durability": 94,
+    "lastDurabilityUpdate": 1755632811254,
     "createdAt": 1755602346409,
     "lastUpdated": 1755630177496,
-    "lastOverloadCheck": 1755632134877
+    "lastOverloadCheck": 1755633222047
   },
   {
     "id": "9bd6949b-264f-4855-a91c-3d14ae320417",
@@ -103,13 +103,13 @@
     "incomePerMinute": 150,
     "monthlyCost": 250,
     "icon": "fas fa-microchip",
-    "isOnline": true,
+    "isOnline": false,
     "loadPercentage": 85,
-    "durability": 95,
-    "lastDurabilityUpdate": 1755632194847,
+    "durability": 94,
+    "lastDurabilityUpdate": 1755632811254,
     "createdAt": 1755602347247,
     "lastUpdated": 1755630177496,
-    "lastOverloadCheck": 1755632134884
+    "lastOverloadCheck": 1755632871271
   },
   {
     "id": "2f993930-8eaa-48ff-8ed3-47863ef10cac",
@@ -151,13 +151,13 @@
     "incomePerMinute": 150,
     "monthlyCost": 250,
     "icon": "fas fa-microchip",
-    "isOnline": true,
+    "isOnline": false,
     "loadPercentage": 85,
     "durability": 95,
     "lastDurabilityUpdate": 1755632194847,
     "createdAt": 1755602347824,
     "lastUpdated": 1755630177496,
-    "lastOverloadCheck": 1755632134884
+    "lastOverloadCheck": 1755632511274
   },
   {
     "id": "fecc1258-287c-4ec2-8f68-d393b6b4e186",
@@ -185,11 +185,11 @@
     "icon": "fas fa-microchip",
     "isOnline": true,
     "loadPercentage": 85,
-    "durability": 95,
-    "lastDurabilityUpdate": 1755632194847,
+    "durability": 94,
+    "lastDurabilityUpdate": 1755632811254,
     "createdAt": 1755602348188,
     "lastUpdated": 1755630177496,
-    "lastOverloadCheck": 1755632134885
+    "lastOverloadCheck": 1755633222048
   },
   {
     "id": "9cc620fe-c426-4c66-aa95-24fb6184af3f",
@@ -217,11 +217,11 @@
     "icon": "fas fa-microchip",
     "isOnline": true,
     "loadPercentage": 85,
-    "durability": 95,
-    "lastDurabilityUpdate": 1755632194847,
+    "durability": 94,
+    "lastDurabilityUpdate": 1755632811254,
     "createdAt": 1755602348552,
     "lastUpdated": 1755630177496,
-    "lastOverloadCheck": 1755632134887
+    "lastOverloadCheck": 1755633222050
   },
   {
     "id": "3205c1b2-44c5-4c53-b199-103b5556dec2",
@@ -329,11 +329,11 @@
     "icon": "fas fa-microchip",
     "isOnline": true,
     "loadPercentage": 85,
-    "durability": 95,
-    "lastDurabilityUpdate": 1755632194847,
+    "durability": 94,
+    "lastDurabilityUpdate": 1755632811254,
     "createdAt": 1755604664720,
     "lastUpdated": 1755630177496,
-    "lastOverloadCheck": 1755632134893
+    "lastOverloadCheck": 1755633222051
   },
   {
     "id": "f861d546-1b0e-49b0-acb5-ad1e0982ce51",
@@ -359,13 +359,13 @@
     "incomePerMinute": 150,
     "monthlyCost": 250,
     "icon": "fas fa-microchip",
-    "isOnline": true,
+    "isOnline": false,
     "loadPercentage": 85,
     "durability": 96,
     "lastDurabilityUpdate": 1755632194847,
     "createdAt": 1755629622976,
     "lastUpdated": 1755630177496,
-    "lastOverloadCheck": 1755632134897
+    "lastOverloadCheck": 1755632511280
   },
   {
     "id": "b73ef2d5-29bc-4ad2-ac8a-2de31f6bff00",
@@ -380,7 +380,7 @@
     "durability": 100,
     "lastDurabilityUpdate": 1755609349500,
     "createdAt": 1755532297459,
-    "lastUpdated": 1755632447232
+    "lastUpdated": 1755633096541
   },
   {
     "id": "58b55125-136e-43e6-8e1f-67be029da0c7",
@@ -395,7 +395,7 @@
     "durability": 100,
     "lastDurabilityUpdate": 1755609349500,
     "createdAt": 1755537734477,
-    "lastUpdated": 1755632447232,
+    "lastUpdated": 1755633096541,
     "lastOverloadCheck": 1755548481729
   },
   {
@@ -411,7 +411,7 @@
     "durability": 100,
     "lastDurabilityUpdate": 1755609349500,
     "createdAt": 1755537735020,
-    "lastUpdated": 1755632447232
+    "lastUpdated": 1755633096541
   },
   {
     "id": "3f278d46-2702-46d2-a600-72d25c11827f",
@@ -426,7 +426,7 @@
     "durability": 100,
     "lastDurabilityUpdate": 1755609349500,
     "createdAt": 1755548451144,
-    "lastUpdated": 1755632447232
+    "lastUpdated": 1755633096541
   },
   {
     "id": "2218a211-4b0d-499f-a48a-e7a41e0dff11",
@@ -438,11 +438,11 @@
     "icon": "fas fa-database",
     "isOnline": true,
     "loadPercentage": 50,
-    "durability": 95,
-    "lastDurabilityUpdate": 1755632194847,
+    "durability": 94,
+    "lastDurabilityUpdate": 1755632811254,
     "createdAt": 1755607302129,
-    "lastUpdated": 1755632447232,
-    "lastOverloadCheck": 1755632447230
+    "lastUpdated": 1755633096541,
+    "lastOverloadCheck": 1755633394395
   },
   {
     "id": "08cc4951-d2d6-453e-b0ab-1c74b247d311",
@@ -454,11 +454,11 @@
     "icon": "fas fa-cloud",
     "isOnline": true,
     "loadPercentage": 80,
-    "durability": 96,
-    "lastDurabilityUpdate": 1755632074847,
+    "durability": 94,
+    "lastDurabilityUpdate": 1755633394335,
     "createdAt": 1755560941995,
-    "lastUpdated": 1755632483870,
-    "lastOverloadCheck": 1755632350834
+    "lastUpdated": 1755633329785,
+    "lastOverloadCheck": 1755633293896
   },
   {
     "id": "99502981-b7c8-4887-ab6f-00d3a82d6503",
@@ -473,7 +473,7 @@
     "durability": 98,
     "lastDurabilityUpdate": 1755630806154,
     "createdAt": 1755563000592,
-    "lastUpdated": 1755632483870,
+    "lastUpdated": 1755633329785,
     "lastOverloadCheck": 1755630806173
   },
   {
@@ -484,13 +484,13 @@
     "incomePerMinute": 100,
     "monthlyCost": 180,
     "icon": "fas fa-cloud",
-    "isOnline": true,
+    "isOnline": false,
     "loadPercentage": 80,
-    "durability": 96,
-    "lastDurabilityUpdate": 1755632074847,
+    "durability": 95,
+    "lastDurabilityUpdate": 1755632691254,
     "createdAt": 1755563000859,
-    "lastUpdated": 1755632483870,
-    "lastOverloadCheck": 1755632350835
+    "lastUpdated": 1755633329785,
+    "lastOverloadCheck": 1755632991263
   },
   {
     "id": "1d28a64c-905e-4589-a0ea-1106d72341c0",
@@ -505,7 +505,7 @@
     "durability": 97,
     "lastDurabilityUpdate": 1755631418086,
     "createdAt": 1755563001161,
-    "lastUpdated": 1755632483870,
+    "lastUpdated": 1755633329785,
     "lastOverloadCheck": 1755631744703
   },
   {
@@ -521,7 +521,7 @@
     "durability": 99,
     "lastDurabilityUpdate": 1755629891408,
     "createdAt": 1755563001495,
-    "lastUpdated": 1755632483870,
+    "lastUpdated": 1755633329785,
     "lastOverloadCheck": 1755630410137
   },
   {
@@ -534,11 +534,11 @@
     "icon": "fas fa-cloud",
     "isOnline": true,
     "loadPercentage": 80,
-    "durability": 96,
-    "lastDurabilityUpdate": 1755632074847,
+    "durability": 94,
+    "lastDurabilityUpdate": 1755633394335,
     "createdAt": 1755563001850,
-    "lastUpdated": 1755632483870,
-    "lastOverloadCheck": 1755632350836
+    "lastUpdated": 1755633329785,
+    "lastOverloadCheck": 1755633293897
   },
   {
     "id": "4b509796-4e80-45d1-a23c-368bb2fa7874",
@@ -550,11 +550,11 @@
     "icon": "fas fa-cloud",
     "isOnline": true,
     "loadPercentage": 80,
-    "durability": 96,
-    "lastDurabilityUpdate": 1755632074847,
+    "durability": 94,
+    "lastDurabilityUpdate": 1755633394335,
     "createdAt": 1755563002172,
-    "lastUpdated": 1755632483870,
-    "lastOverloadCheck": 1755632350837
+    "lastUpdated": 1755633329785,
+    "lastOverloadCheck": 1755633293898
   },
   {
     "id": "6ee0a836-3ec3-4b2b-838a-1f57f094b865",
@@ -569,7 +569,7 @@
     "durability": 96,
     "lastDurabilityUpdate": 1755631592534,
     "createdAt": 1755568830065,
-    "lastUpdated": 1755632483870,
+    "lastUpdated": 1755633329785,
     "lastOverloadCheck": 1755632047484
   },
   {
@@ -585,7 +585,7 @@
     "durability": 98,
     "lastDurabilityUpdate": 1755630268674,
     "createdAt": 1755568830453,
-    "lastUpdated": 1755632483870,
+    "lastUpdated": 1755633329785,
     "lastOverloadCheck": 1755630806185
   },
   {
@@ -601,7 +601,7 @@
     "durability": 97,
     "lastDurabilityUpdate": 1755630926156,
     "createdAt": 1755604376513,
-    "lastUpdated": 1755632483870,
+    "lastUpdated": 1755633329785,
     "lastOverloadCheck": 1755631106722
   },
   {
@@ -617,7 +617,7 @@
     "durability": 97,
     "lastDurabilityUpdate": 1755630926156,
     "createdAt": 1755605849369,
-    "lastUpdated": 1755632483870,
+    "lastUpdated": 1755633329785,
     "lastOverloadCheck": 1755631106735
   },
   {
@@ -628,13 +628,13 @@
     "incomePerMinute": 100,
     "monthlyCost": 180,
     "icon": "fas fa-cloud",
-    "isOnline": true,
+    "isOnline": false,
     "loadPercentage": 80,
     "durability": 95,
     "lastDurabilityUpdate": 1755632194847,
     "createdAt": 1755610958356,
-    "lastUpdated": 1755632483870,
-    "lastOverloadCheck": 1755632350840
+    "lastUpdated": 1755633329785,
+    "lastOverloadCheck": 1755632691264
   },
   {
     "id": "d7ef1005-502e-452c-96c2-9220bef30646",
@@ -644,13 +644,13 @@
     "incomePerMinute": 100,
     "monthlyCost": 180,
     "icon": "fas fa-cloud",
-    "isOnline": true,
+    "isOnline": false,
     "loadPercentage": 80,
     "durability": 95,
     "lastDurabilityUpdate": 1755632429302,
     "createdAt": 1755629176134,
-    "lastUpdated": 1755632483870,
-    "lastOverloadCheck": 1755632350842
+    "lastUpdated": 1755633329785,
+    "lastOverloadCheck": 1755632991272
   },
   {
     "id": "ddfcfdf1-d57a-48b6-8648-a0562cc4ef38",
@@ -660,12 +660,12 @@
     "incomePerMinute": 100,
     "monthlyCost": 180,
     "icon": "fas fa-cloud",
-    "isOnline": true,
+    "isOnline": false,
     "loadPercentage": 80,
     "durability": 95,
     "lastDurabilityUpdate": 1755632429302,
     "createdAt": 1755629176564,
-    "lastUpdated": 1755632483870,
-    "lastOverloadCheck": 1755632350844
+    "lastUpdated": 1755633329785,
+    "lastOverloadCheck": 1755632991278
   }
 ]

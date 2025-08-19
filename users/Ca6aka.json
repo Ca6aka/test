@@ -2,11 +2,11 @@
   "id": "65a91d9d-7213-4a2e-abd6-c9017bc7ae80",
   "nickname": "Ca6aka",
   "password": "$2b$10$G1sTjzxqs2js60d52sYQXOCbGLW1o.6TCUNzzuimD5iwHk21qh6vq",
-  "balance": 1216483,
+  "balance": 1223879,
   "level": 15,
-  "experience": 2793,
-  "totalEarnings": 1526846,
-  "totalSpent": 619062,
+  "experience": 2803,
+  "totalEarnings": 1538947,
+  "totalSpent": 623767,
   "avatar": {
     "gradient": "from-green-400 via-teal-500 to-cyan-600",
     "pattern": "multi-color",
@@ -20,38 +20,50 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755632429303,
+  "lastIncomeUpdate": 1755633394337,
   "jobCooldowns": {
     "maintenance": 1755610333627,
     "optimization": 1755610486597,
     "security-audit": 1755610303752
   },
-  "currentLearning": null,
+  "currentLearning": {
+    "id": "basic-setup",
+    "title": "Basic Server Setup",
+    "description": "Learn the fundamentals of server configuration and deployment",
+    "difficulty": "Beginner",
+    "startTime": 1755633156515,
+    "endTime": 1755634956515,
+    "progress": 0,
+    "reward": {
+      "type": "serverSlots",
+      "amount": 1
+    }
+  },
   "activities": [
     {
-      "id": "d079956f-2299-4960-9084-18f750ad14ab",
-      "description": "Income: +$2002, Rental: -$200 (Net: +$1802)",
-      "timestamp": "8/19/2025, 7:40:29 PM"
+      "id": "2c51f0f7-cd8f-4986-b556-35fcf283e267",
+      "description": "Income: +$842, Rental: -$84 (Net: +$758)",
+      "timestamp": "8/19/2025, 7:56:34 PM"
     },
     {
-      "id": "af571b5b-f8ab-4fc9-9606-d7a5e62e12c3",
-      "description": "Income: +$1049, Rental: -$104 (Net: +$945)",
-      "timestamp": "8/19/2025, 7:38:34 PM"
+      "id": "f84e7a5e-9f9d-4883-ae93-3d2381b372af",
+      "description": "Income: +$449, Rental: -$44 (Net: +$405)",
+      "timestamp": "8/19/2025, 7:54:42 PM"
     },
     {
-      "id": "45fce737-3f76-483a-99c2-099ecd8ca06b",
-      "description": "Income: +$1050, Rental: -$105 (Net: +$945)",
-      "timestamp": "8/19/2025, 7:37:34 PM"
+      "id": "eb7ab612-abc9-4a7a-92d3-01c8a06c9c1c",
+      "description": "Income: +$450, Rental: -$45 (Net: +$405)",
+      "timestamp": "8/19/2025, 7:53:42 PM"
     },
     {
-      "id": "233bdc42-3271-4e3d-9f67-e98f1c8018e5",
-      "description": "Income: +$1050, Rental: -$105 (Net: +$945)",
-      "timestamp": "8/19/2025, 7:36:34 PM"
+      "id": "5996bfc7-b4a6-4939-8312-6d985fa27e03",
+      "description": "Income: +$830, Rental: -$83 (Net: +$747)",
+      "timestamp": "8/19/2025, 7:52:42 PM"
     },
     {
-      "id": "581d3cfd-ef55-4a2e-a9b0-215f68722f68",
-      "description": "Income: +$1049, Rental: -$104 (Net: +$945)",
-      "timestamp": "8/19/2025, 7:35:34 PM"
+      "id": "69895ba1-f0f9-483d-b776-e7f8575f0d56",
+      "description": "Started learning course: Basic Server Setup",
+      "timestamp": "8/19/2025, 7:52:36 PM"
     }
   ],
   "achievements": [
@@ -223,5 +235,5 @@
   "lastQuestReset": 1755628419352,
   "registrationIP": "192.168.0.136",
   "registrationTime": 1755531070984,
-  "lastSeen": 1755632485521
+  "lastSeen": 1755633333224
 }

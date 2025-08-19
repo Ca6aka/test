@@ -9,5 +9,23 @@
     "adminLevel": 2,
     "deletedBy": "Ca6aka",
     "deletedAt": 1755607138170
+  },
+  {
+    "id": "c7520149-092b-4688-b704-55fdef989bcb",
+    "userId": "65a91d9d-7213-4a2e-abd6-c9017bc7ae80",
+    "nickname": "Ca6aka",
+    "message": "проверка",
+    "timestamp": 1755632595268,
+    "deleted": false,
+    "adminLevel": 2
+  },
+  {
+    "id": "e335f268-9aed-4456-9190-3f641dc8e6c2",
+    "userId": "65a91d9d-7213-4a2e-abd6-c9017bc7ae80",
+    "nickname": "Ca6aka",
+    "message": "проверка",
+    "timestamp": 1755632604860,
+    "deleted": false,
+    "adminLevel": 2
   }
 ]

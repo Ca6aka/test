@@ -824,6 +824,8 @@ export async function registerRoutes(app) {
         return res.status(401).json({ message: 'Not authenticated' });
       }
       
+      const { language } = req.query;
+      
       const messages = await storage.getChatMessages();
       
       // Show all messages to admins, filter deleted for regular users
@@ -844,7 +846,7 @@ export async function registerRoutes(app) {
         return res.status(401).json({ message: 'Not authenticated' });
       }
       
-      const { message } = req.body;
+      const { message, language } = req.body;
       
       if (!message || message.trim().length === 0) {
         return res.status(400).json({ message: 'Message cannot be empty' });
@@ -854,7 +856,18 @@ export async function registerRoutes(app) {
         return res.status(400).json({ message: 'Message too long (max 500 characters)' });
       }
       
-      const newMessage = await storage.sendChatMessage(req.session.userId, message);
+      // Check cooldown (5 seconds between messages)
+      const user = await storage.getUser(req.session.userId);
+      const lastMessageTime = user.lastMessageTime || 0;
+      const now = Date.now();
+      if (now - lastMessageTime < 5000 && user.admin < 1) {
+        return res.status(429).json({ 
+          message: 'Please wait before sending another message',
+          cooldownRemaining: Math.ceil((5000 - (now - lastMessageTime)) / 1000)
+        });
+      }
+      
+      const newMessage = await storage.sendChatMessage(req.session.userId, message, language);
       res.json({ message: newMessage });
     } catch (error) {
       res.status(400).json({ message: error.message });
@@ -911,6 +924,78 @@ export async function registerRoutes(app) {
       res.json(result);
     } catch (error) {
       res.status(400).json({ message: error.message });
+    }
+  });
+
+  // New chat routes for advanced features
+  
+  // React to message
+  app.post('/api/chat/message/:messageId/react', async (req, res) => {
+    try {
+      if (!req.session.userId) {
+        return res.status(401).json({ message: 'Not authenticated' });
+      }
+      
+      const { messageId } = req.params;
+      const { emoji } = req.body;
+      
+      const reaction = await storage.addMessageReaction(messageId, req.session.userId, emoji);
+      res.json({ reaction });
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  });
+  
+  // Pin/unpin message (super-admin only)
+  app.post('/api/chat/message/:messageId/pin', async (req, res) => {
+    try {
+      if (!req.session.userId) {
+        return res.status(401).json({ message: 'Not authenticated' });
+      }
+      
+      const { messageId } = req.params;
+      const result = await storage.pinMessage(messageId, req.session.userId);
+      res.json(result);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  });
+  
+  // Get pinned message
+  app.get('/api/chat/pinned', async (req, res) => {
+    try {
+      const pinnedMessage = await storage.getPinnedMessage();
+      res.json({ pinnedMessage });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+  
+  // Mark chat as read (remove new message indicator)
+  app.post('/api/chat/mark-read', async (req, res) => {
+    try {
+      if (!req.session.userId) {
+        return res.status(401).json({ message: 'Not authenticated' });
+      }
+      
+      await storage.markChatAsRead(req.session.userId);
+      res.json({ success: true });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+  
+  // Get chat achievements
+  app.get('/api/achievements/chat', async (req, res) => {
+    try {
+      if (!req.session.userId) {
+        return res.status(401).json({ message: 'Not authenticated' });
+      }
+      
+      const achievements = await storage.getChatAchievements(req.session.userId);
+      res.json({ achievements });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
     }
   });
 

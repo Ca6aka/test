@@ -2,11 +2,11 @@
   "id": "47db7feb-7e70-455c-9989-2dad66321fc6",
   "nickname": "Niko",
   "password": "$2b$10$xpp57uAPzObKG5AqKrflveYOlrYmw0wjKv.Thk/xYaog6x79qppYO",
-  "balance": 151236,
+  "balance": 151598,
   "level": 6,
   "experience": 629,
-  "totalEarnings": 126525,
-  "totalSpent": 54489,
+  "totalEarnings": 126920,
+  "totalSpent": 54522,
   "avatar": {
     "gradient": "from-purple-400 via-violet-500 to-indigo-600",
     "pattern": "multi-color",
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755632429347,
+  "lastIncomeUpdate": 1755633394382,
   "jobCooldowns": {
     "maintenance": 1755610135544,
     "optimization": 1755610258018,
@@ -29,29 +29,29 @@
   "currentLearning": null,
   "activities": [
     {
-      "id": "56b23dc0-1942-446c-96c7-ae1220f46a98",
-      "description": "Income: +$47, Rental: -$4 (Net: +$43)",
-      "timestamp": "8/19/2025, 7:40:29 PM"
+      "id": "f6fc45cc-0076-4f56-94f8-582ebf70451f",
+      "description": "Income: +$46, Rental: -$4 (Net: +$42)",
+      "timestamp": "8/19/2025, 7:56:34 PM"
     },
     {
-      "id": "aad91f6b-98f7-4b7f-aa26-7ee9cae5f3e3",
+      "id": "2995f0ee-f39b-414a-b023-9e7501a3979b",
       "description": "Income: +$24, Rental: -$2 (Net: +$22)",
-      "timestamp": "8/19/2025, 7:38:34 PM"
+      "timestamp": "8/19/2025, 7:54:42 PM"
     },
     {
-      "id": "ce8f1458-684b-41f1-9e54-2035c21bd705",
+      "id": "cdde5d3e-65a0-4edf-b4b4-f28e48072be4",
       "description": "Income: +$25, Rental: -$2 (Net: +$23)",
-      "timestamp": "8/19/2025, 7:37:34 PM"
+      "timestamp": "8/19/2025, 7:53:42 PM"
     },
     {
-      "id": "ee477b58-8e9a-4f33-b58d-f2a2ecbef8c5",
+      "id": "d69d19ab-9696-4ce5-9875-25211d33574c",
+      "description": "Income: +$46, Rental: -$4 (Net: +$42)",
+      "timestamp": "8/19/2025, 7:52:42 PM"
+    },
+    {
+      "id": "d46eee8c-ed89-45f1-84a9-d9c6420afe7a",
       "description": "Income: +$24, Rental: -$2 (Net: +$22)",
-      "timestamp": "8/19/2025, 7:36:34 PM"
-    },
-    {
-      "id": "81f6fe75-b2fa-4b94-a945-8a3e4af66949",
-      "description": "Income: +$25, Rental: -$2 (Net: +$23)",
-      "timestamp": "8/19/2025, 7:35:34 PM"
+      "timestamp": "8/19/2025, 7:50:51 PM"
     }
   ],
   "achievements": [
@@ -92,7 +92,7 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 1647,
+      "progress": 2042,
       "completed": false,
       "date": "Tue Aug 19 2025"
     },
@@ -133,7 +133,7 @@
         "type": "income",
         "amount": 10000
       },
-      "progress": 1647,
+      "progress": 2042,
       "completed": false,
       "date": "Tue Aug 19 2025"
     },
@@ -174,7 +174,7 @@
         "type": "income",
         "amount": 20000
       },
-      "progress": 1647,
+      "progress": 2042,
       "completed": false,
       "date": "Tue Aug 19 2025"
     },
@@ -201,7 +201,7 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 1647,
+      "progress": 2042,
       "completed": false,
       "date": "Tue Aug 19 2025"
     }
@@ -209,5 +209,5 @@
   "lastQuestReset": 1755628419380,
   "registrationIP": "192.168.0.136",
   "registrationTime": 1755532222304,
-  "lastSeen": 1755632450082
+  "lastSeen": 1755633101447
 }

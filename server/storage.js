@@ -1616,7 +1616,7 @@ export class FileStorage {
     await fs.writeFile(chatFile, JSON.stringify(messages, null, 2));
   }
 
-  async sendChatMessage(userId, message) {
+  async sendChatMessage(userId, message, language = 'ru') {
     const user = await this.getUser(userId);
     if (!user || user.banned) {
       throw new Error('Cannot send message');
@@ -1637,14 +1637,28 @@ export class FileStorage {
     }
 
     const messages = await this.getChatMessages();
+    // Update user's last message time and language preference
+    await this.updateUser(userId, {
+      lastMessageTime: Date.now(),
+      chatLanguage: language
+    });
+
+    // Filter message for inappropriate content
+    const filteredMessage = await this.filterMessage(message, user);
+    
     const newMessage = {
       id: randomUUID(),
       userId,
       nickname: user.nickname,
-      message: message.trim(),
+      message: filteredMessage.text,
+      originalMessage: message.trim(),
+      language: language,
       timestamp: Date.now(),
       deleted: false,
-      adminLevel: user.admin || 0  // Store admin level at time of message
+      adminLevel: user.admin || 0,
+      reactions: {},
+      filtered: filteredMessage.wasFiltered,
+      warningCount: filteredMessage.warningCount
     };
 
     messages.push(newMessage);
@@ -1655,6 +1669,13 @@ export class FileStorage {
     }
 
     await this.saveChatMessages(messages);
+    
+    // Update chat achievements
+    await this.updateChatAchievements(userId);
+    
+    // Mark chat as having new messages for other users
+    await this.markChatAsNewForOthers(userId);
+    
     return newMessage;
   }
 
@@ -1671,12 +1692,283 @@ export class FileStorage {
       throw new Error('Message not found');
     }
 
-    messages[messageIndex].deleted = true;
-    messages[messageIndex].deletedBy = admin.nickname;
-    messages[messageIndex].deletedAt = Date.now();
+    const message = messages[messageIndex];
+    message.deleted = true;
+    message.deletedBy = admin.nickname;
+    message.deletedAt = Date.now();
+    message.deletionReason = 'Deleted by admin';
 
     await this.saveChatMessages(messages);
+    
+    // Add system message about deletion
+    await this.addSystemMessage(`Message from ${message.nickname} was deleted by ${admin.nickname}`, message.language);
+    
+    return message;
+  }
+
+  // Advanced Chat Features
+
+  // Filter message for inappropriate content (profanity, spam, caps)
+  async filterMessage(message, user) {
+    let filteredText = message.trim();
+    let wasFiltered = false;
+    let warningCount = user.chatWarnings || 0;
+    
+    // Skip filtering for admins
+    if (user.admin >= 1) {
+      return { text: filteredText, wasFiltered: false, warningCount: 0 };
+    }
+    
+    // Check for excessive caps (50-60% threshold)
+    const upperCaseLetters = (message.match(/[A-ZА-Я]/g) || []).length;
+    const totalLetters = (message.match(/[A-Za-zА-Яа-я]/g) || []).length;
+    const capsPercentage = totalLetters > 0 ? (upperCaseLetters / totalLetters) * 100 : 0;
+    
+    if (capsPercentage > 55 && totalLetters > 10) {
+      filteredText = message.toLowerCase();
+      wasFiltered = true;
+      warningCount++;
+      await this.addSystemMessage(`${user.nickname} - please don't use excessive caps in chat`, user.chatLanguage || 'ru');
+    }
+    
+    // Simple profanity filter
+    const profanityWords = ['fuck', 'shit', 'damn', 'блядь', 'сука', 'хуй', 'пизда', 'ебать'];
+    const hasProfanity = profanityWords.some(word => 
+      filteredText.toLowerCase().includes(word.toLowerCase())
+    );
+    
+    if (hasProfanity) {
+      profanityWords.forEach(word => {
+        const regex = new RegExp(word, 'gi');
+        filteredText = filteredText.replace(regex, '*'.repeat(word.length));
+      });
+      wasFiltered = true;
+      warningCount++;
+      await this.addSystemMessage(`${user.nickname} - inappropriate language detected`, user.chatLanguage || 'ru');
+    }
+    
+    // Check for spam (same message recently)
+    const messages = await this.getChatMessages();
+    const recentMessages = messages.filter(msg => 
+      msg.userId === user.id && Date.now() - msg.timestamp < 60000 // last minute
+    );
+    const duplicateMessage = recentMessages.find(msg => msg.message === message.trim());
+    
+    if (duplicateMessage) {
+      warningCount++;
+      await this.addSystemMessage(`${user.nickname} - please don't spam the same message`, user.chatLanguage || 'ru');
+    }
+    
+    // Auto-mute after 3 warnings
+    if (warningCount >= 3) {
+      const muteExpires = Date.now() + 15 * 60 * 1000; // 15 minutes
+      await this.updateUser(user.id, {
+        muted: true,
+        muteExpires: muteExpires,
+        chatWarnings: 0 // Reset warnings after mute
+      });
+      await this.addSystemMessage(`${user.nickname} was automatically muted for 15 minutes (3 warnings)`, user.chatLanguage || 'ru');
+      throw new Error('You have been muted for 15 minutes due to multiple warnings');
+    }
+    
+    // Update warning count
+    if (warningCount > (user.chatWarnings || 0)) {
+      await this.updateUser(user.id, { chatWarnings: warningCount });
+    }
+    
+    return { text: filteredText, wasFiltered, warningCount };
+  }
+
+  // Add system message
+  async addSystemMessage(text, language = 'ru') {
+    const messages = await this.getChatMessages();
+    const systemMessage = {
+      id: randomUUID(),
+      userId: 'system',
+      nickname: language === 'ru' ? 'Система' : 'System',
+      message: text,
+      timestamp: Date.now(),
+      deleted: false,
+      adminLevel: 999,
+      isSystem: true,
+      language: language
+    };
+    
+    messages.push(systemMessage);
+    
+    if (messages.length > 50) {
+      messages.splice(0, messages.length - 50);
+    }
+    
+    await this.saveChatMessages(messages);
+    return systemMessage;
+  }
+
+  // Add reaction to message
+  async addMessageReaction(messageId, userId, emoji) {
+    const messages = await this.getChatMessages();
+    const messageIndex = messages.findIndex(msg => msg.id === messageId);
+    
+    if (messageIndex === -1) {
+      throw new Error('Message not found');
+    }
+    
+    if (!messages[messageIndex].reactions) {
+      messages[messageIndex].reactions = {};
+    }
+    
+    // Toggle reaction (add if not present, remove if present)
+    const currentReactions = messages[messageIndex].reactions[emoji] || [];
+    const userReactionIndex = currentReactions.indexOf(userId);
+    
+    if (userReactionIndex === -1) {
+      currentReactions.push(userId);
+    } else {
+      currentReactions.splice(userReactionIndex, 1);
+    }
+    
+    if (currentReactions.length === 0) {
+      delete messages[messageIndex].reactions[emoji];
+    } else {
+      messages[messageIndex].reactions[emoji] = currentReactions;
+    }
+    
+    await this.saveChatMessages(messages);
     return messages[messageIndex];
+  }
+
+  // Pin/unpin message (super-admin only)
+  async pinMessage(messageId, adminUserId) {
+    const admin = await this.getUser(adminUserId);
+    if (!admin || admin.admin < 2) {
+      throw new Error('Super-admin access required');
+    }
+    
+    const messages = await this.getChatMessages();
+    const message = messages.find(msg => msg.id === messageId);
+    
+    if (!message) {
+      throw new Error('Message not found');
+    }
+    
+    // Check if there's already a pinned message
+    const currentPinned = messages.find(msg => msg.pinned);
+    if (currentPinned && currentPinned.id !== messageId) {
+      currentPinned.pinned = false;
+      currentPinned.pinnedBy = null;
+      currentPinned.pinnedAt = null;
+    }
+    
+    // Toggle pin status
+    message.pinned = !message.pinned;
+    message.pinnedBy = message.pinned ? admin.nickname : null;
+    message.pinnedAt = message.pinned ? Date.now() : null;
+    
+    await this.saveChatMessages(messages);
+    
+    // Add system message about pin/unpin
+    const action = message.pinned ? 'pinned' : 'unpinned';
+    await this.addSystemMessage(`Message from ${message.nickname} was ${action} by ${admin.nickname}`);
+    
+    return { success: true, pinned: message.pinned };
+  }
+
+  // Get pinned message
+  async getPinnedMessage() {
+    const messages = await this.getChatMessages();
+    return messages.find(msg => msg.pinned) || null;
+  }
+
+  // Mark chat as read for user
+  async markChatAsRead(userId) {
+    await this.updateUser(userId, {
+      lastChatRead: Date.now(),
+      hasNewChatMessages: false
+    });
+  }
+
+  // Mark chat as having new messages for other users
+  async markChatAsNewForOthers(senderUserId) {
+    const users = await this.getAllUsers();
+    for (const user of users) {
+      if (user.id !== senderUserId) {
+        await this.updateUser(user.id, { hasNewChatMessages: true });
+      }
+    }
+  }
+
+  // Chat achievements
+  async updateChatAchievements(userId) {
+    const user = await this.getUser(userId);
+    const messages = await this.getChatMessages();
+    const userMessages = messages.filter(msg => msg.userId === userId);
+    
+    const messageCount = userMessages.length;
+    const achievements = user.chatAchievements || [];
+    
+    // Define chat achievements
+    const chatAchievements = [
+      { id: 'first_message', title: 'First Message', description: 'Send your first chat message', requirement: 1 },
+      { id: 'chatty', title: 'Chatty', description: 'Send 25 messages', requirement: 25 },
+      { id: 'social_butterfly', title: 'Social Butterfly', description: 'Send 100 messages', requirement: 100 },
+      { id: 'chat_master', title: 'Chat Master', description: 'Send 500 messages', requirement: 500 }
+    ];
+    
+    for (const achievement of chatAchievements) {
+      if (messageCount >= achievement.requirement && !achievements.includes(achievement.id)) {
+        achievements.push(achievement.id);
+        await this.addActivity(userId, `Chat achievement unlocked: ${achievement.title}`);
+      }
+    }
+    
+    if (achievements.length > (user.chatAchievements || []).length) {
+      await this.updateUser(userId, { chatAchievements: achievements });
+    }
+  }
+
+  // Get chat achievements for user
+  async getChatAchievements(userId) {
+    const user = await this.getUser(userId);
+    const messages = await this.getChatMessages();
+    const userMessages = messages.filter(msg => msg.userId === userId);
+    const messageCount = userMessages.length;
+    
+    const chatAchievements = [
+      { 
+        id: 'first_message', 
+        title: 'First Message', 
+        description: 'Send your first chat message', 
+        requirement: 1,
+        progress: Math.min(messageCount, 1),
+        completed: messageCount >= 1
+      },
+      { 
+        id: 'chatty', 
+        title: 'Chatty', 
+        description: 'Send 25 messages', 
+        requirement: 25,
+        progress: Math.min(messageCount, 25),
+        completed: messageCount >= 25
+      },
+      { 
+        id: 'social_butterfly', 
+        title: 'Social Butterfly', 
+        description: 'Send 100 messages', 
+        requirement: 100,
+        progress: Math.min(messageCount, 100),
+        completed: messageCount >= 100
+      },
+      { 
+        id: 'chat_master', 
+        title: 'Chat Master', 
+        description: 'Send 500 messages', 
+        requirement: 500,
+        progress: Math.min(messageCount, 500),
+        completed: messageCount >= 500
+      }
+    ];
+    
+    return chatAchievements;
   }
 
   // Reports System

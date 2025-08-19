@@ -101,8 +101,6 @@ export function QuestsTab() {
             {getTimeUntilReset().text}
           </div>
           <div className="space-y-1 mt-1">
-            <div className="text-xs text-slate-500">{t('questsCompleted')}</div>
-            <Progress value={(completedCount / Math.max(quests.length, 1)) * 100} className="w-32" />
             <div className="text-xs text-slate-500">{t('timeProgress')}</div>
             <Progress value={getTimeUntilReset().progressPercent} className="w-32" />
           </div>

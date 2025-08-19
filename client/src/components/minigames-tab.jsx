@@ -78,8 +78,8 @@ const MiniGamesTab = () => {
     },
     onError: (error) => {
       console.error('XP update error:', error);
-      // Only show error if it's actually a failed request, not a successful one
-      if (error?.message && !error.message.includes('XP')) {
+      // Only show error if response status indicates failure (not 2xx)
+      if (error?.status && error.status >= 400) {
         toast({
           title: t('error'),
           description: t('failedToAddXp') || 'Failed to add XP',

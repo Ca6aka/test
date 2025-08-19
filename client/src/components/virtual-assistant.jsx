@@ -35,6 +35,8 @@ function VirtualAssistant() {
   const [muteDuration, setMuteDuration] = useState('30')
   const [showRules, setShowRules] = useState(false)
   const [chatLanguage, setChatLanguage] = useState('ru')
+  const [cooldownRemaining, setCooldownRemaining] = useState(0)
+  const [hasNewMessages, setHasNewMessages] = useState(false)
   const [, setLocation] = useLocation()
   const isMobile = useIsMobile()
   const { gameState } = useGame()
@@ -48,7 +50,20 @@ function VirtualAssistant() {
   // Fetch chat messages
   const { data: chatData, refetch: refetchMessages } = useQuery({
     queryKey: ['/api/chat/messages'],
+    queryFn: () => fetch(`/api/chat/messages?language=${chatLanguage}`).then(res => res.json()),
     refetchInterval: 3000 // Refresh every 3 seconds
+  })
+
+  // Fetch pinned message
+  const { data: pinnedData } = useQuery({
+    queryKey: ['/api/chat/pinned'],
+    refetchInterval: 10000 // Check for pinned messages every 10 seconds
+  })
+
+  // Fetch chat achievements
+  const { data: chatAchievementsData } = useQuery({
+    queryKey: ['/api/achievements/chat'],
+    enabled: !!user?.id
   })
   
   useEffect(() => {
@@ -62,22 +77,47 @@ function VirtualAssistant() {
     refetchInterval: 30000
   })
 
+  // Cooldown timer effect
+  useEffect(() => {
+    if (cooldownRemaining > 0) {
+      const timer = setTimeout(() => {
+        setCooldownRemaining(prev => Math.max(0, prev - 1))
+      }, 1000)
+      return () => clearTimeout(timer)
+    }
+  }, [cooldownRemaining])
+
+  // Check for new messages
+  useEffect(() => {
+    if (chatData?.messages && user?.lastChatRead) {
+      const newMessages = chatData.messages.filter(msg => 
+        msg.timestamp > (user.lastChatRead || 0) && msg.userId !== user.id
+      )
+      setHasNewMessages(newMessages.length > 0)
+    }
+  }, [chatData?.messages, user?.lastChatRead, user?.id])
+
   // Send message mutation
   const sendMessageMutation = useMutation({
     mutationFn: async (message) => {
       const response = await fetch('/api/chat/send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message })
+        body: JSON.stringify({ message, language: chatLanguage })
       })
       if (!response.ok) {
         const error = await response.json()
+        if (response.status === 429) {
+          setCooldownRemaining(error.cooldownRemaining || 5)
+        }
         throw new Error(error.message)
       }
       return response.json()
     },
     onSuccess: () => {
+      setInput('')
       refetchMessages()
+      setCooldownRemaining(5) // 5 second cooldown
     }
   })
 
@@ -168,14 +208,25 @@ function VirtualAssistant() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!input.trim()) return
+    if (!input.trim() || cooldownRemaining > 0) return
 
     try {
       await sendMessageMutation.mutateAsync(input.trim())
-      setInput('')
     } catch (error) {
       console.error('Failed to send message:', error)
     }
+  }
+
+  const handleChatOpen = () => {
+    setIsVisible(true)
+    if (hasNewMessages) {
+      markChatAsRead.mutate()
+    }
+  }
+
+  const handleDoubleClick = (messageId) => {
+    // Future: Add thumbs up reaction on double click
+    console.log('Double clicked message:', messageId)
   }
 
   const handleDeleteMessage = async (messageId) => {
@@ -236,14 +287,19 @@ function VirtualAssistant() {
   if (!isVisible) {
     return (
       <div className="fixed bottom-4 right-4 z-50 md:bottom-4 md:right-4 sm:bottom-20 sm:right-4">
-        <Button
-          onClick={() => setIsVisible(true)}
-          className="rounded-full w-15 h-14 shadow-lg bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 
-                     bg-[length:200%_200%] animate-gradient-xy"
-          data-testid="show-chat"
-        >
-          <MessageSquare className="w-6 h-6 text-white" />
-        </Button>
+        <div className="relative">
+          <Button
+            onClick={handleChatOpen}
+            className="rounded-full w-15 h-14 shadow-lg bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 
+                       bg-[length:200%_200%] animate-gradient-xy"
+            data-testid="show-chat"
+          >
+            <MessageSquare className="w-6 h-6 text-white" />
+          </Button>
+          {hasNewMessages && (
+            <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+          )}
+        </div>
       </div>
     )
   }  
@@ -407,7 +463,33 @@ function VirtualAssistant() {
         )}
         
         <CardContent className="p-0">
-          <div ref={chatMessagesRef} className={`${showRules ? (isMobile ? 'h-48' : 'h-64') : (isMobile ? 'h-60' : 'h-80')} overflow-y-auto p-3 space-y-2`}>
+          {/* Pinned message */}
+          {pinnedData?.pinnedMessage && (
+            <div className="border-b bg-yellow-50 dark:bg-yellow-900/20 p-2">
+              <div className="flex items-start gap-2">
+                <span className="text-yellow-600 text-xs">📌</span>
+                <div className="flex-1 min-w-0">
+                  <div className="text-xs text-yellow-700 dark:text-yellow-300 font-medium">
+                    Pinned by {pinnedData.pinnedMessage.pinnedBy}
+                  </div>
+                  <div className="text-sm text-yellow-800 dark:text-yellow-200 break-words">
+                    <strong>{pinnedData.pinnedMessage.nickname}:</strong> {pinnedData.pinnedMessage.message}
+                  </div>
+                </div>
+                {user?.admin >= 2 && (
+                  <button
+                    onClick={() => pinMessageMutation.mutate(pinnedData.pinnedMessage.id)}
+                    className="text-yellow-600 hover:text-yellow-800 transition-colors p-1"
+                    title="Unpin message"
+                  >
+                    <X className="w-3 h-3" />
+                  </button>
+                )}
+              </div>
+            </div>
+          )}
+          
+          <div ref={chatMessagesRef} className={`${showRules ? (isMobile ? 'h-48' : 'h-64') : (isMobile ? 'h-60' : 'h-80')} ${pinnedData?.pinnedMessage ? 'h-56' : ''} overflow-y-auto p-3 space-y-2`}>
             {chatData?.messages?.length === 0 ? (
               <div className="text-center text-gray-500 text-sm py-8">
                 {t('noMessages')}
@@ -463,6 +545,9 @@ function VirtualAssistant() {
                         </div>
                         <div className="text-sm bg-gray-100 dark:bg-gray-800 rounded-lg px-3 py-2">
                           {message.message}
+                          {message.filtered && (
+                            <div className="text-xs text-yellow-600 mt-1 italic">⚠️ Message was automatically filtered</div>
+                          )}
                         </div>
                       </div>
                     )}
@@ -535,33 +620,51 @@ function VirtualAssistant() {
             </div>
           )}
           
-          <form onSubmit={handleSubmit} className="p-3 border-t">
-            <div className="flex gap-2">
+          <form onSubmit={handleSubmit} className="p-3 border-t flex gap-2">
+            <div className="flex-1 relative">
               <Input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder={t('enterMessage')}
-                className="text-sm"
-                maxLength={500}
-                disabled={sendMessageMutation.isPending || user?.muted}
-                data-testid="chat-input"
+                placeholder={cooldownRemaining > 0 ? `Wait ${cooldownRemaining}s...` : (user?.muted ? t('youAreMuted') : t('typeMessage'))}
+                className="flex-1 text-sm pr-16"
+                disabled={sendMessageMutation.isPending || user?.muted || cooldownRemaining > 0}
+                maxLength={200}
               />
-              <Button 
-                type="submit" 
-                size="sm" 
-                className="px-3" 
-                disabled={sendMessageMutation.isPending || !input.trim() || user?.muted}
-                data-testid="send-message"
-              >
-                <Send className="w-4 h-4" />
-              </Button>
-            </div>
-            {user?.muted && (
-              <div className="text-xs text-red-600 mt-1">
-                {t('youAreMuted')}
+              <div className="absolute right-2 top-1/2 transform -translate-y-1/2 text-xs text-gray-400">
+                {input.length}/200
               </div>
-            )}
+            </div>
+            <Button
+              type="submit"
+              size="sm"
+              disabled={sendMessageMutation.isPending || !input.trim() || user?.muted || cooldownRemaining > 0}
+              className={cooldownRemaining > 0 ? 'opacity-50' : ''}
+            >
+              {cooldownRemaining > 0 ? cooldownRemaining : <Send className="w-4 h-4" />}
+            </Button>
           </form>
+          
+          {/* Chat achievements display */}
+          {chatAchievementsData?.achievements && user?.id && (
+            <div className="px-3 pb-2">
+              <div className="text-xs text-gray-500 mb-1">Chat Achievements:</div>
+              <div className="flex flex-wrap gap-1">
+                {chatAchievementsData.achievements.map(achievement => (
+                  <div
+                    key={achievement.id}
+                    className={`text-xs px-2 py-1 rounded ${
+                      achievement.completed 
+                        ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' 
+                        : 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400'
+                    }`}
+                    title={`${achievement.description} (${achievement.progress}/${achievement.requirement})`}
+                  >
+                    {achievement.title} {achievement.completed ? '✓' : `${achievement.progress}/${achievement.requirement}`}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </CardContent>
       </Card>
     </div>
