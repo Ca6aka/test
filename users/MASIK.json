@@ -2,11 +2,11 @@
   "id": "b372059f-652f-45a9-ac0c-429dcdbb3043",
   "nickname": "MASIK",
   "password": "$2b$10$lZmWuTI9.wxFGXivr0wjJu1FxBv1dWlCHFZfjwG7bZRixDs0IHyyu",
-  "balance": 3026521,
+  "balance": 3033108,
   "level": 28,
   "experience": 12652,
-  "totalEarnings": 1942314,
-  "totalSpent": 268493,
+  "totalEarnings": 1949632,
+  "totalSpent": 269224,
   "avatar": {
     "gradient": "from-teal-400 via-emerald-500 to-green-600",
     "pattern": "multi-color",
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755631652614,
+  "lastIncomeUpdate": 1755631834857,
   "jobCooldowns": {
     "maintenance": 1755630256601,
     "optimization": 1755630375183,
@@ -41,29 +41,29 @@
   },
   "activities": [
     {
-      "id": "5d639b91-a952-49ad-8f42-0c59ed54e3a7",
-      "description": "Income: +$2565, Rental: -$256 (Net: +$2309)",
-      "timestamp": "8/19/2025, 7:27:32 PM"
+      "id": "2cc3631d-5eb3-4513-a00e-8a5873bcc323",
+      "description": "Income: +$2097, Rental: -$209 (Net: +$1888)",
+      "timestamp": "8/19/2025, 7:30:34 PM"
     },
     {
-      "id": "ea551ba9-24b5-4fc7-b06d-2d109a32ce2d",
-      "description": "Income: +$4887, Rental: -$488 (Net: +$4399)",
-      "timestamp": "8/19/2025, 7:26:32 PM"
-    },
-    {
-      "id": "b675c85b-cf4f-417f-a446-97bec3f90569",
-      "description": "Income: +$2564, Rental: -$256 (Net: +$2308)",
-      "timestamp": "8/19/2025, 7:24:38 PM"
-    },
-    {
-      "id": "4f307f74-27eb-4fb3-9f9a-7668b387cc00",
+      "id": "37ea8fd9-ac82-4193-96a0-5dc857bb02ac",
       "description": "Server \"GPU Server\" shutdown due to overload (85% load)",
-      "timestamp": "8/19/2025, 7:23:38 PM"
+      "timestamp": "8/19/2025, 7:29:34 PM"
     },
     {
-      "id": "4a284d91-ed63-42e4-9e00-08c23d095756",
+      "id": "42f68b69-fded-41cd-9cee-96bde72db733",
       "description": "Server \"GPU Server\" shutdown due to overload (85% load)",
-      "timestamp": "8/19/2025, 7:23:38 PM"
+      "timestamp": "8/19/2025, 7:29:34 PM"
+    },
+    {
+      "id": "f48202a4-c24b-496c-adde-495e8559ed14",
+      "description": "Income: +$2561, Rental: -$256 (Net: +$2305)",
+      "timestamp": "8/19/2025, 7:29:34 PM"
+    },
+    {
+      "id": "53e5122f-4e2e-482e-8fc9-e8a7a9c7d778",
+      "description": "Income: +$2660, Rental: -$266 (Net: +$2394)",
+      "timestamp": "8/19/2025, 7:28:34 PM"
     }
   ],
   "achievements": [
