@@ -2,11 +2,11 @@
   "id": "b372059f-652f-45a9-ac0c-429dcdbb3043",
   "nickname": "MASIK",
   "password": "$2b$10$lZmWuTI9.wxFGXivr0wjJu1FxBv1dWlCHFZfjwG7bZRixDs0IHyyu",
-  "balance": 2985427,
+  "balance": 2998007,
   "level": 28,
   "experience": 12652,
-  "totalEarnings": 1896660,
-  "totalSpent": 263933,
+  "totalEarnings": 1910636,
+  "totalSpent": 265329,
   "avatar": {
     "gradient": "from-teal-400 via-emerald-500 to-green-600",
     "pattern": "multi-color",
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755630806201,
+  "lastIncomeUpdate": 1755631046170,
   "jobCooldowns": {
     "maintenance": 1755630256601,
     "optimization": 1755630375183,
@@ -41,29 +41,29 @@
   },
   "activities": [
     {
+      "id": "17098734-2154-4b3a-b044-3f004a2d5256",
+      "description": "Income: +$3494, Rental: -$349 (Net: +$3145)",
+      "timestamp": "8/19/2025, 7:17:26 PM"
+    },
+    {
+      "id": "1fc4ecfd-29c2-484d-b800-5aa049ff7863",
+      "description": "Income: +$3494, Rental: -$349 (Net: +$3145)",
+      "timestamp": "8/19/2025, 7:16:26 PM"
+    },
+    {
+      "id": "e8bc80a5-74a4-4d35-bdd1-43828d1cf75f",
+      "description": "Income: +$3495, Rental: -$349 (Net: +$3146)",
+      "timestamp": "8/19/2025, 7:15:26 PM"
+    },
+    {
+      "id": "c518cdc4-c050-40a8-a8a6-fdfd67a6759d",
+      "description": "Income: +$3493, Rental: -$349 (Net: +$3144)",
+      "timestamp": "8/19/2025, 7:14:26 PM"
+    },
+    {
       "id": "92be0d5d-f059-4786-8a9b-7750ba138778",
       "description": "Server \"GPU Server\" shutdown due to overload (85% load)",
       "timestamp": "8/19/2025, 7:13:26 PM"
-    },
-    {
-      "id": "b6eff0b8-c1c3-44d3-ae41-dff24e01a36d",
-      "description": "Server \"GPU Server\" shutdown due to overload (85% load)",
-      "timestamp": "8/19/2025, 7:13:26 PM"
-    },
-    {
-      "id": "98fab4e7-355d-40f4-ac32-e3b8fe0eb171",
-      "description": "Server \"GPU Server\" shutdown due to overload (85% load)",
-      "timestamp": "8/19/2025, 7:13:26 PM"
-    },
-    {
-      "id": "38c74946-7f8d-4b78-ba3c-cc3a79ec7e4b",
-      "description": "Income: +$24988, Rental: -$2498 (Net: +$22490)",
-      "timestamp": "8/19/2025, 7:13:26 PM"
-    },
-    {
-      "id": "da77bb26-b8c7-42b3-85d4-45f24fd86b7e",
-      "description": "Server \"GPU Server\" shutdown due to overload (85% load)",
-      "timestamp": "19.08.2025, 21:07:28"
     }
   ],
   "achievements": [

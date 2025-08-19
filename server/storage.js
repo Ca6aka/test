@@ -1499,10 +1499,8 @@ export class FileStorage {
     if (userData.banned) return false;
     
     // User is online if they've been active in the last 5 minutes
-    const lastActivity = Math.max(
-      userData.lastSeen || 0,
-      userData.lastIncomeUpdate || 0
-    );
+    // Only count lastSeen for actual user activity, not automatic income updates
+    const lastActivity = userData.lastSeen || 0;
     const fiveMinutesAgo = Date.now() - 5 * 60 * 1000;
     return lastActivity > fiveMinutesAgo;
   }

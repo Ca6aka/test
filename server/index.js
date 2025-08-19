@@ -52,9 +52,9 @@ app.use((req, res, next) => {
   next();
 });
 
-// Middleware to update user activity on all API calls
+// Middleware to update user activity on all API calls (excluding automatic updates)
 app.use('/api', async (req, res, next) => {
-  if (req.session.userId && !req.path.includes('/auth/logout')) {
+  if (req.session.userId && !req.path.includes('/auth/logout') && !req.path.includes('/api/stats/') && !req.path.includes('/api/rankings')) {
     try {
       await storage.updateUserActivity(req.session.userId);
       // Check expired mutes periodically

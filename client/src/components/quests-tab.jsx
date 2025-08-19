@@ -26,7 +26,7 @@ export function QuestsTab() {
       const cleanQuestId = decodeURIComponent(questId);
       return apiRequest(`/api/quests/${encodeURIComponent(cleanQuestId)}/claim`, 'POST');
     },
-    onSuccess: (data) => {
+    onSuccess: (data, questId) => {
       // Immediately update user balance in UI
       if (data.user) {
         dispatch({ 
@@ -37,6 +37,17 @@ export function QuestsTab() {
           }
         });
       }
+      
+      // Optimistically update quest status
+      queryClient.setQueryData(['/api/quests'], (oldData) => {
+        if (!oldData) return oldData;
+        return {
+          ...oldData,
+          quests: oldData.quests.map(quest => 
+            quest.id === questId ? { ...quest, claimed: true } : quest
+          )
+        };
+      });
       
       // Invalidate all related queries to update UI immediately
       queryClient.invalidateQueries({ queryKey: ['/api/quests'] });
@@ -167,7 +178,7 @@ export function QuestsTab() {
                       className="bg-green-600 hover:bg-green-700 text-white"
                     >
                       <Gift className="w-4 h-4 mr-1" />
-                      {claimRewardMutation.isPending ? t('claiming') : t('claimReward')}
+                      {claimRewardMutation.isPending && claimRewardMutation.variables === quest.id ? t('claiming') : t('claimReward')}
                     </Button>
                   )}
                   {quest.completed && quest.claimed && (

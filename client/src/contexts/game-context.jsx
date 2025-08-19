@@ -355,8 +355,12 @@ export function GameProvider({ children }) {
   useEffect(() => {
     if (learningResponse?.learning) {
       dispatch({ type: 'SET_LEARNING', payload: learningResponse.learning });
+    } else if (learningResponse !== undefined && !learningResponse?.learning && gameState.currentLearning) {
+      // Learning completed - invalidate user data to get updated completed learning array
+      queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
+      dispatch({ type: 'COMPLETE_LEARNING', payload: { user: gameState.user } });
     }
-  }, [learningResponse]);
+  }, [learningResponse, gameState.currentLearning, queryClient]);
 
   // Income update interval
   useEffect(() => {

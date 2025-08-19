@@ -232,7 +232,7 @@ function VirtualAssistant() {
 
   if (!isVisible) {
     return (
-      <div className="fixed bottom-4 right-4 z-50">
+      <div className="fixed bottom-4 right-4 z-50 md:bottom-4 md:right-4 sm:bottom-20 sm:right-4">
         <Button
           onClick={() => setIsVisible(true)}
           className="rounded-full w-15 h-14 shadow-lg bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 
@@ -246,7 +246,7 @@ function VirtualAssistant() {
   }  
 
   return (
-    <div className={`fixed bottom-4 right-4 z-50 ${isMobile ? 'w-[calc(100vw-2rem)]' : 'w-80'}`}>
+    <div className={`fixed bottom-4 right-4 z-50 md:bottom-4 md:right-4 sm:bottom-20 sm:right-4 ${isMobile ? 'w-[calc(100vw-2rem)]' : 'w-80'}`}>
       <Card className="shadow-xl border-blue-200 dark:border-blue-800">
         <CardHeader className="pb-2">
           <div className="flex items-center justify-between">

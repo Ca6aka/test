@@ -9,6 +9,12 @@ A full-stack web application simulating a server management business game. Playe
 - Uses Russian interface in the game
 
 [LIVE] ## Recent Changes
+- **Critical Bug Fixes Completed (August 19, 2025)**: Fixed major user experience issues
+  - **Learning Completion Fix**: Learning blocks now disappear immediately at 99% without requiring page refresh
+  - **Online Status Fix**: Users now correctly go offline after 5 minutes of inactivity (income updates no longer count as activity)
+  - **Mobile UI Fix**: Chat button repositioned to not overlap with report submission on mobile devices
+  - **Daily Quests Fix**: "Claim reward" buttons now update status immediately and only show loading for the specific quest being claimed
+  - All fixes improve real-time user experience and eliminate interface blocking issues
 - **Migration to Replit Re-Completed Successfully (August 19, 2025)**: Project successfully re-migrated from Replit Agent environment
   - All Node.js dependencies reinstalled via packager tool (Express, React, Radix UI, TypeScript, etc.)
   - Server running smoothly on port 5000 with all API endpoints operational
