@@ -2,20 +2,20 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+// Removed Select import since payment selection is removed
 import { Crown, Star, Clock, Users, Shield, Zap, Trophy, Timer } from 'lucide-react';
 import { useLanguage } from '@/contexts/language-context';
 import { useGame } from '@/contexts/game-context';
 import { toast } from '@/hooks/use-toast';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
-import VipPremiumTest from './vip-premium-test';
+// Removed VipPremiumTest import
 import PurchaseDialog from './purchase-dialog';
 
 export default function DonateTab() {
   const { t } = useLanguage();
   const { gameState } = useGame();
-  const [selectedPayment, setSelectedPayment] = useState('fondy');
+  // Removed old payment system state
   const queryClient = useQueryClient();
 
 
@@ -48,27 +48,18 @@ export default function DonateTab() {
         )}
       </div>
 
-      {/* Test Component */}
-      <VipPremiumTest user={user} />
-
-      {/* Payment Method Selection */}
-      <Card>
+      {/* Crypto Payment Info */}
+      <Card className="border-green-500/30 bg-gradient-to-br from-green-600/10 to-emerald-800/10">
         <CardHeader>
-          <CardTitle className="flex items-center">
+          <CardTitle className="flex items-center text-green-400">
             <Shield className="w-5 h-5 mr-2" />
-            {t('paymentMethod')}
+            Безопасная оплата
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <Select value={selectedPayment} onValueChange={setSelectedPayment}>
-            <SelectTrigger>
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="fondy">Fondy</SelectItem>
-              <SelectItem value="wayforpay">WayForPay</SelectItem>
-            </SelectContent>
-          </Select>
+          <p className="text-sm text-slate-300">
+            Оплата банковской картой через криптовалютный шлюз. Ваши средства безопасно конвертируются в криптовалюту и поступают напрямую на наш кошелек.
+          </p>
         </CardContent>
       </Card>
 

@@ -1707,11 +1707,11 @@ export async function registerRoutes(app) {
       // Generate unique order ID
       const orderId = `${type}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
       
-      // Your crypto wallet address (replace with actual)
-      const cryptoWallet = '1YourRealBitcoinWalletAddress123456789';
+      // Bitcoin wallet address for receiving payments
+      const cryptoWallet = 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh';
       
       // Create MoonPay payment URL for card-to-crypto conversion
-      const paymentUrl = `https://buy.moonpay.com/?apiKey=pk_test_123&currencyCode=btc&walletAddress=${cryptoWallet}&baseCurrencyAmount=${amount}&baseCurrencyCode=usd&redirectURL=${encodeURIComponent(`${req.protocol}://${req.get('host')}/payment-success?orderId=${orderId}`)}&externalCustomerId=${user.id}`;
+      const paymentUrl = `https://buy.moonpay.com/?apiKey=pk_live_YOUR_API_KEY&currencyCode=btc&walletAddress=${cryptoWallet}&baseCurrencyAmount=${amount}&baseCurrencyCode=usd&redirectURL=${encodeURIComponent(`${req.protocol}://${req.get('host')}/payment-success?orderId=${orderId}`)}&externalCustomerId=${user.id}`;
       
       // Store payment info in JSON file
       const fs = require('fs');
