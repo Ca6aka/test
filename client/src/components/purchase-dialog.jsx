@@ -100,7 +100,7 @@ export default function PurchaseDialog({ type, price, children, disabled }) {
             </div>
             <p className="text-sm text-slate-400">
               Безопасная оплата через NOWPayments. 
-              Поддерживаются банковские карты и 300+ криптовалют с автоматической конвертацией в Bitcoin Cash.
+              Выберите USD как валюту для оплаты картой Visa/Mastercard через Mercuryo.
             </p>
           </div>
 

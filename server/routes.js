@@ -1729,15 +1729,16 @@ export async function registerRoutes(app) {
         return res.status(500).json({ message: 'Ошибка создания платежа: API key не настроен' });
       }
       
-      // Create NOWPayments invoice
+      // Create NOWPayments invoice for fiat-to-crypto payments
       const nowPaymentsPayload = {
         price_amount: amount,
-        price_currency: 'usd',
-        pay_currency: 'trx', // TRON (TRX) для низких комиссий
+        price_currency: 'usd', // Fiat currency for customer
         order_id: orderId,
         order_description: `${type === 'vip' ? 'VIP (1 month)' : 'Premium'} subscription for ${user.nickname}`,
         success_url: `${req.protocol}://${req.get('host')}/payment-success?orderId=${orderId}`,
-        cancel_url: `${req.protocol}://${req.get('host')}/donate`
+        cancel_url: `${req.protocol}://${req.get('host')}/donate`,
+        // Fiat payments enable card/bank payments via Mercuryo integration
+        is_fee_paid_by_user: true // Customer pays processing fees
       };
       
       console.log('NOWPayments payload:', JSON.stringify(nowPaymentsPayload, null, 2));
@@ -1745,7 +1746,7 @@ export async function registerRoutes(app) {
       // Call NOWPayments API to create invoice
       let paymentUrl = '';
       try {
-        console.log('Calling NOWPayments API...');
+        console.log('Calling NOWPayments Invoice API for fiat payments...');
         const nowResponse = await fetch('https://api.nowpayments.io/v1/invoice', {
           method: 'POST',
           headers: {
