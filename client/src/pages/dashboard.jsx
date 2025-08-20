@@ -14,6 +14,9 @@ import { QuestsTab } from '@/components/quests-tab';
 import MiniGamesTab from '@/components/minigames-tab';
 import DonateTab from '@/components/donate-tab';
 import { ReportsTab } from '@/components/reports-tab';
+import HiddenAchievementsTab from '@/components/hidden-achievements-tab';
+import DailyBonusTab from '@/components/daily-bonus-tab';
+import TutorialSystem from '@/components/tutorial-system';
 import { useGame } from '@/contexts/game-context';
 import { useLanguage } from '@/contexts/language-context';
 import { PlayerRankings, RankingsCountdown } from '@/components/player-rankings';
@@ -25,7 +28,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { TUTORIAL_UNLOCK_THRESHOLD, formatCurrency } from '@/lib/constants';
 import { useQuery } from '@tanstack/react-query';
 import { useRoute, useLocation } from 'wouter';
-import { ShoppingCart, Server, Play, BookOpenText, Award, ClipboardList, Gamepad2, CreditCard, Bug, AlignJustify } from 'lucide-react';
+import { ShoppingCart, Server, Play, BookOpenText, Award, ClipboardList, Gamepad2, CreditCard, Bug, AlignJustify, Gift, Eye } from 'lucide-react';
 
 export default function DashboardPage() {
   const { gameState } = useGame();
@@ -103,6 +106,9 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
       case 'hosting': return <HostingTab onTabChange={handleTabChange} />;
       case 'learning': return <LearningTab />;
       case 'achievements': return <AchievementsTab />;
+      case 'hidden-achievements': return <HiddenAchievementsTab />;
+      case 'daily-bonus': return <DailyBonusTab />;
+      case 'daily-quests': return <QuestsTab />;
       case 'quests': return <QuestsTab />;
       case 'minigames': return <MiniGamesTab />;
       case 'donate': return <DonateTab />;
@@ -238,22 +244,48 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
             </Button>
             
             <Button
-              variant={activeTab === 'quests' ? 'default' : 'ghost'}
+              variant={activeTab === 'hidden-achievements' ? 'default' : 'ghost'}
+              size="sm"
+              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs ${
+                activeTab === 'hidden-achievements'
+                  ? 'bg-primary/20 text-primary border border-primary/30'
+                  : 'text-slate-300 hover:bg-slate-700/50'
+              }`}
+              onClick={() => handleTabChange("hidden-achievements")}
+            >
+              <i className="fas fa-eye"></i>
+              <Eye className="w-3 h-3 text-white" />
+              <span>{t('hiddenAchievements')}</span>
+            </Button>
+
+            <Button
+              variant={activeTab === 'daily-bonus' ? 'default' : 'ghost'}
+              size="sm"
+              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs ${
+                activeTab === 'daily-bonus'
+                  ? 'bg-primary/20 text-primary border border-primary/30'
+                  : 'text-slate-300 hover:bg-slate-700/50'
+              }`}
+              onClick={() => handleTabChange("daily-bonus")}
+            >
+              <i className="fas fa-gift"></i>
+              <Gift className="w-3 h-3 text-white" />
+              <span>{t('dailyBonus')}</span>
+            </Button>
+
+            <Button
+              variant={activeTab === 'daily-quests' ? 'default' : 'ghost'}
               size="sm"
               className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs relative ${
-                activeTab === 'quests'
+                activeTab === 'daily-quests'
                   ? 'bg-primary/20 text-primary border border-primary/30'
-                  : isTabUnlocked('quests')
-                  ? 'text-slate-300 hover:bg-slate-700/50'
-                  : 'text-slate-500 opacity-50 cursor-not-allowed'
+                  : 'text-slate-300 hover:bg-slate-700/50'
               }`}
-              onClick={() => isTabUnlocked("quests") && handleTabChange("quests")}
-              disabled={!isTabUnlocked('quests')}
+              onClick={() => handleTabChange("daily-quests")}
             >
               <i className="fas fa-calendar"></i>
               <ClipboardList className="w-3 h-3 text-white" />
               <span>{t('dailyQuests')}</span>
-              {!isTabUnlocked('quests') && <Lock className="w-3 h-3 ml-1" />}
               {hasCompletedQuests && (
                 <div className="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-1/2 w-3 h-3 bg-yellow-500 rounded-full animate-pulse border-2 border-slate-800"></div>
               )}
@@ -430,23 +462,49 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
               {!isTabUnlocked('achievements') && <Lock className="w-4 h-4 ml-auto" />}
             </Button>
 
+            {/* Hidden Achievements Tab */}
+            <Button
+              variant={activeTab === 'hidden-achievements' ? 'default' : 'ghost'}
+              className={`w-full justify-start space-x-3 ${
+                activeTab === 'hidden-achievements'
+                  ? 'bg-primary/20 text-primary border border-primary/30'
+                  : 'text-slate-300 hover:bg-slate-700/50'
+              }`}
+              onClick={() => handleTabChange("hidden-achievements")}
+            >
+              <i className="fas fa-eye text-lg"></i>
+              <Eye className="w-4 h-4 text-white" />
+              <span className="font-medium">{t('hiddenAchievements')}</span>
+            </Button>
+
+            {/* Daily Bonus Tab */}
+            <Button
+              variant={activeTab === 'daily-bonus' ? 'default' : 'ghost'}
+              className={`w-full justify-start space-x-3 ${
+                activeTab === 'daily-bonus'
+                  ? 'bg-primary/20 text-primary border border-primary/30'
+                  : 'text-slate-300 hover:bg-slate-700/50'
+              }`}
+              onClick={() => handleTabChange("daily-bonus")}
+            >
+              <i className="fas fa-gift text-lg"></i>
+              <Gift className="w-4 h-4 text-white" />
+              <span className="font-medium">{t('dailyBonus')}</span>
+            </Button>
+
             {/* Daily Quests Tab */}
             <Button
-              variant={activeTab === 'quests' ? 'default' : 'ghost'}
+              variant={activeTab === 'daily-quests' ? 'default' : 'ghost'}
               className={`w-full justify-start space-x-3 relative ${
-                activeTab === 'quests'
+                activeTab === 'daily-quests'
                   ? 'bg-primary/20 text-primary border border-primary/30'
-                  : isTabUnlocked('quests')
-                  ? 'text-slate-300 hover:bg-slate-700/50'
-                  : 'text-slate-500 opacity-50 cursor-not-allowed'
+                  : 'text-slate-300 hover:bg-slate-700/50'
               }`}
-              onClick={() => isTabUnlocked("quests") && handleTabChange("quests")}
-              disabled={!isTabUnlocked('quests')}
+              onClick={() => handleTabChange("daily-quests")}
             >
               <i className="fas fa-calendar text-lg"></i>
               <ClipboardList className="w-4 h-4 text-white" />
               <span className="font-medium">{t('dailyQuests')}</span>
-              {!isTabUnlocked('quests') && <Lock className="w-4 h-4 ml-auto" />}
               {hasCompletedQuests && (
                 <div className="absolute top-1/2 right-2 transform -translate-y-1/2 w-3 h-3 bg-yellow-500 rounded-full animate-pulse border border-slate-800"></div>
               )}

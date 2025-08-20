@@ -1341,6 +1341,101 @@ export async function registerRoutes(app) {
     }
   });
 
+  // Hidden achievements endpoints
+  app.get('/api/hidden-achievements', requireAuth, async (req, res) => {
+    try {
+      const achievements = await storage.getHiddenAchievements();
+      const userData = await storage.getUser(req.session.userId);
+      const unlockedAchievements = userData.unlockedHiddenAchievements || [];
+      
+      const processedAchievements = achievements.map(achievement => {
+        const isUnlocked = unlockedAchievements.includes(achievement.id);
+        if (!isUnlocked) {
+          return {
+            id: achievement.id,
+            name: '???',
+            description: 'Hidden achievement',
+            isLocked: true,
+            isHidden: true
+          };
+        }
+        return { ...achievement, isLocked: false };
+      });
+      
+      res.json({ achievements: processedAchievements });
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to get hidden achievements' });
+    }
+  });
+
+  // Daily login bonus endpoints
+  app.get('/api/daily-bonus', requireAuth, async (req, res) => {
+    try {
+      const bonusInfo = await storage.getDailyLoginBonus(req.session.userId);
+      res.json(bonusInfo);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to get daily bonus info' });
+    }
+  });
+
+  app.post('/api/daily-bonus/claim', requireAuth, async (req, res) => {
+    try {
+      const result = await storage.claimDailyBonus(req.session.userId);
+      res.json(result);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to claim daily bonus' });
+    }
+  });
+
+  // Tutorial endpoints
+  app.get('/api/tutorial', requireAuth, async (req, res) => {
+    try {
+      const progress = await storage.getTutorialProgress(req.session.userId);
+      res.json(progress);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to get tutorial progress' });
+    }
+  });
+
+  app.post('/api/tutorial/progress', requireAuth, async (req, res) => {
+    try {
+      const { step } = req.body;
+      const progress = await storage.updateTutorialProgress(req.session.userId, step);
+      res.json(progress);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to update tutorial progress' });
+    }
+  });
+
+  // Additional API endpoints for new features
+  app.get('/api/achievements/hidden', async (req, res) => {
+    try {
+      const achievements = await storage.getHiddenAchievements();
+      res.json({ achievements });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
+  // Daily bonus API
+  app.get('/api/daily-bonus', requireAuth, async (req, res) => {
+    try {
+      const bonusInfo = await storage.getDailyLoginBonus(req.session.userId);
+      res.json(bonusInfo);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
+  app.post('/api/daily-bonus/claim', requireAuth, async (req, res) => {
+    try {
+      const result = await storage.claimDailyBonus(req.session.userId);
+      res.json(result);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

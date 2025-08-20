@@ -1,5 +1,61 @@
 import { createContext, useContext, useState } from 'react';
 
+const newTranslations = {
+  // Hidden achievements
+  hiddenAchievements: { en: 'Hidden Achievements', ru: 'Скрытые достижения' },
+  unlocked: { en: 'unlocked', ru: 'открыто' },
+  hiddenRequirement: { en: 'Secret requirement', ru: 'Секретное требование' },
+  noHiddenAchievements: { en: 'No hidden achievements found', ru: 'Скрытых достижений не найдено' },
+  hiddenAchievementsDesc: { en: 'Complete special actions to unlock hidden rewards', ru: 'Выполняйте особые действия для получения скрытых наград' },
+  
+  // Daily bonus
+  dailyBonus: { en: 'Daily Bonus', ru: 'Ежедневный бонус' },
+  todayBonus: { en: "Today's Bonus", ru: 'Сегодняшний бонус' },
+  readyToClaim: { en: 'Ready to claim', ru: 'Готов к получению' },
+  claimBonus: { en: 'Claim Bonus', ru: 'Получить бонус' },
+  claiming: { en: 'Claiming...', ru: 'Получаем...' },
+  alreadyClaimed: { en: 'Already claimed', ru: 'Уже получен' },
+  comeBackTomorrow: { en: 'Come back tomorrow for your next bonus', ru: 'Вернитесь завтра за следующим бонусом' },
+  nextBonus: { en: 'Tomorrow', ru: 'Завтра' },
+  loginStreak: { en: 'Login Streak', ru: 'Серия входов' },
+  dayStreak: { en: 'day streak', ru: 'день подряд' },
+  daysStreak: { en: 'days streak', ru: 'дней подряд' },
+  streakMultiplier: { en: 'Multiplier', ru: 'Множитель' },
+  maxMultiplier: { en: 'Maximum multiplier reached!', ru: 'Максимальный множитель достигнут!' },
+  streakProgress: { en: '{current}/20 days for max bonus', ru: '{current}/20 дней для максимального бонуса' },
+  bonusSchedule: { en: 'Bonus Schedule', ru: 'Расписание бонусов' },
+  day: { en: 'Day', ru: 'День' },
+  max: { en: 'MAX', ru: 'МАКС' },
+  note: { en: 'Note', ru: 'Примечание' },
+  bonusNote: { en: 'Login consecutively to maintain your streak. Missing a day resets it to 1.', ru: 'Заходите ежедневно подряд для сохранения серии. Пропуск дня сбрасывает её на 1.' },
+  bonusClaimed: { en: 'Bonus Claimed!', ru: 'Бонус получен!' },
+  bonusClaimedDesc: { en: 'You received ${amount}! Current streak: {streak} days', ru: 'Вы получили ${amount}! Текущая серия: {streak} дней' },
+  bonusClaimError: { en: 'Failed to claim bonus', ru: 'Не удалось получить бонус' },
+  
+  // Tutorial
+  tutorial: { en: 'Tutorial', ru: 'Обучение' },
+  welcomeToGame: { en: 'Welcome to the Server Management Game!', ru: 'Добро пожаловать в игру управления серверами!' },
+  tutorialStep1: { en: 'Learn how to earn money and manage your virtual servers', ru: 'Изучите как зарабатывать деньги и управлять виртуальными серверами' },
+  tutorialStep2: { en: 'Visit the shop to purchase your first server', ru: 'Посетите магазин чтобы купить свой первый сервер' },
+  tutorialStep3: { en: 'Manage your servers and generate income', ru: 'Управляйте серверами и генерируйте доход' },
+  tutorialStep4: { en: 'Complete learning courses to unlock new features', ru: 'Проходите курсы обучения для разблокировки новых функций' },
+  tutorialStep5: { en: 'Complete the tutorial and start playing!', ru: 'Завершите обучение и начните играть!' },
+  nextStep: { en: 'Next Step', ru: 'Следующий шаг' },
+  completeTutorial: { en: 'Complete Tutorial', ru: 'Завершить обучение' },
+  tutorialCompleted: { en: 'Tutorial completed!', ru: 'Обучение завершено!' },
+  tutorialCompletedDesc: { en: 'You can now use all game features', ru: 'Теперь вы можете использовать все функции игры' },
+  skipTutorial: { en: 'Skip', ru: 'Пропустить' },
+  updating: { en: 'Updating...', ru: 'Обновляем...' },
+  step: { en: 'Step', ru: 'Шаг' },
+  of: { en: 'of', ru: 'из' },
+  tutorialReward: { en: 'Tutorial reward', ru: 'Награда за обучение' },
+  earnMoney: { en: 'Earn Money', ru: 'Заработать деньги' },
+  visitShop: { en: 'Visit Shop', ru: 'Посетить магазин' },
+  manageServers: { en: 'Manage Servers', ru: 'Управление серверами' },
+  learningCenter: { en: 'Learning Center', ru: 'Центр обучения' },
+  activeServers: { en: 'Active Servers', ru: 'Активные сервера' }
+};
+
 const translations = {
   en: {
     // Navigation
@@ -2835,7 +2891,22 @@ const translations = {
 
 // Function to localize error messages based on language
 export function localizeError(error, language = 'en') {
-  const t = (key) => translations[language]?.[key] || translations.en[key] || key;
+  const t = (key) => {
+    // Check new translations first
+    if (newTranslations[key] && newTranslations[key][language]) {
+      return newTranslations[key][language];
+    }
+    // Fall back to old translations - but first check if key exists in current language
+    if (translations[language] && translations[language][key]) {
+      return translations[language][key];
+    }
+    // Try English as fallback
+    if (translations.en && translations.en[key]) {
+      return translations.en[key];
+    }
+    // Return key if not found
+    return key;
+  };
   
   if (typeof error === 'string') {
     return error;

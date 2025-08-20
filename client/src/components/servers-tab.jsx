@@ -251,9 +251,9 @@ export function ServersTab({ onTabChange }) {
         )}
         
         <div className="flex items-center space-x-2 sm:space-x-3">
-          <span className="text-xs sm:text-sm text-slate-400">{t('serverLimit')}:</span>
+          <span className="text-xs sm:text-sm text-slate-400">{t('activeServers')}:</span>
           <span className="bg-slate-700 px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm font-medium">
-            {currentServers}/{serverLimit} {t('servers')}
+            {gameState.servers?.filter(s => s.isOnline).length || 0}/{currentServers} {t('servers')}
           </span>
         </div>
       </div>

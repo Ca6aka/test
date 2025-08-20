@@ -1,15 +1,1 @@
-[
-  {
-    "id": "b0ca555c-f352-4672-a101-9367d0ec3dd1",
-    "userId": "7441f91d-d167-4f0d-8d54-136e8b6a416e",
-    "userNickname": "test2",
-    "subject": "123",
-    "category": "Жалоба",
-    "status": "open",
-    "createdAt": 1755710434854,
-    "closedAt": null,
-    "closedBy": null,
-    "isMarked": false,
-    "hasNewMessages": false
-  }
-]
+[]

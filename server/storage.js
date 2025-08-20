@@ -1573,8 +1573,7 @@ export class FileStorage {
           totalBalance += userData.balance || 0;
           
           // Check if user is online based on last activity (5 minutes)
-          const now = Date.now();
-          if (userData.lastActivity && (now - userData.lastActivity) < 5 * 60 * 1000) {
+          if (userData.lastActivity && (Date.now() - userData.lastActivity) < 5 * 60 * 1000) {
             onlineCount++;
           }
         } catch (err) {
@@ -1607,6 +1606,149 @@ export class FileStorage {
   // Get all daily quests templates
   getDailyQuests() {
     return DAILY_QUESTS;
+  }
+
+  // Hidden achievements system
+  async getHiddenAchievements() {
+    return [
+      {
+        id: 'hidden-earlybird',
+        name: 'Early Bird',
+        description: 'Hidden achievement unlocked',
+        unlockCondition: { type: 'login_streak', value: 7 },
+        reward: 10000,
+        isHidden: true
+      },
+      {
+        id: 'hidden-explorer',
+        name: 'Explorer',
+        description: 'Hidden achievement unlocked',
+        unlockCondition: { type: 'servers_owned', value: 5 },
+        reward: 15000,
+        isHidden: true
+      },
+      {
+        id: 'hidden-mogul',
+        name: 'Business Mogul',
+        description: 'Hidden achievement unlocked',
+        unlockCondition: { type: 'balance', value: 1000000 },
+        reward: 50000,
+        isHidden: true
+      },
+      {
+        id: 'hidden-master',
+        name: 'Server Master',
+        description: 'Hidden achievement unlocked',
+        unlockCondition: { type: 'learning_completed', value: 2 },
+        reward: 25000,
+        isHidden: true
+      }
+    ];
+  }
+
+  // Daily login bonus system
+  async getDailyLoginBonus(username) {
+    try {
+      const userData = await this.getUser(username);
+      const now = new Date();
+      const berlinTime = new Date(now.toLocaleString("en-US", {timeZone: "Europe/Berlin"}));
+      const today = berlinTime.toISOString().split('T')[0];
+      
+      const lastLogin = userData.lastLoginDate;
+      const currentStreak = userData.loginStreak || 0;
+      
+      if (lastLogin === today) {
+        return { canClaim: false, streak: currentStreak, nextAmount: this.calculateDailyBonus(currentStreak + 1) };
+      }
+      
+      const yesterday = new Date(berlinTime);
+      yesterday.setDate(yesterday.getDate() - 1);
+      const yesterdayStr = yesterday.toISOString().split('T')[0];
+      
+      let newStreak = 1;
+      if (lastLogin === yesterdayStr) {
+        newStreak = currentStreak + 1;
+      }
+      
+      const bonusAmount = this.calculateDailyBonus(newStreak);
+      
+      return { 
+        canClaim: true, 
+        streak: newStreak, 
+        amount: bonusAmount,
+        nextAmount: this.calculateDailyBonus(newStreak + 1)
+      };
+    } catch (error) {
+      return { canClaim: false, streak: 0, nextAmount: 100 };
+    }
+  }
+
+  calculateDailyBonus(streak) {
+    const baseAmount = 100;
+    const multiplier = Math.min(streak, 20); // Max 20x multiplier
+    return Math.min(baseAmount * multiplier, 2000); // Max 2000 currency
+  }
+
+  async claimDailyBonus(username) {
+    try {
+      const bonusInfo = await this.getDailyLoginBonus(username);
+      if (!bonusInfo.canClaim) {
+        return { success: false, message: 'Already claimed today' };
+      }
+      
+      const userData = await this.getUser(username);
+      const berlinTime = new Date(new Date().toLocaleString("en-US", {timeZone: "Europe/Berlin"}));
+      const today = berlinTime.toISOString().split('T')[0];
+      
+      userData.balance = (userData.balance || 0) + bonusInfo.amount;
+      userData.lastLoginDate = today;
+      userData.loginStreak = bonusInfo.streak;
+      
+      await this.saveUser(username, userData);
+      
+      return { 
+        success: true, 
+        amount: bonusInfo.amount, 
+        streak: bonusInfo.streak,
+        newBalance: userData.balance
+      };
+    } catch (error) {
+      return { success: false, message: 'Error claiming bonus' };
+    }
+  }
+
+  // Tutorial system
+  async getTutorialProgress(username) {
+    try {
+      const userData = await this.getUser(username);
+      return userData.tutorialProgress || {
+        completed: false,
+        currentStep: 0,
+        steps: ['welcome', 'earning', 'shop', 'servers', 'learning']
+      };
+    } catch (error) {
+      return { completed: false, currentStep: 0, steps: ['welcome', 'earning', 'shop', 'servers', 'learning'] };
+    }
+  }
+
+  async updateTutorialProgress(username, step) {
+    try {
+      const userData = await this.getUser(username);
+      if (!userData.tutorialProgress) {
+        userData.tutorialProgress = { completed: false, currentStep: 0, steps: ['welcome', 'earning', 'shop', 'servers', 'learning'] };
+      }
+      
+      userData.tutorialProgress.currentStep = Math.max(userData.tutorialProgress.currentStep, step);
+      
+      if (step >= userData.tutorialProgress.steps.length - 1) {
+        userData.tutorialProgress.completed = true;
+      }
+      
+      await this.saveUser(username, userData);
+      return userData.tutorialProgress;
+    } catch (error) {
+      return null;
+    }
   }
 
   // Chat system
@@ -2432,5 +2574,151 @@ export class FileStorage {
     await this.writeJsonFile('servers.json', filtered);
   }  
 }
+
+// Add new methods to FileStorage class for new features
+FileStorage.prototype.getHiddenAchievements = async function() {
+  const hiddenAchievements = [
+    {
+      id: 'first-connection',
+      name: 'First Connection',
+      description: 'Successfully establish your first server connection',
+      reward: 500,
+      requirement: 'complete_first_minigame'
+    },
+    {
+      id: 'perfect-security',
+      name: 'Security Expert', 
+      description: 'Complete 50 security mini-games without errors',
+      reward: 2000,
+      requirement: 'perfect_security_count_50'
+    },
+    {
+      id: 'speed-demon',
+      name: 'Speed Demon',
+      description: 'Complete any mini-game in under 10 seconds',
+      reward: 1000,
+      requirement: 'minigame_speed_under_10s'
+    },
+    {
+      id: 'wealth-accumulator',
+      name: 'Wealth Accumulator',
+      description: 'Accumulate $100,000 total earnings',
+      reward: 5000,
+      requirement: 'total_earnings_100k'
+    }
+  ];
+  return hiddenAchievements;
+};
+
+FileStorage.prototype.getDailyLoginBonus = async function(userId) {
+  const user = await this.getUser(userId);
+  if (!user) throw new Error('User not found');
+
+  const now = new Date();
+  const berlinTime = new Date(now.toLocaleString("en-US", {timeZone: "Europe/Berlin"}));
+  const today = berlinTime.toDateString();
+  
+  const lastLoginDate = user.lastDailyBonus ? new Date(user.lastDailyBonus).toDateString() : null;
+  let streak = user.dailyBonusStreak || 0;
+  let canClaim = false;
+
+  if (lastLoginDate !== today) {
+    canClaim = true;
+    
+    // Check if streak should continue or reset
+    if (lastLoginDate) {
+      const yesterday = new Date(berlinTime);
+      yesterday.setDate(yesterday.getDate() - 1);
+      const yesterdayStr = yesterday.toDateString();
+      
+      if (lastLoginDate !== yesterdayStr) {
+        streak = 0; // Reset streak if missed a day
+      }
+    }
+  }
+
+  const amount = Math.min(100 * (streak + 1), 2000);
+  const nextAmount = Math.min(100 * (streak + 2), 2000);
+
+  return {
+    canClaim,
+    streak,
+    amount,
+    nextAmount,
+    lastClaimed: user.lastDailyBonus
+  };
+};
+
+FileStorage.prototype.claimDailyBonus = async function(userId) {
+  const user = await this.getUser(userId);
+  if (!user) throw new Error('User not found');
+
+  const bonusInfo = await this.getDailyLoginBonus(userId);
+  if (!bonusInfo.canClaim) {
+    return { success: false, message: 'Bonus already claimed today' };
+  }
+
+  const newStreak = bonusInfo.streak + 1;
+  const amount = bonusInfo.amount;
+  
+  // Update user data
+  user.money += amount;
+  user.totalEarnings = (user.totalEarnings || 0) + amount;
+  user.dailyBonusStreak = newStreak;
+  user.lastDailyBonus = new Date().toISOString();
+
+  await this.saveUser(user);
+
+  return {
+    success: true,
+    amount,
+    streak: newStreak,
+    message: 'Daily bonus claimed successfully'
+  };
+};
+
+FileStorage.prototype.getTutorialProgress = async function(userId) {
+  const user = await this.getUser(userId);
+  if (!user) throw new Error('User not found');
+
+  return {
+    completed: user.tutorialCompleted || false,
+    currentStep: user.tutorialStep || 0,
+    completedSteps: user.completedTutorialSteps || []
+  };
+};
+
+FileStorage.prototype.updateTutorialProgress = async function(userId, step) {
+  const user = await this.getUser(userId);
+  if (!user) throw new Error('User not found');
+
+  const totalSteps = 5; // Number of tutorial steps
+  user.tutorialStep = step;
+  user.completedTutorialSteps = user.completedTutorialSteps || [];
+  
+  if (!user.completedTutorialSteps.includes(step)) {
+    user.completedTutorialSteps.push(step);
+  }
+
+  // Check if tutorial is completed
+  if (step >= totalSteps - 1) {
+    user.tutorialCompleted = true;
+    
+    // Give tutorial completion reward
+    if (!user.tutorialRewardClaimed) {
+      user.money += 15000;
+      user.totalEarnings = (user.totalEarnings || 0) + 15000;
+      user.tutorialRewardClaimed = true;
+    }
+  }
+
+  await this.saveUser(user);
+
+  return {
+    completed: user.tutorialCompleted || false,
+    currentStep: user.tutorialStep || 0,
+    completedSteps: user.completedTutorialSteps || []
+  };
+};
 
 export const storage = new FileStorage();

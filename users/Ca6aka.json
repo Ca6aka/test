@@ -2,11 +2,11 @@
   "id": "65a91d9d-7213-4a2e-abd6-c9017bc7ae80",
   "nickname": "Ca6aka",
   "password": "$2b$10$G1sTjzxqs2js60d52sYQXOCbGLW1o.6TCUNzzuimD5iwHk21qh6vq",
-  "balance": 1076051,
+  "balance": 1123222,
   "level": 16,
-  "experience": 3195,
-  "totalEarnings": 1676879,
-  "totalSpent": 970227,
+  "experience": 3254,
+  "totalEarnings": 1677779,
+  "totalSpent": 983956,
   "avatar": {
     "gradient": "from-green-400 via-teal-500 to-cyan-600",
     "pattern": "multi-color",
@@ -20,38 +20,38 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755708808987,
+  "lastIncomeUpdate": 1755712927797,
   "jobCooldowns": {
-    "maintenance": 1755653778001,
-    "optimization": 1755653218711,
-    "security-audit": 1755653342462
+    "maintenance": 1755713114045,
+    "optimization": 1755713268846,
+    "security-audit": 1755713390437
   },
   "currentLearning": null,
   "activities": [
     {
-      "id": "d66dd815-52bc-407a-a7d0-ef68c0d54736",
+      "id": "21aba0e5-688c-470f-a83b-833bb374d717",
+      "description": "Completed Security Audit (+$500, +25 XP)",
+      "timestamp": "8/20/2025, 6:02:50 PM"
+    },
+    {
+      "id": "15dca46b-6801-43f3-a56e-ce00332d9777",
+      "description": "Completed Performance Optimization (+$250, +18 XP)",
+      "timestamp": "8/20/2025, 6:02:48 PM"
+    },
+    {
+      "id": "f5dddc9e-1df8-4d28-a158-8aa62c7331cb",
+      "description": "Completed Server Maintenance (+$150, +10 XP)",
+      "timestamp": "8/20/2025, 6:02:14 PM"
+    },
+    {
+      "id": "4e265604-22e1-4fdc-9b27-e16cdc6e63fa",
       "description": "Achievement unlocked: Server Empire (+$60,000)",
-      "timestamp": "8/20/2025, 5:52:57 PM"
+      "timestamp": "8/20/2025, 6:02:07 PM"
     },
     {
-      "id": "0f5fd07d-67c0-4ce2-9c0d-1f59f21bbcd5",
-      "description": "Purchased CDN Server for $17,000",
-      "timestamp": "8/20/2025, 5:52:57 PM"
-    },
-    {
-      "id": "f473b5c6-56f9-44da-bc61-233cd863b883",
-      "description": "Purchased CDN Server for $17,000",
-      "timestamp": "8/20/2025, 5:52:56 PM"
-    },
-    {
-      "id": "ef89757f-14f6-416e-a4e5-22178d3d4210",
-      "description": "Rental cost: -$184 for 18 servers",
-      "timestamp": "20.08.2025, 18:53:28"
-    },
-    {
-      "id": "ad023bf7-a5f9-407e-8c0a-0f5ce42bf006",
-      "description": "Rental cost: -$184 for 18 servers",
-      "timestamp": "20.08.2025, 18:52:27"
+      "id": "0f2a17f9-a113-4838-86cf-58315685c02b",
+      "description": "Rental cost: -$13729 for 20 servers",
+      "timestamp": "8/20/2025, 6:02:07 PM"
     }
   ],
   "achievements": [
@@ -71,9 +71,10 @@
     "wealthy-investor",
     "server-mogul",
     "millionaire",
-    "infrastructure-king"
+    "infrastructure-king",
+    "server-empire"
   ],
-  "completedJobsCount": 165,
+  "completedJobsCount": 168,
   "completedCoursesCount": 16,
   "completedLearning": [
     "security-protocols"
@@ -235,9 +236,9 @@
   "lastQuestReset": 1755628419352,
   "registrationIP": "192.168.0.136",
   "registrationTime": 1755531070984,
-  "lastSeen": 1755712483746,
-  "lastMessageTime": 1755712140625,
-  "chatLanguage": "de",
+  "lastSeen": 1755713545711,
+  "lastMessageTime": 1755712518147,
+  "chatLanguage": "en",
   "chatAchievements": [
     "first_message"
   ],

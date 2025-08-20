@@ -183,5 +183,19 @@
     "isSystem": true,
     "isWarning": true,
     "language": "en"
+  },
+  {
+    "id": "7c4feda4-f232-4c2e-8915-44b81e80ed67",
+    "userId": "65a91d9d-7213-4a2e-abd6-c9017bc7ae80",
+    "nickname": "Ca6aka",
+    "message": "1",
+    "originalMessage": "1",
+    "language": "en",
+    "timestamp": 1755712518150,
+    "deleted": false,
+    "adminLevel": 2,
+    "reactions": {},
+    "filtered": false,
+    "warningCount": 0
   }
 ]
