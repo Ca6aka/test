@@ -1555,7 +1555,7 @@ export async function registerRoutes(app) {
       }
 
       // Price configuration
-      const prices = { vip: 3, premium: 10 };
+      const prices = { vip: 5, premium: 10 };
       const amount = prices[type];
       
       if (!amount) {
@@ -1692,7 +1692,7 @@ export async function registerRoutes(app) {
       return res.status(400).json({ message: 'Invalid subscription type' });
     }
 
-    const prices = { vip: 3, premium: 10 };
+    const prices = { vip: 5, premium: 10 };
     const amount = prices[type];
 
     try {
