@@ -17,9 +17,9 @@
   "tutorialCompleted": true,
   "admin": 0,
   "banned": false,
-  "muted": false,
-  "muteExpires": null,
-  "isOnline": true,
+  "muted": true,
+  "muteExpires": 1755711410466,
+  "isOnline": false,
   "lastIncomeUpdate": 1755709477326,
   "jobCooldowns": {
     "maintenance": 1755709660821,
@@ -209,10 +209,12 @@
   "lastQuestReset": 1755709477326,
   "registrationIP": "95.223.108.201",
   "registrationTime": 1755709477326,
-  "lastSeen": 1755710089580,
-  "lastMessageTime": 1755709603820,
+  "lastSeen": 1755710545169,
+  "lastMessageTime": 1755710510462,
   "chatLanguage": "ru",
   "chatAchievements": [
     "first_message"
-  ]
+  ],
+  "hasNewChatMessages": true,
+  "chatWarnings": 0
 }

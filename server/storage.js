@@ -1730,6 +1730,12 @@ export class FileStorage {
       filteredText = message.toLowerCase();
       wasFiltered = true;
       warningCount++;
+      
+      // Add system warning for caps
+      await this.addSystemMessage(
+        `${user.nickname} warned (${warningCount}/3) - excessive caps`, 
+        user.chatLanguage || 'ru'
+      );
     }
     
     // Simple profanity filter

@@ -531,21 +531,34 @@ function VirtualAssistant({ hideOnReports = false }) {
                 const userStatus = getUserStatus(message.userId)
                 return (
                   <div key={message.id} className="group">
-                    {message.deleted ? null : message.isSystem || message.isWarning ? (
-                      <div className="text-xs text-slate-400 italic py-1 px-2 bg-slate-800/20 rounded">
-                        {message.message}
+                    {message.deleted ? (
+                      <div className="text-xs text-slate-500 italic py-1 px-2 bg-slate-800/30 rounded">
+                        {t('messageDeletedBy')?.replace('{admin}', message.deletedBy) || `Message deleted by ${message.deletedBy}`}
+                      </div>
+                    ) : message.isSystem || message.isWarning ? (
+                      <div className="flex items-start space-x-2 p-2">
+                        <MessageSquare className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
+                        <div className="text-xs text-slate-400 italic py-1 px-2 bg-slate-800/20 rounded flex-1">
+                          {message.message}
+                        </div>
                       </div>
                     ) : (
                       <div className="space-y-1">
                         <div className="flex items-center justify-between text-xs text-gray-500">
                           <div className="flex items-center gap-2">
-                            <button
-                              onClick={() => setLocation(`/player/${message.nickname}`)}
-                              className="font-medium text-blue-600 hover:text-blue-500 hover:underline transition-colors"
-                              data-testid={`link-profile-${message.nickname}`}
-                            >
-                              {message.nickname}
-                            </button>
+                            {message.isSystem || message.nickname === 'System' ? (
+                              <span className="font-medium text-cyan-400">
+                                {message.nickname}
+                              </span>
+                            ) : (
+                              <button
+                                onClick={() => setLocation(`/player/${message.nickname}`)}
+                                className="font-medium text-blue-600 hover:text-blue-500 hover:underline transition-colors"
+                                data-testid={`link-profile-${message.nickname}`}
+                              >
+                                {message.nickname}
+                              </button>
+                            )}
                             {message.nickname === 'Ca6aka' && (
                               <span className="text-xs px-2 py-0.5 rounded-full bg-gradient-to-r from-red-500 to-red-600 text-white border border-red-500/50 animate-pulse shadow-lg shadow-red-500/20">
                                 ADMIN
@@ -562,24 +575,114 @@ function VirtualAssistant({ hideOnReports = false }) {
                           </div>
                           <div className="flex items-center gap-1">
                             <span>{formatTime(message.timestamp)}</span>
-                            {user?.admin >= 1 && (
-                              <Button
-                                onClick={() => handleDeleteMessage(message.id)}
-                                size="sm"
-                                variant="ghost"
-                                className="h-4 w-4 p-0 opacity-0 group-hover:opacity-100"
-                                data-testid={`delete-message-${message.id}`}
-                              >
-                                <Trash2 className="w-3 h-3 text-red-600" />
-                              </Button>
-                            )}
                           </div>
                         </div>
-                        <div className="text-sm bg-gray-100 dark:bg-gray-800 rounded-lg px-3 py-2">
-                          {message.message}
+                        <div className="text-sm bg-gray-100 dark:bg-gray-800 rounded-lg px-3 py-2 relative group">
+                          <div className="break-words" style={{ wordWrap: 'break-word', overflowWrap: 'break-word' }}>
+                            {message.message}
+                          </div>
                           {message.filtered && (
-                            <div className="text-xs text-yellow-600 mt-1 italic">⚠️ Message was automatically filtered</div>
+                            <div className="text-xs text-yellow-600 mt-1 italic">
+                              ⚠️ {language === 'ru' ? 'Сообщение было автоматически отфильтровано' :
+                                  language === 'uk' ? 'Повідомлення було автоматично відфільтровано' :
+                                  language === 'de' ? 'Nachricht wurde automatisch gefiltert' :
+                                  'Message was automatically filtered'}
+                            </div>
                           )}
+                          
+                          {/* Reactions Display */}
+                          {message.reactions && Object.keys(message.reactions).length > 0 && (
+                            <div className="flex flex-wrap gap-1 mt-2">
+                              {Object.entries(message.reactions).map(([emoji, users]) => (
+                                <button
+                                  key={emoji}
+                                  onClick={() => handleReaction(message.id, emoji)}
+                                  className={`px-2 py-1 rounded-full text-xs transition-colors ${
+                                    users.includes(user?.id) 
+                                      ? 'bg-blue-500/20 text-blue-300 border border-blue-500/50' 
+                                      : 'bg-slate-700/50 text-slate-300 hover:bg-slate-600/50'
+                                  }`}
+                                >
+                                  {emoji} {users.length}
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                          
+                          {/* Message Controls - Visible on hover */}
+                          <div className="absolute right-2 top-2 flex items-center space-x-1 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-800/80 rounded px-1">
+                            {/* Reaction Button for all users */}
+                            <Dialog>
+                              <DialogTrigger asChild>
+                                <Button
+                                  size="sm"
+                                  variant="ghost"
+                                  className="h-6 w-6 p-0 text-slate-400 hover:text-slate-300"
+                                >
+                                  😊
+                                </Button>
+                              </DialogTrigger>
+                              <DialogContent className="bg-slate-800 border-slate-700 max-w-xs">
+                                <DialogHeader>
+                                  <DialogTitle className="text-white text-sm">{t('addReaction') || 'Add Reaction'}</DialogTitle>
+                                </DialogHeader>
+                                <div className="flex gap-2 justify-center">
+                                  <Button
+                                    onClick={() => {
+                                      handleReaction(message.id, '👍')
+                                      document.querySelector('[data-state="open"]')?.click()
+                                    }}
+                                    className="text-2xl p-2 bg-slate-700 hover:bg-slate-600"
+                                  >
+                                    👍
+                                  </Button>
+                                  <Button
+                                    onClick={() => {
+                                      handleReaction(message.id, '👎')
+                                      document.querySelector('[data-state="open"]')?.click()
+                                    }}
+                                    className="text-2xl p-2 bg-slate-700 hover:bg-slate-600"
+                                  >
+                                    👎
+                                  </Button>
+                                  <Button
+                                    onClick={() => {
+                                      handleReaction(message.id, '❤️')
+                                      document.querySelector('[data-state="open"]')?.click()
+                                    }}
+                                    className="text-2xl p-2 bg-slate-700 hover:bg-slate-600"
+                                  >
+                                    ❤️
+                                  </Button>
+                                </div>
+                              </DialogContent>
+                            </Dialog>
+                            
+                            {/* Admin Controls */}
+                            {user?.admin >= 1 && (
+                              <>
+                                {user?.admin >= 2 && (
+                                  <Button
+                                    size="sm"
+                                    variant="ghost"
+                                    className="h-6 w-6 p-0 text-red-400 hover:text-red-300"
+                                    onClick={() => handlePinMessage(message.id)}
+                                    title={t('pinMessage') || 'Pin Message'}
+                                  >
+                                    📌
+                                  </Button>
+                                )}
+                                <Button
+                                  size="sm"
+                                  variant="ghost"
+                                  className="h-6 w-6 p-0 text-red-400 hover:text-red-300"
+                                  onClick={() => handleDeleteMessage(message.id)}
+                                >
+                                  <Trash2 className="w-3 h-3" />
+                                </Button>
+                              </>
+                            )}
+                          </div>
                         </div>
                       </div>
                     )}
@@ -661,6 +764,17 @@ function VirtualAssistant({ hideOnReports = false }) {
                 className="flex-1 text-sm pr-16"
                 disabled={sendMessageMutation.isPending || user?.muted || cooldownRemaining > 0}
                 maxLength={200}
+                style={{ 
+                  whiteSpace: 'pre-wrap',
+                  wordWrap: 'break-word',
+                  overflowWrap: 'break-word'
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault()
+                    handleSubmit(e)
+                  }
+                }}
               />
               <div className="absolute right-2 top-1/2 transform -translate-y-1/2 text-xs text-gray-400">
                 {input.length}/200
