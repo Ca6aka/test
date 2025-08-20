@@ -44,9 +44,9 @@ export default function PurchaseDialog({ type, price, children, disabled }) {
       if (data.paymentUrl) {
         window.open(data.paymentUrl, '_blank');
         toast({
-          title: 'Переход к fiat-платежу',
-          description: 'Откроется новая вкладка с формой оплаты картой. Ваши средства конвертируются в криптовалюту.',
-          duration: 8000,
+          title: 'Переход к оплате',
+          description: 'На странице оплаты выберите USD, затем оплачивайте картой. Ваши доллары конвертируются в крипту автоматически.',
+          duration: 10000,
         });
       }
       setIsOpen(false);
@@ -137,8 +137,12 @@ export default function PurchaseDialog({ type, price, children, disabled }) {
               <span className="font-medium">Оплата картой</span>
             </div>
             <p className="text-sm text-slate-400">
-              Безопасная оплата через NOWPayments. 
-              Выберите USD как валюту для оплаты картой Visa/Mastercard через Mercuryo.
+              Безопасная оплата через NOWPayments + Mercuryo. 
+              На странице оплаты выберите <span className="text-green-400 font-medium">USD</span> как валюту, 
+              затем оплатите картой Visa/Mastercard.
+            </p>
+            <p className="text-xs text-slate-500 mt-2">
+              ℹ️ Ваши доллары будут автоматически конвертированы в криптовалюту
             </p>
           </div>
 
@@ -151,12 +155,12 @@ export default function PurchaseDialog({ type, price, children, disabled }) {
               {fiatPurchaseMutation.isPending ? (
                 <>
                   <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                  Создание fiat-платежа...
+                  Создание платежа...
                 </>
               ) : (
                 <>
                   <CreditCard className="w-4 h-4 mr-2" />
-                  Оплата картой ${price} (fiat → crypto)
+                  Оплата картой ${price} USD
                 </>
               )}
             </Button>
