@@ -1864,9 +1864,7 @@ export async function registerRoutes(app) {
     const { orderId } = req.params;
     
     try {
-      const fs = require('fs');
-      const path = require('path');
-      const puppeteer = require('puppeteer');
+      const puppeteer = (await import('puppeteer')).default;
       
       const paymentsFile = path.join(process.cwd(), 'data', 'payments.json');
       let payments = [];
@@ -2026,8 +2024,6 @@ export async function registerRoutes(app) {
       }
 
       // Save payment record
-      const fs = require('fs');
-      const path = require('path');
       const paymentsFile = path.join(__dirname, '..', 'data', 'payments.json');
       
       let payments = [];
@@ -2079,8 +2075,6 @@ export async function registerRoutes(app) {
       
       // Handle completed payments
       if (payment_status === 'finished' && order_id) {
-        const fs = require('fs');
-        const path = require('path');
         const paymentsFile = path.join(__dirname, '..', 'data', 'payments.json');
         
         let payments = [];
@@ -2162,8 +2156,6 @@ export async function registerRoutes(app) {
     
     if (orderId) {
       try {
-        const fs = require('fs');
-        const path = require('path');
         const paymentsFile = path.join(__dirname, '..', 'data', 'payments.json');
         
         if (fs.existsSync(paymentsFile)) {
