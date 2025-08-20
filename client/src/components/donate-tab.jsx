@@ -92,12 +92,20 @@ export default function DonateTab() {
       </Card>
 
       {/* VIP Package */}
-      <Card className="border-blue-200 dark:border-blue-800">
-        <CardHeader className="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-950 dark:to-cyan-950">
-          <CardTitle className="flex items-center text-blue-600 dark:text-blue-400">
-            <Crown className="w-6 h-6 mr-2" />
-            VIP {t('status')}
-            <Badge variant="secondary" className="ml-2 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+      <Card className="border-2 border-blue-500/30 bg-gradient-to-br from-blue-600/20 to-blue-800/20 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 group relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-transparent to-blue-500/5 opacity-50"></div>
+        <CardHeader className="bg-gradient-to-r from-blue-500/10 to-cyan-500/10 relative z-10">
+          <CardTitle className="flex items-center justify-between text-blue-300">
+            <div className="flex items-center">
+              <div className="p-2 bg-blue-500/20 rounded-full border border-blue-400/30 mr-3">
+                <Star className="w-6 h-6 text-blue-400" />
+              </div>
+              <div>
+                <div className="text-xl font-bold">VIP {t('status')}</div>
+                <div className="text-blue-200/90 text-sm">Популярный выбор</div>
+              </div>
+            </div>
+            <Badge className="bg-blue-500/30 text-blue-200 border-blue-400/50 px-3 py-1 text-lg font-semibold">
               $2.50/{t('month')}
             </Badge>
           </CardTitle>
@@ -105,7 +113,7 @@ export default function DonateTab() {
         <CardContent className="pt-6">
           <div className="space-y-3 mb-6">
             <div className="flex items-center">
-              <Crown className="w-4 h-4 text-blue-500 mr-2" />
+              <Star className="w-4 h-4 text-blue-500 mr-2" />
               <span>{t('vipBadgeChat')}</span>
             </div>
             <div className="flex items-center">
@@ -142,12 +150,20 @@ export default function DonateTab() {
       </Card>
 
       {/* Premium Package */}
-      <Card className="border-purple-200 dark:border-purple-800">
-        <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950 dark:to-pink-950">
-          <CardTitle className="flex items-center text-purple-600 dark:text-purple-400">
-            <Star className="w-6 h-6 mr-2" />
-            PREMIUM {t('status')}
-            <Badge variant="secondary" className="ml-2 bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200">
+      <Card className="border-2 border-purple-500/30 bg-gradient-to-br from-purple-600/20 to-purple-800/20 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 group relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-transparent to-purple-500/5 opacity-50"></div>
+        <CardHeader className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 relative z-10">
+          <CardTitle className="flex items-center justify-between text-purple-300">
+            <div className="flex items-center">
+              <div className="p-2 bg-purple-500/20 rounded-full border border-purple-400/30 mr-3">
+                <Crown className="w-6 h-6 text-purple-400" />
+              </div>
+              <div>
+                <div className="text-xl font-bold">PREMIUM {t('status')}</div>
+                <div className="text-purple-200/90 text-sm">Максимальные привилегии</div>
+              </div>
+            </div>
+            <Badge className="bg-purple-500/30 text-purple-200 border-purple-400/50 px-3 py-1 text-lg font-semibold">
               $10 {t('forever')}
             </Badge>
           </CardTitle>
@@ -155,7 +171,7 @@ export default function DonateTab() {
         <CardContent className="pt-6">
           <div className="space-y-3 mb-6">
             <div className="flex items-center">
-              <Star className="w-4 h-4 text-purple-500 mr-2" />
+              <Crown className="w-4 h-4 text-purple-500 mr-2" />
               <span>{t('premiumBadgeChat')}</span>
             </div>
             <div className="flex items-center">

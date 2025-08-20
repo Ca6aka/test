@@ -8,6 +8,7 @@ import { formatCurrency } from '@/lib/constants';
 import { AdminPanel } from './admin-panel';
 import { PlayerAvatar } from './player-profile-bar';
 import { ThemeToggle } from './theme-toggle';
+import SubscriptionStatusIcon from './subscription-status-icon';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Crown, Shield, Server, TrendingUp, CircleDollarSign } from 'lucide-react';
 
@@ -47,22 +48,27 @@ export function StatusBar() {
               </div>
               
               <div className="flex items-center space-x-1">
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <div>
-                        <PlayerAvatar 
-                          user={gameState.user} 
-                          onClick={() => window.dispatchEvent(new CustomEvent('openProfile'))}
-                          style={{ width: '50px', height: '50px' }}
-                        />
-                      </div>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p className="text-xs">{t('profileTooltip')}</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
+                <div className="relative">
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <div>
+                          <PlayerAvatar 
+                            user={gameState.user} 
+                            onClick={() => window.dispatchEvent(new CustomEvent('openProfile'))}
+                            style={{ width: '50px', height: '50px' }}
+                          />
+                        </div>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p className="text-xs">{t('profileTooltip')}</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                  <div className="absolute -left-2 top-1/2 transform -translate-y-1/2">
+                    <SubscriptionStatusIcon user={gameState.user} showInProfile={true} size="sm" />
+                  </div>
+                </div>
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>

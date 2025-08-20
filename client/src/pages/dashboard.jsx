@@ -145,12 +145,7 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
       <div className="relative z-0">
         <StatusBar />
         
-        {/* VIP/Premium Status Icon */}
-        {gameState.user && (gameState.user.vipExpires || gameState.user.premiumActive) && (
-          <div className="fixed top-4 right-20 z-50">
-            <SubscriptionStatusIcon user={gameState.user} size="lg" />
-          </div>
-        )}
+
       
       <div className="flex flex-col lg:flex-row h-[calc(100vh-80px)]">
         {/* Mobile Navigation */}
