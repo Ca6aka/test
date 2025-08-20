@@ -64,8 +64,8 @@ export default function DonateTab() {
       </Card>
 
       {/* VIP Package */}
-      <Card className="border-2 border-blue-500/30 bg-gradient-to-br from-blue-600/20 to-blue-800/20 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 group relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-transparent to-blue-500/5 opacity-50"></div>
+      <Card className="border-2 border-blue-500/30 bg-gradient-to-br from-blue-600/20 to-blue-800/20 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 group relative overflow-visible">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-transparent to-blue-500/5 opacity-50 -z-10"></div>
         <CardHeader className="bg-gradient-to-r from-blue-500/10 to-cyan-500/10 relative z-10">
           <CardTitle className="flex items-center justify-between text-blue-300">
             <div className="flex items-center">
@@ -109,25 +109,27 @@ export default function DonateTab() {
               <span>{t('vipDailyBonus')}</span>
             </div>
           </div>
-          <PurchaseDialog 
-            type="vip" 
-            price="2.50"
-            disabled={hasPremium || hasVip}
-          >
-            <Button 
+          <div className="relative z-10">
+            <PurchaseDialog 
+              type="vip" 
+              price="2.50"
               disabled={hasPremium || hasVip}
-              className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50"
             >
-              {hasPremium ? 'Premium блокирует VIP' :
-               hasVip ? 'У вас уже есть VIP' : 'Купить VIP - $2.50/месяц'}
-            </Button>
-          </PurchaseDialog>
+              <Button 
+                disabled={hasPremium || hasVip}
+                className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 relative z-10"
+              >
+                {hasPremium ? 'Premium блокирует VIP' :
+                 hasVip ? 'У вас уже есть VIP' : 'Купить VIP - $2.50/месяц'}
+              </Button>
+            </PurchaseDialog>
+          </div>
         </CardContent>
       </Card>
 
       {/* Premium Package */}
-      <Card className="border-2 border-purple-500/30 bg-gradient-to-br from-purple-600/20 to-purple-800/20 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 group relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-transparent to-purple-500/5 opacity-50"></div>
+      <Card className="border-2 border-purple-500/30 bg-gradient-to-br from-purple-600/20 to-purple-800/20 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 group relative overflow-visible">
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-transparent to-purple-500/5 opacity-50 -z-10"></div>
         <CardHeader className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 relative z-10">
           <CardTitle className="flex items-center justify-between text-purple-300">
             <div className="flex items-center">
@@ -187,19 +189,21 @@ export default function DonateTab() {
               <span>{t('premiumDailyBonus')}</span>
             </div>
           </div>
-          <PurchaseDialog 
-            type="premium" 
-            price="10"
-            disabled={hasVip || hasPremium}
-          >
-            <Button 
+          <div className="relative z-10">
+            <PurchaseDialog 
+              type="premium" 
+              price="10"
               disabled={hasVip || hasPremium}
-              className="w-full bg-purple-600 hover:bg-purple-700 disabled:opacity-50"
             >
-              {hasPremium ? 'У вас уже есть Premium' :
-               hasVip ? 'VIP блокирует Premium' : 'Купить Premium - $10 навсегда'}
-            </Button>
-          </PurchaseDialog>
+              <Button 
+                disabled={hasVip || hasPremium}
+                className="w-full bg-purple-600 hover:bg-purple-700 disabled:opacity-50 relative z-10"
+              >
+                {hasPremium ? 'У вас уже есть Premium' :
+                 hasVip ? 'VIP блокирует Premium' : 'Купить Premium - $10 навсегда'}
+              </Button>
+            </PurchaseDialog>
+          </div>
         </CardContent>
       </Card>
     </div>
