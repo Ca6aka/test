@@ -58,7 +58,7 @@ export default function PurchaseDialog({ type, price, children, disabled }) {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <div onClick={() => !disabled && setIsOpen(true)}>
+        <div onClick={() => !disabled && setIsOpen(true)} className="cursor-pointer">
           {children}
         </div>
       </DialogTrigger>
@@ -111,8 +111,8 @@ export default function PurchaseDialog({ type, price, children, disabled }) {
               <span className="font-medium">Оплата картой</span>
             </div>
             <p className="text-sm text-slate-400">
-              Безопасная оплата банковской картой через криптовалютный шлюз. 
-              Деньги с карты конвертируются в криптовалюту и поступают на наш кошелек.
+              Безопасная оплата через NOWPayments. 
+              Поддерживаются банковские карты и 300+ криптовалют с автоматической конвертацией в USDT.
             </p>
           </div>
 

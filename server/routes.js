@@ -1707,11 +1707,45 @@ export async function registerRoutes(app) {
       // Generate unique order ID
       const orderId = `${type}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
       
-      // Bitcoin wallet address for receiving payments
-      const cryptoWallet = 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh';
+      // NOWPayments integration for USDT payments
+      const nowPaymentsApiKey = process.env.NOWPAYMENTS_API_KEY || 'your-nowpayments-api-key';
+      const gameEmail = process.env.GAME_EMAIL || 'noreply@yourgame.com';
       
-      // Create MoonPay payment URL for card-to-crypto conversion
-      const paymentUrl = `https://buy.moonpay.com/?apiKey=pk_live_YOUR_API_KEY&currencyCode=btc&walletAddress=${cryptoWallet}&baseCurrencyAmount=${amount}&baseCurrencyCode=usd&redirectURL=${encodeURIComponent(`${req.protocol}://${req.get('host')}/payment-success?orderId=${orderId}`)}&externalCustomerId=${user.id}`;
+      // Create NOWPayments invoice
+      const nowPaymentsPayload = {
+        price_amount: amount,
+        price_currency: 'usd',
+        pay_currency: 'usdttrc20', // USDT TRC20 (low fees)
+        order_id: orderId,
+        order_description: `${type === 'vip' ? 'VIP' : 'Premium'} subscription for ${user.nickname}`,
+        success_url: `${req.protocol}://${req.get('host')}/payment-success?orderId=${orderId}`,
+        cancel_url: `${req.protocol}://${req.get('host')}/donate`,
+        customer_email: email
+      };
+
+      // Call NOWPayments API to create invoice
+      let paymentUrl = '';
+      try {
+        const nowResponse = await fetch('https://api.nowpayments.io/v1/invoice', {
+          method: 'POST',
+          headers: {
+            'x-api-key': nowPaymentsApiKey,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(nowPaymentsPayload)
+        });
+
+        const nowData = await nowResponse.json();
+        
+        if (nowResponse.ok && nowData.invoice_url) {
+          paymentUrl = nowData.invoice_url;
+        } else {
+          throw new Error(nowData.message || 'Failed to create payment invoice');
+        }
+      } catch (error) {
+        console.error('NOWPayments error:', error);
+        return res.status(500).json({ message: 'Ошибка создания платежа: ' + error.message });
+      }
       
       // Store payment info in JSON file
       const fs = require('fs');
@@ -1763,11 +1797,16 @@ export async function registerRoutes(app) {
   });
 
   // Payment success webhook/callback for MoonPay
+  // NOWPayments Webhook endpoint
   app.post('/api/payment-webhook', async (req, res) => {
     try {
-      const { orderId, status, externalCustomerId, transactionHash } = req.body;
+      console.log('NOWPayments webhook received:', req.body);
       
-      if (status === 'completed' && orderId) {
+      // NOWPayments webhook format
+      const { payment_status, order_id, pay_amount, pay_currency, price_amount, price_currency, outcome_amount, outcome_currency } = req.body;
+      
+      // Handle completed payments
+      if (payment_status === 'finished' && order_id) {
         const fs = require('fs');
         const path = require('path');
         const paymentsFile = path.join(__dirname, '..', 'data', 'payments.json');
@@ -1778,12 +1817,15 @@ export async function registerRoutes(app) {
         }
         
         // Find payment by orderId
-        const paymentIndex = payments.findIndex(p => p.orderId === orderId);
+        const paymentIndex = payments.findIndex(p => p.orderId === order_id);
         if (paymentIndex !== -1) {
           const payment = payments[paymentIndex];
           payment.status = 'completed';
           payment.completedAt = new Date().toISOString();
-          payment.transactionHash = transactionHash;
+          payment.paidAmount = pay_amount;
+          payment.paidCurrency = pay_currency;
+          payment.outcomeAmount = outcome_amount;
+          payment.outcomeCurrency = outcome_currency;
           
           // Activate subscription
           const user = await storage.getUser(payment.userId);

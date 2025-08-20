@@ -112,11 +112,11 @@ export default function DonateTab() {
           <PurchaseDialog 
             type="vip" 
             price="2.50"
-            disabled={hasPremium || hasVip}
+            disabled={false}
           >
             <Button 
               disabled={hasPremium || hasVip}
-              className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50"
             >
               {hasPremium ? 'Premium блокирует VIP' :
                hasVip ? 'У вас уже есть VIP' : 'Купить VIP - $2.50/месяц'}
@@ -190,11 +190,11 @@ export default function DonateTab() {
           <PurchaseDialog 
             type="premium" 
             price="10"
-            disabled={hasVip || hasPremium}
+            disabled={false}
           >
             <Button 
               disabled={hasVip || hasPremium}
-              className="w-full bg-purple-600 hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-purple-600 hover:bg-purple-700 disabled:opacity-50"
             >
               {hasPremium ? 'У вас уже есть Premium' :
                hasVip ? 'VIP блокирует Premium' : 'Купить Premium - $10 навсегда'}

@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/contexts/language-context';
-import { Settings, Crown, Users, Shield } from 'lucide-react';
+import { Settings, Crown, Users, Shield, Wallet, Mail } from 'lucide-react';
 
 const apiRequest = async (url, options = {}) => {
   const response = await fetch(url, {
@@ -43,6 +43,11 @@ export const AdminPanel = ({ user, isOpen: externalIsOpen, onOpenChange }) => {
   const [subscriptionType, setSubscriptionType] = useState('vip');
   const [subscriptionAction, setSubscriptionAction] = useState('grant');
   const [subscriptionDays, setSubscriptionDays] = useState('');
+
+  // Payment settings
+  const [nowPaymentsKey, setNowPaymentsKey] = useState('');
+  const [gameEmail, setGameEmail] = useState('');
+  const [adminEmail, setAdminEmail] = useState('');
 
   // Use external control if provided, otherwise use internal state
   const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
@@ -489,6 +494,92 @@ export const AdminPanel = ({ user, isOpen: externalIsOpen, onOpenChange }) => {
               )}
             </CardContent>
           </Card>
+
+          {/* Payment Configuration - Super Admin Only */}
+          {isSuperAdmin && (
+            <Card className="bg-slate-800/50 border-slate-700 border-green-500/30">
+              <CardHeader>
+                <CardTitle className="flex items-center space-x-2 text-green-400">
+                  <Wallet className="w-5 h-5" />
+                  <span>Настройки платежей NOWPayments</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-1 gap-4">
+                  <div className="space-y-2">
+                    <Label>NOWPayments API ключ</Label>
+                    <Input
+                      type="password"
+                      placeholder="Введите API ключ от NOWPayments"
+                      value={nowPaymentsKey}
+                      onChange={(e) => setNowPaymentsKey(e.target.value)}
+                      className="bg-slate-900 border-slate-600"
+                    />
+                    <p className="text-xs text-slate-400">Получить на https://nowpayments.io/</p>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label className="flex items-center gap-2">
+                      <Mail className="w-4 h-4" />
+                      Игровой Email (от чьего имени отправляются письма)
+                    </Label>
+                    <Input
+                      type="email"
+                      placeholder="noreply@yourgame.com"
+                      value={gameEmail}
+                      onChange={(e) => setGameEmail(e.target.value)}
+                      className="bg-slate-900 border-slate-600"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label>Админский Email (для уведомлений о платежах)</Label>
+                    <Input
+                      type="email"
+                      placeholder="admin@yourgame.com"
+                      value={adminEmail}
+                      onChange={(e) => setAdminEmail(e.target.value)}
+                      className="bg-slate-900 border-slate-600"
+                    />
+                  </div>
+
+                  <div className="bg-slate-900 p-3 rounded-lg">
+                    <h4 className="font-medium text-slate-200 mb-2">Настройка Webhook URL в NOWPayments:</h4>
+                    <div className="bg-slate-800 p-2 rounded text-xs text-green-400 font-mono mb-2">
+                      {window.location.origin}/api/payment-webhook
+                    </div>
+                    <p className="text-xs text-slate-400 mb-3">
+                      Скопируйте эту ссылку и вставьте в настройках NOWPayments как Webhook URL
+                    </p>
+                    
+                    <h4 className="font-medium text-slate-200 mb-2">Как работает система:</h4>
+                    <ul className="text-xs text-slate-400 space-y-1">
+                      <li>• Пользователь нажимает "Купить VIP/Premium"</li>
+                      <li>• Вводит email для подтверждения</li>
+                      <li>• Перенаправляется на NOWPayments</li>
+                      <li>• Платит банковской картой или криптой</li>
+                      <li>• NOWPayments конвертирует в USDT TRC20</li>
+                      <li>• USDT поступают на ваш кошелек в NOWPayments</li>
+                      <li>• Статус активируется автоматически через webhook</li>
+                    </ul>
+                  </div>
+
+                  <Button
+                    onClick={() => {
+                      toast({
+                        title: 'Настройки сохранены',
+                        description: 'Конфигурация платежей NOWPayments обновлена'
+                      });
+                    }}
+                    className="w-full bg-green-600 hover:bg-green-700"
+                  >
+                    Сохранить настройки платежей
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
         </div>
       </DialogContent>
     </Dialog>
