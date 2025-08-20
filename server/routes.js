@@ -2,6 +2,11 @@ import { createServer } from "http";
 import bcrypt from "bcrypt";
 import { storage } from "./storage.js";
 import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Import avatar generation function
 function generateRandomAvatar(nickname = '') {
@@ -1697,8 +1702,13 @@ export async function registerRoutes(app) {
       const orderId = `${type}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
       
       // NOWPayments integration for USDT payments
-      const nowPaymentsApiKey = process.env.NOWPAYMENTS_API_KEY || '0BYBCND-44G4DAZ-K5FPR03-WQKCRAF';
+      const nowPaymentsApiKey = process.env.NOWPAYMENTS_API_KEY;
+      const publicApiKey = '2e08170d-5e62-48ac-ac23-6a76fead8132'; // Public API key
       const gameEmail = process.env.GAME_EMAIL || 'noreply@yourgame.com';
+      
+      if (!nowPaymentsApiKey) {
+        return res.status(500).json({ message: 'Ошибка создания платежа: API key не настроен' });
+      }
       
       // Create NOWPayments invoice
       const nowPaymentsPayload = {
@@ -1718,6 +1728,7 @@ export async function registerRoutes(app) {
           method: 'POST',
           headers: {
             'x-api-key': nowPaymentsApiKey,
+            'x-public-key': publicApiKey,
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(nowPaymentsPayload)
@@ -1736,8 +1747,6 @@ export async function registerRoutes(app) {
       }
       
       // Store payment info in JSON file
-      const fs = require('fs');
-      const path = require('path');
       const paymentsFile = path.join(__dirname, '..', 'data', 'payments.json');
       
       let payments = [];
