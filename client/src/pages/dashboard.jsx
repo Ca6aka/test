@@ -23,6 +23,7 @@ import { RankingsPopup } from '@/components/rankings-popup';
 import { PlayerProfileBar } from '@/components/player-profile-bar';
 import { LevelUpNotification } from '@/components/level-up-notification';
 import { ThemeToggle } from '@/components/theme-toggle';
+import SubscriptionBadge from '@/components/subscription-badge';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { TUTORIAL_UNLOCK_THRESHOLD, formatCurrency } from '@/lib/constants';
 import { useQuery } from '@tanstack/react-query';

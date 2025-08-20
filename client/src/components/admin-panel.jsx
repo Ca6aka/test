@@ -37,6 +37,12 @@ export const AdminPanel = ({ user, isOpen: externalIsOpen, onOpenChange }) => {
   const [selectedUser, setSelectedUser] = useState('');
   const [action, setAction] = useState('');
   const [amount, setAmount] = useState('');
+  
+  // VIP/Premium management
+  const [subscriptionUser, setSubscriptionUser] = useState('');
+  const [subscriptionType, setSubscriptionType] = useState('vip');
+  const [subscriptionAction, setSubscriptionAction] = useState('grant');
+  const [subscriptionDays, setSubscriptionDays] = useState('');
 
   // Use external control if provided, otherwise use internal state
   const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;

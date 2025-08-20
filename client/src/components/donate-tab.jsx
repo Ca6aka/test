@@ -1,272 +1,211 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Star, Crown, Zap, Shield, Coins, Gift, Check, X } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Crown, Star, Clock, Users, Shield, Zap, Trophy, Timer } from 'lucide-react';
 import { useLanguage } from '@/contexts/language-context';
 import { useGame } from '@/contexts/game-context';
-import { useToast } from '@/hooks/use-toast';
+import { toast } from '@/hooks/use-toast';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { apiRequest } from '@/lib/queryClient';
 
-const DonateTab = () => {
+export default function DonateTab() {
   const { t } = useLanguage();
-  const { user } = useGame();
-  const { toast } = useToast();
-  const [selectedPackage, setSelectedPackage] = useState(null);
-  const [hoveredPackage, setHoveredPackage] = useState(null);
+  const { gameState } = useGame();
+  const [selectedPayment, setSelectedPayment] = useState('fondy');
+  const queryClient = useQueryClient();
 
-  const donatePackages = [
-    {
-      id: 'starter',
-      title: t('donate1'),
-      description: t('donate1Desc'),
-      price: '$1.00',
-      icon: Star,
-      features: [
-        t('feature1'),
-        t('feature2'),
-        t('feature3')
-      ],
-      popular: false
+  const purchaseMutation = useMutation({
+    mutationFn: ({ type, gateway }) => apiRequest('/api/donation/purchase', 'POST', { type, gateway }),
+    onSuccess: (data) => {
+      if (data.redirectUrl) {
+        window.open(data.redirectUrl, '_blank');
+      }
+      toast({
+        title: t('paymentInitiated'),
+        description: t('redirectedToPayment'),
+        duration: 5000,
+      });
+      queryClient.invalidateQueries(['/api/auth/me']);
     },
-    {
-      id: 'premium',
-      title: t('donate2'),
-      description: t('donate2Desc'), 
-      price: '$5.00',
-      icon: Crown,
-      features: [
-        t('feature4'),
-        t('feature5'),
-        t('feature6')
-      ],
-      popular: true
-    },
-    {
-      id: 'boost',
-      title: t('donate3'),
-      description: t('donate3Desc'),
-      price: '$3.00',
-      icon: Zap,
-      features: [
-        t('feature7'),
-        t('feature8'),
-        t('feature9')
-      ],
-      popular: false
-    },
-    {
-      id: 'ultimate',
-      title: t('donate4'),
-      description: t('donate4Desc'),
-      price: '$10.00',
-      icon: Shield,
-      features: [
-        t('feature10'),
-        t('feature11'),
-        t('feature12')
-      ],
-      popular: false
-    },
-    {
-      id: 'coins',
-      title: t('donate5'),
-      description: t('donate5Desc'),
-      price: '$4.00',
-      icon: Coins,
-      features: [
-        t('feature13'),
-        t('feature14'),
-        t('feature15')
-      ],
-      popular: false
-    },
-    {
-      id: 'special',
-      title: t('donate6'),
-      description: t('donate6Desc'),
-      price: '$20.00',
-      icon: Gift,
-      features: [
-        t('feature16'),
-        t('feature17'),
-        t('feature18')
-      ],
-      popular: false
+    onError: (error) => {
+      toast({
+        title: t('error'),
+        description: error.message,
+        variant: 'destructive',
+      });
     }
-  ];
+  });
 
-  const handlePurchase = (packageItem) => {
-    setSelectedPackage(packageItem);
+  const handlePurchase = (type) => {
+    purchaseMutation.mutate({ type, gateway: selectedPayment });
   };
 
-  const confirmPurchase = () => {
-    toast({
-      title: t('purchaseNotAvailable'),
-      description: t('purchaseNotAvailableDesc'),
-      variant: "destructive"
-    });
-    setSelectedPackage(null);
-  };
+  const user = gameState.user;
+  const hasVip = user?.vipExpires && new Date(user.vipExpires) > new Date();
+  const hasPremium = user?.premiumActive;
 
-  const closeDialog = () => {
-    setSelectedPackage(null);
+  const getStatusBadge = () => {
+    if (hasPremium) {
+      return <Badge className="bg-purple-600 text-white">{t('premium')}</Badge>;
+    }
+    if (hasVip) {
+      return <Badge className="bg-blue-600 text-white">{t('vip')}</Badge>;
+    }
+    return null;
   };
 
   return (
     <div className="space-y-6">
+      {/* Header */}
       <div className="text-center">
-        <h2 className="text-3xl font-bold bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-400 bg-clip-text text-transparent mb-2">
-          {t('donate')}
-        </h2>
-        <p className="text-gray-600 dark:text-gray-400">
-          {t('donateDesc')}
-        </p>
+        <h2 className="text-2xl font-bold mb-2">{t('donateTitle')}</h2>
+        <p className="text-muted-foreground">{t('donateDescription')}</p>
+        {getStatusBadge() && (
+          <div className="mt-4">
+            <span className="text-sm text-muted-foreground mr-2">{t('currentStatus')}:</span>
+            {getStatusBadge()}
+          </div>
+        )}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {donatePackages.map((pkg) => {
-          const IconComponent = pkg.icon;
-          const isHovered = hoveredPackage === pkg.id;
-          
-          return (
-            <Card
-              key={pkg.id}
-              className={`relative overflow-hidden cursor-pointer transition-all duration-500 group ${
-                pkg.popular ? 'ring-2 ring-yellow-500 shadow-lg shadow-yellow-500/25' : ''
-              } ${isHovered ? 'transform scale-105' : ''}`}
-              onMouseEnter={() => setHoveredPackage(pkg.id)}
-              onMouseLeave={() => setHoveredPackage(null)}
-              onClick={() => handlePurchase(pkg)}
-              data-testid={`donate-package-${pkg.id}`}
-            >
-              {/* Gradient overlay on hover - only for this card */}
-              <div className={`absolute inset-0 bg-gradient-to-r from-yellow-600/20 via-yellow-500/20 to-yellow-400/20 opacity-0 transition-opacity duration-500 ${
-                isHovered ? 'opacity-100' : ''
-              }`} />
+      {/* Payment Method Selection */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center">
+            <Shield className="w-5 h-5 mr-2" />
+            {t('paymentMethod')}
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Select value={selectedPayment} onValueChange={setSelectedPayment}>
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="fondy">Fondy</SelectItem>
+              <SelectItem value="wayforpay">WayForPay</SelectItem>
+            </SelectContent>
+          </Select>
+        </CardContent>
+      </Card>
 
-              {pkg.popular && (
-                <div className="absolute top-2 right-4">
-                  <Badge className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white border-0">
-                    {t('popular')}
-                  </Badge>
-                </div>
-              )}
-              
-              <CardHeader className="relative z-10">
-                <div className="flex items-center justify-between">
-                  <IconComponent className={`w-8 h-8 transition-colors duration-300 ${
-                    isHovered ? 'text-yellow-500' : 'text-yellow-600 dark:text-yellow-400'
-                  }`} />
-                  <div className="text-right">
-                    <div className="text-2xl font-bold bg-gradient-to-r from-yellow-600 to-yellow-500 bg-clip-text text-transparent">
-                      {pkg.price}
-                    </div>
-                  </div>
-                </div>
-                <CardTitle className="text-xl">{pkg.title}</CardTitle>
-              </CardHeader>
-              
-              <CardContent className="relative z-10 space-y-4">
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  {pkg.description}
-                </p>
-                
-                <div className="space-y-2">
-                  {pkg.features.map((feature, index) => (
-                    <div key={index} className="flex items-center gap-2 text-sm">
-                      <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
-                      <span>{feature}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <Button 
-                  className={`w-full transition-all duration-300 ${
-                    pkg.popular 
-                      ? 'bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white border-0 shadow-lg shadow-yellow-500/25' 
-                      : 'bg-gradient-to-r from-yellow-600/80 to-yellow-500/80 hover:from-yellow-600 hover:to-yellow-500 text-white border-0'
-                  }`}
-                  data-testid={`purchase-${pkg.id}`}
-                >
-                  <Coins className="w-4 h-4 mr-2" />
-                  {t('purchase')}
-                </Button>
-              </CardContent>
-            </Card>
-          );
-        })}
-      </div>
-
-      {/* Purchase Confirmation Dialog */}
-      <Dialog open={selectedPackage !== null} onOpenChange={closeDialog}>
-        <DialogContent className="max-w-md">
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2">
-              {selectedPackage && React.createElement(selectedPackage.icon, { 
-                className: "w-6 h-6 text-yellow-600" 
-              })}
-              {t('confirmPurchase')}
-            </DialogTitle>
-          </DialogHeader>
-
-          {selectedPackage && (
-            <div className="space-y-6">
-              <div className="text-center">
-                <div className="text-lg font-semibold">{selectedPackage.title}</div>
-                <div className="text-2xl font-bold bg-gradient-to-r from-yellow-600 to-yellow-500 bg-clip-text text-transparent">
-                  {selectedPackage.price}
-                </div>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                  {selectedPackage.description}
-                </p>
-              </div>
-
-              <div className="space-y-2">
-                <div className="font-medium text-sm">{t('included')}:</div>
-                {selectedPackage.features.map((feature, index) => (
-                  <div key={index} className="flex items-center gap-2 text-sm">
-                    <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
-                    <span>{feature}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg">
-                <div className="text-sm text-center">
-                  <div className="font-medium text-yellow-800 dark:text-yellow-200">
-                    {t('paymentNotice')}
-                  </div>
-                  <div className="text-yellow-700 dark:text-yellow-300 mt-1">
-                    {t('paymentNoticeDesc')}
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex gap-3">
-                <Button
-                  variant="outline"
-                  onClick={closeDialog}
-                  className="flex-1"
-                  data-testid="cancel-purchase"
-                >
-                  {t('cancel')}
-                </Button>
-                <Button
-                  onClick={confirmPurchase}
-                  className="flex-1 bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white border-0"
-                  data-testid="confirm-purchase"
-                >
-                  <Coins className="w-4 h-4 mr-2" />
-                  {t('buyNow')}
-                </Button>
-              </div>
+      {/* VIP Package */}
+      <Card className="border-blue-200 dark:border-blue-800">
+        <CardHeader className="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-950 dark:to-cyan-950">
+          <CardTitle className="flex items-center text-blue-600 dark:text-blue-400">
+            <Crown className="w-6 h-6 mr-2" />
+            VIP {t('status')}
+            <Badge variant="secondary" className="ml-2 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+              $2.50/{t('month')}
+            </Badge>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="pt-6">
+          <div className="space-y-3 mb-6">
+            <div className="flex items-center">
+              <Crown className="w-4 h-4 text-blue-500 mr-2" />
+              <span>{t('vipBadgeChat')}</span>
             </div>
-          )}
-        </DialogContent>
-      </Dialog>
+            <div className="flex items-center">
+              <Timer className="w-4 h-4 text-blue-500 mr-2" />
+              <span>{t('vipReducedCooldown')}</span>
+            </div>
+            <div className="flex items-center">
+              <Star className="w-4 h-4 text-blue-500 mr-2" />
+              <span>{t('vipExperienceBoost')}</span>
+            </div>
+            <div className="flex items-center">
+              <Shield className="w-4 h-4 text-blue-500 mr-2" />
+              <span>{t('vipReportPriority')}</span>
+            </div>
+            <div className="flex items-center">
+              <Zap className="w-4 h-4 text-blue-500 mr-2" />
+              <span>{t('vipUniqueEmojis')}</span>
+            </div>
+            <div className="flex items-center">
+              <Trophy className="w-4 h-4 text-blue-500 mr-2" />
+              <span>{t('vipDailyBonus')}</span>
+            </div>
+          </div>
+          <Button 
+            onClick={() => handlePurchase('vip')}
+            disabled={purchaseMutation.isPending || (hasPremium && !hasVip)}
+            className="w-full bg-blue-600 hover:bg-blue-700"
+          >
+            {purchaseMutation.isPending ? t('processing') : 
+             hasPremium ? t('premiumBlocksVip') :
+             hasVip ? t('extendVip') : t('purchaseVip')}
+          </Button>
+        </CardContent>
+      </Card>
+
+      {/* Premium Package */}
+      <Card className="border-purple-200 dark:border-purple-800">
+        <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950 dark:to-pink-950">
+          <CardTitle className="flex items-center text-purple-600 dark:text-purple-400">
+            <Star className="w-6 h-6 mr-2" />
+            PREMIUM {t('status')}
+            <Badge variant="secondary" className="ml-2 bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200">
+              $10 {t('forever')}
+            </Badge>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="pt-6">
+          <div className="space-y-3 mb-6">
+            <div className="flex items-center">
+              <Star className="w-4 h-4 text-purple-500 mr-2" />
+              <span>{t('premiumBadgeChat')}</span>
+            </div>
+            <div className="flex items-center">
+              <Timer className="w-4 h-4 text-purple-500 mr-2" />
+              <span>{t('premiumReducedCooldown')}</span>
+            </div>
+            <div className="flex items-center">
+              <Star className="w-4 h-4 text-purple-500 mr-2" />
+              <span>{t('premiumExperienceBoost')}</span>
+            </div>
+            <div className="flex items-center">
+              <Shield className="w-4 h-4 text-purple-500 mr-2" />
+              <span>{t('premiumReportPriority')}</span>
+            </div>
+            <div className="flex items-center">
+              <Zap className="w-4 h-4 text-purple-500 mr-2" />
+              <span>{t('premiumNoMinigameCooldown')}</span>
+            </div>
+            <div className="flex items-center">
+              <Users className="w-4 h-4 text-purple-500 mr-2" />
+              <span>{t('premiumServerLimit')}</span>
+            </div>
+            <div className="flex items-center">
+              <Clock className="w-4 h-4 text-purple-500 mr-2" />
+              <span>{t('premiumInstantServers')}</span>
+            </div>
+            <div className="flex items-center">
+              <Zap className="w-4 h-4 text-purple-500 mr-2" />
+              <span>{t('premiumUniqueEmojis')}</span>
+            </div>
+            <div className="flex items-center">
+              <Shield className="w-4 h-4 text-purple-500 mr-2" />
+              <span>{t('premiumSecretReactions')}</span>
+            </div>
+            <div className="flex items-center">
+              <Trophy className="w-4 h-4 text-purple-500 mr-2" />
+              <span>{t('premiumDailyBonus')}</span>
+            </div>
+          </div>
+          <Button 
+            onClick={() => handlePurchase('premium')}
+            disabled={purchaseMutation.isPending || (hasVip && !hasPremium)}
+            className="w-full bg-purple-600 hover:bg-purple-700"
+          >
+            {purchaseMutation.isPending ? t('processing') : 
+             hasPremium ? t('alreadyHavePremium') :
+             hasVip ? t('vipBlocksPremium') : t('purchasePremium')}
+          </Button>
+        </CardContent>
+      </Card>
     </div>
   );
-};
-
-export default DonateTab;
+}

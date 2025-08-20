@@ -44,6 +44,56 @@ const newTranslations = {
   speed_demon_desc: { en: 'Complete 10 jobs in one day', ru: 'Выполните 10 работ за один день', ua: 'Виконайте 10 робіт за один день', de: 'Erledige 10 Aufgaben an einem Tag' },
   chat_legend_desc: { en: 'Send 1000 messages in chat', ru: 'Отправьте 1000 сообщений в чат', ua: 'Надішліть 1000 повідомлень у чат', de: 'Sende 1000 Nachrichten im Chat' },
   server_master_desc: { en: 'Own 20 servers simultaneously', ru: 'Владейте 20 серверами одновременно', ua: 'Володійте 20 серверами одночасно', de: 'Besitze 20 Server gleichzeitig' },
+
+  // Donation system
+  donateTitle: { en: 'Support the Project', ru: 'Поддержать проект', ua: 'Підтримати проект', de: 'Projekt unterstützen' },
+  donateDescription: { en: 'Get exclusive perks and support the development', ru: 'Получите эксклюзивные привилегии и поддержите разработку', ua: 'Отримайте ексклюзивні привілеї та підтримайте розробку', de: 'Erhalten Sie exklusive Vorteile und unterstützen Sie die Entwicklung' },
+  paymentMethod: { en: 'Payment Method', ru: 'Способ оплаты', ua: 'Спосіб оплати', de: 'Zahlungsmethode' },
+  status: { en: 'Status', ru: 'Статус', ua: 'Статус', de: 'Status' },
+  month: { en: 'month', ru: 'месяц', ua: 'місяць', de: 'Monat' },
+  forever: { en: 'forever', ru: 'навсегда', ua: 'назавжди', de: 'für immer' },
+  currentStatus: { en: 'Current Status', ru: 'Текущий статус', ua: 'Поточний статус', de: 'Aktueller Status' },
+  vip: { en: 'VIP', ru: 'VIP', ua: 'VIP', de: 'VIP' },
+  premium: { en: 'PREMIUM', ru: 'ПРЕМИУМ', ua: 'ПРЕМІУМ', de: 'PREMIUM' },
+  
+  // VIP features
+  vipBadgeChat: { en: 'Blue VIP badge in chat and profile', ru: 'Синяя отметка VIP в чате и профиле', ua: 'Синя позначка VIP у чаті та профілі', de: 'Blaues VIP-Abzeichen in Chat und Profil' },
+  vipReducedCooldown: { en: 'Reduced job cooldowns: 2m/4m/6m instead of 3m/5m/7m', ru: 'Сокращенные КД работ: 2м/4м/6м вместо 3м/5м/7м', ua: 'Скорочені КД робіт: 2х/4х/6х замість 3х/5х/7х', de: 'Verkürzte Job-Abklingzeiten: 2m/4m/6m statt 3m/5m/7m' },
+  vipExperienceBoost: { en: 'x1.5 experience from jobs', ru: 'x1.5 опыта за работы', ua: 'x1.5 досвіду за роботи', de: 'x1.5 Erfahrung von Jobs' },
+  vipReportPriority: { en: 'Priority in reports with VIP mark', ru: 'Приоритет в отчетах с отметкой VIP', ua: 'Пріоритет у звітах з позначкою VIP', de: 'Priorität in Berichten mit VIP-Kennzeichnung' },
+  vipUniqueEmojis: { en: 'Unique VIP emojis for chat', ru: 'Уникальные VIP эмодзи для чата', ua: 'Унікальні VIP емодзі для чату', de: 'Einzigartige VIP-Emojis für Chat' },
+  vipDailyBonus: { en: 'Daily bonus +200 instead of +100', ru: 'Ежедневный бонус +200 вместо +100', ua: 'Щоденний бонус +200 замість +100', de: 'Täglicher Bonus +200 statt +100' },
+  
+  // Premium features
+  premiumBadgeChat: { en: 'Purple PREMIUM badge in chat and profile', ru: 'Фиолетовая отметка PREMIUM в чате и профиле', ua: 'Фіолетова позначка PREMIUM у чаті та профілі', de: 'Lila PREMIUM-Abzeichen in Chat und Profil' },
+  premiumReducedCooldown: { en: 'Reduced job cooldowns: 1.5m/2m/5m instead of 3m/5m/7m', ru: 'Сокращенные КД работ: 1.5м/2м/5м вместо 3м/5м/7м', ua: 'Скорочені КД робіт: 1.5х/2х/5х замість 3х/5х/7х', de: 'Verkürzte Job-Abklingzeiten: 1.5m/2m/5m statt 3m/5m/7m' },
+  premiumExperienceBoost: { en: 'x1.75 experience from jobs', ru: 'x1.75 опыта за работы', ua: 'x1.75 досвіду за роботи', de: 'x1.75 Erfahrung von Jobs' },
+  premiumReportPriority: { en: 'Priority in reports with PREMIUM mark', ru: 'Приоритет в отчетах с отметкой PREMIUM', ua: 'Пріоритет у звітах з позначкою PREMIUM', de: 'Priorität in Berichten mit PREMIUM-Kennzeichnung' },
+  premiumNoMinigameCooldown: { en: 'No cooldown on mini-games', ru: 'Отсутствие КД на мини-игры', ua: 'Відсутність КД на міні-ігри', de: 'Keine Abklingzeit für Mini-Spiele' },
+  premiumServerLimit: { en: 'Increased server limit from 25 to 30', ru: 'Увеличенный лимит серверов с 25 до 30', ua: 'Збільшений ліміт серверів з 25 до 30', de: 'Erhöhtes Serverlimit von 25 auf 30' },
+  premiumInstantServers: { en: 'No mini-game for server activation, instant online', ru: 'Отсутствие мини-игры для активации серверов, сразу онлайн', ua: 'Відсутність міні-гри для активації серверів, одразу онлайн', de: 'Keine Mini-Spiele für Serveraktivierung, sofort online' },
+  premiumUniqueEmojis: { en: 'Unique PREMIUM emojis for chat', ru: 'Уникальные PREMIUM эмодзи для чата', ua: 'Унікальні PREMIUM емодзі для чату', de: 'Einzigartige PREMIUM-Emojis für Chat' },
+  premiumSecretReactions: { en: 'Secret reactions visible only to admins', ru: 'Секретные реакции, видимые только админам', ua: 'Секретні реакції, видимі лише адмінам', de: 'Geheime Reaktionen, die nur für Admins sichtbar sind' },
+  premiumDailyBonus: { en: 'Daily bonus +500 instead of +100', ru: 'Ежедневный бонус +500 вместо +100', ua: 'Щоденний бонус +500 замість +100', de: 'Täglicher Bonus +500 statt +100' },
+  
+  // Purchase buttons and messages
+  purchaseVip: { en: 'Purchase VIP', ru: 'Купить VIP', ua: 'Купити VIP', de: 'VIP kaufen' },
+  purchasePremium: { en: 'Purchase PREMIUM', ru: 'Купить PREMIUM', ua: 'Купити PREMIUM', de: 'PREMIUM kaufen' },
+  extendVip: { en: 'Extend VIP (+1 month)', ru: 'Продлить VIP (+1 месяц)', ua: 'Продовжити VIP (+1 місяць)', de: 'VIP verlängern (+1 Monat)' },
+  alreadyHavePremium: { en: 'You already have this status', ru: 'У вас уже есть этот статус', ua: 'У вас уже є цей статус', de: 'Sie haben diesen Status bereits' },
+  premiumBlocksVip: { en: 'PREMIUM blocks VIP purchase', ru: 'PREMIUM блокирует покупку VIP', ua: 'PREMIUM блокує покупку VIP', de: 'PREMIUM blockiert VIP-Kauf' },
+  vipBlocksPremium: { en: 'VIP blocks PREMIUM purchase', ru: 'VIP блокирует покупку PREMIUM', ua: 'VIP блокує покупку PREMIUM', de: 'VIP blockiert PREMIUM-Kauf' },
+  processing: { en: 'Processing...', ru: 'Обработка...', ua: 'Обробка...', de: 'Verarbeitung...' },
+  paymentInitiated: { en: 'Payment Initiated', ru: 'Оплата инициирована', ua: 'Оплата ініційована', de: 'Zahlung eingeleitet' },
+  redirectedToPayment: { en: 'You will be redirected to payment gateway', ru: 'Вы будете перенаправлены на платежный шлюз', ua: 'Вас буде перенаправлено на платіжний шлюз', de: 'Sie werden zum Zahlungsgateway weitergeleitet' },
+  
+  // Admin subscription management
+  manageSubscriptions: { en: 'Manage Subscriptions', ru: 'Управление подписками', ua: 'Управління підписками', de: 'Abonnements verwalten' },
+  grantVip: { en: 'Grant VIP', ru: 'Выдать VIP', ua: 'Видати VIP', de: 'VIP gewähren' },
+  revokeVip: { en: 'Revoke VIP', ru: 'Отобрать VIP', ua: 'Відібрати VIP', de: 'VIP entziehen' },
+  grantPremium: { en: 'Grant Premium', ru: 'Выдать Premium', ua: 'Видати Premium', de: 'Premium gewähren' },
+  revokePremium: { en: 'Revoke Premium', ru: 'Отобрать Premium', ua: 'Відібрати Premium', de: 'Premium entziehen' },
+  subscriptionDays: { en: 'Days (for VIP)', ru: 'Дни (для VIP)', ua: 'Дні (для VIP)', de: 'Tage (für VIP)' },
   claiming: { en: 'Claiming...', ru: 'Получаем...' },
   alreadyClaimed: { en: 'Already claimed', ru: 'Уже получен' },
   comeBackTomorrow: { en: 'Come back tomorrow for your next bonus', ru: 'Вернитесь завтра за следующим бонусом' },

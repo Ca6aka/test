@@ -1456,6 +1456,84 @@ export async function registerRoutes(app) {
     }
   });
 
+  // Donation routes
+  app.post('/api/donation/purchase', requireAuth, async (req, res) => {
+    try {
+      const { type, gateway } = req.body;
+      const userId = req.session.userId;
+      
+      if (!type || !gateway) {
+        return res.status(400).json({ error: 'Type and gateway are required' });
+      }
+
+      if (!['vip', 'premium'].includes(type) || !['fondy', 'wayforpay'].includes(gateway)) {
+        return res.status(400).json({ error: 'Invalid type or gateway' });
+      }
+
+      const user = await storage.getUser(userId);
+      if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+
+      // Check conflicting statuses
+      const hasVip = user.vipExpires && new Date(user.vipExpires) > new Date();
+      const hasPremium = user.premiumActive;
+
+      if (type === 'premium' && hasPremium) {
+        return res.status(400).json({ error: 'You already have this status, you can support the project with another service' });
+      }
+
+      if (type === 'vip' && hasPremium) {
+        return res.status(400).json({ error: 'PREMIUM status blocks VIP purchase' });
+      }
+
+      if (type === 'premium' && hasVip) {
+        return res.status(400).json({ error: 'VIP status blocks PREMIUM purchase' });
+      }
+
+      // For demo purposes, simulate successful purchase immediately
+      await storage.activateSubscription(userId, type);
+
+      res.json({ 
+        success: true,
+        message: `${type.toUpperCase()} status activated successfully!`
+      });
+    } catch (error) {
+      console.error('Payment creation error:', error);
+      res.status(500).json({ error: 'Failed to create payment' });
+    }
+  });
+
+  // Admin routes for managing VIP/Premium
+  app.post('/api/admin/manage-subscription', requireAuth, async (req, res) => {
+    try {
+      const admin = await storage.getUser(req.session.userId);
+      if (!admin || admin.admin < 2) {
+        return res.status(403).json({ error: 'Super admin access required' });
+      }
+
+      const { userId, type, action, days } = req.body;
+      
+      if (!userId || !type || !action) {
+        return res.status(400).json({ error: 'Missing required parameters' });
+      }
+
+      if (!['vip', 'premium'].includes(type) || !['grant', 'revoke'].includes(action)) {
+        return res.status(400).json({ error: 'Invalid type or action' });
+      }
+
+      if (action === 'grant' && (!days || days < 1)) {
+        return res.status(400).json({ error: 'Days must be specified for grant action' });
+      }
+
+      const result = await storage.manageSubscription(userId, type, action, days);
+      res.json(result);
+    } catch (error) {
+      console.error('Subscription management error:', error);
+      res.status(500).json({ error: 'Failed to manage subscription' });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

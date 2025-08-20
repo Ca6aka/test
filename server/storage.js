@@ -2638,8 +2638,11 @@ FileStorage.prototype.getDailyLoginBonus = async function(userId) {
     }
   }
 
-  const amount = Math.min(100 * (streak + 1), 2000);
-  const nextAmount = Math.min(100 * (streak + 2), 2000);
+  // Apply subscription multipliers
+  const benefits = this.getSubscriptionBenefits(user);
+  const baseAmount = 100 * benefits.dailyBonusMultiplier;
+  const amount = Math.min(baseAmount * (streak + 1), 2000 * benefits.dailyBonusMultiplier);
+  const nextAmount = Math.min(baseAmount * (streak + 2), 2000 * benefits.dailyBonusMultiplier);
 
   return {
     canClaim,
@@ -2789,6 +2792,112 @@ FileStorage.prototype.updateUserRealActivity = async function(userId) {
   } catch (error) {
     console.error('Error updating user real activity:', error);
   }
+};
+
+// VIP/Premium subscription functions
+FileStorage.prototype.activateSubscription = async function(userId, type) {
+  try {
+    const user = await this.getUser(userId);
+    if (!user) throw new Error('User not found');
+
+    if (type === 'vip') {
+      // Add or extend VIP (1 month)
+      const currentExpiration = user.vipExpires ? new Date(user.vipExpires) : new Date();
+      const newExpiration = new Date(Math.max(currentExpiration.getTime(), Date.now()) + 30 * 24 * 60 * 60 * 1000);
+      user.vipExpires = newExpiration.toISOString();
+    } else if (type === 'premium') {
+      user.premiumActive = true;
+      user.premiumActivatedAt = new Date().toISOString();
+      // If had VIP, convert remaining time to premium (premium is permanent)
+      if (user.vipExpires) {
+        delete user.vipExpires;
+      }
+    }
+
+    await this.saveUserFile(user);
+    return { success: true, user };
+  } catch (error) {
+    console.error('Error activating subscription:', error);
+    throw error;
+  }
+};
+
+FileStorage.prototype.manageSubscription = async function(userId, type, action, days) {
+  try {
+    const user = await this.getUser(userId);
+    if (!user) throw new Error('User not found');
+
+    if (action === 'grant') {
+      if (type === 'vip') {
+        const currentExpiration = user.vipExpires ? new Date(user.vipExpires) : new Date();
+        const newExpiration = new Date(Math.max(currentExpiration.getTime(), Date.now()) + days * 24 * 60 * 60 * 1000);
+        user.vipExpires = newExpiration.toISOString();
+      } else if (type === 'premium') {
+        user.premiumActive = true;
+        user.premiumActivatedAt = new Date().toISOString();
+      }
+    } else if (action === 'revoke') {
+      if (type === 'vip') {
+        delete user.vipExpires;
+      } else if (type === 'premium') {
+        user.premiumActive = false;
+        delete user.premiumActivatedAt;
+      }
+    }
+
+    await this.saveUserFile(user);
+    return { success: true, message: `${type.toUpperCase()} ${action}ed successfully` };
+  } catch (error) {
+    console.error('Error managing subscription:', error);
+    throw error;
+  }
+};
+
+// Get subscription benefits for user
+FileStorage.prototype.getSubscriptionBenefits = function(user) {
+  const hasVip = user.vipExpires && new Date(user.vipExpires) > new Date();
+  const hasPremium = user.premiumActive;
+
+  let benefits = {
+    hasVip,
+    hasPremium,
+    cooldownMultiplier: 1,
+    experienceMultiplier: 1,
+    dailyBonusMultiplier: 1,
+    serverLimit: 25,
+    instantServers: false,
+    noMinigameCooldown: false,
+    priorityReports: false
+  };
+
+  if (hasPremium) {
+    benefits.cooldownMultiplier = 0.5; // 1.5m/2m/5m instead of 3m/5m/7m
+    benefits.experienceMultiplier = 1.75;
+    benefits.dailyBonusMultiplier = 5; // +500 instead of +100
+    benefits.serverLimit = 30;
+    benefits.instantServers = true;
+    benefits.noMinigameCooldown = true;
+    benefits.priorityReports = true;
+  } else if (hasVip) {
+    benefits.cooldownMultiplier = 0.67; // 2m/4m/6m instead of 3m/5m/7m
+    benefits.experienceMultiplier = 1.5;
+    benefits.dailyBonusMultiplier = 2; // +200 instead of +100
+    benefits.priorityReports = true;
+  }
+
+  return benefits;
+};
+
+// Apply VIP/Premium benefits to cooldowns
+FileStorage.prototype.applySubscriptionCooldown = function(baseCooldown, user) {
+  const benefits = this.getSubscriptionBenefits(user);
+  return Math.round(baseCooldown * benefits.cooldownMultiplier);
+};
+
+// Apply VIP/Premium benefits to experience
+FileStorage.prototype.applySubscriptionExperience = function(baseXp, user) {
+  const benefits = this.getSubscriptionBenefits(user);
+  return Math.round(baseXp * benefits.experienceMultiplier);
 };
 
 export const storage = new FileStorage();
