@@ -8,6 +8,7 @@ import { useGame } from '@/contexts/game-context';
 import { useLanguage } from '@/contexts/language-context';
 import { formatCurrency } from '@/lib/constants';
 import { X, TrendingUp, TrendingDown, Star, Award } from 'lucide-react';
+import SubscriptionStatusIcon from '@/components/subscription-status-icon';
 
 // Level and Experience System (60 levels, 10% increase per level)
 function calculateLevel(experience) {
@@ -190,7 +191,10 @@ export function PlayerProfileBar({ isOpen, onClose }) {
     <PlayerAvatar user={user} size="xl" />
     <div className="flex-1">
     <CardTitle className="text-xl sm:text-2xl font-bold text-white mb-2 flex items-center justify-between">
-  <span>{user.nickname}</span>
+  <div className="flex items-center space-x-2">
+    <span>{user.nickname}</span>
+    <SubscriptionStatusIcon user={user} size="lg" />
+  </div>
   <span
     className="
       text-xs sm:text-sm

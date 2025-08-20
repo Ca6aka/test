@@ -28,6 +28,7 @@ import { useLanguage } from '@/contexts/language-context'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import ChatMessageBadge from '@/components/chat-message-badge'
 
 function VirtualAssistant({ hideOnReports = false }) {
   const [input, setInput] = useState('')
@@ -611,6 +612,7 @@ function VirtualAssistant({ hideOnReports = false }) {
                                 ADMIN
                               </span>
                             )}
+                            <ChatMessageBadge user={message} />
                             {userStatus?.isMuted && (
                               <VolumeX className="w-3 h-3 text-red-600" />
                             )}

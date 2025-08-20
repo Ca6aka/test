@@ -22,6 +22,7 @@ import { PlayerRankings, RankingsCountdown } from '@/components/player-rankings'
 import { RankingsPopup } from '@/components/rankings-popup';
 import { PlayerProfileBar } from '@/components/player-profile-bar';
 import { LevelUpNotification } from '@/components/level-up-notification';
+import SubscriptionStatusIcon from '@/components/subscription-status-icon';
 import { ThemeToggle } from '@/components/theme-toggle';
 import SubscriptionBadge from '@/components/subscription-badge';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
@@ -143,6 +144,13 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
       
       <div className="relative z-0">
         <StatusBar />
+        
+        {/* VIP/Premium Status Icon */}
+        {gameState.user && (gameState.user.vipExpires || gameState.user.premiumActive) && (
+          <div className="fixed top-4 right-20 z-50">
+            <SubscriptionStatusIcon user={gameState.user} size="lg" />
+          </div>
+        )}
       
       <div className="flex flex-col lg:flex-row h-[calc(100vh-80px)]">
         {/* Mobile Navigation */}
