@@ -2,11 +2,11 @@
   "id": "65a91d9d-7213-4a2e-abd6-c9017bc7ae80",
   "nickname": "Ca6aka",
   "password": "$2b$10$G1sTjzxqs2js60d52sYQXOCbGLW1o.6TCUNzzuimD5iwHk21qh6vq",
-  "balance": 1276410,
+  "balance": 1274549,
   "level": 16,
   "experience": 3254,
   "totalEarnings": 1892979,
-  "totalSpent": 1045968,
+  "totalSpent": 1047829,
   "avatar": {
     "gradient": "from-green-400 via-teal-500 to-cyan-600",
     "pattern": "multi-color",
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755731535900,
+  "lastIncomeUpdate": 1755732094668,
   "jobCooldowns": {
     "maintenance": 1755713114045,
     "optimization": 1755713268846,
@@ -29,29 +29,29 @@
   "currentLearning": null,
   "activities": [
     {
-      "id": "c6ec8970-ba71-435f-a3b9-6dac93afa7cf",
-      "description": "Rental cost: -$1187 for 20 servers",
-      "timestamp": "8/20/2025, 11:12:15 PM"
-    },
-    {
-      "id": "7e443a2c-a546-4941-82ba-d7e8de9f1e7b",
+      "id": "06e7dff7-bff9-46f2-ab20-4c2b0496ba56",
       "description": "Rental cost: -$203 for 20 servers",
-      "timestamp": "8/20/2025, 11:06:19 PM"
+      "timestamp": "8/20/2025, 11:21:34 PM"
     },
     {
-      "id": "db3c8a68-3dac-415d-8e2f-730c62425031",
+      "id": "72367b02-e713-4f4c-876f-cc7583180108",
       "description": "Rental cost: -$203 for 20 servers",
-      "timestamp": "8/20/2025, 11:05:18 PM"
+      "timestamp": "8/20/2025, 11:20:33 PM"
     },
     {
-      "id": "dfa617d8-f43d-49fd-904b-e4e7a5935ad0",
-      "description": "Rental cost: -$2506 for 20 servers",
-      "timestamp": "8/20/2025, 11:04:17 PM"
+      "id": "5456c698-e1cd-456f-9997-7cd562cb752a",
+      "description": "Rental cost: -$203 for 20 servers",
+      "timestamp": "8/20/2025, 11:19:32 PM"
     },
     {
-      "id": "4b4fa651-ad18-4cc8-bd4e-0bfdde9e9b81",
-      "description": "Rental cost: -$2010 for 20 servers",
-      "timestamp": "8/20/2025, 10:51:45 PM"
+      "id": "44a405c6-6037-490b-a6d6-a5a770184862",
+      "description": "Rental cost: -$203 for 20 servers",
+      "timestamp": "8/20/2025, 11:18:31 PM"
+    },
+    {
+      "id": "50b71f6a-fa02-4494-b463-c97964cf3a1f",
+      "description": "Rental cost: -$1049 for 20 servers",
+      "timestamp": "8/20/2025, 11:17:30 PM"
     }
   ],
   "achievements": [
@@ -221,15 +221,15 @@
   "lastQuestReset": 1755714820971,
   "registrationIP": "192.168.0.136",
   "registrationTime": 1755531070984,
-  "lastSeen": 1755731784181,
+  "lastSeen": 1755732243768,
   "lastMessageTime": 1755719885890,
   "chatLanguage": "en",
   "chatAchievements": [
     "first_message"
   ],
   "hasNewChatMessages": true,
-  "realActivity": 1755731784142,
-  "lastActivity": 1755731784142,
+  "realActivity": 1755732243470,
+  "lastActivity": 1755732243470,
   "dailyBonusStreak": 35,
   "lastDailyBonus": "2025-08-20T22:58:05.186Z",
   "dailyLoginBonus": "Thu Aug 21 2025",

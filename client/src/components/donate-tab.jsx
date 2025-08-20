@@ -78,7 +78,7 @@ export default function DonateTab() {
               </div>
             </div>
             <Badge className="bg-blue-500/30 text-blue-200 border-blue-400/50 px-3 py-1 text-lg font-semibold">
-              $5/{t('month')}
+              $20/{t('month')}
             </Badge>
           </CardTitle>
         </CardHeader>
@@ -112,7 +112,7 @@ export default function DonateTab() {
           <div className="relative z-10">
             <PurchaseDialog 
               type="vip" 
-              price="5"
+              price="20"
               disabled={hasPremium || hasVip}
             >
               <Button 
@@ -120,7 +120,7 @@ export default function DonateTab() {
                 className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 relative z-10"
               >
                 {hasPremium ? 'Premium блокирует VIP' :
-                 hasVip ? 'У вас уже есть VIP' : 'Купить VIP - $5/месяц'}
+                 hasVip ? 'У вас уже есть VIP' : 'Купить VIP - $20/месяц'}
               </Button>
             </PurchaseDialog>
           </div>
@@ -142,7 +142,7 @@ export default function DonateTab() {
               </div>
             </div>
             <Badge className="bg-purple-500/30 text-purple-200 border-purple-400/50 px-3 py-1 text-lg font-semibold">
-              $10 {t('forever')}
+              $25 {t('forever')}
             </Badge>
           </CardTitle>
         </CardHeader>
@@ -192,7 +192,7 @@ export default function DonateTab() {
           <div className="relative z-10">
             <PurchaseDialog 
               type="premium" 
-              price="10"
+              price="25"
               disabled={hasVip || hasPremium}
             >
               <Button 
@@ -200,7 +200,7 @@ export default function DonateTab() {
                 className="w-full bg-purple-600 hover:bg-purple-700 disabled:opacity-50 relative z-10"
               >
                 {hasPremium ? 'У вас уже есть Premium' :
-                 hasVip ? 'VIP блокирует Premium' : 'Купить Premium - $10 навсегда'}
+                 hasVip ? 'VIP блокирует Premium' : 'Купить Premium - $25 навсегда'}
               </Button>
             </PurchaseDialog>
           </div>

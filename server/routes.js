@@ -1555,7 +1555,7 @@ export async function registerRoutes(app) {
       }
 
       // Price configuration
-      const prices = { vip: 5, premium: 10 };
+      const prices = { vip: 20, premium: 25 };
       const amount = prices[type];
       
       if (!amount) {
@@ -1692,7 +1692,7 @@ export async function registerRoutes(app) {
       return res.status(400).json({ message: 'Invalid subscription type' });
     }
 
-    const prices = { vip: 5, premium: 10 };
+    const prices = { vip: 20, premium: 25 };
     const amount = prices[type];
 
     try {
@@ -1714,7 +1714,7 @@ export async function registerRoutes(app) {
       const nowPaymentsPayload = {
         price_amount: amount,
         price_currency: 'usd',
-        pay_currency: 'usdttrc20', // USDT TRC20 (low fees)
+        pay_currency: 'bch', // Bitcoin Cash (lower minimum amounts)
         order_id: orderId,
         order_description: `${type === 'vip' ? 'VIP' : 'Premium'} subscription for ${user.nickname}`,
         success_url: `${req.protocol}://${req.get('host')}/payment-success?orderId=${orderId}`,

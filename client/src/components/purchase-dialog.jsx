@@ -100,7 +100,7 @@ export default function PurchaseDialog({ type, price, children, disabled }) {
             </div>
             <p className="text-sm text-slate-400">
               Безопасная оплата через NOWPayments. 
-              Поддерживаются банковские карты и 300+ криптовалют с автоматической конвертацией в USDT.
+              Поддерживаются банковские карты и 300+ криптовалют с автоматической конвертацией в Bitcoin Cash.
             </p>
           </div>
 
