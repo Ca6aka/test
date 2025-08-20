@@ -1966,12 +1966,16 @@ export async function registerRoutes(app) {
 
   // Fiat-to-Crypto Payment Endpoint (NOWPayments Invoice API)
   app.post('/api/donate/fiat', async (req, res) => {
-    if (!req.isAuthenticated()) {
+    if (!req.session.userId) {
       return res.status(401).json({ message: 'Authentication required' });
     }
 
     try {
-      const user = req.user;
+      const user = await storage.getUser(req.session.userId);
+      if (!user) {
+        return res.status(401).json({ message: 'User not found' });
+      }
+      
       const { type } = req.body;
 
       if (!['vip', 'premium'].includes(type)) {
