@@ -233,7 +233,33 @@ export const AdminPanel = ({ user, isOpen: externalIsOpen, onOpenChange }) => {
                               <SelectItem value="removeAdmin" disabled={isSelf || !isSuperAdmin}>
                                 {t('removeAdmin')}
                               </SelectItem>
-                              <SelectItem value="banUser" disabled={isSelf}>
+                              <SelectItem 
+                                value="banUser" 
+                                disabled={isSelf}
+                                onClick={async () => {
+                                  try {
+                                    const res = await fetch('/api/admin/manage', {
+                                      method: 'POST',
+                                      headers: { 'Content-Type': 'application/json' },
+                                      body: JSON.stringify({ action: 'banUser', userId: targetUser.id })
+                                    });
+                                    const data = await res.json();
+
+                                    alert(data.message);
+
+                                    if (targetUser.id === gameState.user?.id && data.banned) {
+                                      // Очистка состояния пользователя
+                                      setGameState(prev => ({ ...prev, user: null }));
+                                      
+                                      // Перенаправление на страницу регистрации
+                                      window.location.href = '/reg';
+                                    }                                    
+                                  } catch (err) {
+                                    console.error(err);
+                                    alert('Failed to execute admin action');
+                                  }
+                                }}
+                              >
                                 {t('banUser')}
                               </SelectItem>
                               <SelectItem value="unbanUser" disabled={isSelf}>
@@ -245,6 +271,10 @@ export const AdminPanel = ({ user, isOpen: externalIsOpen, onOpenChange }) => {
                               <SelectItem value="removeMoney" disabled={!isSuperAdmin}>
                                 {t('takeMoney')}
                               </SelectItem>
+                              <SelectItem value="deleteUser" disabled={!isSuperAdmin}>
+                              {t('deleteUser')}
+                            </SelectItem>
+
                             </>
                           );
                         })()}
@@ -294,6 +324,13 @@ export const AdminPanel = ({ user, isOpen: externalIsOpen, onOpenChange }) => {
                       <div className="flex items-center space-x-3">
                         <div className={`w-3 h-3 rounded-full ${user.isOnline ? 'bg-green-400' : 'bg-red-400'}`} />
                         <span className="font-medium">{user.nickname}</span>
+                        {/* Бан */}
+                        {user.banned && (
+                          <Badge variant="secondary" className="text-xs bg-red-500 mr-1">
+                            Banned
+                          </Badge>
+                        )}
+                        {/* Админы */}
                         {user.admin > 0 && (
                           <Badge variant="secondary" className="text-xs bg-red-500 animate-pulse">
                             {user.nickname === 'Ca6aka' ? 'Super Admin' : 'Admin'}

@@ -121,7 +121,7 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
       id: `cable-${index}`,
       color,
       x: 40,
-      y: 80 + shuffledIndexes[index] * 60, // Increased spacing and Y offset
+      y: 50 + shuffledIndexes[index] * 60, // Increased spacing and Y offset
       connected: false
     }));
   };
@@ -136,7 +136,7 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
       id: `port-${index}`,
       color,
       x: 320,
-      y: 80 + shuffledPortIndexes[index] * 60, // Increased spacing and Y offset
+      y: 50 + shuffledPortIndexes[index] * 60, // Increased spacing and Y offset
       connected: false
     }));
   };
@@ -209,7 +209,7 @@ const ServerConnectionGame = ({ isOpen, onClose, server, onSuccess }) => {
     // Close game after brief delay
     setTimeout(() => {
       closeGame();
-    }, 1500);
+    }, 500);
   };
 
   const handleGameFailed = () => {

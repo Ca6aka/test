@@ -41,9 +41,8 @@ export function PlayerRankings() {
 
   // Check if user is level 5 or higher to show rankings
   const userLevel = Math.floor(Math.sqrt(gameState.user?.experience / 100)) + 1;
-  const canViewRankings = userLevel >= 5;
 
-  if (!canViewRankings || !rankingsData?.rankings) return null;
+  if (!rankingsData?.rankings) return null;
 
   const rankings = rankingsData.rankings;
   const userRank = rankings.find(r => r.id === gameState.user?.id);

@@ -1,6 +1,7 @@
 import { createServer } from "http";
 import bcrypt from "bcrypt";
 import { storage } from "./storage.js";
+import path from 'path';
 
 // Import avatar generation function
 function generateRandomAvatar(nickname = '') {
@@ -510,6 +511,28 @@ export async function registerRoutes(app) {
           updatedUser.admin = 0;
           actionDescription = `Admin privileges removed by ${currentUser.nickname}`;
           break;
+
+          async function forceLogoutUser(userId) {
+            return new Promise((resolve, reject) => {
+              const store = req.sessionStore; // стандартный store из express-session
+              store.all((err, sessions) => {
+                if (err) return reject(err);
+          
+                const destroyPromises = [];
+                for (const sid in sessions) {
+                  const sess = sessions[sid];
+                  if (sess.userId === userId) {
+                    destroyPromises.push(
+                      new Promise((res, rej) => store.destroy(sid, e => (e ? rej(e) : res())))
+                    );
+                  }
+                }
+          
+                Promise.all(destroyPromises).then(resolve).catch(reject);
+              });
+            });
+          }
+
         case 'banUser':
           // Only super-admin can ban other admins
           if (targetUser.admin >= 1 && currentUser.nickname !== 'Ca6aka') {
@@ -530,12 +553,17 @@ export async function registerRoutes(app) {
             console.error('Failed to turn off banned user servers:', error);
           }
           
-          // Force logout the banned user by destroying their session
-          // Note: This will only work if we track sessions by userId, 
-          // but it's a good practice to implement
+          // Force logout the banned user
+          try {
+            await forceLogoutUser(targetUser.id);
+          } catch (error) {
+            console.error('Failed to force logout banned user:', error);
+          }
           
+          await storage.updateUser(userId, updatedUser);
+
           actionDescription = `Account banned by admin ${currentUser.nickname}`;
-          break;
+          return res.json({ message: `User ${targetUser.nickname} has been banned`, banned: true });
         case 'unbanUser':
           updatedUser.banned = false;
           actionDescription = `Account unbanned by admin ${currentUser.nickname}`;
@@ -560,6 +588,19 @@ export async function registerRoutes(app) {
           updatedUser.balance = Math.max(0, (targetUser.balance || 0) - amount);
           actionDescription = `$${amount.toLocaleString()} removed by super admin`;
           break;
+        case 'deleteUser':
+          if (!currentUser || currentUser.nickname !== 'Ca6aka') {
+            return res.status(403).json({ message: 'Only super admin can delete users.' });
+          }
+
+          try {
+            await storage.deleteUserByNickname(targetUser.nickname);
+            await storage.deleteServersByOwner(targetUser.id); // <-- это удалит все сервера игрока
+            actionDescription = `User ${targetUser.nickname} deleted by super admin ${currentUser.nickname}`;
+            break;
+          } catch (error) {
+            return res.status(500).json({ message: 'Failed to delete user' });
+          }
         case 'muteUser':
           // Can't mute other admins unless you're super admin
           if (targetUser.admin >= 1 && currentUser.nickname !== 'Ca6aka') {

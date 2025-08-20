@@ -19,7 +19,7 @@ import {
   Settings,
   Volume2,
   VolumeX,
-  X
+  MessageCircleWarning
 } from 'lucide-react'
 import { useIsMobile } from '@/hooks/use-mobile'
 import { useGame } from '@/contexts/game-context'
@@ -335,7 +335,7 @@ function VirtualAssistant() {
                 className="h-6 w-6 p-0"
                 title={t('chatRules')}
               >
-                <Settings className="w-4 h-4" />
+                <MessageCircleWarning className="w-4 h-4" />
               </Button>
               {user?.admin >= 1 && (
                 <Dialog>
@@ -450,7 +450,7 @@ function VirtualAssistant() {
                 onClick={() => setShowRules(false)}
                 className="h-4 w-4 p-0"
               >
-                <X className="w-3 h-3" />
+                <MessageCircleWarning className="w-3 h-3" />
               </Button>
             </div>
             <div className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
@@ -458,6 +458,7 @@ function VirtualAssistant() {
               <div>• {t('chatRule2')}</div>
               <div>• {t('chatRule3')}</div>
               <div>• {t('chatRule4')}</div>
+              <div>• {t('chatRule5')}</div>
             </div>
           </div>
         )}
@@ -482,7 +483,7 @@ function VirtualAssistant() {
                     className="text-yellow-600 hover:text-yellow-800 transition-colors p-1"
                     title="Unpin message"
                   >
-                    <X className="w-3 h-3" />
+                    <MessageCircleWarning className="w-3 h-3" />
                   </button>
                 )}
               </div>

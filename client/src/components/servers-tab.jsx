@@ -28,20 +28,25 @@ const getServerTierColors = (serverType) => {
 };
 
 // Helper function to format reward text
-const getRewardText = (reward) => {
-  if (!reward || typeof reward !== 'object') return 'Unknown Reward';
+const getRewardText = (reward, t) => {
+  if (!reward || typeof reward !== 'object') return t('unknownReward');
   
   if (reward.type === 'serverSlots') {
     const amount = reward.amount ?? 0;
-    return `+${amount} Server Slot${amount > 1 ? 's' : ''}`;
+    return t('serverSlotReward')
+      .replace('{amount}', amount)
+      .replace('{plural}', amount > 1 ? 's' : '');
   } else if (reward.type === 'efficiency') {
     const amount = reward.amount ?? 0;
-    return `+${amount}% Server Efficiency`;
+    return t('serverEfficiencyReward').replace('{amount}', amount);
   } else if (reward.type === 'serverUnlock') {
     const serverType = reward.serverType;
-    return `Unlocks ${serverType === 'gpu-server' ? 'GPU Server' : serverType === 'tpu-server' ? 'TPU Server' : 'Special Server'}`;
+    const serverTypeName = serverType === 'gpu-server' ? t('gpuServer') : 
+                           serverType === 'tpu-server' ? t('tpuServer') : 
+                           t('specialServer');
+    return t('unlockServerReward').replace('{serverType}', serverTypeName);
   }
-  return 'Unknown Reward';
+  return t('unknownReward');
 };
 
 export function ServersTab({ onTabChange }) {
@@ -531,7 +536,7 @@ export function ServersTab({ onTabChange }) {
           <div className="p-3 bg-purple-500/10 rounded-lg">
             <p className="text-sm text-purple-300">
               <i className="fas fa-gift mr-1"></i>
-              <strong>{t('reward')}:</strong> {getRewardText(gameState.currentLearning.reward)}
+              <strong>{t('reward')}:</strong> {getRewardText(gameState.currentLearning.reward, t)}
             </p>
           </div>
         </div>

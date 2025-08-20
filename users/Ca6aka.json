@@ -2,68 +2,56 @@
   "id": "65a91d9d-7213-4a2e-abd6-c9017bc7ae80",
   "nickname": "Ca6aka",
   "password": "$2b$10$G1sTjzxqs2js60d52sYQXOCbGLW1o.6TCUNzzuimD5iwHk21qh6vq",
-  "balance": 1223879,
-  "level": 15,
-  "experience": 2803,
-  "totalEarnings": 1538947,
-  "totalSpent": 623767,
+  "balance": 1110051,
+  "level": 16,
+  "experience": 3195,
+  "totalEarnings": 1676879,
+  "totalSpent": 936227,
   "avatar": {
     "gradient": "from-green-400 via-teal-500 to-cyan-600",
     "pattern": "multi-color",
     "seed": 898168,
     "animation": "shimmer-wave"
   },
-  "serverLimit": 15,
+  "serverLimit": 20,
   "tutorialCompleted": true,
   "admin": 2,
   "banned": false,
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755633394337,
+  "lastIncomeUpdate": 1755708808987,
   "jobCooldowns": {
-    "maintenance": 1755610333627,
-    "optimization": 1755610486597,
-    "security-audit": 1755610303752
+    "maintenance": 1755653778001,
+    "optimization": 1755653218711,
+    "security-audit": 1755653342462
   },
-  "currentLearning": {
-    "id": "basic-setup",
-    "title": "Basic Server Setup",
-    "description": "Learn the fundamentals of server configuration and deployment",
-    "difficulty": "Beginner",
-    "startTime": 1755633156515,
-    "endTime": 1755634956515,
-    "progress": 0,
-    "reward": {
-      "type": "serverSlots",
-      "amount": 1
-    }
-  },
+  "currentLearning": null,
   "activities": [
     {
-      "id": "2c51f0f7-cd8f-4986-b556-35fcf283e267",
-      "description": "Income: +$842, Rental: -$84 (Net: +$758)",
-      "timestamp": "8/19/2025, 7:56:34 PM"
+      "id": "ef89757f-14f6-416e-a4e5-22178d3d4210",
+      "description": "Rental cost: -$184 for 18 servers",
+      "timestamp": "20.08.2025, 18:53:28"
     },
     {
-      "id": "f84e7a5e-9f9d-4883-ae93-3d2381b372af",
-      "description": "Income: +$449, Rental: -$44 (Net: +$405)",
-      "timestamp": "8/19/2025, 7:54:42 PM"
+      "id": "ad023bf7-a5f9-407e-8c0a-0f5ce42bf006",
+      "description": "Rental cost: -$184 for 18 servers",
+      "timestamp": "20.08.2025, 18:52:27"
     },
     {
-      "id": "eb7ab612-abc9-4a7a-92d3-01c8a06c9c1c",
-      "description": "Income: +$450, Rental: -$45 (Net: +$405)",
-      "timestamp": "8/19/2025, 7:53:42 PM"
+      "id": "cba20efb-11cb-4559-b750-8774774b91ae",
+      "description": "Rental cost: -$184 for 18 servers",
+      "timestamp": "20.08.2025, 18:51:25"
     },
     {
-      "id": "5996bfc7-b4a6-4939-8312-6d985fa27e03",
-      "description": "Income: +$830, Rental: -$83 (Net: +$747)",
-      "timestamp": "8/19/2025, 7:52:42 PM"
+      "id": "596b35b0-901a-42e3-b791-bcaa5cc26cd7",
+      "description": "Rental cost: -$184 for 18 servers",
+      "timestamp": "20.08.2025, 18:50:24"
     },
     {
-      "id": "69895ba1-f0f9-483d-b776-e7f8575f0d56",
-      "description": "Started learning course: Basic Server Setup",
-      "timestamp": "8/19/2025, 7:52:36 PM"
+      "id": "4bf39d59-88bf-472e-85c1-4a182476e436",
+      "description": "Rental cost: -$185 for 18 servers",
+      "timestamp": "20.08.2025, 18:49:22"
     }
   ],
   "achievements": [
@@ -82,10 +70,11 @@
     "job-master",
     "wealthy-investor",
     "server-mogul",
-    "millionaire"
+    "millionaire",
+    "infrastructure-king"
   ],
-  "completedJobsCount": 144,
-  "completedCoursesCount": 12,
+  "completedJobsCount": 165,
+  "completedCoursesCount": 16,
   "completedLearning": [
     "security-protocols"
   ],
@@ -101,9 +90,10 @@
         "jobType": "maintenance",
         "count": 3
       },
-      "progress": 0,
-      "completed": false,
-      "date": "Tue Aug 19 2025"
+      "progress": 3,
+      "completed": true,
+      "date": "Tue Aug 19 2025",
+      "claimed": true
     },
     {
       "id": "daily-income-Tue Aug 19 2025",
@@ -129,9 +119,10 @@
         "jobType": "optimization",
         "count": 2
       },
-      "progress": 0,
-      "completed": false,
-      "date": "Tue Aug 19 2025"
+      "progress": 2,
+      "completed": true,
+      "date": "Tue Aug 19 2025",
+      "claimed": true
     },
     {
       "id": "daily-security-Tue Aug 19 2025",
@@ -143,9 +134,10 @@
         "jobType": "security-audit",
         "count": 1
       },
-      "progress": 0,
-      "completed": false,
-      "date": "Tue Aug 19 2025"
+      "progress": 1,
+      "completed": true,
+      "date": "Tue Aug 19 2025",
+      "claimed": true
     },
     {
       "id": "daily-earnings-Tue Aug 19 2025",
@@ -171,9 +163,10 @@
         "jobType": "any",
         "count": 5
       },
-      "progress": 0,
-      "completed": false,
-      "date": "Tue Aug 19 2025"
+      "progress": 5,
+      "completed": true,
+      "date": "Tue Aug 19 2025",
+      "claimed": true
     },
     {
       "id": "daily-mixed-jobs-Tue Aug 19 2025",
@@ -185,9 +178,15 @@
         "jobType": "mixed",
         "count": 3
       },
-      "progress": 0,
-      "completed": false,
-      "date": "Tue Aug 19 2025"
+      "progress": 3,
+      "completed": true,
+      "date": "Tue Aug 19 2025",
+      "jobCounts": {
+        "maintenance": 2,
+        "optimization": 1,
+        "security-audit": 1
+      },
+      "claimed": true
     },
     {
       "id": "daily-income-boost-Tue Aug 19 2025",
@@ -213,9 +212,10 @@
         "jobType": "any",
         "count": 8
       },
-      "progress": 0,
-      "completed": false,
-      "date": "Tue Aug 19 2025"
+      "progress": 8,
+      "completed": true,
+      "date": "Tue Aug 19 2025",
+      "claimed": true
     },
     {
       "id": "daily-mega-earner-Tue Aug 19 2025",
@@ -235,5 +235,11 @@
   "lastQuestReset": 1755628419352,
   "registrationIP": "192.168.0.136",
   "registrationTime": 1755531070984,
-  "lastSeen": 1755633333224
+  "lastSeen": 1755708808998,
+  "lastMessageTime": 1755643305103,
+  "chatLanguage": "ru",
+  "chatAchievements": [
+    "first_message"
+  ],
+  "hasNewChatMessages": true
 }

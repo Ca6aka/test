@@ -1346,79 +1346,77 @@ export class FileStorage {
   async updateIncome(userId) {
     const user = await this.getUser(userId);
     if (!user) throw new Error('User not found');
-
+  
     // Update server durability before calculating income
     await this.updateServersDurability();
-
+  
     const servers = await this.getUserServers(userId);
     const now = Date.now();
     const lastUpdate = user.lastIncomeUpdate || now;
     const timeDiff = now - lastUpdate;
-    
-    // Calculate income from online servers (per minute, so divide by 60000ms)
+  
     const efficiencyBonus = user.efficiencyBonus || 0;
+  
+    // Доход с онлайн серверов
     const totalIncome = servers.reduce((sum, server) => {
       if (!server.isOnline) return sum;
-      const baseIncome = server.incomePerMinute;
+      const baseIncome = server.incomePerMinute || 0;
       const loadPercentage = server.loadPercentage || 50;
       const loadAdjustment = baseIncome * (1 + (loadPercentage - 50) / 100);
-      // Apply efficiency bonus (rounded up in favor of player)
       const efficiencyAdjustment = Math.ceil(loadAdjustment * (1 + efficiencyBonus / 100));
       return sum + efficiencyAdjustment;
     }, 0);
-    
-    // Calculate rental costs per minute (10% of income as standard)
-    const totalRentalCost = totalIncome * 0.1;
-
+  
+    // Расход для всех серверов, онлайн + оффлайн
+    const totalRentalCost = servers.reduce((sum, server) => {
+      const baseIncome = server.incomePerMinute || 0;
+      return sum + baseIncome * 0.1;
+    }, 0);
+  
     const incomeEarned = Math.floor((totalIncome * timeDiff) / 60000);
     const rentalCost = Math.floor((totalRentalCost * timeDiff) / 60000);
     const netIncome = incomeEarned - rentalCost;
-
-    if (Math.abs(netIncome) > 0) {
-      const newBalance = Math.max(0, user.balance + netIncome);
-      // Update totalEarnings and totalSpent separately for proper tracking
-      const updateData = {
-        balance: newBalance,
-        lastIncomeUpdate: now
-      };
-      
-      // Update totalEarnings if we earned money
-      if (incomeEarned > 0) {
-        updateData.totalEarnings = (user.totalEarnings || 0) + incomeEarned;
-      }
-      
-      // Update totalSpent if we had rental costs
-      if (rentalCost > 0) {
-        updateData.totalSpent = (user.totalSpent || 0) + rentalCost;
-      }
-      
-      const updatedUser = await this.updateUser(userId, updateData);
-
-      // Update daily quest for income
-      if (incomeEarned > 0) {
-        await this.updateDailyQuest(userId, 'income', { amount: incomeEarned });
-      }
-
-      // Add activity log for income/expenses
-      if (incomeEarned > 0 && rentalCost > 0) {
-        await this.addActivity(userId, `Income: +$${incomeEarned}, Rental: -$${rentalCost} (Net: ${netIncome >= 0 ? '+' : ''}$${netIncome})`);
-      } else if (rentalCost > 0) {
-        await this.addActivity(userId, `Rental cost: -$${rentalCost} for ${servers.length} servers`);
-      }
-
-      // Check for server overloads
-      for (const server of servers.filter(s => s.isOnline)) {
-        await this.checkServerOverload(userId, server.id, server.loadPercentage || 50);
-      }
-
-      // Check achievements
-      await this.checkAchievements(userId);
-
-      return { user: updatedUser, incomeEarned, rentalCost, netIncome };
+  
+    // Обновляем баланс и статистику
+    const newBalance = Math.max(0, user.balance + netIncome);
+    const updateData = { balance: newBalance, lastIncomeUpdate: now };
+    if (incomeEarned > 0) updateData.totalEarnings = (user.totalEarnings || 0) + incomeEarned;
+    if (rentalCost > 0) updateData.totalSpent = (user.totalSpent || 0) + rentalCost;
+  
+    const updatedUser = await this.updateUser(userId, updateData);
+  
+    // Обновление ежедневного квеста
+    if (incomeEarned > 0) {
+      await this.updateDailyQuest(userId, 'income', { amount: incomeEarned });
     }
-
-    return { user, incomeEarned: 0, rentalCost: 0, netIncome: 0 };
+  
+    // Добавление логов активности **всегда**, если есть доход или расходы
+    if (incomeEarned > 0 && rentalCost > 0) {
+      // Доход есть, расходы есть
+      await this.addActivity(userId, `Income: +$${incomeEarned}, Rental: -$${rentalCost} (Net: ${netIncome >= 0 ? '+' : ''}$${netIncome})`);
+    } else if (incomeEarned > 0 && rentalCost === 0) {
+      // Доход есть, расходов нет
+      await this.addActivity(userId, `Income: +$${incomeEarned}`);
+    } else if (incomeEarned === 0 && rentalCost > 0) {
+      // Дохода нет, но есть расходы
+      await this.addActivity(userId, `Rental cost: -$${rentalCost} for ${servers.length} servers`);
+    } else if (incomeEarned < rentalCost) {
+      // Доход меньше расходов (чистый минус)
+      await this.addActivity(userId, `Income: +$${incomeEarned}, Rental: -$${rentalCost} (Net: $${netIncome})`);
+    }    
+  
+    // Проверка перегрузки серверов
+    for (const server of servers.filter(s => s.isOnline)) {
+      await this.checkServerOverload(userId, server.id, server.loadPercentage || 50);
+    }
+  
+    // Проверка достижений
+    await this.checkAchievements(userId);
+  
+    return { user: updatedUser, incomeEarned, rentalCost, netIncome };
   }
+  
+  
 
   // Tutorial
   async completeTutorial(userId) {
@@ -1469,11 +1467,6 @@ export class FileStorage {
           
           // Calculate user level
           const userLevel = Math.floor(Math.sqrt((userData.experience || 0) / 100)) + 1;
-          
-          // Only include players level 5 and above
-          if (userLevel < 5) {
-            continue;
-          }
           
           // Get server count for this user from servers.json
           const userServers = await this.getUserServers(userData.id);
@@ -2375,6 +2368,20 @@ export class FileStorage {
       console.error('Error syncing server data:', error);
     }
   }
+
+  async deleteUserByNickname(nickname) {
+    const filePath = path.join(usersDir, `${nickname}.json`);
+    try {
+      await fs.unlink(filePath);
+    } catch (error) {
+      throw new Error('Failed to delete user');
+    }
+  }
+  async deleteServersByOwner(ownerId) {
+    const servers = await this.readJsonFile('servers.json');
+    const filtered = servers.filter(server => server.ownerId !== ownerId);
+    await this.writeJsonFile('servers.json', filtered);
+  }  
 }
 
 export const storage = new FileStorage();

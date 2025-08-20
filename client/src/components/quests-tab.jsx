@@ -101,8 +101,7 @@ export function QuestsTab() {
             {getTimeUntilReset().text}
           </div>
           <div className="space-y-1 mt-1">
-            <div className="text-xs text-slate-500">{t('timeProgress')}</div>
-            <Progress value={getTimeUntilReset().progressPercent} className="w-32" />
+            <Progress value={getTimeUntilReset().progressPercent} className="w-33" />
           </div>
         </div>
       </div>

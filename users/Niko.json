@@ -2,11 +2,11 @@
   "id": "47db7feb-7e70-455c-9989-2dad66321fc6",
   "nickname": "Niko",
   "password": "$2b$10$xpp57uAPzObKG5AqKrflveYOlrYmw0wjKv.Thk/xYaog6x79qppYO",
-  "balance": 151598,
-  "level": 6,
-  "experience": 629,
-  "totalEarnings": 126920,
-  "totalSpent": 54522,
+  "balance": 210868,
+  "level": 8,
+  "experience": 1048,
+  "totalEarnings": 137300,
+  "totalSpent": 54832,
   "avatar": {
     "gradient": "from-purple-400 via-violet-500 to-indigo-600",
     "pattern": "multi-color",
@@ -20,38 +20,38 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755633394382,
+  "lastIncomeUpdate": 1755646351289,
   "jobCooldowns": {
-    "maintenance": 1755610135544,
-    "optimization": 1755610258018,
-    "security-audit": 1755610379265
+    "maintenance": 1755648632225,
+    "optimization": 1755648751461,
+    "security-audit": 1755648871793
   },
   "currentLearning": null,
   "activities": [
     {
-      "id": "f6fc45cc-0076-4f56-94f8-582ebf70451f",
-      "description": "Income: +$46, Rental: -$4 (Net: +$42)",
-      "timestamp": "8/19/2025, 7:56:34 PM"
+      "id": "fcd8fd1b-34d9-4061-aa56-a1e76395a527",
+      "description": "Account unbanned by admin Ca6aka",
+      "timestamp": "20.08.2025, 02:08:14"
     },
     {
-      "id": "2995f0ee-f39b-414a-b023-9e7501a3979b",
-      "description": "Income: +$24, Rental: -$2 (Net: +$22)",
-      "timestamp": "8/19/2025, 7:54:42 PM"
+      "id": "a6e08419-da33-4514-adbc-3b357443ff38",
+      "description": "Achievement unlocked: Optimization Master (+$13 500)",
+      "timestamp": "20.08.2025, 02:07:32"
     },
     {
-      "id": "cdde5d3e-65a0-4edf-b4b4-f28e48072be4",
-      "description": "Income: +$25, Rental: -$2 (Net: +$23)",
-      "timestamp": "8/19/2025, 7:53:42 PM"
+      "id": "710877a2-6141-465c-a1bd-e89168ffba8e",
+      "description": "Completed Server Maintenance (+$150, +10 XP)",
+      "timestamp": "20.08.2025, 02:07:32"
     },
     {
-      "id": "d69d19ab-9696-4ce5-9875-25211d33574c",
-      "description": "Income: +$46, Rental: -$4 (Net: +$42)",
-      "timestamp": "8/19/2025, 7:52:42 PM"
+      "id": "ae3b063c-5b3c-4b2e-a8c7-eac359729575",
+      "description": "Completed Security Audit (+$500, +25 XP)",
+      "timestamp": "20.08.2025, 02:07:31"
     },
     {
-      "id": "d46eee8c-ed89-45f1-84a9-d9c6420afe7a",
-      "description": "Income: +$24, Rental: -$2 (Net: +$22)",
-      "timestamp": "8/19/2025, 7:50:51 PM"
+      "id": "1d2b9b06-be22-40eb-9f8f-7f0421549bef",
+      "description": "Completed Performance Optimization (+$250, +18 XP)",
+      "timestamp": "20.08.2025, 02:07:31"
     }
   ],
   "achievements": [
@@ -62,9 +62,11 @@
     "efficient-worker",
     "wealthy-investor",
     "server-collection",
-    "persistent-learner"
+    "persistent-learner",
+    "security-expert",
+    "optimization-master"
   ],
-  "completedJobsCount": 35,
+  "completedJobsCount": 60,
   "completedCoursesCount": 3,
   "completedLearning": [],
   "efficiencyBonus": 0,
@@ -79,9 +81,10 @@
         "jobType": "maintenance",
         "count": 3
       },
-      "progress": 0,
-      "completed": false,
-      "date": "Tue Aug 19 2025"
+      "progress": 3,
+      "completed": true,
+      "date": "Tue Aug 19 2025",
+      "claimed": true
     },
     {
       "id": "daily-income-Tue Aug 19 2025",
@@ -92,8 +95,8 @@
         "type": "income",
         "amount": 5000
       },
-      "progress": 2042,
-      "completed": false,
+      "progress": 5000,
+      "completed": true,
       "date": "Tue Aug 19 2025"
     },
     {
@@ -106,9 +109,10 @@
         "jobType": "optimization",
         "count": 2
       },
-      "progress": 0,
-      "completed": false,
-      "date": "Tue Aug 19 2025"
+      "progress": 2,
+      "completed": true,
+      "date": "Tue Aug 19 2025",
+      "claimed": true
     },
     {
       "id": "daily-security-Tue Aug 19 2025",
@@ -120,9 +124,10 @@
         "jobType": "security-audit",
         "count": 1
       },
-      "progress": 0,
-      "completed": false,
-      "date": "Tue Aug 19 2025"
+      "progress": 1,
+      "completed": true,
+      "date": "Tue Aug 19 2025",
+      "claimed": true
     },
     {
       "id": "daily-earnings-Tue Aug 19 2025",
@@ -133,7 +138,7 @@
         "type": "income",
         "amount": 10000
       },
-      "progress": 2042,
+      "progress": 5422,
       "completed": false,
       "date": "Tue Aug 19 2025"
     },
@@ -147,9 +152,10 @@
         "jobType": "any",
         "count": 5
       },
-      "progress": 0,
-      "completed": false,
-      "date": "Tue Aug 19 2025"
+      "progress": 5,
+      "completed": true,
+      "date": "Tue Aug 19 2025",
+      "claimed": true
     },
     {
       "id": "daily-mixed-jobs-Tue Aug 19 2025",
@@ -161,9 +167,15 @@
         "jobType": "mixed",
         "count": 3
       },
-      "progress": 0,
-      "completed": false,
-      "date": "Tue Aug 19 2025"
+      "progress": 3,
+      "completed": true,
+      "date": "Tue Aug 19 2025",
+      "jobCounts": {
+        "maintenance": 2,
+        "optimization": 1,
+        "security-audit": 1
+      },
+      "claimed": true
     },
     {
       "id": "daily-income-boost-Tue Aug 19 2025",
@@ -174,7 +186,7 @@
         "type": "income",
         "amount": 20000
       },
-      "progress": 2042,
+      "progress": 5422,
       "completed": false,
       "date": "Tue Aug 19 2025"
     },
@@ -188,9 +200,10 @@
         "jobType": "any",
         "count": 8
       },
-      "progress": 0,
-      "completed": false,
-      "date": "Tue Aug 19 2025"
+      "progress": 8,
+      "completed": true,
+      "date": "Tue Aug 19 2025",
+      "claimed": true
     },
     {
       "id": "daily-mega-earner-Tue Aug 19 2025",
@@ -201,7 +214,7 @@
         "type": "income",
         "amount": 50000
       },
-      "progress": 2042,
+      "progress": 5422,
       "completed": false,
       "date": "Tue Aug 19 2025"
     }
@@ -209,5 +222,11 @@
   "lastQuestReset": 1755628419380,
   "registrationIP": "192.168.0.136",
   "registrationTime": 1755532222304,
-  "lastSeen": 1755633101447
+  "lastSeen": 1755648718959,
+  "hasNewChatMessages": true,
+  "lastMessageTime": 1755643288079,
+  "chatLanguage": "ru",
+  "chatAchievements": [
+    "first_message"
+  ]
 }

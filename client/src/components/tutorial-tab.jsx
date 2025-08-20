@@ -181,7 +181,7 @@ export function TutorialTab({ gameState, setActiveTab }) {
 
       {/* Tutorial Tips */}
       <div className="mt-6 sm:mt-8 bg-gradient-to-r from-accent/10 to-secondary/10 border border-accent/30 rounded-xl p-4 sm:p-6">
-        <h3 className="text-lg font-semibold text-accent mb-3">
+        <h3 className="text-lg font-semibold mb-3 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient">
           <i className="fas fa-lightbulb mr-2"></i>
           {t('usefulTips')}
         </h3>
