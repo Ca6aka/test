@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "id": "c1b011c4-9c50-47e6-af5a-bbe02de62546",
+    "userId": "7441f91d-d167-4f0d-8d54-136e8b6a416e",
+    "nickname": "test2",
+    "message": "1",
+    "originalMessage": "1",
+    "language": "ru",
+    "timestamp": 1755709603825,
+    "deleted": false,
+    "adminLevel": 0,
+    "reactions": {},
+    "filtered": false,
+    "warningCount": 0
+  }
+]

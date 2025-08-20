@@ -234,6 +234,35 @@ function VirtualAssistant({ hideOnReports = false }) {
     }
   }
 
+  const handleReaction = async (messageId, emoji) => {
+    try {
+      const response = await fetch(`/api/chat/message/${messageId}/react`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ emoji })
+      })
+      if (response.ok) {
+        refetchMessages()
+      }
+    } catch (error) {
+      console.error('Failed to add reaction:', error)
+    }
+  }
+
+  const handlePinMessage = async (messageId) => {
+    try {
+      const response = await fetch(`/api/chat/message/${messageId}/pin`, {
+        method: 'POST'
+      })
+      if (response.ok) {
+        refetchMessages()
+        queryClient.invalidateQueries({ queryKey: ['/api/chat/pinned'] })
+      }
+    } catch (error) {
+      console.error('Failed to pin message:', error)
+    }
+  }
+
   const handleMuteUser = async () => {
     if (!muteUserId || !muteDuration) return
     
@@ -288,7 +317,7 @@ function VirtualAssistant({ hideOnReports = false }) {
 
   if (!isVisible) {
     return (
-      <div className="fixed bottom-4 right-4 z-50 md:bottom-4 md:right-4 sm:bottom-20 sm:right-4">
+      <div className="fixed bottom-4 right-4 z-50">
         <div className="relative">
           <Button
             onClick={handleChatOpen}
@@ -502,9 +531,9 @@ function VirtualAssistant({ hideOnReports = false }) {
                 const userStatus = getUserStatus(message.userId)
                 return (
                   <div key={message.id} className="group">
-                    {message.deleted ? (
-                      <div className="text-xs text-gray-400 italic">
-                        {message.deletedBy ? t('messageDeletedBy').replace('{admin}', message.deletedBy) : t('messageDeleted')}
+                    {message.deleted ? null : message.isSystem || message.isWarning ? (
+                      <div className="text-xs text-slate-400 italic py-1 px-2 bg-slate-800/20 rounded">
+                        {message.message}
                       </div>
                     ) : (
                       <div className="space-y-1">

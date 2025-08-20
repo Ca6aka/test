@@ -4,7 +4,7 @@
     "nickname": "MASIK",
     "balance": 3098533,
     "serverCount": 0,
-    "isOnline": true,
+    "isOnline": false,
     "level": 12,
     "rank": 1
   },
@@ -13,7 +13,7 @@
     "nickname": "Ca6aka",
     "balance": 1110051,
     "serverCount": 18,
-    "isOnline": true,
+    "isOnline": false,
     "level": 6,
     "rank": 2
   },
@@ -25,5 +25,14 @@
     "isOnline": false,
     "level": 4,
     "rank": 3
+  },
+  {
+    "id": "7441f91d-d167-4f0d-8d54-136e8b6a416e",
+    "nickname": "test2",
+    "balance": 18900,
+    "serverCount": 0,
+    "isOnline": true,
+    "level": 1,
+    "rank": 4
   }
 ]

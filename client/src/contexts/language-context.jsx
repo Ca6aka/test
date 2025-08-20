@@ -491,6 +491,24 @@ const translations = {
     activeMutes: 'Active Mutes',
     noActiveMutes: 'No active mutes',
     
+    // Chat achievements translations
+    first_message: {
+      title: 'First Message',
+      description: 'Send your first message in chat'
+    },
+    chatty: {
+      title: 'Chatty',
+      description: 'Send 25 messages'
+    },
+    social_butterfly: {
+      title: 'Social Butterfly',
+      description: 'Send 100 messages'
+    },
+    chat_master: {
+      title: 'Chat Master',
+      description: 'Send 500 messages'
+    },
+    
     // Profile and level system
     progressToLevel: 'Progress to Level',
     registrationdate: 'Registration date: ',
@@ -1148,6 +1166,24 @@ const translations = {
     mute: 'Мут',
     activeMutes: 'Активные муты',
     noActiveMutes: 'Нет активных мутов',
+    
+    // Chat achievements translations - Russian
+    first_message: {
+      title: 'Первое сообщение',
+      description: 'Отправить первое сообщение в чат'
+    },
+    chatty: {
+      title: 'Болтун',
+      description: 'Отправить 25 сообщений'
+    },
+    social_butterfly: {
+      title: 'Социальная бабочка',
+      description: 'Отправить 100 сообщений'
+    },
+    chat_master: {
+      title: 'Мастер чата',
+      description: 'Отправить 500 сообщений'
+    },
     
     // Profile and level system
     progressToLevel: 'Прогресс до уровня',

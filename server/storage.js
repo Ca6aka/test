@@ -1328,6 +1328,13 @@ export class FileStorage {
 
     // Apply repair
     servers[serverIndex].durability = Math.min(100, currentDurability + durabilityRestore);
+    servers[serverIndex].lastDurabilityUpdate = Date.now();
+    
+    // Important: Ensure broken servers (0% durability) are turned offline and can only be turned on after repair
+    if (currentDurability === 0) {
+      servers[serverIndex].isOnline = false;
+    }
+    
     await this.saveServers(servers);
 
     // Update user balance
@@ -1696,8 +1703,7 @@ export class FileStorage {
 
     await this.saveChatMessages(messages);
     
-    // Add system message about deletion
-    await this.addSystemMessage(`Message from ${message.nickname} was deleted by ${admin.nickname}`, message.language);
+    // No system message for admin deletions - silent removal
     
     return message;
   }
@@ -1724,7 +1730,6 @@ export class FileStorage {
       filteredText = message.toLowerCase();
       wasFiltered = true;
       warningCount++;
-      await this.addSystemMessage(`${user.nickname} - please don't use excessive caps in chat`, user.chatLanguage || 'ru');
     }
     
     // Simple profanity filter
@@ -1775,18 +1780,19 @@ export class FileStorage {
     return { text: filteredText, wasFiltered, warningCount };
   }
 
-  // Add system message
+  // Add system message - styled as admin warning
   async addSystemMessage(text, language = 'ru') {
     const messages = await this.getChatMessages();
     const systemMessage = {
       id: randomUUID(),
       userId: 'system',
-      nickname: language === 'ru' ? 'Система' : 'System',
+      nickname: 'System',
       message: text,
       timestamp: Date.now(),
       deleted: false,
       adminLevel: 999,
       isSystem: true,
+      isWarning: true,
       language: language
     };
     
