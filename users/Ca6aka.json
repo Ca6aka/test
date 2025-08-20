@@ -2,11 +2,11 @@
   "id": "65a91d9d-7213-4a2e-abd6-c9017bc7ae80",
   "nickname": "Ca6aka",
   "password": "$2b$10$G1sTjzxqs2js60d52sYQXOCbGLW1o.6TCUNzzuimD5iwHk21qh6vq",
-  "balance": 1110051,
+  "balance": 1076051,
   "level": 16,
   "experience": 3195,
   "totalEarnings": 1676879,
-  "totalSpent": 936227,
+  "totalSpent": 970227,
   "avatar": {
     "gradient": "from-green-400 via-teal-500 to-cyan-600",
     "pattern": "multi-color",
@@ -29,6 +29,21 @@
   "currentLearning": null,
   "activities": [
     {
+      "id": "d66dd815-52bc-407a-a7d0-ef68c0d54736",
+      "description": "Achievement unlocked: Server Empire (+$60,000)",
+      "timestamp": "8/20/2025, 5:52:57 PM"
+    },
+    {
+      "id": "0f5fd07d-67c0-4ce2-9c0d-1f59f21bbcd5",
+      "description": "Purchased CDN Server for $17,000",
+      "timestamp": "8/20/2025, 5:52:57 PM"
+    },
+    {
+      "id": "f473b5c6-56f9-44da-bc61-233cd863b883",
+      "description": "Purchased CDN Server for $17,000",
+      "timestamp": "8/20/2025, 5:52:56 PM"
+    },
+    {
       "id": "ef89757f-14f6-416e-a4e5-22178d3d4210",
       "description": "Rental cost: -$184 for 18 servers",
       "timestamp": "20.08.2025, 18:53:28"
@@ -37,21 +52,6 @@
       "id": "ad023bf7-a5f9-407e-8c0a-0f5ce42bf006",
       "description": "Rental cost: -$184 for 18 servers",
       "timestamp": "20.08.2025, 18:52:27"
-    },
-    {
-      "id": "cba20efb-11cb-4559-b750-8774774b91ae",
-      "description": "Rental cost: -$184 for 18 servers",
-      "timestamp": "20.08.2025, 18:51:25"
-    },
-    {
-      "id": "596b35b0-901a-42e3-b791-bcaa5cc26cd7",
-      "description": "Rental cost: -$184 for 18 servers",
-      "timestamp": "20.08.2025, 18:50:24"
-    },
-    {
-      "id": "4bf39d59-88bf-472e-85c1-4a182476e436",
-      "description": "Rental cost: -$185 for 18 servers",
-      "timestamp": "20.08.2025, 18:49:22"
     }
   ],
   "achievements": [
@@ -235,9 +235,9 @@
   "lastQuestReset": 1755628419352,
   "registrationIP": "192.168.0.136",
   "registrationTime": 1755531070984,
-  "lastSeen": 1755711887935,
-  "lastMessageTime": 1755711804800,
-  "chatLanguage": "en",
+  "lastSeen": 1755712478515,
+  "lastMessageTime": 1755712140625,
+  "chatLanguage": "de",
   "chatAchievements": [
     "first_message"
   ],

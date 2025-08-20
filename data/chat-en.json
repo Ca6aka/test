@@ -19,9 +19,9 @@
     },
     "filtered": false,
     "warningCount": 0,
-    "pinned": true,
-    "pinnedBy": "Ca6aka",
-    "pinnedAt": 1755711837769
+    "pinned": false,
+    "pinnedBy": null,
+    "pinnedAt": null
   },
   {
     "id": "7eff0f48-773d-462b-ac2b-7083e12311a3",
@@ -166,6 +166,18 @@
     "nickname": "System",
     "message": "Message from Ca6aka was pinned by Ca6aka",
     "timestamp": 1755711837770,
+    "deleted": false,
+    "adminLevel": 999,
+    "isSystem": true,
+    "isWarning": true,
+    "language": "en"
+  },
+  {
+    "id": "a1054391-d9bf-4a92-9884-56138b159223",
+    "userId": "system",
+    "nickname": "System",
+    "message": "Message from Ca6aka was unpinned by Ca6aka",
+    "timestamp": 1755712178476,
     "deleted": false,
     "adminLevel": 999,
     "isSystem": true,

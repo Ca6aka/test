@@ -33,9 +33,9 @@
     },
     "filtered": false,
     "warningCount": 0,
-    "pinned": true,
-    "pinnedBy": "Ca6aka",
-    "pinnedAt": 1755711821884
+    "pinned": false,
+    "pinnedBy": null,
+    "pinnedAt": null
   },
   {
     "id": "5bbfec67-79c1-46d6-88fe-4b5f648234f4",
@@ -79,6 +79,42 @@
     "nickname": "System",
     "message": "Message from Ca6aka was pinned by Ca6aka",
     "timestamp": 1755711821885,
+    "deleted": false,
+    "adminLevel": 999,
+    "isSystem": true,
+    "isWarning": true,
+    "language": "ru"
+  },
+  {
+    "id": "ef2f275e-3eae-4a8d-9327-53b4c69698bb",
+    "userId": "system",
+    "nickname": "System",
+    "message": "Message from Ca6aka was unpinned by Ca6aka",
+    "timestamp": 1755711897091,
+    "deleted": false,
+    "adminLevel": 999,
+    "isSystem": true,
+    "isWarning": true,
+    "language": "ru"
+  },
+  {
+    "id": "af0a7a4d-ec07-4dd5-b3ee-b1b1d769623a",
+    "userId": "system",
+    "nickname": "System",
+    "message": "Message from Ca6aka was pinned by Ca6aka",
+    "timestamp": 1755711898746,
+    "deleted": false,
+    "adminLevel": 999,
+    "isSystem": true,
+    "isWarning": true,
+    "language": "ru"
+  },
+  {
+    "id": "7ba34652-59d0-4151-a170-ee1866ed17f6",
+    "userId": "system",
+    "nickname": "System",
+    "message": "Message from Ca6aka was unpinned by Ca6aka",
+    "timestamp": 1755712189752,
     "deleted": false,
     "adminLevel": 999,
     "isSystem": true,

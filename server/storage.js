@@ -1572,8 +1572,9 @@ export class FileStorage {
           // Calculate total balance
           totalBalance += userData.balance || 0;
           
-          // Check if user is online based on isOnline field
-          if (userData.isOnline === true) {
+          // Check if user is online based on last activity (5 minutes)
+          const now = Date.now();
+          if (userData.lastActivity && (now - userData.lastActivity) < 5 * 60 * 1000) {
             onlineCount++;
           }
         } catch (err) {

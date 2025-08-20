@@ -93,6 +93,7 @@ function VirtualAssistant({ hideOnReports = false }) {
         msg.timestamp > (user.lastChatRead || 0) && msg.userId !== user.id
       )
       setHasNewMessages(newMessages.length > 0)
+      setNewMessagesCount(newMessages.length)
     }
   }, [chatData?.messages, user?.lastChatRead, user?.id])
 
@@ -362,10 +363,12 @@ function VirtualAssistant({ hideOnReports = false }) {
             data-testid="show-chat"
           >
             <MessageSquare className="w-6 h-6 text-white" />
+            {hasNewMessages && newMessagesCount > 0 && (
+              <div className="absolute -top-1 -right-1 bg-blue-500 text-white text-xs rounded-full px-1.5 py-0.5 min-w-[20px] h-5 flex items-center justify-center animate-pulse border-2 border-white">
+                {newMessagesCount}
+              </div>
+            )}
           </Button>
-          {hasNewMessages && (
-            <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
-          )}
         </div>
       </div>
     )
@@ -392,7 +395,7 @@ function VirtualAssistant({ hideOnReports = false }) {
                 <SelectContent>
                   <SelectItem value="en">EN</SelectItem>
                   <SelectItem value="ru">RU</SelectItem>
-                  <SelectItem value="uk">UK</SelectItem>
+                  <SelectItem value="ua">UA</SelectItem>
                   <SelectItem value="de">DE</SelectItem>
                 </SelectContent>
               </Select>
@@ -549,7 +552,7 @@ function VirtualAssistant({ hideOnReports = false }) {
                 </div>
                 {user?.admin >= 2 && (
                   <button
-                    onClick={() => pinMessageMutation.mutate(pinnedData.pinnedMessage.id)}
+                    onClick={() => handlePinMessage(pinnedData.pinnedMessage.id)}
                     className="text-yellow-600 hover:text-yellow-800 transition-colors p-1"
                     title="Unpin message"
                   >

@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Progress } from '@/components/ui/progress';
-import { Shield, Zap, X, Play, CheckCircle, XCircle } from 'lucide-react';
+import { Shield, Zap, X, Play, CheckCircle, XCircle, Lock } from 'lucide-react';
 import { useLanguage } from '@/contexts/language-context';
 import { useGame } from '@/contexts/game-context';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
@@ -26,6 +26,7 @@ const MiniGamesTab = () => {
   const [selectedGame, setSelectedGame] = useState(null);
   const [miniGameState, setMiniGameState] = useState('menu'); // menu, tutorial, playing, results
   const [hoveredGame, setHoveredGame] = useState(null);
+  const [gameCooldowns, setGameCooldowns] = useState({});
   
   // Game 1: DDoS Protection
   const [ddosState, setDdosState] = useState({
@@ -69,6 +70,15 @@ const MiniGamesTab = () => {
         variant: 'default'
       });
 
+      // Start 30-second cooldown for the completed game
+      if (selectedGame) {
+        const cooldownEnd = Date.now() + 30000; // 30 seconds
+        setGameCooldowns(prev => ({
+          ...prev,
+          [selectedGame.id]: cooldownEnd
+        }));
+      }
+
       // Show level-up notification with delay for better UX
       if (data.leveledUp && data.newLevel) {
         setTimeout(() => {
@@ -88,6 +98,34 @@ const MiniGamesTab = () => {
       }
     }
   });
+
+  // Check if a game is on cooldown
+  const isGameOnCooldown = (gameId) => {
+    return gameCooldowns[gameId] && gameCooldowns[gameId] > Date.now();
+  };
+
+  // Get remaining cooldown time in seconds
+  const getCooldownTime = (gameId) => {
+    if (!gameCooldowns[gameId]) return 0;
+    return Math.ceil((gameCooldowns[gameId] - Date.now()) / 1000);
+  };
+
+  // Track cooldowns and update them
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setGameCooldowns(prev => {
+        const updated = { ...prev };
+        Object.keys(updated).forEach(gameId => {
+          if (updated[gameId] <= Date.now()) {
+            delete updated[gameId];
+          }
+        });
+        return updated;
+      });
+    }, 1000);
+    
+    return () => clearInterval(interval);
+  }, []);
 
   const miniGames = [
     {
@@ -238,6 +276,13 @@ const MiniGamesTab = () => {
       updateExpMutation.mutate(scoreToAdd);
     }
     
+    // Set 30-second cooldown for this game
+    const cooldownEnd = Date.now() + 30000; // 30 seconds
+    setGameCooldowns(prev => ({
+      ...prev,
+      [selectedGame.id]: cooldownEnd
+    }));
+    
     setMiniGameState('results');
   };
 
@@ -277,13 +322,20 @@ const MiniGamesTab = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {miniGames.map((game) => {
           const IconComponent = game.icon;
+          const isOnCooldown = isGameOnCooldown(game.id);
+          const cooldownTime = getCooldownTime(game.id);
+          
           return (
             <Card
               key={game.id}
-              className="relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-105 group"
+              className={`relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-105 group ${isOnCooldown ? 'opacity-60' : ''}`}
               onMouseEnter={() => setHoveredGame(game.id)}
               onMouseLeave={() => setHoveredGame(null)}
-              onClick={() => setSelectedGame(game)}
+              onClick={() => {
+                if (!isOnCooldown) {
+                  setSelectedGame(game);
+                }
+              }}
               data-testid={`minigame-${game.id}`}
             >
               {hoveredGame === game.id && (
@@ -312,10 +364,17 @@ const MiniGamesTab = () => {
                     <span className="font-medium text-green-600">{game.reward}/{game.reward2}</span>
                   </div>
                 </div>
-                <Button className="w-full mt-4" data-testid={`start-${game.id}`}>
-                  <Play className="w-4 h-4 mr-2" />
-                  {t('startPlaying')}
-                </Button>
+                {isOnCooldown ? (
+                  <Button className="w-full mt-4" disabled>
+                    <Lock className="w-4 h-4 mr-2" />
+                    {cooldownTime}s
+                  </Button>
+                ) : (
+                  <Button className="w-full mt-4" data-testid={`start-${game.id}`}>
+                    <Play className="w-4 h-4 mr-2" />
+                    {t('startPlaying')}
+                  </Button>
+                )}
               </CardContent>
             </Card>
           );

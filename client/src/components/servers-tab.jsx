@@ -11,7 +11,7 @@ import { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
 import ServerConnectionGame from './server-connection-game';
-import { Trash2, Settings } from 'lucide-react'
+import { Trash2, Settings, ChevronLeft, ChevronRight } from 'lucide-react'
 
 // Helper function to get server tier colors
 const getServerTierColors = (serverType) => {
@@ -53,6 +53,8 @@ export function ServersTab({ onTabChange }) {
   const { gameState, toggleServer, deleteServer } = useGame();
   const { t } = useLanguage();
   const { toast } = useToast();
+  const [currentPage, setCurrentPage] = useState(1);
+  const SERVERS_PER_PAGE = 10;
   const queryClient = useQueryClient();
   const [selectedServer, setSelectedServer] = useState(null);
   const [serverLoad, setServerLoad] = useState(50);
@@ -209,11 +211,45 @@ export function ServersTab({ onTabChange }) {
   const serverLimit = gameState.user.serverLimit || 3;
   const currentServers = gameState.servers?.length || 0;
   const availableSlots = serverLimit - currentServers;
+  
+  // Pagination calculations  
+  const totalPages = Math.ceil(currentServers / SERVERS_PER_PAGE);
+  const startIndex = (currentPage - 1) * SERVERS_PER_PAGE;
+  const endIndex = startIndex + SERVERS_PER_PAGE;
+  const paginatedServers = gameState.servers?.slice(startIndex, endIndex) || [];
 
   return (
     <div className="p-3 sm:p-6 max-w-6xl mx-auto">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6">
         <h2 className="text-xl sm:text-2xl font-bold text-slate-100 mb-2 sm:mb-0">{t('myServers')}</h2>
+        
+        {/* Pagination Controls */}
+        {totalPages > 1 && (
+          <div className="flex items-center gap-2 mb-2 sm:mb-0">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+              disabled={currentPage === 1}
+              className="h-8 w-8 p-0"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </Button>
+            <span className="text-sm text-slate-400 px-2">
+              {currentPage} / {totalPages}
+            </span>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+              disabled={currentPage === totalPages}
+              className="h-8 w-8 p-0"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </Button>
+          </div>
+        )}
+        
         <div className="flex items-center space-x-2 sm:space-x-3">
           <span className="text-xs sm:text-sm text-slate-400">{t('serverLimit')}:</span>
           <span className="bg-slate-700 px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm font-medium">
@@ -243,11 +279,11 @@ export function ServersTab({ onTabChange }) {
             <span className="text-yellow-500 font-medium text-sm sm:text-base">{t('serverLimitReached')}</span>
           </div>
           <p className="text-xs sm:text-sm text-slate-300 mt-1">
-            {t('serverLimitReachedMessage')} <span 
-              className="bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent font-bold cursor-pointer animate-shimmer"
-              onClick={() => setLocation('/dashboard?tab=donate')}
+            Вы достигли лимита серверов. Купить дополнительные слоты можно во вкладке <span 
+              className="bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent font-bold cursor-pointer animate-pulse"
+              onClick={() => onTabChange('donate')}
             >
-              {t('donate')}
+              Донат
             </span>!
           </p>
         </div>
@@ -256,7 +292,7 @@ export function ServersTab({ onTabChange }) {
       {/* Active Servers Grid */}
       {gameState.servers && gameState.servers.length > 0 ? (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-          {gameState.servers.map((server) => (
+          {paginatedServers.map((server) => (
             <div key={server.id} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:border-primary/30 transition-all">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-3">
