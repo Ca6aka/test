@@ -74,11 +74,11 @@ export default function DonateTab() {
               </div>
               <div>
                 <div className="text-xl font-bold">VIP {t('status')}</div>
-                <div className="text-blue-200/90 text-sm">Популярный выбор</div>
+                <div className="text-blue-200/90 text-sm">8 месяцев за $20 ($2.50/мес)</div>
               </div>
             </div>
             <Badge className="bg-blue-500/30 text-blue-200 border-blue-400/50 px-3 py-1 text-lg font-semibold">
-              $20/{t('month')}
+              $20 за 8 месяцев
             </Badge>
           </CardTitle>
         </CardHeader>
@@ -120,7 +120,7 @@ export default function DonateTab() {
                 className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 relative z-10"
               >
                 {hasPremium ? 'Premium блокирует VIP' :
-                 hasVip ? 'У вас уже есть VIP' : 'Купить VIP - $20/месяц'}
+                 hasVip ? 'У вас уже есть VIP' : 'Купить VIP - $20 за 8 месяцев'}
               </Button>
             </PurchaseDialog>
           </div>
