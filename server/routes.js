@@ -1708,7 +1708,7 @@ export async function registerRoutes(app) {
       const orderId = `${type}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
       
       // NOWPayments integration for USDT payments
-      const nowPaymentsApiKey = process.env.NOWPAYMENTS_API_KEY || 'your-nowpayments-api-key';
+      const nowPaymentsApiKey = process.env.NOWPAYMENTS_API_KEY || '0BYBCND-44G4DAZ-K5FPR03-WQKCRAF';
       const gameEmail = process.env.GAME_EMAIL || 'noreply@yourgame.com';
       
       // Create NOWPayments invoice

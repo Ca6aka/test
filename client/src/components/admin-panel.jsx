@@ -510,7 +510,7 @@ export const AdminPanel = ({ user, isOpen: externalIsOpen, onOpenChange }) => {
                     <Label>NOWPayments API ключ</Label>
                     <Input
                       type="password"
-                      placeholder="Введите API ключ от NOWPayments"
+                      placeholder="0BYBCND-44G4DAZ-K5FPR03-WQKCRAF"
                       value={nowPaymentsKey}
                       onChange={(e) => setNowPaymentsKey(e.target.value)}
                       className="bg-slate-900 border-slate-600"

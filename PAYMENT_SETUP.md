@@ -4,9 +4,9 @@
 
 ### 1. NOWPayments API ключ
 ```
-NOWPAYMENTS_API_KEY=your-nowpayments-api-key
+NOWPAYMENTS_API_KEY=0BYBCND-44G4DAZ-K5FPR03-WQKCRAF
 ```
-Получить на https://nowpayments.io/app
+Ваш рабочий API ключ уже настроен в системе
 
 ### 2. Email настройки для уведомлений
 ```
