@@ -199,9 +199,9 @@ export function ReportsTab() {
   const hasActiveReport = reports.some(report => report.status === 'open' && !isAdmin);
 
   return (
-    <div className="h-full flex flex-col lg:flex-row bg-slate-900/50 rounded-lg border border-slate-700">
+    <div className="h-full flex flex-col lg:flex-row bg-slate-900/50 rounded-lg border border-slate-700 relative">
       {/* Left Panel - Reports List */}
-      <div className="w-full lg:w-1/3 border-b lg:border-b-0 lg:border-r border-slate-700 p-4 max-h-[70vh] lg:max-h-none">
+      <div className="w-full lg:w-1/3 border-b lg:border-b-0 lg:border-r border-slate-700 p-4 h-[40vh] lg:h-full lg:max-h-none">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-bold text-white">{isAdmin ? t('incomingReports') : t('myReports')}</h2>
           {!isAdmin && (
@@ -280,7 +280,7 @@ export function ReportsTab() {
           </div>
         )}
 
-        <div className="space-y-2 max-h-[300px] lg:max-h-[calc(100vh-200px)] overflow-y-auto">
+        <div className="space-y-2 h-[calc(100%-8rem)] overflow-y-auto">
           {reports.length === 0 ? (
             <div className="text-center py-8 text-slate-400">
               <MessageCircle className="w-12 h-12 mx-auto mb-3 opacity-50" />
@@ -327,7 +327,10 @@ export function ReportsTab() {
                       </div>
                     </div>
                     <div className="flex items-center space-x-1">
-                      {report.hasNewMessages && (
+                      {report.hasNewMessages && !isAdmin && (
+                        <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+                      )}
+                      {report.hasNewMessages && isAdmin && (
                         <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
                       )}
                       {getStatusBadge(report.status)}
@@ -341,7 +344,7 @@ export function ReportsTab() {
       </div>
 
       {/* Right Panel - Chat */}
-      <div className="flex-1 flex flex-col bg-slate-900/30 min-h-[400px] lg:min-h-0">
+      <div className="flex-1 flex flex-col bg-slate-900/30 h-[60vh] lg:h-full relative">
         {selectedReport ? (
           <>
             {/* Chat Header */}
@@ -405,7 +408,19 @@ export function ReportsTab() {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-slate-900/30 min-h-0">
+            <div 
+              className="flex-1 overflow-y-auto p-4 space-y-3 relative"
+              style={{
+                background: `
+                  radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 70%, rgba(147, 51, 234, 0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 60% 10%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                  radial-gradient(circle at 40% 90%, rgba(168, 85, 247, 0.05) 0%, transparent 50%),
+                  linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(51, 65, 85, 0.9) 100%)
+                `,
+                backgroundSize: '100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%'
+              }}
+            >
               {messages.map((message) => (
                 <div
                   key={message.id}
@@ -447,7 +462,7 @@ export function ReportsTab() {
 
             {/* Message Input */}
             {selectedReport.status === 'open' ? (
-              <div className="border-t border-slate-700 p-4">
+              <div className="border-t border-slate-700 p-4 pb-6 lg:pb-4">
                 <div className="flex space-x-2">
                   <div className="flex-1">
                     <Input

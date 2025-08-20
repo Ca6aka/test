@@ -562,7 +562,7 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
         </main>
       </div>
 
-      <VirtualAssistant />
+      <VirtualAssistant hideOnReports={activeTab === 'reports'} />
       <RankingsPopup />
       
       {/* Player Profile - rendered at top level */}

@@ -28,7 +28,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 
-function VirtualAssistant() {
+function VirtualAssistant({ hideOnReports = false }) {
   const [input, setInput] = useState('')
   const [isVisible, setIsVisible] = useState(false) // Closed by default
   const [muteUserId, setMuteUserId] = useState('')
@@ -60,11 +60,8 @@ function VirtualAssistant() {
     refetchInterval: 10000 // Check for pinned messages every 10 seconds
   })
 
-  // Fetch chat achievements
-  const { data: chatAchievementsData } = useQuery({
-    queryKey: ['/api/achievements/chat'],
-    enabled: !!user?.id
-  })
+  // Chat achievements are now integrated into main achievements tab
+  // Remove separate chat achievements display
   
   useEffect(() => {
     if (chatMessagesRef.current && chatData?.messages?.length > 0) {
@@ -282,6 +279,11 @@ function VirtualAssistant() {
       ...targetUser,
       isMuted
     }
+  }
+
+  // Hide chat if on reports tab and on mobile
+  if (hideOnReports && isMobile) {
+    return null;
   }
 
   if (!isVisible) {
@@ -645,27 +647,7 @@ function VirtualAssistant() {
             </Button>
           </form>
           
-          {/* Chat achievements display */}
-          {chatAchievementsData?.achievements && user?.id && (
-            <div className="px-3 pb-2">
-              <div className="text-xs text-gray-500 mb-1">Chat Achievements:</div>
-              <div className="flex flex-wrap gap-1">
-                {chatAchievementsData.achievements.map(achievement => (
-                  <div
-                    key={achievement.id}
-                    className={`text-xs px-2 py-1 rounded ${
-                      achievement.completed 
-                        ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' 
-                        : 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400'
-                    }`}
-                    title={`${achievement.description} (${achievement.progress}/${achievement.requirement})`}
-                  >
-                    {achievement.title} {achievement.completed ? '✓' : `${achievement.progress}/${achievement.requirement}`}
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+          {/* Chat achievements moved to main achievements tab */}
         </CardContent>
       </Card>
     </div>

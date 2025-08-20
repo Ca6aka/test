@@ -87,15 +87,29 @@ export function AchievementsTab() {
                 {t('achievementsList')?.[achievement.id]?.description || achievement.description}
               </p>
               
+              {achievement.isChat && achievement.progress !== undefined && (
+                <div className="mb-3">
+                  <div className="flex justify-between text-xs text-slate-400 mb-1">
+                    <span>{t('progress')}</span>
+                    <span>{achievement.progress}/{achievement.requirement}</span>
+                  </div>
+                  <Progress value={(achievement.progress / achievement.requirement) * 100} className="h-2" />
+                </div>
+              )}
+              
               <div className="flex items-center justify-between">
                 <div className="text-sm text-slate-500">
-                  {t('reward')}: {formatCurrency(achievement.reward)}
+                  {achievement.isChat ? (
+                    <span className="text-blue-400">{t('chatAchievement')}</span>
+                  ) : (
+                    <span>{t('reward')}: {formatCurrency(achievement.reward)}</span>
+                  )}
                 </div>
                 <div className="text-xs text-slate-500">
-                  {achievement.condition?.type === 'servers' && `${achievement.condition.count} ${t('serversLowercase')}`}
-                  {achievement.condition?.type === 'balance' && `${formatCurrency(achievement.condition.amount)} ${t('balance').toLowerCase()}`}
-                  {achievement.condition?.type === 'jobs' && `${achievement.condition.count} ${t('completedTasks')}`}
-                  {achievement.condition?.type === 'courses' && `${achievement.condition.count} ${t('coursesGenitive')}`}
+                  {!achievement.isChat && achievement.condition?.type === 'servers' && `${achievement.condition.count} ${t('serversLowercase')}`}
+                  {!achievement.isChat && achievement.condition?.type === 'balance' && `${formatCurrency(achievement.condition.amount)} ${t('balance').toLowerCase()}`}
+                  {!achievement.isChat && achievement.condition?.type === 'jobs' && `${achievement.condition.count} ${t('completedTasks')}`}
+                  {!achievement.isChat && achievement.condition?.type === 'courses' && `${achievement.condition.count} ${t('coursesGenitive')}`}
                 </div>
               </div>
             </CardContent>

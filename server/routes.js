@@ -707,6 +707,7 @@ export async function registerRoutes(app) {
       // Check for new achievements
       await storage.checkAchievements(req.session.userId);
       
+      // Get regular achievements
       const allAchievements = storage.getAchievements();
       const userAchievements = user.achievements || [];
       
@@ -714,8 +715,27 @@ export async function registerRoutes(app) {
         ...achievement,
         earned: userAchievements.includes(achievement.id)
       }));
+
+      // Get chat achievements and integrate them
+      const chatAchievements = await storage.getChatAchievements(req.session.userId);
+      const userChatAchievements = user.chatAchievements || [];
       
-      res.json({ achievements: achievementsWithStatus });
+      const chatAchievementsWithStatus = chatAchievements.map(achievement => ({
+        id: achievement.id,
+        title: achievement.title,
+        description: achievement.description,
+        icon: 'fas fa-comment',
+        reward: 0, // Chat achievements don't give money rewards
+        earned: userChatAchievements.includes(achievement.id),
+        progress: achievement.progress,
+        requirement: achievement.requirement,
+        isChat: true
+      }));
+
+      // Combine all achievements
+      const allCombinedAchievements = [...achievementsWithStatus, ...chatAchievementsWithStatus];
+      
+      res.json({ achievements: allCombinedAchievements });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }

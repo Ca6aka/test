@@ -835,6 +835,9 @@ export class FileStorage {
     const user = await this.getUser(userId);
     if (!user) return;
 
+    // Only check achievements if user has completed tutorial
+    if (!user.tutorialCompleted) return;
+
     const userAchievements = user.achievements || [];
     const servers = await this.getUserServers(userId);
     
@@ -1893,6 +1896,10 @@ export class FileStorage {
   // Chat achievements
   async updateChatAchievements(userId) {
     const user = await this.getUser(userId);
+
+    // Only check chat achievements if user has completed tutorial
+    if (!user.tutorialCompleted) return;
+
     const messages = await this.getChatMessages();
     const userMessages = messages.filter(msg => msg.userId === userId);
     
@@ -1917,6 +1924,30 @@ export class FileStorage {
     if (achievements.length > (user.chatAchievements || []).length) {
       await this.updateUser(userId, { chatAchievements: achievements });
     }
+  }
+
+  // Get chat achievements with progress
+  async getChatAchievements(userId) {
+    const user = await this.getUser(userId);
+    if (!user) return [];
+
+    const messages = await this.getChatMessages();
+    const userMessages = messages.filter(msg => msg.userId === userId);
+    const messageCount = userMessages.length;
+    
+    // Define chat achievements
+    const chatAchievements = [
+      { id: 'first_message', title: 'First Message', description: 'Send your first chat message', requirement: 1 },
+      { id: 'chatty', title: 'Chatty', description: 'Send 25 messages', requirement: 25 },
+      { id: 'social_butterfly', title: 'Social Butterfly', description: 'Send 100 messages', requirement: 100 },
+      { id: 'chat_master', title: 'Chat Master', description: 'Send 500 messages', requirement: 500 }
+    ];
+    
+    return chatAchievements.map(achievement => ({
+      ...achievement,
+      progress: Math.min(messageCount, achievement.requirement),
+      completed: messageCount >= achievement.requirement
+    }));
   }
 
   // Get chat achievements for user
