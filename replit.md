@@ -9,6 +9,13 @@ A full-stack web application simulating a server management business game. Playe
 - Uses Russian interface in the game
 
 [LIVE] ## Recent Changes
+- **NOWPayments Integration Completed (August 20, 2025)**: Successfully replaced MoonPay with NOWPayments for cryptocurrency payments
+  - **API Integration**: Real NOWPayments API key (0BYBCND-44G4DAZ-K5FPR03-WQKCRAF) tested and working
+  - **Payment Creation**: Both VIP ($2.50) and Premium ($10) payments create successfully via USDT TRC20
+  - **Webhook System**: Endpoint /api/payment-webhook ready for automatic payment confirmation
+  - **Admin Configuration**: NOWPayments settings panel in admin interface with API key and email fields
+  - **Payment Testing**: Live API test successful - payments generate working payment URLs
+  - **Documentation**: Updated PAYMENT_SETUP.md with NOWPayments configuration instructions
 - **Complete VIP/Premium System Implementation (August 20, 2025)**: Fully implemented VIP/Premium donation system according to detailed specifications
   - **Correct Pricing**: VIP $2.50/month, Premium $10 forever (no monthly payments)
   - **Visual Chat Badges**: Animated blue VIP badges and purple PREMIUM badges in chat messages with priority over admin badges
