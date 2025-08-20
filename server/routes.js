@@ -1701,10 +1701,10 @@ export async function registerRoutes(app) {
       return res.status(400).json({ message: 'Invalid subscription type' });
     }
 
-    // Возврат к оригинальным ценам с TRX (минимум $0.15)
+    // Пакетные цены для обхода минимума NOWPayments ($19.22)
     const prices = { 
-      vip: 2.5,       // VIP месяц за $2.50  
-      premium: 10,    // Premium навсегда за $10
+      vip: 20,        // VIP 8 месяцев за $20 (эквивалент $2.50/мес)  
+      premium: 25,    // Premium навсегда за $25
     };
     const amount = prices[type];
 
@@ -1729,16 +1729,52 @@ export async function registerRoutes(app) {
         return res.status(500).json({ message: 'Ошибка создания платежа: API key не настроен' });
       }
       
-      // Create NOWPayments invoice for fiat-to-crypto payments
+      // Find best crypto with low minimum for small payments
+      console.log('Finding crypto with lowest minimum amount...');
+      const cryptoOptions = ['ltc', 'doge', 'trx', 'xlm', 'xrp'];
+      let bestCrypto = 'ltc';
+      let lowestMinimum = 999999;
+      
+      for (const crypto of cryptoOptions) {
+        try {
+          const minAmountResponse = await fetch(`https://api.nowpayments.io/v1/min-amount?currency_from=usd&currency_to=${crypto}`, {
+            headers: { 'x-api-key': nowPaymentsApiKey }
+          });
+          const minData = await minAmountResponse.json();
+          const minimum = minData.min_amount || 999999;
+          console.log(`Minimum for ${crypto.toUpperCase()}:`, minimum);
+          
+          if (minimum < lowestMinimum && minimum <= amount) {
+            lowestMinimum = minimum;
+            bestCrypto = crypto;
+          }
+        } catch (err) {
+          console.log(`Error checking ${crypto}:`, err.message);
+        }
+      }
+      
+      console.log(`Best crypto for $${amount}: ${bestCrypto.toUpperCase()} (min: $${lowestMinimum})`);
+      
+      // If we still can't find suitable crypto, inform user
+      if (lowestMinimum > amount) {
+        console.log(`All cryptos have higher minimum than ${amount}`);
+        return res.status(400).json({ 
+          message: `Минимальная сумма платежа $${lowestMinimum}. Попробуйте пакетную покупку или увеличьте сумму.`,
+          minimumAmount: lowestMinimum,
+          suggestedCrypto: bestCrypto
+        });
+      }
+
+      // Create NOWPayments invoice with best crypto option
       const nowPaymentsPayload = {
         price_amount: amount,
-        price_currency: 'usd', // Fiat currency for customer
+        price_currency: 'usd', 
+        pay_currency: bestCrypto, // Use crypto with lowest minimum
         order_id: orderId,
-        order_description: `${type === 'vip' ? 'VIP (1 month)' : 'Premium'} subscription for ${user.nickname}`,
+        order_description: `${type === 'vip' ? 'VIP (8 months)' : 'Premium'} subscription for ${user.nickname}`,
         success_url: `${req.protocol}://${req.get('host')}/payment-success?orderId=${orderId}`,
         cancel_url: `${req.protocol}://${req.get('host')}/donate`,
-        // Fiat payments enable card/bank payments via Mercuryo integration
-        is_fee_paid_by_user: true // Customer pays processing fees
+        is_fee_paid_by_user: true
       };
       
       console.log('NOWPayments payload:', JSON.stringify(nowPaymentsPayload, null, 2));
@@ -1882,7 +1918,7 @@ export async function registerRoutes(app) {
             
             <div class="info-row">
               <span class="label">Тип подписки:</span>
-              <span class="value">${payment.type === 'vip' ? '⭐ VIP статус (1 месяц)' : '👑 PREMIUM статус (навсегда)'}</span>
+              <span class="value">${payment.type === 'vip' ? '⭐ VIP статус (8 месяцев)' : '👑 PREMIUM статус (навсегда)'}</span>
             </div>
             
             <div class="info-row">
@@ -1963,7 +1999,7 @@ export async function registerRoutes(app) {
           if (user) {
             if (payment.type === 'vip') {
               const expiresAt = new Date();
-              expiresAt.setMonth(expiresAt.getMonth() + 1); // 1 месяц за $2.50
+              expiresAt.setMonth(expiresAt.getMonth() + 8); // 8 месяцев за $20 ($2.50/мес)
               await storage.updateUser(user.id, {
                 vipStatus: 'active',
                 vipExpiresAt: expiresAt.toISOString()
