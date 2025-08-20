@@ -17,9 +17,9 @@
   "tutorialCompleted": true,
   "admin": 0,
   "banned": false,
-  "muted": true,
-  "muteExpires": 1755711410466,
-  "isOnline": false,
+  "muted": false,
+  "muteExpires": null,
+  "isOnline": true,
   "lastIncomeUpdate": 1755709477326,
   "jobCooldowns": {
     "maintenance": 1755709660821,
@@ -28,6 +28,16 @@
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "27e46b62-0a09-4b37-8a02-822344ad4062",
+      "description": "Mute automatically expired",
+      "timestamp": "8/20/2025, 5:42:29 PM"
+    },
+    {
+      "id": "b84d710f-b536-4a38-8374-c54bdb4e0e49",
+      "description": "Unmuted by admin Ca6aka",
+      "timestamp": "8/20/2025, 5:26:20 PM"
+    },
     {
       "id": "dec3ad95-a7d5-4982-afdf-b951f19d66e3",
       "description": "Achievement unlocked: First Steps (+$500)",
@@ -41,16 +51,6 @@
     {
       "id": "d1f241f9-dc90-478d-8c4d-2ec8685d448a",
       "description": "Achievement unlocked: Early Earner (+$2,000)",
-      "timestamp": "8/20/2025, 5:06:27 PM"
-    },
-    {
-      "id": "5063bc86-a878-4628-b0b8-7cbd4b8efb19",
-      "description": "Achievement unlocked: First Steps (+$500)",
-      "timestamp": "8/20/2025, 5:06:27 PM"
-    },
-    {
-      "id": "a94e2428-1239-4ca8-a4fa-685b962d55fe",
-      "description": "Tutorial completed! All features unlocked.",
       "timestamp": "8/20/2025, 5:06:27 PM"
     }
   ],
@@ -209,8 +209,8 @@
   "lastQuestReset": 1755709477326,
   "registrationIP": "95.223.108.201",
   "registrationTime": 1755709477326,
-  "lastSeen": 1755710545169,
-  "lastMessageTime": 1755710510462,
+  "lastSeen": 1755711352253,
+  "lastMessageTime": 1755710848858,
   "chatLanguage": "ru",
   "chatAchievements": [
     "first_message"

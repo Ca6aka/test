@@ -887,7 +887,7 @@ export async function registerRoutes(app) {
       
       const { language } = req.query;
       
-      const messages = await storage.getChatMessages();
+      const messages = await storage.getChatMessages(language || 'en');
       
       // Show all messages to admins, filter deleted for regular users
       const user = await storage.getUser(req.session.userId);
@@ -942,7 +942,8 @@ export async function registerRoutes(app) {
       }
       
       const { messageId } = req.params;
-      const deletedMessage = await storage.deleteChatMessage(messageId, req.session.userId);
+      const { language } = req.query;
+      const deletedMessage = await storage.deleteChatMessage(messageId, req.session.userId, language || 'en');
       
       res.json({ success: true, message: deletedMessage });
     } catch (error) {
@@ -1000,7 +1001,8 @@ export async function registerRoutes(app) {
       const { messageId } = req.params;
       const { emoji } = req.body;
       
-      const reaction = await storage.addMessageReaction(messageId, req.session.userId, emoji);
+      const { language } = req.query;
+      const reaction = await storage.addMessageReaction(messageId, req.session.userId, emoji, language || 'en');
       res.json({ reaction });
     } catch (error) {
       res.status(400).json({ message: error.message });
@@ -1015,7 +1017,8 @@ export async function registerRoutes(app) {
       }
       
       const { messageId } = req.params;
-      const result = await storage.pinMessage(messageId, req.session.userId);
+      const { language } = req.query;
+      const result = await storage.pinMessage(messageId, req.session.userId, language || 'en');
       res.json(result);
     } catch (error) {
       res.status(400).json({ message: error.message });
@@ -1025,7 +1028,8 @@ export async function registerRoutes(app) {
   // Get pinned message
   app.get('/api/chat/pinned', async (req, res) => {
     try {
-      const pinnedMessage = await storage.getPinnedMessage();
+      const { language } = req.query;
+      const pinnedMessage = await storage.getPinnedMessage(language || 'en');
       res.json({ pinnedMessage });
     } catch (error) {
       res.status(500).json({ message: error.message });

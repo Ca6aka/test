@@ -223,7 +223,7 @@ export function ServersTab({ onTabChange }) {
       </div>
 
       {/* Server Limit Warning */}
-      {availableSlots <= 1 && (
+      {availableSlots <= 1 && serverLimit < 25 && (
         <div className="bg-accent/10 border border-accent/30 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6">
           <div className="flex items-center space-x-2">
             <i className="fas fa-exclamation-triangle text-accent text-sm"></i>
@@ -231,6 +231,24 @@ export function ServersTab({ onTabChange }) {
           </div>
           <p className="text-xs sm:text-sm text-slate-300 mt-1">
             {t('serverLimitWarning').replace('{currentServers}', currentServers).replace('{serverLimit}', serverLimit)}
+          </p>
+        </div>
+      )}
+      
+      {/* Max Server Limit Message */}
+      {serverLimit >= 25 && availableSlots <= 1 && (
+        <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6">
+          <div className="flex items-center space-x-2">
+            <i className="fas fa-exclamation-triangle text-yellow-500 text-sm"></i>
+            <span className="text-yellow-500 font-medium text-sm sm:text-base">{t('serverLimitReached')}</span>
+          </div>
+          <p className="text-xs sm:text-sm text-slate-300 mt-1">
+            {t('serverLimitReachedMessage')} <span 
+              className="bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent font-bold cursor-pointer animate-shimmer"
+              onClick={() => setLocation('/dashboard?tab=donate')}
+            >
+              {t('donate')}
+            </span>!
           </p>
         </div>
       )}

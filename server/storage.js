@@ -6,7 +6,10 @@ import { randomUUID } from 'crypto';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const dataDir = path.join(__dirname, '..', 'data');
 const usersDir = path.join(__dirname, '..', 'users');
-const chatFile = path.join(dataDir, 'chat.json');
+// Support for multi-language chat files
+function getChatFile(language = 'en') {
+  return path.join(dataDir, `chat-${language}.json`);
+}
 
 // Level and Experience System (60 levels, 10% increase per level)
 function calculateLevel(experience) {
@@ -1606,20 +1609,22 @@ export class FileStorage {
   }
 
   // Chat system
-  async getChatMessages() {
+  async getChatMessages(language = 'en') {
     try {
-      const data = await fs.readFile(chatFile, 'utf8');
+      const chatFilePath = getChatFile(language);
+      const data = await fs.readFile(chatFilePath, 'utf8');
       return JSON.parse(data);
     } catch {
       return [];
     }
   }
 
-  async saveChatMessages(messages) {
-    await fs.writeFile(chatFile, JSON.stringify(messages, null, 2));
+  async saveChatMessages(messages, language = 'en') {
+    const chatFilePath = getChatFile(language);
+    await fs.writeFile(chatFilePath, JSON.stringify(messages, null, 2));
   }
 
-  async sendChatMessage(userId, message, language = 'ru') {
+  async sendChatMessage(userId, message, language = 'en') {
     const user = await this.getUser(userId);
     if (!user || user.banned) {
       throw new Error('Cannot send message');
@@ -1639,7 +1644,7 @@ export class FileStorage {
       });
     }
 
-    const messages = await this.getChatMessages();
+    const messages = await this.getChatMessages(language);
     // Update user's last message time and language preference
     await this.updateUser(userId, {
       lastMessageTime: Date.now(),
@@ -1671,7 +1676,7 @@ export class FileStorage {
       messages.splice(0, messages.length - 50);
     }
 
-    await this.saveChatMessages(messages);
+    await this.saveChatMessages(messages, language);
     
     // Update chat achievements
     await this.updateChatAchievements(userId);
@@ -1682,13 +1687,13 @@ export class FileStorage {
     return newMessage;
   }
 
-  async deleteChatMessage(messageId, adminUserId) {
+  async deleteChatMessage(messageId, adminUserId, language = 'en') {
     const admin = await this.getUser(adminUserId);
     if (!admin || admin.admin < 1) {
       throw new Error('Admin access required');
     }
 
-    const messages = await this.getChatMessages();
+    const messages = await this.getChatMessages(language);
     const messageIndex = messages.findIndex(msg => msg.id === messageId);
     
     if (messageIndex === -1) {
@@ -1701,7 +1706,7 @@ export class FileStorage {
     message.deletedAt = Date.now();
     message.deletionReason = 'Deleted by admin';
 
-    await this.saveChatMessages(messages);
+    await this.saveChatMessages(messages, language);
     
     // No system message for admin deletions - silent removal
     
@@ -1755,7 +1760,7 @@ export class FileStorage {
     }
     
     // Check for spam (same message recently)
-    const messages = await this.getChatMessages();
+    const messages = await this.getChatMessages(language);
     const recentMessages = messages.filter(msg => 
       msg.userId === user.id && Date.now() - msg.timestamp < 60000 // last minute
     );
@@ -1763,7 +1768,7 @@ export class FileStorage {
     
     if (duplicateMessage) {
       warningCount++;
-      await this.addSystemMessage(`${user.nickname} - please don't spam the same message`, user.chatLanguage || 'ru');
+      await this.addSystemMessage(`${user.nickname} - please don't spam the same message`, language);
     }
     
     // Auto-mute after 3 warnings
@@ -1788,7 +1793,7 @@ export class FileStorage {
 
   // Add system message - styled as admin warning
   async addSystemMessage(text, language = 'ru') {
-    const messages = await this.getChatMessages();
+    const messages = await this.getChatMessages(language);
     const systemMessage = {
       id: randomUUID(),
       userId: 'system',
@@ -1808,13 +1813,13 @@ export class FileStorage {
       messages.splice(0, messages.length - 50);
     }
     
-    await this.saveChatMessages(messages);
+    await this.saveChatMessages(messages, language);
     return systemMessage;
   }
 
   // Add reaction to message
-  async addMessageReaction(messageId, userId, emoji) {
-    const messages = await this.getChatMessages();
+  async addMessageReaction(messageId, userId, emoji, language = 'en') {
+    const messages = await this.getChatMessages(language);
     const messageIndex = messages.findIndex(msg => msg.id === messageId);
     
     if (messageIndex === -1) {
@@ -1841,18 +1846,18 @@ export class FileStorage {
       messages[messageIndex].reactions[emoji] = currentReactions;
     }
     
-    await this.saveChatMessages(messages);
+    await this.saveChatMessages(messages, language);
     return messages[messageIndex];
   }
 
   // Pin/unpin message (super-admin only)
-  async pinMessage(messageId, adminUserId) {
+  async pinMessage(messageId, adminUserId, language = 'en') {
     const admin = await this.getUser(adminUserId);
-    if (!admin || admin.admin < 2) {
-      throw new Error('Super-admin access required');
+    if (!admin || admin.admin < 1) {
+      throw new Error('Admin access required');
     }
     
-    const messages = await this.getChatMessages();
+    const messages = await this.getChatMessages(language);
     const message = messages.find(msg => msg.id === messageId);
     
     if (!message) {
@@ -1872,18 +1877,18 @@ export class FileStorage {
     message.pinnedBy = message.pinned ? admin.nickname : null;
     message.pinnedAt = message.pinned ? Date.now() : null;
     
-    await this.saveChatMessages(messages);
+    await this.saveChatMessages(messages, language);
     
     // Add system message about pin/unpin
     const action = message.pinned ? 'pinned' : 'unpinned';
-    await this.addSystemMessage(`Message from ${message.nickname} was ${action} by ${admin.nickname}`);
+    await this.addSystemMessage(`Message from ${message.nickname} was ${action} by ${admin.nickname}`, language);
     
     return { success: true, pinned: message.pinned };
   }
 
   // Get pinned message
-  async getPinnedMessage() {
-    const messages = await this.getChatMessages();
+  async getPinnedMessage(language = 'en') {
+    const messages = await this.getChatMessages(language);
     return messages.find(msg => msg.pinned) || null;
   }
 

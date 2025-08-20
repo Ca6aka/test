@@ -1,0 +1,88 @@
+[
+  {
+    "id": "28c51ef4-0a0d-4ab8-a1c2-f8313685e14f",
+    "userId": "65a91d9d-7213-4a2e-abd6-c9017bc7ae80",
+    "nickname": "Ca6aka",
+    "message": "1",
+    "originalMessage": "1",
+    "language": "ru",
+    "timestamp": 1755711627968,
+    "deleted": false,
+    "adminLevel": 2,
+    "reactions": {},
+    "filtered": false,
+    "warningCount": 0,
+    "pinned": false,
+    "pinnedBy": null,
+    "pinnedAt": null
+  },
+  {
+    "id": "a3de5dfa-cc8c-4490-8372-7e73c44bfec7",
+    "userId": "65a91d9d-7213-4a2e-abd6-c9017bc7ae80",
+    "nickname": "Ca6aka",
+    "message": "5",
+    "originalMessage": "5",
+    "language": "ru",
+    "timestamp": 1755711667786,
+    "deleted": false,
+    "adminLevel": 2,
+    "reactions": {
+      "👎": [
+        "65a91d9d-7213-4a2e-abd6-c9017bc7ae80"
+      ]
+    },
+    "filtered": false,
+    "warningCount": 0,
+    "pinned": true,
+    "pinnedBy": "Ca6aka",
+    "pinnedAt": 1755711821884
+  },
+  {
+    "id": "5bbfec67-79c1-46d6-88fe-4b5f648234f4",
+    "userId": "system",
+    "nickname": "System",
+    "message": "Message from Ca6aka was pinned by Ca6aka",
+    "timestamp": 1755711786243,
+    "deleted": false,
+    "adminLevel": 999,
+    "isSystem": true,
+    "isWarning": true,
+    "language": "ru"
+  },
+  {
+    "id": "715d31b5-2a89-4e62-aba1-129290fa72af",
+    "userId": "system",
+    "nickname": "System",
+    "message": "Message from Ca6aka was pinned by Ca6aka",
+    "timestamp": 1755711791662,
+    "deleted": false,
+    "adminLevel": 999,
+    "isSystem": true,
+    "isWarning": true,
+    "language": "ru"
+  },
+  {
+    "id": "8adbfe2f-d78c-4a38-a5ce-c6d839dd2f5d",
+    "userId": "system",
+    "nickname": "System",
+    "message": "Message from Ca6aka was pinned by Ca6aka",
+    "timestamp": 1755711810850,
+    "deleted": false,
+    "adminLevel": 999,
+    "isSystem": true,
+    "isWarning": true,
+    "language": "ru"
+  },
+  {
+    "id": "03d8548a-32c4-4467-9d6e-538962024814",
+    "userId": "system",
+    "nickname": "System",
+    "message": "Message from Ca6aka was pinned by Ca6aka",
+    "timestamp": 1755711821885,
+    "deleted": false,
+    "adminLevel": 999,
+    "isSystem": true,
+    "isWarning": true,
+    "language": "ru"
+  }
+]

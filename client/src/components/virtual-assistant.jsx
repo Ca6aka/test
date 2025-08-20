@@ -19,7 +19,8 @@ import {
   Settings,
   Volume2,
   VolumeX,
-  MessageCircleWarning
+  MessageCircleWarning,
+  BotMessageSquare
 } from 'lucide-react'
 import { useIsMobile } from '@/hooks/use-mobile'
 import { useGame } from '@/contexts/game-context'
@@ -34,7 +35,7 @@ function VirtualAssistant({ hideOnReports = false }) {
   const [muteUserId, setMuteUserId] = useState('')
   const [muteDuration, setMuteDuration] = useState('30')
   const [showRules, setShowRules] = useState(false)
-  const [chatLanguage, setChatLanguage] = useState('ru')
+  const [chatLanguage, setChatLanguage] = useState('en')
   const [cooldownRemaining, setCooldownRemaining] = useState(0)
   const [hasNewMessages, setHasNewMessages] = useState(false)
   const [, setLocation] = useLocation()
@@ -49,14 +50,15 @@ function VirtualAssistant({ hideOnReports = false }) {
 
   // Fetch chat messages
   const { data: chatData, refetch: refetchMessages } = useQuery({
-    queryKey: ['/api/chat/messages'],
+    queryKey: ['/api/chat/messages', chatLanguage],
     queryFn: () => fetch(`/api/chat/messages?language=${chatLanguage}`).then(res => res.json()),
     refetchInterval: 3000 // Refresh every 3 seconds
   })
 
   // Fetch pinned message
   const { data: pinnedData } = useQuery({
-    queryKey: ['/api/chat/pinned'],
+    queryKey: ['/api/chat/pinned', chatLanguage],
+    queryFn: () => fetch(`/api/chat/pinned?language=${chatLanguage}`).then(res => res.json()),
     refetchInterval: 10000 // Check for pinned messages every 10 seconds
   })
 
@@ -121,7 +123,7 @@ function VirtualAssistant({ hideOnReports = false }) {
   // Delete message mutation
   const deleteMessageMutation = useMutation({
     mutationFn: async (messageId) => {
-      const response = await fetch(`/api/chat/message/${messageId}`, {
+      const response = await fetch(`/api/chat/message/${messageId}?language=${chatLanguage}`, {
         method: 'DELETE'
       })
       if (!response.ok) {
@@ -203,6 +205,38 @@ function VirtualAssistant({ hideOnReports = false }) {
     }
   })
 
+  // Pin message mutation
+  const pinMessageMutation = useMutation({
+    mutationFn: async (messageId) => {
+      const response = await fetch(`/api/chat/message/${messageId}/pin`, {
+        method: 'POST'
+      })
+      if (!response.ok) {
+        const error = await response.json()
+        throw new Error(error.message)
+      }
+      return response.json()
+    },
+    onSuccess: () => {
+      refetchMessages()
+      queryClient.invalidateQueries({ queryKey: ['/api/chat/pinned'] })
+    }
+  })
+
+  // Mark chat as read mutation
+  const markChatAsRead = useMutation({
+    mutationFn: async () => {
+      const response = await fetch('/api/chat/read', {
+        method: 'POST'
+      })
+      return response.json()
+    },
+    onSuccess: () => {
+      setHasNewMessages(false)
+      queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] })
+    }
+  })
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (!input.trim() || cooldownRemaining > 0) return
@@ -236,7 +270,7 @@ function VirtualAssistant({ hideOnReports = false }) {
 
   const handleReaction = async (messageId, emoji) => {
     try {
-      const response = await fetch(`/api/chat/message/${messageId}/react`, {
+      const response = await fetch(`/api/chat/message/${messageId}/react?language=${chatLanguage}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ emoji })
@@ -251,15 +285,17 @@ function VirtualAssistant({ hideOnReports = false }) {
 
   const handlePinMessage = async (messageId) => {
     try {
-      const response = await fetch(`/api/chat/message/${messageId}/pin`, {
+      const response = await fetch(`/api/chat/message/${messageId}/pin?language=${chatLanguage}`, {
         method: 'POST'
       })
-      if (response.ok) {
-        refetchMessages()
-        queryClient.invalidateQueries({ queryKey: ['/api/chat/pinned'] })
+      if (!response.ok) {
+        const error = await response.json()
+        throw new Error(error.message)
       }
+      refetchMessages()
+      queryClient.invalidateQueries({ queryKey: ['/api/chat/pinned'] })
     } catch (error) {
-      console.error('Failed to pin message:', error)
+      console.error('Failed to pin/unpin message:', error)
     }
   }
 
@@ -346,14 +382,17 @@ function VirtualAssistant({ hideOnReports = false }) {
             </CardTitle>
             <div className="flex items-center gap-1">
               {/* Chat Language Selector */}
-              <Select value={chatLanguage} onValueChange={setChatLanguage}>
+              <Select value={chatLanguage} onValueChange={(value) => {
+                setChatLanguage(value)
+                refetchMessages()
+              }}>
                 <SelectTrigger className="w-14 h-6 p-1 text-xs">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="ru">RU</SelectItem>
                   <SelectItem value="en">EN</SelectItem>
-                  <SelectItem value="ua">UA</SelectItem>
+                  <SelectItem value="ru">RU</SelectItem>
+                  <SelectItem value="uk">UK</SelectItem>
                   <SelectItem value="de">DE</SelectItem>
                 </SelectContent>
               </Select>
@@ -537,7 +576,7 @@ function VirtualAssistant({ hideOnReports = false }) {
                       </div>
                     ) : message.isSystem || message.isWarning ? (
                       <div className="flex items-start space-x-2 p-2">
-                        <MessageSquare className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
+                        <BotMessageSquare className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
                         <div className="text-xs text-slate-400 italic py-1 px-2 bg-slate-800/20 rounded flex-1">
                           {message.message}
                         </div>

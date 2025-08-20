@@ -31,7 +31,7 @@
     "nickname": "test2",
     "balance": 18900,
     "serverCount": 0,
-    "isOnline": true,
+    "isOnline": false,
     "level": 1,
     "rank": 4
   }
