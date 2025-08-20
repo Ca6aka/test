@@ -1694,6 +1694,11 @@ export class FileStorage {
       const berlinTime = new Date(new Date().toLocaleString("en-US", {timeZone: "Europe/Berlin"}));
       const today = berlinTime.toDateString(); // Use toDateString() for consistency
       
+      // Double check - prevent multiple claims on same day
+      if (userData.dailyLoginBonus === today) {
+        return { success: false, message: 'Bonus already claimed today' };
+      }
+      
       userData.balance = (userData.balance || 0) + bonusInfo.amount;
       userData.dailyLoginBonus = today; // Update dailyLoginBonus field to today's date string
       userData.loginStreak = bonusInfo.streak;
