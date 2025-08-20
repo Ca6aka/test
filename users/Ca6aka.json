@@ -221,18 +221,18 @@
   "lastQuestReset": 1755714820971,
   "registrationIP": "192.168.0.136",
   "registrationTime": 1755531070984,
-  "lastSeen": 1755719978318,
+  "lastSeen": 1755720293133,
   "lastMessageTime": 1755719885890,
   "chatLanguage": "en",
   "chatAchievements": [
     "first_message"
   ],
   "hasNewChatMessages": true,
-  "realActivity": 1755719977091,
-  "lastActivity": 1755719977091,
+  "realActivity": 1755720291022,
+  "lastActivity": 1755720291022,
   "dailyBonusStreak": 1,
   "lastDailyBonus": "2025-08-20T18:34:16.720Z",
-  "vipExpires": "2025-11-19T19:06:00.000Z",
-  "vipStatus": "active",
-  "vipExpiresAt": "2025-09-20T19:33:41.163Z"
+  "vipExpires": null,
+  "vipStatus": "inactive",
+  "vipExpiresAt": null
 }

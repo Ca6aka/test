@@ -1466,7 +1466,7 @@ export async function registerRoutes(app) {
         return res.status(400).json({ error: 'Type and gateway are required' });
       }
 
-      if (!['vip', 'premium'].includes(type) || !['fondy', 'wayforpay'].includes(gateway)) {
+      if (!['vip', 'premium'].includes(type) || !['crypto'].includes(gateway)) {
         return res.status(400).json({ error: 'Invalid type or gateway' });
       }
 
@@ -1491,12 +1491,9 @@ export async function registerRoutes(app) {
         return res.status(400).json({ error: 'VIP status blocks PREMIUM purchase' });
       }
 
-      // For demo purposes, simulate successful purchase immediately
-      await storage.activateSubscription(userId, type);
-
-      res.json({ 
-        success: true,
-        message: `${type.toUpperCase()} status activated successfully!`
+      // Redirect to new crypto payment system
+      return res.status(400).json({ 
+        error: 'Please use the new crypto payment system in the donate section'
       });
     } catch (error) {
       console.error('Payment creation error:', error);
@@ -1685,79 +1682,132 @@ export async function registerRoutes(app) {
     }
   });
 
-  // Crypto payment endpoint with card-to-crypto conversion
-  app.post('/api/crypto-purchase', async (req, res) => {
+  // Card-to-Crypto payment endpoint with email confirmation
+  app.post('/api/card-crypto-purchase', async (req, res) => {
     if (!req.session?.userId) {
       return res.status(401).json({ message: 'Not authenticated' });
     }
 
-    const { type, gateway } = req.body;
+    const { type, email } = req.body;
     
     if (!['vip', 'premium'].includes(type)) {
       return res.status(400).json({ message: 'Invalid subscription type' });
     }
 
-    const prices = {
-      vip: { usd: 2.5, btc: 0.00004, eth: 0.0015, usdt: 2.5 },
-      premium: { usd: 10, btc: 0.00016, eth: 0.006, usdt: 10 }
-    };
+    if (!email || !email.includes('@')) {
+      return res.status(400).json({ message: 'Valid email required' });
+    }
+
+    const prices = { vip: 2.5, premium: 10 };
+    const amount = prices[type];
 
     try {
-      if (gateway === 'crypto') {
-        // Direct crypto payment - generate addresses
-        const cryptoAddresses = {
-          btc: '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa', // Example addresses
-          eth: '0x0000000000000000000000000000000000000000',
-          usdt: '0x0000000000000000000000000000000000000001'
-        };
-
-        res.json({
-          message: 'Crypto payment initiated',
-          cryptoAddresses,
-          amounts: {
-            btc: prices[type].btc,
-            eth: prices[type].eth,
-            usdt: prices[type].usdt
-          }
-        });
-      } else if (gateway === 'card-to-crypto') {
-        // Card-to-crypto conversion using services like MoonPay, Simplex
-        const paymentUrl = `https://buy.moonpay.com/?apiKey=demo&currencyCode=btc&walletAddress=1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa&baseCurrencyAmount=${prices[type].usd}&baseCurrencyCode=usd&redirectURL=${encodeURIComponent(process.env.NODE_ENV === 'production' ? 'https://your-app.replit.app/payment-success' : 'http://localhost:5000/payment-success')}`;
-        
-        res.json({
-          message: 'Card-to-crypto payment initiated',
-          paymentUrl,
-          amount: prices[type].usd,
-          currency: 'USD'
-        });
-      } else {
-        res.status(400).json({ message: 'Invalid payment gateway' });
+      const user = await storage.getUser(req.session.userId);
+      
+      // Generate unique order ID
+      const orderId = `${type}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+      
+      // Your crypto wallet address (replace with actual)
+      const cryptoWallet = '1YourRealBitcoinWalletAddress123456789';
+      
+      // Create MoonPay payment URL for card-to-crypto conversion
+      const paymentUrl = `https://buy.moonpay.com/?apiKey=pk_test_123&currencyCode=btc&walletAddress=${cryptoWallet}&baseCurrencyAmount=${amount}&baseCurrencyCode=usd&redirectURL=${encodeURIComponent(`${req.protocol}://${req.get('host')}/payment-success?orderId=${orderId}`)}&externalCustomerId=${user.id}`;
+      
+      // Store payment info in JSON file
+      const fs = require('fs');
+      const path = require('path');
+      const paymentsFile = path.join(__dirname, '..', 'data', 'payments.json');
+      
+      let payments = [];
+      try {
+        if (fs.existsSync(paymentsFile)) {
+          payments = JSON.parse(fs.readFileSync(paymentsFile, 'utf8'));
+        }
+      } catch (err) {
+        console.log('Creating new payments file');
       }
+      
+      const paymentRecord = {
+        orderId,
+        userId: user.id,
+        userNickname: user.nickname,
+        userEmail: email,
+        type,
+        amount,
+        status: 'pending',
+        createdAt: new Date().toISOString(),
+        paymentUrl
+      };
+      
+      payments.push(paymentRecord);
+      
+      // Ensure data directory exists
+      const dataDir = path.join(__dirname, '..', 'data');
+      if (!fs.existsSync(dataDir)) {
+        fs.mkdirSync(dataDir, { recursive: true });
+      }
+      
+      fs.writeFileSync(paymentsFile, JSON.stringify(payments, null, 2));
+      
+      res.json({
+        message: 'Payment created successfully',
+        paymentUrl,
+        orderId,
+        amount,
+        type
+      });
     } catch (error) {
-      console.error('Crypto purchase error:', error);
-      res.status(500).json({ message: 'Failed to initiate payment' });
+      console.error('Card-crypto purchase error:', error);
+      res.status(500).json({ message: 'Failed to create payment' });
     }
   });
 
-  // Payment success webhook/callback
+  // Payment success webhook/callback for MoonPay
   app.post('/api/payment-webhook', async (req, res) => {
-    // This would handle webhooks from crypto payment processors
-    // to confirm payment and activate VIP/Premium status
     try {
-      const { userId, transactionId, type, status } = req.body;
+      const { orderId, status, externalCustomerId, transactionHash } = req.body;
       
-      if (status === 'completed') {
-        const user = await storage.getUser(userId);
-        if (user) {
-          if (type === 'vip') {
-            const expiresAt = new Date();
-            expiresAt.setMonth(expiresAt.getMonth() + 1);
-            user.vipStatus = 'active';
-            user.vipExpiresAt = expiresAt.toISOString();
-          } else if (type === 'premium') {
-            user.premiumStatus = 'active';
+      if (status === 'completed' && orderId) {
+        const fs = require('fs');
+        const path = require('path');
+        const paymentsFile = path.join(__dirname, '..', 'data', 'payments.json');
+        
+        let payments = [];
+        if (fs.existsSync(paymentsFile)) {
+          payments = JSON.parse(fs.readFileSync(paymentsFile, 'utf8'));
+        }
+        
+        // Find payment by orderId
+        const paymentIndex = payments.findIndex(p => p.orderId === orderId);
+        if (paymentIndex !== -1) {
+          const payment = payments[paymentIndex];
+          payment.status = 'completed';
+          payment.completedAt = new Date().toISOString();
+          payment.transactionHash = transactionHash;
+          
+          // Activate subscription
+          const user = await storage.getUser(payment.userId);
+          if (user) {
+            if (payment.type === 'vip') {
+              const expiresAt = new Date();
+              expiresAt.setMonth(expiresAt.getMonth() + 1);
+              await storage.updateUser(user.id, {
+                vipStatus: 'active',
+                vipExpiresAt: expiresAt.toISOString()
+              });
+            } else if (payment.type === 'premium') {
+              await storage.updateUser(user.id, {
+                premiumStatus: 'active',
+                premiumActivatedAt: new Date().toISOString()
+              });
+            }
+            
+            // Send confirmation email (placeholder - requires SendGrid setup)
+            console.log(`Payment completed for ${user.nickname}: ${payment.type} - $${payment.amount}`);
+            // await sendPaymentConfirmationEmail(payment);
           }
-          await storage.updateUser(user.id, user);
+          
+          fs.writeFileSync(paymentsFile, JSON.stringify(payments, null, 2));
         }
       }
       
@@ -1769,14 +1819,67 @@ export async function registerRoutes(app) {
   });
 
   // Payment success page
-  app.get('/payment-success', (req, res) => {
+  app.get('/payment-success', async (req, res) => {
+    const { orderId } = req.query;
+    
+    let message = 'Payment completed successfully!';
+    let details = '';
+    
+    if (orderId) {
+      try {
+        const fs = require('fs');
+        const path = require('path');
+        const paymentsFile = path.join(__dirname, '..', 'data', 'payments.json');
+        
+        if (fs.existsSync(paymentsFile)) {
+          const payments = JSON.parse(fs.readFileSync(paymentsFile, 'utf8'));
+          const payment = payments.find(p => p.orderId === orderId);
+          
+          if (payment) {
+            // Update payment status to completed
+            payment.status = 'completed';
+            payment.completedAt = new Date().toISOString();
+            fs.writeFileSync(paymentsFile, JSON.stringify(payments, null, 2));
+            
+            // Activate user subscription
+            const user = await storage.getUser(payment.userId);
+            if (user) {
+              if (payment.type === 'vip') {
+                const expiresAt = new Date();
+                expiresAt.setMonth(expiresAt.getMonth() + 1);
+                await storage.updateUser(user.id, {
+                  vipStatus: 'active',
+                  vipExpiresAt: expiresAt.toISOString()
+                });
+                message = 'VIP status activated successfully!';
+              } else if (payment.type === 'premium') {
+                await storage.updateUser(user.id, {
+                  premiumStatus: 'active',
+                  premiumActivatedAt: new Date().toISOString()
+                });
+                message = 'PREMIUM status activated successfully!';
+              }
+            }
+            
+            details = `<p>Order ID: ${orderId}</p><p>Amount: $${payment.amount}</p>`;
+          }
+        }
+      } catch (error) {
+        console.error('Payment success page error:', error);
+      }
+    }
+    
     res.send(`
       <html>
-        <head><title>Payment Successful</title></head>
-        <body style="font-family: Arial, sans-serif; text-align: center; padding: 50px;">
-          <h1>✅ Payment Successful!</h1>
-          <p>Your VIP/Premium status will be activated within a few minutes.</p>
-          <p><a href="/">Return to Game</a></p>
+        <head><title>Payment Successful - Root Tycoon</title></head>
+        <body style="font-family: Arial, sans-serif; text-align: center; padding: 50px; background: linear-gradient(135deg, #1e293b 0%, #334155 100%); color: white; margin: 0;">
+          <div style="max-width: 500px; margin: 0 auto; background: rgba(15, 23, 42, 0.8); padding: 40px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
+            <div style="font-size: 64px; margin-bottom: 20px;">🎉</div>
+            <h1 style="color: #22c55e; margin-bottom: 20px;">${message}</h1>
+            ${details}
+            <p style="margin-bottom: 30px; color: #cbd5e1;">Your status is now active! Return to the game to enjoy your benefits.</p>
+            <a href="/" style="display: inline-block; background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); color: white; text-decoration: none; padding: 15px 30px; border-radius: 10px; font-weight: bold; transition: transform 0.2s;">Return to Game</a>
+          </div>
         </body>
       </html>
     `);

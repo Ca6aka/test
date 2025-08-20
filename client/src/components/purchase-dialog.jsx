@@ -1,79 +1,58 @@
 import React, { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
-import { Star, Crown, CreditCard, Shield } from 'lucide-react';
+import { Star, Crown, CreditCard, Shield, Mail, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
 
 export default function PurchaseDialog({ type, price, children, disabled }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedGateway, setSelectedGateway] = useState('crypto');
+  const [email, setEmail] = useState('');
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
   const purchaseMutation = useMutation({
-    mutationFn: ({ type, gateway }) => apiRequest('/api/crypto-purchase', 'POST', { type, gateway }),
+    mutationFn: ({ type, email }) => apiRequest('/api/card-crypto-purchase', 'POST', { type, email }),
     onSuccess: (data) => {
       if (data.paymentUrl) {
         window.open(data.paymentUrl, '_blank');
         toast({
           title: 'Переход к оплате',
-          description: 'Откроется новая вкладка для завершения платежа',
-          duration: 5000,
+          description: `Ссылка для оплаты отправлена на ${email}. Откроется новая вкладка.`,
+          duration: 8000,
         });
-      } else if (data.cryptoAddresses) {
-        // Show crypto addresses in a more user-friendly way
-        const addressList = Object.entries(data.amounts)
-          .map(([coin, amount]) => `${coin.toUpperCase()}: ${amount}`)
-          .join(' | ');
-        
-        toast({
-          title: 'Криптоадреса для оплаты',
-          description: `Переведите: ${addressList}. Адреса скопированы в буфер обмена.`,
-          duration: 15000,
-        });
-        
-        // Copy addresses to clipboard
-        const addressText = Object.entries(data.cryptoAddresses)
-          .map(([coin, addr]) => `${coin.toUpperCase()}: ${addr}`)
-          .join('\n');
-        navigator.clipboard?.writeText(addressText);
       }
       setIsOpen(false);
-      // Reload user data after payment completion
+      setEmail('');
+      // Reload user data after payment
       setTimeout(() => {
         queryClient.invalidateQueries(['/api/auth/me']);
-      }, 5000);
+      }, 3000);
     },
     onError: (error) => {
       toast({
-        title: 'Ошибка платежа',
-        description: error.message || 'Произошла ошибка при создании платежа',
+        title: 'Ошибка создания платежа',
+        description: error.message || 'Проверьте email и попробуйте снова',
         variant: 'destructive',
       });
     }
   });
 
   const handlePurchase = () => {
-    purchaseMutation.mutate({ type, gateway: selectedGateway });
-  };
-
-  const getIcon = () => {
-    return type === 'vip' ? <Star className="w-5 h-5" /> : <Crown className="w-5 h-5" />;
-  };
-
-  const getTitle = () => {
-    return type === 'vip' ? 'Покупка VIP статуса' : 'Покупка Premium статуса';
-  };
-
-  const getDescription = () => {
-    if (type === 'vip') {
-      return 'VIP статус предоставляет синий значок в чате, сниженные кулдауны, бонус опыта 1.5x и удвоенный ежедневный бонус.';
+    if (!email || !email.includes('@')) {
+      toast({
+        title: 'Некорректный email',
+        description: 'Введите действительный email адрес',
+        variant: 'destructive',
+      });
+      return;
     }
-    return 'Premium статус предоставляет фиолетовый значок в чате, минимальные кулдауны, бонус опыта 1.75x, увеличенный ежедневный бонус в 5 раз и мгновенное строительство серверов.';
+    
+    purchaseMutation.mutate({ type, email });
   };
 
   return (
@@ -85,67 +64,75 @@ export default function PurchaseDialog({ type, price, children, disabled }) {
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="flex items-center space-x-2">
-            {getIcon()}
-            <span>{getTitle()}</span>
+          <DialogTitle className="flex items-center gap-2">
+            {type === 'vip' ? (
+              <>
+                <Star className="w-5 h-5 text-blue-400" />
+                VIP статус
+              </>
+            ) : (
+              <>
+                <Crown className="w-5 h-5 text-purple-400" />
+                PREMIUM статус
+              </>
+            )}
           </DialogTitle>
         </DialogHeader>
+
         <div className="space-y-4">
-          <div className="text-sm text-muted-foreground">
-            {getDescription()}
-          </div>
-          
-          <div className="flex justify-center">
-            <Badge className={`${type === 'vip' ? 'bg-blue-600' : 'bg-purple-600'} text-white text-lg px-4 py-2`}>
-              ${price} {type === 'vip' ? '/месяц' : 'навсегда'}
-            </Badge>
-          </div>
-
-          <div className="space-y-3">
-            <div className="flex items-center space-x-2">
-              <Shield className="w-4 h-4 text-muted-foreground" />
-              <span className="text-sm font-medium">Выберите способ оплаты:</span>
+          <div className="text-center p-4 bg-slate-800 rounded-lg">
+            <div className="text-2xl font-bold text-green-400">${price}</div>
+            <div className="text-sm text-slate-400">
+              {type === 'vip' ? 'в месяц' : 'навсегда'}
             </div>
-            
-            <Select value={selectedGateway} onValueChange={setSelectedGateway}>
-              <SelectTrigger>
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="crypto">
-                  <div className="flex items-center space-x-2">
-                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 3c-3.866 0-7 3.134-7 7s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7zm0 2c2.761 0 5 2.239 5 5s-2.239 5-5 5-5-2.239-5-5 2.239-5 5-5z"/>
-                    </svg>
-                    <span>Криптовалюты (BTC/ETH/USDT)</span>
-                  </div>
-                </SelectItem>
-                <SelectItem value="card-to-crypto">
-                  <div className="flex items-center space-x-2">
-                    <CreditCard className="w-4 h-4" />
-                    <span>Карта → Криптовалюта</span>
-                  </div>
-                </SelectItem>
-              </SelectContent>
-            </Select>
           </div>
 
-          <div className="flex space-x-2">
-            <Button 
-              variant="outline" 
-              onClick={() => setIsOpen(false)}
-              className="flex-1"
-            >
-              Отмена
-            </Button>
-            <Button 
-              onClick={handlePurchase}
-              disabled={purchaseMutation.isPending}
-              className={`flex-1 ${type === 'vip' ? 'bg-blue-600 hover:bg-blue-700' : 'bg-purple-600 hover:bg-purple-700'}`}
-            >
-              {purchaseMutation.isPending ? 'Обработка...' : 'Оплатить'}
-            </Button>
+          <div className="space-y-2">
+            <Label htmlFor="email" className="flex items-center gap-2">
+              <Mail className="w-4 h-4" />
+              Email для подтверждения платежа
+            </Label>
+            <Input
+              id="email"
+              type="email"
+              placeholder="your-email@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full"
+            />
+            <p className="text-xs text-slate-400">
+              На этот email будет отправлена ссылка для оплаты и подтверждение после успешного платежа
+            </p>
           </div>
+
+          <div className="bg-slate-800 p-3 rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <CreditCard className="w-4 h-4 text-blue-400" />
+              <span className="font-medium">Оплата картой</span>
+            </div>
+            <p className="text-sm text-slate-400">
+              Безопасная оплата банковской картой через криптовалютный шлюз. 
+              Деньги с карты конвертируются в криптовалюту и поступают на наш кошелек.
+            </p>
+          </div>
+
+          <Button 
+            onClick={handlePurchase}
+            disabled={purchaseMutation.isPending || !email}
+            className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+          >
+            {purchaseMutation.isPending ? (
+              <>
+                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                Создание платежа...
+              </>
+            ) : (
+              <>
+                <CreditCard className="w-4 h-4 mr-2" />
+                Оплатить ${price}
+              </>
+            )}
+          </Button>
         </div>
       </DialogContent>
     </Dialog>

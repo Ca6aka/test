@@ -206,7 +206,7 @@ export function StatusBar() {
                       size="md" 
                       onClick={() => window.dispatchEvent(new CustomEvent('openProfile'))}
                     />
-                    <div className="absolute -left-4 top-1/2 transform -translate-y-1/2 z-10">
+                    <div className="absolute -left-8 top-1/2 transform -translate-y-1/2 z-10">
                       <SubscriptionStatusIcon user={gameState.user} showInProfile={true} size="sm" />
                     </div>
                   </div>
