@@ -1685,11 +1685,17 @@ export async function registerRoutes(app) {
 
   // Card-to-Crypto payment endpoint with email confirmation
   app.post('/api/card-crypto-purchase', async (req, res) => {
+    console.log('=== PAYMENT DEBUG START ===');
+    console.log('Request body:', req.body);
+    console.log('Session:', req.session);
+    
     if (!req.session?.userId) {
+      console.log('ERROR: Not authenticated');
       return res.status(401).json({ message: 'Not authenticated' });
     }
 
     const { type } = req.body;
+    console.log('Payment type:', type);
     
     if (!['vip', 'premium'].includes(type)) {
       return res.status(400).json({ message: 'Invalid subscription type' });
@@ -1704,16 +1710,22 @@ export async function registerRoutes(app) {
 
     try {
       const user = await storage.getUser(req.session.userId);
+      console.log('User found:', user ? user.nickname : 'No user');
       
       // Generate unique order ID
       const orderId = `${type}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+      console.log('Generated order ID:', orderId);
       
       // NOWPayments integration for USDT payments
       const nowPaymentsApiKey = process.env.NOWPAYMENTS_API_KEY;
       const publicApiKey = '2e08170d-5e62-48ac-ac23-6a76fead8132'; // Public API key
       const gameEmail = process.env.GAME_EMAIL || 'noreply@yourgame.com';
       
+      console.log('NOWPayments API Key exists:', !!nowPaymentsApiKey);
+      console.log('Game email:', gameEmail);
+      
       if (!nowPaymentsApiKey) {
+        console.log('ERROR: API key not configured');
         return res.status(500).json({ message: 'Ошибка создания платежа: API key не настроен' });
       }
       
@@ -1722,16 +1734,18 @@ export async function registerRoutes(app) {
         price_amount: amount,
         price_currency: 'usd',
         pay_currency: 'trx', // TRON (TRX) для низких комиссий
-        is_fiat: true, // Оплата картой (fiat-to-crypto)
         order_id: orderId,
         order_description: `${type === 'vip' ? 'VIP (1 month)' : 'Premium'} subscription for ${user.nickname}`,
         success_url: `${req.protocol}://${req.get('host')}/payment-success?orderId=${orderId}`,
         cancel_url: `${req.protocol}://${req.get('host')}/donate`
       };
+      
+      console.log('NOWPayments payload:', JSON.stringify(nowPaymentsPayload, null, 2));
 
       // Call NOWPayments API to create invoice
       let paymentUrl = '';
       try {
+        console.log('Calling NOWPayments API...');
         const nowResponse = await fetch('https://api.nowpayments.io/v1/invoice', {
           method: 'POST',
           headers: {
@@ -1742,11 +1756,15 @@ export async function registerRoutes(app) {
           body: JSON.stringify(nowPaymentsPayload)
         });
 
+        console.log('NOWPayments response status:', nowResponse.status);
         const nowData = await nowResponse.json();
+        console.log('NOWPayments response data:', JSON.stringify(nowData, null, 2));
         
         if (nowResponse.ok && nowData.invoice_url) {
           paymentUrl = nowData.invoice_url;
+          console.log('Payment URL created:', paymentUrl);
         } else {
+          console.log('NOWPayments API error:', nowData);
           throw new Error(nowData.message || 'Failed to create payment invoice');
         }
       } catch (error) {
@@ -1787,6 +1805,9 @@ export async function registerRoutes(app) {
       
       fs.writeFileSync(paymentsFile, JSON.stringify(payments, null, 2));
       
+      console.log('Payment creation successful');
+      console.log('=== PAYMENT DEBUG END ===');
+      
       res.json({
         message: 'Payment created successfully',
         paymentUrl,
@@ -1796,6 +1817,7 @@ export async function registerRoutes(app) {
       });
     } catch (error) {
       console.error('Card-crypto purchase error:', error);
+      console.log('=== PAYMENT DEBUG END (ERROR) ===');
       res.status(500).json({ message: 'Failed to create payment' });
     }
   });
