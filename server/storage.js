@@ -2619,20 +2619,21 @@ FileStorage.prototype.getDailyLoginBonus = async function(userId) {
   const berlinTime = new Date(now.toLocaleString("en-US", {timeZone: "Europe/Berlin"}));
   const today = berlinTime.toDateString();
   
-  const lastLoginDate = user.lastDailyBonus ? new Date(user.lastDailyBonus).toDateString() : null;
+  // Используем dailyLoginBonus для проверки, а не lastDailyBonus
+  const lastBonusDate = user.dailyLoginBonus || null;
   let streak = user.dailyBonusStreak || 0;
   let canClaim = false;
 
-  if (lastLoginDate !== today) {
+  if (lastBonusDate !== today) {
     canClaim = true;
     
     // Check if streak should continue or reset
-    if (lastLoginDate) {
+    if (lastBonusDate) {
       const yesterday = new Date(berlinTime);
       yesterday.setDate(yesterday.getDate() - 1);
       const yesterdayStr = yesterday.toDateString();
       
-      if (lastLoginDate !== yesterdayStr) {
+      if (lastBonusDate !== yesterdayStr) {
         streak = 0; // Reset streak if missed a day
       }
     }
