@@ -2668,7 +2668,7 @@ FileStorage.prototype.claimDailyBonus = async function(userId) {
   user.dailyBonusStreak = newStreak;
   user.lastDailyBonus = new Date().toISOString();
 
-  await this.saveUser(user);
+  await this.saveUserFile(user);
 
   return {
     success: true,
@@ -2713,7 +2713,7 @@ FileStorage.prototype.updateTutorialProgress = async function(userId, step) {
     }
   }
 
-  await this.saveUser(user);
+  await this.saveUserFile(user);
 
   return {
     completed: user.tutorialCompleted || false,
@@ -2784,7 +2784,7 @@ FileStorage.prototype.updateUserRealActivity = async function(userId) {
     if (user) {
       user.realActivity = Date.now();
       user.lastActivity = Date.now();
-      await this.saveUser(user);
+      await this.saveUserFile(user);
     }
   } catch (error) {
     console.error('Error updating user real activity:', error);
