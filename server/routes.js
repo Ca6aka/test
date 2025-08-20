@@ -1447,14 +1447,7 @@ export async function registerRoutes(app) {
     }
   });
 
-  app.post('/api/daily-bonus/claim', requireAuth, async (req, res) => {
-    try {
-      const result = await storage.claimDailyBonus(req.session.userId);
-      res.json(result);
-    } catch (error) {
-      res.status(500).json({ message: error.message });
-    }
-  });
+
 
   // Donation routes
   app.post('/api/donation/purchase', requireAuth, async (req, res) => {
@@ -1799,7 +1792,7 @@ export async function registerRoutes(app) {
       const path = require('path');
       const puppeteer = require('puppeteer');
       
-      const paymentsFile = path.join(__dirname, '..', 'data', 'payments.json');
+      const paymentsFile = path.join(process.cwd(), 'data', 'payments.json');
       let payments = [];
       
       if (fs.existsSync(paymentsFile)) {

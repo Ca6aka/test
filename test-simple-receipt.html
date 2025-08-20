@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Payment Receipt - VIP Status</title>
+  <style>
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+      margin: 40px; 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+      min-height: 100vh;
+    }
+    .receipt { 
+      background: white; 
+      padding: 50px; 
+      border-radius: 15px; 
+      max-width: 700px; 
+      margin: 0 auto; 
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .receipt::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #10b981, #3b82f6, #8b5cf6);
+    }
+    .header { 
+      text-align: center; 
+      margin-bottom: 50px; 
+      border-bottom: 2px solid #f1f5f9; 
+      padding-bottom: 30px; 
+    }
+    .title { 
+      color: #1e293b; 
+      font-size: 32px; 
+      font-weight: 700; 
+      margin: 0 0 10px 0;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .subtitle { 
+      color: #64748b; 
+      font-size: 16px; 
+      font-weight: 500;
+    }
+    .info-section {
+      background: #f8fafc;
+      padding: 30px;
+      border-radius: 12px;
+      margin: 30px 0;
+    }
+    .info-row { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+      margin: 20px 0; 
+      padding: 15px 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .info-row:last-child {
+      border-bottom: none;
+    }
+    .label { 
+      font-weight: 600; 
+      color: #374151; 
+      font-size: 16px;
+    }
+    .value { 
+      color: #111827; 
+      font-size: 16px;
+      font-weight: 500;
+    }
+    .status { 
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white; 
+      padding: 12px 24px; 
+      border-radius: 25px; 
+      font-size: 14px; 
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+    .amount { 
+      font-size: 28px; 
+      font-weight: 700; 
+      background: linear-gradient(135deg, #10b981, #059669);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .vip-badge {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer { 
+      margin-top: 50px; 
+      padding-top: 30px; 
+      border-top: 2px solid #f1f5f9; 
+      text-align: center; 
+      color: #64748b; 
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .thank-you {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 10px;
+    }
+    .order-id {
+      font-family: 'Monaco', 'Menlo', monospace;
+      background: #f1f5f9;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="receipt">
+    <div class="header">
+      <h1 class="title">📄 Документ об оплате</h1>
+      <p class="subtitle">Server Simulation Game</p>
+    </div>
+    
+    <div class="info-section">
+      <div class="info-row">
+        <span class="label">📋 Номер заказа:</span>
+        <span class="value order-id">#TEST-VIP-123456</span>
+      </div>
+      
+      <div class="info-row">
+        <span class="label">👤 Игрок:</span>
+        <span class="value">TestUser123</span>
+      </div>
+      
+      <div class="info-row">
+        <span class="label">⭐ Тип подписки:</span>
+        <span class="vip-badge">⭐ VIP статус</span>
+      </div>
+      
+      <div class="info-row">
+        <span class="label">💰 Сумма к оплате:</span>
+        <span class="value amount">$2.50</span>
+      </div>
+      
+      <div class="info-row">
+        <span class="label">🏦 Способ оплаты:</span>
+        <span class="value">USDT TRC20</span>
+      </div>
+      
+      <div class="info-row">
+        <span class="label">📅 Дата и время:</span>
+        <span class="value">20.08.2025, 22:53:15</span>
+      </div>
+      
+      <div class="info-row">
+        <span class="label">🔄 Статус платежа:</span>
+        <span class="status">✅ Успешно оплачено</span>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p class="thank-you">🎉 Спасибо за поддержку проекта!</p>
+      <p>Теперь у вас активирован VIP статус со всеми привилегиями:</p>
+      <p>• Удвоенный ежедневный бонус (200 вместо 100)</p>
+      <p>• Сокращенное время восстановления работ</p>
+      <p>• Повышенный опыт от активностей</p>
+      <p>• Эксклюзивная VIP иконка в чате</p>
+      <br>
+      <p><strong>Документ сгенерирован:</strong> 20.08.2025, 22:53:32</p>
+      <p><small>Этот чек подтверждает успешную оплату и активацию привилегий</small></p>
+    </div>
+  </div>
+</body>
+</html>

@@ -2666,10 +2666,15 @@ FileStorage.prototype.claimDailyBonus = async function(userId) {
   const amount = bonusInfo.amount;
   
   // Update user data
+  const now = new Date();
+  const berlinTime = new Date(now.toLocaleString("en-US", {timeZone: "Europe/Berlin"}));
+  const today = berlinTime.toDateString();
+  
   user.balance = (user.balance || 0) + amount;
   user.totalEarnings = (user.totalEarnings || 0) + amount;
   user.dailyBonusStreak = newStreak;
   user.lastDailyBonus = new Date().toISOString();
+  user.dailyLoginBonus = today;
 
   await this.saveUserFile(user);
 

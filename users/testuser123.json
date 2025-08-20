@@ -3,7 +3,7 @@
   "username": "testuser123",
   "nickname": "TestUser123",
   "password": "$2b$10$XvXk9QO.o7jeFqYl1jYFG.dCCJNJOFAYCeUnk3G4c/7QULTpw4YR2",
-  "balance": 100.0,
+  "balance": 100,
   "level": 1,
   "experience": 0,
   "servers": [],
@@ -20,6 +20,6 @@
   "banned": false,
   "learning": null,
   "learningStarted": 0,
-  "vipUntil": null,
+  "vipUntil": 1758322357084,
   "premiumUntil": null
 }
