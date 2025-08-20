@@ -84,29 +84,41 @@ export default function DonateTab() {
         </CardHeader>
         <CardContent className="pt-6">
           <div className="space-y-3 mb-6">
-            <div className="flex items-center">
-              <Star className="w-4 h-4 text-blue-500 mr-2" />
-              <span>{t('vipBadgeChat')}</span>
+            <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 p-3 rounded-lg border border-blue-400/30">
+              <h4 className="text-blue-300 font-semibold mb-2">🎁 VIP ПАКЕТ БОНУСЫ:</h4>
+              <div className="space-y-1 text-sm">
+                <div className="flex items-center">
+                  <span className="text-green-400 font-semibold">💰 +$10,000</span> стартового капитала
+                </div>
+                <div className="flex items-center">
+                  <span className="text-purple-400 font-semibold">⚡ +5,000</span> опыта
+                </div>
+                <div className="flex items-center">
+                  <span className="text-blue-400 font-semibold">🖥️ 30 слотов</span> серверов
+                </div>
+              </div>
             </div>
-            <div className="flex items-center">
-              <Timer className="w-4 h-4 text-blue-500 mr-2" />
-              <span>{t('vipReducedCooldown')}</span>
-            </div>
-            <div className="flex items-center">
-              <Star className="w-4 h-4 text-blue-500 mr-2" />
-              <span>{t('vipExperienceBoost')}</span>
-            </div>
-            <div className="flex items-center">
-              <Shield className="w-4 h-4 text-blue-500 mr-2" />
-              <span>{t('vipReportPriority')}</span>
-            </div>
-            <div className="flex items-center">
-              <Zap className="w-4 h-4 text-blue-500 mr-2" />
-              <span>{t('vipUniqueEmojis')}</span>
-            </div>
-            <div className="flex items-center">
-              <Trophy className="w-4 h-4 text-blue-500 mr-2" />
-              <span>{t('vipDailyBonus')}</span>
+            <div className="space-y-2">
+              <div className="flex items-center">
+                <Star className="w-4 h-4 text-blue-500 mr-2" />
+                <span>{t('vipBadgeChat')}</span>
+              </div>
+              <div className="flex items-center">
+                <Timer className="w-4 h-4 text-blue-500 mr-2" />
+                <span>{t('vipReducedCooldown')}</span>
+              </div>
+              <div className="flex items-center">
+                <Star className="w-4 h-4 text-blue-500 mr-2" />
+                <span>{t('vipExperienceBoost')}</span>
+              </div>
+              <div className="flex items-center">
+                <Shield className="w-4 h-4 text-blue-500 mr-2" />
+                <span>{t('vipReportPriority')}</span>
+              </div>
+              <div className="flex items-center">
+                <Trophy className="w-4 h-4 text-blue-500 mr-2" />
+                <span>{t('vipDailyBonus')}</span>
+              </div>
             </div>
           </div>
           <div className="relative z-10">
@@ -148,45 +160,53 @@ export default function DonateTab() {
         </CardHeader>
         <CardContent className="pt-6">
           <div className="space-y-3 mb-6">
-            <div className="flex items-center">
-              <Crown className="w-4 h-4 text-purple-500 mr-2" />
-              <span>{t('premiumBadgeChat')}</span>
+            <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 p-3 rounded-lg border border-purple-400/30">
+              <h4 className="text-purple-300 font-semibold mb-2">🎁 PREMIUM ПАКЕТ БОНУСЫ:</h4>
+              <div className="space-y-1 text-sm">
+                <div className="flex items-center">
+                  <span className="text-green-400 font-semibold">💰 +$50,000</span> стартового капитала
+                </div>
+                <div className="flex items-center">
+                  <span className="text-purple-400 font-semibold">⚡ +15,000</span> опыта
+                </div>
+                <div className="flex items-center">
+                  <span className="text-purple-400 font-semibold">🖥️ 35 слотов</span> серверов
+                </div>
+              </div>
             </div>
-            <div className="flex items-center">
-              <Timer className="w-4 h-4 text-purple-500 mr-2" />
-              <span>{t('premiumReducedCooldown')}</span>
-            </div>
-            <div className="flex items-center">
-              <Star className="w-4 h-4 text-purple-500 mr-2" />
-              <span>{t('premiumExperienceBoost')}</span>
-            </div>
-            <div className="flex items-center">
-              <Shield className="w-4 h-4 text-purple-500 mr-2" />
-              <span>{t('premiumReportPriority')}</span>
-            </div>
-            <div className="flex items-center">
-              <Zap className="w-4 h-4 text-purple-500 mr-2" />
-              <span>{t('premiumNoMinigameCooldown')}</span>
-            </div>
-            <div className="flex items-center">
-              <Users className="w-4 h-4 text-purple-500 mr-2" />
-              <span>{t('premiumServerLimit')}</span>
-            </div>
-            <div className="flex items-center">
-              <Clock className="w-4 h-4 text-purple-500 mr-2" />
-              <span>{t('premiumInstantServers')}</span>
-            </div>
-            <div className="flex items-center">
-              <Zap className="w-4 h-4 text-purple-500 mr-2" />
-              <span>{t('premiumUniqueEmojis')}</span>
-            </div>
-            <div className="flex items-center">
-              <Shield className="w-4 h-4 text-purple-500 mr-2" />
-              <span>{t('premiumSecretReactions')}</span>
-            </div>
-            <div className="flex items-center">
-              <Trophy className="w-4 h-4 text-purple-500 mr-2" />
-              <span>{t('premiumDailyBonus')}</span>
+            <div className="space-y-2">
+              <div className="flex items-center">
+                <Crown className="w-4 h-4 text-purple-500 mr-2" />
+                <span>{t('premiumBadgeChat')}</span>
+              </div>
+              <div className="flex items-center">
+                <Timer className="w-4 h-4 text-purple-500 mr-2" />
+                <span>{t('premiumReducedCooldown')}</span>
+              </div>
+              <div className="flex items-center">
+                <Star className="w-4 h-4 text-purple-500 mr-2" />
+                <span>{t('premiumExperienceBoost')}</span>
+              </div>
+              <div className="flex items-center">
+                <Shield className="w-4 h-4 text-purple-500 mr-2" />
+                <span>{t('premiumReportPriority')}</span>
+              </div>
+              <div className="flex items-center">
+                <Zap className="w-4 h-4 text-purple-500 mr-2" />
+                <span>{t('premiumNoMinigameCooldown')}</span>
+              </div>
+              <div className="flex items-center">
+                <Clock className="w-4 h-4 text-purple-500 mr-2" />
+                <span>{t('premiumInstantServers')}</span>
+              </div>
+              <div className="flex items-center">
+                <Shield className="w-4 h-4 text-purple-500 mr-2" />
+                <span>{t('premiumSecretReactions')}</span>
+              </div>
+              <div className="flex items-center">
+                <Trophy className="w-4 h-4 text-purple-500 mr-2" />
+                <span>{t('premiumDailyBonus')}</span>
+              </div>
             </div>
           </div>
           <div className="relative z-10">

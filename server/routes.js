@@ -1701,10 +1701,10 @@ export async function registerRoutes(app) {
       return res.status(400).json({ message: 'Invalid subscription type' });
     }
 
-    // Пакетные цены для обхода минимума NOWPayments ($19.22)
+    // Пакетные цены с дополнительными бонусами для обхода минимума NOWPayments ($19.22)
     const prices = { 
-      vip: 20,        // VIP 8 месяцев за $20 (эквивалент $2.50/мес)  
-      premium: 25,    // Premium навсегда за $25
+      vip: 20,        // VIP Пакет: 8 месяцев + бонусы за $20  
+      premium: 25,    // Premium Пакет: навсегда + эксклюзивные бонусы за $25
     };
     const amount = prices[type];
 
@@ -1771,7 +1771,7 @@ export async function registerRoutes(app) {
         price_currency: 'usd', 
         pay_currency: bestCrypto, // Use crypto with lowest minimum
         order_id: orderId,
-        order_description: `${type === 'vip' ? 'VIP (8 months)' : 'Premium'} subscription for ${user.nickname}`,
+        order_description: `${type === 'vip' ? 'VIP Пакет (8 месяцев + бонусы)' : 'Premium Пакет (навсегда + бонусы)'} subscription for ${user.nickname}`,
         success_url: `${req.protocol}://${req.get('host')}/payment-success?orderId=${orderId}`,
         cancel_url: `${req.protocol}://${req.get('host')}/donate`,
         is_fee_paid_by_user: true
@@ -1964,6 +1964,107 @@ export async function registerRoutes(app) {
     }
   });
 
+  // Fiat-to-Crypto Payment Endpoint (NOWPayments Invoice API)
+  app.post('/api/donate/fiat', async (req, res) => {
+    if (!req.isAuthenticated()) {
+      return res.status(401).json({ message: 'Authentication required' });
+    }
+
+    try {
+      const user = req.user;
+      const { type } = req.body;
+
+      if (!['vip', 'premium'].includes(type)) {
+        return res.status(400).json({ message: 'Invalid subscription type' });
+      }
+
+      // Пакетные цены с дополнительными бонусами для обхода минимума NOWPayments ($19.22)
+      const prices = { 
+        vip: 20,        // VIP Пакет: 8 месяцев + бонусы за $20  
+        premium: 25,    // Premium Пакет: навсегда + эксклюзивные бонусы за $25
+      };
+      const amount = prices[type];
+
+      // Generate unique order ID
+      const orderId = `fiat_${type}_${user.id}_${Date.now()}`;
+      
+      console.log(`Creating fiat-to-crypto invoice for ${user.nickname}: ${type} - $${amount}`);
+
+      const invoiceData = {
+        price_amount: amount,
+        price_currency: 'usd',
+        pay_currency: 'trx', // Используем TRX как основную валюту для fiat
+        order_id: orderId,
+        order_description: `${type === 'vip' ? 'VIP Пакет (8 месяцев + бонусы)' : 'Premium Пакет (навсегда + бонусы)'} для ${user.nickname} - Fiat`,
+        success_url: `${req.protocol}://${req.get('host')}/payment-success?orderId=${orderId}&fiat=true`,
+        cancel_url: `${req.protocol}://${req.get('host')}/donate`,
+        // Фиксированный TRX адрес для fiat платежей
+        ipn_callback_url: `${req.protocol}://${req.get('host')}/api/payment-webhook`
+      };
+
+      console.log('Creating NOWPayments fiat invoice with data:', invoiceData);
+
+      const invoiceResponse = await fetch('https://api.nowpayments.io/v1/invoice', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': process.env.NOWPAYMENTS_API_KEY
+        },
+        body: JSON.stringify(invoiceData)
+      });
+
+      const invoiceResult = await invoiceResponse.json();
+      console.log('NOWPayments fiat invoice response:', invoiceResult);
+
+      if (!invoiceResponse.ok) {
+        console.error('Invoice creation failed:', invoiceResult);
+        return res.status(400).json({ message: `Payment creation failed: ${invoiceResult.message || 'Unknown error'}` });
+      }
+
+      // Save payment record
+      const fs = require('fs');
+      const path = require('path');
+      const paymentsFile = path.join(__dirname, '..', 'data', 'payments.json');
+      
+      let payments = [];
+      if (fs.existsSync(paymentsFile)) {
+        payments = JSON.parse(fs.readFileSync(paymentsFile, 'utf8'));
+      }
+
+      const paymentRecord = {
+        id: invoiceResult.id,
+        orderId,
+        userId: user.id,
+        userNickname: user.nickname,
+        type,
+        amount,
+        currency: 'USD',
+        status: 'pending',
+        createdAt: new Date().toISOString(),
+        invoiceUrl: invoiceResult.invoice_url,
+        paymentType: 'fiat-to-crypto'
+      };
+
+      payments.push(paymentRecord);
+      fs.writeFileSync(paymentsFile, JSON.stringify(payments, null, 2));
+
+      console.log(`Fiat payment created: ${invoiceResult.invoice_url}`);
+
+      res.json({
+        success: true,
+        paymentUrl: invoiceResult.invoice_url,
+        orderId
+      });
+
+    } catch (error) {
+      console.error('Fiat payment creation error:', error);
+      res.status(500).json({ 
+        message: 'Fiat payment creation failed',
+        details: error.message 
+      });
+    }
+  });
+
   // NOWPayments Webhook endpoint
   app.post('/api/payment-webhook', async (req, res) => {
     try {
@@ -1999,15 +2100,36 @@ export async function registerRoutes(app) {
           if (user) {
             if (payment.type === 'vip') {
               const expiresAt = new Date();
-              expiresAt.setMonth(expiresAt.getMonth() + 8); // 8 месяцев за $20 ($2.50/мес)
+              expiresAt.setMonth(expiresAt.getMonth() + 8); // 8 месяцев за $20
+              
+              // VIP Пакет бонусы
+              const vipBonuses = {
+                money: 10000,      // +$10,000 стартового капитала
+                experience: 5000,  // +5,000 опыта
+                servers: 5         // +5 слотов серверов (всего 30)
+              };
+              
               await storage.updateUser(user.id, {
                 vipStatus: 'active',
-                vipExpiresAt: expiresAt.toISOString()
+                vipExpiresAt: expiresAt.toISOString(),
+                money: (user.money || 0) + vipBonuses.money,
+                experience: (user.experience || 0) + vipBonuses.experience,
+                serverSlots: Math.max(user.serverSlots || 25, 30) // VIP получает 30 слотов
               });
             } else if (payment.type === 'premium') {
+              // Premium Пакет бонусы
+              const premiumBonuses = {
+                money: 50000,      // +$50,000 стартового капитала
+                experience: 15000, // +15,000 опыта
+                servers: 10        // +10 слотов серверов (всего 35)
+              };
+              
               await storage.updateUser(user.id, {
                 premiumStatus: 'active',
-                premiumActivatedAt: new Date().toISOString()
+                premiumActivatedAt: new Date().toISOString(),
+                money: (user.money || 0) + premiumBonuses.money,
+                experience: (user.experience || 0) + premiumBonuses.experience,
+                serverSlots: Math.max(user.serverSlots || 25, 35) // Premium получает 35 слотов
               });
             }
             

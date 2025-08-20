@@ -38,6 +38,32 @@ export default function PurchaseDialog({ type, price, children, disabled }) {
     },
   });
 
+  const fiatPurchaseMutation = useMutation({
+    mutationFn: ({ type }) => apiRequest('/api/donate/fiat', 'POST', { type }),
+    onSuccess: (data) => {
+      if (data.paymentUrl) {
+        window.open(data.paymentUrl, '_blank');
+        toast({
+          title: 'Переход к fiat-платежу',
+          description: 'Откроется новая вкладка с формой оплаты картой. Ваши средства конвертируются в криптовалюту.',
+          duration: 8000,
+        });
+      }
+      setIsOpen(false);
+      // Reload user data after payment
+      setTimeout(() => {
+        queryClient.invalidateQueries(['/api/auth/me']);
+      }, 3000);
+    },
+    onError: (error) => {
+      toast({
+        title: 'Ошибка создания fiat-платежа',
+        description: error.message || 'Попробуйте снова',
+        variant: 'destructive',
+      });
+    },
+  });
+
   const handlePurchase = () => {
     if (disabled) {
       toast({
@@ -49,6 +75,18 @@ export default function PurchaseDialog({ type, price, children, disabled }) {
     }
     
     purchaseMutation.mutate({ type });
+  };
+
+  const handleFiatPurchase = () => {
+    if (disabled) {
+      toast({
+        title: 'Недоступно',
+        description: 'У вас уже есть активный статус',
+        variant: 'destructive',
+      });
+      return;
+    }
+    fiatPurchaseMutation.mutate({ type });
   };
 
   return (
@@ -104,23 +142,43 @@ export default function PurchaseDialog({ type, price, children, disabled }) {
             </p>
           </div>
 
-          <Button 
-            onClick={handlePurchase}
-            disabled={purchaseMutation.isPending}
-            className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
-          >
-            {purchaseMutation.isPending ? (
-              <>
-                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                Создание платежа...
-              </>
-            ) : (
-              <>
-                <CreditCard className="w-4 h-4 mr-2" />
-                Оплатить ${price}
-              </>
-            )}
-          </Button>
+          <div className="space-y-2">
+            <Button 
+              onClick={handleFiatPurchase}
+              disabled={fiatPurchaseMutation.isPending}
+              className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
+            >
+              {fiatPurchaseMutation.isPending ? (
+                <>
+                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                  Создание fiat-платежа...
+                </>
+              ) : (
+                <>
+                  <CreditCard className="w-4 h-4 mr-2" />
+                  Оплата картой ${price} (fiat → crypto)
+                </>
+              )}
+            </Button>
+
+            <Button 
+              onClick={handlePurchase}
+              disabled={purchaseMutation.isPending}
+              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+            >
+              {purchaseMutation.isPending ? (
+                <>
+                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                  Создание платежа...
+                </>
+              ) : (
+                <>
+                  <CreditCard className="w-4 h-4 mr-2" />
+                  Крипто-платёж ${price}
+                </>
+              )}
+            </Button>
+          </div>
         </div>
       </DialogContent>
     </Dialog>
