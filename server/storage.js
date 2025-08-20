@@ -1573,6 +1573,7 @@ export class FileStorage {
           totalBalance += userData.balance || 0;
           
           // Check if user is online based on last activity (5 minutes)
+          // Update lastActivity when user is authenticated and actively using the app
           if (userData.lastActivity && (Date.now() - userData.lastActivity) < 5 * 60 * 1000) {
             onlineCount++;
           }

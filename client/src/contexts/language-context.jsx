@@ -8,8 +8,28 @@ const newTranslations = {
   noHiddenAchievements: { en: 'No hidden achievements found', ru: 'Скрытых достижений не найдено' },
   hiddenAchievementsDesc: { en: 'Complete special actions to unlock hidden rewards', ru: 'Выполняйте особые действия для получения скрытых наград' },
   
+  // Hidden achievement names and descriptions
+  firstConnectionName: { en: 'First Connection', ru: 'Первое подключение' },
+  firstConnectionDesc: { en: 'Successfully establish your first server connection', ru: 'Успешно установите первое подключение к серверу' },
+  securityExpertName: { en: 'Security Expert', ru: 'Эксперт безопасности' },
+  securityExpertDesc: { en: 'Complete 50 security mini-games without errors', ru: 'Завершите 50 мини-игр по безопасности без ошибок' },
+  speedDemonName: { en: 'Speed Demon', ru: 'Демон скорости' },
+  speedDemonDesc: { en: 'Complete any mini-game in under 10 seconds', ru: 'Завершите любую мини-игру менее чем за 10 секунд' },
+  wealthAccumulatorName: { en: 'Wealth Accumulator', ru: 'Накопитель богатства' },
+  wealthAccumulatorDesc: { en: 'Accumulate $100,000 total earnings', ru: 'Накопите $100,000 общего дохода' },
+  
   // Daily bonus
   dailyBonus: { en: 'Daily Bonus', ru: 'Ежедневный бонус' },
+  dailyLoginBonus: { en: 'Daily Login Bonus', ru: 'Ежедневный бонус за вход' },
+  claimBonus: { en: 'Claim Bonus', ru: 'Получить бонус' },
+  claiming: { en: 'Claiming...', ru: 'Получение...' },
+  dailyBonusClaimed: { en: 'Daily Bonus Claimed!', ru: 'Ежедневный бонус получен!' },
+  streak: { en: 'Streak', ru: 'Серия' },
+  weekStreak: { en: 'Week Streak!', ru: 'Недельная серия!' },
+  dailyBonusMessage: { en: 'Log in daily to maintain your streak and earn more rewards!', ru: 'Заходите каждый день, чтобы поддерживать серию и получать больше наград!' },
+  hiddenAchievements: { en: 'Hidden Achievements', ru: 'Скрытые достижения' },
+  hiddenRequirement: { en: 'Requirements hidden until unlocked', ru: 'Требования скрыты до получения' },
+  unlocked: { en: 'Unlocked', ru: 'Разблокировано' },
   todayBonus: { en: "Today's Bonus", ru: 'Сегодняшний бонус' },
   readyToClaim: { en: 'Ready to claim', ru: 'Готов к получению' },
   claimBonus: { en: 'Claim Bonus', ru: 'Получить бонус' },

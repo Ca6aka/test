@@ -1408,9 +1408,9 @@ export async function registerRoutes(app) {
   });
 
   // Additional API endpoints for new features
-  app.get('/api/achievements/hidden', async (req, res) => {
+  app.get('/api/achievements/hidden', requireAuth, async (req, res) => {
     try {
-      const achievements = await storage.getHiddenAchievements();
+      const achievements = await storage.getHiddenAchievementsForUser(req.session.userId);
       res.json({ achievements });
     } catch (error) {
       res.status(500).json({ message: error.message });

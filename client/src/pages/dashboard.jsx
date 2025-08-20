@@ -14,8 +14,7 @@ import { QuestsTab } from '@/components/quests-tab';
 import MiniGamesTab from '@/components/minigames-tab';
 import DonateTab from '@/components/donate-tab';
 import { ReportsTab } from '@/components/reports-tab';
-import HiddenAchievementsTab from '@/components/hidden-achievements-tab';
-import DailyBonusTab from '@/components/daily-bonus-tab';
+import { DailyBonusNotification } from '@/components/daily-bonus-notification';
 import TutorialSystem from '@/components/tutorial-system';
 import { useGame } from '@/contexts/game-context';
 import { useLanguage } from '@/contexts/language-context';
@@ -106,9 +105,6 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
       case 'hosting': return <HostingTab onTabChange={handleTabChange} />;
       case 'learning': return <LearningTab />;
       case 'achievements': return <AchievementsTab />;
-      case 'hidden-achievements': return <HiddenAchievementsTab />;
-      case 'daily-bonus': return <DailyBonusTab />;
-      case 'daily-quests': return <QuestsTab />;
       case 'quests': return <QuestsTab />;
       case 'minigames': return <MiniGamesTab />;
       case 'donate': return <DonateTab />;
@@ -244,44 +240,14 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
             </Button>
             
             <Button
-              variant={activeTab === 'hidden-achievements' ? 'default' : 'ghost'}
-              size="sm"
-              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs ${
-                activeTab === 'hidden-achievements'
-                  ? 'bg-primary/20 text-primary border border-primary/30'
-                  : 'text-slate-300 hover:bg-slate-700/50'
-              }`}
-              onClick={() => handleTabChange("hidden-achievements")}
-            >
-              <i className="fas fa-eye"></i>
-              <Eye className="w-3 h-3 text-white" />
-              <span>{t('hiddenAchievements')}</span>
-            </Button>
-
-            <Button
-              variant={activeTab === 'daily-bonus' ? 'default' : 'ghost'}
-              size="sm"
-              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs ${
-                activeTab === 'daily-bonus'
-                  ? 'bg-primary/20 text-primary border border-primary/30'
-                  : 'text-slate-300 hover:bg-slate-700/50'
-              }`}
-              onClick={() => handleTabChange("daily-bonus")}
-            >
-              <i className="fas fa-gift"></i>
-              <Gift className="w-3 h-3 text-white" />
-              <span>{t('dailyBonus')}</span>
-            </Button>
-
-            <Button
-              variant={activeTab === 'daily-quests' ? 'default' : 'ghost'}
+              variant={activeTab === 'quests' ? 'default' : 'ghost'}
               size="sm"
               className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs relative ${
-                activeTab === 'daily-quests'
+                activeTab === 'quests'
                   ? 'bg-primary/20 text-primary border border-primary/30'
                   : 'text-slate-300 hover:bg-slate-700/50'
               }`}
-              onClick={() => handleTabChange("daily-quests")}
+              onClick={() => handleTabChange("quests")}
             >
               <i className="fas fa-calendar"></i>
               <ClipboardList className="w-3 h-3 text-white" />
@@ -462,45 +428,15 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
               {!isTabUnlocked('achievements') && <Lock className="w-4 h-4 ml-auto" />}
             </Button>
 
-            {/* Hidden Achievements Tab */}
-            <Button
-              variant={activeTab === 'hidden-achievements' ? 'default' : 'ghost'}
-              className={`w-full justify-start space-x-3 ${
-                activeTab === 'hidden-achievements'
-                  ? 'bg-primary/20 text-primary border border-primary/30'
-                  : 'text-slate-300 hover:bg-slate-700/50'
-              }`}
-              onClick={() => handleTabChange("hidden-achievements")}
-            >
-              <i className="fas fa-eye text-lg"></i>
-              <Eye className="w-4 h-4 text-white" />
-              <span className="font-medium">{t('hiddenAchievements')}</span>
-            </Button>
-
-            {/* Daily Bonus Tab */}
-            <Button
-              variant={activeTab === 'daily-bonus' ? 'default' : 'ghost'}
-              className={`w-full justify-start space-x-3 ${
-                activeTab === 'daily-bonus'
-                  ? 'bg-primary/20 text-primary border border-primary/30'
-                  : 'text-slate-300 hover:bg-slate-700/50'
-              }`}
-              onClick={() => handleTabChange("daily-bonus")}
-            >
-              <i className="fas fa-gift text-lg"></i>
-              <Gift className="w-4 h-4 text-white" />
-              <span className="font-medium">{t('dailyBonus')}</span>
-            </Button>
-
             {/* Daily Quests Tab */}
             <Button
-              variant={activeTab === 'daily-quests' ? 'default' : 'ghost'}
+              variant={activeTab === 'quests' ? 'default' : 'ghost'}
               className={`w-full justify-start space-x-3 relative ${
-                activeTab === 'daily-quests'
+                activeTab === 'quests'
                   ? 'bg-primary/20 text-primary border border-primary/30'
                   : 'text-slate-300 hover:bg-slate-700/50'
               }`}
-              onClick={() => handleTabChange("daily-quests")}
+              onClick={() => handleTabChange("quests")}
             >
               <i className="fas fa-calendar text-lg"></i>
               <ClipboardList className="w-4 h-4 text-white" />
@@ -635,6 +571,9 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
         level={levelUpNotification.level}
         onClose={() => setLevelUpNotification({ isOpen: false, level: null })}
       />
+      
+      {/* Automatic Daily Bonus Notification */}
+      <DailyBonusNotification />
       </div>
     </div>
   );

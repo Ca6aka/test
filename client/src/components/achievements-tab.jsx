@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { Eye } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
@@ -32,8 +33,16 @@ export function AchievementsTab() {
     refetchInterval: 30000, // Update every 30 seconds
   });
 
+  const { data: hiddenAchievementsResponse } = useQuery({
+    queryKey: ['/api/achievements/hidden'],
+    enabled: !!gameState.user,
+    refetchInterval: 30000,
+  });
+
   const achievements = achievementsResponse?.achievements || [];
+  const hiddenAchievements = hiddenAchievementsResponse?.achievements || [];
   const earnedCount = achievements.filter(a => a.earned).length;
+  const hiddenEarnedCount = hiddenAchievements.filter(a => a.earned).length;
 
   return (
     <div className="space-y-6">
@@ -44,7 +53,7 @@ export function AchievementsTab() {
 {t('achievements')}
           </h2>
           <p className="text-slate-400">
-{t('progressLabel')}: {earnedCount}/{achievements.length} {t('achievements')}
+{t('progressLabel')}: {earnedCount}/{achievements.length} {t('achievements')} | {hiddenEarnedCount}/{hiddenAchievements.length} {t('hiddenAchievements')}
           </p>
         </div>
         <div className="text-right">
@@ -52,6 +61,50 @@ export function AchievementsTab() {
           <Progress value={(earnedCount / achievements.length) * 100} className="w-32" />
         </div>
       </div>
+
+      {/* Hidden Achievements Section */}
+      {hiddenAchievements.length > 0 && (
+        <div className="space-y-4">
+          <div className="flex items-center space-x-2">
+            <Eye className="w-5 h-5 text-purple-400" />
+            <h3 className="text-lg font-semibold text-purple-300">{t('hiddenAchievements')}</h3>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {hiddenAchievements.map((achievement) => (
+              <Card key={achievement.id} className="bg-slate-800/50 border-purple-900/50 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-violet-900/20" />
+                <CardHeader className="relative">
+                  <CardTitle className="flex items-center text-white">
+                    {achievement.earned ? (
+                      <CheckCircle className="w-5 h-5 text-purple-400 mr-2" />
+                    ) : (
+                      <Eye className="w-5 h-5 text-slate-500 mr-2" />
+                    )}
+                    <span className={achievement.earned ? 'text-purple-300' : 'text-slate-400'}>
+                      {achievement.earned ? achievement.name : '???'}
+                    </span>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="relative space-y-3">
+                  <p className={`text-sm ${achievement.earned ? 'text-slate-300' : 'text-slate-500'}`}>
+                    {achievement.earned ? achievement.description : t('hiddenRequirement')}
+                  </p>
+                  {achievement.earned && achievement.reward && (
+                    <div className="flex items-center justify-between">
+                      <Badge variant="secondary" className="bg-purple-900/50 text-purple-300">
+                        {formatCurrency(achievement.reward)}
+                      </Badge>
+                      <Badge variant="outline" className="border-purple-600 text-purple-400">
+                        {t('unlocked')}
+                      </Badge>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {achievements.map((achievement) => (
