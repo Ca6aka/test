@@ -66,6 +66,56 @@ export const AdminPanel = ({ user, isOpen: externalIsOpen, onOpenChange }) => {
     }
   };
 
+  const handleSubscriptionAction = async () => {
+    if (!subscriptionUser || !subscriptionAction) {
+      toast({
+        title: t('error'),
+        description: 'Выберите пользователя и действие',
+        variant: 'destructive'
+      });
+      return;
+    }
+
+    if (subscriptionAction === 'grant' && !subscriptionDays) {
+      toast({
+        title: t('error'),
+        description: 'Укажите количество дней',
+        variant: 'destructive'
+      });
+      return;
+    }
+
+    try {
+      setLoading(true);
+      await apiRequest('/api/admin/subscription', {
+        method: 'POST',
+        body: JSON.stringify({
+          action: subscriptionAction === 'grant' ? `give${subscriptionType.charAt(0).toUpperCase() + subscriptionType.slice(1)}` : 'removeSubscription',
+          targetNickname: subscriptionUser,
+          days: subscriptionAction === 'grant' ? parseInt(subscriptionDays) : undefined
+        })
+      });
+
+      toast({
+        title: t('success'),
+        description: `${subscriptionAction === 'grant' ? 'Выдан' : 'Отобран'} ${subscriptionType.toUpperCase()} статус для ${subscriptionUser}`,
+      });
+
+      // Reset form
+      setSubscriptionUser('');
+      setSubscriptionDays('');
+      fetchUsers();
+    } catch (error) {
+      toast({
+        title: t('error'),
+        description: error.message,
+        variant: 'destructive'
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleAdminAction = async () => {
     if (!selectedUser || !action) {
       toast({
@@ -312,6 +362,82 @@ export const AdminPanel = ({ user, isOpen: externalIsOpen, onOpenChange }) => {
             </Card>
           )}
 
+          {/* VIP/Premium Management - Only for Super Admin */}
+          {isSuperAdmin && (
+            <Card className="bg-slate-800/50 border-slate-700">
+              <CardHeader>
+                <CardTitle className="flex items-center space-x-2">
+                  <Crown className="w-5 h-5 text-yellow-400" />
+                  <span>Управление VIP/Premium</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="space-y-2">
+                    <Label>Пользователь</Label>
+                    <Select value={subscriptionUser} onValueChange={setSubscriptionUser}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Выберите пользователя" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {users.map(user => (
+                          <SelectItem key={user.id} value={user.nickname}>
+                            {user.nickname}
+                            {user.vipStatus === 'active' && <Badge className="ml-2 text-xs bg-blue-600">VIP</Badge>}
+                            {user.premiumStatus === 'active' && <Badge className="ml-2 text-xs bg-purple-600">PREMIUM</Badge>}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Тип статуса</Label>
+                    <Select value={subscriptionType} onValueChange={setSubscriptionType}>
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="vip">VIP</SelectItem>
+                        <SelectItem value="premium">Premium</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Действие</Label>
+                    <Select value={subscriptionAction} onValueChange={setSubscriptionAction}>
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="grant">Выдать</SelectItem>
+                        <SelectItem value="remove">Отобрать</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+                {subscriptionAction === 'grant' && (
+                  <div className="space-y-2">
+                    <Label>Количество дней</Label>
+                    <Input
+                      type="number"
+                      value={subscriptionDays}
+                      onChange={(e) => setSubscriptionDays(e.target.value)}
+                      placeholder="Введите количество дней"
+                      className="bg-slate-700 border-slate-600 text-slate-100"
+                    />
+                  </div>
+                )}
+                <Button 
+                  onClick={handleSubscriptionAction}
+                  disabled={loading}
+                  className="bg-yellow-600 hover:bg-yellow-700"
+                >
+                  {loading ? 'Обработка...' : 'Выполнить'}
+                </Button>
+              </CardContent>
+            </Card>
+          )}
+
           {/* User List */}
           <Card className="bg-slate-800/50 border-slate-700">
             <CardHeader>
@@ -334,6 +460,17 @@ export const AdminPanel = ({ user, isOpen: externalIsOpen, onOpenChange }) => {
                         {user.banned && (
                           <Badge variant="secondary" className="text-xs bg-red-500 mr-1">
                             Banned
+                          </Badge>
+                        )}
+                        {/* VIP/Premium статусы */}
+                        {user.vipStatus === 'active' && (
+                          <Badge variant="secondary" className="text-xs bg-blue-600">
+                            VIP
+                          </Badge>
+                        )}
+                        {user.premiumStatus === 'active' && (
+                          <Badge variant="secondary" className="text-xs bg-purple-600">
+                            PREMIUM
                           </Badge>
                         )}
                         {/* Админы */}

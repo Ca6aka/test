@@ -3,10 +3,11 @@ import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Users, Server, TrendingUp, Trophy, Clock, Star } from 'lucide-react';
+import { ArrowLeft, Users, Server, TrendingUp, Trophy, Clock, Star, Crown } from 'lucide-react';
 import { useLanguage } from '@/contexts/language-context';
 import { useGame } from '@/contexts/game-context';
 import { PlayerAvatar } from '@/components/player-profile-bar';
+import SubscriptionStatusIcon from '@/components/subscription-status-icon';
 
 export default function PlayerProfilePage() {
   const { nickname } = useParams();
@@ -120,13 +121,16 @@ export default function PlayerProfilePage() {
         <Card className="bg-slate-800/50 border-slate-700 mb-8">
           <CardContent className="p-4 sm:p-8">
             <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
-              <div className="flex-shrink-0">
+              <div className="flex-shrink-0 relative">
                 <PlayerAvatar 
                   user={player} 
                   size="xl" 
                   showLevel={true}
                   showExperienceRing={false}
                 />
+                <div className="absolute -left-3 top-1/2 transform -translate-y-1/2">
+                  <SubscriptionStatusIcon user={player} showInProfile={true} size="lg" />
+                </div>
               </div>
               
               <div className="flex-1">
@@ -153,6 +157,20 @@ export default function PlayerProfilePage() {
                     <Badge variant="outline" className="border-slate-600 text-slate-400">
                       <div className="w-2 h-2 bg-red-400 rounded-full mr-2"></div>
                       {t('offline')}
+                    </Badge>
+                  )}
+
+                  {/* VIP/Premium статусы */}
+                  {player.vipStatus === 'active' && player.vipExpiresAt && new Date(player.vipExpiresAt) > new Date() && (
+                    <Badge className="bg-blue-600 text-white flex items-center space-x-1">
+                      <Star className="w-3 h-3" />
+                      <span>VIP</span>
+                    </Badge>
+                  )}
+                  {player.premiumStatus === 'active' && (
+                    <Badge className="bg-purple-600 text-white flex items-center space-x-1">
+                      <Crown className="w-3 h-3" />
+                      <span>PREMIUM</span>
                     </Badge>
                   )}
 

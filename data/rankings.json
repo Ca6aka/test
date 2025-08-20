@@ -27,12 +27,30 @@
     "rank": 3
   },
   {
+    "id": "premium-test-user-001",
+    "nickname": "PremiumUser",
+    "balance": 50000,
+    "serverCount": 0,
+    "isOnline": false,
+    "level": 11,
+    "rank": 4
+  },
+  {
     "id": "7441f91d-d167-4f0d-8d54-136e8b6a416e",
     "nickname": "test2",
     "balance": 18900,
     "serverCount": 0,
     "isOnline": false,
     "level": 1,
-    "rank": 4
+    "rank": 5
+  },
+  {
+    "id": "vip-test-user-001",
+    "nickname": "VipUser",
+    "balance": 15000,
+    "serverCount": 0,
+    "isOnline": false,
+    "level": 8,
+    "rank": 6
   }
 ]

@@ -43,8 +43,8 @@ export default function DonateTab() {
   };
 
   const user = gameState.user;
-  const hasVip = user?.vipExpires && new Date(user.vipExpires) > new Date();
-  const hasPremium = user?.premiumActive;
+  const hasVip = user?.vipStatus === 'active' && user?.vipExpiresAt && new Date(user.vipExpiresAt) > new Date();
+  const hasPremium = user?.premiumStatus === 'active';
 
   const getStatusBadge = () => {
     if (hasPremium) {

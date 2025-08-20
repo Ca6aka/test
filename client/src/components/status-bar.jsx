@@ -65,8 +65,8 @@ export function StatusBar() {
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
-                  <div className="absolute -left-2 top-1/2 transform -translate-y-1/2">
-                    <SubscriptionStatusIcon user={gameState.user} showInProfile={true} size="sm" />
+                  <div className="absolute -left-3 top-1/2 transform -translate-y-1/2 z-10">
+                    <SubscriptionStatusIcon user={gameState.user} showInProfile={true} size="md" />
                   </div>
                 </div>
                 <TooltipProvider>
