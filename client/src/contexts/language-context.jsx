@@ -29,10 +29,21 @@ const newTranslations = {
   dailyBonusMessage: { en: 'Log in daily to maintain your streak and earn more rewards!', ru: 'Заходите каждый день, чтобы поддерживать серию и получать больше наград!' },
   hiddenAchievements: { en: 'Hidden Achievements', ru: 'Скрытые достижения' },
   hiddenRequirement: { en: 'Requirements hidden until unlocked', ru: 'Требования скрыты до получения' },
-  unlocked: { en: 'Unlocked', ru: 'Разблокировано' },
-  todayBonus: { en: "Today's Bonus", ru: 'Сегодняшний бонус' },
-  readyToClaim: { en: 'Ready to claim', ru: 'Готов к получению' },
-  claimBonus: { en: 'Claim Bonus', ru: 'Получить бонус' },
+  unlocked: { en: 'Unlocked', ru: 'Разблокировано', ua: 'Розблоковано', de: 'Freigeschaltet' },
+  todayBonus: { en: "Today's Bonus", ru: 'Сегодняшний бонус', ua: 'Сьогоднішній бонус', de: 'Heutiger Bonus' },
+  readyToClaim: { en: 'Ready to claim', ru: 'Готов к получению', ua: 'Готово до отримання', de: 'Bereit abzuholen' },
+  
+  // Hidden achievements names
+  midnight_worker: { en: 'Midnight Worker', ru: 'Полуночный работник', ua: 'Опівнічний працівник', de: 'Mitternachtsarbeiter' },
+  speed_demon: { en: 'Speed Demon', ru: 'Демон скорости', ua: 'Демон швидкості', de: 'Geschwindigkeitsdämon' },
+  chat_legend: { en: 'Chat Legend', ru: 'Легенда чата', ua: 'Легенда чату', de: 'Chat-Legende' },
+  server_master: { en: 'Server Master', ru: 'Мастер серверов', ua: 'Майстер серверів', de: 'Server-Meister' },
+  
+  // Hidden achievements descriptions
+  midnight_worker_desc: { en: 'Complete a job between 00:00 and 02:00', ru: 'Выполните работу между 00:00 и 02:00', ua: 'Виконайте роботу між 00:00 та 02:00', de: 'Erledige eine Aufgabe zwischen 00:00 und 02:00' },
+  speed_demon_desc: { en: 'Complete 10 jobs in one day', ru: 'Выполните 10 работ за один день', ua: 'Виконайте 10 робіт за один день', de: 'Erledige 10 Aufgaben an einem Tag' },
+  chat_legend_desc: { en: 'Send 1000 messages in chat', ru: 'Отправьте 1000 сообщений в чат', ua: 'Надішліть 1000 повідомлень у чат', de: 'Sende 1000 Nachrichten im Chat' },
+  server_master_desc: { en: 'Own 20 servers simultaneously', ru: 'Владейте 20 серверами одновременно', ua: 'Володійте 20 серверами одночасно', de: 'Besitze 20 Server gleichzeitig' },
   claiming: { en: 'Claiming...', ru: 'Получаем...' },
   alreadyClaimed: { en: 'Already claimed', ru: 'Уже получен' },
   comeBackTomorrow: { en: 'Come back tomorrow for your next bonus', ru: 'Вернитесь завтра за следующим бонусом' },

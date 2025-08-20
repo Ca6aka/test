@@ -1572,9 +1572,9 @@ export class FileStorage {
           // Calculate total balance
           totalBalance += userData.balance || 0;
           
-          // Check if user is online based on last activity (5 minutes)
-          // Update lastActivity when user is authenticated and actively using the app
-          if (userData.lastActivity && (Date.now() - userData.lastActivity) < 5 * 60 * 1000) {
+          // Check if user is online based on real activity (5 minutes)
+          // Only count users with realActivity (not just automatic API calls)
+          if (userData.realActivity && (Date.now() - userData.realActivity) < 5 * 60 * 1000) {
             onlineCount++;
           }
         } catch (err) {
@@ -2656,14 +2656,14 @@ FileStorage.prototype.claimDailyBonus = async function(userId) {
 
   const bonusInfo = await this.getDailyLoginBonus(userId);
   if (!bonusInfo.canClaim) {
-    return { success: false, message: 'Bonus already claimed today' };
+    throw new Error('Bonus already claimed today');
   }
 
   const newStreak = bonusInfo.streak + 1;
   const amount = bonusInfo.amount;
   
   // Update user data
-  user.money += amount;
+  user.balance = (user.balance || 0) + amount;
   user.totalEarnings = (user.totalEarnings || 0) + amount;
   user.dailyBonusStreak = newStreak;
   user.lastDailyBonus = new Date().toISOString();
@@ -2707,7 +2707,7 @@ FileStorage.prototype.updateTutorialProgress = async function(userId, step) {
     
     // Give tutorial completion reward
     if (!user.tutorialRewardClaimed) {
-      user.money += 15000;
+      user.balance = (user.balance || 0) + 15000;
       user.totalEarnings = (user.totalEarnings || 0) + 15000;
       user.tutorialRewardClaimed = true;
     }
@@ -2720,6 +2720,75 @@ FileStorage.prototype.updateTutorialProgress = async function(userId, step) {
     currentStep: user.tutorialStep || 0,
     completedSteps: user.completedTutorialSteps || []
   };
+};
+
+// Hidden achievements functionality 
+FileStorage.prototype.getHiddenAchievementsForUser = async function(userId) {
+  const user = await this.getUser(userId);
+  if (!user) throw new Error('User not found');
+
+  // Define 4 hidden achievements with unlock conditions
+  const hiddenAchievements = [
+    {
+      id: 'midnight_worker',
+      name: 'Полуночный работник',
+      description: 'Выполните работу между 00:00 и 02:00',
+      reward: 5000,
+      // Unlock condition: Complete a job between midnight and 2 AM
+      checkUnlock: (user) => {
+        return user.midnightJobCompleted || false;
+      }
+    },
+    {
+      id: 'speed_demon', 
+      name: 'Демон скорости',
+      description: 'Выполните 10 работ за один день',
+      reward: 7500,
+      // Unlock condition: Complete 10 jobs in a single day
+      checkUnlock: (user) => {
+        return user.speedDemonUnlocked || false;
+      }
+    },
+    {
+      id: 'chat_legend',
+      name: 'Легенда чата',
+      description: 'Отправьте 1000 сообщений в чат',
+      reward: 10000,
+      // Unlock condition: Send 1000 chat messages
+      checkUnlock: (user) => {
+        return (user.chatMessagesCount || 0) >= 1000;
+      }
+    },
+    {
+      id: 'server_master',
+      name: 'Мастер серверов',
+      description: 'Владейте 20 серверами одновременно',
+      reward: 15000,
+      // Unlock condition: Own 20 servers simultaneously
+      checkUnlock: (user) => {
+        return (user.servers?.length || 0) >= 20;
+      }
+    }
+  ];
+
+  return hiddenAchievements.map(achievement => ({
+    ...achievement,
+    earned: achievement.checkUnlock(user)
+  }));
+};
+
+// Add function to update real user activity (not automatic requests)
+FileStorage.prototype.updateUserRealActivity = async function(userId) {
+  try {
+    const user = await this.getUser(userId);
+    if (user) {
+      user.realActivity = Date.now();
+      user.lastActivity = Date.now();
+      await this.saveUser(user);
+    }
+  } catch (error) {
+    console.error('Error updating user real activity:', error);
+  }
 };
 
 export const storage = new FileStorage();

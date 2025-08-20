@@ -61,6 +61,26 @@ export async function registerRoutes(app) {
     next();
   };
 
+  // Update user real activity for manual interactions (not automatic API calls)
+  app.use('/api', (req, res, next) => {
+    if (req.session?.userId) {
+      // Only update realActivity for manual user interactions, not automatic background calls
+      const isAutomatic = req.path.includes('/income') || 
+                          req.path.includes('/stats/general') || 
+                          req.path.includes('/rankings') ||
+                          req.path.includes('/auth/me') ||
+                          req.path.includes('/servers') ||
+                          req.path.includes('/learning/current') ||
+                          req.path.includes('/jobs/cooldowns') ||
+                          req.path.includes('/activities');
+      
+      if (!isAutomatic) {
+        storage.updateUserRealActivity(req.session.userId).catch(console.error);
+      }
+    }
+    next();
+  });
+
   // Authentication routes
   app.post('/api/auth/register', async (req, res) => {
     try {

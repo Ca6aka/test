@@ -81,13 +81,13 @@ export function AchievementsTab() {
                       <Eye className="w-5 h-5 text-slate-500 mr-2" />
                     )}
                     <span className={achievement.earned ? 'text-purple-300' : 'text-slate-400'}>
-                      {achievement.earned ? achievement.name : '???'}
+                      {achievement.earned ? t(achievement.id) : '???'}
                     </span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="relative space-y-3">
                   <p className={`text-sm ${achievement.earned ? 'text-slate-300' : 'text-slate-500'}`}>
-                    {achievement.earned ? achievement.description : t('hiddenRequirement')}
+                    {achievement.earned ? t(`${achievement.id}_desc`) : t('hiddenRequirement')}
                   </p>
                   {achievement.earned && achievement.reward && (
                     <div className="flex items-center justify-between">
