@@ -112,7 +112,7 @@ export default function DonateTab() {
           <PurchaseDialog 
             type="vip" 
             price="2.50"
-            disabled={false}
+            disabled={hasPremium || hasVip}
           >
             <Button 
               disabled={hasPremium || hasVip}
@@ -190,7 +190,7 @@ export default function DonateTab() {
           <PurchaseDialog 
             type="premium" 
             price="10"
-            disabled={false}
+            disabled={hasVip || hasPremium}
           >
             <Button 
               disabled={hasVip || hasPremium}

@@ -54,7 +54,7 @@ export default function PurchaseDialog({ type, price, children, disabled }) {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <div onClick={() => !disabled && setIsOpen(true)} className="cursor-pointer">
+        <div>
           {children}
         </div>
       </DialogTrigger>
