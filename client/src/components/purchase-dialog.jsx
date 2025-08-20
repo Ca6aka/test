@@ -1,33 +1,29 @@
 import React, { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
-import { Star, Crown, CreditCard, Shield, Mail, Loader2 } from 'lucide-react';
+import { Star, Crown, CreditCard, FileText, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
 
 export default function PurchaseDialog({ type, price, children, disabled }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [email, setEmail] = useState('');
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
   const purchaseMutation = useMutation({
-    mutationFn: ({ type, email }) => apiRequest('/api/card-crypto-purchase', 'POST', { type, email }),
+    mutationFn: ({ type }) => apiRequest('/api/card-crypto-purchase', 'POST', { type }),
     onSuccess: (data) => {
       if (data.paymentUrl) {
         window.open(data.paymentUrl, '_blank');
         toast({
           title: 'Переход к оплате',
-          description: `Ссылка для оплаты отправлена на ${email}. Откроется новая вкладка.`,
+          description: 'Откроется новая вкладка с формой оплаты. После оплаты вы сможете скачать PDF документ.',
           duration: 8000,
         });
       }
       setIsOpen(false);
-      setEmail('');
       // Reload user data after payment
       setTimeout(() => {
         queryClient.invalidateQueries(['/api/auth/me']);
@@ -36,23 +32,23 @@ export default function PurchaseDialog({ type, price, children, disabled }) {
     onError: (error) => {
       toast({
         title: 'Ошибка создания платежа',
-        description: error.message || 'Проверьте email и попробуйте снова',
+        description: error.message || 'Попробуйте снова',
         variant: 'destructive',
       });
-    }
+    },
   });
 
   const handlePurchase = () => {
-    if (!email || !email.includes('@')) {
+    if (disabled) {
       toast({
-        title: 'Некорректный email',
-        description: 'Введите действительный email адрес',
+        title: 'Недоступно',
+        description: 'У вас уже есть активный статус',
         variant: 'destructive',
       });
       return;
     }
     
-    purchaseMutation.mutate({ type, email });
+    purchaseMutation.mutate({ type });
   };
 
   return (
@@ -87,21 +83,13 @@ export default function PurchaseDialog({ type, price, children, disabled }) {
             </div>
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="email" className="flex items-center gap-2">
-              <Mail className="w-4 h-4" />
-              Email для подтверждения платежа
-            </Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="your-email@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full"
-            />
-            <p className="text-xs text-slate-400">
-              На этот email будет отправлена ссылка для оплаты и подтверждение после успешного платежа
+          <div className="bg-slate-800 p-3 rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <FileText className="w-4 h-4 text-green-400" />
+              <span className="font-medium">Документ об оплате</span>
+            </div>
+            <p className="text-sm text-slate-400">
+              После успешной оплаты вы сможете скачать PDF документ с подтверждением покупки и деталями заказа.
             </p>
           </div>
 
@@ -118,7 +106,7 @@ export default function PurchaseDialog({ type, price, children, disabled }) {
 
           <Button 
             onClick={handlePurchase}
-            disabled={purchaseMutation.isPending || !email}
+            disabled={purchaseMutation.isPending}
             className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
           >
             {purchaseMutation.isPending ? (

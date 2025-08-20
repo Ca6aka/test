@@ -11,7 +11,7 @@
   {
     "id": "65a91d9d-7213-4a2e-abd6-c9017bc7ae80",
     "nickname": "Ca6aka",
-    "balance": 1094483,
+    "balance": 1068319,
     "serverCount": 20,
     "isOnline": true,
     "level": 6,
@@ -52,5 +52,23 @@
     "isOnline": false,
     "level": 8,
     "rank": 6
+  },
+  {
+    "id": "testuser-2025-08-20",
+    "nickname": "TestUser",
+    "balance": 100,
+    "serverCount": 0,
+    "isOnline": false,
+    "level": 1,
+    "rank": 7
+  },
+  {
+    "id": "testuser-123-2025-08-20",
+    "nickname": "TestUser123",
+    "balance": 100,
+    "serverCount": 0,
+    "isOnline": false,
+    "level": 1,
+    "rank": 8
   }
 ]

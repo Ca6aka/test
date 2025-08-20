@@ -2,11 +2,11 @@
   "id": "65a91d9d-7213-4a2e-abd6-c9017bc7ae80",
   "nickname": "Ca6aka",
   "password": "$2b$10$G1sTjzxqs2js60d52sYQXOCbGLW1o.6TCUNzzuimD5iwHk21qh6vq",
-  "balance": 1094483,
+  "balance": 1068319,
   "level": 16,
   "experience": 3254,
-  "totalEarnings": 1677879,
-  "totalSpent": 1012795,
+  "totalEarnings": 1678779,
+  "totalSpent": 1039859,
   "avatar": {
     "gradient": "from-green-400 via-teal-500 to-cyan-600",
     "pattern": "multi-color",
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755721583175,
+  "lastIncomeUpdate": 1755729702575,
   "jobCooldowns": {
     "maintenance": 1755713114045,
     "optimization": 1755713268846,
@@ -28,6 +28,11 @@
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "8e807edb-9858-451a-b88e-9f47ac081de3",
+      "description": "Rental cost: -$27064 for 20 servers",
+      "timestamp": "8/20/2025, 10:41:42 PM"
+    },
     {
       "id": "ca3005c1-4d5f-421f-8d8c-e756909c7076",
       "description": "Rental cost: -$506 for 20 servers",
@@ -47,11 +52,6 @@
       "id": "e4350274-624c-43cb-8541-8ae73e0efd7d",
       "description": "Rental cost: -$203 for 20 servers",
       "timestamp": "8/20/2025, 8:21:49 PM"
-    },
-    {
-      "id": "1f9e21b2-bba4-449e-8a36-a3ae772587e3",
-      "description": "Rental cost: -$203 for 20 servers",
-      "timestamp": "8/20/2025, 8:20:48 PM"
     }
   ],
   "achievements": [
@@ -221,17 +221,17 @@
   "lastQuestReset": 1755714820971,
   "registrationIP": "192.168.0.136",
   "registrationTime": 1755531070984,
-  "lastSeen": 1755721600272,
+  "lastSeen": 1755729801037,
   "lastMessageTime": 1755719885890,
   "chatLanguage": "en",
   "chatAchievements": [
     "first_message"
   ],
   "hasNewChatMessages": true,
-  "realActivity": 1755721599169,
-  "lastActivity": 1755721599169,
-  "dailyBonusStreak": 1,
-  "lastDailyBonus": "2025-08-20T18:34:16.720Z",
+  "realActivity": 1755729800727,
+  "lastActivity": 1755729800727,
+  "dailyBonusStreak": 4,
+  "lastDailyBonus": "2025-08-20T22:37:31.661Z",
   "vipExpires": null,
   "vipStatus": "inactive",
   "vipExpiresAt": null

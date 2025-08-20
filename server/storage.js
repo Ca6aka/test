@@ -1653,34 +1653,27 @@ export class FileStorage {
       const userData = await this.getUser(username);
       const now = new Date();
       const berlinTime = new Date(now.toLocaleString("en-US", {timeZone: "Europe/Berlin"}));
-      const today = berlinTime.toISOString().split('T')[0];
+      const today = berlinTime.toDateString(); // Use toDateString() for consistency
       
-      const lastLogin = userData.lastLoginDate;
-      const currentStreak = userData.loginStreak || 0;
+      const hasClaimedToday = userData.dailyLoginBonus === today;
       
-      if (lastLogin === today) {
-        return { canClaim: false, streak: currentStreak, nextAmount: this.calculateDailyBonus(currentStreak + 1) };
+      if (hasClaimedToday) {
+        return { canClaim: false, streak: userData.loginStreak || 1, amount: 0 };
       }
       
-      const yesterday = new Date(berlinTime);
-      yesterday.setDate(yesterday.getDate() - 1);
-      const yesterdayStr = yesterday.toISOString().split('T')[0];
+      const currentStreak = userData.loginStreak || 1;
+      let amount = 100;
       
-      let newStreak = 1;
-      if (lastLogin === yesterdayStr) {
-        newStreak = currentStreak + 1;
+      if (userData.vipUntil && Date.now() < userData.vipUntil) {
+        amount = 200; // VIP gets 2x bonus
+      } else if (userData.premiumUntil && Date.now() < userData.premiumUntil) {
+        amount = 500; // Premium gets 5x bonus
       }
       
-      const bonusAmount = this.calculateDailyBonus(newStreak);
-      
-      return { 
-        canClaim: true, 
-        streak: newStreak, 
-        amount: bonusAmount,
-        nextAmount: this.calculateDailyBonus(newStreak + 1)
-      };
+      return { canClaim: true, streak: currentStreak, amount, nextStreak: currentStreak + 1 };
     } catch (error) {
-      return { canClaim: false, streak: 0, nextAmount: 100 };
+      console.error('Get daily bonus error:', error);
+      return { canClaim: false, streak: 1, amount: 0 };
     }
   }
 
@@ -1699,11 +1692,12 @@ export class FileStorage {
       
       const userData = await this.getUser(username);
       const berlinTime = new Date(new Date().toLocaleString("en-US", {timeZone: "Europe/Berlin"}));
-      const today = berlinTime.toISOString().split('T')[0];
+      const today = berlinTime.toDateString(); // Use toDateString() for consistency
       
       userData.balance = (userData.balance || 0) + bonusInfo.amount;
-      userData.lastLoginDate = today;
+      userData.dailyLoginBonus = today; // Update dailyLoginBonus field to today's date string
       userData.loginStreak = bonusInfo.streak;
+      userData.lastActivity = Date.now();
       
       await this.saveUser(username, userData);
       
@@ -1714,6 +1708,7 @@ export class FileStorage {
         newBalance: userData.balance
       };
     } catch (error) {
+      console.error('Daily bonus claim error:', error);
       return { success: false, message: 'Error claiming bonus' };
     }
   }

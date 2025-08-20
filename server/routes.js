@@ -1688,14 +1688,10 @@ export async function registerRoutes(app) {
       return res.status(401).json({ message: 'Not authenticated' });
     }
 
-    const { type, email } = req.body;
+    const { type } = req.body;
     
     if (!['vip', 'premium'].includes(type)) {
       return res.status(400).json({ message: 'Invalid subscription type' });
-    }
-
-    if (!email || !email.includes('@')) {
-      return res.status(400).json({ message: 'Valid email required' });
     }
 
     const prices = { vip: 2.5, premium: 10 };
@@ -1719,8 +1715,7 @@ export async function registerRoutes(app) {
         order_id: orderId,
         order_description: `${type === 'vip' ? 'VIP' : 'Premium'} subscription for ${user.nickname}`,
         success_url: `${req.protocol}://${req.get('host')}/payment-success?orderId=${orderId}`,
-        cancel_url: `${req.protocol}://${req.get('host')}/donate`,
-        customer_email: email
+        cancel_url: `${req.protocol}://${req.get('host')}/donate`
       };
 
       // Call NOWPayments API to create invoice
@@ -1765,7 +1760,6 @@ export async function registerRoutes(app) {
         orderId,
         userId: user.id,
         userNickname: user.nickname,
-        userEmail: email,
         type,
         amount,
         status: 'pending',
@@ -1796,7 +1790,111 @@ export async function registerRoutes(app) {
     }
   });
 
-  // Payment success webhook/callback for MoonPay
+  // PDF receipt generation
+  app.get('/api/payment-receipt/:orderId', async (req, res) => {
+    const { orderId } = req.params;
+    
+    try {
+      const fs = require('fs');
+      const path = require('path');
+      const puppeteer = require('puppeteer');
+      
+      const paymentsFile = path.join(__dirname, '..', 'data', 'payments.json');
+      let payments = [];
+      
+      if (fs.existsSync(paymentsFile)) {
+        payments = JSON.parse(fs.readFileSync(paymentsFile, 'utf8'));
+      }
+      
+      const payment = payments.find(p => p.orderId === orderId);
+      if (!payment || payment.status !== 'completed') {
+        return res.status(404).json({ message: 'Payment not found or not completed' });
+      }
+      
+      const htmlContent = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="UTF-8">
+          <style>
+            body { font-family: Arial, sans-serif; margin: 40px; background: #f5f5f5; }
+            .receipt { background: white; padding: 40px; border-radius: 8px; max-width: 600px; margin: 0 auto; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+            .header { text-align: center; margin-bottom: 40px; border-bottom: 2px solid #e5e5e5; padding-bottom: 20px; }
+            .title { color: #2563eb; font-size: 28px; font-weight: bold; margin: 0; }
+            .subtitle { color: #64748b; font-size: 14px; margin-top: 5px; }
+            .info-row { display: flex; justify-content: space-between; margin: 15px 0; }
+            .label { font-weight: bold; color: #374151; }
+            .value { color: #111827; }
+            .status { background: #10b981; color: white; padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: bold; }
+            .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #e5e5e5; text-align: center; color: #64748b; font-size: 12px; }
+            .amount { font-size: 24px; font-weight: bold; color: #10b981; }
+          </style>
+        </head>
+        <body>
+          <div class="receipt">
+            <div class="header">
+              <h1 class="title">📄 Документ об оплате</h1>
+              <p class="subtitle">Server Simulation Game</p>
+            </div>
+            
+            <div class="info-row">
+              <span class="label">Заказ:</span>
+              <span class="value">#${payment.orderId}</span>
+            </div>
+            
+            <div class="info-row">
+              <span class="label">Игрок:</span>
+              <span class="value">${payment.userNickname}</span>
+            </div>
+            
+            <div class="info-row">
+              <span class="label">Тип подписки:</span>
+              <span class="value">${payment.type === 'vip' ? '⭐ VIP статус' : '👑 PREMIUM статус'}</span>
+            </div>
+            
+            <div class="info-row">
+              <span class="label">Сумма:</span>
+              <span class="value amount">$${payment.amount}</span>
+            </div>
+            
+            <div class="info-row">
+              <span class="label">Дата оплаты:</span>
+              <span class="value">${new Date(payment.completedAt || payment.createdAt).toLocaleString('ru-RU')}</span>
+            </div>
+            
+            <div class="info-row">
+              <span class="label">Статус:</span>
+              <span class="status">✅ Оплачено</span>
+            </div>
+            
+            <div class="footer">
+              <p>Спасибо за поддержку проекта Server Simulation Game!</p>
+              <p>Документ сгенерирован: ${new Date().toLocaleString('ru-RU')}</p>
+            </div>
+          </div>
+        </body>
+        </html>
+      `;
+
+      const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+      const page = await browser.newPage();
+      await page.setContent(htmlContent);
+      const pdf = await page.pdf({ 
+        format: 'A4', 
+        printBackground: true,
+        margin: { top: '20px', right: '20px', bottom: '20px', left: '20px' }
+      });
+      await browser.close();
+
+      res.setHeader('Content-Type', 'application/pdf');
+      res.setHeader('Content-Disposition', `attachment; filename="receipt-${orderId}.pdf"`);
+      res.send(pdf);
+    } catch (error) {
+      console.error('PDF generation error:', error);
+      res.status(500).json({ message: 'Failed to generate PDF' });
+    }
+  });
+
   // NOWPayments Webhook endpoint
   app.post('/api/payment-webhook', async (req, res) => {
     try {
