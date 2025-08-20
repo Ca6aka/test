@@ -121,16 +121,13 @@ export default function PlayerProfilePage() {
         <Card className="bg-slate-800/50 border-slate-700 mb-8">
           <CardContent className="p-4 sm:p-8">
             <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
-              <div className="flex-shrink-0 relative">
+              <div className="flex-shrink-0">
                 <PlayerAvatar 
                   user={player} 
                   size="xl" 
                   showLevel={true}
                   showExperienceRing={false}
                 />
-                <div className="absolute -left-3 top-1/2 transform -translate-y-1/2">
-                  <SubscriptionStatusIcon user={player} showInProfile={true} size="lg" />
-                </div>
               </div>
               
               <div className="flex-1">

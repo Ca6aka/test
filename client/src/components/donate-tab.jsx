@@ -10,6 +10,7 @@ import { toast } from '@/hooks/use-toast';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
 import VipPremiumTest from './vip-premium-test';
+import PurchaseDialog from './purchase-dialog';
 
 export default function DonateTab() {
   const { t } = useLanguage();
@@ -17,31 +18,7 @@ export default function DonateTab() {
   const [selectedPayment, setSelectedPayment] = useState('fondy');
   const queryClient = useQueryClient();
 
-  const purchaseMutation = useMutation({
-    mutationFn: ({ type, gateway }) => apiRequest('/api/purchase', 'POST', { type, gateway }),
-    onSuccess: (data) => {
-      toast({
-        title: 'Платеж обрабатывается',
-        description: data.message || 'Ваш статус будет активирован через несколько секунд',
-        duration: 5000,
-      });
-      // Reload user data after a short delay
-      setTimeout(() => {
-        queryClient.invalidateQueries(['/api/auth/me']);
-      }, 3000);
-    },
-    onError: (error) => {
-      toast({
-        title: 'Ошибка платежа',
-        description: error.message || 'Произошла ошибка при обработке платежа',
-        variant: 'destructive',
-      });
-    }
-  });
 
-  const handlePurchase = (type) => {
-    purchaseMutation.mutate({ type, gateway: selectedPayment });
-  };
 
   const user = gameState.user;
   const hasVip = user?.vipStatus === 'active' && user?.vipExpiresAt && new Date(user.vipExpiresAt) > new Date();
@@ -141,15 +118,19 @@ export default function DonateTab() {
               <span>{t('vipDailyBonus')}</span>
             </div>
           </div>
-          <Button 
-            onClick={() => handlePurchase('vip')}
-            disabled={purchaseMutation.isPending || (hasPremium && !hasVip)}
-            className="w-full bg-blue-600 hover:bg-blue-700"
+          <PurchaseDialog 
+            type="vip" 
+            price="2.50"
+            disabled={hasPremium || hasVip}
           >
-            {purchaseMutation.isPending ? t('processing') : 
-             hasPremium ? t('premiumBlocksVip') :
-             hasVip ? t('extendVip') : t('purchaseVip')}
-          </Button>
+            <Button 
+              disabled={hasPremium || hasVip}
+              className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {hasPremium ? 'Premium блокирует VIP' :
+               hasVip ? 'У вас уже есть VIP' : 'Купить VIP - $2.50/месяц'}
+            </Button>
+          </PurchaseDialog>
         </CardContent>
       </Card>
 
@@ -215,15 +196,19 @@ export default function DonateTab() {
               <span>{t('premiumDailyBonus')}</span>
             </div>
           </div>
-          <Button 
-            onClick={() => handlePurchase('premium')}
-            disabled={purchaseMutation.isPending || (hasVip && !hasPremium)}
-            className="w-full bg-purple-600 hover:bg-purple-700"
+          <PurchaseDialog 
+            type="premium" 
+            price="10"
+            disabled={hasVip || hasPremium}
           >
-            {purchaseMutation.isPending ? t('processing') : 
-             hasPremium ? t('alreadyHavePremium') :
-             hasVip ? t('vipBlocksPremium') : t('purchasePremium')}
-          </Button>
+            <Button 
+              disabled={hasVip || hasPremium}
+              className="w-full bg-purple-600 hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {hasPremium ? 'У вас уже есть Premium' :
+               hasVip ? 'VIP блокирует Premium' : 'Купить Premium - $10 навсегда'}
+            </Button>
+          </PurchaseDialog>
         </CardContent>
       </Card>
     </div>
