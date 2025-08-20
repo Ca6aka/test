@@ -1556,9 +1556,8 @@ export async function registerRoutes(app) {
 
       // Price configuration  
       const prices = { 
-        vip: 20,        // VIP на 8 месяцев ($2.50/месяц)
-        premium: 25,    // Premium навсегда
-        vip_3months: 20 // VIP на 8 месяцев за $20
+        vip: 2.5,       // VIP месяц за $2.50
+        premium: 10,    // Premium навсегда за $10
       };
       const amount = prices[type];
       
@@ -1692,15 +1691,14 @@ export async function registerRoutes(app) {
 
     const { type } = req.body;
     
-    if (!['vip', 'premium', 'vip_3months'].includes(type)) {
+    if (!['vip', 'premium'].includes(type)) {
       return res.status(400).json({ message: 'Invalid subscription type' });
     }
 
-    // Пакетные цены для обхода высоких минимумов NOWPayments
+    // Возврат к оригинальным ценам с TRX (минимум $0.15)
     const prices = { 
-      vip: 20,        // VIP на 8 месяцев ($2.50/месяц)  
-      premium: 25,    // Premium навсегда
-      vip_3months: 20 // VIP на 8 месяцев за $20
+      vip: 2.5,       // VIP месяц за $2.50  
+      premium: 10,    // Premium навсегда за $10
     };
     const amount = prices[type];
 
@@ -1723,9 +1721,10 @@ export async function registerRoutes(app) {
       const nowPaymentsPayload = {
         price_amount: amount,
         price_currency: 'usd',
-        pay_currency: 'bch', // Bitcoin Cash (lower minimum amounts)
+        pay_currency: 'trx', // TRON (TRX) для низких комиссий
+        is_fiat: true, // Оплата картой (fiat-to-crypto)
         order_id: orderId,
-        order_description: `${type === 'vip' ? 'VIP (8 months)' : 'Premium'} subscription for ${user.nickname}`,
+        order_description: `${type === 'vip' ? 'VIP (1 month)' : 'Premium'} subscription for ${user.nickname}`,
         success_url: `${req.protocol}://${req.get('host')}/payment-success?orderId=${orderId}`,
         cancel_url: `${req.protocol}://${req.get('host')}/donate`
       };
@@ -1860,7 +1859,7 @@ export async function registerRoutes(app) {
             
             <div class="info-row">
               <span class="label">Тип подписки:</span>
-              <span class="value">${payment.type === 'vip' ? '⭐ VIP статус (8 месяцев)' : '👑 PREMIUM статус (навсегда)'}</span>
+              <span class="value">${payment.type === 'vip' ? '⭐ VIP статус (1 месяц)' : '👑 PREMIUM статус (навсегда)'}</span>
             </div>
             
             <div class="info-row">
@@ -1941,7 +1940,7 @@ export async function registerRoutes(app) {
           if (user) {
             if (payment.type === 'vip') {
               const expiresAt = new Date();
-              expiresAt.setMonth(expiresAt.getMonth() + 8); // 8 месяцев за $20
+              expiresAt.setMonth(expiresAt.getMonth() + 1); // 1 месяц за $2.50
               await storage.updateUser(user.id, {
                 vipStatus: 'active',
                 vipExpiresAt: expiresAt.toISOString()
