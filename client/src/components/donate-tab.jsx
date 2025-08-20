@@ -9,6 +9,7 @@ import { useGame } from '@/contexts/game-context';
 import { toast } from '@/hooks/use-toast';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
+import VipPremiumTest from './vip-premium-test';
 
 export default function DonateTab() {
   const { t } = useLanguage();
@@ -17,22 +18,22 @@ export default function DonateTab() {
   const queryClient = useQueryClient();
 
   const purchaseMutation = useMutation({
-    mutationFn: ({ type, gateway }) => apiRequest('/api/donation/purchase', 'POST', { type, gateway }),
+    mutationFn: ({ type, gateway }) => apiRequest('/api/purchase', 'POST', { type, gateway }),
     onSuccess: (data) => {
-      if (data.redirectUrl) {
-        window.open(data.redirectUrl, '_blank');
-      }
       toast({
-        title: t('paymentInitiated'),
-        description: t('redirectedToPayment'),
+        title: 'Платеж обрабатывается',
+        description: data.message || 'Ваш статус будет активирован через несколько секунд',
         duration: 5000,
       });
-      queryClient.invalidateQueries(['/api/auth/me']);
+      // Reload user data after a short delay
+      setTimeout(() => {
+        queryClient.invalidateQueries(['/api/auth/me']);
+      }, 3000);
     },
     onError: (error) => {
       toast({
-        title: t('error'),
-        description: error.message,
+        title: 'Ошибка платежа',
+        description: error.message || 'Произошла ошибка при обработке платежа',
         variant: 'destructive',
       });
     }
@@ -69,6 +70,9 @@ export default function DonateTab() {
           </div>
         )}
       </div>
+
+      {/* Test Component */}
+      <VipPremiumTest user={user} />
 
       {/* Payment Method Selection */}
       <Card>

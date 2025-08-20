@@ -2,11 +2,11 @@
   "id": "65a91d9d-7213-4a2e-abd6-c9017bc7ae80",
   "nickname": "Ca6aka",
   "password": "$2b$10$G1sTjzxqs2js60d52sYQXOCbGLW1o.6TCUNzzuimD5iwHk21qh6vq",
-  "balance": 1123322,
+  "balance": 1106059,
   "level": 16,
   "experience": 3254,
   "totalEarnings": 1677879,
-  "totalSpent": 983956,
+  "totalSpent": 1001219,
   "avatar": {
     "gradient": "from-green-400 via-teal-500 to-cyan-600",
     "pattern": "multi-color",
@@ -20,7 +20,7 @@
   "muted": false,
   "muteExpires": null,
   "isOnline": true,
-  "lastIncomeUpdate": 1755712927797,
+  "lastIncomeUpdate": 1755718107041,
   "jobCooldowns": {
     "maintenance": 1755713114045,
     "optimization": 1755713268846,
@@ -28,6 +28,16 @@
   },
   "currentLearning": null,
   "activities": [
+    {
+      "id": "bb3d571b-7dc1-4f40-aae5-ebd15b9d53dd",
+      "description": "Rental cost: -$286 for 20 servers",
+      "timestamp": "8/20/2025, 7:28:27 PM"
+    },
+    {
+      "id": "537f8a5a-991a-4fcb-8d74-12b19462e1a0",
+      "description": "Rental cost: -$16977 for 20 servers",
+      "timestamp": "8/20/2025, 7:27:01 PM"
+    },
     {
       "id": "21aba0e5-688c-470f-a83b-833bb374d717",
       "description": "Completed Security Audit (+$500, +25 XP)",
@@ -42,16 +52,6 @@
       "id": "f5dddc9e-1df8-4d28-a158-8aa62c7331cb",
       "description": "Completed Server Maintenance (+$150, +10 XP)",
       "timestamp": "8/20/2025, 6:02:14 PM"
-    },
-    {
-      "id": "4e265604-22e1-4fdc-9b27-e16cdc6e63fa",
-      "description": "Achievement unlocked: Server Empire (+$60,000)",
-      "timestamp": "8/20/2025, 6:02:07 PM"
-    },
-    {
-      "id": "0f2a17f9-a113-4838-86cf-58315685c02b",
-      "description": "Rental cost: -$13729 for 20 servers",
-      "timestamp": "8/20/2025, 6:02:07 PM"
     }
   ],
   "achievements": [
@@ -221,15 +221,15 @@
   "lastQuestReset": 1755714820971,
   "registrationIP": "192.168.0.136",
   "registrationTime": 1755531070984,
-  "lastSeen": 1755717954649,
+  "lastSeen": 1755718402151,
   "lastMessageTime": 1755717284579,
   "chatLanguage": "en",
   "chatAchievements": [
     "first_message"
   ],
   "hasNewChatMessages": true,
-  "realActivity": 1755717954345,
-  "lastActivity": 1755717954345,
+  "realActivity": 1755718401199,
+  "lastActivity": 1755718401199,
   "dailyBonusStreak": 1,
   "lastDailyBonus": "2025-08-20T18:34:16.720Z",
   "vipExpires": "2025-11-19T19:06:00.000Z"

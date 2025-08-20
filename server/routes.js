@@ -1534,6 +1534,157 @@ export async function registerRoutes(app) {
     }
   });
 
+  // VIP/Premium purchase route with Ukrainian payment gateways
+  app.post('/api/purchase', requireAuth, async (req, res) => {
+    try {
+      const { type, gateway } = req.body;
+      const user = await storage.getUser(req.session.userId);
+
+      // Check subscription conflicts
+      if (type === 'vip' && user.premiumStatus === 'active') {
+        return res.status(400).json({ 
+          message: 'У вас уже есть Premium статус. Покупка VIP заблокирована.' 
+        });
+      }
+      
+      if (type === 'premium' && user.premiumStatus === 'active') {
+        return res.status(400).json({ 
+          message: 'У вас уже есть Premium статус. Повторная покупка невозможна.' 
+        });
+      }
+
+      if (type === 'premium' && user.vipStatus === 'active') {
+        return res.status(400).json({ 
+          message: 'У вас активен VIP статус. Покупка Premium заблокирована.' 
+        });
+      }
+
+      // Price configuration
+      const prices = { vip: 2.5, premium: 10 };
+      const amount = prices[type];
+      
+      if (!amount) {
+        return res.status(400).json({ message: 'Неверный тип подписки' });
+      }
+
+      // Demo payment simulation for Ukrainian gateways
+      const orderId = `${type}_${user.id}_${Date.now()}`;
+      
+      if (gateway === 'fondy') {
+        // Simulate successful payment for demo
+        setTimeout(async () => {
+          try {
+            if (type === 'vip') {
+              const expiresAt = new Date();
+              expiresAt.setMonth(expiresAt.getMonth() + 1);
+              
+              await storage.updateUser(user.id, {
+                vipStatus: 'active',
+                vipExpiresAt: expiresAt.toISOString()
+              });
+            } else if (type === 'premium') {
+              await storage.updateUser(user.id, {
+                premiumStatus: 'active',
+                premiumActivatedAt: new Date().toISOString()
+              });
+            }
+            
+            console.log(`Demo payment successful: ${type} for ${user.nickname}`);
+          } catch (error) {
+            console.error('Demo payment processing error:', error);
+          }
+        }, 2000);
+
+        return res.json({
+          success: true,
+          message: 'Демо-платеж через Fondy обрабатывается...',
+          orderId
+        });
+      } 
+      
+      if (gateway === 'wayforpay') {
+        // Simulate successful payment for demo
+        setTimeout(async () => {
+          try {
+            if (type === 'vip') {
+              const expiresAt = new Date();
+              expiresAt.setMonth(expiresAt.getMonth() + 1);
+              
+              await storage.updateUser(user.id, {
+                vipStatus: 'active',
+                vipExpiresAt: expiresAt.toISOString()
+              });
+            } else if (type === 'premium') {
+              await storage.updateUser(user.id, {
+                premiumStatus: 'active',
+                premiumActivatedAt: new Date().toISOString()
+              });
+            }
+            
+            console.log(`Demo payment successful: ${type} for ${user.nickname}`);
+          } catch (error) {
+            console.error('Demo payment processing error:', error);
+          }
+        }, 2000);
+
+        return res.json({
+          success: true,
+          message: 'Демо-платеж через WayForPay обрабатывается...',
+          orderId
+        });
+      }
+
+      res.status(400).json({ message: 'Неподдерживаемый платежный шлюз' });
+    } catch (error) {
+      console.error('Purchase error:', error);
+      res.status(500).json({ message: 'Ошибка при обработке платежа' });
+    }
+  });
+
+  // Admin subscription management
+  app.post('/api/admin/subscription', requireAuth, async (req, res) => {
+    try {
+      const { action, targetNickname, days } = req.body;
+      const adminUser = await storage.getUser(req.session.userId);
+
+      if (adminUser.nickname !== 'Ca6aka') {
+        return res.status(403).json({ message: 'Доступ запрещен' });
+      }
+
+      const targetUser = await storage.getUserByNickname(targetNickname);
+      if (!targetUser) {
+        return res.status(404).json({ message: 'Пользователь не найден' });
+      }
+
+      if (action === 'giveVip') {
+        const expiresAt = new Date();
+        expiresAt.setDate(expiresAt.getDate() + days);
+        
+        await storage.updateUser(targetUser.id, {
+          vipStatus: 'active',
+          vipExpiresAt: expiresAt.toISOString()
+        });
+      } else if (action === 'givePremium') {
+        await storage.updateUser(targetUser.id, {
+          premiumStatus: 'active',
+          premiumActivatedAt: new Date().toISOString()
+        });
+      } else if (action === 'removeSubscription') {
+        await storage.updateUser(targetUser.id, {
+          vipStatus: 'inactive',
+          vipExpiresAt: null,
+          premiumStatus: 'inactive',
+          premiumActivatedAt: null
+        });
+      }
+
+      res.json({ message: 'Статус успешно обновлен' });
+    } catch (error) {
+      console.error('Admin subscription error:', error);
+      res.status(500).json({ message: 'Ошибка при управлении подпиской' });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
