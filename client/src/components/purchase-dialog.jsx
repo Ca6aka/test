@@ -10,28 +10,48 @@ import { apiRequest } from '@/lib/queryClient';
 
 export default function PurchaseDialog({ type, price, children, disabled }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedGateway, setSelectedGateway] = useState('fondy');
+  const [selectedGateway, setSelectedGateway] = useState('crypto');
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
   const purchaseMutation = useMutation({
-    mutationFn: ({ type, gateway }) => apiRequest('/api/purchase', 'POST', { type, gateway }),
+    mutationFn: ({ type, gateway }) => apiRequest('/api/crypto-purchase', 'POST', { type, gateway }),
     onSuccess: (data) => {
-      toast({
-        title: 'Платеж инициирован',
-        description: data.message || 'Ваш статус будет активирован через несколько секунд',
-        duration: 5000,
-      });
+      if (data.paymentUrl) {
+        window.open(data.paymentUrl, '_blank');
+        toast({
+          title: 'Переход к оплате',
+          description: 'Откроется новая вкладка для завершения платежа',
+          duration: 5000,
+        });
+      } else if (data.cryptoAddresses) {
+        // Show crypto addresses in a more user-friendly way
+        const addressList = Object.entries(data.amounts)
+          .map(([coin, amount]) => `${coin.toUpperCase()}: ${amount}`)
+          .join(' | ');
+        
+        toast({
+          title: 'Криптоадреса для оплаты',
+          description: `Переведите: ${addressList}. Адреса скопированы в буфер обмена.`,
+          duration: 15000,
+        });
+        
+        // Copy addresses to clipboard
+        const addressText = Object.entries(data.cryptoAddresses)
+          .map(([coin, addr]) => `${coin.toUpperCase()}: ${addr}`)
+          .join('\n');
+        navigator.clipboard?.writeText(addressText);
+      }
       setIsOpen(false);
-      // Reload user data after a short delay
+      // Reload user data after payment completion
       setTimeout(() => {
         queryClient.invalidateQueries(['/api/auth/me']);
-      }, 3000);
+      }, 5000);
     },
     onError: (error) => {
       toast({
         title: 'Ошибка платежа',
-        description: error.message || 'Произошла ошибка при обработке платежа',
+        description: error.message || 'Произошла ошибка при создании платежа',
         variant: 'destructive',
       });
     }
@@ -92,16 +112,18 @@ export default function PurchaseDialog({ type, price, children, disabled }) {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="fondy">
+                <SelectItem value="crypto">
                   <div className="flex items-center space-x-2">
-                    <CreditCard className="w-4 h-4" />
-                    <span>Fondy (карты Visa/MasterCard)</span>
+                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 3c-3.866 0-7 3.134-7 7s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7zm0 2c2.761 0 5 2.239 5 5s-2.239 5-5 5-5-2.239-5-5 2.239-5 5-5z"/>
+                    </svg>
+                    <span>Криптовалюты (BTC/ETH/USDT)</span>
                   </div>
                 </SelectItem>
-                <SelectItem value="wayforpay">
+                <SelectItem value="card-to-crypto">
                   <div className="flex items-center space-x-2">
                     <CreditCard className="w-4 h-4" />
-                    <span>WayForPay (карты, PrivatBank)</span>
+                    <span>Карта → Криптовалюта</span>
                   </div>
                 </SelectItem>
               </SelectContent>

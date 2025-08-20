@@ -65,7 +65,7 @@ export function StatusBar() {
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
-                  <div className="absolute -left-3 top-1/2 transform -translate-y-1/2 z-10">
+                  <div className="absolute -left-5 sm:-left-6 top-1/2 transform -translate-y-1/2 z-10">
                     <SubscriptionStatusIcon user={gameState.user} showInProfile={true} size="md" />
                   </div>
                 </div>
@@ -200,12 +200,15 @@ export function StatusBar() {
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <div>
+                  <div className="relative">
                     <PlayerAvatar 
                       user={gameState.user} 
                       size="md" 
                       onClick={() => window.dispatchEvent(new CustomEvent('openProfile'))}
                     />
+                    <div className="absolute -left-4 top-1/2 transform -translate-y-1/2 z-10">
+                      <SubscriptionStatusIcon user={gameState.user} showInProfile={true} size="sm" />
+                    </div>
                   </div>
                 </TooltipTrigger>
                 <TooltipContent>

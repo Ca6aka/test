@@ -1685,6 +1685,103 @@ export async function registerRoutes(app) {
     }
   });
 
+  // Crypto payment endpoint with card-to-crypto conversion
+  app.post('/api/crypto-purchase', async (req, res) => {
+    if (!req.session?.userId) {
+      return res.status(401).json({ message: 'Not authenticated' });
+    }
+
+    const { type, gateway } = req.body;
+    
+    if (!['vip', 'premium'].includes(type)) {
+      return res.status(400).json({ message: 'Invalid subscription type' });
+    }
+
+    const prices = {
+      vip: { usd: 2.5, btc: 0.00004, eth: 0.0015, usdt: 2.5 },
+      premium: { usd: 10, btc: 0.00016, eth: 0.006, usdt: 10 }
+    };
+
+    try {
+      if (gateway === 'crypto') {
+        // Direct crypto payment - generate addresses
+        const cryptoAddresses = {
+          btc: '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa', // Example addresses
+          eth: '0x0000000000000000000000000000000000000000',
+          usdt: '0x0000000000000000000000000000000000000001'
+        };
+
+        res.json({
+          message: 'Crypto payment initiated',
+          cryptoAddresses,
+          amounts: {
+            btc: prices[type].btc,
+            eth: prices[type].eth,
+            usdt: prices[type].usdt
+          }
+        });
+      } else if (gateway === 'card-to-crypto') {
+        // Card-to-crypto conversion using services like MoonPay, Simplex
+        const paymentUrl = `https://buy.moonpay.com/?apiKey=demo&currencyCode=btc&walletAddress=1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa&baseCurrencyAmount=${prices[type].usd}&baseCurrencyCode=usd&redirectURL=${encodeURIComponent(process.env.NODE_ENV === 'production' ? 'https://your-app.replit.app/payment-success' : 'http://localhost:5000/payment-success')}`;
+        
+        res.json({
+          message: 'Card-to-crypto payment initiated',
+          paymentUrl,
+          amount: prices[type].usd,
+          currency: 'USD'
+        });
+      } else {
+        res.status(400).json({ message: 'Invalid payment gateway' });
+      }
+    } catch (error) {
+      console.error('Crypto purchase error:', error);
+      res.status(500).json({ message: 'Failed to initiate payment' });
+    }
+  });
+
+  // Payment success webhook/callback
+  app.post('/api/payment-webhook', async (req, res) => {
+    // This would handle webhooks from crypto payment processors
+    // to confirm payment and activate VIP/Premium status
+    try {
+      const { userId, transactionId, type, status } = req.body;
+      
+      if (status === 'completed') {
+        const user = await storage.getUser(userId);
+        if (user) {
+          if (type === 'vip') {
+            const expiresAt = new Date();
+            expiresAt.setMonth(expiresAt.getMonth() + 1);
+            user.vipStatus = 'active';
+            user.vipExpiresAt = expiresAt.toISOString();
+          } else if (type === 'premium') {
+            user.premiumStatus = 'active';
+          }
+          await storage.updateUser(user.id, user);
+        }
+      }
+      
+      res.json({ success: true });
+    } catch (error) {
+      console.error('Payment webhook error:', error);
+      res.status(500).json({ message: 'Webhook processing failed' });
+    }
+  });
+
+  // Payment success page
+  app.get('/payment-success', (req, res) => {
+    res.send(`
+      <html>
+        <head><title>Payment Successful</title></head>
+        <body style="font-family: Arial, sans-serif; text-align: center; padding: 50px;">
+          <h1>✅ Payment Successful!</h1>
+          <p>Your VIP/Premium status will be activated within a few minutes.</p>
+          <p><a href="/">Return to Game</a></p>
+        </body>
+      </html>
+    `);
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

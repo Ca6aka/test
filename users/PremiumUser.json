@@ -17,7 +17,11 @@
   "lastDailyBonus": "2025-08-19T00:00:00.000Z",
   "tutorialCompleted": true,
   "lastActivity": "2025-08-20T19:18:00.000Z",
-  "achievements": ["first_dollar", "server_owner", "rich_player"],
+  "achievements": [
+    "first_dollar",
+    "server_owner",
+    "rich_player"
+  ],
   "activitiesCompleted": {
     "maintenance": 45,
     "monitoring": 35,
@@ -32,5 +36,6 @@
       "completed": true,
       "claimed": true
     }
-  }
+  },
+  "hasNewChatMessages": true
 }
