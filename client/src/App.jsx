@@ -52,6 +52,10 @@ function AppRouter() {
       <Route path="/register">
         {gameState.user ? <Redirect to="/game" /> : <LoginPage />}
       </Route>
+
+      <Route path="/reg">
+        {gameState.user ? <Redirect to="/game" /> : <LoginPage />}
+      </Route>
       
       <Route path="/game">
         {gameState.user ? <DashboardPage /> : <Redirect to="/login" />}
