@@ -235,6 +235,41 @@ class StorageAdapter {
     return false;
   }
   
+  // Background income system methods - these are critical for the game functionality
+  async updateAllActiveUsersIncome() {
+    if (this.storage.updateAllActiveUsersIncome) {
+      return this.storage.updateAllActiveUsersIncome();
+    }
+    // Fallback: silent return for missing functionality
+    return { message: 'Income update not available in current storage' };
+  }
+  
+  async updateUserActivity(userId) {
+    if (this.storage.updateUserActivity) {
+      return this.storage.updateUserActivity(userId);
+    }
+    // Silent fallback for optional feature
+  }
+  
+  async checkExpiredMutes() {
+    if (this.storage.checkExpiredMutes) {
+      return this.storage.checkExpiredMutes();
+    }
+    // Silent fallback for optional feature
+  }
+  
+  async updateIncome(userId) {
+    return this.storage.updateIncome(userId);
+  }
+  
+  async getAllUsers() {
+    return this.storage.getAllUsers();
+  }
+  
+  async getServers() {
+    return this.storage.getServers();
+  }
+
   // Compatibility method for existing code
   getStorageType() {
     return this.mysqlAvailable && this.useMySQL ? 'mysql' : 'file';
