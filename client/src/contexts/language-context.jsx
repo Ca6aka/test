@@ -1760,8 +1760,8 @@ const translations = {
     serverNowOnline: 'Сервер теперь онлайн и генерирует доход.',
     yourServer: 'Сервер',
     timeLeft: 'Осталось времени',
-    startGame: 'Начать игру',
-    close: 'Закрыть',
+    startGameMini: 'Начать игру',
+    closeMini: 'Закрыть',
   },
   
   ua: {
