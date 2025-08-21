@@ -132,7 +132,7 @@ export default function PurchaseDialog({ type, price, children, disabled }) {
           <div className="text-center p-4 bg-slate-800 rounded-lg">
             <div className="text-2xl font-bold text-green-400">${price}</div>
             <div className="text-sm text-slate-400">
-              {type === 'vip' ? t('month') : t('forever')}
+              {type === 'vip' ? `за 8 ${t('months')}` : t('forever')}
             </div>
           </div>
 
