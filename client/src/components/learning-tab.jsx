@@ -240,7 +240,7 @@ export function LearningTab() {
                 variant={isCompleted ? "secondary" : isLearning ? "secondary" : isDisabled ? "ghost" : "default"}
               >
                 {!hasLevelRequirement ? t('requiresLevelX').replace('{level}', course.requiredLevel) :
-                 isServerLimit25 ? t('unavailable') :
+                 isServerLimitReached ? t('unavailable') :
                  isCompleted && course.reward?.type !== 'serverSlots' ? t('completed') :
                  isLearning ? t('inProgress') :
                  hasLearning ? t('completeCurrentFirst') :

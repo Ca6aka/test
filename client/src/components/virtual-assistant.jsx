@@ -355,7 +355,7 @@ function VirtualAssistant({ hideOnReports = false }) {
 
   if (!isVisible) {
     return (
-      <div className={`fixed bottom-4 right-4 z-40 ${isMobile ? 'bottom-20' : ''}`}>
+      <div className={`fixed right-4 z-40 ${isMobile ? 'bottom-20' : 'bottom-4'}`}>
         <div className="relative">
           <Button
             onClick={handleChatOpen}
@@ -376,7 +376,7 @@ function VirtualAssistant({ hideOnReports = false }) {
   }  
 
   return (
-    <div className={`fixed bottom-4 right-4 z-40 ${isMobile ? 'w-[calc(100vw-2rem)] bottom-20 right-4' : 'w-80'}`}>
+    <div className={`fixed right-4 z-40 ${isMobile ? 'w-[calc(100vw-2rem)] bottom-20' : 'w-80 bottom-4'}`}>
       <Card className="shadow-xl border-blue-200 dark:border-blue-800">
         <CardHeader className="pb-2">
           <div className="flex items-center justify-between">
