@@ -1,7 +1,7 @@
 import { useTheme } from '@/components/theme-provider';
 import { useLanguage } from '@/contexts/language-context';
 import { Button } from '@/components/ui/button';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { SunMoon } from 'lucide-react';
 
 export function ThemeToggle({ variant = 'desktop' }) {

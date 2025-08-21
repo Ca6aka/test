@@ -19,7 +19,7 @@
   "banned": false,
   "muted": false,
   "muteExpires": null,
-  "isOnline": true,
+  "isOnline": false,
   "lastIncomeUpdate": 1755735062787,
   "jobCooldowns": {
     "maintenance": 1755713114045,
@@ -221,15 +221,15 @@
   "lastQuestReset": 1755714820971,
   "registrationIP": "192.168.0.136",
   "registrationTime": 1755531070984,
-  "lastSeen": 1755744160438,
+  "lastSeen": 1755744165264,
   "lastMessageTime": 1755719885890,
   "chatLanguage": "en",
   "chatAchievements": [
     "first_message"
   ],
   "hasNewChatMessages": true,
-  "realActivity": 1755744160281,
-  "lastActivity": 1755744160281,
+  "realActivity": 1755744163456,
+  "lastActivity": 1755744163456,
   "dailyBonusStreak": 35,
   "lastDailyBonus": "2025-08-20T22:58:05.186Z",
   "dailyLoginBonus": "Thu Aug 21 2025",

@@ -120,7 +120,7 @@ const newTranslations = {
   grantPremium: { en: 'Grant Premium', ru: 'Выдать Premium', ua: 'Видати Premium', de: 'Premium gewähren' },
   revokePremium: { en: 'Revoke Premium', ru: 'Отобрать Premium', ua: 'Відібрати Premium', de: 'Premium entziehen' },
   subscriptionDays: { en: 'Days (for VIP)', ru: 'Дни (для VIP)', ua: 'Дні (для VIP)', de: 'Tage (für VIP)' },
-  claiming: { en: 'Claiming...', ru: 'Получаем...' },
+
   alreadyClaimed: { en: 'Already claimed', ru: 'Уже получен' },
   comeBackTomorrow: { en: 'Come back tomorrow for your next bonus', ru: 'Вернитесь завтра за следующим бонусом' },
   nextBonus: { en: 'Tomorrow', ru: 'Завтра' },
