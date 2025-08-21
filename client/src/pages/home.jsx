@@ -23,7 +23,8 @@ import {
   Clock,
   Smartphone,
   Trophy,
-  Crown
+  Crown,
+  Activity
 } from 'lucide-react';
 import { useLanguage } from '@/contexts/language-context';
 import { ThemeToggle } from '@/components/theme-toggle';
@@ -51,9 +52,18 @@ export default function HomePage() {
   const features = [
     {
       icon: Server,
-      title: 'Управление Серверами',
-      description: 'Покупайте, настраивайте и оптимизируйте виртуальные серверы для максимальной прибыли',
-      details: 'Более 15 типов серверов с уникальными характеристиками'
+      title: language === 'ru' ? 'Управление Серверами' : 
+             language === 'en' ? 'Server Management' :
+             language === 'uk' ? 'Керування Серверами' :
+             'Server-Verwaltung',
+      description: language === 'ru' ? 'Покупайте, настраивайте и оптимизируйте виртуальные серверы для максимальной прибыли' : 
+                   language === 'en' ? 'Buy, configure and optimize virtual servers for maximum profit' :
+                   language === 'uk' ? 'Купуйте, налаштовуйте та оптимізуйте віртуальні сервери для максимального прибутку' :
+                   'Kaufen, konfigurieren und optimieren Sie virtuelle Server für maximalen Profit',
+      details: language === 'ru' ? 'Более 15 типов серверов с уникальными характеристиками' : 
+               language === 'en' ? 'Over 15 server types with unique characteristics' :
+               language === 'uk' ? 'Понад 15 типів серверів з унікальними характеристиками' :
+               'Über 15 Servertypen mit einzigartigen Eigenschaften'
     },
     {
       icon: TrendingUp,
@@ -88,30 +98,67 @@ export default function HomePage() {
   ];
 
   const stats = [
-    { label: 'Всего игроков', value: statsData?.totalPlayers || '0', icon: Users },
-    { label: 'Онлайн', value: statsData?.onlinePlayers || '0', icon: Users },
-    { label: 'Серверов', value: statsData?.totalServers || '0', icon: Server },
-    { label: 'Общий баланс', value: statsData?.totalBalance ? formatCurrency(statsData.totalBalance) : '$0', icon: DollarSign }
+    { 
+      label: language === 'ru' ? 'Всего игроков' : 
+              language === 'en' ? 'Total Players' :
+              language === 'uk' ? 'Всього гравців' :
+              'Spieler gesamt', 
+      value: statsData?.totalPlayers || '0', 
+      icon: Users 
+    },
+    { 
+      label: language === 'ru' ? 'Онлайн' : 
+              language === 'en' ? 'Online' :
+              language === 'uk' ? 'Онлайн' :
+              'Online', 
+      value: statsData?.onlinePlayers || '0', 
+      icon: Activity 
+    },
+    { 
+      label: language === 'ru' ? 'Серверов' : 
+              language === 'en' ? 'Servers' :
+              language === 'uk' ? 'Серверів' :
+              'Server', 
+      value: statsData?.totalServers || '0', 
+      icon: Server 
+    },
+    { 
+      label: language === 'ru' ? 'Общий баланс' : 
+              language === 'en' ? 'Total Balance' :
+              language === 'uk' ? 'Загальний баланс' :
+              'Gesamtsaldo', 
+      value: statsData?.totalBalance ? formatCurrency(statsData.totalBalance) : '$0', 
+      icon: DollarSign 
+    }
   ];
 
   const testimonials = [
     {
-      name: 'Александр К.',
-      role: 'Premium тестер',
-      content: 'Отличная игра! Реально затягивает управление серверами. VIP статус стоит своих денег.',
+      name: 'TESTER #1',
+      role: 'Beta Tester',
+      content: language === 'ru' ? 'Помогал тестировать игровую механику. Отличный баланс и интересные функции!' : 
+               language === 'en' ? 'Helped test game mechanics. Great balance and interesting features!' :
+               language === 'uk' ? 'Допомагав тестувати ігрову механіку. Відмінний баланс та цікаві функції!' :
+               'Geholfen, die Spielmechanik zu testen. Großartige Balance und interessante Features!',
       rating: 5
     },
     {
-      name: 'Мария С.',
-      role: 'IT-тестер',
-      content: 'Как IT-специалист могу сказать - игра очень реалистично передаёт процессы управления серверами.',
+      name: 'TESTER #2',
+      role: 'UI/UX Tester',
+      content: language === 'ru' ? 'Тестировал интерфейс и удобство использования. Все работает интуитивно!' : 
+               language === 'en' ? 'Tested interface and usability. Everything works intuitively!' :
+               language === 'uk' ? 'Тестував інтерфейс та зручність використання. Все працює інтуїтивно!' :
+               'Testete Interface und Benutzerfreundlichkeit. Alles funktioniert intuitiv!',
       rating: 5
     },
     {
-      name: 'Дмитрий В.',
-      role: 'VIP тестер',
-      content: 'Играю уже полгода. Нравится постоянное развитие игры и новые функции.',
-      rating: 4
+      name: 'TESTER #3',
+      role: 'Payment Tester',
+      content: language === 'ru' ? 'Проверял криптоплатежи и VIP функции. Система работает стабильно!' : 
+               language === 'en' ? 'Tested crypto payments and VIP features. System works stably!' :
+               language === 'uk' ? 'Перевіряв криптоплатежі та VIP функції. Система працює стабільно!' :
+               'Testete Krypto-Zahlungen und VIP-Funktionen. System funktioniert stabil!',
+      rating: 5
     }
   ];
 
@@ -171,12 +218,18 @@ export default function HomePage() {
               <div className="flex gap-2">
                 <Link to="/login">
                   <Button variant="outline" size="sm">
-                    Вход
+                    {language === 'ru' ? 'Вход' : 
+                     language === 'en' ? 'Login' :
+                     language === 'uk' ? 'Вхід' :
+                     'Anmelden'}
                   </Button>
                 </Link>
                 <Link to="/register">
                   <Button variant="default" size="sm">
-                    Регистрация
+                    {language === 'ru' ? 'Регистрация' : 
+                     language === 'en' ? 'Register' :
+                     language === 'uk' ? 'Реєстрація' :
+                     'Registrieren'}
                   </Button>
                 </Link>
               </div>
@@ -202,21 +255,34 @@ export default function HomePage() {
             </h1>
             
             <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-              Создай свою IT-империю! Управляй серверами, зарабатывай криптовалюту, 
-              соревнуйся с игроками со всего мира в самом реалистичном симуляторе серверов.
+              {language === 'ru' ? 'Создай свою IT-империю! Управляй серверами, зарабатывай криптовалюту, соревнуйся с игроками со всего мира в самом реалистичном симуляторе серверов.' : 
+               language === 'en' ? 'Build your IT empire! Manage servers, earn cryptocurrency, compete with players worldwide in the most realistic server simulator.' :
+               language === 'uk' ? 'Створи свою IT-імперію! Керуй серверами, заробляй криптовалюту, змагайся з гравцями з усього світу в найреалістичнішому симуляторі серверів.' :
+               'Baue dein IT-Imperium auf! Verwalte Server, verdiene Kryptowährung, konkurriere mit Spielern weltweit im realistischsten Server-Simulator.'}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/register">
                 <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8">
                   <Play className="w-5 h-5 mr-2" />
-                  Начать Играть
+                  {language === 'ru' ? 'Начать Играть' : 
+                   language === 'en' ? 'Start Playing' :
+                   language === 'uk' ? 'Почати Грати' :
+                   'Spielen Starten'}
                 </Button>
               </Link>
               
-              <Button size="lg" variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-800">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-slate-600 text-slate-300 hover:bg-slate-800"
+                onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
+              >
                 <Globe className="w-5 h-5 mr-2" />
-                Смотреть Демо
+                {language === 'ru' ? 'Узнать больше' : 
+                 language === 'en' ? 'Learn More' :
+                 language === 'uk' ? 'Дізнатися більше' :
+                 'Mehr erfahren'}
               </Button>
             </div>
 
@@ -279,12 +345,18 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="text-center mb-16">
+            <div className="text-center mb-16" id="features">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Возможности Игры
+                {language === 'ru' ? 'Возможности Игры' : 
+                 language === 'en' ? 'Game Features' :
+                 language === 'uk' ? 'Можливості Гри' :
+                 'Spiel-Features'}
               </h2>
               <p className="text-slate-300 max-w-2xl mx-auto">
-                Погрузитесь в мир профессионального управления серверами с реалистичной экономикой и интуитивным интерфейсом
+                {language === 'ru' ? 'Погрузитесь в мир профессионального управления серверами с реалистичной экономикой и интуитивным интерфейсом' : 
+                 language === 'en' ? 'Dive into the world of professional server management with realistic economy and intuitive interface' :
+                 language === 'uk' ? 'Поринайте у світ професійного управління серверами з реалістичною економікою та інтуїтивним інтерфейсом' :
+                 'Tauchen Sie in die Welt des professionellen Server-Managements mit realistischer Wirtschaft und intuitiver Benutzeroberfläche ein'}
               </p>
             </div>
 
@@ -360,11 +432,12 @@ export default function HomePage() {
           >
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Отзывы Тестеров
+                {language === 'ru' ? 'Спасибо тестерам за помощь в создании и тестировании игры' : 
+                 language === 'en' ? 'Thank you to testers for help in creating and testing the game' :
+                 language === 'uk' ? 'Дякуємо тестерам за допомогу у створенні та тестуванні гри' :
+                 'Danke an die Tester für die Hilfe bei der Erstellung und dem Testen des Spiels'}
+                <span className="text-2xl ml-2 animate-pulse" style={{background: 'linear-gradient(45deg, #ef4444, #f59e0b)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>❤️</span>
               </h2>
-              <p className="text-slate-300">
-                Что говорят наши игроки о Root Tycoon
-              </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -407,9 +480,17 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Рейтинг Игроков</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              {language === 'ru' ? 'Рейтинг Игроков' : 
+               language === 'en' ? 'Player Rankings' :
+               language === 'uk' ? 'Рейтинг Гравців' :
+               'Spieler-Rangliste'}
+            </h2>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-              Топ игроки по балансу, опыту и количеству серверов
+              {language === 'ru' ? 'Топ игроки по балансу, опыту и количеству серверов' : 
+               language === 'en' ? 'Top players by balance, experience and server count' :
+               language === 'uk' ? 'Топ гравці за балансом, досвідом та кількістю серверів' :
+               'Top-Spieler nach Guthaben, Erfahrung und Serveranzahl'}
             </p>
           </motion.div>
 
@@ -443,13 +524,15 @@ export default function HomePage() {
                             <span className="text-white font-bold text-lg">{player.nickname?.[0]?.toUpperCase()}</span>
                           </div>
                           <div>
-                            <div className="font-semibold text-white text-lg">{player.nickname}</div>
-                            <div className="text-sm text-slate-400">Уровень {player.level || 1}</div>
+                            <Link to={`/player/${player.nickname}`}>
+                              <div className="font-semibold text-white text-lg hover:text-blue-400 cursor-pointer transition-colors">{player.nickname}</div>
+                            </Link>
+                            <div className="text-sm text-slate-400">{language === 'ru' ? 'Уровень' : language === 'en' ? 'Level' : language === 'uk' ? 'Рівень' : 'Stufe'} {Math.floor(Math.sqrt((player.experience || 0) / 100)) + 1}</div>
                           </div>
                         </div>
                         <div className="text-right">
                           <div className="text-lg font-bold text-green-400">{formatCurrency(player.balance)}</div>
-                          <div className="text-sm text-slate-400">{player.totalServers || 0} серверов</div>
+                          <div className="text-sm text-slate-400">{player.serverCount || 0} {language === 'ru' ? 'серверов' : language === 'en' ? 'servers' : language === 'uk' ? 'серверів' : 'Server'}</div>
                         </div>
                       </div>
                     </CardContent>
