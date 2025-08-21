@@ -3,7 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Star, Crown, CreditCard, FileText, Loader2, Coins } from 'lucide-react';
+import { Star, Crown, CreditCard, FileText, Loader2, Coins, Shield } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
@@ -144,6 +144,32 @@ export default function PurchaseDialog({ type, price, children, disabled }) {
             <p className="text-sm text-slate-400">
               {t('paymentDocumentDesc')}
             </p>
+          </div>
+
+          <div className="bg-blue-900/20 border border-blue-500/30 p-3 rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <Shield className="w-4 h-4 text-blue-400" />
+              <span className="font-medium text-blue-300">{t('securePayment')}</span>
+            </div>
+            <p className="text-sm text-blue-200 mb-2">
+              {t('cryptoSupport')}
+            </p>
+            <div className="flex flex-wrap gap-3 text-sm">
+              <a 
+                href="mailto:email@gmail.com" 
+                className="flex items-center gap-1 text-blue-300 hover:text-blue-200 transition-colors"
+              >
+                📧 {t('contactEmail')}
+              </a>
+              <a 
+                href="https://t.me/Ca6aka" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 text-blue-300 hover:text-blue-200 transition-colors"
+              >
+                📱 {t('contactTelegram')}
+              </a>
+            </div>
           </div>
 
           <div className="bg-yellow-900/20 border border-yellow-500/30 p-3 rounded-lg">
