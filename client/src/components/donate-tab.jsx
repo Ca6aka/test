@@ -78,7 +78,7 @@ export default function DonateTab() {
               </div>
             </div>
             <Badge className="bg-blue-500/30 text-blue-200 border-blue-400/50 px-3 py-1 text-lg font-semibold">
-              $20 - 8 {t('month')}
+              $20 - 8 {t('months')}
             </Badge>
           </CardTitle>
         </CardHeader>
