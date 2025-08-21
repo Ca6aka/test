@@ -1812,7 +1812,7 @@ export class FileStorage {
     });
 
     // Filter message for inappropriate content
-    const filteredMessage = await this.filterMessage(message, user);
+    const filteredMessage = await this.filterMessage(message, user, language);
     
     const newMessage = {
       id: randomUUID(),
@@ -1876,7 +1876,7 @@ export class FileStorage {
   // Advanced Chat Features
 
   // Filter message for inappropriate content (profanity, spam, caps)
-  async filterMessage(message, user) {
+  async filterMessage(message, user, language = 'ru') {
     let filteredText = message.trim();
     let wasFiltered = false;
     let warningCount = user.chatWarnings || 0;
@@ -1899,7 +1899,7 @@ export class FileStorage {
       // Add system warning for caps
       await this.addSystemMessage(
         `${user.nickname} warned (${warningCount}/3) - excessive caps`, 
-        user.chatLanguage || 'ru'
+        language
       );
     }
     
@@ -1916,7 +1916,7 @@ export class FileStorage {
       });
       wasFiltered = true;
       warningCount++;
-      await this.addSystemMessage(`${user.nickname} - inappropriate language detected`, user.chatLanguage || 'ru');
+      await this.addSystemMessage(`${user.nickname} - inappropriate language detected`, language);
     }
     
     // Check for spam (same message recently)
@@ -1939,7 +1939,7 @@ export class FileStorage {
         muteExpires: muteExpires,
         chatWarnings: 0 // Reset warnings after mute
       });
-      await this.addSystemMessage(`${user.nickname} was automatically muted for 15 minutes (3 warnings)`, user.chatLanguage || 'ru');
+      await this.addSystemMessage(`${user.nickname} was automatically muted for 15 minutes (3 warnings)`, language);
       throw new Error('You have been muted for 15 minutes due to multiple warnings');
     }
     

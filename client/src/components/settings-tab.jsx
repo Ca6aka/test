@@ -6,7 +6,7 @@ import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
-import { Settings, Smartphone, Palette, Bell, Shield, Download } from 'lucide-react';
+import { Settings, Smartphone, Palette, Bell, Shield, Download, Monitor } from 'lucide-react';
 import { useLanguage } from '@/contexts/language-context';
 import { useGame } from '@/contexts/game-context';
 import { useTheme } from '@/components/theme-provider';
@@ -24,6 +24,8 @@ export default function SettingsTab() {
     achievements: true,
     payments: true
   });
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [isInstallable, setIsInstallable] = useState(false);
 
   const handleNotificationChange = (type, enabled) => {
     setNotifications(prev => ({
@@ -45,6 +47,65 @@ export default function SettingsTab() {
       payments: 'Платежи'
     };
     return labels[type] || type;
+  };
+
+  // PWA Install Handler
+  React.useEffect(() => {
+    const handleBeforeInstallPrompt = (e) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+      setIsInstallable(true);
+    };
+
+    const handleAppInstalled = () => {
+      setIsInstallable(false);
+      setDeferredPrompt(null);
+      toast({
+        title: "Приложение установлено!",
+        description: "Теперь вы можете запускать игру с рабочего стола"
+      });
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    window.addEventListener('appinstalled', handleAppInstalled);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener('appinstalled', handleAppInstalled);
+    };
+  }, [toast]);
+
+  const handleInstallPWA = async () => {
+    if (!deferredPrompt) {
+      toast({
+        title: "Установка недоступна",
+        description: "Приложение уже установлено или ваш браузер не поддерживает установку",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    try {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        toast({
+          title: "Установка начата",
+          description: "Приложение будет установлено на ваше устройство"
+        });
+      }
+      
+      setDeferredPrompt(null);
+      setIsInstallable(false);
+    } catch (error) {
+      console.error('PWA install error:', error);
+      toast({
+        title: "Ошибка установки",
+        description: "Не удалось установить приложение",
+        variant: "destructive"
+      });
+    }
   };
 
   const clearCache = () => {
@@ -99,8 +160,9 @@ export default function SettingsTab() {
       </div>
 
       <Tabs defaultValue="general" className="w-full">
-        <TabsList className="grid w-full grid-cols-4">
+        <TabsList className="grid w-full grid-cols-5">
           <TabsTrigger value="general">Общие</TabsTrigger>
+          <TabsTrigger value="install">Установка</TabsTrigger>
           <TabsTrigger value="shortcuts">Ярлыки</TabsTrigger>
           <TabsTrigger value="notifications">Уведомления</TabsTrigger>
           <TabsTrigger value="data">Данные</TabsTrigger>
@@ -172,6 +234,63 @@ export default function SettingsTab() {
                   </span>
                 </div>
               </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="install" className="space-y-4">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Monitor className="w-4 h-4" />
+                Установка приложения
+              </CardTitle>
+              <CardDescription>
+                Установите игру на ваше устройство для быстрого доступа
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="space-y-0.5">
+                  <Label>Установить на устройство</Label>
+                  <p className="text-sm text-muted-foreground">
+                    Добавить ярлык на рабочий стол и в меню приложений
+                  </p>
+                </div>
+                <Button 
+                  onClick={handleInstallPWA}
+                  disabled={!isInstallable}
+                  variant={isInstallable ? "default" : "outline"}
+                  size="sm"
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  {isInstallable ? 'Установить' : 'Установлено'}
+                </Button>
+              </div>
+
+              <div className="p-4 bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 rounded-lg">
+                <h4 className="text-sm font-medium text-blue-800 dark:text-blue-200 mb-2">
+                  📱 Преимущества установки
+                </h4>
+                <ul className="text-xs text-blue-700 dark:text-blue-300 space-y-1 list-disc list-inside">
+                  <li>Быстрый запуск с рабочего стола</li>
+                  <li>Работа в отдельном окне без браузера</li>
+                  <li>Автоматические обновления</li>
+                  <li>Оффлайн доступ к базовым функциям</li>
+                  <li>Уведомления о событиях в игре</li>
+                </ul>
+              </div>
+
+              {!isInstallable && (
+                <div className="p-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
+                  <p className="text-xs text-gray-600 dark:text-gray-400">
+                    💡 Если кнопка установки не активна, попробуйте:
+                    <br />• Обновить страницу
+                    <br />• Использовать Chrome, Edge или Safari
+                    <br />• Проверить адресную строку на наличие иконки установки
+                  </p>
+                </div>
+              )}
             </CardContent>
           </Card>
         </TabsContent>

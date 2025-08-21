@@ -12,6 +12,19 @@ export function TutorialTab({ gameState, setActiveTab }) {
   const { t, localizeError } = useLanguage();
   const [cooldownTimers, setCooldownTimers] = useState({});
 
+  // Add tutorial guidance messages when appropriate
+  React.useEffect(() => {
+    if (gameState.user?.tutorialCompleted && !localStorage.getItem('tutorialCompletedToastShown')) {
+      setTimeout(() => {
+        toast({
+          title: t('congratulations'),
+          description: t('allTabsUnlocked'),
+        });
+        localStorage.setItem('tutorialCompletedToastShown', 'true');
+      }, 1000);
+    }
+  }, [gameState.user?.tutorialCompleted, toast, t]);
+
   // Update cooldown timers
   useEffect(() => {
     const interval = setInterval(() => {
@@ -204,7 +217,17 @@ export function TutorialTab({ gameState, setActiveTab }) {
                 : 'opacity-50 cursor-not-allowed'
             }`}
             disabled={!gameState.user.tutorialCompleted && gameState.user.balance < 15000}
-            onClick={() => (gameState.user.tutorialCompleted || gameState.user.balance >= 15000) && setActiveTab('hosting')}
+            onClick={() => {
+              if (gameState.user.tutorialCompleted || gameState.user.balance >= 15000) {
+                setActiveTab('hosting');
+              } else {
+                toast({
+                  title: t('tabLocked'),
+                  description: t('completeGuidanceFirst'),
+                  variant: "destructive",
+                });
+              }
+            }}
           >
             {t('browseServerStore')} {!gameState.user.tutorialCompleted && gameState.user.balance < 15000 ? '🔒' : ''}
           </Button>
@@ -216,9 +239,26 @@ export function TutorialTab({ gameState, setActiveTab }) {
                 : 'opacity-50 cursor-not-allowed'
             }`}
             disabled={!gameState.user.tutorialCompleted && gameState.user.balance < 15000}
-            onClick={() => (gameState.user.tutorialCompleted || gameState.user.balance >= 15000) && setActiveTab('learning')}
+            onClick={() => {
+              if (gameState.user.tutorialCompleted || gameState.user.balance >= 15000) {
+                setActiveTab('learning');
+              } else {
+                toast({
+                  title: t('tabLocked'),
+                  description: t('completeGuidanceFirst'),
+                  variant: "destructive",
+                });
+              }
+            }}
           >
             {t('browseLearningCourses')} {!gameState.user.tutorialCompleted && gameState.user.balance < 15000 ? '🔒' : ''}
+          </Button>
+          <Button 
+            variant="outline" 
+            className="border-green-500/30 text-green-400 hover:bg-green-500/10"
+            onClick={() => setActiveTab('servers')}
+          >
+            {t('myServers')}
           </Button>
         </div>
       </div>
