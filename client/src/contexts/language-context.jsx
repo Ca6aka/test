@@ -53,6 +53,11 @@ const newTranslations = {
   cryptoPaymentInfo2: { en: 'Извиняемся за высокую минимальную сумму — это ограничение платформы, не нашей игры.', ru: 'Извиняемся за высокую минимальную сумму — это ограничение платформы, не нашей игры.', ua: 'Извиняемся за высокую минимальную сумму — это ограничение платформы, не нашей игры.', de: 'Извиняемся за высокую минимальную сумму — это ограничение платформы, не нашей игры.' },
   cryptoPaymentInfo3: { en: 'New to crypto? No problem! Contact us', ru: 'Новичок в крипте? Не проблема! Свяжитесь с нами', ua: "Новачок у крипті? Не проблема! Зв'яжіться з нами", de: 'Neu in der Kryptowelt? Kein Problem! Kontaktieren Sie uns' },
   contactEmail: { en: 'Email', ru: 'Почта', ua: 'Пошта', de: 'E-Mail' },
+  
+  // Add to home screen button
+  addToHomeScreen: { en: 'Add to Home Screen', ru: 'Добавить на главный экран', ua: 'Додати на головний екран', de: 'Zum Startbildschirm hinzufügen' },
+  addToHomeScreenModal: { en: 'Install on Device', ru: 'Установить на устройство', ua: 'Встановити на пристрій', de: 'Auf Gerät installieren' },
+  addToHomeScreenDescription: { en: 'Create a personalized shortcut for quick access to the game', ru: 'Создайте персональный ярлык для быстрого доступа к игре', ua: 'Створіть персональний ярлик для швидкого доступу до гри', de: 'Erstellen Sie eine personalisierte Verknüpfung für schnellen Zugriff auf das Spiel' },
   contactTelegram: { en: 'Telegram', ru: 'Телеграмм', ua: 'Телеграм', de: 'Telegram' },
   helpCrypto: { en: 'We will advise and guide you through the payment step by step!', ru: 'Подскажем и проведём оплату шаг за шагом!', ua: 'Підкажемо і проведемо оплату крок за кроком!', de: 'Wir beraten Sie und führen Sie Schritt für Schritt durch die Zahlung!' },
   cryptoSupport: { en: 'New to crypto? No problem! Contact us and we will guide you step by step.', ru: 'Новичок в крипте? Не проблема! Свяжитесь с нами, подскажем шаг за шагом.', ua: 'Новачок у крипті? Не проблема! Зв\'яжіться з нами, підкажемо крок за кроком.', de: 'Neu in Krypto? Kein Problem! Kontaktieren Sie uns und wir führen Sie Schritt für Schritt.' },
@@ -1373,6 +1378,11 @@ const translations = {
     marketingCookies: 'Маркетинговые куки',
     required: 'Обязательно',
     saveSettings: 'Сохранить настройки',
+    
+    // Add to home screen button
+    addToHomeScreen: 'Добавить на главный экран',
+    addToHomeScreenModal: 'Установить на устройство',
+    addToHomeScreenDescription: 'Создайте персональный ярлык для быстрого доступа к игре',
     
     // Chat achievements translations - Russian
     first_message: {

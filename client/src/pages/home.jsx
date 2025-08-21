@@ -19,11 +19,14 @@ import {
   Award,
   Gamepad2,
   DollarSign,
-  Clock
+  Clock,
+  Smartphone
 } from 'lucide-react';
 import { useLanguage } from '@/contexts/language-context';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { CookieConsent } from '@/components/cookie-consent';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import MobileShortcutGenerator from '@/components/mobile-shortcut-generator';
 
 export default function HomePage() {
   const { t, language, setLanguage } = useLanguage();
@@ -187,6 +190,30 @@ export default function HomePage() {
                 <Globe className="w-5 h-5 mr-2" />
                 Смотреть Демо
               </Button>
+            </div>
+
+            {/* Shimmering Add to Home Screen Button */}
+            <div className="mt-6 flex justify-center">
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="lg"
+                    className="relative bg-gradient-to-r from-black via-gray-900 to-white bg-[length:200%_100%] animate-shimmer text-white border border-gray-300 hover:border-gray-100 transition-all duration-300 px-6"
+                  >
+                    <Smartphone className="w-5 h-5 mr-2" />
+                    {t('addToHomeScreen') || 'Добавить на главный экран'}
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-4xl max-h-[90vh] overflow-y-auto">
+                  <DialogHeader>
+                    <DialogTitle className="text-center text-2xl font-bold">
+                      {t('addToHomeScreenModal') || 'Установить на устройство'}
+                    </DialogTitle>
+                  </DialogHeader>
+                  <MobileShortcutGenerator />
+                </DialogContent>
+              </Dialog>
             </div>
 
             {/* Quick Stats */}

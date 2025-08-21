@@ -429,3 +429,17 @@
   animation: avatarFancy 8s ease-in-out infinite;
   border-radius: 50%;
 }
+
+/* Shimmer animation for Add to Home Screen button */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
