@@ -1,3 +1,4 @@
+import React from 'react';
 import { Button } from '@/components/ui/button';
 import { useGame } from '@/contexts/game-context';
 import { useLanguage } from '@/contexts/language-context';
