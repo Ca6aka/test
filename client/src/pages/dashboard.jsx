@@ -14,6 +14,7 @@ import { QuestsTab } from '@/components/quests-tab';
 import MiniGamesTab from '@/components/minigames-tab';
 import DonateTab from '@/components/donate-tab';
 import { ReportsTab } from '@/components/reports-tab';
+import SettingsTab from '@/components/settings-tab';
 import { DailyBonusNotification } from '@/components/daily-bonus-notification';
 import TutorialSystem from '@/components/tutorial-system';
 import { useGame } from '@/contexts/game-context';
@@ -29,7 +30,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { TUTORIAL_UNLOCK_THRESHOLD, formatCurrency } from '@/lib/constants';
 import { useQuery } from '@tanstack/react-query';
 import { useRoute, useLocation } from 'wouter';
-import { ShoppingCart, Server, Play, BookOpenText, Award, ClipboardList, Gamepad2, CreditCard, Bug, AlignJustify, Gift, Eye } from 'lucide-react';
+import { ShoppingCart, Server, Play, BookOpenText, Award, ClipboardList, Gamepad2, CreditCard, Bug, AlignJustify, Gift, Eye, Settings } from 'lucide-react';
 
 export default function DashboardPage() {
   const { gameState } = useGame();
@@ -111,6 +112,7 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
       case 'minigames': return <MiniGamesTab />;
       case 'donate': return <DonateTab />;
       case 'reports': return <ReportsTab />;
+      case 'settings': return <SettingsTab />;
       default: return <TutorialTab gameState={gameState} setActiveTab={handleTabChange} />;
     }
   };
@@ -309,6 +311,20 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
                 <div className="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-1/2 w-3 h-3 bg-red-500 rounded-full animate-pulse border-2 border-slate-800"></div>
               )}
             </Button>
+
+            <Button
+              variant={activeTab === 'settings' ? 'default' : 'ghost'}
+              size="sm"
+              className={`flex items-center space-x-2 px-3 py-2 whitespace-nowrap text-sm min-w-max ${
+                activeTab === 'settings'
+                  ? 'bg-primary/20 text-primary border border-primary/30'
+                  : 'text-slate-300 hover:bg-slate-700/50'
+              }`}
+              onClick={() => handleTabChange('settings')}
+            >
+              <Settings className="w-4 h-4" />
+              <span>Настройки</span>
+            </Button>
             
           </div>
         </div>
@@ -500,6 +516,21 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
               {hasUnreadReports && (
                 <div className="absolute top-1/2 right-2 transform -translate-y-1/2 w-3 h-3 bg-red-500 rounded-full animate-pulse border border-slate-800"></div>
               )}
+            </Button>
+
+            {/* Settings Tab */}
+            <Button
+              variant={activeTab === 'settings' ? 'default' : 'ghost'}
+              className={`w-full justify-start space-x-3 ${
+                activeTab === 'settings'
+                  ? 'bg-primary/20 text-primary border border-primary/30'
+                  : 'text-slate-300 hover:bg-slate-700/50'
+              }`}
+              onClick={() => handleTabChange('settings')}
+            >
+              <i className="fas fa-cog text-lg"></i>
+              <Settings className="w-4 h-4 text-white" />
+              <span className="font-medium">Настройки</span>
             </Button>
           </nav>
           

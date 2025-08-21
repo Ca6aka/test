@@ -1340,6 +1340,23 @@ const translations = {
     selectAddToHome: 'Выберите "Добавить на главный экран"',
     confirmInstall: 'Подтвердите установку',
     
+    // Settings and shortcuts
+    settings: 'Настройки',
+    shortcuts: 'Ярлыки',
+    shortcutGenerator: 'Генератор ярлыков',
+    createShortcut: 'Создать ярлык',
+    shortcutName: 'Название ярлыка',
+    iconColor: 'Цвет иконки',
+    preview: 'Предварительный просмотр',
+    customColor: 'Свой цвет',
+    installInstructions: 'Инструкции по установке',
+    deviceDetected: 'Обнаружено устройство',
+    exportData: 'Экспорт данных',
+    clearCache: 'Очистить кеш',
+    notifications: 'Уведомления',
+    appearance: 'Внешний вид',
+    dataManagement: 'Управление данными',
+    
     // Chat achievements translations - Russian
     first_message: {
       title: 'Первое сообщение',

@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { X, Download, Smartphone } from 'lucide-react';
 import { useLanguage } from '@/contexts/language-context';
+import { MobileShortcutGenerator } from './mobile-shortcut-generator';
 
 export function PWAInstallPrompt() {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
@@ -149,6 +150,9 @@ export function PWAInstallPrompt() {
               <Download className="w-4 h-4 mr-2" />
               {t('installNow') || 'Установить сейчас'}
             </Button>
+            <div className="px-2">
+              <MobileShortcutGenerator />
+            </div>
             <div className="text-xs text-blue-200 text-center">
               {t('installBenefits') || 'Быстрый запуск • Оффлайн режим • Полноэкранный режим'}
             </div>
