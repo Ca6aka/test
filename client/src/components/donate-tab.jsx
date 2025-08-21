@@ -57,24 +57,27 @@ export default function DonateTab() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-blue-300 leading-relaxed whitespace-pre-line mb-4">
-            {t('cryptoPaymentInfo')}
-          </p>
-          <div className="flex flex-wrap gap-4 text-sm">
-            <a 
-              href="mailto:email@gmail.com" 
-              className="flex items-center gap-2 text-blue-300 hover:text-blue-200 transition-colors font-medium"
-            >
-              📧 {t('contactEmail')}
-            </a>
-            <a 
-              href="https://t.me/Ca6aka" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-blue-300 hover:text-blue-200 transition-colors font-medium"
-            >
-              📱 {t('contactTelegram')}
-            </a>
+          <div className="text-sm text-blue-300 leading-relaxed mb-4">
+            <p className="mb-3">Выберите криптовалюту и оплатите VIP/Premium.</p>
+            <p className="mb-3">Извиняемся за высокую минимальную сумму — это ограничение платформы, не нашей игры.</p>
+            <p className="mb-3">Новичок в крипте? Не проблема! Свяжитесь с нами:</p>
+            <div className="flex flex-wrap gap-4 mt-2">
+              <a 
+                href={`mailto:email@gmail.com?subject=Support ${gameState?.user?.nickname || 'Player'}`}
+                className="flex items-center gap-2 text-blue-300 hover:text-blue-200 transition-colors font-medium underline"
+              >
+                📧 email@gmail.com
+              </a>
+              <a 
+                href="https://t.me/Ca6aka" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-blue-300 hover:text-blue-200 transition-colors font-medium underline"
+              >
+                📱 t.me/Ca6aka
+              </a>
+            </div>
+            <p className="mt-3">— подскажем и проведём оплату шаг за шагом.</p>
           </div>
         </CardContent>
       </Card>
