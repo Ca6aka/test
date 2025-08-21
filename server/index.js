@@ -58,9 +58,13 @@ app.use((req, res, next) => {
 app.use('/api', async (req, res, next) => {
   if (req.session.userId && !req.path.includes('/auth/logout') && !req.path.includes('/api/stats/') && !req.path.includes('/api/rankings')) {
     try {
-      await storage.updateUserActivity(req.session.userId);
+      if (storage.updateUserActivity) {
+        await storage.updateUserActivity(req.session.userId);
+      }
       // Check expired mutes periodically
-      await storage.checkExpiredMutes();
+      if (storage.checkExpiredMutes) {
+        await storage.checkExpiredMutes();
+      }
     } catch (error) {
       // Ignore errors to not interrupt the request
     }
@@ -71,7 +75,9 @@ app.use('/api', async (req, res, next) => {
 // Background income updater - runs every minute
 setInterval(async () => {
   try {
-    await storage.updateAllActiveUsersIncome();
+    if (storage.updateAllActiveUsersIncome) {
+      await storage.updateAllActiveUsersIncome();
+    }
   } catch (error) {
     log(`Income update error: ${error.message}`);
   }

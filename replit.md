@@ -67,3 +67,22 @@ Project language: Russian (основной язык пользователя)
 - **Build System**: Vite for development server and production builds with ESBuild for server bundling
 
 The architecture follows a monorepo structure with separate client and server directories, shared schemas, and comprehensive testing utilities. The system is designed for easy deployment on platforms like Replit while maintaining scalability options through the configured database migration system.
+
+## Production Deployment Architecture
+
+**Development Mode (Current)**:
+- File-based JSON storage in `/data` and `/users` directories
+- Single process Node.js server
+- Suitable for development and small-scale testing
+
+**Production Mode (Linux Server)**:
+- MySQL database with connection pooling (1000 connections)
+- PM2 cluster mode utilizing all CPU cores
+- Automated daily backups with 30-day retention
+- Storage adapter automatically switches based on NODE_ENV
+- Graceful shutdown handling and process management
+
+**Migration Path**:
+- Seamless transition from file storage to MySQL
+- Automated data migration script preserves all user data
+- Zero-downtime deployment with PM2 process management
