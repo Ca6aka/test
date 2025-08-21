@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
 import { GameProvider, useGame } from "@/contexts/game-context";
 import { LanguageProvider } from "@/contexts/language-context";
+import ErrorBoundary from "@/components/error-boundary";
 import HomePage from "@/pages/home";
 import LoginPage from "@/pages/login";
 import DashboardPage from "@/pages/dashboard";
@@ -68,18 +69,20 @@ function AppRouter() {
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <LanguageProvider>
-        <ThemeProvider defaultTheme="dark" storageKey="serversim-ui-theme">
-          <GameProvider>
-            <TooltipProvider>
-              <Toaster />
-              <AppRouter />
-            </TooltipProvider>
-          </GameProvider>
-        </ThemeProvider>
-      </LanguageProvider>
-    </QueryClientProvider>
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <LanguageProvider>
+          <ThemeProvider defaultTheme="dark" storageKey="serversim-ui-theme">
+            <GameProvider>
+              <TooltipProvider>
+                <Toaster />
+                <AppRouter />
+              </TooltipProvider>
+            </GameProvider>
+          </ThemeProvider>
+        </LanguageProvider>
+      </QueryClientProvider>
+    </ErrorBoundary>
   );
 }
 

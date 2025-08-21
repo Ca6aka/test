@@ -29,7 +29,7 @@ export function RankingsPopup() {
   return (
     <>
       {/* Rankings Toggle Button */}
-      <div className="fixed bottom-4 left-4 z-[9999]">
+      <div className="fixed bottom-4 left-4 z-40">
         <Button
           onClick={() => setIsOpen(!isOpen)}
           className="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-500 to-amber-600 hover:from-yellow-600 hover:to-amber-700 shadow-lg border-2 border-yellow-400/30 text-white flex items-center justify-center"
@@ -41,7 +41,7 @@ export function RankingsPopup() {
 
       {/* Rankings Panel */}
       {isOpen && (
-        <div className="fixed bottom-4 left-20 z-[9998] w-80 max-h-96 bg-slate-800/95 backdrop-blur-lg border border-slate-700/50 rounded-lg shadow-2xl overflow-hidden">
+        <div className="fixed bottom-4 left-4 sm:left-20 z-40 w-80 max-w-[calc(100vw-2rem)] max-h-96 bg-slate-800/95 backdrop-blur-lg border border-slate-700/50 rounded-lg shadow-2xl overflow-hidden">
           <div className="bg-gradient-to-r from-yellow-500 to-amber-600 p-3 flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <i className="fas fa-trophy text-white text-lg"></i>
@@ -135,7 +135,7 @@ export function RankingsPopup() {
       {/* Backdrop */}
       {isOpen && (
         <div 
-          className="fixed inset-0 z-[9997]" 
+          className="fixed inset-0 z-30" 
           onClick={() => setIsOpen(false)}
         />
       )}

@@ -24,6 +24,22 @@
 @media (max-width: 1024px) {
   button {
     min-height: 44px; /* Minimum touch target size */
+    min-width: 44px;
+  }
+  
+  /* Better touch targets for interactive elements */
+  .touch-target {
+    min-height: 48px;
+    min-width: 48px;
+    padding: 12px;
+  }
+  
+  /* Better spacing for mobile forms */
+  .mobile-form input,
+  .mobile-form textarea,
+  .mobile-form select {
+    min-height: 48px;
+    font-size: 16px; /* Prevents zoom on iOS */
   }
 }
 
@@ -64,6 +80,18 @@
   /* Responsive text sizes for mobile */
   .text-sm { font-size: 0.875rem; }
   .text-xs { font-size: 0.75rem; }
+  
+  /* Better mobile scrolling */
+  .mobile-scroll {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+  
+  /* Prevent horizontal scrolling */
+  .mobile-container {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
 }
 
 /* Ultra-wide monitor support */

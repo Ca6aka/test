@@ -201,7 +201,7 @@ export function ReportsTab() {
   return (
     <div className="h-full flex flex-col lg:flex-row bg-slate-900/50 rounded-lg border border-slate-700 relative">
       {/* Left Panel - Reports List */}
-      <div className="w-full lg:w-1/3 border-b lg:border-b-0 lg:border-r border-slate-700 p-4 h-[40vh] lg:h-full lg:max-h-none">
+      <div className="w-full lg:w-1/3 border-b lg:border-b-0 lg:border-r border-slate-700 p-4 h-[60vh] lg:h-full lg:max-h-none">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-bold text-white">{isAdmin ? t('incomingReports') : t('myReports')}</h2>
           {!isAdmin && (
@@ -357,7 +357,7 @@ export function ReportsTab() {
       </div>
 
       {/* Right Panel - Chat */}
-      <div className="flex-1 flex flex-col bg-slate-900/30 h-[60vh] lg:h-full relative">
+      <div className="flex-1 flex flex-col bg-slate-900/30 min-h-[60vh] lg:h-full relative">
         {selectedReport ? (
           <>
             {/* Chat Header */}
