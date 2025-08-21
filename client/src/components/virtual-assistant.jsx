@@ -376,7 +376,7 @@ function VirtualAssistant({ hideOnReports = false }) {
   }  
 
   return (
-    <div className={`fixed z-40 ${isMobile ? 'w-64 h-96 bottom-4 right-4' : 'w-80 bottom-4 right-4'}`}>
+    <div className={`fixed z-40 ${isMobile ? 'w-72 h-[28rem] bottom-4 right-4' : 'w-80 bottom-4 right-4'}`}>
       <Card className="shadow-xl border-blue-200 dark:border-blue-800">
         <CardHeader className="pb-2">
           <div className="flex items-center justify-between">
@@ -564,7 +564,7 @@ function VirtualAssistant({ hideOnReports = false }) {
             </div>
           )}
           
-          <div ref={chatMessagesRef} className={`${showRules ? (isMobile ? 'h-48' : 'h-64') : (isMobile ? 'h-60' : 'h-80')} ${pinnedData?.pinnedMessage ? 'h-56' : ''} overflow-y-auto p-3 space-y-2`}>
+          <div ref={chatMessagesRef} className={`${showRules ? (isMobile ? 'h-56' : 'h-64') : (isMobile ? 'h-72' : 'h-80')} ${pinnedData?.pinnedMessage ? 'h-56' : ''} overflow-y-auto p-3 space-y-2`}>
             {chatData?.messages?.length === 0 ? (
               <div className="text-center text-gray-500 text-sm py-8">
                 {t('noMessages')}
