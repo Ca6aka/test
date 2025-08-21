@@ -58,15 +58,15 @@ export default function DonateTab() {
         </CardHeader>
         <CardContent>
           <div className="text-sm text-blue-300 leading-relaxed mb-4">
-            <p className="mb-3">Выберите криптовалюту и оплатите VIP/Premium.</p>
-            <p className="mb-3">Извиняемся за высокую минимальную сумму — это ограничение платформы, не нашей игры.</p>
-            <p className="mb-3">Новичок в крипте? Не проблема! Свяжитесь с нами:</p>
+            <p className="mb-3">{t('cryptoPaymentInfo')}</p>
+            <p className="mb-3">{t('cryptoPaymentInfo2')}</p>
+            <p className="mb-3">{t('cryptoPaymentInfo3')}:</p>
             <div className="flex flex-wrap gap-4 mt-2">
               <a 
-                href={`mailto:email@gmail.com?subject=Support ${gameState?.user?.nickname || 'Player'}`}
+                href={`mailto:tirasergeii@gmail.com?subject=Support Donate | Nickname: ${gameState?.user?.nickname || 'Player'}`}
                 className="flex items-center gap-2 text-blue-300 hover:text-blue-200 transition-colors font-medium underline"
               >
-                📧 email@gmail.com
+                📧 {t('contactEmail')}
               </a>
               <a 
                 href="https://t.me/Ca6aka" 
@@ -74,10 +74,10 @@ export default function DonateTab() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-blue-300 hover:text-blue-200 transition-colors font-medium underline"
               >
-                📱 t.me/Ca6aka
+                📱 {t('contactTelegram')}
               </a>
             </div>
-            <p className="mt-3">— подскажем и проведём оплату шаг за шагом.</p>
+            <p className="mt-3">{t('helpCrypto')}</p>
           </div>
         </CardContent>
       </Card>
@@ -97,7 +97,7 @@ export default function DonateTab() {
               </div>
             </div>
             <Badge className="bg-blue-500/30 text-blue-200 border-blue-400/50 px-3 py-1 text-lg font-semibold">
-              $20 - 8 {t('months')}
+              $20 - 6 {t('months')}
             </Badge>
           </CardTitle>
         </CardHeader>
@@ -107,13 +107,13 @@ export default function DonateTab() {
               <h4 className="text-blue-300 font-semibold mb-2">🎁 {t('vipBonusPackage')}</h4>
               <div className="space-y-1 text-sm">
                 <div className="flex items-center">
-                  <span className="text-green-400 font-semibold">💰 +$10,000</span> {t('startingCapital')}
+                  <span className="text-green-400 font-semibold">💰 +$10,000 {t('startingCapital')}</span>
                 </div>
                 <div className="flex items-center">
-                  <span className="text-purple-400 font-semibold">⚡ +2,500</span> {t('experience')}
+                  <span className="text-purple-400 font-semibold">⚡ +2,500 {t('experience')}</span> 
                 </div>
                 <div className="flex items-center">
-                  <span className="text-blue-400 font-semibold">🖥️ 30</span> {t('serverSlots')}
+                  <span className="text-blue-400 font-semibold">🖥️ 30 {t('serverSlots')}</span> 
                 </div>
               </div>
             </div>
@@ -156,7 +156,7 @@ export default function DonateTab() {
                 className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 relative z-10"
               >
                 {hasPremium ? t('premiumBlocksVip') :
-                 hasVip ? t('alreadyHavePremium') : t('purchaseVip') + ' - $20 - 8 ' + t('months')}
+                 hasVip ? t('alreadyHavePremium') : t('purchaseVip') + ' - $20 - 6 ' + t('months')}
               </Button>
             </PurchaseDialog>
           </div>
@@ -188,13 +188,13 @@ export default function DonateTab() {
               <h4 className="text-purple-300 font-semibold mb-2">🎁 {t('premiumBonusPackage')}</h4>
               <div className="space-y-1 text-sm">
                 <div className="flex items-center">
-                  <span className="text-green-400 font-semibold">💰 +$50,000</span> {t('startingCapital')}
+                  <span className="text-green-400 font-semibold">💰 +$25,000</span> {t('startingCapital')}
                 </div>
                 <div className="flex items-center">
-                  <span className="text-purple-400 font-semibold">⚡ +5,000</span> {t('experience')}
+                  <span className="text-purple-400 font-semibold">⚡ +5,000 {t('experience')}</span> 
                 </div>
                 <div className="flex items-center">
-                  <span className="text-purple-400 font-semibold">🖥️ 35</span> {t('serverSlots')}
+                  <span className="text-purple-400 font-semibold">🖥️ 35 {t('serverSlots')}</span> 
                 </div>
               </div>
             </div>

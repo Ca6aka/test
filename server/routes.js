@@ -1991,7 +1991,7 @@ export async function registerRoutes(app) {
         price_currency: 'usd',
         // НЕ указываем pay_currency для поддержки fiat платежей
         order_id: orderId,
-        order_description: `${type === 'vip' ? 'VIP Пакет (8 месяцев + бонусы)' : 'Premium Пакет (навсегда + бонусы)'} для ${user.nickname} - Fiat`,
+        order_description: `${type === 'vip' ? 'VIP Пакет (6 месяцев + бонусы)' : 'Premium Пакет (навсегда + бонусы)'} для ${user.nickname} - Fiat`,
         success_url: `${req.protocol}://${req.get('host')}/payment-success?orderId=${orderId}&fiat=true`,
         cancel_url: `${req.protocol}://${req.get('host')}/donate`,
         ipn_callback_url: `${req.protocol}://${req.get('host')}/api/payment-webhook`
@@ -2091,7 +2091,7 @@ export async function registerRoutes(app) {
           if (user) {
             if (payment.type === 'vip') {
               const expiresAt = new Date();
-              expiresAt.setMonth(expiresAt.getMonth() + 8); // 8 месяцев за $20
+              expiresAt.setMonth(expiresAt.getMonth() + 6); // 6 месяцев за $20
               
               // VIP Пакет бонусы
               const vipBonuses = {
@@ -2110,7 +2110,7 @@ export async function registerRoutes(app) {
             } else if (payment.type === 'premium') {
               // Premium Пакет бонусы
               const premiumBonuses = {
-                money: 50000,      // +$50,000 стартового капитала
+                money: 25000,      // +$25,000 стартового капитала
                 experience: 5000,  // +5,000 опыта
                 servers: 10        // +10 слотов серверов (всего 35)
               };
