@@ -26,6 +26,7 @@ A full-stack web application simulating a server management business game. Playe
     - **Avatar System**: Regular users have static gradients; super-admin has unique rainbow-pulse animation.
     - **Responsiveness**: Mobile-first design with compact layouts, responsive typography, scrollable tabs, and optimized component rendering for smaller screens. Reduced particle animations and simplified blur effects for mobile performance. Full-screen PWA experience with proper viewport settings.
     - **Mobile Chat**: Optimized dimensions (288px width, 448px height) with improved message capacity (5-6 messages instead of 3).
+    - **PWA Support**: Progressive Web App capabilities with manifest.json, service worker, install prompts, and custom app icons. Users can install the game as a desktop/mobile app shortcut for native app-like experience.
     - **Error Handling**: Client-side validation with real-time feedback and server-side validation.
 
 ### Backend Architecture

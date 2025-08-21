@@ -1328,6 +1328,18 @@ const translations = {
     activeMutes: 'Активные муты',
     noActiveMutes: 'Нет активных мутов',
     
+    // PWA Installation
+    installApp: 'Установить приложение',
+    installAppDesc: 'Добавьте ярлык на рабочий стол для быстрого доступа к игре',
+    installNow: 'Установить сейчас',
+    installBenefits: 'Быстрый запуск • Оффлайн режим • Полноэкранный режим',
+    appInstalled: 'Приложение установлено!',
+    appInstalledDesc: 'Теперь вы можете запускать игру с рабочего стола',
+    addToHomeScreen: 'Добавить на главный экран',
+    tapShareButton: 'Нажмите кнопку "Поделиться"',
+    selectAddToHome: 'Выберите "Добавить на главный экран"',
+    confirmInstall: 'Подтвердите установку',
+    
     // Chat achievements translations - Russian
     first_message: {
       title: 'Первое сообщение',

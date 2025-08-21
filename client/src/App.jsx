@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { GameProvider, useGame } from "@/contexts/game-context";
 import { LanguageProvider } from "@/contexts/language-context";
 import ErrorBoundary from "@/components/error-boundary";
+import { PWAInstallPrompt, IOSInstallInstructions } from "@/components/pwa-install-prompt";
 import HomePage from "@/pages/home";
 import LoginPage from "@/pages/login";
 import DashboardPage from "@/pages/dashboard";
@@ -77,6 +78,8 @@ function App() {
               <TooltipProvider>
                 <Toaster />
                 <AppRouter />
+                <PWAInstallPrompt />
+                <IOSInstallInstructions />
               </TooltipProvider>
             </GameProvider>
           </ThemeProvider>
