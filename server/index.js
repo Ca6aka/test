@@ -11,14 +11,23 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Session configuration
+// Session configuration for persistence across server restarts
+import pgSession from 'connect-pg-simple';
+
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'serversim-secret-key',
+  store: new (pgSession(session))({
+    conString: process.env.DATABASE_URL,
+    tableName: 'user_sessions',
+    createTableIfMissing: true
+  }),
+  secret: process.env.SESSION_SECRET || 'serversim-secret-key-v2',
   resave: false,
   saveUninitialized: false,
+  rolling: true, // Extend session on activity
   cookie: {
     secure: process.env.NODE_ENV === 'production',
     httpOnly: true,
-    maxAge: 12 * 60 * 60 * 1000 // 12 hours
+    maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days for better UX
   }
 }));
 

@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { motion } from 'framer-motion';
+import { useQuery } from '@tanstack/react-query';
 import { 
   Play, 
   Server, 
@@ -20,17 +21,32 @@ import {
   Gamepad2,
   DollarSign,
   Clock,
-  Smartphone
+  Smartphone,
+  Trophy,
+  Crown
 } from 'lucide-react';
 import { useLanguage } from '@/contexts/language-context';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { CookieConsent } from '@/components/cookie-consent';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import MobileShortcutGenerator from '@/components/mobile-shortcut-generator';
+import { formatCurrency } from '@/lib/constants';
 
 export default function HomePage() {
-  const { t, language, setLanguage } = useLanguage();
+  const { t, language, changeLanguage } = useLanguage();
   const [selectedFeature, setSelectedFeature] = useState(0);
+
+  // Fetch real-time statistics
+  const { data: statsData } = useQuery({
+    queryKey: ['/api/stats/general'],
+    refetchInterval: 30000, // Update every 30 seconds
+  });
+
+  // Fetch player rankings  
+  const { data: rankingsData } = useQuery({
+    queryKey: ['/api/rankings'],
+    refetchInterval: 30000, // Update every 30 seconds
+  });
 
   const features = [
     {
@@ -72,28 +88,28 @@ export default function HomePage() {
   ];
 
   const stats = [
-    { label: 'Активных Игроков', value: '8,000+', icon: Users },
-    { label: 'Серверов Создано', value: '125,000+', icon: Server },
-    { label: 'Денег Заработано', value: '$2.5M+', icon: DollarSign },
-    { label: 'Время в Игре', value: '15,000+ ч', icon: Clock }
+    { label: 'Всего игроков', value: statsData?.totalPlayers || '0', icon: Users },
+    { label: 'Онлайн', value: statsData?.onlinePlayers || '0', icon: Users },
+    { label: 'Серверов', value: statsData?.totalServers || '0', icon: Server },
+    { label: 'Общий баланс', value: statsData?.totalBalance ? formatCurrency(statsData.totalBalance) : '$0', icon: DollarSign }
   ];
 
   const testimonials = [
     {
       name: 'Александр К.',
-      role: 'Premium игрок',
+      role: 'Premium тестер',
       content: 'Отличная игра! Реально затягивает управление серверами. VIP статус стоит своих денег.',
       rating: 5
     },
     {
       name: 'Мария С.',
-      role: 'Системный администратор',
+      role: 'IT-тестер',
       content: 'Как IT-специалист могу сказать - игра очень реалистично передаёт процессы управления серверами.',
       rating: 5
     },
     {
       name: 'Дмитрий В.',
-      role: 'VIP игрок',
+      role: 'VIP тестер',
       content: 'Играю уже полгода. Нравится постоянное развитие игры и новые функции.',
       rating: 4
     }
@@ -125,31 +141,45 @@ export default function HomePage() {
                 <Button 
                   variant={language === 'ru' ? 'default' : 'ghost'} 
                   size="sm"
-                  onClick={() => setLanguage('ru')}
+                  onClick={() => changeLanguage('ru')}
                 >
                   🇷🇺
                 </Button>
                 <Button 
                   variant={language === 'en' ? 'default' : 'ghost'} 
                   size="sm"
-                  onClick={() => setLanguage('en')}
+                  onClick={() => changeLanguage('en')}
                 >
                   🇺🇸
                 </Button>
                 <Button 
                   variant={language === 'uk' ? 'default' : 'ghost'} 
                   size="sm"
-                  onClick={() => setLanguage('uk')}
+                  onClick={() => changeLanguage('uk')}
                 >
                   🇺🇦
                 </Button>
+                <Button 
+                  variant={language === 'de' ? 'default' : 'ghost'} 
+                  size="sm"
+                  onClick={() => changeLanguage('de')}
+                >
+                  🇩🇪
+                </Button>
               </div>
               <ThemeToggle />
-              <Link to="/login">
-                <Button variant="outline" size="sm">
-                  Войти
-                </Button>
-              </Link>
+              <div className="flex gap-2">
+                <Link to="/login">
+                  <Button variant="outline" size="sm">
+                    Вход
+                  </Button>
+                </Link>
+                <Link to="/register">
+                  <Button variant="default" size="sm">
+                    Регистрация
+                  </Button>
+                </Link>
+              </div>
             </div>
           </nav>
         </div>
@@ -163,9 +193,7 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Badge className="mb-4 bg-blue-500/20 text-blue-300 border-blue-500/30">
-              🚀 Новая версия 2.0 уже доступна!
-            </Badge>
+
             
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
               <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
@@ -332,7 +360,7 @@ export default function HomePage() {
           >
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Отзывы Игроков
+                Отзывы Тестеров
               </h2>
               <p className="text-slate-300">
                 Что говорят наши игроки о Root Tycoon
@@ -369,35 +397,65 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="relative z-10 py-20 bg-gradient-to-r from-blue-600/20 to-purple-600/20">
-        <div className="container mx-auto px-4 text-center">
+      {/* Player Rankings Section */}
+      <section className="relative z-10 py-20" id="rankings">
+        <div className="container mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Рейтинг Игроков</h2>
+            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+              Топ игроки по балансу, опыту и количеству серверов
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Готовы Начать?
-            </h2>
-            <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-              Присоединяйтесь к тысячам игроков уже сегодня. Регистрация бесплатная!
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/register">
-                <Button size="lg" className="bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white px-8">
-                  <Play className="w-5 h-5 mr-2" />
-                  Создать Аккаунт
-                </Button>
-              </Link>
-              
-              <Link to="/login">
-                <Button size="lg" variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-800">
-                  Уже есть аккаунт? Войти
-                </Button>
-              </Link>
+            <div className="max-w-4xl mx-auto">
+              {rankingsData?.rankings?.slice(0, 5).map((player, index) => (
+                <motion.div
+                  key={player.id}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="mb-4"
+                >
+                  <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-colors">
+                    <CardContent className="p-6">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-4">
+                          <div className="flex items-center gap-2">
+                            {index === 0 && <Crown className="w-6 h-6 text-yellow-400" />}
+                            {index === 1 && <Trophy className="w-6 h-6 text-gray-400" />}
+                            {index === 2 && <Trophy className="w-6 h-6 text-amber-600" />}
+                            <span className="text-2xl font-bold text-white">#{index + 1}</span>
+                          </div>
+                          <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                            <span className="text-white font-bold text-lg">{player.nickname?.[0]?.toUpperCase()}</span>
+                          </div>
+                          <div>
+                            <div className="font-semibold text-white text-lg">{player.nickname}</div>
+                            <div className="text-sm text-slate-400">Уровень {player.level || 1}</div>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-lg font-bold text-green-400">{formatCurrency(player.balance)}</div>
+                          <div className="text-sm text-slate-400">{player.totalServers || 0} серверов</div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>

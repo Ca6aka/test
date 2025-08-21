@@ -8,6 +8,25 @@ A full-stack web application simulating a server management business game. Playe
 - Language: Russian preferred for communication
 - Uses Russian interface in the game
 
+## Recent Changes (August 21, 2025)
+### Homepage Updates
+- Fixed React loading by resolving 20+ duplicate keys in language-context.jsx
+- Added 4 language support (Russian, English, Ukrainian, German) with proper flag buttons
+- Restored original statistics display: "Всего игроков", "Онлайн", "Серверов", "Общий баланс" 
+- Changed testimonials from "отзывы игроков" to "отзывы тестеров"
+- Replaced "Готовы начать?" section with "Рейтинг игроков" showing top 5 players
+- Added Login/Register buttons in top-right header instead of single Login button
+- Removed "Новая версия" banner from hero section
+- Fixed setLanguage function error by using changeLanguage from language context
+- Integrated real-time API data for statistics and player rankings
+
+### Technical Improvements
+- Enhanced session persistence with PostgreSQL-backed sessions for server restart resilience
+- Extended session duration to 7 days with rolling expiration
+- Added registration date display in player profiles with Russian date format
+- Fixed language switching functionality with proper context methods
+- Confirmed toast notifications working correctly with 5-second auto-dismiss
+
 ## System Architecture
 
 ### Frontend Architecture
