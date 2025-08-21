@@ -24,7 +24,8 @@ A full-stack web application simulating a server management business game. Playe
     - **Tooltips**: Contextual tooltips for interactive elements.
     - **Admin Badges**: Distinct styling for super-admin (red gradient, pulse animation) and regular admin (gold gradient).
     - **Avatar System**: Regular users have static gradients; super-admin has unique rainbow-pulse animation.
-    - **Responsiveness**: Mobile-first design with compact layouts, responsive typography, scrollable tabs, and optimized component rendering for smaller screens. Reduced particle animations and simplified blur effects for mobile performance.
+    - **Responsiveness**: Mobile-first design with compact layouts, responsive typography, scrollable tabs, and optimized component rendering for smaller screens. Reduced particle animations and simplified blur effects for mobile performance. Full-screen PWA experience with proper viewport settings.
+    - **Mobile Chat**: Optimized dimensions (288px width, 448px height) with improved message capacity (5-6 messages instead of 3).
     - **Error Handling**: Client-side validation with real-time feedback and server-side validation.
 
 ### Backend Architecture
@@ -39,6 +40,7 @@ A full-stack web application simulating a server management business game. Playe
 - **ORM**: Drizzle ORM for type-safe operations.
 - **Cloud Database**: Neon Database (serverless PostgreSQL).
 - **Migrations**: Drizzle Kit for schema management.
+- **Performance Testing**: Comprehensive stress testing suite with 150 virtual players simulation, database stress tests, and health checks.
 
 ### Authentication and Authorization
 - **Session Management**: Express sessions with PostgreSQL-backed storage (connect-pg-simple).
