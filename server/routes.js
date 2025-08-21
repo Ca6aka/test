@@ -1995,12 +1995,11 @@ export async function registerRoutes(app) {
       const invoiceData = {
         price_amount: amount,
         price_currency: 'usd',
-        pay_currency: 'trx', // Используем TRX как основную валюту для fiat
+        // НЕ указываем pay_currency для поддержки fiat платежей
         order_id: orderId,
         order_description: `${type === 'vip' ? 'VIP Пакет (8 месяцев + бонусы)' : 'Premium Пакет (навсегда + бонусы)'} для ${user.nickname} - Fiat`,
         success_url: `${req.protocol}://${req.get('host')}/payment-success?orderId=${orderId}&fiat=true`,
         cancel_url: `${req.protocol}://${req.get('host')}/donate`,
-        // Фиксированный TRX адрес для fiat платежей
         ipn_callback_url: `${req.protocol}://${req.get('host')}/api/payment-webhook`
       };
 

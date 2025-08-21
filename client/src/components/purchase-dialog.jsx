@@ -131,38 +131,27 @@ export default function PurchaseDialog({ type, price, children, disabled }) {
             </p>
           </div>
 
-          <div className="bg-slate-800 p-3 rounded-lg">
+          <div className="bg-yellow-900/20 border border-yellow-500/30 p-3 rounded-lg">
             <div className="flex items-center gap-2 mb-2">
-              <CreditCard className="w-4 h-4 text-blue-400" />
-              <span className="font-medium">Оплата картой</span>
+              <CreditCard className="w-4 h-4 text-yellow-400" />
+              <span className="font-medium text-yellow-300">Оплата картой</span>
             </div>
-            <p className="text-sm text-slate-400">
-              Безопасная оплата через NOWPayments + Mercuryo. 
-              На странице оплаты выберите <span className="text-green-400 font-medium">USD</span> как валюту, 
-              затем оплатите картой Visa/Mastercard.
+            <p className="text-sm text-yellow-200">
+              <strong>Временно недоступно:</strong> NOWPayments не поддерживает прямую оплату картой. 
+              Доступна только криптооплата.
             </p>
-            <p className="text-xs text-slate-500 mt-2">
-              ℹ️ Ваши доллары будут автоматически конвертированы в криптовалюту
+            <p className="text-xs text-yellow-300 mt-2">
+              💡 Используйте USDT/USDC для оплаты в долларовом эквиваленте
             </p>
           </div>
 
           <div className="space-y-2">
             <Button 
-              onClick={handleFiatPurchase}
-              disabled={fiatPurchaseMutation.isPending}
-              className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
+              disabled={true}
+              className="w-full bg-gray-600 text-gray-400 cursor-not-allowed opacity-50"
             >
-              {fiatPurchaseMutation.isPending ? (
-                <>
-                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                  Создание платежа...
-                </>
-              ) : (
-                <>
-                  <CreditCard className="w-4 h-4 mr-2" />
-                  Оплата картой ${price} USD
-                </>
-              )}
+              <CreditCard className="w-4 h-4 mr-2" />
+              Недоступно: Оплата картой ${price} USD
             </Button>
 
             <Button 

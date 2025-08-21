@@ -9,6 +9,12 @@ A full-stack web application simulating a server management business game. Playe
 - Uses Russian interface in the game
 
 [LIVE] ## Recent Changes
+- **Fiat Payment Issue Resolved (August 21, 2025)**: Investigated and clarified NOWPayments fiat payment limitations
+  - **Technical Discovery**: NOWPayments does NOT support true fiat credit card payments - only cryptocurrency
+  - **UI Update**: Fiat payment option temporarily disabled with clear explanation to users
+  - **Documentation**: Created FIAT_PAYMENT_OPTIONS.md outlining integration options (Stripe recommended)
+  - **Status**: Crypto payments via NOWPayments working perfectly, fiat requires separate provider
+  - **Next Steps**: User needs to decide on fiat payment provider (Stripe, PayPal, or hybrid approach)
 - **NOWPayments Integration Completed (August 20, 2025)**: Successfully replaced MoonPay with NOWPayments for cryptocurrency payments
   - **API Integration**: Real NOWPayments API key (0BYBCND-44G4DAZ-K5FPR03-WQKCRAF) tested and working
   - **Payment Creation**: Both VIP ($2.50) and Premium ($10) payments create successfully via USDT TRC20
