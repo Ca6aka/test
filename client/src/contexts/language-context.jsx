@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 const newTranslations = {
   // Hidden achievements
@@ -111,8 +111,7 @@ const newTranslations = {
   processing: { en: 'Processing...', ru: 'Обработка...', ua: 'Обробка...', de: 'Verarbeitung...' },
   paymentInitiated: { en: 'Payment Initiated', ru: 'Оплата инициирована', ua: 'Оплата ініційована', de: 'Zahlung eingeleitet' },
   redirectedToPayment: { en: 'You will be redirected to payment gateway', ru: 'Вы будете перенаправлены на платежный шлюз', ua: 'Вас буде перенаправлено на платіжний шлюз', de: 'Sie werden zum Zahlungsgateway weitergeleitet' },
-  paymentDocument: { en: 'Payment Document', ru: 'Документ об оплате', ua: 'Документ про оплату', de: 'Zahlungsdokument' },
-  paymentDocumentDesc: { en: 'After successful payment you will be able to download a PDF document with purchase confirmation and order details.', ru: 'После успешной оплаты вы сможете скачать PDF документ с подтверждением покупки и деталями заказа.', ua: 'Після успішної оплати ви зможете завантажити PDF документ з підтвердженням покупки та деталями замовлення.', de: 'Nach erfolgreicher Zahlung können Sie ein PDF-Dokument mit Kaufbestätigung und Bestelldetails herunterladen.' },
+
   
   // Admin subscription management
   manageSubscriptions: { en: 'Manage Subscriptions', ru: 'Управление подписками', ua: 'Управління підписками', de: 'Abonnements verwalten' },
@@ -1817,8 +1816,7 @@ const translations = {
     needMoreMoney: 'Для купівлі цього сервера вам буде потрібно {amount}',
     serverAddedToYourServers: '{serverName} був доданий до ваших серверів!',
     needLearningCourse: 'Необхідний курс навчання',
-    monthlyCost: 'Щомісячна вартість',
-    netProfitMonth: 'Чистий прибуток/місяць',
+
     needMoreFunds: 'Не вистачає {amount}',
     wantMoreServers: 'Хочете більше серверів?',
     learningCoursesBenefit: 'Кожен пройдений курс дає змогу розблокувати додаткові серверні слоти та підвищити ефективність роботи сервера. Відвідайте Навчальний центр, щоб почати свій наступний курс!',
@@ -2241,9 +2239,7 @@ const translations = {
     purchaseFirstServer: 'Купіть свій перший сервер у магазині серверів, щоб почати отримувати дохід.',
     serverPurchased: 'Сервер куплено',
     purchaseFailed: 'Покупка не вдалася',
-    serverLimitReached: 'Ліміт серверів досягнуто',
-    serverLimitReachedDesc: 'У вас може бути лише {serverLimit} серверів. Пройдіть курси навчання, щоб збільшити ліміт.',
-    purchaseServer: 'Купити сервер',
+
     reachedServerLimit: 'Ви досягли ліміту серверів {serverLimit}. Пройдіть курси навчання, щоб розблокувати більше слотів!',
     completeLearningCoursesToIncrease: 'Пройдіть курси навчання, щоб збільшити ліміт серверів',
     
@@ -2258,7 +2254,6 @@ const translations = {
     
     // Learning tab specific
     unknownReward: 'Невідома нагорода',
-    serverSlotReward: '+{amount} слот сервера',
     serverEfficiencyReward: '+{amount}% ефективності серверiв',
     unlockServerReward: 'Розблоковує {serverType}',
     gpuServer: 'GPU сервер',
@@ -2285,12 +2280,6 @@ const translations = {
     goBack: 'Назад',
     back: 'Назад',
     playerProfile: 'Профіль гравця',
-    online: 'Онлайн',
-    offline: 'Офлайн',
-    level: 'Рівень',
-    rank: 'Місце',
-    servers: 'серверів',
-    totalBalance: 'Загальний баланс',
     activeServers: 'Активні сервери',
     globalRank: 'Глобальне місце',
     recentActivity: 'Нещодавня активність',
