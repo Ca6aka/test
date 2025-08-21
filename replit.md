@@ -9,6 +9,14 @@ A full-stack web application simulating a server management business game. Playe
 - Uses Russian interface in the game
 
 [LIVE] ## Recent Changes
+- **Cryptocurrency Selection & Full Donation Translations Completed (August 21, 2025)**: Enhanced payment system with user crypto selection and complete localization
+  - **Crypto Currency Selection**: Players can now choose from 7 crypto options (USDT TRC20/ERC20, USDC, LTC, TRX, BTC, ETH) during payment
+  - **Complete Translation**: All donation tab content translated to 4 languages (English, Russian, Ukrainian, German)
+  - **Fiat Payment Disabled**: Card payment option properly disabled with clear user messaging about unavailability
+  - **Server Integration**: Updated payment API to handle selected cryptocurrency parameter
+  - **UI Enhancements**: Improved purchase dialog with crypto selector and translated interface
+  - **Code Cleanup**: Removed bonus package mentions and promotional content as requested
+  - **User Experience**: Clear messaging guides users to USDT/USDC for dollar-equivalent payments
 - **Fiat Payment Issue Resolved (August 21, 2025)**: Investigated and clarified NOWPayments fiat payment limitations
   - **Technical Discovery**: NOWPayments does NOT support true fiat credit card payments - only cryptocurrency
   - **UI Update**: Fiat payment option temporarily disabled with clear explanation to users

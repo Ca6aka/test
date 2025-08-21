@@ -2,24 +2,39 @@ import React, { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Star, Crown, CreditCard, FileText, Loader2 } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Star, Crown, CreditCard, FileText, Loader2, Coins } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
+import { useLanguage } from '@/contexts/language-context';
+
+// Список доступных криптовалют с названиями
+const cryptocurrencies = [
+  { code: 'usdttrc20', name: 'USDT (TRC20)', description: 'Tether USD on Tron' },
+  { code: 'usdterc20', name: 'USDT (ERC20)', description: 'Tether USD on Ethereum' },
+  { code: 'usdc', name: 'USDC', description: 'USD Coin' },
+  { code: 'ltc', name: 'Litecoin (LTC)', description: 'Litecoin' },
+  { code: 'trx', name: 'Tron (TRX)', description: 'Tron' },
+  { code: 'btc', name: 'Bitcoin (BTC)', description: 'Bitcoin' },
+  { code: 'eth', name: 'Ethereum (ETH)', description: 'Ethereum' },
+];
 
 export default function PurchaseDialog({ type, price, children, disabled }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedCrypto, setSelectedCrypto] = useState('usdttrc20'); // По умолчанию USDT TRC20
   const { toast } = useToast();
+  const { t } = useLanguage();
   const queryClient = useQueryClient();
 
   const purchaseMutation = useMutation({
-    mutationFn: ({ type }) => apiRequest('/api/card-crypto-purchase', 'POST', { type }),
+    mutationFn: ({ type, crypto }) => apiRequest('/api/card-crypto-purchase', 'POST', { type, crypto }),
     onSuccess: (data) => {
       if (data.paymentUrl) {
         window.open(data.paymentUrl, '_blank');
         toast({
-          title: 'Переход к оплате',
-          description: 'Откроется новая вкладка с формой оплаты. После оплаты вы сможете скачать PDF документ.',
+          title: t('paymentInitiated'),
+          description: t('redirectedToPayment'),
           duration: 8000,
         });
       }
@@ -74,7 +89,7 @@ export default function PurchaseDialog({ type, price, children, disabled }) {
       return;
     }
     
-    purchaseMutation.mutate({ type });
+    purchaseMutation.mutate({ type, crypto: selectedCrypto });
   };
 
   const handleFiatPurchase = () => {
@@ -102,12 +117,12 @@ export default function PurchaseDialog({ type, price, children, disabled }) {
             {type === 'vip' ? (
               <>
                 <Star className="w-5 h-5 text-blue-400" />
-                VIP статус
+                VIP {t('status')}
               </>
             ) : (
               <>
                 <Crown className="w-5 h-5 text-purple-400" />
-                PREMIUM статус
+                PREMIUM {t('status')}
               </>
             )}
           </DialogTitle>
@@ -117,7 +132,7 @@ export default function PurchaseDialog({ type, price, children, disabled }) {
           <div className="text-center p-4 bg-slate-800 rounded-lg">
             <div className="text-2xl font-bold text-green-400">${price}</div>
             <div className="text-sm text-slate-400">
-              {type === 'vip' ? 'в месяц' : 'навсегда'}
+              {type === 'vip' ? t('month') : t('forever')}
             </div>
           </div>
 
@@ -134,25 +149,47 @@ export default function PurchaseDialog({ type, price, children, disabled }) {
           <div className="bg-yellow-900/20 border border-yellow-500/30 p-3 rounded-lg">
             <div className="flex items-center gap-2 mb-2">
               <CreditCard className="w-4 h-4 text-yellow-400" />
-              <span className="font-medium text-yellow-300">Оплата картой</span>
+              <span className="font-medium text-yellow-300">{t('unavailableCardPayment')}</span>
             </div>
             <p className="text-sm text-yellow-200">
-              <strong>Временно недоступно:</strong> NOWPayments не поддерживает прямую оплату картой. 
-              Доступна только криптооплата.
+              {t('cardPaymentUnavailable')}
             </p>
             <p className="text-xs text-yellow-300 mt-2">
-              💡 Используйте USDT/USDC для оплаты в долларовом эквиваленте
+              {t('useStablecoins')}
             </p>
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-3">
             <Button 
               disabled={true}
               className="w-full bg-gray-600 text-gray-400 cursor-not-allowed opacity-50"
             >
               <CreditCard className="w-4 h-4 mr-2" />
-              Недоступно: Оплата картой ${price} USD
+              {t('unavailableCardPayment')} ${price} USD
             </Button>
+
+            {/* Crypto Currency Selector */}
+            <div className="space-y-2">
+              <label className="text-sm font-medium">{t('selectCurrency')}</label>
+              <Select value={selectedCrypto} onValueChange={setSelectedCrypto}>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder={t('selectCurrency')} />
+                </SelectTrigger>
+                <SelectContent>
+                  {cryptocurrencies.map((crypto) => (
+                    <SelectItem key={crypto.code} value={crypto.code}>
+                      <div className="flex items-center gap-2">
+                        <Coins className="w-4 h-4" />
+                        <div>
+                          <div className="font-medium">{crypto.name}</div>
+                          <div className="text-xs text-muted-foreground">{crypto.description}</div>
+                        </div>
+                      </div>
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
 
             <Button 
               onClick={handlePurchase}
@@ -162,12 +199,12 @@ export default function PurchaseDialog({ type, price, children, disabled }) {
               {purchaseMutation.isPending ? (
                 <>
                   <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                  Создание платежа...
+                  {t('processing')}
                 </>
               ) : (
                 <>
-                  <CreditCard className="w-4 h-4 mr-2" />
-                  Крипто-платёж ${price}
+                  <Coins className="w-4 h-4 mr-2" />
+                  {t('payWithCrypto')} ${price}
                 </>
               )}
             </Button>

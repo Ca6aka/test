@@ -53,12 +53,12 @@ export default function DonateTab() {
         <CardHeader>
           <CardTitle className="flex items-center text-green-400">
             <Shield className="w-5 h-5 mr-2" />
-            Безопасная оплата
+            {t('securePayment')}
           </CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-sm text-slate-300">
-            Оплата банковской картой через криптовалютный шлюз. Ваши средства безопасно конвертируются в криптовалюту и поступают напрямую на наш кошелек.
+            {t('cryptoPaymentInfo')}
           </p>
         </CardContent>
       </Card>
@@ -74,30 +74,17 @@ export default function DonateTab() {
               </div>
               <div>
                 <div className="text-xl font-bold">VIP {t('status')}</div>
-                <div className="text-blue-200/90 text-sm">8 месяцев за $20 ($2.50/мес)</div>
+                <div className="text-blue-200/90 text-sm">8 {t('month')} - $20 ($2.50/{t('month')})</div>
               </div>
             </div>
             <Badge className="bg-blue-500/30 text-blue-200 border-blue-400/50 px-3 py-1 text-lg font-semibold">
-              $20 за 8 месяцев
+              $20 - 8 {t('month')}
             </Badge>
           </CardTitle>
         </CardHeader>
         <CardContent className="pt-6">
           <div className="space-y-3 mb-6">
-            <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 p-3 rounded-lg border border-blue-400/30">
-              <h4 className="text-blue-300 font-semibold mb-2">🎁 VIP ПАКЕТ БОНУСЫ:</h4>
-              <div className="space-y-1 text-sm">
-                <div className="flex items-center">
-                  <span className="text-green-400 font-semibold">💰 +$10,000</span> стартового капитала
-                </div>
-                <div className="flex items-center">
-                  <span className="text-purple-400 font-semibold">⚡ +5,000</span> опыта
-                </div>
-                <div className="flex items-center">
-                  <span className="text-blue-400 font-semibold">🖥️ 30 слотов</span> серверов
-                </div>
-              </div>
-            </div>
+
             <div className="space-y-2">
               <div className="flex items-center">
                 <Star className="w-4 h-4 text-blue-500 mr-2" />
@@ -131,8 +118,8 @@ export default function DonateTab() {
                 disabled={hasPremium || hasVip}
                 className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 relative z-10"
               >
-                {hasPremium ? 'Premium блокирует VIP' :
-                 hasVip ? 'У вас уже есть VIP' : 'Купить VIP - $20 за 8 месяцев'}
+                {hasPremium ? t('premiumBlocksVip') :
+                 hasVip ? t('alreadyHavePremium') : t('purchaseVip') + ' - $20 8 ' + t('month')}
               </Button>
             </PurchaseDialog>
           </div>
@@ -150,7 +137,7 @@ export default function DonateTab() {
               </div>
               <div>
                 <div className="text-xl font-bold">PREMIUM {t('status')}</div>
-                <div className="text-purple-200/90 text-sm">Максимальные привилегии</div>
+                <div className="text-purple-200/90 text-sm">{t('forever')} - {t('premium')}</div>
               </div>
             </div>
             <Badge className="bg-purple-500/30 text-purple-200 border-purple-400/50 px-3 py-1 text-lg font-semibold">
@@ -160,20 +147,7 @@ export default function DonateTab() {
         </CardHeader>
         <CardContent className="pt-6">
           <div className="space-y-3 mb-6">
-            <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 p-3 rounded-lg border border-purple-400/30">
-              <h4 className="text-purple-300 font-semibold mb-2">🎁 PREMIUM ПАКЕТ БОНУСЫ:</h4>
-              <div className="space-y-1 text-sm">
-                <div className="flex items-center">
-                  <span className="text-green-400 font-semibold">💰 +$50,000</span> стартового капитала
-                </div>
-                <div className="flex items-center">
-                  <span className="text-purple-400 font-semibold">⚡ +15,000</span> опыта
-                </div>
-                <div className="flex items-center">
-                  <span className="text-purple-400 font-semibold">🖥️ 35 слотов</span> серверов
-                </div>
-              </div>
-            </div>
+
             <div className="space-y-2">
               <div className="flex items-center">
                 <Crown className="w-4 h-4 text-purple-500 mr-2" />
@@ -219,8 +193,8 @@ export default function DonateTab() {
                 disabled={hasVip || hasPremium}
                 className="w-full bg-purple-600 hover:bg-purple-700 disabled:opacity-50 relative z-10"
               >
-                {hasPremium ? 'У вас уже есть Premium' :
-                 hasVip ? 'VIP блокирует Premium' : 'Купить Premium - $25 навсегда'}
+                {hasPremium ? t('alreadyHavePremium') :
+                 hasVip ? t('vipBlocksPremium') : t('purchasePremium') + ' - $25 ' + t('forever')}
               </Button>
             </PurchaseDialog>
           </div>
