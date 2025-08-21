@@ -9,9 +9,20 @@ Project language: Russian (основной язык пользователя)
 
 # Recent Changes (January 2025)
 
+## Latest Updates (August 2025)
+- **Production Infrastructure Setup**: Created complete MySQL database migration system with schema and backup functionality
+- **PM2 Clustering**: Configured ecosystem for multi-core utilization with connection pooling (1000 connections limit)
+- **Automated Backups**: Implemented daily incremental backups at 00:00 with 30-day retention
+- **Storage Adapter**: Built intelligent storage system that switches between file-based (development) and MySQL (production) storage
+- **Linux Server Deployment**: Added comprehensive deployment scripts and production configuration
+- **Real Push Notifications**: Implemented browser notification system with permission handling and test notifications
+
+## Previous Updates
 - Successfully migrated project from Replit Agent to standard Replit environment
 - Installed all required Node.js dependencies for both frontend and backend
 - Verified server startup and frontend connectivity
+- Fixed critical chat bug where regular users couldn't send messages due to undefined 'language' variable
+- Enhanced PWA installation functionality with dedicated settings tab and install button
 - Project now runs cleanly on port 5000 with Express backend and Vite frontend
 
 # System Architecture

@@ -3,7 +3,8 @@ import session from "express-session";
 import os from "os";
 import { registerRoutes } from "./routes.js";
 import { setupVite, serveStatic, log } from "./vite.js";
-import { storage } from "./storage.js";
+import { storageAdapter as storage } from "./storage-adapter.js";
+import { DatabaseBackup } from "../database/backup.js";
 
 const app = express();
 app.set('trust proxy', true); // Enable IP tracking for registration limits
@@ -76,7 +77,24 @@ setInterval(async () => {
   }
 }, 60000); // Every 60 seconds
 
+// Initialize storage and backup system
+async function initializeServer() {
+  log('🔄 Initializing storage system...');
+  await storage.initialize();
+  
+  // Setup scheduled backups in production
+  if (process.env.NODE_ENV === 'production') {
+    log('⏰ Setting up scheduled backups...');
+    DatabaseBackup.setupScheduledBackups();
+  }
+  
+  log('✅ Server initialization complete');
+}
+
 (async () => {
+  // Initialize storage before starting server
+  await initializeServer();
+  
   const server = await registerRoutes(app);
 
   app.use((err, _req, res, _next) => {
@@ -113,8 +131,26 @@ setInterval(async () => {
     });
     
     log(`Server started successfully!`);
+    log(`Storage type: ${storage.getStorageType()}`);
     log(`Local access: http://localhost:${port}`);
     log(`Network access: http://${localIP}:${port}`);
     log(`External access: Configure your router/firewall to forward port ${port}`);
+  });
+
+  // Graceful shutdown handling for PM2
+  process.on('SIGINT', () => {
+    log('🔄 Received SIGINT, shutting down gracefully...');
+    server.close(() => {
+      log('✅ Server closed');
+      process.exit(0);
+    });
+  });
+
+  process.on('SIGTERM', () => {
+    log('🔄 Received SIGTERM, shutting down gracefully...');
+    server.close(() => {
+      log('✅ Server closed');
+      process.exit(0);
+    });
   });
 })();

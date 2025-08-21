@@ -1,27 +1,36 @@
 @echo off
-echo ========================================
-echo       GameStats Server Launcher
-echo ========================================
+echo Starting Root Tycoon Production Server...
+
+REM Check if PM2 is installed
+where pm2 >nul 2>nul
+if %errorlevel% neq 0 (
+    echo PM2 not found. Installing PM2...
+    npm install -g pm2
+)
+
+REM Check if .env file exists
+if not exist ".env" (
+    echo Creating .env file from template...
+    copy .env.example .env
+    echo Please edit .env file with your database credentials before continuing.
+    pause
+)
+
+REM Run database migration
+echo Running database migration...
+node database\migration.js
+
+REM Start with PM2
+echo Starting server with PM2...
+pm2 start ecosystem.config.js --env production
+
+REM Save PM2 configuration
+pm2 save
+
 echo.
-echo Installing dependencies...
+echo Server started successfully!
+echo Use 'pm2 status' to check status
+echo Use 'pm2 logs root-tycoon' to view logs
+echo Use 'pm2 stop root-tycoon' to stop server
 echo.
-echo Dependencies installed successfully!
-echo.
-echo Starting server...
-echo.
-echo After startup, you can access the game at:
-echo   Local:    http://localhost:5000
-echo   Network:  Check console for your IP address
-echo.
-echo For external access:
-echo 1. Use the Network address shown in console
-echo 2. Configure your router to forward port 5000
-echo 3. Make sure Windows Firewall allows port 5000
-echo.
-echo ========================================
-echo.
-set NODE_ENV=development
-npx tsx server/index.js
-echo.
-echo Server stopped. Press any key to exit...
-pause > nul
+pause

@@ -1,6 +1,6 @@
 import { createServer } from "http";
 import bcrypt from "bcrypt";
-import { storage } from "./storage.js";
+import { storageAdapter as storage } from "./storage-adapter.js";
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
