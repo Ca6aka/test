@@ -219,8 +219,8 @@ export function GameProvider({ children }) {
     onSuccess: () => {
       dispatch({ type: 'RESET' });
       queryClient.clear();
-      // Navigate to home page after logout
-      window.location.href = '/';
+      // Navigate to start page after logout
+      window.location.href = '/start';
     },
   });
 

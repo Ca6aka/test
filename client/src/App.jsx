@@ -38,7 +38,7 @@ function AppRouter() {
   return (
     <Switch>
       <Route path="/">
-        {gameState.user ? <Redirect to={getDefaultGameRoute()} /> : <HomePage />}
+        {gameState.user ? <Redirect to={getDefaultGameRoute()} /> : <Redirect to="/start" />}
       </Route>
       
       <Route path="/start">
