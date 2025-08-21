@@ -197,6 +197,9 @@ const translations = {
     nicknameInvalidChars: 'Nickname can only contain letters, numbers, hyphens, and underscores',
     nicknameMax8Chars: 'Max 8 characters, letters/numbers only',
     
+    //
+    homename2: 'Server Management',
+
     // Hero section
     heroTitle: 'Build Your Server Empire',
     heroSubtitle: 'Master the Art of Hosting',
@@ -285,6 +288,7 @@ const translations = {
     tipCompleteJobs: 'With mini-games, you can get some experience',
     tipJobCooldown: 'To open the rating and get into it - you need at least level 5',
     tipEarnToUnlock: 'If you have a question or found any errors - go to the "Report" tab',
+    tipEarnToUnlock2: 'After you get $15,000, go to the Server Store',
     tipPurchaseServers: "Buy servers for passive income, don't forget to keep an eye on them",
     tipTakeCourses: 'Take training courses to unlock more server slots and more',
     browseServerStore: 'Browse Server Store',
@@ -967,6 +971,9 @@ const translations = {
     nicknameInvalidChars: 'Никнейм может содержать только буквы, цифры, дефисы и подчеркивания',
     nicknameMax8Chars: 'Макс 8 символов, только буквы/цифры',
     
+    //
+    homename2: 'Управление серверами',
+
     // Hero section
     heroTitle: 'Создайте Свою Серверную Империю',
     heroSubtitle: 'Освойте Искусство Хостинга',
@@ -1072,6 +1079,7 @@ const translations = {
     tipCompleteJobs: 'С помощью мини-игр можно получить немного опыта',
     tipJobCooldown: 'Чтобы открыть рейтинг и попасть в него - нужен как минимум 5 уровень',
     tipEarnToUnlock: 'Если имеется вопрос или нашли какую-то ошибку - отправляйтесь во вкладку "Репорт"',
+    tipEarnToUnlock2: 'После того как получите $15.000 - отправляйтесь в "Магазин серверов"',
     tipPurchaseServers: 'Покупайте серверы для получения пассивного дохода, не забывайте следить за ними',
     tipTakeCourses: 'Проходите курсы обучения, чтобы разблокировать больше слотов для серверов и не только',
     browseServerStore: 'Просмотреть магазин серверов',
@@ -1486,8 +1494,6 @@ const translations = {
     purchaseFirstServer: 'Купите свой первый сервер в магазине серверов, чтобы начать получать доход.',
     serverPurchased: 'Сервер куплен',
     purchaseFailed: 'Покупка не удалась',
-    serverLimitReached: 'Лимит серверов достигнут',
-    serverLimitReachedDesc: 'У вас может быть только {serverLimit} серверов. Пройдите курсы обучения, чтобы увеличить лимит.',
     serverAlreadyOnline: 'Сервер уже онлайн',
     serverAlreadyOnlineDesc: 'Этот сервер уже активирован и работает.',
     purchaseServer2: 'Купить сервер',
@@ -1649,7 +1655,7 @@ const translations = {
     donateTitle: 'Поддержка проекта',
     donateDescription: 'Поддерживая игру, вы помогаете улучшать проект и получать новые функции. За это вы получаете бонусы, указанные ниже: VIP/ Premium отметки, ускорение опыта, внутриигровую валюту и другие привилегии.',
     securePayment: 'Оплата безопасно и просто',
-    cryptoPaymentInfo: 'Выберите криптовалюту и оплатите VIP/Premium.\nИзвиняемся за высокую минимальную сумму — это ограничение платформы, не нашей игры.\nНовичок в крипте? Не проблема! Свяжитесь с нами:\n📧 email@gmail.com | 📱 t.me/Ca6aka — подскажем и проведём оплату шаг за шагом.',
+    cryptoPaymentInfo: 'Выберите криптовалюту и оплатите VIP/Premium.\nИзвиняемся за высокую минимальную сумму — это ограничение платформы, не нашей игры.\nНовичок в крипте? Не проблема! Свяжитесь с нами:\n📧 root.tycoon.games@gmail.com | 📱 t.me/Ca6aka — подскажем и проведём оплату шаг за шагом.',
     months: 'месяцев',
     forever: 'навсегда',
     maximum: 'Максимальный пакет',
@@ -1793,6 +1799,10 @@ const translations = {
     registrationFailed: 'Помилка реєстрації',
     passwordsDoNotMatch: 'Паролі не співпадають',
     
+    //
+    homename2: 'Керування серверами',
+    addToHomeScreen: 'Додати на головний екран',
+
     // Hero section
     heroTitle: 'Створіть Свою Серверну Імперію',
     heroSubtitle: 'Опануйте Мистецтво Хостингу',
@@ -1897,6 +1907,7 @@ const translations = {
     tipCompleteJobs: 'За допомогою міні-ігор ви можете отримати певний досвід',
     tipJobCooldown: 'Щоб відкрити рейтинг і потрапити до нього - потрібно мати хоча б 5 рівень',
     tipEarnToUnlock: 'Якщо у вас є питання або ви знайшли помилку - перейдіть на вкладку "Звіт"',
+    tipEarnToUnlock2: 'Після того, як ви отримаєте $15,000, перейдіть до Магазину серверів',
     tipPurchaseServers: "Купуйте сервери для пасивного доходу, не забувайте стежити за ними",
     tipTakeCourses: 'Пройдіть навчальні курси, щоб розблокувати більше серверних слотів і не тільки',
     browseServerStore: 'Переглянути магазин серверів',
@@ -2458,6 +2469,9 @@ const translations = {
     registrationFailed: 'Registrierung fehlgeschlagen',
     passwordsDoNotMatch: 'Passwörter stimmen nicht überein',
     
+    //
+    homename2: 'Server-Verwaltung',
+    
     // Hero section
     heroTitle: 'Bauen Sie Ihr Server-Imperium',
     heroSubtitle: 'Meistern Sie die Kunst des Hostings',
@@ -2560,6 +2574,7 @@ const translations = {
     tipCompleteJobs: 'Mit Minispielen können Sie Erfahrungen sammeln',
     tipJobCooldown: 'Um die Bewertung zu öffnen und in sie einzusteigen, benötigen Sie mindestens Stufe 5',
     tipEarnToUnlock: 'Wenn Sie eine Frage haben oder einen Fehler gefunden haben - gehen Sie auf die Registerkarte "Bericht"',
+    tipEarnToUnlock2: 'Sobald Sie 15.000 $ erhalten haben, gehen Sie zum Server Store',
     tipPurchaseServers: "Kaufen Sie Server für passives Einkommen, vergessen Sie nicht, sie im Auge zu behalten",
     tipTakeCourses: 'Nehmen Sie an Schulungen teil, um mehr Serverplätze und mehr freizuschalten',
     browseServerStore: 'Server Shop durchsuchen',

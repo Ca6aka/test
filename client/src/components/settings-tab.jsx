@@ -137,24 +137,7 @@ export default function SettingsTab() {
                 </Select>
               </div>
 
-              <div className="flex items-center justify-between">
-                <div className="space-y-0.5">
-                  <Label>Язык интерфейса</Label>
-                  <p className="text-sm text-muted-foreground">
-                    Выберите предпочитаемый язык
-                  </p>
-                </div>
-                <Select value={language} onValueChange={setLanguage}>
-                  <SelectTrigger className="w-[180px]">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="ru">🇷🇺 Русский</SelectItem>
-                    <SelectItem value="en">🇺🇸 English</SelectItem>
-                    <SelectItem value="uk">🇺🇦 Українська</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+
             </CardContent>
           </Card>
 
@@ -185,7 +168,7 @@ export default function SettingsTab() {
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Регистрация:</span>
                   <span className="font-medium">
-                    {gameState.user?.createdAt ? new Date(gameState.user.createdAt).toLocaleDateString('ru-RU') : 'Неизвестно'}
+                    {gameState.user?.registrationTime ? new Date(gameState.user.registrationTime).toLocaleDateString('ru-RU') : 'Неизвестно'}
                   </span>
                 </div>
               </div>

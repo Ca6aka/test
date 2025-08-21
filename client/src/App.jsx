@@ -14,6 +14,10 @@ import LoginPage from "@/pages/login";
 import DashboardPage from "@/pages/dashboard";
 import PlayerProfilePage from "@/pages/player-profile";
 import NotFound from "@/pages/not-found";
+import FAQPage from "@/pages/faq";
+import RulesPage from "@/pages/rules";
+import PrivacyPage from "@/pages/privacy";
+import TermsPage from "@/pages/terms";
 
 
 function AppRouter() {
@@ -70,6 +74,11 @@ function AppRouter() {
       <Route path="/player">
         {gameState.user ? <Redirect to="/game" /> : <Redirect to="/login" />}
       </Route>
+      
+      <Route path="/faq" component={FAQPage} />
+      <Route path="/rules" component={RulesPage} />
+      <Route path="/privacy" component={PrivacyPage} />
+      <Route path="/terms" component={TermsPage} />
       
       <Route component={NotFound} />
     </Switch>

@@ -1495,7 +1495,7 @@ export class FileStorage {
           const userData = JSON.parse(await fs.readFile(userPath, 'utf8'));
           
           // Calculate user level
-          const userLevel = Math.floor(Math.sqrt((userData.experience || 0) / 100)) + 1;
+          const userLevel = calculateLevel(userData.experience || 0);
           
           // Get server count for this user from servers.json
           const userServers = await this.getUserServers(userData.id);

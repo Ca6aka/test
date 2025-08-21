@@ -54,46 +54,91 @@ export default function HomePage() {
       icon: Server,
       title: language === 'ru' ? 'Управление Серверами' : 
              language === 'en' ? 'Server Management' :
-             language === 'uk' ? 'Керування Серверами' :
+             language === 'ua' ? 'Керування Серверами' :
              'Server-Verwaltung',
       description: language === 'ru' ? 'Покупайте, настраивайте и оптимизируйте виртуальные серверы для максимальной прибыли' : 
                    language === 'en' ? 'Buy, configure and optimize virtual servers for maximum profit' :
-                   language === 'uk' ? 'Купуйте, налаштовуйте та оптимізуйте віртуальні сервери для максимального прибутку' :
+                   language === 'ua' ? 'Купуйте, налаштовуйте та оптимізуйте віртуальні сервери для максимального прибутку' :
                    'Kaufen, konfigurieren und optimieren Sie virtuelle Server für maximalen Profit',
-      details: language === 'ru' ? 'Более 15 типов серверов с уникальными характеристиками' : 
-               language === 'en' ? 'Over 15 server types with unique characteristics' :
-               language === 'uk' ? 'Понад 15 типів серверів з унікальними характеристиками' :
-               'Über 15 Servertypen mit einzigartigen Eigenschaften'
+      details: language === 'ru' ? 'Более 5 типов серверов с уникальными характеристиками' : 
+               language === 'en' ? 'Over 5 server types with unique characteristics' :
+               language === 'ua' ? 'Понад 5 типів серверів з унікальними характеристиками' :
+               'Über 5 Servertypen mit einzigartigen Eigenschaften'
     },
     {
       icon: TrendingUp,
-      title: 'Пассивный Доход',
-      description: 'Зарабатывайте деньги даже когда не в игре благодаря автоматизированным серверам',
-      details: 'Доход каждую минуту, оптимизация загрузки серверов'
+      title: language === 'ru' ? 'Пассивный Доход' : 
+      language === 'en' ? 'Passive Income' :
+      language === 'ua' ? 'Пасивний дохід' :
+      'Passives Einkommen',
+      description: language === 'ru' ? 'Зарабатывайте деньги даже когда не в игре благодаря автоматизированным серверам' : 
+      language === 'en' ? "Earn money even when you're not playing thanks to automated servers" :
+      language === 'ua' ? 'Заробляйте гроші навіть коли не граєте завдяки автоматизованим серверам' :
+      'Verdienen Sie Geld, auch wenn Sie nicht spielen, dank automatisierter Server.',
+      details: language === 'ru' ? 'Доход каждую минуту, оптимизация загрузки серверов' : 
+      language === 'en' ? 'Revenue every minute, server load optimization' :
+      language === 'ua' ? 'Дохід щохвилини, оптимізація завантаження серверів' :
+      'Einnahmen jede Minute, Optimierung der Serverauslastung'
     },
     {
       icon: Award,
-      title: 'Система Достижений',
-      description: 'Разблокируйте достижения и получайте награды за прогресс в игре',
-      details: 'Более 20 достижений с денежными и опытными наградами'
+      title: language === 'ru' ? 'Система Достижений' : 
+      language === 'en' ? 'Achievement System' :
+      language === 'ua' ? 'Система досягнень' :
+      'Erfolgssystem',
+      description: language === 'ru' ? 'Разблокируйте достижения и получайте награды за прогресс в игре' : 
+      language === 'en' ? 'Unlock achievements and receive rewards for your progress in the game.' :
+      language === 'ua' ? 'Розблокуйте досягнення та отримуйте нагороди за прогрес у грі' :
+      'Schalte Erfolge frei und erhalte Belohnungen für deine Fortschritte im Spiel.',
+      details: language === 'ru' ? 'Более 30 достижений с денежными и опытными наградами' : 
+      language === 'en' ? 'Over 30 achievements with cash and experience rewards' :
+      language === 'ua' ? 'Понад 30 досягнень з грошовими та досвідченими нагородами' :
+      'Über 30 Erfolge mit Geld- und Erfahrungsbelohnungen',
     },
     {
       icon: Gamepad2,
-      title: 'Мини-Игры',
-      description: 'Играйте в увлекательные мини-игры для получения дополнительного опыта',
-      details: 'DDoS защита, Файрвол фильтр и другие IT-челленджи'
+      title: language === 'ru' ? 'Мини-игры' : 
+      language === 'en' ? 'Mini-games' :
+      language === 'ua' ? 'Міні-ігри' :
+      'Minispiele',
+      description: language === 'ru' ? 'Играйте в увлекательные мини-игры для получения дополнительного опыта' : 
+      language === 'en' ? 'Play exciting mini-games to gain additional experience' :
+      language === 'ua' ? 'Грайте в захоплюючі міні-ігри для отримання додаткового досвіду' :
+      'Spielen Sie spannende Minispiele, um zusätzliche Erfahrung zu sammeln.',
+      details: language === 'ru' ? 'DDoS защита, Файрвол фильтр и другие IT-челленджи' : 
+      language === 'en' ? 'DDoS protection, firewall filter, and other IT challenges' :
+      language === 'ua' ? 'DDoS захист, Файрвол фільтр та інші IT-челенджі' :
+      'DDoS-Schutz, Firewall-Filter und andere IT-Herausforderungen',
     },
     {
       icon: Coins,
-      title: 'Криптоплатежи',
-      description: 'VIP и Premium подписки с оплатой в криптовалюте через NOWPayments',
-      details: 'Bitcoin, Ethereum, USDT и 50+ других криптовалют'
+      title: language === 'ru' ? 'Криптоплатежи' : 
+      language === 'en' ? 'Crypto payments' :
+      language === 'ua' ? 'Криптоплатежі' :
+      'Krypto-Zahlungen',
+      description: language === 'ru' ? 'VIP и Premium подписки с оплатой в криптовалюте через NOWPayments' : 
+      language === 'en' ? 'VIP and Premium subscriptions with payment in cryptocurrency via NOWPayments' :
+      language === 'ua' ? 'VIP та Premium підписки з оплатою в криптовалюті через NOWPayments' :
+      'VIP- und Premium-Abonnements mit Zahlung in Kryptowährung über NOWPayments',
+      details: language === 'ru' ? 'Bitcoin, Ethereum, USDT и 50+ других криптовалют' : 
+      language === 'en' ? 'Bitcoin, Ethereum, USDT, and 50+ other cryptocurrencies' :
+      language === 'ua' ? 'Bitcoin, Ethereum, USDT та 50+ інших криптовалют' :
+      'Bitcoin, Ethereum, USDT und über 50 weitere Kryptowährungen',
     },
     {
       icon: Users,
-      title: 'Мультиплеер',
-      description: 'Общайтесь с другими игроками в реальном времени и соревнуйтесь в рейтингах',
-      details: 'Глобальные рейтинги, чат с эмодзи для VIP пользователей'
+      title: language === 'ru' ? 'Мультиплеер' : 
+      language === 'en' ? 'Multiplayer' :
+      language === 'ua' ? 'Мультиплеєр' :
+      'Mehrspieler',
+      description: language === 'ru' ? 'Общайтесь с другими игроками в реальном времени и соревнуйтесь в рейтингах' : 
+      language === 'en' ? 'Communicate with other players in real time and compete in rankings' :
+      language === 'ua' ? 'Спілкуйтеся з іншими гравцями в реальному часі та змагайтеся в рейтингах' :
+      'Kommuniziere mit anderen Spielern in Echtzeit und konkurriere in den Ranglisten.',
+      details: language === 'ru' ? 'Глобальные рейтинги, чат с эмодзи для VIP пользователей' : 
+      language === 'en' ? 'Global rankings, emoji chat for VIP users' :
+      language === 'ua' ? 'Глобальні рейтинги, чат з емодзі для VIP-користувачів' :
+      'Globale Rankings, Chat mit Emojis für VIP-Nutzer',
     }
   ];
 
@@ -101,7 +146,7 @@ export default function HomePage() {
     { 
       label: language === 'ru' ? 'Всего игроков' : 
               language === 'en' ? 'Total Players' :
-              language === 'uk' ? 'Всього гравців' :
+              language === 'ua' ? 'Всього гравців' :
               'Spieler gesamt', 
       value: statsData?.totalPlayers || '0', 
       icon: Users 
@@ -109,7 +154,7 @@ export default function HomePage() {
     { 
       label: language === 'ru' ? 'Онлайн' : 
               language === 'en' ? 'Online' :
-              language === 'uk' ? 'Онлайн' :
+              language === 'ua' ? 'Онлайн' :
               'Online', 
       value: statsData?.onlinePlayers || '0', 
       icon: Activity 
@@ -117,7 +162,7 @@ export default function HomePage() {
     { 
       label: language === 'ru' ? 'Серверов' : 
               language === 'en' ? 'Servers' :
-              language === 'uk' ? 'Серверів' :
+              language === 'ua' ? 'Серверів' :
               'Server', 
       value: statsData?.totalServers || '0', 
       icon: Server 
@@ -125,7 +170,7 @@ export default function HomePage() {
     { 
       label: language === 'ru' ? 'Общий баланс' : 
               language === 'en' ? 'Total Balance' :
-              language === 'uk' ? 'Загальний баланс' :
+              language === 'ua' ? 'Загальний баланс' :
               'Gesamtsaldo', 
       value: statsData?.totalBalance ? formatCurrency(statsData.totalBalance) : '$0', 
       icon: DollarSign 
@@ -138,7 +183,7 @@ export default function HomePage() {
       role: 'Beta Tester',
       content: language === 'ru' ? 'Помогал тестировать игровую механику. Отличный баланс и интересные функции!' : 
                language === 'en' ? 'Helped test game mechanics. Great balance and interesting features!' :
-               language === 'uk' ? 'Допомагав тестувати ігрову механіку. Відмінний баланс та цікаві функції!' :
+               language === 'ua' ? 'Допомагав тестувати ігрову механіку. Відмінний баланс та цікаві функції!' :
                'Geholfen, die Spielmechanik zu testen. Großartige Balance und interessante Features!',
       rating: 5
     },
@@ -147,7 +192,7 @@ export default function HomePage() {
       role: 'UI/UX Tester',
       content: language === 'ru' ? 'Тестировал интерфейс и удобство использования. Все работает интуитивно!' : 
                language === 'en' ? 'Tested interface and usability. Everything works intuitively!' :
-               language === 'uk' ? 'Тестував інтерфейс та зручність використання. Все працює інтуїтивно!' :
+               language === 'ua' ? 'Тестував інтерфейс та зручність використання. Все працює інтуїтивно!' :
                'Testete Interface und Benutzerfreundlichkeit. Alles funktioniert intuitiv!',
       rating: 5
     },
@@ -156,7 +201,7 @@ export default function HomePage() {
       role: 'Payment Tester',
       content: language === 'ru' ? 'Проверял криптоплатежи и VIP функции. Система работает стабильно!' : 
                language === 'en' ? 'Tested crypto payments and VIP features. System works stably!' :
-               language === 'uk' ? 'Перевіряв криптоплатежі та VIP функції. Система працює стабільно!' :
+               language === 'ua' ? 'Перевіряв криптоплатежі та VIP функції. Система працює стабільно!' :
                'Testete Krypto-Zahlungen und VIP-Funktionen. System funktioniert stabil!',
       rating: 5
     }
@@ -179,19 +224,12 @@ export default function HomePage() {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-white">Root Tycoon</h1>
-                <p className="text-xs text-slate-400">Управление Серверами</p>
+                <p className="text-xs text-slate-400">{t('homename2')}</p>
               </div>
             </div>
             
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
-                <Button 
-                  variant={language === 'ru' ? 'default' : 'ghost'} 
-                  size="sm"
-                  onClick={() => changeLanguage('ru')}
-                >
-                  🇷🇺
-                </Button>
                 <Button 
                   variant={language === 'en' ? 'default' : 'ghost'} 
                   size="sm"
@@ -200,9 +238,16 @@ export default function HomePage() {
                   🇺🇸
                 </Button>
                 <Button 
-                  variant={language === 'uk' ? 'default' : 'ghost'} 
+                  variant={language === 'ru' ? 'default' : 'ghost'} 
                   size="sm"
-                  onClick={() => changeLanguage('uk')}
+                  onClick={() => changeLanguage('ru')}
+                >
+                  🇷🇺
+                </Button>
+                <Button 
+                  variant={language === 'ua' ? 'default' : 'ghost'} 
+                  size="sm"
+                  onClick={() => changeLanguage('ua')}
                 >
                   🇺🇦
                 </Button>
@@ -220,15 +265,15 @@ export default function HomePage() {
                   <Button variant="outline" size="sm">
                     {language === 'ru' ? 'Вход' : 
                      language === 'en' ? 'Login' :
-                     language === 'uk' ? 'Вхід' :
+                     language === 'ua' ? 'Вхід' :
                      'Anmelden'}
                   </Button>
                 </Link>
                 <Link to="/register">
-                  <Button variant="default" size="sm">
+                  <Button variant="outline" size="sm">
                     {language === 'ru' ? 'Регистрация' : 
                      language === 'en' ? 'Register' :
-                     language === 'uk' ? 'Реєстрація' :
+                     language === 'ua' ? 'Реєстрація' :
                      'Registrieren'}
                   </Button>
                 </Link>
@@ -257,7 +302,7 @@ export default function HomePage() {
             <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
               {language === 'ru' ? 'Создай свою IT-империю! Управляй серверами, зарабатывай криптовалюту, соревнуйся с игроками со всего мира в самом реалистичном симуляторе серверов.' : 
                language === 'en' ? 'Build your IT empire! Manage servers, earn cryptocurrency, compete with players worldwide in the most realistic server simulator.' :
-               language === 'uk' ? 'Створи свою IT-імперію! Керуй серверами, заробляй криптовалюту, змагайся з гравцями з усього світу в найреалістичнішому симуляторі серверів.' :
+               language === 'ua' ? 'Створи свою IT-імперію! Керуй серверами, заробляй криптовалюту, змагайся з гравцями з усього світу в найреалістичнішому симуляторі серверів.' :
                'Baue dein IT-Imperium auf! Verwalte Server, verdiene Kryptowährung, konkurriere mit Spielern weltweit im realistischsten Server-Simulator.'}
             </p>
             
@@ -267,7 +312,7 @@ export default function HomePage() {
                   <Play className="w-5 h-5 mr-2" />
                   {language === 'ru' ? 'Начать Играть' : 
                    language === 'en' ? 'Start Playing' :
-                   language === 'uk' ? 'Почати Грати' :
+                   language === 'ua' ? 'Почати Грати' :
                    'Spielen Starten'}
                 </Button>
               </Link>
@@ -281,7 +326,7 @@ export default function HomePage() {
                 <Globe className="w-5 h-5 mr-2" />
                 {language === 'ru' ? 'Узнать больше' : 
                  language === 'en' ? 'Learn More' :
-                 language === 'uk' ? 'Дізнатися більше' :
+                 language === 'ua' ? 'Дізнатися більше' :
                  'Mehr erfahren'}
               </Button>
             </div>
@@ -323,7 +368,7 @@ export default function HomePage() {
                   >
                     <Card className="bg-slate-800/50 border-slate-700">
                       <CardContent className="pt-6 text-center">
-                        <IconComponent className="w-8 h-8 mx-auto mb-2 text-blue-400" />
+                        <IconComponent className="w-8 h-8 mx-auto mb-2 text-blue-400 animate-pulse" />
                         <div className="text-2xl font-bold text-white">{stat.value}</div>
                         <div className="text-sm text-slate-400">{stat.label}</div>
                       </CardContent>
@@ -349,13 +394,13 @@ export default function HomePage() {
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 {language === 'ru' ? 'Возможности Игры' : 
                  language === 'en' ? 'Game Features' :
-                 language === 'uk' ? 'Можливості Гри' :
+                 language === 'ua' ? 'Можливості Гри' :
                  'Spiel-Features'}
               </h2>
               <p className="text-slate-300 max-w-2xl mx-auto">
                 {language === 'ru' ? 'Погрузитесь в мир профессионального управления серверами с реалистичной экономикой и интуитивным интерфейсом' : 
                  language === 'en' ? 'Dive into the world of professional server management with realistic economy and intuitive interface' :
-                 language === 'uk' ? 'Поринайте у світ професійного управління серверами з реалістичною економікою та інтуїтивним інтерфейсом' :
+                 language === 'ua' ? 'Поринайте у світ професійного управління серверами з реалістичною економікою та інтуїтивним інтерфейсом' :
                  'Tauchen Sie in die Welt des professionellen Server-Managements mit realistischer Wirtschaft und intuitiver Benutzeroberfläche ein'}
               </p>
             </div>
@@ -434,7 +479,7 @@ export default function HomePage() {
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 {language === 'ru' ? 'Спасибо тестерам за помощь в создании и тестировании игры' : 
                  language === 'en' ? 'Thank you to testers for help in creating and testing the game' :
-                 language === 'uk' ? 'Дякуємо тестерам за допомогу у створенні та тестуванні гри' :
+                 language === 'ua' ? 'Дякуємо тестерам за допомогу у створенні та тестуванні гри' :
                  'Danke an die Tester für die Hilfe bei der Erstellung und dem Testen des Spiels'}
                 <span className="text-2xl ml-2 animate-pulse" style={{background: 'linear-gradient(45deg, #ef4444, #f59e0b)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>❤️</span>
               </h2>
@@ -483,13 +528,13 @@ export default function HomePage() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               {language === 'ru' ? 'Рейтинг Игроков' : 
                language === 'en' ? 'Player Rankings' :
-               language === 'uk' ? 'Рейтинг Гравців' :
+               language === 'ua' ? 'Рейтинг Гравців' :
                'Spieler-Rangliste'}
             </h2>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto">
               {language === 'ru' ? 'Топ игроки по балансу, опыту и количеству серверов' : 
                language === 'en' ? 'Top players by balance, experience and server count' :
-               language === 'uk' ? 'Топ гравці за балансом, досвідом та кількістю серверів' :
+               language === 'ua' ? 'Топ гравці за балансом, досвідом та кількістю серверів' :
                'Top-Spieler nach Guthaben, Erfahrung und Serveranzahl'}
             </p>
           </motion.div>
@@ -527,12 +572,12 @@ export default function HomePage() {
                             <Link to={`/player/${player.nickname}`}>
                               <div className="font-semibold text-white text-lg hover:text-blue-400 cursor-pointer transition-colors">{player.nickname}</div>
                             </Link>
-                            <div className="text-sm text-slate-400">{language === 'ru' ? 'Уровень' : language === 'en' ? 'Level' : language === 'uk' ? 'Рівень' : 'Stufe'} {Math.floor(Math.sqrt((player.experience || 0) / 100)) + 1}</div>
+                            <div className="text-sm text-slate-400">{language === 'ru' ? 'Уровень' : language === 'en' ? 'Level' : language === 'ua' ? 'Рівень' : 'Stufe'} {player.level || 1}</div>
                           </div>
                         </div>
                         <div className="text-right">
                           <div className="text-lg font-bold text-green-400">{formatCurrency(player.balance)}</div>
-                          <div className="text-sm text-slate-400">{player.serverCount || 0} {language === 'ru' ? 'серверов' : language === 'en' ? 'servers' : language === 'uk' ? 'серверів' : 'Server'}</div>
+                          <div className="text-sm text-slate-400">{player.serverCount || 0} {language === 'ru' ? 'серверов' : language === 'en' ? 'servers' : language === 'ua' ? 'серверів' : 'Server'}</div>
                         </div>
                       </div>
                     </CardContent>
@@ -556,36 +601,83 @@ export default function HomePage() {
                 <span className="text-lg font-bold text-white">Root Tycoon</span>
               </div>
               <p className="text-slate-400 text-sm">
-                Лучший симулятор управления серверами с криптоплатежами и реальной экономикой.
+              {language === 'ru' ? 'Лучший симулятор управления серверами с криптоплатежами и реальной экономикой.' : 
+               language === 'en' ? 'The best server management simulator with crypto payments and a real economy.' :
+               language === 'ua' ? 'Кращий симулятор управління серверами з криптоплатежами і реальною економікою.' :
+               'Der beste Simulator für die Verwaltung von Servern mit Kryptowährungen und realer Wirtschaft.'}
               </p>
             </div>
 
             <div>
-              <h3 className="text-white font-semibold mb-4">Игра</h3>
+              <h3 className="text-white font-semibold mb-4">
+              {language === 'ru' ? 'Игра' : 
+               language === 'en' ? 'Game' :
+               language === 'ua' ? 'Гра' :
+               'Spiel'}
+              </h3>
               <ul className="space-y-2 text-sm text-slate-400">
-                <li><Link to="/register" className="hover:text-white transition">Регистрация</Link></li>
-                <li><Link to="/login" className="hover:text-white transition">Вход</Link></li>
-                <li><a href="#features" className="hover:text-white transition">Возможности</a></li>
-                <li><a href="#" className="hover:text-white transition">Рейтинги</a></li>
+                <li><Link to="/register" className="hover:text-white transition">
+              {language === 'ru' ? 'Регистрация' : 
+               language === 'en' ? 'Registration' :
+               language === 'ua' ? 'Реєстрація' :
+               'Registrierung'}
+               </Link></li>
+                <li><Link to="/login" className="hover:text-white transition">
+                {language === 'ru' ? 'Войти' : 
+               language === 'en' ? 'Log in' :
+               language === 'ua' ? 'Увійти' :
+               'Anmelden'}</Link></li>
+                <li><a href="#features" className="hover:text-white transition">
+              {language === 'ru' ? 'Возможности' : 
+               language === 'en' ? 'Capabilities' :
+               language === 'ua' ? 'Можливості' :
+               'Möglichkeiten'}</a></li>
+                <li><a href="#rankings" className="hover:text-white transition">
+              {language === 'ru' ? 'Рейтинги' : 
+               language === 'en' ? 'Ratings' :
+               language === 'ua' ? 'Рейтинги' :
+               'Bewertungen'}</a></li>
               </ul>
             </div>
 
             <div>
-              <h3 className="text-white font-semibold mb-4">Поддержка</h3>
+              <h3 className="text-white font-semibold mb-4">
+              {language === 'ru' ? 'Поддержка' : 
+               language === 'en' ? 'Support' :
+               language === 'ua' ? 'Підтримка' :
+               'Unterstützung'}
+              </h3>
               <ul className="space-y-2 text-sm text-slate-400">
-                <li><a href="#" className="hover:text-white transition">FAQ</a></li>
-                <li><a href="#" className="hover:text-white transition">Правила</a></li>
-                <li><a href="#" className="hover:text-white transition">Конфиденциальность</a></li>
-                <li><a href="#" className="hover:text-white transition">Условия использования</a></li>
+                <li><a href="faq" className="hover:text-white transition">FAQ</a></li>
+                <li><a href="rules" className="hover:text-white transition">
+              {language === 'ru' ? 'Правила' : 
+               language === 'en' ? 'Rules' :
+               language === 'ua' ? 'Правила' :
+               'Regeln'}</a></li>
+                <li><a href="privacy" className="hover:text-white transition">
+                {language === 'ru' ? 'Конфиденциальность' : 
+               language === 'en' ? 'Privacy' :
+               language === 'ua' ? 'Конфіденційність' :
+               'Datenschutz'}</a></li>
+                <li><a href="terms" className="hover:text-white transition">
+              {language === 'ru' ? 'Условия использования' : 
+               language === 'en' ? 'Terms of Use' :
+               language === 'ua' ? 'Умови використання' :
+               'Nutzungsbedingungen'}</a></li>
               </ul>
             </div>
 
             <div>
-              <h3 className="text-white font-semibold mb-4">Контакты</h3>
+              <h3 className="text-white font-semibold mb-4">
+              {language === 'ru' ? 'Контакты' : 
+               language === 'en' ? 'Contacts' :
+               language === 'ua' ? 'Контакти' :
+               'Kontakte'}
+              </h3>
               <ul className="space-y-3">
                 <li>
                   <a 
-                    href="https://t.me/ServertycoonSupport" 
+                    href="https://t.me/Ca6aka" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="flex items-center space-x-2 text-slate-400 hover:text-white transition"
@@ -597,11 +689,16 @@ export default function HomePage() {
                 </li>
                 <li>
                   <a 
-                    href="mailto:support@roottycoon.ru" 
+                    href="mailto:root.tycoon.games@gmail.com" 
                     className="flex items-center space-x-2 text-slate-400 hover:text-white transition"
                   >
                     <Mail className="w-4 h-4" />
-                    <span className="text-sm">Email поддержка</span>
+                    <span className="text-sm">
+              {language === 'ru' ? 'Email поддержка' : 
+               language === 'en' ? 'Email support' :
+               language === 'ua' ? 'Email підтримка' :
+               'Email Unterstützung'}
+                    </span>
                   </a>
                 </li>
               </ul>
@@ -610,7 +707,10 @@ export default function HomePage() {
 
           <div className="border-t border-slate-700/50 mt-8 pt-8 text-center">
             <p className="text-slate-400 text-sm">
-              © 2024 Root Tycoon. Все права защищены. Сделано с ❤️ для игроков по всему миру.
+            {language === 'ru' ? '© 2025 Root Tycoon. Все права защищены. Сделано с ❤️ для игроков по всему миру.' : 
+               language === 'en' ? '© 2025 Root Tycoon. All rights reserved. Made with ❤️ for gamers around the world.' :
+               language === 'ua' ? '© 2025 Root Tycoon. Всі права захищені. Зроблено з ❤️ для гравців по всьому світу' :
+               '© 2025 Root Tycoon. Alle Rechte vorbehalten. Mit ❤️ für Spieler auf der ganzen Welt erstellt.'}
             </p>
           </div>
         </div>

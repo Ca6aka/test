@@ -63,7 +63,7 @@ export default function DonateTab() {
             <p className="mb-3">{t('cryptoPaymentInfo3')}:</p>
             <div className="flex flex-wrap gap-4 mt-2">
               <a 
-                href={`mailto:tirasergeii@gmail.com?subject=Support Donate | Nickname: ${gameState?.user?.nickname || 'Player'}`}
+                href={`mailto:root.tycoon.games@gmail.com?subject=Support Donate | Nickname: ${gameState?.user?.nickname || 'Player'}`}
                 className="flex items-center gap-2 text-blue-300 hover:text-blue-200 transition-colors font-medium underline"
               >
                 📧 {t('contactEmail')}

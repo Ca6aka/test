@@ -87,7 +87,7 @@ export function TutorialTab({ gameState, setActiveTab }) {
           
           <div className="space-y-2 mb-4">
             <div className="flex justify-between text-sm">
-              <span className="text-slate-400">{t('tipEarnToUnlock').replace('{amount}', formatCurrency(15000))}</span>
+              <span className="text-slate-400">{t('tipEarnToUnlock2').replace('{amount}', formatCurrency(15000))}</span>
               <span className="text-primary">
                 {formatCurrency(gameState.user.balance)} / {formatCurrency(15000)}
               </span>
