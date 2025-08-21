@@ -78,7 +78,7 @@ export default function DonateTab() {
               </div>
             </div>
             <Badge className="bg-blue-500/30 text-blue-200 border-blue-400/50 px-3 py-1 text-lg font-semibold">
-              $20 - 8 {t('months')}
+              $20 за 8 {t('months')}
             </Badge>
           </CardTitle>
         </CardHeader>
@@ -137,7 +137,7 @@ export default function DonateTab() {
                 className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 relative z-10"
               >
                 {hasPremium ? t('premiumBlocksVip') :
-                 hasVip ? t('alreadyHavePremium') : t('purchaseVip') + ' - $20 - 8 ' + t('months')}
+                 hasVip ? t('alreadyHavePremium') : t('purchaseVip') + ' - $20 за 8 ' + t('months')}
               </Button>
             </PurchaseDialog>
           </div>
