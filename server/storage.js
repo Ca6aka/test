@@ -1225,10 +1225,26 @@ export class FileStorage {
     // Apply rewards
     if (learning.reward.type === 'serverSlots') {
       const newServerLimit = user.serverLimit + learning.reward.amount;
-      updates.serverLimit = Math.min(newServerLimit, 25); // Max 25 servers
       
-      // Only mark server slot courses as completed if we've reached the 25 server limit
-      if (updates.serverLimit >= 25) {
+      // Determine max limit based on user subscription status
+      let maxLimit = 25; // Default free limit
+      
+      // Check VIP status
+      const hasActiveVip = user.vipStatus === 'active' && user.vipExpiresAt && new Date(user.vipExpiresAt) > new Date();
+      if (hasActiveVip) {
+        maxLimit = 30;
+      }
+      
+      // Check Premium status (overrides VIP)
+      const hasActivePremium = user.premiumStatus === 'active';
+      if (hasActivePremium) {
+        maxLimit = 35;
+      }
+      
+      updates.serverLimit = Math.min(newServerLimit, maxLimit);
+      
+      // Only mark server slot courses as completed if we've reached the user's max limit
+      if (updates.serverLimit >= maxLimit) {
         updates.completedLearning = [...(user.completedLearning || []), learning.id];
       } else {
         // Keep existing completed learning without adding this course

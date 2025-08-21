@@ -149,11 +149,22 @@ export function LearningTab() {
           const canAfford = gameState.user.balance >= course.price;
           const hasLevelRequirement = userLevel >= course.requiredLevel;
           const completedLearning = gameState.user.completedLearning || [];
-          const isServerLimit25 = course.reward?.type === 'serverSlots' && (gameState.user.serverLimit || 3) >= 25;
+          // Определяем максимальный лимит слотов пользователя
+          const hasActiveVip = gameState.user.vipStatus === 'active' && gameState.user.vipExpiresAt && new Date(gameState.user.vipExpiresAt) > new Date();
+          const hasActivePremium = gameState.user.premiumStatus === 'active';
           
-          // For server slot courses, only consider them completed if we've reached the 25 server limit
+          let userMaxSlots = 25; // Базовый лимит
+          if (hasActivePremium) {
+            userMaxSlots = 35;
+          } else if (hasActiveVip) {
+            userMaxSlots = 30;
+          }
+          
+          const isServerLimitReached = course.reward?.type === 'serverSlots' && (gameState.user.serverLimit || 3) >= userMaxSlots;
+          
+          // For server slot courses, only consider them completed if we've reached the user's max server limit
           const isCompleted = course.reward?.type === 'serverSlots' 
-            ? isServerLimit25
+            ? isServerLimitReached
             : completedLearning.includes(course.id);
             
           const isLearning = gameState.currentLearning?.id === course.id;

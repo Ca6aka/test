@@ -2105,30 +2105,30 @@ export async function registerRoutes(app) {
               const vipBonuses = {
                 money: 10000,      // +$10,000 стартового капитала
                 experience: 2500,  // +2,500 опыта
-                servers: 5         // +5 слотов серверов (всего 30)
               };
               
               await storage.updateUser(user.id, {
                 vipStatus: 'active',
                 vipExpiresAt: expiresAt.toISOString(),
                 balance: (user.balance || 0) + vipBonuses.money,
-                experience: (user.experience || 0) + vipBonuses.experience,
-                serverSlots: Math.max(user.serverSlots || 25, 30) // VIP получает 30 слотов
+                experience: (user.experience || 0) + vipBonuses.experience
+                // Не устанавливаем serverSlots - пользователь должен зарабатывать их через курсы
+                // VIP просто разблокирует возможность получить до 30 слотов
               });
             } else if (payment.type === 'premium') {
               // Premium Пакет бонусы
               const premiumBonuses = {
                 money: 25000,      // +$25,000 стартового капитала
                 experience: 5000,  // +5,000 опыта
-                servers: 10        // +10 слотов серверов (всего 35)
               };
               
               await storage.updateUser(user.id, {
                 premiumStatus: 'active',
                 premiumActivatedAt: new Date().toISOString(),
                 balance: (user.balance || 0) + premiumBonuses.money,
-                experience: (user.experience || 0) + premiumBonuses.experience,
-                serverSlots: Math.max(user.serverSlots || 25, 35) // Premium получает 35 слотов
+                experience: (user.experience || 0) + premiumBonuses.experience
+                // Не устанавливаем serverSlots - пользователь должен зарабатывать их через курсы  
+                // Premium просто разблокирует возможность получить до 35 слотов
               });
             }
             
