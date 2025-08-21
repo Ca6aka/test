@@ -38,8 +38,8 @@ export default function DonateTab() {
     <div className="space-y-6">
       {/* Header */}
       <div className="text-center">
-        <h2 className="text-2xl font-bold mb-2">{t('donateTitle')}</h2>
-        <p className="text-muted-foreground">{t('donateDescription')}</p>
+        <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent animate-pulse">{t('donateTitle')}</h2>
+        <p className="text-muted-foreground text-lg">{t('donateDescription')}</p>
         {getStatusBadge() && (
           <div className="mt-4">
             <span className="text-sm text-muted-foreground mr-2">{t('currentStatus')}:</span>
@@ -57,7 +57,7 @@ export default function DonateTab() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-slate-300">
+          <p className="text-sm text-blue-300 leading-relaxed whitespace-pre-line">
             {t('cryptoPaymentInfo')}
           </p>
         </CardContent>
@@ -117,6 +117,10 @@ export default function DonateTab() {
                 <span>{t('vipReportPriority')}</span>
               </div>
               <div className="flex items-center">
+                <Star className="w-4 h-4 text-blue-500 mr-2" />
+                <span>{t('vipNewReaction')}</span>
+              </div>
+              <div className="flex items-center">
                 <Trophy className="w-4 h-4 text-blue-500 mr-2" />
                 <span>{t('vipDailyBonus')}</span>
               </div>
@@ -133,7 +137,7 @@ export default function DonateTab() {
                 className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 relative z-10"
               >
                 {hasPremium ? t('premiumBlocksVip') :
-                 hasVip ? t('alreadyHavePremium') : t('purchaseVip') + ' - $20 - 8 ' + t('month')}
+                 hasVip ? t('alreadyHavePremium') : t('purchaseVip') + ' - $20 - 8 ' + t('months')}
               </Button>
             </PurchaseDialog>
           </div>
@@ -204,6 +208,10 @@ export default function DonateTab() {
               <div className="flex items-center">
                 <Shield className="w-4 h-4 text-purple-500 mr-2" />
                 <span>{t('premiumSecretReactions')}</span>
+              </div>
+              <div className="flex items-center">
+                <Star className="w-4 h-4 text-purple-500 mr-2" />
+                <span>{t('premiumNewReaction')}</span>
               </div>
               <div className="flex items-center">
                 <Trophy className="w-4 h-4 text-purple-500 mr-2" />
