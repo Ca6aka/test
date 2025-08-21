@@ -52,11 +52,11 @@ A full-stack web application simulating a server management business game. Playe
 - **Gamification**:
     - **Achievements System**: 5 progressive achievements with rewards.
     - **Daily Quests**: 3 challenges resetting every 24 hours.
-- **Chat System**: Real-time general text chat with 100-message history, admin moderation (message deletion, user muting with expiration).
+- **Chat System**: Real-time general text chat with 100-message history, admin moderation (message deletion, user muting with expiration). VIP/Premium users have access to exclusive emoji reactions (VIP: ⭐💎🔥, Premium: 👑🌟✨), admin-only reactions visible to admins only (🛡️⚡⚔️).
 - **Activity Tracking**: User action logging, real-time online status tracking (5-minute window) via API calls.
 - **Tutorial System**: Guided onboarding with completion tracking.
 - **Financial Tracking**: Accurate calculation of total earnings and total spent, with real-time balance updates in UI.
-- **Payment System**: NOWPayments cryptocurrency integration with VIP (6 months/$20) and Premium (lifetime/$25) packages. Automated webhook processing with bonus distribution (balance, experience). Server slots earned through course progression: free users max 25 slots, VIP unlocks 30 slots, Premium unlocks 35 slots. Prevents duplicate processing and includes clickable support contact links.
+- **Payment System**: NOWPayments cryptocurrency integration with VIP (6 months/$20) and Premium (lifetime/$25) packages. Automated webhook processing with bonus distribution (balance, experience). Server slots earned through course progression: free users max 25 slots, VIP unlocks 30 slots, Premium unlocks 35 slots. VIP/Premium users have priority status in support reports with visual indicators and priority sorting. Prevents duplicate processing and includes clickable support contact links.
 
 ## External Dependencies
 

@@ -670,7 +670,8 @@ function VirtualAssistant({ hideOnReports = false }) {
                                 <DialogHeader>
                                   <DialogTitle className="text-white text-sm">{t('addReaction') || 'Add Reaction'}</DialogTitle>
                                 </DialogHeader>
-                                <div className="flex gap-2 justify-center">
+                                <div className="grid grid-cols-3 gap-2">
+                                  {/* Basic emojis - available to all users */}
                                   <Button
                                     onClick={() => {
                                       handleReaction(message.id, '👍')
@@ -698,6 +699,114 @@ function VirtualAssistant({ hideOnReports = false }) {
                                   >
                                     ❤️
                                   </Button>
+                                  
+                                  {/* VIP/Premium exclusive emojis */}
+                                  {(user?.vipStatus === 'active' || user?.premiumStatus === 'active') && (
+                                    <>
+                                      <Button
+                                        onClick={() => {
+                                          handleReaction(message.id, '⭐')
+                                          document.querySelector('[data-state="open"]')?.click()
+                                        }}
+                                        className="text-2xl p-2 bg-blue-700/30 hover:bg-blue-600/50 border border-blue-500/30"
+                                        title="VIP Star"
+                                      >
+                                        ⭐
+                                      </Button>
+                                      <Button
+                                        onClick={() => {
+                                          handleReaction(message.id, '💎')
+                                          document.querySelector('[data-state="open"]')?.click()
+                                        }}
+                                        className="text-2xl p-2 bg-blue-700/30 hover:bg-blue-600/50 border border-blue-500/30"
+                                        title="VIP Diamond"
+                                      >
+                                        💎
+                                      </Button>
+                                      <Button
+                                        onClick={() => {
+                                          handleReaction(message.id, '🔥')
+                                          document.querySelector('[data-state="open"]')?.click()
+                                        }}
+                                        className="text-2xl p-2 bg-blue-700/30 hover:bg-blue-600/50 border border-blue-500/30"
+                                        title="VIP Fire"
+                                      >
+                                        🔥
+                                      </Button>
+                                    </>
+                                  )}
+                                  
+                                  {/* Premium exclusive emojis */}
+                                  {user?.premiumStatus === 'active' && (
+                                    <>
+                                      <Button
+                                        onClick={() => {
+                                          handleReaction(message.id, '👑')
+                                          document.querySelector('[data-state="open"]')?.click()
+                                        }}
+                                        className="text-2xl p-2 bg-purple-700/30 hover:bg-purple-600/50 border border-purple-500/30"
+                                        title="Premium Crown"
+                                      >
+                                        👑
+                                      </Button>
+                                      <Button
+                                        onClick={() => {
+                                          handleReaction(message.id, '🌟')
+                                          document.querySelector('[data-state="open"]')?.click()
+                                        }}
+                                        className="text-2xl p-2 bg-purple-700/30 hover:bg-purple-600/50 border border-purple-500/30"
+                                        title="Premium Star"
+                                      >
+                                        🌟
+                                      </Button>
+                                      <Button
+                                        onClick={() => {
+                                          handleReaction(message.id, '✨')
+                                          document.querySelector('[data-state="open"]')?.click()
+                                        }}
+                                        className="text-2xl p-2 bg-purple-700/30 hover:bg-purple-600/50 border border-purple-500/30"
+                                        title="Premium Sparkle"
+                                      >
+                                        ✨
+                                      </Button>
+                                    </>
+                                  )}
+                                  
+                                  {/* Admin-only reactions - only visible to admins */}
+                                  {user?.admin >= 1 && (
+                                    <>
+                                      <Button
+                                        onClick={() => {
+                                          handleReaction(message.id, '🛡️')
+                                          document.querySelector('[data-state="open"]')?.click()
+                                        }}
+                                        className="text-2xl p-2 bg-yellow-700/30 hover:bg-yellow-600/50 border border-yellow-500/30"
+                                        title="Admin Shield (Admins Only)"
+                                      >
+                                        🛡️
+                                      </Button>
+                                      <Button
+                                        onClick={() => {
+                                          handleReaction(message.id, '⚡')
+                                          document.querySelector('[data-state="open"]')?.click()
+                                        }}
+                                        className="text-2xl p-2 bg-yellow-700/30 hover:bg-yellow-600/50 border border-yellow-500/30"
+                                        title="Admin Power (Admins Only)"
+                                      >
+                                        ⚡
+                                      </Button>
+                                      <Button
+                                        onClick={() => {
+                                          handleReaction(message.id, '⚔️')
+                                          document.querySelector('[data-state="open"]')?.click()
+                                        }}
+                                        className="text-2xl p-2 bg-red-700/30 hover:bg-red-600/50 border border-red-500/30"
+                                        title="Super Admin (Admins Only)"
+                                      >
+                                        ⚔️
+                                      </Button>
+                                    </>
+                                  )}
                                 </div>
                               </DialogContent>
                             </Dialog>

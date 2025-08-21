@@ -2186,11 +2186,17 @@ export class FileStorage {
       throw new Error('You already have an active report');
     }
 
+    // Check VIP/Premium status
+    const hasActiveVip = user.vipStatus === 'active' && user.vipExpiresAt && new Date(user.vipExpiresAt) > new Date();
+    const hasActivePremium = user.premiumStatus === 'active';
+
     const reportId = randomUUID();
     const report = {
       id: reportId,
       userId,
       userNickname: user.nickname,
+      userVipStatus: hasActiveVip ? 'active' : null,
+      userPremiumStatus: hasActivePremium ? 'active' : null,
       subject,
       category,
       status: 'open',
@@ -2234,7 +2240,19 @@ export class FileStorage {
     try {
       const data = await fs.readFile('./data/reports.json', 'utf8');
       const reports = JSON.parse(data);
-      return reports.sort((a, b) => b.createdAt - a.createdAt);
+      
+      // Sort reports with VIP/Premium priority
+      return reports.sort((a, b) => {
+        // Priority order: Premium > VIP > Regular
+        const aPriority = a.userPremiumStatus === 'active' ? 3 : a.userVipStatus === 'active' ? 2 : 1;
+        const bPriority = b.userPremiumStatus === 'active' ? 3 : b.userVipStatus === 'active' ? 2 : 1;
+        
+        // First sort by priority, then by creation date
+        if (aPriority !== bPriority) {
+          return bPriority - aPriority;
+        }
+        return b.createdAt - a.createdAt;
+      });
     } catch (error) {
       return [];
     }

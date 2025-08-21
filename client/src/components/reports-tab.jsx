@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
-import { MessageCircle, Plus, MoreHorizontal, X, Send, Clock, CheckCircle, Flag, RotateCcw, User } from 'lucide-react';
+import { MessageCircle, Plus, MoreHorizontal, X, Send, Clock, CheckCircle, Flag, RotateCcw, User, Star, Crown } from 'lucide-react';
 import { useLanguage } from '@/contexts/language-context';
 import { useGame } from '@/contexts/game-context';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
@@ -304,23 +304,36 @@ export function ReportsTab() {
                     <div className="flex items-center space-x-2">
                       <span className="text-lg">{getCategoryIcon(report.category)}</span>
                       <div>
-                        <h3 className="font-medium text-white text-sm truncate">
-                          {isAdmin ? (
-                            <>
-                              <button 
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  window.open(`/player/${report.userNickname}`, '_blank');
-                                }}
-                                className="text-blue-400 hover:text-blue-300 hover:underline transition-colors"
-                                data-testid={`link-player-${report.userNickname}`}
-                              >
-                                {report.userNickname}
-                              </button>
-                              : {report.subject}
-                            </>
-                          ) : report.subject}
-                        </h3>
+                        <div className="flex items-center space-x-2">
+                          <h3 className="font-medium text-white text-sm truncate">
+                            {isAdmin ? (
+                              <>
+                                <button 
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    window.open(`/player/${report.userNickname}`, '_blank');
+                                  }}
+                                  className="text-blue-400 hover:text-blue-300 hover:underline transition-colors"
+                                  data-testid={`link-player-${report.userNickname}`}
+                                >
+                                  {report.userNickname}
+                                </button>
+                                : {report.subject}
+                              </>
+                            ) : report.subject}
+                          </h3>
+                          {/* VIP/Premium priority indicators */}
+                          {report.userVipStatus === 'active' && (
+                            <Badge className="bg-blue-500/20 text-blue-400 text-xs px-1 py-0 h-4">
+                              VIP
+                            </Badge>
+                          )}
+                          {report.userPremiumStatus === 'active' && (
+                            <Badge className="bg-purple-500/20 text-purple-400 text-xs px-1 py-0 h-4">
+                              PREMIUM
+                            </Badge>
+                          )}
+                        </div>
                         <p className="text-xs text-slate-400">
                           {new Date(report.createdAt).toLocaleDateString()}
                         </p>
