@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from 'react';
 const newTranslations = {
   // Hidden achievements
   hiddenAchievements: { en: 'Hidden Achievements', ru: 'Скрытые достижения' },
-  unlocked: { en: 'unlocked', ru: 'открыто' },
+
   hiddenRequirement: { en: 'Secret requirement', ru: 'Секретное требование' },
   noHiddenAchievements: { en: 'No hidden achievements found', ru: 'Скрытых достижений не найдено' },
   hiddenAchievementsDesc: { en: 'Complete special actions to unlock hidden rewards', ru: 'Выполняйте особые действия для получения скрытых наград' },
@@ -27,8 +27,6 @@ const newTranslations = {
   streak: { en: 'Streak', ru: 'Серия', ua: 'Серія', de: 'Serie' },
   weekStreak: { en: 'Week Streak!', ru: 'Недельная серия!', ua: 'Тижнева серія!', de: 'Wochenserie!' },
   dailyBonusMessage: { en: 'Log in daily to maintain your streak and earn more rewards!', ru: 'Заходите каждый день, чтобы поддерживать серию и получать больше наград!', ua: 'Заходьте щодня, щоб підтримувати серію та отримувати більше нагород!', de: 'Melde dich täglich an, um deine Serie aufrechtzuerhalten und mehr Belohnungen zu erhalten!' },
-  hiddenAchievements: { en: 'Hidden Achievements', ru: 'Скрытые достижения', ua: 'Приховані досягнення', de: 'Versteckte Erfolge' },
-  hiddenRequirement: { en: 'Requirements hidden until unlocked', ru: 'Требования скрыты до получения', ua: 'Вимоги приховані до розблокування', de: 'Anforderungen bis zur Freischaltung verborgen' },
   unlocked: { en: 'Unlocked', ru: 'Разблокировано', ua: 'Розблоковано', de: 'Freigeschaltet' },
   todayBonus: { en: "Today's Bonus", ru: 'Сегодняшний бонус', ua: 'Сьогоднішній бонус', de: 'Heutiger Bonus' },
   readyToClaim: { en: 'Ready to claim', ru: 'Готов к получению', ua: 'Готово до отримання', de: 'Bereit abzuholen' },

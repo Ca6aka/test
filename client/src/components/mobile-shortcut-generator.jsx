@@ -10,7 +10,7 @@ import { Smartphone, Download, Share, Copy, Check, Palette, Settings } from 'luc
 import { useLanguage } from '@/contexts/language-context';
 import { useToast } from '@/hooks/use-toast';
 
-export function MobileShortcutGenerator({ onSave }) {
+export default function MobileShortcutGenerator({ onSave }) {
   const [isOpen, setIsOpen] = useState(false);
   const [shortcutName, setShortcutName] = useState('ServerSim');
   const [selectedIcon, setSelectedIcon] = useState('default');
