@@ -10,16 +10,8 @@ app.set('trust proxy', true); // Enable IP tracking for registration limits
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Session configuration
-// Session configuration for persistence across server restarts
-import pgSession from 'connect-pg-simple';
-
+// Session configuration with fallback to memory store
 app.use(session({
-  store: new (pgSession(session))({
-    conString: process.env.DATABASE_URL,
-    tableName: 'user_sessions',
-    createTableIfMissing: true
-  }),
   secret: process.env.SESSION_SECRET || 'serversim-secret-key-v2',
   resave: false,
   saveUninitialized: false,
