@@ -44,22 +44,26 @@ function AppRouter() {
         <HomePage />
       </Route>
       
-      <Route path="/reg">
+      <Route path="/login">
+        {gameState.user ? <Redirect to="/game" /> : <LoginPage />}
+      </Route>
+      
+      <Route path="/register">
         {gameState.user ? <Redirect to="/game" /> : <LoginPage />}
       </Route>
       
       <Route path="/game">
-        {gameState.user ? <DashboardPage /> : <Redirect to="/reg" />}
+        {gameState.user ? <DashboardPage /> : <Redirect to="/login" />}
       </Route>
       
       <Route path="/game/:tab">
-        {gameState.user ? <DashboardPage /> : <Redirect to="/reg" />}
+        {gameState.user ? <DashboardPage /> : <Redirect to="/login" />}
       </Route>
       
       <Route path="/player/:nickname" component={PlayerProfilePage} />
       
       <Route path="/player">
-        {gameState.user ? <Redirect to="/game" /> : <Redirect to="/reg" />}
+        {gameState.user ? <Redirect to="/game" /> : <Redirect to="/login" />}
       </Route>
       
       <Route component={NotFound} />

@@ -1357,6 +1357,23 @@ const translations = {
     appearance: 'Внешний вид',
     dataManagement: 'Управление данными',
     
+    // Cookie consent
+    cookieConsent: 'Использование куки',
+    cookieConsentDescription: 'Мы используем куки для улучшения работы игры, сохранения прогресса и анализа. Некоторые функции требуют согласия на использование куки.',
+    cookieImportantNote: 'Без базовых куки регистрация и сохранение прогресса невозможны.',
+    acceptAll: 'Принять все',
+    rejectAll: 'Только необходимые',
+    configureCookies: 'Настроить куки',
+    cookieSettings: 'Настройки куки',
+    cookieSettingsDescription: 'Управляйте тем, какие куки мы можем использовать. Некоторые куки критически важны для работы игры.',
+    necessaryCookies: 'Необходимые куки',
+    functionalCookies: 'Функциональные куки',
+    preferencesCookies: 'Пользовательские настройки',
+    analyticsCookies: 'Аналитические куки',
+    marketingCookies: 'Маркетинговые куки',
+    required: 'Обязательно',
+    saveSettings: 'Сохранить настройки',
+    
     // Chat achievements translations - Russian
     first_message: {
       title: 'Первое сообщение',

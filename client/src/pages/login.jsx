@@ -49,6 +49,17 @@ export default function LoginPage() {
   const handleRegister = async (e) => {
     e.preventDefault();
     
+    // Check cookie consent first
+    const consentData = localStorage.getItem('cookie-consent');
+    if (!consentData) {
+      toast({
+        title: "Согласие на куки требуется",
+        description: "Для регистрации необходимо принять использование куки на главной странице.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
     // Validate nickname
     const nicknameError = validateNickname(registerData.nickname);
     if (nicknameError) {

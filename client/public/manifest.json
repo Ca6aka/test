@@ -1,6 +1,6 @@
 {
-  "name": "Server Simulation Game",
-  "short_name": "ServerSim",
+  "name": "Root Tycoon",
+  "short_name": "RootTycoon",
   "description": "Управляй виртуальными серверами, зарабатывай деньги и развивай свой бизнес",
   "start_url": "/",
   "display": "standalone",
