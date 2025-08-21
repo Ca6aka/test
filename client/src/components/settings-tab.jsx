@@ -26,17 +26,60 @@ export default function SettingsTab() {
   });
   const [deferredPrompt, setDeferredPrompt] = useState(null);
   const [isInstallable, setIsInstallable] = useState(false);
+  const [notificationPermission, setNotificationPermission] = useState(Notification.permission);
 
-  const handleNotificationChange = (type, enabled) => {
+  const handleNotificationChange = async (type, enabled) => {
+    if (enabled && notificationPermission === 'default') {
+      const permission = await Notification.requestPermission();
+      setNotificationPermission(permission);
+      
+      if (permission === 'denied') {
+        toast({
+          title: "Уведомления заблокированы",
+          description: "Разрешите уведомления в настройках браузера для получения алертов",
+          variant: "destructive"
+        });
+        return;
+      }
+    }
+
     setNotifications(prev => ({
       ...prev,
       [type]: enabled
     }));
+
+    // Save to localStorage for persistence
+    const updatedNotifications = { ...notifications, [type]: enabled };
+    localStorage.setItem('gameNotificationSettings', JSON.stringify(updatedNotifications));
+
+    // Send test notification if enabling
+    if (enabled && notificationPermission === 'granted') {
+      sendTestNotification(type);
+    }
     
     toast({
       title: "Настройки обновлены",
       description: `Уведомления ${enabled ? 'включены' : 'отключены'} для: ${getNotificationLabel(type)}`
     });
+  };
+
+  const sendTestNotification = (type) => {
+    if (Notification.permission === 'granted') {
+      const messages = {
+        dailyBonus: 'Ваш ежедневный бонус готов к получению!',
+        serverAlerts: 'Один из ваших серверов требует внимания',
+        achievements: 'Поздравляем! Достижение разблокировано',
+        payments: 'Платеж успешно обработан'
+      };
+
+      new Notification('Root Tycoon', {
+        body: messages[type],
+        icon: '/icon-192x192.svg',
+        badge: '/server-icon.svg',
+        tag: `test-${type}`,
+        requireInteraction: false
+      });
+    }
   };
 
   const getNotificationLabel = (type) => {
@@ -48,6 +91,19 @@ export default function SettingsTab() {
     };
     return labels[type] || type;
   };
+
+  // Load notification settings from localStorage
+  React.useEffect(() => {
+    const savedSettings = localStorage.getItem('gameNotificationSettings');
+    if (savedSettings) {
+      try {
+        const parsed = JSON.parse(savedSettings);
+        setNotifications(parsed);
+      } catch (error) {
+        console.error('Error loading notification settings:', error);
+      }
+    }
+  }, []);
 
   // PWA Install Handler
   React.useEffect(() => {
@@ -362,6 +418,56 @@ export default function SettingsTab() {
                   onCheckedChange={(checked) => handleNotificationChange('payments', checked)}
                 />
               </div>
+
+              {notificationPermission === 'denied' && (
+                <div className="p-4 bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-800 rounded-lg">
+                  <h4 className="text-sm font-medium text-red-800 dark:text-red-200 mb-2">
+                    🚫 Уведомления заблокированы
+                  </h4>
+                  <p className="text-xs text-red-700 dark:text-red-300">
+                    Чтобы получать уведомления, разрешите их в настройках браузера. 
+                    Обычно это делается через иконку замка или щита в адресной строке.
+                  </p>
+                </div>
+              )}
+
+              {notificationPermission === 'default' && (
+                <div className="p-4 bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 rounded-lg">
+                  <h4 className="text-sm font-medium text-blue-800 dark:text-blue-200 mb-2">
+                    🔔 Разрешите уведомления
+                  </h4>
+                  <p className="text-xs text-blue-700 dark:text-blue-300 mb-3">
+                    Для получения игровых уведомлений необходимо разрешение браузера
+                  </p>
+                  <Button 
+                    size="sm" 
+                    onClick={async () => {
+                      const permission = await Notification.requestPermission();
+                      setNotificationPermission(permission);
+                    }}
+                  >
+                    Разрешить уведомления
+                  </Button>
+                </div>
+              )}
+
+              {notificationPermission === 'granted' && (
+                <div className="p-4 bg-green-50 dark:bg-green-950 border border-green-200 dark:border-green-800 rounded-lg">
+                  <h4 className="text-sm font-medium text-green-800 dark:text-green-200 mb-2">
+                    ✅ Уведомления активны
+                  </h4>
+                  <p className="text-xs text-green-700 dark:text-green-300 mb-3">
+                    Вы будете получать уведомления согласно настройкам выше
+                  </p>
+                  <Button 
+                    size="sm" 
+                    variant="outline"
+                    onClick={() => sendTestNotification('achievements')}
+                  >
+                    Тестовое уведомление
+                  </Button>
+                </div>
+              )}
             </CardContent>
           </Card>
         </TabsContent>

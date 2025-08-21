@@ -903,6 +903,26 @@ export async function registerRoutes(app) {
     }
   });
 
+  // Send notification to user
+  app.post('/api/notifications/send', requireAuth, async (req, res) => {
+    try {
+      const { type, title, message, userId } = req.body;
+      
+      // For now, just return success as we're using client-side notifications
+      // In a real app, this would integrate with a push notification service like Firebase
+      res.json({ 
+        success: true,
+        message: 'Notification sent',
+        type,
+        title,
+        message: message || 'Уведомление от игры'
+      });
+    } catch (error) {
+      console.error('Error sending notification:', error);
+      res.status(500).json({ message: 'Failed to send notification' });
+    }
+  });
+
   // Chat routes
   app.get('/api/chat/messages', async (req, res) => {
     try {

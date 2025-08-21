@@ -2,7 +2,7 @@
   "id": "ce8ac9e2-f405-4d77-9dd2-d3a0ca430e20",
   "nickname": "Niko",
   "password": "$2b$10$g3xrvPY6.F5qY8XO2kK7ve2xulTpPKWZC3ap6r4b7ro3YJ5WMLAda",
-  "balance": 19850,
+  "balance": 21850,
   "level": 1,
   "experience": 63,
   "totalEarnings": 14150,
@@ -29,6 +29,21 @@
   "currentLearning": null,
   "activities": [
     {
+      "id": "8cb240dc-681e-4d13-84bc-63e27fbb8a5d",
+      "description": "Achievement unlocked: Early Earner (+$2,000)",
+      "timestamp": "8/21/2025, 6:06:05 PM"
+    },
+    {
+      "id": "974f195c-66c1-4d9c-b2cb-c0f05a5318c0",
+      "description": "Achievement unlocked: First Steps (+$500)",
+      "timestamp": "8/21/2025, 6:06:05 PM"
+    },
+    {
+      "id": "7f787c1d-e7a0-4804-b8ed-77d184c387da",
+      "description": "Chat achievement unlocked: First Message",
+      "timestamp": "8/21/2025, 6:05:41 PM"
+    },
+    {
       "id": "b1654e68-f007-44fc-96e9-436e5b1a5bec",
       "description": "Tutorial completed! All features unlocked.",
       "timestamp": "21.08.2025, 19:46:31"
@@ -37,24 +52,11 @@
       "id": "986a957c-a496-45ea-a7b3-d8a94d2155bc",
       "description": "Quest reward claimed: Mixed Tasks (+$3 200)",
       "timestamp": "21.08.2025, 19:46:25"
-    },
-    {
-      "id": "61093fef-525c-47fc-8e32-b4fa653567bf",
-      "description": "Daily quest completed: Mixed Tasks - Reward ready to claim!",
-      "timestamp": "21.08.2025, 19:46:22"
-    },
-    {
-      "id": "3805b1c5-0297-4ee4-b90f-efcf2ddf57c7",
-      "description": "Completed Server Maintenance (+$150, +10 XP)",
-      "timestamp": "21.08.2025, 19:46:22"
-    },
-    {
-      "id": "51a9a22c-33cd-4827-8fa2-0b853be7dc22",
-      "description": "Quest reward claimed: Security Check (+$2 500)",
-      "timestamp": "21.08.2025, 19:41:50"
     }
   ],
-  "achievements": [],
+  "achievements": [
+    "early-earner"
+  ],
   "completedJobsCount": 4,
   "completedCoursesCount": 0,
   "completedLearning": [],
@@ -207,13 +209,16 @@
   "lastQuestReset": 1755798096683,
   "registrationIP": "192.168.0.136",
   "registrationTime": 1755798096683,
-  "lastSeen": 1755798607700,
-  "realActivity": 1755798590135,
-  "lastActivity": 1755798590135,
+  "lastSeen": 1755799767301,
+  "realActivity": 1755799765884,
+  "lastActivity": 1755799765884,
   "dailyBonusStreak": 1,
   "lastDailyBonus": "2025-08-21T17:41:39.570Z",
   "dailyLoginBonus": "Thu Aug 21 2025",
-  "lastMessageTime": 1755798569900,
+  "lastMessageTime": 1755799541676,
   "chatLanguage": "en",
-  "hasNewChatMessages": true
+  "hasNewChatMessages": true,
+  "chatAchievements": [
+    "first_message"
+  ]
 }

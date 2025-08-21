@@ -12,5 +12,19 @@
     "reactions": {},
     "filtered": false,
     "warningCount": 0
+  },
+  {
+    "id": "37844713-16dc-470e-93aa-855e3d34bbd9",
+    "userId": "ce8ac9e2-f405-4d77-9dd2-d3a0ca430e20",
+    "nickname": "Niko",
+    "message": "проверка",
+    "originalMessage": "проверка",
+    "language": "en",
+    "timestamp": 1755799541679,
+    "deleted": false,
+    "adminLevel": 0,
+    "reactions": {},
+    "filtered": false,
+    "warningCount": 0
   }
 ]

@@ -219,5 +219,6 @@
   "chatLanguage": "en",
   "chatAchievements": [
     "first_message"
-  ]
+  ],
+  "hasNewChatMessages": true
 }
