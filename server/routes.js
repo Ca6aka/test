@@ -2096,7 +2096,7 @@ export async function registerRoutes(app) {
               // VIP Пакет бонусы
               const vipBonuses = {
                 money: 10000,      // +$10,000 стартового капитала
-                experience: 5000,  // +5,000 опыта
+                experience: 2500,  // +2,500 опыта
                 servers: 5         // +5 слотов серверов (всего 30)
               };
               
@@ -2111,7 +2111,7 @@ export async function registerRoutes(app) {
               // Premium Пакет бонусы
               const premiumBonuses = {
                 money: 50000,      // +$50,000 стартового капитала
-                experience: 15000, // +15,000 опыта
+                experience: 5000,  // +5,000 опыта
                 servers: 10        // +10 слотов серверов (всего 35)
               };
               

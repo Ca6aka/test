@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 // Removed Select import since payment selection is removed
-import { Crown, Star, Clock, Users, Shield, Zap, Trophy, Timer } from 'lucide-react';
+import { Crown, Star, Clock, Users, Shield, Zap, Trophy, Timer, FileText } from 'lucide-react';
 import { useLanguage } from '@/contexts/language-context';
 import { useGame } from '@/contexts/game-context';
 import { toast } from '@/hooks/use-toast';
@@ -74,7 +74,7 @@ export default function DonateTab() {
               </div>
               <div>
                 <div className="text-xl font-bold">VIP {t('status')}</div>
-                <div className="text-blue-200/90 text-sm">8 {t('month')} - $20 ($2.50/{t('month')})</div>
+                <div className="text-blue-200/90 text-sm">{t('popular')}</div>
               </div>
             </div>
             <Badge className="bg-blue-500/30 text-blue-200 border-blue-400/50 px-3 py-1 text-lg font-semibold">
@@ -84,6 +84,20 @@ export default function DonateTab() {
         </CardHeader>
         <CardContent className="pt-6">
           <div className="space-y-3 mb-6">
+            <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 p-3 rounded-lg border border-blue-400/30">
+              <h4 className="text-blue-300 font-semibold mb-2">🎁 {t('vipBonusPackage')}</h4>
+              <div className="space-y-1 text-sm">
+                <div className="flex items-center">
+                  <span className="text-green-400 font-semibold">💰 +$10,000</span> {t('startingCapital')}
+                </div>
+                <div className="flex items-center">
+                  <span className="text-purple-400 font-semibold">⚡ +2,500</span> {t('experience')}
+                </div>
+                <div className="flex items-center">
+                  <span className="text-blue-400 font-semibold">🖥️ 30</span> {t('serverSlots')}
+                </div>
+              </div>
+            </div>
 
             <div className="space-y-2">
               <div className="flex items-center">
@@ -137,7 +151,7 @@ export default function DonateTab() {
               </div>
               <div>
                 <div className="text-xl font-bold">PREMIUM {t('status')}</div>
-                <div className="text-purple-200/90 text-sm">{t('forever')} - {t('premium')}</div>
+                <div className="text-purple-200/90 text-sm">{t('maximum')}</div>
               </div>
             </div>
             <Badge className="bg-purple-500/30 text-purple-200 border-purple-400/50 px-3 py-1 text-lg font-semibold">
@@ -147,6 +161,20 @@ export default function DonateTab() {
         </CardHeader>
         <CardContent className="pt-6">
           <div className="space-y-3 mb-6">
+            <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 p-3 rounded-lg border border-purple-400/30">
+              <h4 className="text-purple-300 font-semibold mb-2">🎁 {t('premiumBonusPackage')}</h4>
+              <div className="space-y-1 text-sm">
+                <div className="flex items-center">
+                  <span className="text-green-400 font-semibold">💰 +$50,000</span> {t('startingCapital')}
+                </div>
+                <div className="flex items-center">
+                  <span className="text-purple-400 font-semibold">⚡ +5,000</span> {t('experience')}
+                </div>
+                <div className="flex items-center">
+                  <span className="text-purple-400 font-semibold">🖥️ 35</span> {t('serverSlots')}
+                </div>
+              </div>
+            </div>
 
             <div className="space-y-2">
               <div className="flex items-center">
@@ -198,6 +226,21 @@ export default function DonateTab() {
               </Button>
             </PurchaseDialog>
           </div>
+        </CardContent>
+      </Card>
+
+      {/* Payment Document Information */}
+      <Card className="border-2 border-slate-600/30 bg-slate-800/30">
+        <CardHeader>
+          <CardTitle className="flex items-center text-slate-300">
+            <FileText className="w-5 h-5 mr-2" />
+            {t('paymentDocument')}
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm text-slate-300">
+            {t('paymentDocumentDesc')}
+          </p>
         </CardContent>
       </Card>
     </div>
