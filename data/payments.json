@@ -233,5 +233,41 @@
     "status": "pending",
     "createdAt": "2025-08-21T00:19:33.382Z",
     "paymentUrl": "https://nowpayments.io/payment/?iid=5341272891"
+  },
+  {
+    "id": "clean_vip_invoice_1755740453834",
+    "orderId": "test_clean_vip_1755740453834",
+    "userId": "MiLW6AYjW-DDgNjfShfyf",
+    "userNickname": "test_vip_user",
+    "type": "vip",
+    "amount": 20,
+    "currency": "USD",
+    "status": "completed",
+    "createdAt": "2025-08-21T01:40:53.834Z",
+    "completedAt": "2025-08-21T01:45:08.368Z",
+    "paidAmount": 20,
+    "paidCurrency": "usd",
+    "outcomeAmount": 20,
+    "outcomeCurrency": "usd",
+    "bonusesApplied": true,
+    "bonusesAppliedAt": "2025-08-21T01:45:08.381Z"
+  },
+  {
+    "id": "clean_premium_invoice_1755740453835",
+    "orderId": "test_clean_premium_1755740453834",
+    "userId": "gE966MJjiwIlLczy4WCAx",
+    "userNickname": "test_premium_user",
+    "type": "premium",
+    "amount": 25,
+    "currency": "USD",
+    "status": "completed",
+    "createdAt": "2025-08-21T01:40:53.835Z",
+    "completedAt": "2025-08-21T01:45:14.640Z",
+    "paidAmount": 25,
+    "paidCurrency": "usd",
+    "outcomeAmount": 25,
+    "outcomeCurrency": "usd",
+    "bonusesApplied": true,
+    "bonusesAppliedAt": "2025-08-21T01:45:14.651Z"
   }
 ]

@@ -2079,6 +2079,14 @@ export async function registerRoutes(app) {
         const paymentIndex = payments.findIndex(p => p.orderId === order_id);
         if (paymentIndex !== -1) {
           const payment = payments[paymentIndex];
+          
+          // Check if payment was already processed
+          if (payment.status === 'completed' && payment.bonusesApplied) {
+            console.log(`Payment ${order_id} already processed, skipping...`);
+            res.json({ success: true, message: 'Already processed' });
+            return;
+          }
+          
           payment.status = 'completed';
           payment.completedAt = new Date().toISOString();
           payment.paidAmount = pay_amount;
@@ -2103,7 +2111,7 @@ export async function registerRoutes(app) {
               await storage.updateUser(user.id, {
                 vipStatus: 'active',
                 vipExpiresAt: expiresAt.toISOString(),
-                money: (user.money || 0) + vipBonuses.money,
+                balance: (user.balance || 0) + vipBonuses.money,
                 experience: (user.experience || 0) + vipBonuses.experience,
                 serverSlots: Math.max(user.serverSlots || 25, 30) // VIP получает 30 слотов
               });
@@ -2118,11 +2126,15 @@ export async function registerRoutes(app) {
               await storage.updateUser(user.id, {
                 premiumStatus: 'active',
                 premiumActivatedAt: new Date().toISOString(),
-                money: (user.money || 0) + premiumBonuses.money,
+                balance: (user.balance || 0) + premiumBonuses.money,
                 experience: (user.experience || 0) + premiumBonuses.experience,
                 serverSlots: Math.max(user.serverSlots || 25, 35) // Premium получает 35 слотов
               });
             }
+            
+            // Mark bonuses as applied
+            payment.bonusesApplied = true;
+            payment.bonusesAppliedAt = new Date().toISOString();
             
             // Send confirmation email (placeholder - requires SendGrid setup)
             console.log(`Payment completed for ${user.nickname}: ${payment.type} - $${payment.amount}`);

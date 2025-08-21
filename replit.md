@@ -1,7 +1,7 @@
 # Server Simulation Game
 
 ## Overview
-A full-stack web application simulating a server management business game. Players manage virtual servers, generate income, complete learning courses, and engage in a gamified experience. The project aims to provide an engaging, educational, and financially rewarding simulation, leveraging modern web technologies for a robust and scalable platform, focusing on server management, economic simulation, gamified learning, and real-time interaction.
+A full-stack web application simulating a server management business game. Players manage virtual servers, generate income, complete learning courses, and engage in a gamified experience with integrated cryptocurrency payment system. The project aims to provide an engaging, educational, and financially rewarding simulation, leveraging modern web technologies for a robust and scalable platform, focusing on server management, economic simulation, gamified learning, real-time interaction, and premium subscriptions.
 
 ## User Preferences
 - Preferred communication style: Simple, everyday language
@@ -56,6 +56,7 @@ A full-stack web application simulating a server management business game. Playe
 - **Activity Tracking**: User action logging, real-time online status tracking (5-minute window) via API calls.
 - **Tutorial System**: Guided onboarding with completion tracking.
 - **Financial Tracking**: Accurate calculation of total earnings and total spent, with real-time balance updates in UI.
+- **Payment System**: NOWPayments cryptocurrency integration with VIP (6 months/$20) and Premium (lifetime/$25) packages. Automated webhook processing with bonus distribution (balance, experience, server slots). Prevents duplicate processing and includes clickable support contact links.
 
 ## External Dependencies
 

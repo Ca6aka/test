@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "id": "MiLW6AYjW-DDgNjfShfyf",
+    "nickname": "test_vip_user",
+    "password": "$2b$10$YmJcqOYGCmiw0yX0/RcCpuP9oxEDND07uLhmcLQMnwhRwbnKzsM/a",
+    "balance": 5000,
+    "experience": 100,
+    "level": 1,
+    "serverSlots": 25,
+    "totalEarnings": 10000,
+    "totalSpent": 0,
+    "vipStatus": "inactive",
+    "premiumStatus": "inactive",
+    "jobCooldowns": {},
+    "createdAt": "2025-08-21T01:37:51.159Z"
+  },
+  {
+    "id": "gE966MJjiwIlLczy4WCAx",
+    "nickname": "test_premium_user",
+    "password": "$2b$10$Uk0rU7QYoypuitw54cpJUOXsIyUpZVSJMPOyoueV7VHCCqOb6RL6O",
+    "balance": 5000,
+    "experience": 100,
+    "level": 1,
+    "serverSlots": 25,
+    "totalEarnings": 10000,
+    "totalSpent": 0,
+    "vipStatus": "inactive",
+    "premiumStatus": "inactive",
+    "jobCooldowns": {},
+    "createdAt": "2025-08-21T01:37:51.216Z"
+  }
+]
