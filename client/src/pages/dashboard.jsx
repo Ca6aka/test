@@ -150,26 +150,25 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
       <div className="flex flex-col lg:flex-row h-[calc(100vh-80px)]">
         {/* Mobile Navigation */}
         <div className="lg:hidden bg-slate-800/50 backdrop-blur-sm border-b border-slate-700 p-2">
-          <div className="flex overflow-x-auto scrollbar-hide space-x-1">
+          <div className="flex overflow-x-auto scrollbar-hide space-x-2 pb-2">
             <Button
               variant={activeTab === 'tutorial' ? 'default' : 'ghost'}
               size="sm"
-              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs ${
+              className={`flex items-center space-x-2 px-3 py-2 whitespace-nowrap text-sm min-w-max ${
                 activeTab === 'tutorial'
                   ? 'bg-primary/20 text-primary border border-primary/30'
                   : 'text-slate-300 hover:bg-slate-700/50'
               }`}
               onClick={() => handleTabChange('tutorial')}
             >
-              <i className="fas fa-graduation-cap"></i>
-              <Play className="w-3 h-3 text-white" />
+              <Play className="w-4 h-4" />
               <span>{t('start')}</span>
             </Button>
             
             <Button
               variant={activeTab === 'servers' ? 'default' : 'ghost'}
               size="sm"
-              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs ${
+              className={`flex items-center space-x-2 px-3 py-2 whitespace-nowrap text-sm min-w-max ${
                 activeTab === 'servers'
                   ? 'bg-primary/20 text-primary border border-primary/30'
                   : isTabUnlocked('servers')
@@ -179,8 +178,7 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
               onClick={() => isTabUnlocked('servers') && handleTabChange('servers')}
               disabled={!isTabUnlocked('servers')}
             >
-              <i className="fas fa-server"></i>
-              <Server className="w-3 h-3 text-white" />
+              <Server className="w-4 h-4" />
               <span>{t('myServers')}</span>
 
               {/* {gameState.servers && <span className="bg-secondary/20 text-secondary px-1 rounded text-xs">{gameState.servers.length}</span>} */}
@@ -189,7 +187,7 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
             <Button
               variant={activeTab === 'hosting' ? 'default' : 'ghost'}
               size="sm"
-              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs ${
+              className={`flex items-center space-x-2 px-3 py-2 whitespace-nowrap text-sm min-w-max ${
                 activeTab === 'hosting'
                   ? 'bg-primary/20 text-primary border border-primary/30'
                   : isTabUnlocked('hosting')
@@ -199,8 +197,7 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
               onClick={() => isTabUnlocked('hosting') && handleTabChange('hosting')}
               disabled={!isTabUnlocked('hosting')}
             >
-              <i className="fas fa-store"></i>
-              <ShoppingCart className="w-3 h-3 text-white" />
+              <ShoppingCart className="w-4 h-4" />
               <span>{t('serverStore')}</span>
               {!isTabUnlocked('hosting') && <Lock className="w-3 h-3 ml-1" />}
             </Button>
@@ -208,7 +205,7 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
             <Button
               variant={activeTab === 'learning' ? 'default' : 'ghost'}
               size="sm"
-              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs ${
+              className={`flex items-center space-x-2 px-3 py-2 whitespace-nowrap text-sm min-w-max ${
                 activeTab === 'learning'
                   ? 'bg-primary/20 text-primary border border-primary/30'
                   : isTabUnlocked('learning')
@@ -218,8 +215,7 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
               onClick={() => isTabUnlocked('learning') && handleTabChange('learning')}
               disabled={!isTabUnlocked('learning')}
             >
-              <i className="fas fa-book"></i>
-              <BookOpenText className="w-3 h-3 text-white" />
+              <BookOpenText className="w-4 h-4" />
               <span>{t('learningCenter')}</span>
               {!isTabUnlocked('learning') && <Lock className="w-3 h-3 ml-1" />}
             </Button>
@@ -227,7 +223,7 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
             <Button
               variant={activeTab === 'achievements' ? 'default' : 'ghost'}
               size="sm"
-              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs ${
+              className={`flex items-center space-x-2 px-3 py-2 whitespace-nowrap text-sm min-w-max ${
                 activeTab === 'achievements'
                   ? 'bg-primary/20 text-primary border border-primary/30'
                   : isTabUnlocked('achievements')
@@ -237,8 +233,7 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
               onClick={() => isTabUnlocked("achievements") && handleTabChange("achievements")}
               disabled={!isTabUnlocked('achievements')}
             >
-              <i className="fas fa-trophy"></i>
-              <Award className="w-3 h-3 text-white" />
+              <Award className="w-4 h-4" />
               <span>{t('achievements')}</span>
               {!isTabUnlocked('achievements') && <Lock className="w-3 h-3 ml-1" />}
             </Button>
@@ -246,15 +241,14 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
             <Button
               variant={activeTab === 'quests' ? 'default' : 'ghost'}
               size="sm"
-              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs relative ${
+              className={`flex items-center space-x-2 px-3 py-2 whitespace-nowrap text-sm min-w-max relative ${
                 activeTab === 'quests'
                   ? 'bg-primary/20 text-primary border border-primary/30'
                   : 'text-slate-300 hover:bg-slate-700/50'
               }`}
               onClick={() => handleTabChange("quests")}
             >
-              <i className="fas fa-calendar"></i>
-              <ClipboardList className="w-3 h-3 text-white" />
+              <ClipboardList className="w-4 h-4" />
               <span>{t('dailyQuests')}</span>
               {hasCompletedQuests && (
                 <div className="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-1/2 w-3 h-3 bg-yellow-500 rounded-full animate-pulse border-2 border-slate-800"></div>
@@ -264,7 +258,7 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
             <Button
               variant={activeTab === 'minigames' ? 'default' : 'ghost'}
               size="sm"
-              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs ${
+              className={`flex items-center space-x-2 px-3 py-2 whitespace-nowrap text-sm min-w-max ${
                 activeTab === 'minigames'
                   ? 'bg-primary/20 text-primary border border-primary/30'
                   : isTabUnlocked('minigames')
@@ -274,8 +268,7 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
               onClick={() => isTabUnlocked("minigames") && handleTabChange("minigames")}
               disabled={!isTabUnlocked('minigames')}
             >
-              <i className="fas fa-gamepad"></i>
-              <Gamepad2 className="w-3 h-3 text-white" />
+              <Gamepad2 className="w-4 h-4" />
               <span>{t('miniGames')}</span>
               {!isTabUnlocked('minigames') && <Lock className="w-3 h-3 ml-1" />}
             </Button>
@@ -283,7 +276,7 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
             <Button
               variant={activeTab === 'donate' ? 'default' : 'ghost'}
               size="sm"
-              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs ml-4 relative bg-gradient-to-r from-yellow-600/20 to-yellow-400/20 hover:from-yellow-600/30 hover:to-yellow-400/30 border border-yellow-500/30 ${
+              className={`flex items-center space-x-2 px-3 py-2 whitespace-nowrap text-sm min-w-max ml-4 relative bg-gradient-to-r from-yellow-600/20 to-yellow-400/20 hover:from-yellow-600/30 hover:to-yellow-400/30 border border-yellow-500/30 ${
                 activeTab === 'donate'
                   ? 'text-yellow-300 shadow-lg shadow-yellow-500/25'
                   : 'text-yellow-400 hover:text-yellow-300'
@@ -291,8 +284,7 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
               onClick={() => isTabUnlocked("donate") && handleTabChange("donate")}
               disabled={!isTabUnlocked('donate')}
             >
-              <i className="fas fa-coins"></i>
-              <CreditCard className="w-3 h-3 text-white" />
+              <CreditCard className="w-4 h-4" />
               <span>{t('donate')}</span>
               {!isTabUnlocked('donate') && <Lock className="w-3 h-3 ml-1" />}
             </Button>
@@ -300,7 +292,7 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
             <Button
               variant={activeTab === 'reports' ? 'default' : 'ghost'}
               size="sm"
-              className={`flex items-center space-x-1 px-2 py-1 whitespace-nowrap text-xs relative ${
+              className={`flex items-center space-x-2 px-3 py-2 whitespace-nowrap text-sm min-w-max relative ${
                 activeTab === 'reports'
                   ? 'bg-primary/20 text-primary border border-primary/30'
                   : isTabUnlocked('reports')
@@ -310,8 +302,7 @@ const hideAfter24h = now - gameState.user.registrationTime >= ONE_DAY;
               onClick={() => isTabUnlocked("reports") && handleTabChange("reports")}
               disabled={!isTabUnlocked('reports')}
             >
-              <i className="fas fa-headset"></i>
-              <Bug className="w-3 h-3 text-white" />
+              <Bug className="w-4 h-4" />
               <span>{t('reports')}</span>
               {!isTabUnlocked('reports') && <Lock className="w-3 h-3 ml-1" />}
               {hasUnreadReports && (

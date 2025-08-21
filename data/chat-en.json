@@ -210,7 +210,10 @@
     "adminLevel": 2,
     "reactions": {},
     "filtered": false,
-    "warningCount": 0
+    "warningCount": 0,
+    "pinned": false,
+    "pinnedBy": null,
+    "pinnedAt": null
   },
   {
     "id": "6cdb7b67-b6cf-4f76-bca8-8461fd31f9d3",
@@ -225,5 +228,29 @@
     "reactions": {},
     "filtered": false,
     "warningCount": 0
+  },
+  {
+    "id": "819e56b6-c5ab-4e16-b9f5-5e121f6c1497",
+    "userId": "system",
+    "nickname": "System",
+    "message": "Message from Ca6aka was pinned by Ca6aka",
+    "timestamp": 1755742019197,
+    "deleted": false,
+    "adminLevel": 999,
+    "isSystem": true,
+    "isWarning": true,
+    "language": "en"
+  },
+  {
+    "id": "59305314-e8da-44bd-82f3-a40eac48c22c",
+    "userId": "system",
+    "nickname": "System",
+    "message": "Message from Ca6aka was unpinned by Ca6aka",
+    "timestamp": 1755742023883,
+    "deleted": false,
+    "adminLevel": 999,
+    "isSystem": true,
+    "isWarning": true,
+    "language": "en"
   }
 ]
