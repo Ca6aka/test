@@ -99,9 +99,12 @@ const newTranslations = {
   alreadyHavePremium: { en: 'You already have this status', ru: 'У вас уже есть этот статус', ua: 'У вас уже є цей статус', de: 'Sie haben diesen Status bereits' },
   premiumBlocksVip: { en: 'PREMIUM blocks VIP purchase', ru: 'PREMIUM блокирует покупку VIP', ua: 'PREMIUM блокує покупку VIP', de: 'PREMIUM blockiert VIP-Kauf' },
   vipBlocksPremium: { en: 'VIP blocks PREMIUM purchase', ru: 'VIP блокирует покупку PREMIUM', ua: 'VIP блокує покупку PREMIUM', de: 'VIP blockiert PREMIUM-Kauf' },
+  month: { en: 'months', ru: 'месяцев', ua: 'місяців', de: 'Monate' },
   processing: { en: 'Processing...', ru: 'Обработка...', ua: 'Обробка...', de: 'Verarbeitung...' },
   paymentInitiated: { en: 'Payment Initiated', ru: 'Оплата инициирована', ua: 'Оплата ініційована', de: 'Zahlung eingeleitet' },
   redirectedToPayment: { en: 'You will be redirected to payment gateway', ru: 'Вы будете перенаправлены на платежный шлюз', ua: 'Вас буде перенаправлено на платіжний шлюз', de: 'Sie werden zum Zahlungsgateway weitergeleitet' },
+  paymentDocument: { en: 'Payment Document', ru: 'Документ об оплате', ua: 'Документ про оплату', de: 'Zahlungsdokument' },
+  paymentDocumentDesc: { en: 'After successful payment you will be able to download a PDF document with purchase confirmation and order details.', ru: 'После успешной оплаты вы сможете скачать PDF документ с подтверждением покупки и деталями заказа.', ua: 'Після успішної оплати ви зможете завантажити PDF документ з підтвердженням покупки та деталями замовлення.', de: 'Nach erfolgreicher Zahlung können Sie ein PDF-Dokument mit Kaufbestätigung und Bestelldetails herunterladen.' },
   
   // Admin subscription management
   manageSubscriptions: { en: 'Manage Subscriptions', ru: 'Управление подписками', ua: 'Управління підписками', de: 'Abonnements verwalten' },

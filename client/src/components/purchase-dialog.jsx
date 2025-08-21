@@ -139,10 +139,10 @@ export default function PurchaseDialog({ type, price, children, disabled }) {
           <div className="bg-slate-800 p-3 rounded-lg">
             <div className="flex items-center gap-2 mb-2">
               <FileText className="w-4 h-4 text-green-400" />
-              <span className="font-medium">Документ об оплате</span>
+              <span className="font-medium">{t('paymentDocument')}</span>
             </div>
             <p className="text-sm text-slate-400">
-              После успешной оплаты вы сможете скачать PDF документ с подтверждением покупки и деталями заказа.
+              {t('paymentDocumentDesc')}
             </p>
           </div>
 

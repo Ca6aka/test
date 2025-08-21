@@ -133,7 +133,7 @@ export default function DonateTab() {
                 className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 relative z-10"
               >
                 {hasPremium ? t('premiumBlocksVip') :
-                 hasVip ? t('alreadyHavePremium') : t('purchaseVip') + ' - $20 8 ' + t('month')}
+                 hasVip ? t('alreadyHavePremium') : t('purchaseVip') + ' - $20 - 8 ' + t('month')}
               </Button>
             </PurchaseDialog>
           </div>
@@ -222,7 +222,7 @@ export default function DonateTab() {
                 className="w-full bg-purple-600 hover:bg-purple-700 disabled:opacity-50 relative z-10"
               >
                 {hasPremium ? t('alreadyHavePremium') :
-                 hasVip ? t('vipBlocksPremium') : t('purchasePremium') + ' - $25 ' + t('forever')}
+                 hasVip ? t('vipBlocksPremium') : t('purchasePremium') + ' - $25 - ' + t('forever')}
               </Button>
             </PurchaseDialog>
           </div>
