@@ -228,21 +228,6 @@ export default function DonateTab() {
           </div>
         </CardContent>
       </Card>
-
-      {/* Payment Document Information */}
-      <Card className="border-2 border-slate-600/30 bg-slate-800/30">
-        <CardHeader>
-          <CardTitle className="flex items-center text-slate-300">
-            <FileText className="w-5 h-5 mr-2" />
-            {t('paymentDocument')}
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-sm text-slate-300">
-            {t('paymentDocumentDesc')}
-          </p>
-        </CardContent>
-      </Card>
     </div>
   );
 }
