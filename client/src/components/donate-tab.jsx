@@ -57,9 +57,25 @@ export default function DonateTab() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-blue-300 leading-relaxed whitespace-pre-line">
+          <p className="text-sm text-blue-300 leading-relaxed whitespace-pre-line mb-4">
             {t('cryptoPaymentInfo')}
           </p>
+          <div className="flex flex-wrap gap-4 text-sm">
+            <a 
+              href="mailto:email@gmail.com" 
+              className="flex items-center gap-2 text-blue-300 hover:text-blue-200 transition-colors font-medium"
+            >
+              📧 {t('contactEmail')}
+            </a>
+            <a 
+              href="https://t.me/Ca6aka" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-blue-300 hover:text-blue-200 transition-colors font-medium"
+            >
+              📱 {t('contactTelegram')}
+            </a>
+          </div>
         </CardContent>
       </Card>
 
