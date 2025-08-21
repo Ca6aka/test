@@ -1586,6 +1586,62 @@ const translations = {
     yourServer: 'Ваш сервер',
     medium: 'Средний',
     
+    // Donation system
+    donateTitle: 'Поддержка проекта',
+    donateDescription: 'Поддерживая игру, вы помогаете улучшать проект и получать новые функции. За это вы получаете бонусы, указанные ниже: VIP/ Premium отметки, ускорение опыта, внутриигровую валюту и другие привилегии.',
+    securePayment: 'Оплата безопасно и просто',
+    cryptoPaymentInfo: 'Выберите криптовалюту и оплатите VIP/Premium.\nИзвиняемся за высокую минимальную сумму — это ограничение платформы, не нашей игры.\nНовичок в крипте? Не проблема! Свяжитесь с нами:\n📧 email@gmail.com | 📱 t.me/Ca6aka — подскажем и проведём оплату шаг за шагом.',
+    months: 'месяцев',
+    forever: 'навсегда',
+    maximum: 'Максимальный пакет',
+    popular: 'Популярный пакет',
+    vipBonusPackage: 'VIP подарок за покупку пакетом',
+    premiumBonusPackage: 'PREMIUM подарок за покупку пакетом',
+    startingCapital: 'Наличные',
+    experience: 'Опыта',
+    serverSlots: 'Слотов сервера',
+    status: 'Статус',
+    currentStatus: 'Текущий статус',
+    vip: 'VIP',
+    premium: 'ПРЕМИУМ',
+    
+    // VIP features
+    vipBadgeChat: 'Синяя отметка VIP в чате и профиле игрока.',
+    vipReducedCooldown: 'КД на работы: 2м вместо 3м, 4м вместо 5м, 6м вместо 7м.',
+    vipExperienceBoost: 'x1.5 опыта за работу.',
+    vipReportPriority: 'Приоритет в репорте, с отметкой VIP.',
+    vipNewReaction: 'Уникальные эмодзи для чата.',
+    vipDailyBonus: 'Бонус за ежедневный вход +200 вместо +100.',
+    
+    // Premium features
+    premiumBadgeChat: 'Фиолетовая отметка PREMIUM в чате и профиле игрока.',
+    premiumReducedCooldown: 'КД на работы: 1.5м вместо 3м, 2м вместо 5м, 5м вместо 7м.',
+    premiumExperienceBoost: 'x1.75 опыта за работу.',
+    premiumReportPriority: 'Приоритет в репорте, с отметкой PREMIUM.',
+    premiumNoMinigameCooldown: 'Отключение КД на мини-игры.',
+    premiumInstantServers: 'Сразу активные сервера — мини-игры для запуска не нужны.',
+    premiumSecretReactions: 'Секретная реакция на сообщения (видна только администраторам).',
+    premiumNewReaction: 'Премиальные эмодзи для чата.',
+    premiumDailyBonus: 'Бонус за ежедневный вход +500 вместо +100.',
+    
+    // Purchase buttons and messages
+    purchaseVip: 'Оплатить VIP',
+    purchasePremium: 'Оплатить PREMIUM',
+    alreadyHavePremium: 'У вас уже есть этот статус',
+    premiumBlocksVip: 'PREMIUM блокирует покупку VIP',
+    vipBlocksPremium: 'VIP блокирует покупку PREMIUM',
+    
+    // Payment methods and crypto info
+    cardPaymentUnavailable: 'Временно недоступно: Оплата картой не поддерживается. Доступна только криптооплата.',
+    useStablecoins: '💡 Используйте USDT/USDC для оплаты в долларовом эквиваленте',
+    unavailableCardPayment: 'Недоступно: Оплата картой',
+    payWithCrypto: 'Оплата криптовалютой',
+    selectCurrency: 'Выберите валюту',
+    paymentMethod: 'Способ оплаты',
+    month: 'месяц',
+    paymentDocument: 'Документ об оплате',
+    paymentDocumentDesc: 'После успешной оплаты вы сможете скачать PDF документ с подтверждением покупки и деталями заказа.',
+    
     // Donate translations
     donate: 'Донат',
     donateDesc: 'Поддержите разработку игры и получите эксклюзивные преимущества!',
@@ -3037,7 +3093,20 @@ export function LanguageProvider({ children }) {
   });
 
   const t = (key) => {
-    return translations[language]?.[key] || translations.en[key] || key;
+    // Check new translations first
+    if (newTranslations[key] && newTranslations[key][language]) {
+      return newTranslations[key][language];
+    }
+    // Fall back to old translations - check current language first
+    if (translations[language] && translations[language][key]) {
+      return translations[language][key];
+    }
+    // Try English as fallback
+    if (translations.en && translations.en[key]) {
+      return translations.en[key];
+    }
+    // Return key if not found
+    return key;
   };
 
   const changeLanguage = (newLanguage) => {
