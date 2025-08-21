@@ -1,6 +1,6 @@
 import { Crown, Star, AlertCircle } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { Badge } from '@/components/ui/badge'
 import { formatDistanceToNow } from 'date-fns'

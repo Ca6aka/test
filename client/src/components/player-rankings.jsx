@@ -1,9 +1,9 @@
+import React, { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useGame } from '@/contexts/game-context';
 import { useLanguage } from '@/contexts/language-context';
 import { formatCurrency } from '@/lib/constants';
 import { Link } from 'wouter';
-import { useState, useEffect } from 'react';
 
 // Component for countdown timer
 export function RankingsCountdown() {
